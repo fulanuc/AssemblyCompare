@@ -4,10 +4,10 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x020002F6 RID: 758
+	// Token: 0x020002F3 RID: 755
 	public class FireAuraController : NetworkBehaviour
 	{
-		// Token: 0x06000F5D RID: 3933 RVA: 0x0005C9AC File Offset: 0x0005ABAC
+		// Token: 0x06000F4D RID: 3917 RVA: 0x0005C78C File Offset: 0x0005A98C
 		private void FixedUpdate()
 		{
 			this.timer += Time.fixedDeltaTime;
@@ -52,14 +52,14 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000F5F RID: 3935 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06000F4F RID: 3919 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x1700014E RID: 334
-		// (get) Token: 0x06000F60 RID: 3936 RVA: 0x0005CB6C File Offset: 0x0005AD6C
-		// (set) Token: 0x06000F61 RID: 3937 RVA: 0x0000BCFD File Offset: 0x00009EFD
+		// Token: 0x17000149 RID: 329
+		// (get) Token: 0x06000F50 RID: 3920 RVA: 0x0005C94C File Offset: 0x0005AB4C
+		// (set) Token: 0x06000F51 RID: 3921 RVA: 0x0000BC4F File Offset: 0x00009E4F
 		public GameObject Networkowner
 		{
 			get
@@ -72,7 +72,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000F62 RID: 3938 RVA: 0x0005CB80 File Offset: 0x0005AD80
+		// Token: 0x06000F52 RID: 3922 RVA: 0x0005C960 File Offset: 0x0005AB60
 		public override bool OnSerialize(NetworkWriter writer, bool forceAll)
 		{
 			if (forceAll)
@@ -97,7 +97,7 @@ namespace RoR2
 			return flag;
 		}
 
-		// Token: 0x06000F63 RID: 3939 RVA: 0x0005CBEC File Offset: 0x0005ADEC
+		// Token: 0x06000F53 RID: 3923 RVA: 0x0005C9CC File Offset: 0x0005ABCC
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 			if (initialState)
@@ -112,7 +112,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000F64 RID: 3940 RVA: 0x0000BD17 File Offset: 0x00009F17
+		// Token: 0x06000F54 RID: 3924 RVA: 0x0000BC69 File Offset: 0x00009E69
 		public override void PreStartClient()
 		{
 			if (!this.___ownerNetId.IsEmpty())
@@ -121,32 +121,32 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04001370 RID: 4976
+		// Token: 0x04001359 RID: 4953
 		private const float fireAttackRadiusMin = 0.5f;
 
-		// Token: 0x04001371 RID: 4977
+		// Token: 0x0400135A RID: 4954
 		private const float fireAttackRadiusMax = 6f;
 
-		// Token: 0x04001372 RID: 4978
+		// Token: 0x0400135B RID: 4955
 		private const float fireDamageCoefficient = 1f;
 
-		// Token: 0x04001373 RID: 4979
+		// Token: 0x0400135C RID: 4956
 		private const float fireProcCoefficient = 0.1f;
 
-		// Token: 0x04001374 RID: 4980
+		// Token: 0x0400135D RID: 4957
 		private const float maxTimer = 8f;
 
-		// Token: 0x04001375 RID: 4981
+		// Token: 0x0400135E RID: 4958
 		private float timer;
 
-		// Token: 0x04001376 RID: 4982
+		// Token: 0x0400135F RID: 4959
 		private float attackStopwatch;
 
-		// Token: 0x04001377 RID: 4983
+		// Token: 0x04001360 RID: 4960
 		[SyncVar]
 		public GameObject owner;
 
-		// Token: 0x04001378 RID: 4984
+		// Token: 0x04001361 RID: 4961
 		private NetworkInstanceId ___ownerNetId;
 	}
 }

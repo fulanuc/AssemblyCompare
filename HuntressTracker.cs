@@ -4,19 +4,19 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x0200031B RID: 795
+	// Token: 0x02000319 RID: 793
 	[RequireComponent(typeof(TeamComponent))]
-	[RequireComponent(typeof(InputBankTest))]
 	[RequireComponent(typeof(CharacterBody))]
+	[RequireComponent(typeof(InputBankTest))]
 	public class HuntressTracker : MonoBehaviour
 	{
-		// Token: 0x06001079 RID: 4217 RVA: 0x0000C9C0 File Offset: 0x0000ABC0
+		// Token: 0x06001065 RID: 4197 RVA: 0x0000C8DC File Offset: 0x0000AADC
 		private void Awake()
 		{
 			this.indicator = new Indicator(base.gameObject, Resources.Load<GameObject>("Prefabs/HuntressTrackingIndicator"));
 		}
 
-		// Token: 0x0600107A RID: 4218 RVA: 0x0000C9DD File Offset: 0x0000ABDD
+		// Token: 0x06001066 RID: 4198 RVA: 0x0000C8F9 File Offset: 0x0000AAF9
 		private void Start()
 		{
 			this.characterBody = base.GetComponent<CharacterBody>();
@@ -24,25 +24,25 @@ namespace RoR2
 			this.teamComponent = base.GetComponent<TeamComponent>();
 		}
 
-		// Token: 0x0600107B RID: 4219 RVA: 0x0000CA03 File Offset: 0x0000AC03
+		// Token: 0x06001067 RID: 4199 RVA: 0x0000C91F File Offset: 0x0000AB1F
 		public HurtBox GetTrackingTarget()
 		{
 			return this.trackingTarget;
 		}
 
-		// Token: 0x0600107C RID: 4220 RVA: 0x0000CA0B File Offset: 0x0000AC0B
+		// Token: 0x06001068 RID: 4200 RVA: 0x0000C927 File Offset: 0x0000AB27
 		private void OnEnable()
 		{
 			this.indicator.active = true;
 		}
 
-		// Token: 0x0600107D RID: 4221 RVA: 0x0000CA19 File Offset: 0x0000AC19
+		// Token: 0x06001069 RID: 4201 RVA: 0x0000C935 File Offset: 0x0000AB35
 		private void OnDisable()
 		{
 			this.indicator.active = false;
 		}
 
-		// Token: 0x0600107E RID: 4222 RVA: 0x00062B08 File Offset: 0x00060D08
+		// Token: 0x0600106A RID: 4202 RVA: 0x00062864 File Offset: 0x00060A64
 		private void FixedUpdate()
 		{
 			this.trackerUpdateStopwatch += Time.fixedDeltaTime;
@@ -56,49 +56,49 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600107F RID: 4223 RVA: 0x00062BA8 File Offset: 0x00060DA8
+		// Token: 0x0600106B RID: 4203 RVA: 0x00062904 File Offset: 0x00060B04
 		private void SearchForTarget(Ray aimRay)
 		{
 			this.search.teamMaskFilter = TeamMask.all;
 			this.search.teamMaskFilter.RemoveTeam(this.teamComponent.teamIndex);
-			this.search.filterByLoS = true;
+			this.search.filterByLoS = false;
 			this.search.searchOrigin = aimRay.origin;
 			this.search.searchDirection = aimRay.direction;
 			this.search.sortMode = BullseyeSearch.SortMode.Distance;
-			this.search.maxDistanceFilter = this.maxTrackingDistance;
-			this.search.maxAngleFilter = this.maxTrackingAngle;
+			this.search.maxDistanceFilter = this.maxTrackingDistance + 1000000f;
+			this.search.maxAngleFilter = this.maxTrackingAngle + 1E+08f;
 			this.search.RefreshCandidates();
 			this.trackingTarget = this.search.GetResults().FirstOrDefault<HurtBox>();
 		}
 
-		// Token: 0x04001485 RID: 5253
+		// Token: 0x04001471 RID: 5233
 		public float maxTrackingDistance = 20f;
 
-		// Token: 0x04001486 RID: 5254
+		// Token: 0x04001472 RID: 5234
 		public float maxTrackingAngle = 20f;
 
-		// Token: 0x04001487 RID: 5255
+		// Token: 0x04001473 RID: 5235
 		public float trackerUpdateFrequency = 10f;
 
-		// Token: 0x04001488 RID: 5256
-		private HurtBox trackingTarget;
+		// Token: 0x04001474 RID: 5236
+		public HurtBox trackingTarget;
 
-		// Token: 0x04001489 RID: 5257
+		// Token: 0x04001475 RID: 5237
 		private CharacterBody characterBody;
 
-		// Token: 0x0400148A RID: 5258
+		// Token: 0x04001476 RID: 5238
 		private TeamComponent teamComponent;
 
-		// Token: 0x0400148B RID: 5259
+		// Token: 0x04001477 RID: 5239
 		private InputBankTest inputBank;
 
-		// Token: 0x0400148C RID: 5260
+		// Token: 0x04001478 RID: 5240
 		private float trackerUpdateStopwatch;
 
-		// Token: 0x0400148D RID: 5261
+		// Token: 0x04001479 RID: 5241
 		private Indicator indicator;
 
-		// Token: 0x0400148E RID: 5262
+		// Token: 0x0400147A RID: 5242
 		private readonly BullseyeSearch search = new BullseyeSearch();
 	}
 }

@@ -4,16 +4,16 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x02000309 RID: 777
+	// Token: 0x02000306 RID: 774
 	public class GravitatePickup : MonoBehaviour
 	{
-		// Token: 0x0600100D RID: 4109 RVA: 0x0000C4D3 File Offset: 0x0000A6D3
+		// Token: 0x06000FF7 RID: 4087 RVA: 0x0000C3E9 File Offset: 0x0000A5E9
 		private void Start()
 		{
 			this.teamFilter.teamIndex = TeamIndex.Player;
 		}
 
-		// Token: 0x0600100E RID: 4110 RVA: 0x0000C4E1 File Offset: 0x0000A6E1
+		// Token: 0x06000FF8 RID: 4088 RVA: 0x0000C3F7 File Offset: 0x0000A5F7
 		private void OnTriggerEnter(Collider other)
 		{
 			if (NetworkServer.active && !this.gravitateTarget && TeamComponent.GetObjectTeam(other.gameObject) == this.teamFilter.teamIndex)
@@ -22,7 +22,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600100F RID: 4111 RVA: 0x00060788 File Offset: 0x0005E988
+		// Token: 0x06000FF9 RID: 4089 RVA: 0x00060504 File Offset: 0x0005E704
 		private void FixedUpdate()
 		{
 			if (this.gravitateTarget)
@@ -31,21 +31,21 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04001402 RID: 5122
+		// Token: 0x040013EA RID: 5098
 		private Transform gravitateTarget;
 
-		// Token: 0x04001403 RID: 5123
+		// Token: 0x040013EB RID: 5099
 		[Tooltip("The rigidbody to set the velocity of.")]
 		public Rigidbody rigidbody;
 
-		// Token: 0x04001404 RID: 5124
+		// Token: 0x040013EC RID: 5100
 		[Tooltip("The TeamFilter which controls which team can activate this trigger.")]
 		public TeamFilter teamFilter;
 
-		// Token: 0x04001405 RID: 5125
+		// Token: 0x040013ED RID: 5101
 		public float acceleration;
 
-		// Token: 0x04001406 RID: 5126
+		// Token: 0x040013EE RID: 5102
 		public float maxSpeed;
 	}
 }

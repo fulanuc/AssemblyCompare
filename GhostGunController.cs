@@ -5,10 +5,10 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x02000304 RID: 772
+	// Token: 0x02000301 RID: 769
 	public class GhostGunController : MonoBehaviour
 	{
-		// Token: 0x06000FDD RID: 4061 RVA: 0x0000C311 File Offset: 0x0000A511
+		// Token: 0x06000FC7 RID: 4039 RVA: 0x0000C227 File Offset: 0x0000A427
 		private void Start()
 		{
 			this.fireTimer = 0f;
@@ -17,7 +17,7 @@ namespace RoR2
 			this.timeoutTimer = this.timeout;
 		}
 
-		// Token: 0x06000FDE RID: 4062 RVA: 0x0005E098 File Offset: 0x0005C298
+		// Token: 0x06000FC8 RID: 4040 RVA: 0x0005DE14 File Offset: 0x0005C014
 		private void Fire(Vector3 origin, Vector3 aimDirection)
 		{
 			CharacterBody component = this.owner.GetComponent<CharacterBody>();
@@ -41,14 +41,14 @@ namespace RoR2
 			this.kills += component.killCount - killCount;
 		}
 
-		// Token: 0x06000FDF RID: 4063 RVA: 0x0005E164 File Offset: 0x0005C364
+		// Token: 0x06000FC9 RID: 4041 RVA: 0x0005DEE0 File Offset: 0x0005C0E0
 		private float CalcDamage()
 		{
 			float damage = this.owner.GetComponent<CharacterBody>().damage;
 			return 5f * Mathf.Pow(2f, (float)this.kills) * damage;
 		}
 
-		// Token: 0x06000FE0 RID: 4064 RVA: 0x0005E19C File Offset: 0x0005C39C
+		// Token: 0x06000FCA RID: 4042 RVA: 0x0005DF18 File Offset: 0x0005C118
 		private bool HasLoS(GameObject target)
 		{
 			Ray ray = new Ray(base.transform.position, target.transform.position - base.transform.position);
@@ -56,7 +56,7 @@ namespace RoR2
 			return !Physics.Raycast(ray, out raycastHit, this.maxRange, LayerIndex.defaultLayer.mask | LayerIndex.world.mask, QueryTriggerInteraction.Ignore) || raycastHit.collider.gameObject == target;
 		}
 
-		// Token: 0x06000FE1 RID: 4065 RVA: 0x0005E228 File Offset: 0x0005C428
+		// Token: 0x06000FCB RID: 4043 RVA: 0x0005DFA4 File Offset: 0x0005C1A4
 		private bool WillHit(GameObject target)
 		{
 			Ray ray = new Ray(base.transform.position, base.transform.forward);
@@ -76,7 +76,7 @@ namespace RoR2
 			return false;
 		}
 
-		// Token: 0x06000FE2 RID: 4066 RVA: 0x0005E2C0 File Offset: 0x0005C4C0
+		// Token: 0x06000FCC RID: 4044 RVA: 0x0005E03C File Offset: 0x0005C23C
 		private GameObject FindTarget()
 		{
 			TeamIndex teamA = TeamIndex.Neutral;
@@ -130,7 +130,7 @@ namespace RoR2
 			return gameObject;
 		}
 
-		// Token: 0x06000FE3 RID: 4067 RVA: 0x0005E410 File Offset: 0x0005C610
+		// Token: 0x06000FCD RID: 4045 RVA: 0x0005E18C File Offset: 0x0005C38C
 		private void FixedUpdate()
 		{
 			if (!NetworkServer.active)
@@ -172,43 +172,43 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x040013D4 RID: 5076
+		// Token: 0x040013BC RID: 5052
 		public GameObject owner;
 
-		// Token: 0x040013D5 RID: 5077
+		// Token: 0x040013BD RID: 5053
 		public float interval;
 
-		// Token: 0x040013D6 RID: 5078
+		// Token: 0x040013BE RID: 5054
 		public float maxRange = 20f;
 
-		// Token: 0x040013D7 RID: 5079
+		// Token: 0x040013BF RID: 5055
 		public float turnSpeed = 180f;
 
-		// Token: 0x040013D8 RID: 5080
+		// Token: 0x040013C0 RID: 5056
 		public Vector3 localOffset = Vector3.zero;
 
-		// Token: 0x040013D9 RID: 5081
+		// Token: 0x040013C1 RID: 5057
 		public float positionSmoothTime = 0.05f;
 
-		// Token: 0x040013DA RID: 5082
+		// Token: 0x040013C2 RID: 5058
 		public float timeout = 2f;
 
-		// Token: 0x040013DB RID: 5083
+		// Token: 0x040013C3 RID: 5059
 		private float fireTimer;
 
-		// Token: 0x040013DC RID: 5084
+		// Token: 0x040013C4 RID: 5060
 		private float timeoutTimer;
 
-		// Token: 0x040013DD RID: 5085
+		// Token: 0x040013C5 RID: 5061
 		private int ammo;
 
-		// Token: 0x040013DE RID: 5086
+		// Token: 0x040013C6 RID: 5062
 		private int kills;
 
-		// Token: 0x040013DF RID: 5087
+		// Token: 0x040013C7 RID: 5063
 		private GameObject target;
 
-		// Token: 0x040013E0 RID: 5088
+		// Token: 0x040013C8 RID: 5064
 		private Vector3 velocity;
 	}
 }

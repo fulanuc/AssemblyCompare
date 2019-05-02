@@ -2,14 +2,14 @@
 
 namespace RoR2
 {
-	// Token: 0x0200043A RID: 1082
+	// Token: 0x02000432 RID: 1074
 	public enum GameResultType
 	{
-		// Token: 0x04001B6B RID: 7019
+		// Token: 0x04001B3B RID: 6971
 		Lost,
-		// Token: 0x04001B6C RID: 7020
+		// Token: 0x04001B3C RID: 6972
 		Won,
-		// Token: 0x04001B6D RID: 7021
+		// Token: 0x04001B3D RID: 6973
 		Unknown
 	}
 }

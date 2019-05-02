@@ -7,19 +7,20 @@ namespace RoR2
 	// Token: 0x02000249 RID: 585
 	public static class FadeToBlackManager
 	{
-		// Token: 0x06000AFC RID: 2812 RVA: 0x0004A8CC File Offset: 0x00048ACC
-		[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
+		// Token: 0x06000AF9 RID: 2809 RVA: 0x0004A6C8 File Offset: 0x000488C8
+		[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
 		private static void Init()
 		{
-			GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/UI/ScreenTintCanvas"), RoR2Application.instance.mainCanvas.transform);
+			GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/UI/ScreenTintCanvas"));
+			UnityEngine.Object.DontDestroyOnLoad(gameObject);
 			FadeToBlackManager.alpha = 0f;
 			FadeToBlackManager.image = gameObject.transform.GetChild(0).GetComponent<Image>();
 			FadeToBlackManager.UpdateImageAlpha();
 			RoR2Application.onUpdate += FadeToBlackManager.Update;
 		}
 
-		// Token: 0x170000C5 RID: 197
-		// (get) Token: 0x06000AFD RID: 2813 RVA: 0x00008DAD File Offset: 0x00006FAD
+		// Token: 0x170000C4 RID: 196
+		// (get) Token: 0x06000AFA RID: 2810 RVA: 0x00008D88 File Offset: 0x00006F88
 		public static bool fullyFaded
 		{
 			get
@@ -28,14 +29,14 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000AFE RID: 2814 RVA: 0x00008DBB File Offset: 0x00006FBB
+		// Token: 0x06000AFB RID: 2811 RVA: 0x00008D96 File Offset: 0x00006F96
 		private static void Update()
 		{
-			FadeToBlackManager.alpha = Mathf.MoveTowards(FadeToBlackManager.alpha, (FadeToBlackManager.fadeCount > 0) ? 2f : 0f, Time.unscaledDeltaTime * 4f);
+			FadeToBlackManager.alpha = Mathf.MoveTowards(FadeToBlackManager.alpha, (FadeToBlackManager.fadeCount > 0) ? 2f : 0f, Time.deltaTime * 4f);
 			FadeToBlackManager.UpdateImageAlpha();
 		}
 
-		// Token: 0x06000AFF RID: 2815 RVA: 0x0004A92C File Offset: 0x00048B2C
+		// Token: 0x06000AFC RID: 2812 RVA: 0x0004A720 File Offset: 0x00048920
 		private static void UpdateImageAlpha()
 		{
 			Color color = FadeToBlackManager.image.color;
@@ -43,19 +44,19 @@ namespace RoR2
 			FadeToBlackManager.image.color = color;
 		}
 
-		// Token: 0x04000EEC RID: 3820
+		// Token: 0x04000EE6 RID: 3814
 		private static Image image;
 
-		// Token: 0x04000EED RID: 3821
+		// Token: 0x04000EE7 RID: 3815
 		public static int fadeCount;
 
-		// Token: 0x04000EEE RID: 3822
+		// Token: 0x04000EE8 RID: 3816
 		private static float alpha;
 
-		// Token: 0x04000EEF RID: 3823
+		// Token: 0x04000EE9 RID: 3817
 		private const float fadeDuration = 0.25f;
 
-		// Token: 0x04000EF0 RID: 3824
+		// Token: 0x04000EEA RID: 3818
 		private const float inversefadeDuration = 4f;
 	}
 }

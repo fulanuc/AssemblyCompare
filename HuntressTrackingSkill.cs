@@ -2,23 +2,23 @@
 
 namespace RoR2
 {
-	// Token: 0x0200031C RID: 796
+	// Token: 0x0200031A RID: 794
 	public class HuntressTrackingSkill : GenericSkill
 	{
-		// Token: 0x06001081 RID: 4225 RVA: 0x0000CA5B File Offset: 0x0000AC5B
+		// Token: 0x0600106D RID: 4205 RVA: 0x0000C977 File Offset: 0x0000AB77
 		protected new void Start()
 		{
 			base.Start();
 			this.huntressTracker = base.GetComponent<HuntressTracker>();
 		}
 
-		// Token: 0x06001082 RID: 4226 RVA: 0x0000CA6F File Offset: 0x0000AC6F
+		// Token: 0x0600106E RID: 4206 RVA: 0x0000C98B File Offset: 0x0000AB8B
 		public override bool CanExecute()
 		{
 			return (!this.huntressTracker || !(this.huntressTracker.GetTrackingTarget() == null)) && base.CanExecute();
 		}
 
-		// Token: 0x0400148F RID: 5263
+		// Token: 0x0400147B RID: 5243
 		private HuntressTracker huntressTracker;
 	}
 }

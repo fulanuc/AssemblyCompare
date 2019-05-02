@@ -4,10 +4,10 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x0200030F RID: 783
+	// Token: 0x0200030C RID: 780
 	public class HealthPickup : MonoBehaviour
 	{
-		// Token: 0x06001053 RID: 4179 RVA: 0x00061F58 File Offset: 0x00060158
+		// Token: 0x0600103C RID: 4156 RVA: 0x00061C78 File Offset: 0x0005FE78
 		private void OnTriggerStay(Collider other)
 		{
 			if (NetworkServer.active && this.alive && TeamComponent.GetObjectTeam(other.gameObject) == this.teamFilter.teamIndex)
@@ -29,24 +29,24 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04001435 RID: 5173
+		// Token: 0x0400141D RID: 5149
 		[Tooltip("The base object to destroy when this pickup is consumed.")]
 		public GameObject baseObject;
 
-		// Token: 0x04001436 RID: 5174
+		// Token: 0x0400141E RID: 5150
 		[Tooltip("The team filter object which determines who can pick up this pack.")]
 		public TeamFilter teamFilter;
 
-		// Token: 0x04001437 RID: 5175
+		// Token: 0x0400141F RID: 5151
 		public GameObject pickupEffect;
 
-		// Token: 0x04001438 RID: 5176
+		// Token: 0x04001420 RID: 5152
 		public float flatHealing;
 
-		// Token: 0x04001439 RID: 5177
+		// Token: 0x04001421 RID: 5153
 		public float fractionalHealing;
 
-		// Token: 0x0400143A RID: 5178
+		// Token: 0x04001422 RID: 5154
 		private bool alive = true;
 	}
 }

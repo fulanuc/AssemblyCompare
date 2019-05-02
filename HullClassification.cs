@@ -2,16 +2,16 @@
 
 namespace RoR2
 {
-	// Token: 0x02000442 RID: 1090
+	// Token: 0x0200043A RID: 1082
 	public enum HullClassification
 	{
-		// Token: 0x04001B99 RID: 7065
+		// Token: 0x04001B69 RID: 7017
 		Human,
-		// Token: 0x04001B9A RID: 7066
+		// Token: 0x04001B6A RID: 7018
 		Golem,
-		// Token: 0x04001B9B RID: 7067
+		// Token: 0x04001B6B RID: 7019
 		BeetleQueen,
-		// Token: 0x04001B9C RID: 7068
+		// Token: 0x04001B6C RID: 7020
 		Count
 	}
 }

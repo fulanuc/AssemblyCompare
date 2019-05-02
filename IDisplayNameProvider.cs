@@ -2,10 +2,10 @@
 
 namespace RoR2
 {
-	// Token: 0x0200032F RID: 815
+	// Token: 0x0200032D RID: 813
 	public interface IDisplayNameProvider
 	{
-		// Token: 0x060010DD RID: 4317
+		// Token: 0x060010C9 RID: 4297
 		string GetDisplayName();
 	}
 }

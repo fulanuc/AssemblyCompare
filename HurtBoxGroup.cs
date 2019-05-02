@@ -1,23 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x02000329 RID: 809
+	// Token: 0x02000327 RID: 807
 	public class HurtBoxGroup : MonoBehaviour, ILifeBehavior
 	{
-		// Token: 0x060010B9 RID: 4281 RVA: 0x0000CCF0 File Offset: 0x0000AEF0
+		// Token: 0x060010A5 RID: 4261 RVA: 0x0000CC0C File Offset: 0x0000AE0C
 		public void OnDeathStart()
 		{
 			this.SetHurtboxesActive(false);
 		}
 
-		// Token: 0x17000172 RID: 370
-		// (get) Token: 0x060010BA RID: 4282 RVA: 0x0000CCF9 File Offset: 0x0000AEF9
-		// (set) Token: 0x060010BB RID: 4283 RVA: 0x000632A4 File Offset: 0x000614A4
+		// Token: 0x1700016D RID: 365
+		// (get) Token: 0x060010A6 RID: 4262 RVA: 0x0000CC15 File Offset: 0x0000AE15
+		// (set) Token: 0x060010A7 RID: 4263 RVA: 0x00063018 File Offset: 0x00061218
 		public int hurtBoxesDeactivatorCounter
 		{
 			get
@@ -36,7 +35,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060010BC RID: 4284 RVA: 0x000632D8 File Offset: 0x000614D8
+		// Token: 0x060010A8 RID: 4264 RVA: 0x0006304C File Offset: 0x0006124C
 		private void SetHurtboxesActive(bool active)
 		{
 			for (int i = 0; i < this.hurtBoxes.Length; i++)
@@ -45,7 +44,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060010BD RID: 4285 RVA: 0x0006330C File Offset: 0x0006150C
+		// Token: 0x060010A9 RID: 4265 RVA: 0x00063080 File Offset: 0x00061280
 		public void OnValidate()
 		{
 			int num = 0;
@@ -70,42 +69,42 @@ namespace RoR2
 				where v.isBullseye
 				select v;
 				IEnumerable<HurtBox> source2 = from v in source
-				where v.transform.parent.name.ToLower(CultureInfo.InvariantCulture) == "chest"
+				where v.transform.parent.name.ToLower() == "chest"
 				select v;
 				this.mainHurtBox = (source2.FirstOrDefault<HurtBox>() ?? source.FirstOrDefault<HurtBox>());
 			}
 		}
 
-		// Token: 0x060010BE RID: 4286 RVA: 0x0000CD01 File Offset: 0x0000AF01
+		// Token: 0x060010AA RID: 4266 RVA: 0x0000CC1D File Offset: 0x0000AE1D
 		public HurtBoxGroup.VolumeDistribution GetVolumeDistribution()
 		{
 			return new HurtBoxGroup.VolumeDistribution(this.hurtBoxes);
 		}
 
-		// Token: 0x040014C5 RID: 5317
+		// Token: 0x040014B1 RID: 5297
 		[Tooltip("The hurtboxes in this group. This really shouldn't be set manually.")]
 		public HurtBox[] hurtBoxes;
 
-		// Token: 0x040014C6 RID: 5318
+		// Token: 0x040014B2 RID: 5298
 		[Tooltip("The most important hurtbox in this group, usually a good center-of-mass target like the chest.")]
 		public HurtBox mainHurtBox;
 
-		// Token: 0x040014C7 RID: 5319
+		// Token: 0x040014B3 RID: 5299
 		[HideInInspector]
 		public int bullseyeCount;
 
-		// Token: 0x040014C8 RID: 5320
+		// Token: 0x040014B4 RID: 5300
 		private int _hurtBoxesDeactivatorCounter;
 
-		// Token: 0x0200032A RID: 810
+		// Token: 0x02000328 RID: 808
 		public class VolumeDistribution
 		{
-			// Token: 0x17000173 RID: 371
-			// (get) Token: 0x060010C0 RID: 4288 RVA: 0x0000CD0E File Offset: 0x0000AF0E
-			// (set) Token: 0x060010C1 RID: 4289 RVA: 0x0000CD16 File Offset: 0x0000AF16
+			// Token: 0x1700016E RID: 366
+			// (get) Token: 0x060010AC RID: 4268 RVA: 0x0000CC2A File Offset: 0x0000AE2A
+			// (set) Token: 0x060010AD RID: 4269 RVA: 0x0000CC32 File Offset: 0x0000AE32
 			public float totalVolume { get; private set; }
 
-			// Token: 0x060010C2 RID: 4290 RVA: 0x000633E4 File Offset: 0x000615E4
+			// Token: 0x060010AE RID: 4270 RVA: 0x00063158 File Offset: 0x00061358
 			public VolumeDistribution(HurtBox[] hurtBoxes)
 			{
 				this.totalVolume = 0f;
@@ -116,8 +115,8 @@ namespace RoR2
 				this.hurtBoxes = (HurtBox[])hurtBoxes.Clone();
 			}
 
-			// Token: 0x17000174 RID: 372
-			// (get) Token: 0x060010C3 RID: 4291 RVA: 0x00063438 File Offset: 0x00061638
+			// Token: 0x1700016F RID: 367
+			// (get) Token: 0x060010AF RID: 4271 RVA: 0x000631AC File Offset: 0x000613AC
 			public Vector3 randomVolumePoint
 			{
 				get
@@ -138,7 +137,7 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x040014CA RID: 5322
+			// Token: 0x040014B6 RID: 5302
 			private HurtBox[] hurtBoxes;
 		}
 	}

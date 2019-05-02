@@ -4,28 +4,28 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x020002F4 RID: 756
+	// Token: 0x020002F1 RID: 753
 	public class EyeFlare : MonoBehaviour
 	{
-		// Token: 0x06000F53 RID: 3923 RVA: 0x0000BC90 File Offset: 0x00009E90
+		// Token: 0x06000F43 RID: 3907 RVA: 0x0000BBE2 File Offset: 0x00009DE2
 		static EyeFlare()
 		{
 			SceneCamera.onSceneCameraPreCull += EyeFlare.OnSceneCameraPreCull;
 		}
 
-		// Token: 0x06000F54 RID: 3924 RVA: 0x0000BCAD File Offset: 0x00009EAD
+		// Token: 0x06000F44 RID: 3908 RVA: 0x0000BBFF File Offset: 0x00009DFF
 		private void OnEnable()
 		{
 			EyeFlare.instancesList.Add(this);
 		}
 
-		// Token: 0x06000F55 RID: 3925 RVA: 0x0000BCBA File Offset: 0x00009EBA
+		// Token: 0x06000F45 RID: 3909 RVA: 0x0000BC0C File Offset: 0x00009E0C
 		private void OnDisable()
 		{
 			EyeFlare.instancesList.Remove(this);
 		}
 
-		// Token: 0x06000F56 RID: 3926 RVA: 0x0005C6B8 File Offset: 0x0005A8B8
+		// Token: 0x06000F46 RID: 3910 RVA: 0x0005C498 File Offset: 0x0005A698
 		private static void OnSceneCameraPreCull(SceneCamera sceneCamera)
 		{
 			Transform transform = Camera.current.transform;
@@ -45,23 +45,23 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000F57 RID: 3927 RVA: 0x0000BCC8 File Offset: 0x00009EC8
+		// Token: 0x06000F47 RID: 3911 RVA: 0x0000BC1A File Offset: 0x00009E1A
 		private void Awake()
 		{
 			this.transform = base.transform;
 		}
 
-		// Token: 0x04001361 RID: 4961
+		// Token: 0x0400134A RID: 4938
 		[Tooltip("The transform whose forward vector will be tested against the camera angle to determine scaling. This is usually the parent, and never this object since billboarding will affect the direction.")]
 		public Transform directionSource;
 
-		// Token: 0x04001362 RID: 4962
+		// Token: 0x0400134B RID: 4939
 		public float localScale = 1f;
 
-		// Token: 0x04001363 RID: 4963
+		// Token: 0x0400134C RID: 4940
 		private static List<EyeFlare> instancesList = new List<EyeFlare>();
 
-		// Token: 0x04001364 RID: 4964
+		// Token: 0x0400134D RID: 4941
 		private new Transform transform;
 	}
 }

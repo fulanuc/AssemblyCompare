@@ -6,16 +6,16 @@ using RoR2.UI;
 
 namespace RoR2
 {
-	// Token: 0x0200043C RID: 1084
+	// Token: 0x02000434 RID: 1076
 	public static class Glyphs
 	{
-		// Token: 0x06001846 RID: 6214 RVA: 0x000122A1 File Offset: 0x000104A1
+		// Token: 0x060017F9 RID: 6137 RVA: 0x00011E2D File Offset: 0x0001002D
 		private static void AddGlyph(string controllerName, int elementIndex, string assetName, string glyphName)
 		{
 			Glyphs.glyphMap[new Glyphs.GlyphKey(controllerName, elementIndex)] = string.Format(CultureInfo.InvariantCulture, "<sprite=\"{0}\" name=\"{1}\">", assetName, glyphName);
 		}
 
-		// Token: 0x06001847 RID: 6215 RVA: 0x0007DAAC File Offset: 0x0007BCAC
+		// Token: 0x060017FA RID: 6138 RVA: 0x0007D2F0 File Offset: 0x0007B4F0
 		private static void RegisterXBoxController(string controllerName)
 		{
 			Glyphs.AddGlyph(controllerName, 4, "tmpsprXboxOneGlyphs", "texXBoxOneGlyphs_5");
@@ -32,7 +32,7 @@ namespace RoR2
 			Glyphs.AddGlyph(controllerName, 15, "tmpsprXboxOneGlyphs", "texXBoxOneGlyphs_8");
 		}
 
-		// Token: 0x06001848 RID: 6216 RVA: 0x0007DB8C File Offset: 0x0007BD8C
+		// Token: 0x060017FB RID: 6139 RVA: 0x0007D3D0 File Offset: 0x0007B5D0
 		private static void RegisterDS4Controller(string controllerName)
 		{
 			Glyphs.AddGlyph(controllerName, 4, "tmpsprSteamGlyphs", "texSteamGlyphs_110");
@@ -45,7 +45,7 @@ namespace RoR2
 			Glyphs.AddGlyph(controllerName, 9, "tmpsprSteamGlyphs", "texSteamGlyphs_47");
 		}
 
-		// Token: 0x06001849 RID: 6217 RVA: 0x000122C5 File Offset: 0x000104C5
+		// Token: 0x060017FC RID: 6140 RVA: 0x00011E51 File Offset: 0x00010051
 		private static void RegisterMouse(string controllerName)
 		{
 			Glyphs.AddGlyph(controllerName, 3, "tmpsprSteamGlyphs", "texSteamGlyphs_17");
@@ -53,12 +53,12 @@ namespace RoR2
 			Glyphs.AddGlyph(controllerName, 5, "tmpsprSteamGlyphs", "texSteamGlyphs_19");
 		}
 
-		// Token: 0x0600184A RID: 6218 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x060017FD RID: 6141 RVA: 0x000025F6 File Offset: 0x000007F6
 		private static void RegisterKeyboard(string controllerName)
 		{
 		}
 
-		// Token: 0x0600184B RID: 6219 RVA: 0x0007DC24 File Offset: 0x0007BE24
+		// Token: 0x060017FE RID: 6142 RVA: 0x0007D468 File Offset: 0x0007B668
 		static Glyphs()
 		{
 			Dictionary<string, string> dictionary = new Dictionary<string, string>();
@@ -83,7 +83,7 @@ namespace RoR2
 			Glyphs.RegisterDS4Controller("Sony DualShock 4");
 		}
 
-		// Token: 0x0600184C RID: 6220 RVA: 0x0007DD38 File Offset: 0x0007BF38
+		// Token: 0x060017FF RID: 6143 RVA: 0x0007D57C File Offset: 0x0007B77C
 		private static string GetKeyboardGlyphString(string actionName)
 		{
 			string text;
@@ -106,7 +106,7 @@ namespace RoR2
 			return text;
 		}
 
-		// Token: 0x0600184D RID: 6221 RVA: 0x0007DD90 File Offset: 0x0007BF90
+		// Token: 0x06001800 RID: 6144 RVA: 0x0007D5D4 File Offset: 0x0007B7D4
 		public static string GetGlyphString(MPEventSystemLocator eventSystemLocator, string actionName)
 		{
 			MPEventSystem eventSystem = eventSystemLocator.eventSystem;
@@ -117,13 +117,13 @@ namespace RoR2
 			return "UNKNOWN";
 		}
 
-		// Token: 0x0600184E RID: 6222 RVA: 0x000122FA File Offset: 0x000104FA
+		// Token: 0x06001801 RID: 6145 RVA: 0x00011E86 File Offset: 0x00010086
 		public static string GetGlyphString(MPEventSystem eventSystem, string actionName, AxisRange axisRange = AxisRange.Full)
 		{
 			return Glyphs.GetGlyphString(eventSystem, actionName, axisRange, eventSystem.currentInputSource);
 		}
 
-		// Token: 0x0600184F RID: 6223 RVA: 0x0007DDBC File Offset: 0x0007BFBC
+		// Token: 0x06001802 RID: 6146 RVA: 0x0007D600 File Offset: 0x0007B800
 		public static string GetGlyphString(MPEventSystem eventSystem, string actionName, AxisRange axisRange, MPEventSystem.InputSource currentInputSource)
 		{
 			Glyphs.<>c__DisplayClass18_0 CS$<>8__locals1;
@@ -212,62 +212,62 @@ namespace RoR2
 			return "UNKNOWN";
 		}
 
-		// Token: 0x04001B6F RID: 7023
+		// Token: 0x04001B3F RID: 6975
 		private static readonly Dictionary<Glyphs.GlyphKey, string> glyphMap = new Dictionary<Glyphs.GlyphKey, string>();
 
-		// Token: 0x04001B70 RID: 7024
+		// Token: 0x04001B40 RID: 6976
 		private const string xbox360ControllerName = "Xbox 360 Controller";
 
-		// Token: 0x04001B71 RID: 7025
+		// Token: 0x04001B41 RID: 6977
 		private const string xboxOneControllerName = "Xbox One Controller";
 
-		// Token: 0x04001B72 RID: 7026
+		// Token: 0x04001B42 RID: 6978
 		private const string dualshock4ControllerName = "Sony DualShock 4";
 
-		// Token: 0x04001B73 RID: 7027
+		// Token: 0x04001B43 RID: 6979
 		private const string defaultControllerName = "Xbox One Controller";
 
-		// Token: 0x04001B74 RID: 7028
+		// Token: 0x04001B44 RID: 6980
 		private static readonly Dictionary<string, string> keyboardRawNameToGlyphName = new Dictionary<string, string>();
 
-		// Token: 0x04001B75 RID: 7029
+		// Token: 0x04001B45 RID: 6981
 		private static readonly Dictionary<string, string> mouseElementRenameMap;
 
-		// Token: 0x04001B76 RID: 7030
+		// Token: 0x04001B46 RID: 6982
 		private static readonly List<ActionElementMap> resultsList;
 
-		// Token: 0x0200043D RID: 1085
+		// Token: 0x02000435 RID: 1077
 		private struct GlyphKey : IEquatable<Glyphs.GlyphKey>
 		{
-			// Token: 0x06001851 RID: 6225 RVA: 0x0001230A File Offset: 0x0001050A
+			// Token: 0x06001804 RID: 6148 RVA: 0x00011E96 File Offset: 0x00010096
 			public GlyphKey(string deviceName, int elementId)
 			{
 				this.deviceName = deviceName;
 				this.elementId = elementId;
 			}
 
-			// Token: 0x06001852 RID: 6226 RVA: 0x0001231A File Offset: 0x0001051A
+			// Token: 0x06001805 RID: 6149 RVA: 0x00011EA6 File Offset: 0x000100A6
 			public bool Equals(Glyphs.GlyphKey other)
 			{
 				return string.Equals(this.deviceName, other.deviceName) && this.elementId == other.elementId;
 			}
 
-			// Token: 0x06001853 RID: 6227 RVA: 0x0001233F File Offset: 0x0001053F
+			// Token: 0x06001806 RID: 6150 RVA: 0x00011ECB File Offset: 0x000100CB
 			public override bool Equals(object obj)
 			{
 				return obj != null && obj is Glyphs.GlyphKey && this.Equals((Glyphs.GlyphKey)obj);
 			}
 
-			// Token: 0x06001854 RID: 6228 RVA: 0x0001235C File Offset: 0x0001055C
+			// Token: 0x06001807 RID: 6151 RVA: 0x00011EE8 File Offset: 0x000100E8
 			public override int GetHashCode()
 			{
 				return ((this.deviceName != null) ? this.deviceName.GetHashCode() : 0) * 397 ^ this.elementId;
 			}
 
-			// Token: 0x04001B77 RID: 7031
+			// Token: 0x04001B47 RID: 6983
 			public readonly string deviceName;
 
-			// Token: 0x04001B78 RID: 7032
+			// Token: 0x04001B48 RID: 6984
 			public readonly int elementId;
 		}
 	}

@@ -3,10 +3,10 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x020002FB RID: 763
+	// Token: 0x020002F8 RID: 760
 	public class GameObjectUnlockableFilter : NetworkBehaviour
 	{
-		// Token: 0x06000F72 RID: 3954 RVA: 0x0000BD72 File Offset: 0x00009F72
+		// Token: 0x06000F62 RID: 3938 RVA: 0x0000BCC4 File Offset: 0x00009EC4
 		private void Start()
 		{
 			if (NetworkServer.active)
@@ -15,13 +15,13 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000F73 RID: 3955 RVA: 0x0000BD87 File Offset: 0x00009F87
+		// Token: 0x06000F63 RID: 3939 RVA: 0x0000BCD9 File Offset: 0x00009ED9
 		private void FixedUpdate()
 		{
 			base.gameObject.SetActive(this.active);
 		}
 
-		// Token: 0x06000F74 RID: 3956 RVA: 0x0005D1D0 File Offset: 0x0005B3D0
+		// Token: 0x06000F64 RID: 3940 RVA: 0x0005CFB0 File Offset: 0x0005B1B0
 		private bool GameObjectIsValid()
 		{
 			if (Run.instance)
@@ -33,14 +33,14 @@ namespace RoR2
 			return true;
 		}
 
-		// Token: 0x06000F76 RID: 3958 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06000F66 RID: 3942 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x1700014F RID: 335
-		// (get) Token: 0x06000F77 RID: 3959 RVA: 0x0005D234 File Offset: 0x0005B434
-		// (set) Token: 0x06000F78 RID: 3960 RVA: 0x0000BD9A File Offset: 0x00009F9A
+		// Token: 0x1700014A RID: 330
+		// (get) Token: 0x06000F67 RID: 3943 RVA: 0x0005D014 File Offset: 0x0005B214
+		// (set) Token: 0x06000F68 RID: 3944 RVA: 0x0000BCEC File Offset: 0x00009EEC
 		public bool Networkactive
 		{
 			get
@@ -53,7 +53,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000F79 RID: 3961 RVA: 0x0005D248 File Offset: 0x0005B448
+		// Token: 0x06000F69 RID: 3945 RVA: 0x0005D028 File Offset: 0x0005B228
 		public override bool OnSerialize(NetworkWriter writer, bool forceAll)
 		{
 			if (forceAll)
@@ -78,7 +78,7 @@ namespace RoR2
 			return flag;
 		}
 
-		// Token: 0x06000F7A RID: 3962 RVA: 0x0005D2B4 File Offset: 0x0005B4B4
+		// Token: 0x06000F6A RID: 3946 RVA: 0x0005D094 File Offset: 0x0005B294
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 			if (initialState)
@@ -93,13 +93,13 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04001397 RID: 5015
+		// Token: 0x04001380 RID: 4992
 		public string requiredUnlockable;
 
-		// Token: 0x04001398 RID: 5016
+		// Token: 0x04001381 RID: 4993
 		public string forbiddenUnlockable;
 
-		// Token: 0x04001399 RID: 5017
+		// Token: 0x04001382 RID: 4994
 		[SyncVar]
 		private bool active;
 	}

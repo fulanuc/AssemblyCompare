@@ -1,27 +1,28 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.Serialization;
 
 namespace RoR2
 {
-	// Token: 0x02000310 RID: 784
+	// Token: 0x0200030D RID: 781
 	[RequireComponent(typeof(NetworkedBodyAttachment))]
 	public class HelfireController : NetworkBehaviour
 	{
-		// Token: 0x17000169 RID: 361
-		// (get) Token: 0x06001055 RID: 4181 RVA: 0x0000C7BB File Offset: 0x0000A9BB
-		// (set) Token: 0x06001056 RID: 4182 RVA: 0x0000C7C3 File Offset: 0x0000A9C3
+		// Token: 0x17000164 RID: 356
+		// (get) Token: 0x0600103E RID: 4158 RVA: 0x0000C6C3 File Offset: 0x0000A8C3
+		// (set) Token: 0x0600103F RID: 4159 RVA: 0x0000C6CB File Offset: 0x0000A8CB
 		public NetworkedBodyAttachment networkedBodyAttachment { get; private set; }
 
-		// Token: 0x06001057 RID: 4183 RVA: 0x0000C7CC File Offset: 0x0000A9CC
+		// Token: 0x06001040 RID: 4160 RVA: 0x0000C6D4 File Offset: 0x0000A8D4
 		private void Awake()
 		{
 			this.networkedBodyAttachment = base.GetComponent<NetworkedBodyAttachment>();
 			this.auraEffectTransform.SetParent(null);
 		}
 
-		// Token: 0x06001058 RID: 4184 RVA: 0x0000C7E6 File Offset: 0x0000A9E6
+		// Token: 0x06001041 RID: 4161 RVA: 0x0000C6EE File Offset: 0x0000A8EE
 		private void OnDestroy()
 		{
 			if (this.auraEffectTransform)
@@ -35,40 +36,43 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001059 RID: 4185 RVA: 0x0000C825 File Offset: 0x0000AA25
+		// Token: 0x06001042 RID: 4162 RVA: 0x0000C72D File Offset: 0x0000A92D
+		private void Start()
+		{
+			if (NetworkServer.active)
+			{
+				this.bullseyeSearch = new BullseyeSearch
+				{
+					teamMaskFilter = TeamMask.all
+				};
+			}
+		}
+
+		// Token: 0x06001043 RID: 4163 RVA: 0x00061D2C File Offset: 0x0005FF2C
 		private void FixedUpdate()
 		{
 			this.radius = this.baseRadius * (1f + (float)(this.stack - 1) * 0.5f);
 			if (NetworkServer.active)
 			{
-				this.ServerFixedUpdate();
-			}
-		}
-
-		// Token: 0x0600105A RID: 4186 RVA: 0x0006200C File Offset: 0x0006020C
-		private void ServerFixedUpdate()
-		{
-			this.timer -= Time.fixedDeltaTime;
-			if (this.timer <= 0f)
-			{
-				float damageMultiplier = 1f + (float)(this.stack - 1) * 0.5f;
-				this.timer = this.interval;
-				Collider[] array = Physics.OverlapSphere(base.transform.position, this.radius, LayerIndex.entityPrecise.mask, QueryTriggerInteraction.Collide);
-				GameObject[] array2 = new GameObject[array.Length];
-				int count = 0;
-				for (int i = 0; i < array.Length; i++)
+				this.timer -= Time.fixedDeltaTime;
+				if (this.timer <= 0f)
 				{
-					GameObject gameObject = HelfireController.<ServerFixedUpdate>g__HurtBoxColliderToBodyObject|15_0(array[i]);
-					if (gameObject && Array.IndexOf<GameObject>(array2, gameObject, 0, count) == -1)
+					float damageMultiplier = 1f + (float)(this.stack - 1) * 0.5f;
+					this.timer = this.interval;
+					this.bullseyeSearch.searchOrigin = base.transform.position;
+					this.bullseyeSearch.maxDistanceFilter = this.radius;
+					this.bullseyeSearch.RefreshCandidates();
+					foreach (GameObject victimObject in (from hurtBox in this.bullseyeSearch.GetResults()
+					where hurtBox.healthComponent
+					select hurtBox.healthComponent.gameObject).Distinct<GameObject>())
 					{
-						DotController.InflictDot(gameObject, this.networkedBodyAttachment.attachedBodyObject, DotController.DotIndex.Helfire, this.dotDuration, damageMultiplier);
-						array2[count++] = gameObject;
+						DotController.InflictDot(victimObject, this.networkedBodyAttachment.attachedBodyObject, DotController.DotIndex.Helfire, this.dotDuration, damageMultiplier);
 					}
 				}
 			}
 		}
 
-		// Token: 0x0600105B RID: 4187 RVA: 0x000620EC File Offset: 0x000602EC
+		// Token: 0x06001044 RID: 4164 RVA: 0x00061E80 File Offset: 0x00060080
 		private void LateUpdate()
 		{
 			CharacterBody attachedBody = this.networkedBodyAttachment.attachedBody;
@@ -85,14 +89,14 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600105E RID: 4190 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06001046 RID: 4166 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x1700016A RID: 362
-		// (get) Token: 0x0600105F RID: 4191 RVA: 0x000621A8 File Offset: 0x000603A8
-		// (set) Token: 0x06001060 RID: 4192 RVA: 0x0000C865 File Offset: 0x0000AA65
+		// Token: 0x17000165 RID: 357
+		// (get) Token: 0x06001047 RID: 4167 RVA: 0x00061F04 File Offset: 0x00060104
+		// (set) Token: 0x06001048 RID: 4168 RVA: 0x0000C75B File Offset: 0x0000A95B
 		public int Networkstack
 		{
 			get
@@ -105,7 +109,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001061 RID: 4193 RVA: 0x000621BC File Offset: 0x000603BC
+		// Token: 0x06001049 RID: 4169 RVA: 0x00061F18 File Offset: 0x00060118
 		public override bool OnSerialize(NetworkWriter writer, bool forceAll)
 		{
 			if (forceAll)
@@ -130,7 +134,7 @@ namespace RoR2
 			return flag;
 		}
 
-		// Token: 0x06001062 RID: 4194 RVA: 0x00062228 File Offset: 0x00060428
+		// Token: 0x0600104A RID: 4170 RVA: 0x00061F84 File Offset: 0x00060184
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 			if (initialState)
@@ -145,30 +149,33 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0400143B RID: 5179
+		// Token: 0x04001423 RID: 5155
 		[SyncVar]
 		public int stack = 1;
 
-		// Token: 0x0400143C RID: 5180
+		// Token: 0x04001424 RID: 5156
 		[FormerlySerializedAs("radius")]
 		public float baseRadius;
 
-		// Token: 0x0400143D RID: 5181
+		// Token: 0x04001425 RID: 5157
 		public float dotDuration;
 
-		// Token: 0x0400143E RID: 5182
+		// Token: 0x04001426 RID: 5158
 		public float interval;
 
-		// Token: 0x0400143F RID: 5183
+		// Token: 0x04001427 RID: 5159
 		public Transform auraEffectTransform;
 
-		// Token: 0x04001440 RID: 5184
+		// Token: 0x04001428 RID: 5160
 		private float timer;
 
-		// Token: 0x04001441 RID: 5185
+		// Token: 0x04001429 RID: 5161
 		private float radius;
 
-		// Token: 0x04001443 RID: 5187
+		// Token: 0x0400142B RID: 5163
+		private BullseyeSearch bullseyeSearch;
+
+		// Token: 0x0400142C RID: 5164
 		private CameraTargetParams cameraTargetParams;
 	}
 }

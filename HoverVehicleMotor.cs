@@ -3,18 +3,18 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x02000317 RID: 791
+	// Token: 0x02000315 RID: 789
 	[RequireComponent(typeof(Rigidbody))]
 	public class HoverVehicleMotor : MonoBehaviour
 	{
-		// Token: 0x06001071 RID: 4209 RVA: 0x0000C93F File Offset: 0x0000AB3F
+		// Token: 0x0600105D RID: 4189 RVA: 0x0000C85B File Offset: 0x0000AA5B
 		private void Start()
 		{
 			this.inputBank = base.GetComponent<InputBankTest>();
 			this.rigidbody = base.GetComponent<Rigidbody>();
 		}
 
-		// Token: 0x06001072 RID: 4210 RVA: 0x0006255C File Offset: 0x0006075C
+		// Token: 0x0600105E RID: 4190 RVA: 0x000622B8 File Offset: 0x000604B8
 		private void ApplyWheelForces(HoverEngine wheel, float gas, bool driveWheel, AnimationCurve slidingWheelTractionCurve)
 		{
 			if (wheel.isGrounded)
@@ -45,14 +45,14 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001073 RID: 4211 RVA: 0x0000C959 File Offset: 0x0000AB59
+		// Token: 0x0600105F RID: 4191 RVA: 0x0000C875 File Offset: 0x0000AA75
 		private void UpdateCenterOfMass()
 		{
 			this.rigidbody.ResetCenterOfMass();
 			this.rigidbody.centerOfMass = this.rigidbody.centerOfMass + this.centerOfMassOffset;
 		}
 
-		// Token: 0x06001074 RID: 4212 RVA: 0x000626E0 File Offset: 0x000608E0
+		// Token: 0x06001060 RID: 4192 RVA: 0x0006243C File Offset: 0x0006063C
 		private void UpdateWheelParameter(HoverEngine wheel, HoverVehicleMotor.WheelLateralAxis wheelLateralAxis, HoverVehicleMotor.WheelLongitudinalAxis wheelLongitudinalAxis)
 		{
 			wheel.hoverForce = this.hoverForce;
@@ -87,7 +87,7 @@ namespace RoR2
 			wheel.transform.localPosition = zero;
 		}
 
-		// Token: 0x06001075 RID: 4213 RVA: 0x000627B0 File Offset: 0x000609B0
+		// Token: 0x06001061 RID: 4193 RVA: 0x0006250C File Offset: 0x0006070C
 		private void UpdateAllWheelParameters()
 		{
 			foreach (HoverVehicleMotor.AxleGroup axleGroup in this.staticAxles)
@@ -106,7 +106,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001076 RID: 4214 RVA: 0x00062858 File Offset: 0x00060A58
+		// Token: 0x06001062 RID: 4194 RVA: 0x000625B4 File Offset: 0x000607B4
 		private void FixedUpdate()
 		{
 			this.UpdateCenterOfMass();
@@ -150,7 +150,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001077 RID: 4215 RVA: 0x0000C987 File Offset: 0x0000AB87
+		// Token: 0x06001063 RID: 4195 RVA: 0x0000C8A3 File Offset: 0x0000AAA3
 		private void OnDrawGizmos()
 		{
 			if (this.rigidbody)
@@ -160,102 +160,102 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04001466 RID: 5222
+		// Token: 0x04001452 RID: 5202
 		[HideInInspector]
 		public Vector3 targetSteerVector;
 
-		// Token: 0x04001467 RID: 5223
+		// Token: 0x04001453 RID: 5203
 		public Vector3 centerOfMassOffset;
 
-		// Token: 0x04001468 RID: 5224
+		// Token: 0x04001454 RID: 5204
 		public HoverVehicleMotor.AxleGroup[] staticAxles;
 
-		// Token: 0x04001469 RID: 5225
+		// Token: 0x04001455 RID: 5205
 		public HoverVehicleMotor.AxleGroup[] steerAxles;
 
-		// Token: 0x0400146A RID: 5226
+		// Token: 0x04001456 RID: 5206
 		public float wheelWellDepth;
 
-		// Token: 0x0400146B RID: 5227
+		// Token: 0x04001457 RID: 5207
 		public float wheelBase;
 
-		// Token: 0x0400146C RID: 5228
+		// Token: 0x04001458 RID: 5208
 		public float trackWidth;
 
-		// Token: 0x0400146D RID: 5229
+		// Token: 0x04001459 RID: 5209
 		public float rollingFrictionCoefficient;
 
-		// Token: 0x0400146E RID: 5230
+		// Token: 0x0400145A RID: 5210
 		public float slidingTractionCoefficient;
 
-		// Token: 0x0400146F RID: 5231
+		// Token: 0x0400145B RID: 5211
 		public float motorForce;
 
-		// Token: 0x04001470 RID: 5232
+		// Token: 0x0400145C RID: 5212
 		public float maxSteerAngle;
 
-		// Token: 0x04001471 RID: 5233
+		// Token: 0x0400145D RID: 5213
 		public float maxTurningRadius;
 
-		// Token: 0x04001472 RID: 5234
+		// Token: 0x0400145E RID: 5214
 		public float hoverForce = 33f;
 
-		// Token: 0x04001473 RID: 5235
+		// Token: 0x0400145F RID: 5215
 		public float hoverHeight = 2f;
 
-		// Token: 0x04001474 RID: 5236
+		// Token: 0x04001460 RID: 5216
 		public float hoverDamping = 0.5f;
 
-		// Token: 0x04001475 RID: 5237
+		// Token: 0x04001461 RID: 5217
 		public float hoverRadius = 0.5f;
 
-		// Token: 0x04001476 RID: 5238
+		// Token: 0x04001462 RID: 5218
 		public Vector3 hoverOffsetVector = Vector3.up;
 
-		// Token: 0x04001477 RID: 5239
+		// Token: 0x04001463 RID: 5219
 		private InputBankTest inputBank;
 
-		// Token: 0x04001478 RID: 5240
+		// Token: 0x04001464 RID: 5220
 		private Vector3 steerVector = Vector3.forward;
 
-		// Token: 0x04001479 RID: 5241
+		// Token: 0x04001465 RID: 5221
 		private Rigidbody rigidbody;
 
-		// Token: 0x02000318 RID: 792
+		// Token: 0x02000316 RID: 790
 		private enum WheelLateralAxis
 		{
-			// Token: 0x0400147B RID: 5243
+			// Token: 0x04001467 RID: 5223
 			Left,
-			// Token: 0x0400147C RID: 5244
+			// Token: 0x04001468 RID: 5224
 			Right
 		}
 
-		// Token: 0x02000319 RID: 793
+		// Token: 0x02000317 RID: 791
 		public enum WheelLongitudinalAxis
 		{
-			// Token: 0x0400147E RID: 5246
+			// Token: 0x0400146A RID: 5226
 			Front,
-			// Token: 0x0400147F RID: 5247
+			// Token: 0x0400146B RID: 5227
 			Back
 		}
 
-		// Token: 0x0200031A RID: 794
+		// Token: 0x02000318 RID: 792
 		[Serializable]
 		public struct AxleGroup
 		{
-			// Token: 0x04001480 RID: 5248
+			// Token: 0x0400146C RID: 5228
 			public HoverEngine leftWheel;
 
-			// Token: 0x04001481 RID: 5249
+			// Token: 0x0400146D RID: 5229
 			public HoverEngine rightWheel;
 
-			// Token: 0x04001482 RID: 5250
+			// Token: 0x0400146E RID: 5230
 			public HoverVehicleMotor.WheelLongitudinalAxis wheelLongitudinalAxis;
 
-			// Token: 0x04001483 RID: 5251
+			// Token: 0x0400146F RID: 5231
 			public bool isDriven;
 
-			// Token: 0x04001484 RID: 5252
+			// Token: 0x04001470 RID: 5232
 			public AnimationCurve slidingTractionCurve;
 		}
 	}

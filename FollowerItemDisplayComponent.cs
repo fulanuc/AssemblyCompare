@@ -3,16 +3,16 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x020002F9 RID: 761
+	// Token: 0x020002F6 RID: 758
 	public class FollowerItemDisplayComponent : MonoBehaviour
 	{
-		// Token: 0x06000F6B RID: 3947 RVA: 0x0000BD64 File Offset: 0x00009F64
+		// Token: 0x06000F5B RID: 3931 RVA: 0x0000BCB6 File Offset: 0x00009EB6
 		private void Awake()
 		{
 			this.transform = base.transform;
 		}
 
-		// Token: 0x06000F6C RID: 3948 RVA: 0x0005CE30 File Offset: 0x0005B030
+		// Token: 0x06000F5C RID: 3932 RVA: 0x0005CC10 File Offset: 0x0005AE10
 		private void LateUpdate()
 		{
 			if (!this.target)
@@ -26,19 +26,19 @@ namespace RoR2
 			this.transform.localScale = this.localScale;
 		}
 
-		// Token: 0x04001388 RID: 5000
+		// Token: 0x04001371 RID: 4977
 		public Transform target;
 
-		// Token: 0x04001389 RID: 5001
+		// Token: 0x04001372 RID: 4978
 		public Vector3 localPosition;
 
-		// Token: 0x0400138A RID: 5002
+		// Token: 0x04001373 RID: 4979
 		public Quaternion localRotation;
 
-		// Token: 0x0400138B RID: 5003
+		// Token: 0x04001374 RID: 4980
 		public Vector3 localScale;
 
-		// Token: 0x0400138C RID: 5004
+		// Token: 0x04001375 RID: 4981
 		private new Transform transform;
 	}
 }

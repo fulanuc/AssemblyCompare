@@ -5,10 +5,10 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x02000300 RID: 768
-	public sealed class GenericInteraction : NetworkBehaviour, IInteractable
+	// Token: 0x020002FD RID: 765
+	public class GenericInteraction : NetworkBehaviour, IInteractable
 	{
-		// Token: 0x06000F93 RID: 3987 RVA: 0x0000BF7B File Offset: 0x0000A17B
+		// Token: 0x06000F83 RID: 3971 RVA: 0x0000BECD File Offset: 0x0000A0CD
 		[Server]
 		public void SetInteractabilityAvailable()
 		{
@@ -20,7 +20,7 @@ namespace RoR2
 			this.Networkinteractability = Interactability.Available;
 		}
 
-		// Token: 0x06000F94 RID: 3988 RVA: 0x0000BF99 File Offset: 0x0000A199
+		// Token: 0x06000F84 RID: 3972 RVA: 0x0000BEEB File Offset: 0x0000A0EB
 		[Server]
 		public void SetInteractabilityConditionsNotMet()
 		{
@@ -32,7 +32,7 @@ namespace RoR2
 			this.Networkinteractability = Interactability.ConditionsNotMet;
 		}
 
-		// Token: 0x06000F95 RID: 3989 RVA: 0x0000BFB7 File Offset: 0x0000A1B7
+		// Token: 0x06000F85 RID: 3973 RVA: 0x0000BF09 File Offset: 0x0000A109
 		[Server]
 		public void SetInteractabilityDisabled()
 		{
@@ -44,7 +44,7 @@ namespace RoR2
 			this.Networkinteractability = Interactability.Disabled;
 		}
 
-		// Token: 0x06000F96 RID: 3990 RVA: 0x0000BFD5 File Offset: 0x0000A1D5
+		// Token: 0x06000F86 RID: 3974 RVA: 0x0000BF27 File Offset: 0x0000A127
 		string IInteractable.GetContextString(Interactor activator)
 		{
 			if (this.contextToken == "")
@@ -54,50 +54,32 @@ namespace RoR2
 			return Language.GetString(this.contextToken);
 		}
 
-		// Token: 0x06000F97 RID: 3991 RVA: 0x00003696 File Offset: 0x00001896
+		// Token: 0x06000F87 RID: 3975 RVA: 0x00003696 File Offset: 0x00001896
 		public bool ShouldIgnoreSpherecastForInteractibility(Interactor activator)
 		{
 			return false;
 		}
 
-		// Token: 0x06000F98 RID: 3992 RVA: 0x0000BFF6 File Offset: 0x0000A1F6
+		// Token: 0x06000F88 RID: 3976 RVA: 0x0000BF48 File Offset: 0x0000A148
 		Interactability IInteractable.GetInteractability(Interactor activator)
 		{
 			return this.interactability;
 		}
 
-		// Token: 0x06000F99 RID: 3993 RVA: 0x0000BFFE File Offset: 0x0000A1FE
+		// Token: 0x06000F89 RID: 3977 RVA: 0x0000BF50 File Offset: 0x0000A150
 		void IInteractable.OnInteractionBegin(Interactor activator)
 		{
 			this.onActivation.Invoke();
 		}
 
-		// Token: 0x06000F9A RID: 3994 RVA: 0x0000C00B File Offset: 0x0000A20B
-		private void OnEnable()
-		{
-			InstanceTracker.Add<GenericInteraction>(this);
-		}
-
-		// Token: 0x06000F9B RID: 3995 RVA: 0x0000C013 File Offset: 0x0000A213
-		private void OnDisable()
-		{
-			InstanceTracker.Remove<GenericInteraction>(this);
-		}
-
-		// Token: 0x06000F9C RID: 3996 RVA: 0x0000C01B File Offset: 0x0000A21B
-		public bool ShouldShowOnScanner()
-		{
-			return this.shouldShowOnScanner && this.interactability > Interactability.Disabled;
-		}
-
-		// Token: 0x06000F9E RID: 3998 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06000F8B RID: 3979 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x17000151 RID: 337
-		// (get) Token: 0x06000F9F RID: 3999 RVA: 0x0005D5A4 File Offset: 0x0005B7A4
-		// (set) Token: 0x06000FA0 RID: 4000 RVA: 0x0000C046 File Offset: 0x0000A246
+		// Token: 0x1700014C RID: 332
+		// (get) Token: 0x06000F8C RID: 3980 RVA: 0x0005D384 File Offset: 0x0005B584
+		// (set) Token: 0x06000F8D RID: 3981 RVA: 0x0000BF6C File Offset: 0x0000A16C
 		public Interactability Networkinteractability
 		{
 			get
@@ -110,7 +92,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000FA1 RID: 4001 RVA: 0x0005D5B8 File Offset: 0x0005B7B8
+		// Token: 0x06000F8E RID: 3982 RVA: 0x0005D398 File Offset: 0x0005B598
 		public override bool OnSerialize(NetworkWriter writer, bool forceAll)
 		{
 			if (forceAll)
@@ -135,7 +117,7 @@ namespace RoR2
 			return flag;
 		}
 
-		// Token: 0x06000FA2 RID: 4002 RVA: 0x0005D624 File Offset: 0x0005B824
+		// Token: 0x06000F8F RID: 3983 RVA: 0x0005D404 File Offset: 0x0005B604
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 			if (initialState)
@@ -150,17 +132,14 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x040013A9 RID: 5033
+		// Token: 0x04001392 RID: 5010
 		[SyncVar]
 		public Interactability interactability = Interactability.Available;
 
-		// Token: 0x040013AA RID: 5034
+		// Token: 0x04001393 RID: 5011
 		public string contextToken;
 
-		// Token: 0x040013AB RID: 5035
+		// Token: 0x04001394 RID: 5012
 		public UnityEvent onActivation;
-
-		// Token: 0x040013AC RID: 5036
-		public bool shouldShowOnScanner = true;
 	}
 }

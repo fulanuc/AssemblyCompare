@@ -4,11 +4,11 @@ using UnityEngine.Rendering.PostProcessing;
 
 namespace RoR2
 {
-	// Token: 0x02000441 RID: 1089
+	// Token: 0x02000439 RID: 1081
 	[RequireComponent(typeof(PostProcessVolume))]
 	public class HookLightingIntoPostProcessVolume : MonoBehaviour
 	{
-		// Token: 0x0600186C RID: 6252 RVA: 0x000124C3 File Offset: 0x000106C3
+		// Token: 0x0600181F RID: 6175 RVA: 0x0001204F File Offset: 0x0001024F
 		private void OnEnable()
 		{
 			this.volumeColliders = base.GetComponents<Collider>();
@@ -20,20 +20,20 @@ namespace RoR2
 			SceneCamera.onSceneCameraPreRender += this.OnPreRenderSceneCam;
 		}
 
-		// Token: 0x0600186D RID: 6253 RVA: 0x000124FC File Offset: 0x000106FC
+		// Token: 0x06001820 RID: 6176 RVA: 0x00012088 File Offset: 0x00010288
 		private void OnDisable()
 		{
 			SceneCamera.onSceneCameraPreRender -= this.OnPreRenderSceneCam;
 		}
 
-		// Token: 0x0600186E RID: 6254 RVA: 0x0007E560 File Offset: 0x0007C760
+		// Token: 0x06001821 RID: 6177 RVA: 0x0007DDA4 File Offset: 0x0007BFA4
 		private void OnPreRenderSceneCam(SceneCamera sceneCam)
 		{
 			float interpFactor = this.GetInterpFactor(sceneCam.camera.transform.position);
 			RenderSettings.ambientLight = Color.Lerp(this.defaultAmbientColor, this.overrideAmbientColor, interpFactor);
 		}
 
-		// Token: 0x0600186F RID: 6255 RVA: 0x0007E59C File Offset: 0x0007C79C
+		// Token: 0x06001822 RID: 6178 RVA: 0x0007DDE0 File Offset: 0x0007BFE0
 		private float GetInterpFactor(Vector3 triggerPos)
 		{
 			if (!this.volume.enabled || this.volume.weight <= 0f)
@@ -65,20 +65,20 @@ namespace RoR2
 			return num;
 		}
 
-		// Token: 0x04001B93 RID: 7059
+		// Token: 0x04001B63 RID: 7011
 		public PostProcessVolume volume;
 
-		// Token: 0x04001B94 RID: 7060
+		// Token: 0x04001B64 RID: 7012
 		private Collider[] volumeColliders;
 
-		// Token: 0x04001B95 RID: 7061
+		// Token: 0x04001B65 RID: 7013
 		[ColorUsage(true, true)]
 		public Color overrideAmbientColor;
 
-		// Token: 0x04001B96 RID: 7062
+		// Token: 0x04001B66 RID: 7014
 		private Color defaultAmbientColor;
 
-		// Token: 0x04001B97 RID: 7063
+		// Token: 0x04001B67 RID: 7015
 		private bool hasCachedAmbientColor;
 	}
 }

@@ -7,13 +7,13 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x0200030B RID: 779
+	// Token: 0x02000308 RID: 776
 	[DisallowMultipleComponent]
 	[RequireComponent(typeof(CharacterBody))]
 	public class HealthComponent : NetworkBehaviour
 	{
-		// Token: 0x1700015A RID: 346
-		// (get) Token: 0x0600101C RID: 4124 RVA: 0x0000C58F File Offset: 0x0000A78F
+		// Token: 0x17000155 RID: 341
+		// (get) Token: 0x06001006 RID: 4102 RVA: 0x0000C4A5 File Offset: 0x0000A6A5
 		public bool alive
 		{
 			get
@@ -22,8 +22,8 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x1700015B RID: 347
-		// (get) Token: 0x0600101D RID: 4125 RVA: 0x0000C59E File Offset: 0x0000A79E
+		// Token: 0x17000156 RID: 342
+		// (get) Token: 0x06001007 RID: 4103 RVA: 0x0000C4B4 File Offset: 0x0000A6B4
 		public float fullHealth
 		{
 			get
@@ -32,8 +32,8 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x1700015C RID: 348
-		// (get) Token: 0x0600101E RID: 4126 RVA: 0x0000C5AB File Offset: 0x0000A7AB
+		// Token: 0x17000157 RID: 343
+		// (get) Token: 0x06001008 RID: 4104 RVA: 0x0000C4C1 File Offset: 0x0000A6C1
 		public float fullShield
 		{
 			get
@@ -42,8 +42,8 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x1700015D RID: 349
-		// (get) Token: 0x0600101F RID: 4127 RVA: 0x0000C5B8 File Offset: 0x0000A7B8
+		// Token: 0x17000158 RID: 344
+		// (get) Token: 0x06001009 RID: 4105 RVA: 0x0000C4CE File Offset: 0x0000A6CE
 		public float combinedHealth
 		{
 			get
@@ -52,8 +52,8 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x1700015E RID: 350
-		// (get) Token: 0x06001020 RID: 4128 RVA: 0x0000C5C7 File Offset: 0x0000A7C7
+		// Token: 0x17000159 RID: 345
+		// (get) Token: 0x0600100A RID: 4106 RVA: 0x0000C4DD File Offset: 0x0000A6DD
 		public float fullCombinedHealth
 		{
 			get
@@ -62,8 +62,8 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x1700015F RID: 351
-		// (get) Token: 0x06001021 RID: 4129 RVA: 0x0000C5D6 File Offset: 0x0000A7D6
+		// Token: 0x1700015A RID: 346
+		// (get) Token: 0x0600100B RID: 4107 RVA: 0x0000C4EC File Offset: 0x0000A6EC
 		public float combinedHealthFraction
 		{
 			get
@@ -72,13 +72,13 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x17000160 RID: 352
-		// (get) Token: 0x06001022 RID: 4130 RVA: 0x0000C5E5 File Offset: 0x0000A7E5
-		// (set) Token: 0x06001023 RID: 4131 RVA: 0x0000C5ED File Offset: 0x0000A7ED
+		// Token: 0x1700015B RID: 347
+		// (get) Token: 0x0600100C RID: 4108 RVA: 0x0000C4FB File Offset: 0x0000A6FB
+		// (set) Token: 0x0600100D RID: 4109 RVA: 0x0000C503 File Offset: 0x0000A703
 		public float lastHitTime { get; private set; }
 
-		// Token: 0x17000161 RID: 353
-		// (get) Token: 0x06001024 RID: 4132 RVA: 0x0000C5F6 File Offset: 0x0000A7F6
+		// Token: 0x1700015C RID: 348
+		// (get) Token: 0x0600100E RID: 4110 RVA: 0x0000C50C File Offset: 0x0000A70C
 		public float timeSinceLastHit
 		{
 			get
@@ -87,27 +87,27 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x17000162 RID: 354
-		// (get) Token: 0x06001025 RID: 4133 RVA: 0x0000C609 File Offset: 0x0000A809
-		// (set) Token: 0x06001026 RID: 4134 RVA: 0x0000C611 File Offset: 0x0000A811
+		// Token: 0x1700015D RID: 349
+		// (get) Token: 0x0600100F RID: 4111 RVA: 0x0000C51F File Offset: 0x0000A71F
+		// (set) Token: 0x06001010 RID: 4112 RVA: 0x0000C527 File Offset: 0x0000A727
 		public bool godMode { get; set; }
 
-		// Token: 0x17000163 RID: 355
-		// (get) Token: 0x06001027 RID: 4135 RVA: 0x0000C61A File Offset: 0x0000A81A
-		// (set) Token: 0x06001028 RID: 4136 RVA: 0x0000C622 File Offset: 0x0000A822
+		// Token: 0x1700015E RID: 350
+		// (get) Token: 0x06001011 RID: 4113 RVA: 0x0000C530 File Offset: 0x0000A730
+		// (set) Token: 0x06001012 RID: 4114 RVA: 0x0000C538 File Offset: 0x0000A738
 		public float potionReserve { get; private set; }
 
-		// Token: 0x17000164 RID: 356
-		// (get) Token: 0x06001029 RID: 4137 RVA: 0x0000C62B File Offset: 0x0000A82B
-		// (set) Token: 0x0600102A RID: 4138 RVA: 0x0000C633 File Offset: 0x0000A833
-		public bool isInFrozenState { get; set; }
+		// Token: 0x1700015F RID: 351
+		// (get) Token: 0x06001013 RID: 4115 RVA: 0x0000C541 File Offset: 0x0000A741
+		// (set) Token: 0x06001014 RID: 4116 RVA: 0x0000C549 File Offset: 0x0000A749
+		public bool isFrozen { get; set; }
 
 		// Token: 0x14000012 RID: 18
-		// (add) Token: 0x0600102B RID: 4139 RVA: 0x00060A34 File Offset: 0x0005EC34
-		// (remove) Token: 0x0600102C RID: 4140 RVA: 0x00060A68 File Offset: 0x0005EC68
+		// (add) Token: 0x06001015 RID: 4117 RVA: 0x000607B0 File Offset: 0x0005E9B0
+		// (remove) Token: 0x06001016 RID: 4118 RVA: 0x000607E4 File Offset: 0x0005E9E4
 		public static event Action<HealthComponent, float> onCharacterHealServer;
 
-		// Token: 0x0600102D RID: 4141 RVA: 0x0000C63C File Offset: 0x0000A83C
+		// Token: 0x06001017 RID: 4119 RVA: 0x0000C552 File Offset: 0x0000A752
 		public void OnValidate()
 		{
 			if (base.gameObject.GetComponents<HealthComponent>().Length > 1)
@@ -119,7 +119,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600102E RID: 4142 RVA: 0x00060A9C File Offset: 0x0005EC9C
+		// Token: 0x06001018 RID: 4120 RVA: 0x00060818 File Offset: 0x0005EA18
 		public float Heal(float amount, ProcChainMask procChainMask, bool nonRegen = true)
 		{
 			if (!NetworkServer.active)
@@ -137,6 +137,10 @@ namespace RoR2
 			bool flag = false;
 			if (this.body)
 			{
+				if (this.body.HasBuff(BuffIndex.RepairMode))
+				{
+					amount *= 3f;
+				}
 				characterMaster = this.body.master;
 				if (characterMaster)
 				{
@@ -195,7 +199,7 @@ namespace RoR2
 			return this.health - num;
 		}
 
-		// Token: 0x0600102F RID: 4143 RVA: 0x00060C88 File Offset: 0x0005EE88
+		// Token: 0x06001019 RID: 4121 RVA: 0x00060A20 File Offset: 0x0005EC20
 		public void UsePotion()
 		{
 			ProcChainMask procChainMask = default(ProcChainMask);
@@ -203,7 +207,7 @@ namespace RoR2
 			this.Heal(this.potionReserve, procChainMask, true);
 		}
 
-		// Token: 0x06001030 RID: 4144 RVA: 0x0000C66D File Offset: 0x0000A86D
+		// Token: 0x0600101A RID: 4122 RVA: 0x0000C583 File Offset: 0x0000A783
 		public float HealFraction(float fraction, ProcChainMask procChainMask)
 		{
 			if (!NetworkServer.active)
@@ -214,7 +218,7 @@ namespace RoR2
 			return this.Heal(fraction * this.fullHealth, procChainMask, true);
 		}
 
-		// Token: 0x06001031 RID: 4145 RVA: 0x0000C696 File Offset: 0x0000A896
+		// Token: 0x0600101B RID: 4123 RVA: 0x0000C5AC File Offset: 0x0000A7AC
 		[Server]
 		public void RechargeShieldFull()
 		{
@@ -223,32 +227,10 @@ namespace RoR2
 				Debug.LogWarning("[Server] function 'System.Void RoR2.HealthComponent::RechargeShieldFull()' called on client");
 				return;
 			}
-			if (this.shield < this.fullShield)
-			{
-				this.Networkshield = this.fullShield;
-			}
+			this.Networkshield = this.fullShield;
 		}
 
-		// Token: 0x06001032 RID: 4146 RVA: 0x00060CB8 File Offset: 0x0005EEB8
-		[Server]
-		public void RechargeShield(float value)
-		{
-			if (!NetworkServer.active)
-			{
-				Debug.LogWarning("[Server] function 'System.Void RoR2.HealthComponent::RechargeShield(System.Single)' called on client");
-				return;
-			}
-			if (this.shield < this.fullShield)
-			{
-				this.Networkshield = this.shield + value;
-				if (this.shield > this.fullShield)
-				{
-					this.Networkshield = this.fullShield;
-				}
-			}
-		}
-
-		// Token: 0x06001033 RID: 4147 RVA: 0x00060D10 File Offset: 0x0005EF10
+		// Token: 0x0600101C RID: 4124 RVA: 0x00060A50 File Offset: 0x0005EC50
 		[Server]
 		public void TakeDamageForce(DamageInfo damageInfo, bool alwaysApply = false)
 		{
@@ -273,7 +255,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001034 RID: 4148 RVA: 0x00060D88 File Offset: 0x0005EF88
+		// Token: 0x0600101D RID: 4125 RVA: 0x00060AC8 File Offset: 0x0005ECC8
 		[Server]
 		public void TakeDamageForce(Vector3 force, bool alwaysApply = false)
 		{
@@ -298,7 +280,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001035 RID: 4149 RVA: 0x00060DF8 File Offset: 0x0005EFF8
+		// Token: 0x0600101E RID: 4126 RVA: 0x00060B38 File Offset: 0x0005ED38
 		[Server]
 		public void TakeDamage(DamageInfo damageInfo)
 		{
@@ -332,10 +314,6 @@ namespace RoR2
 					EffectManager.instance.SpawnEffect(Resources.Load<GameObject>("Prefabs/Effects/BearProc"), effectData, true);
 					damageInfo.rejected = true;
 				}
-			}
-			if (this.body.HasBuff(BuffIndex.HiddenInvincibility))
-			{
-				damageInfo.rejected = true;
 			}
 			if (this.body.HasBuff(BuffIndex.Immune) && (!characterBody || !characterBody.HasBuff(BuffIndex.GoldEmpowered)))
 			{
@@ -475,10 +453,10 @@ namespace RoR2
 				damageInfo.attacker.SendMessage("OnDamageDealt", damageReport, SendMessageOptions.DontRequireReceiver);
 			}
 			GlobalEventManager.ServerDamageDealt(damageReport);
-			if (this.isInFrozenState && (this.body.bodyFlags & CharacterBody.BodyFlags.ImmuneToExecutes) == CharacterBody.BodyFlags.None && this.combinedHealthFraction < 0.3f)
+			if (this.isFrozen && this.combinedHealthFraction < 0.3f)
 			{
-				this.Networkhealth = -1f;
-				EffectManager.instance.SpawnEffect(FrozenState.executeEffectPrefab, new EffectData
+				this.Networkhealth = 0f;
+				EffectManager.instance.SpawnEffect(FrozenState.cullEffectPrefab, new EffectData
 				{
 					origin = this.body.corePosition,
 					scale = (this.body ? this.body.radius : 1f)
@@ -510,7 +488,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001036 RID: 4150 RVA: 0x00061558 File Offset: 0x0005F758
+		// Token: 0x0600101F RID: 4127 RVA: 0x00061274 File Offset: 0x0005F474
 		[Server]
 		public void Suicide(GameObject killerOverride = null)
 		{
@@ -540,7 +518,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001037 RID: 4151 RVA: 0x00061608 File Offset: 0x0005F808
+		// Token: 0x06001020 RID: 4128 RVA: 0x00061324 File Offset: 0x0005F524
 		public void UpdateLastHitTime(float damageValue, Vector3 damagePosition, bool damageIsSilent)
 		{
 			if (damageIsSilent)
@@ -578,8 +556,8 @@ namespace RoR2
 			painAnimationHandler.HandlePain(damageValue, damagePosition);
 		}
 
-		// Token: 0x17000165 RID: 357
-		// (get) Token: 0x06001038 RID: 4152 RVA: 0x0000C6C7 File Offset: 0x0000A8C7
+		// Token: 0x17000160 RID: 352
+		// (get) Token: 0x06001021 RID: 4129 RVA: 0x0000C5CF File Offset: 0x0000A7CF
 		private bool hasOneshotProtection
 		{
 			get
@@ -588,7 +566,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001039 RID: 4153 RVA: 0x000616F8 File Offset: 0x0005F8F8
+		// Token: 0x06001022 RID: 4130 RVA: 0x00061414 File Offset: 0x0005F614
 		private void Awake()
 		{
 			this.body = base.GetComponent<CharacterBody>();
@@ -598,13 +576,13 @@ namespace RoR2
 			this.body.onInventoryChanged += this.OnInventoryChanged;
 		}
 
-		// Token: 0x0600103A RID: 4154 RVA: 0x0000C6E3 File Offset: 0x0000A8E3
+		// Token: 0x06001023 RID: 4131 RVA: 0x0000C5EB File Offset: 0x0000A7EB
 		private void OnDestroy()
 		{
 			this.body.onInventoryChanged -= this.OnInventoryChanged;
 		}
 
-		// Token: 0x0600103B RID: 4155 RVA: 0x0006174C File Offset: 0x0005F94C
+		// Token: 0x06001024 RID: 4132 RVA: 0x00061468 File Offset: 0x0005F668
 		public void FixedUpdate()
 		{
 			if (NetworkServer.active)
@@ -629,12 +607,13 @@ namespace RoR2
 						this.Suicide(null);
 					}
 				}
-				bool flag = this.shield >= this.body.maxShield;
-				if (this.body.outOfDanger && !flag)
+				bool flag = this.shield == this.body.maxShield;
+				if (this.body.outOfDanger)
 				{
-					this.Networkshield = Mathf.Max(this.body.maxShield, this.shield + this.body.maxShield * 0.5f * Time.fixedDeltaTime);
+					this.Networkshield = this.shield + this.body.maxShield * 0.5f * Time.fixedDeltaTime;
 				}
-				if (this.shield >= this.body.maxShield && !flag)
+				this.Networkshield = Mathf.Min(this.shield, this.body.maxShield);
+				if (this.shield == this.body.maxShield && !flag)
 				{
 					Util.PlaySound("Play_item_proc_personal_shield_end", base.gameObject);
 				}
@@ -682,7 +661,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600103C RID: 4156 RVA: 0x00061A4C File Offset: 0x0005FC4C
+		// Token: 0x06001025 RID: 4133 RVA: 0x0006176C File Offset: 0x0005F96C
 		private static void SendDamageDealt(DamageReport damageReport)
 		{
 			DamageInfo damageInfo = damageReport.damageInfo;
@@ -698,7 +677,7 @@ namespace RoR2
 			});
 		}
 
-		// Token: 0x0600103D RID: 4157 RVA: 0x00061AC8 File Offset: 0x0005FCC8
+		// Token: 0x06001026 RID: 4134 RVA: 0x000617E8 File Offset: 0x0005F9E8
 		[NetworkMessageHandler(msgType = 60, client = true)]
 		private static void HandleDamageDealt(NetworkMessage netMsg)
 		{
@@ -723,7 +702,7 @@ namespace RoR2
 			GlobalEventManager.ClientDamageNotified(damageDealtMessage);
 		}
 
-		// Token: 0x0600103E RID: 4158 RVA: 0x00061B88 File Offset: 0x0005FD88
+		// Token: 0x06001027 RID: 4135 RVA: 0x000618A8 File Offset: 0x0005FAA8
 		private static void SendHeal(GameObject target, float amount, bool isCrit)
 		{
 			NetworkServer.SendToAll(61, new HealthComponent.HealMessage
@@ -733,7 +712,7 @@ namespace RoR2
 			});
 		}
 
-		// Token: 0x0600103F RID: 4159 RVA: 0x00061BBC File Offset: 0x0005FDBC
+		// Token: 0x06001028 RID: 4136 RVA: 0x000618DC File Offset: 0x0005FADC
 		[NetworkMessageHandler(msgType = 61, client = true)]
 		private static void HandleHeal(NetworkMessage netMsg)
 		{
@@ -744,7 +723,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001040 RID: 4160 RVA: 0x00061C20 File Offset: 0x0005FE20
+		// Token: 0x06001029 RID: 4137 RVA: 0x00061940 File Offset: 0x0005FB40
 		private void OnInventoryChanged()
 		{
 			if (NetworkServer.active)
@@ -766,14 +745,14 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001042 RID: 4162 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x0600102B RID: 4139 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x17000166 RID: 358
-		// (get) Token: 0x06001043 RID: 4163 RVA: 0x00061CB0 File Offset: 0x0005FEB0
-		// (set) Token: 0x06001044 RID: 4164 RVA: 0x0000C716 File Offset: 0x0000A916
+		// Token: 0x17000161 RID: 353
+		// (get) Token: 0x0600102C RID: 4140 RVA: 0x000619D0 File Offset: 0x0005FBD0
+		// (set) Token: 0x0600102D RID: 4141 RVA: 0x0000C61E File Offset: 0x0000A81E
 		public float Networkhealth
 		{
 			get
@@ -786,9 +765,9 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x17000167 RID: 359
-		// (get) Token: 0x06001045 RID: 4165 RVA: 0x00061CC4 File Offset: 0x0005FEC4
-		// (set) Token: 0x06001046 RID: 4166 RVA: 0x0000C72A File Offset: 0x0000A92A
+		// Token: 0x17000162 RID: 354
+		// (get) Token: 0x0600102E RID: 4142 RVA: 0x000619E4 File Offset: 0x0005FBE4
+		// (set) Token: 0x0600102F RID: 4143 RVA: 0x0000C632 File Offset: 0x0000A832
 		public float Networkshield
 		{
 			get
@@ -801,7 +780,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001047 RID: 4167 RVA: 0x00061CD8 File Offset: 0x0005FED8
+		// Token: 0x06001030 RID: 4144 RVA: 0x000619F8 File Offset: 0x0005FBF8
 		public override bool OnSerialize(NetworkWriter writer, bool forceAll)
 		{
 			if (forceAll)
@@ -836,7 +815,7 @@ namespace RoR2
 			return flag;
 		}
 
-		// Token: 0x06001048 RID: 4168 RVA: 0x00061D84 File Offset: 0x0005FF84
+		// Token: 0x06001031 RID: 4145 RVA: 0x00061AA4 File Offset: 0x0005FCA4
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 			if (initialState)
@@ -856,94 +835,94 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04001410 RID: 5136
+		// Token: 0x040013F8 RID: 5112
 		[HideInInspector]
 		[SyncVar]
 		[Tooltip("How much health this object has.")]
 		public float health = 100f;
 
-		// Token: 0x04001411 RID: 5137
+		// Token: 0x040013F9 RID: 5113
+		[SyncVar]
 		[Tooltip("How much shield this object has.")]
 		[HideInInspector]
-		[SyncVar]
 		public float shield;
 
-		// Token: 0x04001412 RID: 5138
+		// Token: 0x040013FA RID: 5114
 		public CharacterBody body;
 
-		// Token: 0x04001413 RID: 5139
+		// Token: 0x040013FB RID: 5115
 		private Transform combatHealthbarTransform;
 
-		// Token: 0x04001414 RID: 5140
+		// Token: 0x040013FC RID: 5116
 		private ModelLocator modelLocator;
 
-		// Token: 0x04001415 RID: 5141
+		// Token: 0x040013FD RID: 5117
 		private IPainAnimationHandler painAnimationHandler;
 
-		// Token: 0x04001418 RID: 5144
+		// Token: 0x04001400 RID: 5120
 		public bool dontShowHealthbar;
 
-		// Token: 0x04001419 RID: 5145
+		// Token: 0x04001401 RID: 5121
 		private float devilOrbHealPool;
 
-		// Token: 0x0400141A RID: 5146
+		// Token: 0x04001402 RID: 5122
 		private float devilOrbTimer;
 
-		// Token: 0x0400141B RID: 5147
+		// Token: 0x04001403 RID: 5123
 		private const float devilOrbMaxTimer = 0.1f;
 
-		// Token: 0x0400141C RID: 5148
+		// Token: 0x04001404 RID: 5124
 		private float regenAccumulator;
 
-		// Token: 0x0400141D RID: 5149
+		// Token: 0x04001405 RID: 5125
 		private float combatHealthTimer;
 
-		// Token: 0x0400141E RID: 5150
+		// Token: 0x04001406 RID: 5126
 		private bool wasAlive = true;
 
-		// Token: 0x0400141F RID: 5151
+		// Token: 0x04001407 RID: 5127
 		public const float medkitActivationDelay = 1.1f;
 
-		// Token: 0x04001422 RID: 5154
-		public const float frozenExecuteThreshold = 0.3f;
+		// Token: 0x0400140A RID: 5130
+		public const float frozenCullThreshold = 0.3f;
 
-		// Token: 0x04001424 RID: 5156
+		// Token: 0x0400140C RID: 5132
 		private int increaseHealingCount;
 
-		// Token: 0x04001425 RID: 5157
+		// Token: 0x0400140D RID: 5133
 		private int repeatHealCount;
 
-		// Token: 0x04001426 RID: 5158
+		// Token: 0x0400140E RID: 5134
 		private HealthComponent.RepeatHealComponent repeatHealComponent;
 
-		// Token: 0x0200030C RID: 780
+		// Token: 0x02000309 RID: 777
 		private class HealMessage : MessageBase
 		{
-			// Token: 0x0600104A RID: 4170 RVA: 0x0000C73E File Offset: 0x0000A93E
+			// Token: 0x06001033 RID: 4147 RVA: 0x0000C646 File Offset: 0x0000A846
 			public override void Serialize(NetworkWriter writer)
 			{
 				writer.Write(this.target);
 				writer.Write(this.amount);
 			}
 
-			// Token: 0x0600104B RID: 4171 RVA: 0x0000C758 File Offset: 0x0000A958
+			// Token: 0x06001034 RID: 4148 RVA: 0x0000C660 File Offset: 0x0000A860
 			public override void Deserialize(NetworkReader reader)
 			{
 				this.target = reader.ReadGameObject();
 				this.amount = reader.ReadSingle();
 			}
 
-			// Token: 0x04001427 RID: 5159
+			// Token: 0x0400140F RID: 5135
 			public GameObject target;
 
-			// Token: 0x04001428 RID: 5160
+			// Token: 0x04001410 RID: 5136
 			public float amount;
 		}
 
-		// Token: 0x0200030D RID: 781
+		// Token: 0x0200030A RID: 778
 		private class RepeatHealComponent : MonoBehaviour
 		{
-			// Token: 0x0600104C RID: 4172 RVA: 0x00061DEC File Offset: 0x0005FFEC
+			// Token: 0x06001035 RID: 4149 RVA: 0x00061B0C File Offset: 0x0005FD0C
 			private void FixedUpdate()
 			{
 				this.timer -= Time.fixedDeltaTime;
@@ -961,25 +940,25 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x0600104D RID: 4173 RVA: 0x0000C772 File Offset: 0x0000A972
+			// Token: 0x06001036 RID: 4150 RVA: 0x0000C67A File Offset: 0x0000A87A
 			public void AddReserve(float amount, float max)
 			{
 				this.reserve = Mathf.Min(this.reserve + amount, max);
 			}
 
-			// Token: 0x04001429 RID: 5161
+			// Token: 0x04001411 RID: 5137
 			private float reserve;
 
-			// Token: 0x0400142A RID: 5162
+			// Token: 0x04001412 RID: 5138
 			private float timer;
 
-			// Token: 0x0400142B RID: 5163
+			// Token: 0x04001413 RID: 5139
 			private const float interval = 0.2f;
 
-			// Token: 0x0400142C RID: 5164
+			// Token: 0x04001414 RID: 5140
 			public float healthFractionToRestorePerSecond = 0.1f;
 
-			// Token: 0x0400142D RID: 5165
+			// Token: 0x04001415 RID: 5141
 			public HealthComponent healthComponent;
 		}
 	}

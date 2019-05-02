@@ -3,12 +3,12 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x02000440 RID: 1088
+	// Token: 0x02000438 RID: 1080
 	public static class HGPhysics
 	{
-		// Token: 0x17000235 RID: 565
-		// (get) Token: 0x06001867 RID: 6247 RVA: 0x00012477 File Offset: 0x00010677
-		// (set) Token: 0x06001868 RID: 6248 RVA: 0x0007E530 File Offset: 0x0007C730
+		// Token: 0x1700022A RID: 554
+		// (get) Token: 0x0600181A RID: 6170 RVA: 0x00012003 File Offset: 0x00010203
+		// (set) Token: 0x0600181B RID: 6171 RVA: 0x0007DD74 File Offset: 0x0007BF74
 		public static int sharedCollidersBufferEntriesCount
 		{
 			get
@@ -26,22 +26,22 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001869 RID: 6249 RVA: 0x0001247E File Offset: 0x0001067E
+		// Token: 0x0600181C RID: 6172 RVA: 0x0001200A File Offset: 0x0001020A
 		public static int OverlapBoxNonAllocShared(Vector3 center, Vector3 halfExtents, Quaternion orientation, int layerMask, QueryTriggerInteraction queryTriggerInteraction = QueryTriggerInteraction.UseGlobal)
 		{
 			return HGPhysics.sharedCollidersBufferEntriesCount = Physics.OverlapBoxNonAlloc(center, halfExtents, HGPhysics.sharedCollidersBuffer, orientation, layerMask, queryTriggerInteraction);
 		}
 
-		// Token: 0x0600186A RID: 6250 RVA: 0x00012496 File Offset: 0x00010696
+		// Token: 0x0600181D RID: 6173 RVA: 0x00012022 File Offset: 0x00010222
 		public static int OverlapSphereNonAllocShared(Vector3 position, float radius, int layerMask, QueryTriggerInteraction queryTriggerInteraction = QueryTriggerInteraction.UseGlobal)
 		{
 			return HGPhysics.sharedCollidersBufferEntriesCount = Physics.OverlapSphereNonAlloc(position, radius, HGPhysics.sharedCollidersBuffer, layerMask, queryTriggerInteraction);
 		}
 
-		// Token: 0x04001B91 RID: 7057
+		// Token: 0x04001B61 RID: 7009
 		public static readonly Collider[] sharedCollidersBuffer = new Collider[65536];
 
-		// Token: 0x04001B92 RID: 7058
+		// Token: 0x04001B62 RID: 7010
 		private static int _sharedCollidersBufferEntriesCount = 0;
 	}
 }

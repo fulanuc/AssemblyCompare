@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x02000315 RID: 789
+	// Token: 0x02000313 RID: 787
 	public class HoverEngine : MonoBehaviour
 	{
-		// Token: 0x0600106C RID: 4204 RVA: 0x000622C0 File Offset: 0x000604C0
+		// Token: 0x06001058 RID: 4184 RVA: 0x0006201C File Offset: 0x0006021C
 		private void OnDrawGizmos()
 		{
 			Gizmos.color = Color.yellow;
@@ -18,7 +18,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600106D RID: 4205 RVA: 0x0006231C File Offset: 0x0006051C
+		// Token: 0x06001059 RID: 4185 RVA: 0x00062078 File Offset: 0x00060278
 		private void FixedUpdate()
 		{
 			float num = Mathf.Clamp01(Vector3.Dot(-base.transform.up, Vector3.down));
@@ -43,45 +43,45 @@ namespace RoR2
 			bool flag = this.isGrounded;
 		}
 
-		// Token: 0x04001453 RID: 5203
+		// Token: 0x0400143F RID: 5183
 		public Rigidbody engineRigidbody;
 
-		// Token: 0x04001454 RID: 5204
+		// Token: 0x04001440 RID: 5184
 		public Transform wheelVisual;
 
-		// Token: 0x04001455 RID: 5205
+		// Token: 0x04001441 RID: 5185
 		public float hoverForce = 65f;
 
-		// Token: 0x04001456 RID: 5206
+		// Token: 0x04001442 RID: 5186
 		public float hoverHeight = 3.5f;
 
-		// Token: 0x04001457 RID: 5207
+		// Token: 0x04001443 RID: 5187
 		public float hoverDamping = 0.1f;
 
-		// Token: 0x04001458 RID: 5208
+		// Token: 0x04001444 RID: 5188
 		public float hoverRadius;
 
-		// Token: 0x04001459 RID: 5209
+		// Token: 0x04001445 RID: 5189
 		[HideInInspector]
 		public float forceStrength;
 
-		// Token: 0x0400145A RID: 5210
+		// Token: 0x04001446 RID: 5190
 		private Ray castRay;
 
-		// Token: 0x0400145B RID: 5211
+		// Token: 0x04001447 RID: 5191
 		private Vector3 castPosition;
 
-		// Token: 0x0400145C RID: 5212
+		// Token: 0x04001448 RID: 5192
 		[HideInInspector]
 		public RaycastHit raycastHit;
 
-		// Token: 0x0400145D RID: 5213
+		// Token: 0x04001449 RID: 5193
 		public float compression;
 
-		// Token: 0x0400145E RID: 5214
+		// Token: 0x0400144A RID: 5194
 		public Vector3 offsetVector = Vector3.zero;
 
-		// Token: 0x0400145F RID: 5215
+		// Token: 0x0400144B RID: 5195
 		public bool isGrounded;
 	}
 }

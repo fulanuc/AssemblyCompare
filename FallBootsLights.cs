@@ -4,17 +4,17 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x020002F5 RID: 757
+	// Token: 0x020002F2 RID: 754
 	public class FallBootsLights : MonoBehaviour
 	{
-		// Token: 0x06000F59 RID: 3929 RVA: 0x0000BCE9 File Offset: 0x00009EE9
+		// Token: 0x06000F49 RID: 3913 RVA: 0x0000BC3B File Offset: 0x00009E3B
 		private void Start()
 		{
 			this.characterModel = base.GetComponentInParent<CharacterModel>();
 			this.FindSourceStateMachine();
 		}
 
-		// Token: 0x06000F5A RID: 3930 RVA: 0x0005C760 File Offset: 0x0005A960
+		// Token: 0x06000F4A RID: 3914 RVA: 0x0005C540 File Offset: 0x0005A740
 		private void FindSourceStateMachine()
 		{
 			if (!this.characterModel || !this.characterModel.body)
@@ -32,7 +32,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000F5B RID: 3931 RVA: 0x0005C800 File Offset: 0x0005AA00
+		// Token: 0x06000F4B RID: 3915 RVA: 0x0005C5E0 File Offset: 0x0005A7E0
 		private void Update()
 		{
 			bool flag = this.sourceStateMachine && !(this.sourceStateMachine.state is HeadstompersCooldown);
@@ -78,37 +78,37 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04001365 RID: 4965
+		// Token: 0x0400134E RID: 4942
 		public GameObject readyEffect;
 
-		// Token: 0x04001366 RID: 4966
+		// Token: 0x0400134F RID: 4943
 		public GameObject triggerEffect;
 
-		// Token: 0x04001367 RID: 4967
+		// Token: 0x04001350 RID: 4944
 		public GameObject chargingEffect;
 
-		// Token: 0x04001368 RID: 4968
+		// Token: 0x04001351 RID: 4945
 		private GameObject readyEffectInstance;
 
-		// Token: 0x04001369 RID: 4969
+		// Token: 0x04001352 RID: 4946
 		private GameObject triggerEffectInstance;
 
-		// Token: 0x0400136A RID: 4970
+		// Token: 0x04001353 RID: 4947
 		private GameObject chargingEffectInstance;
 
-		// Token: 0x0400136B RID: 4971
+		// Token: 0x04001354 RID: 4948
 		private bool isReady;
 
-		// Token: 0x0400136C RID: 4972
+		// Token: 0x04001355 RID: 4949
 		private bool isTriggered;
 
-		// Token: 0x0400136D RID: 4973
+		// Token: 0x04001356 RID: 4950
 		private bool isCharging;
 
-		// Token: 0x0400136E RID: 4974
+		// Token: 0x04001357 RID: 4951
 		private CharacterModel characterModel;
 
-		// Token: 0x0400136F RID: 4975
+		// Token: 0x04001358 RID: 4952
 		private EntityStateMachine sourceStateMachine;
 	}
 }

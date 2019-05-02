@@ -8,10 +8,10 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x02000306 RID: 774
+	// Token: 0x02000303 RID: 771
 	public class GlobalEventManager : MonoBehaviour
 	{
-		// Token: 0x06000FE9 RID: 4073 RVA: 0x0000C392 File Offset: 0x0000A592
+		// Token: 0x06000FD3 RID: 4051 RVA: 0x0000C2A8 File Offset: 0x0000A4A8
 		private void OnEnable()
 		{
 			if (GlobalEventManager.instance)
@@ -22,7 +22,7 @@ namespace RoR2
 			GlobalEventManager.instance = this;
 		}
 
-		// Token: 0x06000FEA RID: 4074 RVA: 0x0000C3B1 File Offset: 0x0000A5B1
+		// Token: 0x06000FD4 RID: 4052 RVA: 0x0000C2C7 File Offset: 0x0000A4C7
 		private void OnDisable()
 		{
 			if (GlobalEventManager.instance == this)
@@ -31,22 +31,22 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000FEB RID: 4075 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06000FD5 RID: 4053 RVA: 0x000025F6 File Offset: 0x000007F6
 		public void OnLocalPlayerBodySpawn(CharacterBody body)
 		{
 		}
 
-		// Token: 0x06000FEC RID: 4076 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06000FD6 RID: 4054 RVA: 0x000025F6 File Offset: 0x000007F6
 		public void OnCharacterBodySpawn(CharacterBody body)
 		{
 		}
 
-		// Token: 0x06000FED RID: 4077 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06000FD7 RID: 4055 RVA: 0x000025F6 File Offset: 0x000007F6
 		public void OnCharacterBodyStart(CharacterBody body)
 		{
 		}
 
-		// Token: 0x06000FEE RID: 4078 RVA: 0x0005E6F4 File Offset: 0x0005C8F4
+		// Token: 0x06000FD8 RID: 4056 RVA: 0x0005E470 File Offset: 0x0005C670
 		public void OnHitEnemy(DamageInfo damageInfo, GameObject victim)
 		{
 			if (damageInfo.procCoefficient == 0f)
@@ -108,11 +108,9 @@ namespace RoR2
 								DotController.InflictDot(victim, damageInfo.attacker, DotController.DotIndex.Bleed, 3f * damageInfo.procCoefficient, 1f);
 							}
 						}
-						bool flag2 = (damageInfo.damageType & DamageType.IgniteOnHit) > DamageType.Generic;
-						bool flag3 = (damageInfo.damageType & DamageType.PercentIgniteOnHit) != DamageType.Generic || component.HasBuff(BuffIndex.AffixRed);
-						if (flag2 || flag3)
+						if ((component.HasBuff(BuffIndex.AffixRed) ? 1 : 0) > 0 || (damageInfo.damageType & DamageType.IgniteOnHit) != DamageType.Generic)
 						{
-							DotController.InflictDot(victim, damageInfo.attacker, flag3 ? DotController.DotIndex.PercentBurn : DotController.DotIndex.Burn, 4f * damageInfo.procCoefficient, 1f);
+							DotController.InflictDot(victim, damageInfo.attacker, DotController.DotIndex.Burn, 4f * damageInfo.procCoefficient, 1f);
 						}
 						if ((component.HasBuff(BuffIndex.AffixWhite) ? 1 : 0) > 0 && characterBody)
 						{
@@ -275,7 +273,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000FEF RID: 4079 RVA: 0x0005EFB4 File Offset: 0x0005D1B4
+		// Token: 0x06000FD9 RID: 4057 RVA: 0x0005ED18 File Offset: 0x0005CF18
 		private void ProcMissile(int stack, CharacterBody attackerBody, CharacterMaster attackerMaster, TeamIndex attackerTeamIndex, ProcChainMask procChainMask, GameObject victim, DamageInfo damageInfo)
 		{
 			if (stack > 0)
@@ -306,14 +304,13 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000FF0 RID: 4080 RVA: 0x0005F0E8 File Offset: 0x0005D2E8
+		// Token: 0x06000FDA RID: 4058 RVA: 0x0005EE4C File Offset: 0x0005D04C
 		public void OnCharacterHitGround(CharacterBody characterBody, Vector3 impactVelocity)
 		{
 			float num = Mathf.Abs(impactVelocity.y);
 			Inventory inventory = characterBody.inventory;
 			CharacterMaster master = characterBody.master;
-			CharacterMotor characterMotor = characterBody.characterMotor;
-			if (characterMotor && Run.FixedTimeStamp.now - characterMotor.lastGroundedTime > 0.2f)
+			if (num >= characterBody.jumpPower - 1f)
 			{
 				Vector3 footPosition = characterBody.footPosition;
 				float radius = characterBody.radius;
@@ -378,7 +375,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000FF1 RID: 4081 RVA: 0x0005F378 File Offset: 0x0005D578
+		// Token: 0x06000FDB RID: 4059 RVA: 0x0005F0C0 File Offset: 0x0005D2C0
 		private void OnPlayerCharacterDeath(DamageInfo damageInfo, GameObject victim, NetworkUser victimNetworkUser)
 		{
 			CharacterBody component = victim.GetComponent<CharacterBody>();
@@ -400,11 +397,11 @@ namespace RoR2
 		}
 
 		// Token: 0x1400000F RID: 15
-		// (add) Token: 0x06000FF2 RID: 4082 RVA: 0x0005F3E4 File Offset: 0x0005D5E4
-		// (remove) Token: 0x06000FF3 RID: 4083 RVA: 0x0005F418 File Offset: 0x0005D618
+		// (add) Token: 0x06000FDC RID: 4060 RVA: 0x0005F12C File Offset: 0x0005D32C
+		// (remove) Token: 0x06000FDD RID: 4061 RVA: 0x0005F160 File Offset: 0x0005D360
 		public static event Action<DamageReport> onCharacterDeathGlobal;
 
-		// Token: 0x06000FF4 RID: 4084 RVA: 0x0005F44C File Offset: 0x0005D64C
+		// Token: 0x06000FDE RID: 4062 RVA: 0x0005F194 File Offset: 0x0005D394
 		public void OnCharacterDeath(DamageReport damageReport)
 		{
 			if (!NetworkServer.active)
@@ -481,17 +478,15 @@ namespace RoR2
 						gameObject2.transform.localScale = new Vector3(num2, num2, num2);
 						DelayBlast component7 = gameObject2.GetComponent<DelayBlast>();
 						component7.position = corePosition;
-						component7.baseDamage = component2.damage * 1.5f;
+						component7.baseDamage = component2.damage * 3.5f;
 						component7.baseForce = 2300f;
 						component7.attacker = component2.gameObject;
 						component7.radius = num2;
 						component7.crit = Util.CheckRoll(component2.crit, master);
-						component7.procCoefficient = 0.75f;
 						component7.maxTimer = 2f;
-						component7.falloffModel = BlastAttack.FalloffModel.None;
+						component7.falloffModel = BlastAttack.FalloffModel.SweetSpot;
 						component7.explosionEffect = Resources.Load<GameObject>("Prefabs/Effects/ImpactEffects/AffixWhiteExplosion");
 						component7.delayEffect = Resources.Load<GameObject>("Prefabs/Effects/AffixWhiteDelayEffect");
-						component7.damageType = DamageType.Freeze2s;
 						gameObject2.GetComponent<TeamFilter>().teamIndex = TeamComponent.GetObjectTeam(component7.attacker);
 					}
 				}
@@ -702,7 +697,7 @@ namespace RoR2
 			action(damageReport);
 		}
 
-		// Token: 0x06000FF5 RID: 4085 RVA: 0x0005FF9C File Offset: 0x0005E19C
+		// Token: 0x06000FDF RID: 4063 RVA: 0x0005FCCC File Offset: 0x0005DECC
 		public void OnHitAll(DamageInfo damageInfo, GameObject hitObject)
 		{
 			if (damageInfo.procCoefficient == 0f)
@@ -754,7 +749,8 @@ namespace RoR2
 							}
 							if ((component.HasBuff(BuffIndex.AffixBlue) ? 1 : 0) > 0)
 							{
-								float damage = damageInfo.damage * 0.5f;
+								float damageCoefficient2 = 1f;
+								float damage = Util.OnHitProcDamage(damageInfo.damage, component.baseDamage, damageCoefficient2);
 								float force = 0f;
 								Vector3 position = damageInfo.position;
 								ProjectileManager.instance.FireProjectile(Resources.Load<GameObject>("Prefabs/Projectiles/LightningStake"), position, Quaternion.identity, damageInfo.attacker, damage, force, damageInfo.crit, DamageColorIndex.Item, null, -1f);
@@ -765,7 +761,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000FF6 RID: 4086 RVA: 0x000601A4 File Offset: 0x0005E3A4
+		// Token: 0x06000FE0 RID: 4064 RVA: 0x0005FEE0 File Offset: 0x0005E0E0
 		public void OnCrit(CharacterBody body, CharacterMaster master, float procCoefficient, ProcChainMask procChainMask)
 		{
 			if (body && procCoefficient > 0f && body && master && master.inventory)
@@ -817,7 +813,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000FF7 RID: 4087 RVA: 0x00060310 File Offset: 0x0005E510
+		// Token: 0x06000FE1 RID: 4065 RVA: 0x0006004C File Offset: 0x0005E24C
 		public static void OnTeamLevelUp(TeamIndex teamIndex)
 		{
 			GameObject teamLevelUpEffect = TeamManager.GetTeamLevelUpEffect(teamIndex);
@@ -830,6 +826,15 @@ namespace RoR2
 					CharacterBody component = teamComponent.GetComponent<CharacterBody>();
 					if (component)
 					{
+						if (NetworkServer.active)
+						{
+							HealthComponent component2 = component.GetComponent<HealthComponent>();
+							if (component2 && component)
+							{
+								HealthComponent healthComponent = component2;
+								healthComponent.Networkhealth = healthComponent.health + component.levelMaxHealth * (component2.health / component2.fullHealth);
+							}
+						}
 						Transform transform = component.mainHurtBox ? component.mainHurtBox.transform : component.transform;
 						EffectData effectData = new EffectData
 						{
@@ -876,7 +881,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000FF8 RID: 4088 RVA: 0x000604F4 File Offset: 0x0005E6F4
+		// Token: 0x06000FE2 RID: 4066 RVA: 0x00060278 File Offset: 0x0005E478
 		public void OnInteractionBegin(Interactor interactor, IInteractable interactable, GameObject interactableObject)
 		{
 			CharacterBody component = interactor.GetComponent<CharacterBody>();
@@ -920,11 +925,11 @@ namespace RoR2
 		}
 
 		// Token: 0x14000010 RID: 16
-		// (add) Token: 0x06000FF9 RID: 4089 RVA: 0x000605F8 File Offset: 0x0005E7F8
-		// (remove) Token: 0x06000FFA RID: 4090 RVA: 0x0006062C File Offset: 0x0005E82C
+		// (add) Token: 0x06000FE3 RID: 4067 RVA: 0x0006037C File Offset: 0x0005E57C
+		// (remove) Token: 0x06000FE4 RID: 4068 RVA: 0x000603B0 File Offset: 0x0005E5B0
 		public static event Action<DamageDealtMessage> onClientDamageNotified;
 
-		// Token: 0x06000FFB RID: 4091 RVA: 0x0000C3C6 File Offset: 0x0000A5C6
+		// Token: 0x06000FE5 RID: 4069 RVA: 0x0000C2DC File Offset: 0x0000A4DC
 		public static void ClientDamageNotified(DamageDealtMessage damageDealtMessage)
 		{
 			Action<DamageDealtMessage> action = GlobalEventManager.onClientDamageNotified;
@@ -936,11 +941,11 @@ namespace RoR2
 		}
 
 		// Token: 0x14000011 RID: 17
-		// (add) Token: 0x06000FFC RID: 4092 RVA: 0x00060660 File Offset: 0x0005E860
-		// (remove) Token: 0x06000FFD RID: 4093 RVA: 0x00060694 File Offset: 0x0005E894
+		// (add) Token: 0x06000FE6 RID: 4070 RVA: 0x000603E4 File Offset: 0x0005E5E4
+		// (remove) Token: 0x06000FE7 RID: 4071 RVA: 0x00060418 File Offset: 0x0005E618
 		public static event Action<DamageReport> onServerDamageDealt;
 
-		// Token: 0x06000FFE RID: 4094 RVA: 0x0000C3D8 File Offset: 0x0000A5D8
+		// Token: 0x06000FE8 RID: 4072 RVA: 0x0000C2EE File Offset: 0x0000A4EE
 		public static void ServerDamageDealt(DamageReport damageReport)
 		{
 			Action<DamageReport> action = GlobalEventManager.onServerDamageDealt;
@@ -951,37 +956,37 @@ namespace RoR2
 			action(damageReport);
 		}
 
-		// Token: 0x040013E6 RID: 5094
+		// Token: 0x040013CE RID: 5070
 		public static GlobalEventManager instance;
 
-		// Token: 0x040013E7 RID: 5095
+		// Token: 0x040013CF RID: 5071
 		public GameObject missilePrefab;
 
-		// Token: 0x040013E8 RID: 5096
+		// Token: 0x040013D0 RID: 5072
 		public GameObject explodeOnDeathPrefab;
 
-		// Token: 0x040013E9 RID: 5097
+		// Token: 0x040013D1 RID: 5073
 		public GameObject daggerPrefab;
 
-		// Token: 0x040013EA RID: 5098
+		// Token: 0x040013D2 RID: 5074
 		public GameObject healthOrbPrefab;
 
-		// Token: 0x040013EB RID: 5099
+		// Token: 0x040013D3 RID: 5075
 		public GameObject AACannonPrefab;
 
-		// Token: 0x040013EC RID: 5100
+		// Token: 0x040013D4 RID: 5076
 		public GameObject AACannonMuzzleEffect;
 
-		// Token: 0x040013ED RID: 5101
+		// Token: 0x040013D5 RID: 5077
 		public GameObject chainLightingPrefab;
 
-		// Token: 0x040013EE RID: 5102
+		// Token: 0x040013D6 RID: 5078
 		public GameObject plasmaCorePrefab;
 
-		// Token: 0x040013EF RID: 5103
+		// Token: 0x040013D7 RID: 5079
 		public const float bootTriggerSpeed = 20f;
 
-		// Token: 0x040013F0 RID: 5104
+		// Token: 0x040013D8 RID: 5080
 		private const int deathQuoteCount = 37;
 	}
 }

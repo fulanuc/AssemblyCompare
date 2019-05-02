@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x02000308 RID: 776
+	// Token: 0x02000305 RID: 773
 	[RequireComponent(typeof(ItemFollower))]
 	public class GravCubeController : MonoBehaviour
 	{
-		// Token: 0x06001009 RID: 4105 RVA: 0x0000C499 File Offset: 0x0000A699
+		// Token: 0x06000FF3 RID: 4083 RVA: 0x0000C3AF File Offset: 0x0000A5AF
 		private void Start()
 		{
 			this.itemFollower = base.GetComponent<ItemFollower>();
@@ -17,13 +17,13 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600100A RID: 4106 RVA: 0x0000C4CA File Offset: 0x0000A6CA
+		// Token: 0x06000FF4 RID: 4084 RVA: 0x0000C3E0 File Offset: 0x0000A5E0
 		public void ActivateCube(float duration)
 		{
 			this.activeTimer = duration;
 		}
 
-		// Token: 0x0600100B RID: 4107 RVA: 0x00060738 File Offset: 0x0005E938
+		// Token: 0x06000FF5 RID: 4085 RVA: 0x000604B4 File Offset: 0x0005E6B4
 		private void Update()
 		{
 			this.activeTimer -= Time.deltaTime;
@@ -35,13 +35,13 @@ namespace RoR2
 			this.itemFollowerAnimator.SetBool("active", false);
 		}
 
-		// Token: 0x040013FF RID: 5119
+		// Token: 0x040013E7 RID: 5095
 		private ItemFollower itemFollower;
 
-		// Token: 0x04001400 RID: 5120
+		// Token: 0x040013E8 RID: 5096
 		private float activeTimer;
 
-		// Token: 0x04001401 RID: 5121
+		// Token: 0x040013E9 RID: 5097
 		private Animator itemFollowerAnimator;
 	}
 }

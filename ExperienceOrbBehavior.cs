@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x020002F2 RID: 754
+	// Token: 0x020002EF RID: 751
 	public class ExperienceOrbBehavior : MonoBehaviour
 	{
-		// Token: 0x06000F49 RID: 3913 RVA: 0x0000BC43 File Offset: 0x00009E43
+		// Token: 0x06000F39 RID: 3897 RVA: 0x0000BB95 File Offset: 0x00009D95
 		private void Awake()
 		{
 			this.transform = base.transform;
@@ -14,7 +14,7 @@ namespace RoR2
 			this.light = base.GetComponent<Light>();
 		}
 
-		// Token: 0x06000F4A RID: 3914 RVA: 0x0005C438 File Offset: 0x0005A638
+		// Token: 0x06000F3A RID: 3898 RVA: 0x0005C218 File Offset: 0x0005A418
 		private void Start()
 		{
 			this.localTime = 0f;
@@ -31,7 +31,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000F4B RID: 3915 RVA: 0x0005C52C File Offset: 0x0005A72C
+		// Token: 0x06000F3B RID: 3899 RVA: 0x0005C30C File Offset: 0x0005A50C
 		private void Update()
 		{
 			this.localTime += Time.deltaTime;
@@ -50,7 +50,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000F4C RID: 3916 RVA: 0x0005C5C0 File Offset: 0x0005A7C0
+		// Token: 0x06000F3C RID: 3900 RVA: 0x0005C3A0 File Offset: 0x0005A5A0
 		private static Vector3 CalculatePosition(Vector3 startPos, Vector3 initialVelocity, Vector3 targetPos, float t)
 		{
 			Vector3 a = startPos + initialVelocity * t;
@@ -58,7 +58,7 @@ namespace RoR2
 			return Vector3.LerpUnclamped(a, targetPos, t2);
 		}
 
-		// Token: 0x06000F4D RID: 3917 RVA: 0x0000BC69 File Offset: 0x00009E69
+		// Token: 0x06000F3D RID: 3901 RVA: 0x0000BBBB File Offset: 0x00009DBB
 		private void OnTriggerStay(Collider other)
 		{
 			if (other.transform == this.targetTransform)
@@ -67,7 +67,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000F4E RID: 3918 RVA: 0x0005C5EC File Offset: 0x0005A7EC
+		// Token: 0x06000F3E RID: 3902 RVA: 0x0005C3CC File Offset: 0x0005A5CC
 		private void OnHitTarget()
 		{
 			if (!this.consumed)
@@ -79,49 +79,49 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04001350 RID: 4944
+		// Token: 0x04001339 RID: 4921
 		public GameObject hitEffectPrefab;
 
-		// Token: 0x04001351 RID: 4945
+		// Token: 0x0400133A RID: 4922
 		private static string expSoundString = "Play_UI_xp_gain";
 
-		// Token: 0x04001352 RID: 4946
+		// Token: 0x0400133B RID: 4923
 		private new Transform transform;
 
-		// Token: 0x04001353 RID: 4947
+		// Token: 0x0400133C RID: 4924
 		private TrailRenderer trail;
 
-		// Token: 0x04001354 RID: 4948
+		// Token: 0x0400133D RID: 4925
 		private Light light;
 
-		// Token: 0x04001355 RID: 4949
+		// Token: 0x0400133E RID: 4926
 		[HideInInspector]
 		public Transform targetTransform;
 
-		// Token: 0x04001356 RID: 4950
+		// Token: 0x0400133F RID: 4927
 		[HideInInspector]
 		public float travelTime;
 
-		// Token: 0x04001357 RID: 4951
+		// Token: 0x04001340 RID: 4928
 		[HideInInspector]
 		public ulong exp;
 
-		// Token: 0x04001358 RID: 4952
+		// Token: 0x04001341 RID: 4929
 		private float localTime;
 
-		// Token: 0x04001359 RID: 4953
+		// Token: 0x04001342 RID: 4930
 		private Vector3 startPos;
 
-		// Token: 0x0400135A RID: 4954
+		// Token: 0x04001343 RID: 4931
 		private Vector3 previousPos;
 
-		// Token: 0x0400135B RID: 4955
+		// Token: 0x04001344 RID: 4932
 		private Vector3 initialVelocity;
 
-		// Token: 0x0400135C RID: 4956
+		// Token: 0x04001345 RID: 4933
 		private float scale;
 
-		// Token: 0x0400135D RID: 4957
+		// Token: 0x04001346 RID: 4934
 		private bool consumed;
 	}
 }

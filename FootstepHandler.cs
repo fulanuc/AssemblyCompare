@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x020002FA RID: 762
+	// Token: 0x020002F7 RID: 759
 	[RequireComponent(typeof(ChildLocator))]
 	public class FootstepHandler : MonoBehaviour
 	{
-		// Token: 0x06000F6E RID: 3950 RVA: 0x0005CEB4 File Offset: 0x0005B0B4
+		// Token: 0x06000F5E RID: 3934 RVA: 0x0005CC94 File Offset: 0x0005AE94
 		private void Start()
 		{
 			this.childLocator = base.GetComponent<ChildLocator>();
@@ -23,7 +23,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000F6F RID: 3951 RVA: 0x0005CF50 File Offset: 0x0005B150
+		// Token: 0x06000F5F RID: 3935 RVA: 0x0005CD30 File Offset: 0x0005AF30
 		public void Footstep(AnimationEvent animationEvent)
 		{
 			if ((double)animationEvent.animatorClipInfo.weight > 0.5)
@@ -32,7 +32,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000F70 RID: 3952 RVA: 0x0005CF90 File Offset: 0x0005B190
+		// Token: 0x06000F60 RID: 3936 RVA: 0x0005CD70 File Offset: 0x0005AF70
 		public void Footstep(string childName, GameObject footstepEffect)
 		{
 			Transform transform = this.childLocator.FindChild(childName);
@@ -100,34 +100,34 @@ namespace RoR2
 			});
 		}
 
-		// Token: 0x0400138D RID: 5005
+		// Token: 0x04001376 RID: 4982
 		public string baseFootstepString;
 
-		// Token: 0x0400138E RID: 5006
+		// Token: 0x04001377 RID: 4983
 		public bool enableFootstepDust;
 
-		// Token: 0x0400138F RID: 5007
+		// Token: 0x04001378 RID: 4984
 		public GameObject footstepDustPrefab;
 
-		// Token: 0x04001390 RID: 5008
+		// Token: 0x04001379 RID: 4985
 		private ChildLocator childLocator;
 
-		// Token: 0x04001391 RID: 5009
+		// Token: 0x0400137A RID: 4986
 		private Inventory bodyInventory;
 
-		// Token: 0x04001392 RID: 5010
+		// Token: 0x0400137B RID: 4987
 		private Animator animator;
 
-		// Token: 0x04001393 RID: 5011
+		// Token: 0x0400137C RID: 4988
 		private Transform footstepDustInstanceTransform;
 
-		// Token: 0x04001394 RID: 5012
+		// Token: 0x0400137D RID: 4989
 		private ParticleSystem footstepDustInstanceParticleSystem;
 
-		// Token: 0x04001395 RID: 5013
+		// Token: 0x0400137E RID: 4990
 		private ShakeEmitter footstepDustInstanceShakeEmitter;
 
-		// Token: 0x04001396 RID: 5014
+		// Token: 0x0400137F RID: 4991
 		private CharacterBody body;
 	}
 }
