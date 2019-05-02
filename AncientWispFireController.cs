@@ -7,13 +7,13 @@ namespace RoR2
 	[RequireComponent(typeof(CharacterModel))]
 	public class AncientWispFireController : MonoBehaviour
 	{
-		// Token: 0x06000B2A RID: 2858 RVA: 0x00008FC7 File Offset: 0x000071C7
+		// Token: 0x06000B27 RID: 2855 RVA: 0x00008FA2 File Offset: 0x000071A2
 		private void Awake()
 		{
 			this.characterModel = base.GetComponent<CharacterModel>();
 		}
 
-		// Token: 0x06000B2B RID: 2859 RVA: 0x0004B2B4 File Offset: 0x000494B4
+		// Token: 0x06000B28 RID: 2856 RVA: 0x0004B0A8 File Offset: 0x000492A8
 		private void Update()
 		{
 			bool flag = false;
@@ -56,19 +56,19 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04000F30 RID: 3888
+		// Token: 0x04000F2A RID: 3882
 		public ParticleSystem normalParticles;
 
-		// Token: 0x04000F31 RID: 3889
+		// Token: 0x04000F2B RID: 3883
 		public Light normalLight;
 
-		// Token: 0x04000F32 RID: 3890
+		// Token: 0x04000F2C RID: 3884
 		public ParticleSystem rageParticles;
 
-		// Token: 0x04000F33 RID: 3891
+		// Token: 0x04000F2D RID: 3885
 		public Light rageLight;
 
-		// Token: 0x04000F34 RID: 3892
+		// Token: 0x04000F2E RID: 3886
 		private CharacterModel characterModel;
 	}
 }

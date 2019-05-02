@@ -7,29 +7,29 @@ namespace RoR2
 	// Token: 0x02000266 RID: 614
 	public class BazaarController : MonoBehaviour
 	{
-		// Token: 0x170000CC RID: 204
-		// (get) Token: 0x06000B73 RID: 2931 RVA: 0x000091CA File Offset: 0x000073CA
-		// (set) Token: 0x06000B74 RID: 2932 RVA: 0x000091D1 File Offset: 0x000073D1
+		// Token: 0x170000CB RID: 203
+		// (get) Token: 0x06000B6D RID: 2925 RVA: 0x0000918A File Offset: 0x0000738A
+		// (set) Token: 0x06000B6E RID: 2926 RVA: 0x00009191 File Offset: 0x00007391
 		public static BazaarController instance { get; private set; }
 
-		// Token: 0x06000B75 RID: 2933 RVA: 0x000091D9 File Offset: 0x000073D9
+		// Token: 0x06000B6F RID: 2927 RVA: 0x00009199 File Offset: 0x00007399
 		private void Awake()
 		{
 			BazaarController.instance = SingletonHelper.Assign<BazaarController>(BazaarController.instance, this);
 		}
 
-		// Token: 0x06000B76 RID: 2934 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06000B70 RID: 2928 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void Start()
 		{
 		}
 
-		// Token: 0x06000B77 RID: 2935 RVA: 0x000091EB File Offset: 0x000073EB
+		// Token: 0x06000B71 RID: 2929 RVA: 0x000091AB File Offset: 0x000073AB
 		private void OnDestroy()
 		{
 			BazaarController.instance = SingletonHelper.Unassign<BazaarController>(BazaarController.instance, this);
 		}
 
-		// Token: 0x06000B78 RID: 2936 RVA: 0x0004BEB4 File Offset: 0x0004A0B4
+		// Token: 0x06000B72 RID: 2930 RVA: 0x0004BCA8 File Offset: 0x00049EA8
 		public void CommentOnAnnoy()
 		{
 			float percentChance = 20f;
@@ -44,17 +44,17 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000B79 RID: 2937 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06000B73 RID: 2931 RVA: 0x000025F6 File Offset: 0x000007F6
 		public void CommentOnEnter()
 		{
 		}
 
-		// Token: 0x06000B7A RID: 2938 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06000B74 RID: 2932 RVA: 0x000025F6 File Offset: 0x000007F6
 		public void CommentOnLeaving()
 		{
 		}
 
-		// Token: 0x06000B7B RID: 2939 RVA: 0x0004BF08 File Offset: 0x0004A108
+		// Token: 0x06000B75 RID: 2933 RVA: 0x0004BCFC File Offset: 0x00049EFC
 		public void CommentOnLunarPurchase()
 		{
 			float percentChance = 20f;
@@ -69,17 +69,17 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000B7C RID: 2940 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06000B76 RID: 2934 RVA: 0x000025F6 File Offset: 0x000007F6
 		public void CommentOnBlueprintPurchase()
 		{
 		}
 
-		// Token: 0x06000B7D RID: 2941 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06000B77 RID: 2935 RVA: 0x000025F6 File Offset: 0x000007F6
 		public void CommentOnDronePurchase()
 		{
 		}
 
-		// Token: 0x06000B7E RID: 2942 RVA: 0x0004BF5C File Offset: 0x0004A15C
+		// Token: 0x06000B78 RID: 2936 RVA: 0x0004BD50 File Offset: 0x00049F50
 		public void CommentOnUpgrade()
 		{
 			float percentChance = 100f;
@@ -94,7 +94,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000B7F RID: 2943 RVA: 0x0004BFB0 File Offset: 0x0004A1B0
+		// Token: 0x06000B79 RID: 2937 RVA: 0x0004BDA4 File Offset: 0x00049FA4
 		private void Update()
 		{
 			if (this.shopkeeper)
@@ -115,26 +115,26 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04000F6B RID: 3947
+		// Token: 0x04000F65 RID: 3941
 		public GameObject shopkeeper;
 
-		// Token: 0x04000F6C RID: 3948
+		// Token: 0x04000F66 RID: 3942
 		public TextMeshPro shopkeeperChat;
 
-		// Token: 0x04000F6D RID: 3949
+		// Token: 0x04000F67 RID: 3943
 		public float shopkeeperTrackDistance = 250f;
 
-		// Token: 0x04000F6E RID: 3950
+		// Token: 0x04000F68 RID: 3944
 		public float shopkeeperTrackAngle = 120f;
 
-		// Token: 0x04000F6F RID: 3951
+		// Token: 0x04000F69 RID: 3945
 		[Tooltip("Any PurchaseInteraction objects here will have their activation state set based on whether or not the specified unlockable is available.")]
 		public PurchaseInteraction[] unlockableTerminals;
 
-		// Token: 0x04000F70 RID: 3952
+		// Token: 0x04000F6A RID: 3946
 		private InputBankTest shopkeeperInputBank;
 
-		// Token: 0x04000F71 RID: 3953
+		// Token: 0x04000F6B RID: 3947
 		private CharacterBody shopkeeperTargetBody;
 	}
 }

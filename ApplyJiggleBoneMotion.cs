@@ -6,7 +6,7 @@ namespace RoR2
 	// Token: 0x0200025D RID: 605
 	public class ApplyJiggleBoneMotion : MonoBehaviour
 	{
-		// Token: 0x06000B48 RID: 2888 RVA: 0x0004B978 File Offset: 0x00049B78
+		// Token: 0x06000B45 RID: 2885 RVA: 0x0004B76C File Offset: 0x0004996C
 		private void FixedUpdate()
 		{
 			Vector3 position = this.rootTransform.position;
@@ -18,16 +18,16 @@ namespace RoR2
 			this.lastRootPosition = position;
 		}
 
-		// Token: 0x04000F54 RID: 3924
+		// Token: 0x04000F4E RID: 3918
 		public float forceScale = 100f;
 
-		// Token: 0x04000F55 RID: 3925
+		// Token: 0x04000F4F RID: 3919
 		public Transform rootTransform;
 
-		// Token: 0x04000F56 RID: 3926
+		// Token: 0x04000F50 RID: 3920
 		public Rigidbody[] rigidbodies;
 
-		// Token: 0x04000F57 RID: 3927
+		// Token: 0x04000F51 RID: 3921
 		private Vector3 lastRootPosition;
 	}
 }

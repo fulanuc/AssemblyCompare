@@ -3,17 +3,17 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x020001EF RID: 495
+	// Token: 0x020001ED RID: 493
 	public struct AchievementIndex
 	{
-		// Token: 0x06000996 RID: 2454 RVA: 0x00007C93 File Offset: 0x00005E93
+		// Token: 0x0600098C RID: 2444 RVA: 0x00007C44 File Offset: 0x00005E44
 		public static AchievementIndex operator ++(AchievementIndex achievementIndex)
 		{
 			achievementIndex.intValue++;
 			return achievementIndex;
 		}
 
-		// Token: 0x04000CF9 RID: 3321
+		// Token: 0x04000CF2 RID: 3314
 		[SerializeField]
 		public int intValue;
 	}

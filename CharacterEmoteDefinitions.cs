@@ -7,7 +7,7 @@ namespace RoR2
 	// Token: 0x0200028C RID: 652
 	public class CharacterEmoteDefinitions : MonoBehaviour
 	{
-		// Token: 0x06000CE3 RID: 3299 RVA: 0x00052A50 File Offset: 0x00050C50
+		// Token: 0x06000CD6 RID: 3286 RVA: 0x000526A8 File Offset: 0x000508A8
 		public int FindEmoteIndex(string name)
 		{
 			for (int i = 0; i < this.emoteDefinitions.Length; i++)
@@ -20,23 +20,23 @@ namespace RoR2
 			return -1;
 		}
 
-		// Token: 0x04001103 RID: 4355
+		// Token: 0x040010F8 RID: 4344
 		public CharacterEmoteDefinitions.EmoteDef[] emoteDefinitions;
 
 		// Token: 0x0200028D RID: 653
 		[Serializable]
 		public struct EmoteDef
 		{
-			// Token: 0x04001104 RID: 4356
+			// Token: 0x040010F9 RID: 4345
 			public string name;
 
-			// Token: 0x04001105 RID: 4357
+			// Token: 0x040010FA RID: 4346
 			public string displayName;
 
-			// Token: 0x04001106 RID: 4358
+			// Token: 0x040010FB RID: 4347
 			public EntityStateMachine targetStateMachine;
 
-			// Token: 0x04001107 RID: 4359
+			// Token: 0x040010FC RID: 4348
 			public SerializableEntityStateType state;
 		}
 	}

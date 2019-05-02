@@ -9,19 +9,19 @@ namespace RoR2
 	[RequireComponent(typeof(AkGameObj))]
 	public class AudioManager : MonoBehaviour
 	{
-		// Token: 0x170000CA RID: 202
-		// (get) Token: 0x06000B4C RID: 2892 RVA: 0x00009095 File Offset: 0x00007295
-		// (set) Token: 0x06000B4D RID: 2893 RVA: 0x0000909C File Offset: 0x0000729C
+		// Token: 0x170000C9 RID: 201
+		// (get) Token: 0x06000B49 RID: 2889 RVA: 0x00009070 File Offset: 0x00007270
+		// (set) Token: 0x06000B4A RID: 2890 RVA: 0x00009077 File Offset: 0x00007277
 		public static AudioManager instance { get; private set; }
 
-		// Token: 0x06000B4E RID: 2894 RVA: 0x000090A4 File Offset: 0x000072A4
+		// Token: 0x06000B4B RID: 2891 RVA: 0x0000907F File Offset: 0x0000727F
 		private void Awake()
 		{
 			AudioManager.instance = this;
 			this.akGameObj = base.GetComponent<AkGameObj>();
 		}
 
-		// Token: 0x06000B4F RID: 2895 RVA: 0x0004BA7C File Offset: 0x00049C7C
+		// Token: 0x06000B4C RID: 2892 RVA: 0x0004B870 File Offset: 0x00049A70
 		static AudioManager()
 		{
 			RoR2Application.onPauseStartGlobal = (Action)Delegate.Combine(RoR2Application.onPauseStartGlobal, new Action(delegate()
@@ -34,31 +34,31 @@ namespace RoR2
 			}));
 		}
 
-		// Token: 0x04000F5A RID: 3930
+		// Token: 0x04000F54 RID: 3924
 		private AkGameObj akGameObj;
 
-		// Token: 0x04000F5C RID: 3932
+		// Token: 0x04000F56 RID: 3926
 		private static AudioManager.VolumeConVar cvVolumeMaster = new AudioManager.VolumeConVar("volume_master", ConVarFlags.Archive | ConVarFlags.Engine, "100", "The master volume of the game audio, from 0 to 100.", "Volume_Master");
 
-		// Token: 0x04000F5D RID: 3933
+		// Token: 0x04000F57 RID: 3927
 		private static AudioManager.VolumeConVar cvVolumeSfx = new AudioManager.VolumeConVar("volume_sfx", ConVarFlags.Archive | ConVarFlags.Engine, "100", "The volume of sound effects, from 0 to 100.", "Volume_SFX");
 
-		// Token: 0x04000F5E RID: 3934
+		// Token: 0x04000F58 RID: 3928
 		private static AudioManager.VolumeConVar cvVolumeMsx = new AudioManager.VolumeConVar("volume_msx", ConVarFlags.Archive | ConVarFlags.Engine, "100", "The music volume, from 0 to 100.", "Volume_MSX");
 
-		// Token: 0x04000F5F RID: 3935
+		// Token: 0x04000F59 RID: 3929
 		private static readonly FieldInfo akInitializerMsInstanceField = typeof(AkInitializer).GetField("ms_Instance", BindingFlags.Static | BindingFlags.NonPublic);
 
 		// Token: 0x02000260 RID: 608
 		private class VolumeConVar : BaseConVar
 		{
-			// Token: 0x06000B51 RID: 2897 RVA: 0x000090B8 File Offset: 0x000072B8
+			// Token: 0x06000B4E RID: 2894 RVA: 0x00009093 File Offset: 0x00007293
 			public VolumeConVar(string name, ConVarFlags flags, string defaultValue, string helpText, string rtpcName) : base(name, flags, defaultValue, helpText)
 			{
 				this.rtpcName = rtpcName;
 			}
 
-			// Token: 0x06000B52 RID: 2898 RVA: 0x0004BB4C File Offset: 0x00049D4C
+			// Token: 0x06000B4F RID: 2895 RVA: 0x0004B940 File Offset: 0x00049B40
 			public override void SetString(string newValue)
 			{
 				float value;
@@ -68,7 +68,7 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x06000B53 RID: 2899 RVA: 0x0004BB88 File Offset: 0x00049D88
+			// Token: 0x06000B50 RID: 2896 RVA: 0x0004B97C File Offset: 0x00049B7C
 			public override string GetString()
 			{
 				int num = 1;
@@ -81,19 +81,19 @@ namespace RoR2
 				return "ERROR: " + rtpcvalue;
 			}
 
-			// Token: 0x04000F60 RID: 3936
+			// Token: 0x04000F5A RID: 3930
 			private readonly string rtpcName;
 		}
 
 		// Token: 0x02000261 RID: 609
 		private class AudioFocusedOnlyConVar : BaseConVar
 		{
-			// Token: 0x06000B54 RID: 2900 RVA: 0x000090CD File Offset: 0x000072CD
+			// Token: 0x06000B51 RID: 2897 RVA: 0x000090A8 File Offset: 0x000072A8
 			public AudioFocusedOnlyConVar(string name, ConVarFlags flags, string defaultValue, string helpText) : base(name, flags, defaultValue, helpText)
 			{
 			}
 
-			// Token: 0x06000B55 RID: 2901 RVA: 0x0004BBC4 File Offset: 0x00049DC4
+			// Token: 0x06000B52 RID: 2898 RVA: 0x0004B9B8 File Offset: 0x00049BB8
 			public override void SetString(string newValue)
 			{
 				int num;
@@ -103,7 +103,7 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x06000B56 RID: 2902 RVA: 0x000090DA File Offset: 0x000072DA
+			// Token: 0x06000B53 RID: 2899 RVA: 0x000090B5 File Offset: 0x000072B5
 			public override string GetString()
 			{
 				if (!AkSoundEngineController.s_MuteOnFocusLost)
@@ -113,19 +113,19 @@ namespace RoR2
 				return "1";
 			}
 
-			// Token: 0x04000F61 RID: 3937
+			// Token: 0x04000F5B RID: 3931
 			private static AudioManager.AudioFocusedOnlyConVar instance = new AudioManager.AudioFocusedOnlyConVar("audio_focused_only", ConVarFlags.Archive | ConVarFlags.Engine, null, "Whether or not audio should mute when focus is lost.");
 		}
 
 		// Token: 0x02000262 RID: 610
 		private class WwiseLogEnabledConVar : BaseConVar
 		{
-			// Token: 0x06000B58 RID: 2904 RVA: 0x000090CD File Offset: 0x000072CD
+			// Token: 0x06000B55 RID: 2901 RVA: 0x000090A8 File Offset: 0x000072A8
 			private WwiseLogEnabledConVar(string name, ConVarFlags flags, string defaultValue, string helpText) : base(name, flags, defaultValue, helpText)
 			{
 			}
 
-			// Token: 0x06000B59 RID: 2905 RVA: 0x0004BBE4 File Offset: 0x00049DE4
+			// Token: 0x06000B56 RID: 2902 RVA: 0x0004B9D8 File Offset: 0x00049BD8
 			public override void SetString(string newValue)
 			{
 				int num;
@@ -146,7 +146,7 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x06000B5A RID: 2906 RVA: 0x0004BC40 File Offset: 0x00049E40
+			// Token: 0x06000B57 RID: 2903 RVA: 0x0004BA34 File Offset: 0x00049C34
 			public override string GetString()
 			{
 				AkInitializer akInitializer = AudioManager.akInitializerMsInstanceField.GetValue(null) as AkInitializer;
@@ -169,7 +169,7 @@ namespace RoR2
 				return "1";
 			}
 
-			// Token: 0x04000F62 RID: 3938
+			// Token: 0x04000F5C RID: 3932
 			private static AudioManager.WwiseLogEnabledConVar instance = new AudioManager.WwiseLogEnabledConVar("wwise_log_enabled", ConVarFlags.Archive | ConVarFlags.Engine, null, "Wwise logging. 0 = disabled 1 = enabled");
 		}
 	}

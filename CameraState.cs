@@ -6,7 +6,7 @@ namespace RoR2
 	// Token: 0x02000279 RID: 633
 	public struct CameraState
 	{
-		// Token: 0x06000BEE RID: 3054 RVA: 0x0004D72C File Offset: 0x0004B92C
+		// Token: 0x06000BE5 RID: 3045 RVA: 0x0004D520 File Offset: 0x0004B720
 		public static CameraState Lerp(ref CameraState a, ref CameraState b, float t)
 		{
 			return new CameraState
@@ -17,7 +17,7 @@ namespace RoR2
 			};
 		}
 
-		// Token: 0x06000BEF RID: 3055 RVA: 0x0004D790 File Offset: 0x0004B990
+		// Token: 0x06000BE6 RID: 3046 RVA: 0x0004D584 File Offset: 0x0004B784
 		public static CameraState SmoothDamp(CameraState current, CameraState target, ref Vector3 positionVelocity, ref float angleVelocity, ref float fovVelocity, float smoothTime)
 		{
 			return new CameraState
@@ -28,13 +28,13 @@ namespace RoR2
 			};
 		}
 
-		// Token: 0x04000FD4 RID: 4052
+		// Token: 0x04000FCE RID: 4046
 		public Vector3 position;
 
-		// Token: 0x04000FD5 RID: 4053
+		// Token: 0x04000FCF RID: 4047
 		public Quaternion rotation;
 
-		// Token: 0x04000FD6 RID: 4054
+		// Token: 0x04000FD0 RID: 4048
 		public float fov;
 	}
 }

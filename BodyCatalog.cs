@@ -12,7 +12,7 @@ namespace RoR2
 	public static class BodyCatalog
 	{
 		// Token: 0x170000AB RID: 171
-		// (get) Token: 0x06000A12 RID: 2578 RVA: 0x0000822D File Offset: 0x0000642D
+		// (get) Token: 0x06000A0F RID: 2575 RVA: 0x0000821E File Offset: 0x0000641E
 		public static IEnumerable<GameObject> allBodyPrefabs
 		{
 			get
@@ -22,7 +22,7 @@ namespace RoR2
 		}
 
 		// Token: 0x170000AC RID: 172
-		// (get) Token: 0x06000A13 RID: 2579 RVA: 0x00008234 File Offset: 0x00006434
+		// (get) Token: 0x06000A10 RID: 2576 RVA: 0x00008225 File Offset: 0x00006425
 		public static IEnumerable<CharacterBody> allBodyPrefabBodyBodyComponents
 		{
 			get
@@ -31,7 +31,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000A14 RID: 2580 RVA: 0x0000823B File Offset: 0x0000643B
+		// Token: 0x06000A11 RID: 2577 RVA: 0x0000822C File Offset: 0x0000642C
 		public static GameObject GetBodyPrefab(int index)
 		{
 			if ((ulong)index < (ulong)((long)BodyCatalog.bodyPrefabs.Length))
@@ -41,7 +41,7 @@ namespace RoR2
 			return null;
 		}
 
-		// Token: 0x06000A15 RID: 2581 RVA: 0x00008252 File Offset: 0x00006452
+		// Token: 0x06000A12 RID: 2578 RVA: 0x00008243 File Offset: 0x00006443
 		public static CharacterBody GetBodyPrefabBodyComponent(int index)
 		{
 			if ((ulong)index < (ulong)((long)BodyCatalog.bodyPrefabBodyComponents.Length))
@@ -51,7 +51,7 @@ namespace RoR2
 			return null;
 		}
 
-		// Token: 0x06000A16 RID: 2582 RVA: 0x00046D68 File Offset: 0x00044F68
+		// Token: 0x06000A13 RID: 2579 RVA: 0x00046ABC File Offset: 0x00044CBC
 		public static int FindBodyIndex([NotNull] string bodyName)
 		{
 			int result;
@@ -62,7 +62,7 @@ namespace RoR2
 			return -1;
 		}
 
-		// Token: 0x06000A17 RID: 2583 RVA: 0x00046D88 File Offset: 0x00044F88
+		// Token: 0x06000A14 RID: 2580 RVA: 0x00046ADC File Offset: 0x00044CDC
 		public static int FindBodyIndexCaseInsensitive([NotNull] string bodyName)
 		{
 			for (int i = 0; i < BodyCatalog.bodyPrefabs.Length; i++)
@@ -75,7 +75,7 @@ namespace RoR2
 			return -1;
 		}
 
-		// Token: 0x06000A18 RID: 2584 RVA: 0x00008269 File Offset: 0x00006469
+		// Token: 0x06000A15 RID: 2581 RVA: 0x0000825A File Offset: 0x0000645A
 		public static int FindBodyIndex(GameObject bodyObject)
 		{
 			if (!bodyObject)
@@ -85,7 +85,7 @@ namespace RoR2
 			return BodyCatalog.FindBodyIndex(bodyObject.name);
 		}
 
-		// Token: 0x06000A19 RID: 2585 RVA: 0x00046DC0 File Offset: 0x00044FC0
+		// Token: 0x06000A16 RID: 2582 RVA: 0x00046B14 File Offset: 0x00044D14
 		public static GameObject FindBodyPrefab([NotNull] string bodyName)
 		{
 			int num = BodyCatalog.FindBodyIndex(bodyName);
@@ -96,7 +96,7 @@ namespace RoR2
 			return null;
 		}
 
-		// Token: 0x06000A1A RID: 2586 RVA: 0x00046DE0 File Offset: 0x00044FE0
+		// Token: 0x06000A17 RID: 2583 RVA: 0x00046B34 File Offset: 0x00044D34
 		[SystemInitializer(new Type[]
 		{
 
@@ -119,7 +119,7 @@ namespace RoR2
 			BodyCatalog.availability.MakeAvailable();
 		}
 
-		// Token: 0x06000A1B RID: 2587 RVA: 0x00008280 File Offset: 0x00006480
+		// Token: 0x06000A18 RID: 2584 RVA: 0x00008271 File Offset: 0x00006471
 		private static IEnumerator GeneratePortraits()
 		{
 			ModelPanel modelPanel = UnityEngine.Object.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/UI/IconGenerator")).GetComponentInChildren<ModelPanel>();
@@ -173,14 +173,14 @@ namespace RoR2
 			yield break;
 		}
 
-		// Token: 0x06000A1C RID: 2588 RVA: 0x00008288 File Offset: 0x00006488
+		// Token: 0x06000A19 RID: 2585 RVA: 0x00008279 File Offset: 0x00006479
 		[ConCommand(commandName = "body_generate_portraits", flags = ConVarFlags.None, helpText = "Generates portraits for all bodies that are currently using the default.")]
 		private static void CCBodyGeneratePortraits(ConCommandArgs args)
 		{
 			RoR2Application.instance.StartCoroutine(BodyCatalog.GeneratePortraits());
 		}
 
-		// Token: 0x06000A1D RID: 2589 RVA: 0x00046EAC File Offset: 0x000450AC
+		// Token: 0x06000A1A RID: 2586 RVA: 0x00046C00 File Offset: 0x00044E00
 		[ConCommand(commandName = "body_list", flags = ConVarFlags.None, helpText = "Prints a list of all character bodies in the game.")]
 		private static void CCBodyList(ConCommandArgs args)
 		{
@@ -192,16 +192,16 @@ namespace RoR2
 			Debug.Log(string.Join("\n", array));
 		}
 
-		// Token: 0x04000D65 RID: 3429
+		// Token: 0x04000D61 RID: 3425
 		public static ResourceAvailability availability = default(ResourceAvailability);
 
-		// Token: 0x04000D66 RID: 3430
+		// Token: 0x04000D62 RID: 3426
 		private static GameObject[] bodyPrefabs;
 
-		// Token: 0x04000D67 RID: 3431
+		// Token: 0x04000D63 RID: 3427
 		private static CharacterBody[] bodyPrefabBodyComponents;
 
-		// Token: 0x04000D68 RID: 3432
+		// Token: 0x04000D64 RID: 3428
 		private static readonly Dictionary<string, int> nameToIndexMap = new Dictionary<string, int>();
 	}
 }

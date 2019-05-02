@@ -8,7 +8,7 @@ namespace RoR2
 	[CreateAssetMenu(menuName = "SpawnCards")]
 	internal class BodySpawnCard : SpawnCard
 	{
-		// Token: 0x06000AA8 RID: 2728 RVA: 0x00048E38 File Offset: 0x00047038
+		// Token: 0x06000AA4 RID: 2724 RVA: 0x00048B7C File Offset: 0x00046D7C
 		public override GameObject DoSpawn(Vector3 position, Quaternion rotation)
 		{
 			Vector3 position2 = position;

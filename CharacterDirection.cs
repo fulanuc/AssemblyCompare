@@ -7,9 +7,9 @@ namespace RoR2
 	// Token: 0x0200028A RID: 650
 	public class CharacterDirection : NetworkBehaviour, ILifeBehavior
 	{
-		// Token: 0x17000105 RID: 261
-		// (get) Token: 0x06000CCE RID: 3278 RVA: 0x0000A060 File Offset: 0x00008260
-		// (set) Token: 0x06000CCD RID: 3277 RVA: 0x0000A02A File Offset: 0x0000822A
+		// Token: 0x17000102 RID: 258
+		// (get) Token: 0x06000CC1 RID: 3265 RVA: 0x00009FFB File Offset: 0x000081FB
+		// (set) Token: 0x06000CC0 RID: 3264 RVA: 0x00009FC5 File Offset: 0x000081C5
 		public float yaw
 		{
 			get
@@ -26,8 +26,8 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x17000106 RID: 262
-		// (get) Token: 0x06000CCF RID: 3279 RVA: 0x00052458 File Offset: 0x00050658
+		// Token: 0x17000103 RID: 259
+		// (get) Token: 0x06000CC2 RID: 3266 RVA: 0x000520B0 File Offset: 0x000502B0
 		public Vector3 animatorForward
 		{
 			get
@@ -41,9 +41,9 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x17000107 RID: 263
-		// (get) Token: 0x06000CD1 RID: 3281 RVA: 0x0000A068 File Offset: 0x00008268
-		// (set) Token: 0x06000CD0 RID: 3280 RVA: 0x000524A4 File Offset: 0x000506A4
+		// Token: 0x17000104 RID: 260
+		// (get) Token: 0x06000CC4 RID: 3268 RVA: 0x0000A003 File Offset: 0x00008203
+		// (set) Token: 0x06000CC3 RID: 3267 RVA: 0x000520FC File Offset: 0x000502FC
 		public Vector3 forward
 		{
 			get
@@ -57,30 +57,30 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x17000108 RID: 264
-		// (get) Token: 0x06000CD3 RID: 3283 RVA: 0x0000A092 File Offset: 0x00008292
-		// (set) Token: 0x06000CD2 RID: 3282 RVA: 0x0000A089 File Offset: 0x00008289
+		// Token: 0x17000105 RID: 261
+		// (get) Token: 0x06000CC6 RID: 3270 RVA: 0x0000A02D File Offset: 0x0000822D
+		// (set) Token: 0x06000CC5 RID: 3269 RVA: 0x0000A024 File Offset: 0x00008224
 		public bool hasEffectiveAuthority { get; private set; }
 
-		// Token: 0x06000CD4 RID: 3284 RVA: 0x0000A09A File Offset: 0x0000829A
+		// Token: 0x06000CC7 RID: 3271 RVA: 0x0000A035 File Offset: 0x00008235
 		private void UpdateAuthority()
 		{
 			this.hasEffectiveAuthority = Util.HasEffectiveAuthority(base.gameObject);
 		}
 
-		// Token: 0x06000CD5 RID: 3285 RVA: 0x0000A0AD File Offset: 0x000082AD
+		// Token: 0x06000CC8 RID: 3272 RVA: 0x0000A048 File Offset: 0x00008248
 		public override void OnStartAuthority()
 		{
 			this.UpdateAuthority();
 		}
 
-		// Token: 0x06000CD6 RID: 3286 RVA: 0x0000A0AD File Offset: 0x000082AD
+		// Token: 0x06000CC9 RID: 3273 RVA: 0x0000A048 File Offset: 0x00008248
 		public override void OnStopAuthority()
 		{
 			this.UpdateAuthority();
 		}
 
-		// Token: 0x06000CD7 RID: 3287 RVA: 0x000524DC File Offset: 0x000506DC
+		// Token: 0x06000CCA RID: 3274 RVA: 0x00052134 File Offset: 0x00050334
 		private void Start()
 		{
 			this.UpdateAuthority();
@@ -91,19 +91,19 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000CD8 RID: 3288 RVA: 0x0000A0B5 File Offset: 0x000082B5
+		// Token: 0x06000CCB RID: 3275 RVA: 0x0000A050 File Offset: 0x00008250
 		private void Update()
 		{
 			this.Simulate(Time.deltaTime);
 		}
 
-		// Token: 0x06000CD9 RID: 3289 RVA: 0x0000A0C2 File Offset: 0x000082C2
+		// Token: 0x06000CCC RID: 3276 RVA: 0x0000A05D File Offset: 0x0000825D
 		public void OnDeathStart()
 		{
 			base.enabled = false;
 		}
 
-		// Token: 0x06000CDA RID: 3290 RVA: 0x00052510 File Offset: 0x00050710
+		// Token: 0x06000CCD RID: 3277 RVA: 0x00052168 File Offset: 0x00050368
 		private static int PickIndex(float angle)
 		{
 			float num = Mathf.Sign(angle);
@@ -111,7 +111,7 @@ namespace RoR2
 			return Mathf.Clamp(CharacterDirection.paramsMidIndex + num2 * (int)num, 0, CharacterDirection.turnAnimatorParamsSets.Length - 1);
 		}
 
-		// Token: 0x06000CDB RID: 3291 RVA: 0x00052554 File Offset: 0x00050754
+		// Token: 0x06000CCE RID: 3278 RVA: 0x000521AC File Offset: 0x000503AC
 		private void Simulate(float deltaTime)
 		{
 			Quaternion quaternion = Quaternion.Euler(0f, this.yaw, 0f);
@@ -151,62 +151,62 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000CDE RID: 3294 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06000CD1 RID: 3281 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x06000CDF RID: 3295 RVA: 0x0004AA24 File Offset: 0x00048C24
+		// Token: 0x06000CD2 RID: 3282 RVA: 0x0004A818 File Offset: 0x00048A18
 		public override bool OnSerialize(NetworkWriter writer, bool forceAll)
 		{
 			bool result;
 			return result;
 		}
 
-		// Token: 0x06000CE0 RID: 3296 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06000CD3 RID: 3283 RVA: 0x000025F6 File Offset: 0x000007F6
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 		}
 
-		// Token: 0x040010E7 RID: 4327
+		// Token: 0x040010DC RID: 4316
 		[HideInInspector]
 		public Vector3 moveVector;
 
-		// Token: 0x040010E8 RID: 4328
+		// Token: 0x040010DD RID: 4317
 		[Tooltip("The transform to rotate.")]
 		public Transform targetTransform;
 
-		// Token: 0x040010E9 RID: 4329
+		// Token: 0x040010DE RID: 4318
 		[Tooltip("The transform to take the rotation from for animator purposes. Commonly the root node.")]
 		public Transform overrideAnimatorForwardTransform;
 
-		// Token: 0x040010EA RID: 4330
+		// Token: 0x040010DF RID: 4319
 		public RootMotionAccumulator rootMotionAccumulator;
 
-		// Token: 0x040010EB RID: 4331
+		// Token: 0x040010E0 RID: 4320
 		public Animator modelAnimator;
 
-		// Token: 0x040010EC RID: 4332
+		// Token: 0x040010E1 RID: 4321
 		[Tooltip("The character direction is set by root rotation, rather than moveVector.")]
 		public bool driveFromRootRotation;
 
-		// Token: 0x040010ED RID: 4333
+		// Token: 0x040010E2 RID: 4322
 		[Tooltip("The maximum turn rate in degrees/second.")]
 		public float turnSpeed = 360f;
 
-		// Token: 0x040010EE RID: 4334
+		// Token: 0x040010E3 RID: 4323
 		private float yRotationVelocity;
 
-		// Token: 0x040010EF RID: 4335
+		// Token: 0x040010E4 RID: 4324
 		private float _yaw;
 
-		// Token: 0x040010F0 RID: 4336
+		// Token: 0x040010E5 RID: 4325
 		private Vector3 targetVector = Vector3.zero;
 
-		// Token: 0x040010F2 RID: 4338
+		// Token: 0x040010E7 RID: 4327
 		private const float offset = 22.5f;
 
-		// Token: 0x040010F3 RID: 4339
+		// Token: 0x040010E8 RID: 4328
 		private static readonly CharacterDirection.TurnAnimatorParamsSet[] turnAnimatorParamsSets = new CharacterDirection.TurnAnimatorParamsSet[]
 		{
 			new CharacterDirection.TurnAnimatorParamsSet
@@ -286,13 +286,13 @@ namespace RoR2
 			}
 		};
 
-		// Token: 0x040010F4 RID: 4340
+		// Token: 0x040010E9 RID: 4329
 		private static readonly int paramsMidIndex = CharacterDirection.turnAnimatorParamsSets.Length >> 1;
 
 		// Token: 0x0200028B RID: 651
 		private struct TurnAnimatorParamsSet
 		{
-			// Token: 0x06000CE1 RID: 3297 RVA: 0x00052974 File Offset: 0x00050B74
+			// Token: 0x06000CD4 RID: 3284 RVA: 0x000525CC File Offset: 0x000507CC
 			public void Apply(Animator animator)
 			{
 				animator.SetBool(CharacterDirection.TurnAnimatorParamsSet.turnRight45ParamHash, this.turnRight45);
@@ -303,46 +303,46 @@ namespace RoR2
 				animator.SetBool(CharacterDirection.TurnAnimatorParamsSet.turnLeft135ParamHash, this.turnLeft135);
 			}
 
-			// Token: 0x040010F5 RID: 4341
+			// Token: 0x040010EA RID: 4330
 			public float angleMin;
 
-			// Token: 0x040010F6 RID: 4342
+			// Token: 0x040010EB RID: 4331
 			public float angleMax;
 
-			// Token: 0x040010F7 RID: 4343
+			// Token: 0x040010EC RID: 4332
 			public bool turnRight45;
 
-			// Token: 0x040010F8 RID: 4344
+			// Token: 0x040010ED RID: 4333
 			public bool turnRight90;
 
-			// Token: 0x040010F9 RID: 4345
+			// Token: 0x040010EE RID: 4334
 			public bool turnRight135;
 
-			// Token: 0x040010FA RID: 4346
+			// Token: 0x040010EF RID: 4335
 			public bool turnLeft45;
 
-			// Token: 0x040010FB RID: 4347
+			// Token: 0x040010F0 RID: 4336
 			public bool turnLeft90;
 
-			// Token: 0x040010FC RID: 4348
+			// Token: 0x040010F1 RID: 4337
 			public bool turnLeft135;
 
-			// Token: 0x040010FD RID: 4349
+			// Token: 0x040010F2 RID: 4338
 			private static readonly int turnRight45ParamHash = Animator.StringToHash("turnRight45");
 
-			// Token: 0x040010FE RID: 4350
+			// Token: 0x040010F3 RID: 4339
 			private static readonly int turnRight90ParamHash = Animator.StringToHash("turnRight90");
 
-			// Token: 0x040010FF RID: 4351
+			// Token: 0x040010F4 RID: 4340
 			private static readonly int turnRight135ParamHash = Animator.StringToHash("turnRight135");
 
-			// Token: 0x04001100 RID: 4352
+			// Token: 0x040010F5 RID: 4341
 			private static readonly int turnLeft45ParamHash = Animator.StringToHash("turnLeft45");
 
-			// Token: 0x04001101 RID: 4353
+			// Token: 0x040010F6 RID: 4342
 			private static readonly int turnLeft90ParamHash = Animator.StringToHash("turnLeft90");
 
-			// Token: 0x04001102 RID: 4354
+			// Token: 0x040010F7 RID: 4343
 			private static readonly int turnLeft135ParamHash = Animator.StringToHash("turnLeft135");
 		}
 	}

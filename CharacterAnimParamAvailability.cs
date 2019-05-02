@@ -6,7 +6,7 @@ namespace RoR2
 	// Token: 0x02000213 RID: 531
 	public struct CharacterAnimParamAvailability
 	{
-		// Token: 0x06000A5A RID: 2650 RVA: 0x00048404 File Offset: 0x00046604
+		// Token: 0x06000A56 RID: 2646 RVA: 0x00048148 File Offset: 0x00046348
 		public static CharacterAnimParamAvailability FromAnimator(Animator animator)
 		{
 			return new CharacterAnimParamAvailability
@@ -23,31 +23,31 @@ namespace RoR2
 			};
 		}
 
-		// Token: 0x04000DC9 RID: 3529
+		// Token: 0x04000DC5 RID: 3525
 		public bool isMoving;
 
-		// Token: 0x04000DCA RID: 3530
+		// Token: 0x04000DC6 RID: 3526
 		public bool turnAngle;
 
-		// Token: 0x04000DCB RID: 3531
+		// Token: 0x04000DC7 RID: 3527
 		public bool isGrounded;
 
-		// Token: 0x04000DCC RID: 3532
+		// Token: 0x04000DC8 RID: 3528
 		public bool mainRootPlaybackRate;
 
-		// Token: 0x04000DCD RID: 3533
+		// Token: 0x04000DC9 RID: 3529
 		public bool forwardSpeed;
 
-		// Token: 0x04000DCE RID: 3534
+		// Token: 0x04000DCA RID: 3530
 		public bool rightSpeed;
 
-		// Token: 0x04000DCF RID: 3535
+		// Token: 0x04000DCB RID: 3531
 		public bool upSpeed;
 
-		// Token: 0x04000DD0 RID: 3536
+		// Token: 0x04000DCC RID: 3532
 		public bool walkSpeed;
 
-		// Token: 0x04000DD1 RID: 3537
+		// Token: 0x04000DCD RID: 3533
 		public bool isSprinting;
 	}
 }

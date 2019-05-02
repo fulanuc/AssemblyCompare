@@ -7,21 +7,21 @@ using UnityEngine.Networking;
 namespace RoR2
 {
 	// Token: 0x02000265 RID: 613
-	public sealed class BarrelInteraction : NetworkBehaviour, IInteractable, IDisplayNameProvider
+	public class BarrelInteraction : NetworkBehaviour, IInteractable, IDisplayNameProvider
 	{
-		// Token: 0x06000B62 RID: 2914 RVA: 0x00009155 File Offset: 0x00007355
+		// Token: 0x06000B5F RID: 2911 RVA: 0x00009130 File Offset: 0x00007330
 		public string GetContextString(Interactor activator)
 		{
 			return Language.GetString(this.contextToken);
 		}
 
-		// Token: 0x06000B63 RID: 2915 RVA: 0x00009162 File Offset: 0x00007362
+		// Token: 0x06000B60 RID: 2912 RVA: 0x0000913D File Offset: 0x0000733D
 		public override int GetNetworkChannel()
 		{
 			return QosChannelIndex.defaultReliable.intVal;
 		}
 
-		// Token: 0x06000B64 RID: 2916 RVA: 0x0000916E File Offset: 0x0000736E
+		// Token: 0x06000B61 RID: 2913 RVA: 0x00009149 File Offset: 0x00007349
 		public Interactability GetInteractability(Interactor activator)
 		{
 			if (this.opened)
@@ -31,7 +31,7 @@ namespace RoR2
 			return Interactability.Available;
 		}
 
-		// Token: 0x06000B65 RID: 2917 RVA: 0x0004BCA8 File Offset: 0x00049EA8
+		// Token: 0x06000B62 RID: 2914 RVA: 0x0004BA9C File Offset: 0x00049C9C
 		private void Start()
 		{
 			if (Run.instance)
@@ -41,7 +41,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000B66 RID: 2918 RVA: 0x0004BCF4 File Offset: 0x00049EF4
+		// Token: 0x06000B63 RID: 2915 RVA: 0x0004BAE8 File Offset: 0x00049CE8
 		[Server]
 		public void OnInteractionBegin(Interactor activator)
 		{
@@ -69,7 +69,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000B67 RID: 2919 RVA: 0x0004BD94 File Offset: 0x00049F94
+		// Token: 0x06000B64 RID: 2916 RVA: 0x0004BB88 File Offset: 0x00049D88
 		[Server]
 		private void CoinDrop()
 		{
@@ -85,44 +85,26 @@ namespace RoR2
 			}, true);
 		}
 
-		// Token: 0x06000B68 RID: 2920 RVA: 0x0000917B File Offset: 0x0000737B
+		// Token: 0x06000B65 RID: 2917 RVA: 0x00009156 File Offset: 0x00007356
 		public string GetDisplayName()
 		{
 			return Language.GetString(this.displayNameToken);
 		}
 
-		// Token: 0x06000B69 RID: 2921 RVA: 0x00003696 File Offset: 0x00001896
+		// Token: 0x06000B66 RID: 2918 RVA: 0x00003696 File Offset: 0x00001896
 		public bool ShouldIgnoreSpherecastForInteractibility(Interactor activator)
 		{
 			return false;
 		}
 
-		// Token: 0x06000B6A RID: 2922 RVA: 0x00009188 File Offset: 0x00007388
-		public void OnEnable()
-		{
-			InstanceTracker.Add<BarrelInteraction>(this);
-		}
-
-		// Token: 0x06000B6B RID: 2923 RVA: 0x00009190 File Offset: 0x00007390
-		public void OnDisable()
-		{
-			InstanceTracker.Remove<BarrelInteraction>(this);
-		}
-
-		// Token: 0x06000B6C RID: 2924 RVA: 0x00009198 File Offset: 0x00007398
-		public bool ShouldShowOnScanner()
-		{
-			return !this.opened;
-		}
-
-		// Token: 0x06000B6E RID: 2926 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06000B68 RID: 2920 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x170000CB RID: 203
-		// (get) Token: 0x06000B6F RID: 2927 RVA: 0x0004BDF0 File Offset: 0x00049FF0
-		// (set) Token: 0x06000B70 RID: 2928 RVA: 0x000091B6 File Offset: 0x000073B6
+		// Token: 0x170000CA RID: 202
+		// (get) Token: 0x06000B69 RID: 2921 RVA: 0x0004BBE4 File Offset: 0x00049DE4
+		// (set) Token: 0x06000B6A RID: 2922 RVA: 0x00009176 File Offset: 0x00007376
 		public bool Networkopened
 		{
 			get
@@ -135,7 +117,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000B71 RID: 2929 RVA: 0x0004BE04 File Offset: 0x0004A004
+		// Token: 0x06000B6B RID: 2923 RVA: 0x0004BBF8 File Offset: 0x00049DF8
 		public override bool OnSerialize(NetworkWriter writer, bool forceAll)
 		{
 			if (forceAll)
@@ -160,7 +142,7 @@ namespace RoR2
 			return flag;
 		}
 
-		// Token: 0x06000B72 RID: 2930 RVA: 0x0004BE70 File Offset: 0x0004A070
+		// Token: 0x06000B6C RID: 2924 RVA: 0x0004BC64 File Offset: 0x00049E64
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 			if (initialState)
@@ -175,19 +157,19 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04000F65 RID: 3941
+		// Token: 0x04000F5F RID: 3935
 		public int goldReward;
 
-		// Token: 0x04000F66 RID: 3942
+		// Token: 0x04000F60 RID: 3936
 		public uint expReward;
 
-		// Token: 0x04000F67 RID: 3943
+		// Token: 0x04000F61 RID: 3937
 		public string displayNameToken = "BARREL1_NAME";
 
-		// Token: 0x04000F68 RID: 3944
+		// Token: 0x04000F62 RID: 3938
 		public string contextToken;
 
-		// Token: 0x04000F69 RID: 3945
+		// Token: 0x04000F63 RID: 3939
 		[SyncVar]
 		private bool opened;
 	}

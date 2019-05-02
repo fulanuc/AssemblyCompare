@@ -7,14 +7,14 @@ namespace RoR2
 	[RequireComponent(typeof(Camera))]
 	public class BlurOptimized : MonoBehaviour
 	{
-		// Token: 0x06000ABF RID: 2751 RVA: 0x00008A97 File Offset: 0x00006C97
+		// Token: 0x06000ABB RID: 2747 RVA: 0x00008A72 File Offset: 0x00006C72
 		public void Start()
 		{
 			this.blurMaterial = new Material(Shader.Find("Hidden/FastBlur"));
 			base.enabled = false;
 		}
 
-		// Token: 0x06000AC0 RID: 2752 RVA: 0x000491A8 File Offset: 0x000473A8
+		// Token: 0x06000ABC RID: 2748 RVA: 0x00048EEC File Offset: 0x000470EC
 		public void OnRenderImage(RenderTexture source, RenderTexture destination)
 		{
 			float num = 1f / (1f * (float)(1 << this.downsample));
@@ -45,31 +45,31 @@ namespace RoR2
 			RenderTexture.ReleaseTemporary(renderTexture);
 		}
 
-		// Token: 0x04000E54 RID: 3668
+		// Token: 0x04000E4F RID: 3663
 		[Range(0f, 2f)]
 		public int downsample = 1;
 
-		// Token: 0x04000E55 RID: 3669
+		// Token: 0x04000E50 RID: 3664
 		[Range(0f, 10f)]
 		public float blurSize = 3f;
 
-		// Token: 0x04000E56 RID: 3670
+		// Token: 0x04000E51 RID: 3665
 		[Range(1f, 4f)]
 		public int blurIterations = 2;
 
-		// Token: 0x04000E57 RID: 3671
+		// Token: 0x04000E52 RID: 3666
 		public BlurOptimized.BlurType blurType;
 
-		// Token: 0x04000E58 RID: 3672
+		// Token: 0x04000E53 RID: 3667
 		[HideInInspector]
 		public Material blurMaterial;
 
 		// Token: 0x02000232 RID: 562
 		public enum BlurType
 		{
-			// Token: 0x04000E5A RID: 3674
+			// Token: 0x04000E55 RID: 3669
 			StandardGauss,
-			// Token: 0x04000E5B RID: 3675
+			// Token: 0x04000E56 RID: 3670
 			SgxGauss
 		}
 	}

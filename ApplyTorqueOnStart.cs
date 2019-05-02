@@ -6,7 +6,7 @@ namespace RoR2
 	// Token: 0x0200025E RID: 606
 	public class ApplyTorqueOnStart : MonoBehaviour
 	{
-		// Token: 0x06000B4A RID: 2890 RVA: 0x0004B9D8 File Offset: 0x00049BD8
+		// Token: 0x06000B47 RID: 2887 RVA: 0x0004B7CC File Offset: 0x000499CC
 		private void Start()
 		{
 			Rigidbody component = base.GetComponent<Rigidbody>();
@@ -23,10 +23,10 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04000F58 RID: 3928
+		// Token: 0x04000F52 RID: 3922
 		public Vector3 localTorque;
 
-		// Token: 0x04000F59 RID: 3929
+		// Token: 0x04000F53 RID: 3923
 		public bool randomize;
 	}
 }

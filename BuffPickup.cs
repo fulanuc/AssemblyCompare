@@ -7,7 +7,7 @@ namespace RoR2
 	// Token: 0x02000272 RID: 626
 	public class BuffPickup : MonoBehaviour
 	{
-		// Token: 0x06000BCC RID: 3020 RVA: 0x0004CF38 File Offset: 0x0004B138
+		// Token: 0x06000BC3 RID: 3011 RVA: 0x0004CD2C File Offset: 0x0004AF2C
 		private void OnTriggerStay(Collider other)
 		{
 			if (NetworkServer.active && this.alive && TeamComponent.GetObjectTeam(other.gameObject) == this.teamFilter.teamIndex)
@@ -22,24 +22,24 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04000FAD RID: 4013
+		// Token: 0x04000FA7 RID: 4007
 		[Tooltip("The base object to destroy when this pickup is consumed.")]
 		public GameObject baseObject;
 
-		// Token: 0x04000FAE RID: 4014
+		// Token: 0x04000FA8 RID: 4008
 		[Tooltip("The team filter object which determines who can pick up this pack.")]
 		public TeamFilter teamFilter;
 
-		// Token: 0x04000FAF RID: 4015
+		// Token: 0x04000FA9 RID: 4009
 		public GameObject pickupEffect;
 
-		// Token: 0x04000FB0 RID: 4016
+		// Token: 0x04000FAA RID: 4010
 		public BuffIndex buffIndex;
 
-		// Token: 0x04000FB1 RID: 4017
+		// Token: 0x04000FAB RID: 4011
 		public float buffDuration;
 
-		// Token: 0x04000FB2 RID: 4018
+		// Token: 0x04000FAC RID: 4012
 		private bool alive = true;
 	}
 }

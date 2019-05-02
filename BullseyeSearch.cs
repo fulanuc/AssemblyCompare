@@ -5,11 +5,11 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x0200031F RID: 799
+	// Token: 0x0200031D RID: 797
 	public class BullseyeSearch
 	{
-		// Token: 0x1700016F RID: 367
-		// (set) Token: 0x0600108E RID: 4238 RVA: 0x0000CB24 File Offset: 0x0000AD24
+		// Token: 0x1700016A RID: 362
+		// (set) Token: 0x0600107A RID: 4218 RVA: 0x0000CA40 File Offset: 0x0000AC40
 		public float maxAngleFilter
 		{
 			set
@@ -23,8 +23,8 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x17000170 RID: 368
-		// (get) Token: 0x0600108F RID: 4239 RVA: 0x0000CB4C File Offset: 0x0000AD4C
+		// Token: 0x1700016B RID: 363
+		// (get) Token: 0x0600107B RID: 4219 RVA: 0x0000CA68 File Offset: 0x0000AC68
 		private bool filterByDistance
 		{
 			get
@@ -33,8 +33,8 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x17000171 RID: 369
-		// (get) Token: 0x06001090 RID: 4240 RVA: 0x0000CB6A File Offset: 0x0000AD6A
+		// Token: 0x1700016C RID: 364
+		// (get) Token: 0x0600107C RID: 4220 RVA: 0x0000CA86 File Offset: 0x0000AC86
 		private bool filterByAngle
 		{
 			get
@@ -43,7 +43,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001091 RID: 4241 RVA: 0x00062CE0 File Offset: 0x00060EE0
+		// Token: 0x0600107D RID: 4221 RVA: 0x00062A48 File Offset: 0x00060C48
 		private Func<HurtBox, BullseyeSearch.CandidateInfo> GetSelector()
 		{
 			bool getDot = this.filterByAngle;
@@ -79,7 +79,7 @@ namespace RoR2
 			};
 		}
 
-		// Token: 0x06001092 RID: 4242 RVA: 0x00062D94 File Offset: 0x00060F94
+		// Token: 0x0600107E RID: 4222 RVA: 0x00062AFC File Offset: 0x00060CFC
 		public void RefreshCandidates()
 		{
 			Func<HurtBox, BullseyeSearch.CandidateInfo> selector = this.GetSelector();
@@ -104,7 +104,7 @@ namespace RoR2
 			this.candidatesEnumerable = this.candidatesEnumerable.OrderBy(sorter);
 		}
 
-		// Token: 0x06001093 RID: 4243 RVA: 0x00062E5C File Offset: 0x0006105C
+		// Token: 0x0600107F RID: 4223 RVA: 0x00062BC4 File Offset: 0x00060DC4
 		private Func<BullseyeSearch.CandidateInfo, float> GetSorter()
 		{
 			switch (this.sortMode)
@@ -120,7 +120,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001094 RID: 4244 RVA: 0x00062EE8 File Offset: 0x000610E8
+		// Token: 0x06001080 RID: 4224 RVA: 0x00062C50 File Offset: 0x00060E50
 		public void FilterCandidatesByHealthFraction(float minHealthFraction = 0f, float maxHealthFraction = 1f)
 		{
 			if (minHealthFraction > 0f)
@@ -152,7 +152,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001095 RID: 4245 RVA: 0x00062F8C File Offset: 0x0006118C
+		// Token: 0x06001081 RID: 4225 RVA: 0x00062CF4 File Offset: 0x00060EF4
 		public void FilterOutGameObject(GameObject gameObject)
 		{
 			this.candidatesEnumerable = from v in this.candidatesEnumerable
@@ -160,19 +160,19 @@ namespace RoR2
 			select v;
 		}
 
-		// Token: 0x06001096 RID: 4246 RVA: 0x00062FC4 File Offset: 0x000611C4
+		// Token: 0x06001082 RID: 4226 RVA: 0x00062D2C File Offset: 0x00060F2C
 		public IEnumerable<HurtBox> GetResults()
 		{
 			IEnumerable<BullseyeSearch.CandidateInfo> source = this.candidatesEnumerable;
 			if (this.filterByLoS)
 			{
-				source = from candidateInfo in source
+				source = from candidateInfo in this.candidatesEnumerable
 				where this.CheckLoS(candidateInfo.position)
 				select candidateInfo;
 			}
 			if (this.viewer)
 			{
-				source = from candidateInfo in source
+				source = from candidateInfo in this.candidatesEnumerable
 				where this.CheckVisisble(candidateInfo.hurtBox.healthComponent.gameObject)
 				select candidateInfo;
 			}
@@ -180,7 +180,7 @@ namespace RoR2
 			select candidateInfo.hurtBox;
 		}
 
-		// Token: 0x06001097 RID: 4247 RVA: 0x00063038 File Offset: 0x00061238
+		// Token: 0x06001083 RID: 4227 RVA: 0x00062DAC File Offset: 0x00060FAC
 		private bool CheckLoS(Vector3 targetPosition)
 		{
 			Vector3 direction = targetPosition - this.searchOrigin;
@@ -188,80 +188,80 @@ namespace RoR2
 			return !Physics.Raycast(this.searchOrigin, direction, out raycastHit, direction.magnitude, LayerIndex.world.mask, this.queryTriggerInteraction);
 		}
 
-		// Token: 0x06001098 RID: 4248 RVA: 0x00063084 File Offset: 0x00061284
+		// Token: 0x06001084 RID: 4228 RVA: 0x00062DF8 File Offset: 0x00060FF8
 		private bool CheckVisisble(GameObject gameObject)
 		{
 			CharacterBody component = gameObject.GetComponent<CharacterBody>();
 			return !component || component.GetVisibilityLevel(this.viewer) >= VisibilityLevel.Revealed;
 		}
 
-		// Token: 0x0400149F RID: 5279
+		// Token: 0x0400148B RID: 5259
 		public CharacterBody viewer;
 
-		// Token: 0x040014A0 RID: 5280
+		// Token: 0x0400148C RID: 5260
 		public Vector3 searchOrigin;
 
-		// Token: 0x040014A1 RID: 5281
+		// Token: 0x0400148D RID: 5261
 		public Vector3 searchDirection;
 
-		// Token: 0x040014A2 RID: 5282
+		// Token: 0x0400148E RID: 5262
 		private static readonly float fullVisionMinThetaDot = Mathf.Cos(3.14159274f);
 
-		// Token: 0x040014A3 RID: 5283
+		// Token: 0x0400148F RID: 5263
 		private float minThetaDot = -1f;
 
-		// Token: 0x040014A4 RID: 5284
+		// Token: 0x04001490 RID: 5264
 		public float minDistanceFilter;
 
-		// Token: 0x040014A5 RID: 5285
+		// Token: 0x04001491 RID: 5265
 		public float maxDistanceFilter = float.PositiveInfinity;
 
-		// Token: 0x040014A6 RID: 5286
+		// Token: 0x04001492 RID: 5266
 		public TeamMask teamMaskFilter = TeamMask.allButNeutral;
 
-		// Token: 0x040014A7 RID: 5287
+		// Token: 0x04001493 RID: 5267
 		public bool filterByLoS = true;
 
-		// Token: 0x040014A8 RID: 5288
+		// Token: 0x04001494 RID: 5268
 		public QueryTriggerInteraction queryTriggerInteraction;
 
-		// Token: 0x040014A9 RID: 5289
+		// Token: 0x04001495 RID: 5269
 		public BullseyeSearch.SortMode sortMode = BullseyeSearch.SortMode.Distance;
 
-		// Token: 0x040014AA RID: 5290
+		// Token: 0x04001496 RID: 5270
 		private IEnumerable<BullseyeSearch.CandidateInfo> candidatesEnumerable;
 
-		// Token: 0x02000320 RID: 800
+		// Token: 0x0200031E RID: 798
 		private struct CandidateInfo
 		{
-			// Token: 0x040014AB RID: 5291
+			// Token: 0x04001497 RID: 5271
 			public HurtBox hurtBox;
 
-			// Token: 0x040014AC RID: 5292
+			// Token: 0x04001498 RID: 5272
 			public Vector3 position;
 
-			// Token: 0x040014AD RID: 5293
+			// Token: 0x04001499 RID: 5273
 			public float dot;
 
-			// Token: 0x040014AE RID: 5294
+			// Token: 0x0400149A RID: 5274
 			public float distanceSqr;
 		}
 
-		// Token: 0x02000321 RID: 801
+		// Token: 0x0200031F RID: 799
 		public enum SortMode
 		{
-			// Token: 0x040014B0 RID: 5296
+			// Token: 0x0400149C RID: 5276
 			None,
-			// Token: 0x040014B1 RID: 5297
+			// Token: 0x0400149D RID: 5277
 			Distance,
-			// Token: 0x040014B2 RID: 5298
+			// Token: 0x0400149E RID: 5278
 			Angle,
-			// Token: 0x040014B3 RID: 5299
+			// Token: 0x0400149F RID: 5279
 			DistanceAndAngle
 		}
 
-		// Token: 0x02000322 RID: 802
-		// (Invoke) Token: 0x060010A0 RID: 4256
+		// Token: 0x02000320 RID: 800
+		// (Invoke) Token: 0x0600108C RID: 4236
 		private delegate BullseyeSearch.CandidateInfo Selector(HurtBox hurtBox);
 	}
 }

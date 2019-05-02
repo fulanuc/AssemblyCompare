@@ -2,17 +2,17 @@
 
 namespace RoR2
 {
-	// Token: 0x020002AB RID: 683
+	// Token: 0x020002A9 RID: 681
 	[AttributeUsage(AttributeTargets.Method, AllowMultiple = true, Inherited = false)]
 	public class ConCommandAttribute : Attribute
 	{
-		// Token: 0x040011E9 RID: 4585
+		// Token: 0x040011D7 RID: 4567
 		public string commandName;
 
-		// Token: 0x040011EA RID: 4586
+		// Token: 0x040011D8 RID: 4568
 		public ConVarFlags flags;
 
-		// Token: 0x040011EB RID: 4587
+		// Token: 0x040011D9 RID: 4569
 		public string helpText = "";
 	}
 }

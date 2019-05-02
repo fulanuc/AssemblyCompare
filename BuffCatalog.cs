@@ -7,14 +7,14 @@ namespace RoR2
 	// Token: 0x0200020B RID: 523
 	public static class BuffCatalog
 	{
-		// Token: 0x06000A35 RID: 2613 RVA: 0x000083B3 File Offset: 0x000065B3
+		// Token: 0x06000A31 RID: 2609 RVA: 0x0000838F File Offset: 0x0000658F
 		private static void RegisterBuff(BuffIndex buffIndex, BuffDef buffDef)
 		{
 			buffDef.buffIndex = buffIndex;
 			BuffCatalog.buffDefs[(int)buffIndex] = buffDef;
 		}
 
-		// Token: 0x06000A36 RID: 2614 RVA: 0x000083C4 File Offset: 0x000065C4
+		// Token: 0x06000A32 RID: 2610 RVA: 0x000083A0 File Offset: 0x000065A0
 		public static BuffDef GetBuffDef(BuffIndex buffIndex)
 		{
 			if (buffIndex < BuffIndex.Slow50 || buffIndex > BuffIndex.Count)
@@ -24,7 +24,7 @@ namespace RoR2
 			return BuffCatalog.buffDefs[(int)buffIndex];
 		}
 
-		// Token: 0x06000A37 RID: 2615 RVA: 0x00047218 File Offset: 0x00045418
+		// Token: 0x06000A33 RID: 2611 RVA: 0x00046F6C File Offset: 0x0004516C
 		static BuffCatalog()
 		{
 			BuffCatalog.RegisterBuff(BuffIndex.ArmorBoost, new BuffDef
@@ -54,12 +54,7 @@ namespace RoR2
 				buffColor = new Color(0.8392157f, 0.7882353f, 0.227450982f),
 				canStack = true
 			});
-			BuffCatalog.RegisterBuff(BuffIndex.OnFire, new BuffDef
-			{
-				iconPath = "Textures/BuffIcons/texBuffOnFireIcon",
-				buffColor = new Color(0.9137255f, 0.372549027f, 0.1882353f),
-				canStack = true
-			});
+			BuffCatalog.RegisterBuff(BuffIndex.RepairMode, new BuffDef());
 			BuffCatalog.RegisterBuff(BuffIndex.MedkitHeal, new BuffDef
 			{
 				iconPath = "Textures/BuffIcons/texBuffMedkitHealIcon",
@@ -144,12 +139,12 @@ namespace RoR2
 			});
 			BuffCatalog.RegisterBuff(BuffIndex.AffixRed, new BuffDef
 			{
-				eliteIndex = EliteIndex.Fire,
+				isElite = true,
 				iconPath = "Textures/BuffIcons/texBuffAffixRed"
 			});
 			BuffCatalog.RegisterBuff(BuffIndex.AffixBlue, new BuffDef
 			{
-				eliteIndex = EliteIndex.Lightning,
+				isElite = true,
 				iconPath = "Textures/BuffIcons/texBuffAffixBlue"
 			});
 			BuffCatalog.RegisterBuff(BuffIndex.NoCooldowns, new BuffDef
@@ -159,13 +154,13 @@ namespace RoR2
 			});
 			BuffCatalog.RegisterBuff(BuffIndex.AffixWhite, new BuffDef
 			{
-				eliteIndex = EliteIndex.Ice,
+				isElite = true,
 				iconPath = "Textures/BuffIcons/texBuffAffixWhite"
 			});
-			BuffCatalog.RegisterBuff(BuffIndex.HiddenInvincibility, new BuffDef
+			BuffCatalog.RegisterBuff(BuffIndex.Invincibility, new BuffDef
 			{
 				iconPath = "Textures/BuffIcons/texBuffGenericShield",
-				buffColor = new Color(0.545098066f, 0.807843149f, 0.8392157f)
+				buffColor = new Color(0.8117647f, 0.6117647f, 0.8784314f)
 			});
 			for (BuffIndex buffIndex = BuffIndex.Slow50; buffIndex < BuffIndex.Count; buffIndex++)
 			{
@@ -182,10 +177,10 @@ namespace RoR2
 			select buffDef.buffIndex).ToArray<BuffIndex>();
 		}
 
-		// Token: 0x04000D96 RID: 3478
+		// Token: 0x04000D92 RID: 3474
 		private static BuffDef[] buffDefs = new BuffDef[31];
 
-		// Token: 0x04000D97 RID: 3479
+		// Token: 0x04000D93 RID: 3475
 		public static readonly BuffIndex[] eliteBuffIndices;
 	}
 }

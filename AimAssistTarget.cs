@@ -8,19 +8,19 @@ namespace RoR2
 	// Token: 0x02000254 RID: 596
 	public class AimAssistTarget : MonoBehaviour
 	{
-		// Token: 0x06000B20 RID: 2848 RVA: 0x00008F3D File Offset: 0x0000713D
+		// Token: 0x06000B1D RID: 2845 RVA: 0x00008F18 File Offset: 0x00007118
 		private void OnEnable()
 		{
 			AimAssistTarget.instancesList.Add(this);
 		}
 
-		// Token: 0x06000B21 RID: 2849 RVA: 0x00008F4A File Offset: 0x0000714A
+		// Token: 0x06000B1E RID: 2846 RVA: 0x00008F25 File Offset: 0x00007125
 		private void OnDisable()
 		{
 			AimAssistTarget.instancesList.Remove(this);
 		}
 
-		// Token: 0x06000B22 RID: 2850 RVA: 0x00008F58 File Offset: 0x00007158
+		// Token: 0x06000B1F RID: 2847 RVA: 0x00008F33 File Offset: 0x00007133
 		private void FixedUpdate()
 		{
 			if (this.healthComponent && !this.healthComponent.alive)
@@ -29,7 +29,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000B23 RID: 2851 RVA: 0x0004B040 File Offset: 0x00049240
+		// Token: 0x06000B20 RID: 2848 RVA: 0x0004AE34 File Offset: 0x00049034
 		private void OnDrawGizmos()
 		{
 			if (this.point0)
@@ -52,25 +52,25 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04000F22 RID: 3874
+		// Token: 0x04000F1C RID: 3868
 		public Transform point0;
 
-		// Token: 0x04000F23 RID: 3875
+		// Token: 0x04000F1D RID: 3869
 		public Transform point1;
 
-		// Token: 0x04000F24 RID: 3876
+		// Token: 0x04000F1E RID: 3870
 		public float assistScale = 1f;
 
-		// Token: 0x04000F25 RID: 3877
+		// Token: 0x04000F1F RID: 3871
 		public HealthComponent healthComponent;
 
-		// Token: 0x04000F26 RID: 3878
+		// Token: 0x04000F20 RID: 3872
 		public TeamComponent teamComponent;
 
-		// Token: 0x04000F27 RID: 3879
+		// Token: 0x04000F21 RID: 3873
 		public static List<AimAssistTarget> instancesList = new List<AimAssistTarget>();
 
-		// Token: 0x04000F28 RID: 3880
+		// Token: 0x04000F22 RID: 3874
 		public static FloatConVar debugAimAssistVisualCoefficient = new FloatConVar("debug_aim_assist_visual_coefficient", ConVarFlags.None, "2", "Magic for debug visuals. Don't touch.");
 	}
 }

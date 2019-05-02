@@ -6,17 +6,17 @@ namespace RoR2
 	// Token: 0x02000212 RID: 530
 	public struct CharacterAnimatorWalkParamCalculator
 	{
-		// Token: 0x170000B3 RID: 179
-		// (get) Token: 0x06000A55 RID: 2645 RVA: 0x00008495 File Offset: 0x00006695
-		// (set) Token: 0x06000A56 RID: 2646 RVA: 0x0000849D File Offset: 0x0000669D
+		// Token: 0x170000B2 RID: 178
+		// (get) Token: 0x06000A51 RID: 2641 RVA: 0x00008471 File Offset: 0x00006671
+		// (set) Token: 0x06000A52 RID: 2642 RVA: 0x00008479 File Offset: 0x00006679
 		public Vector2 animatorWalkSpeed { get; private set; }
 
-		// Token: 0x170000B4 RID: 180
-		// (get) Token: 0x06000A57 RID: 2647 RVA: 0x000084A6 File Offset: 0x000066A6
-		// (set) Token: 0x06000A58 RID: 2648 RVA: 0x000084AE File Offset: 0x000066AE
+		// Token: 0x170000B3 RID: 179
+		// (get) Token: 0x06000A53 RID: 2643 RVA: 0x00008482 File Offset: 0x00006682
+		// (set) Token: 0x06000A54 RID: 2644 RVA: 0x0000848A File Offset: 0x0000668A
 		public float remainingTurnAngle { get; private set; }
 
-		// Token: 0x06000A59 RID: 2649 RVA: 0x000482FC File Offset: 0x000464FC
+		// Token: 0x06000A55 RID: 2645 RVA: 0x00048040 File Offset: 0x00046240
 		public void Update(Vector3 worldMoveVector, Vector3 animatorForward, in BodyAnimatorSmoothingParameters.SmoothingParameters smoothingParameters, float deltaTime)
 		{
 			ref Vector3 ptr = ref animatorForward;
@@ -34,10 +34,10 @@ namespace RoR2
 			this.animatorWalkSpeed = new Vector2(Mathf.Cos(num2 * 0.0174532924f), Mathf.Sin(num2 * 0.0174532924f)) * d;
 		}
 
-		// Token: 0x04000DC7 RID: 3527
+		// Token: 0x04000DC3 RID: 3523
 		private float animatorReferenceMagnitudeVelocity;
 
-		// Token: 0x04000DC8 RID: 3528
+		// Token: 0x04000DC4 RID: 3524
 		private float animatorReferenceAngleVelocity;
 	}
 }

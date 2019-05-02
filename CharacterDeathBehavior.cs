@@ -7,7 +7,7 @@ namespace RoR2
 	// Token: 0x02000289 RID: 649
 	public class CharacterDeathBehavior : MonoBehaviour
 	{
-		// Token: 0x06000CCB RID: 3275 RVA: 0x00052368 File Offset: 0x00050568
+		// Token: 0x06000CBE RID: 3262 RVA: 0x00051FC0 File Offset: 0x000501C0
 		private void OnDeath()
 		{
 			if (Util.HasEffectiveAuthority(base.gameObject))
@@ -48,15 +48,15 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x040010E4 RID: 4324
+		// Token: 0x040010D9 RID: 4313
 		[Tooltip("The state machine to set the state of when this character is killed.")]
 		public EntityStateMachine deathStateMachine;
 
-		// Token: 0x040010E5 RID: 4325
+		// Token: 0x040010DA RID: 4314
 		[Tooltip("The state to enter when this character is killed.")]
 		public SerializableEntityStateType deathState;
 
-		// Token: 0x040010E6 RID: 4326
+		// Token: 0x040010DB RID: 4315
 		[Tooltip("The state machine(s) to set to idle when this character is killed.")]
 		public EntityStateMachine[] idleStateMachine;
 	}

@@ -8,11 +8,11 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x020002A5 RID: 677
+	// Token: 0x020002A3 RID: 675
 	public class CombatDirector : MonoBehaviour
 	{
-		// Token: 0x1700012E RID: 302
-		// (get) Token: 0x06000DCD RID: 3533 RVA: 0x0000AB85 File Offset: 0x00008D85
+		// Token: 0x1700012A RID: 298
+		// (get) Token: 0x06000DC6 RID: 3526 RVA: 0x0000AB33 File Offset: 0x00008D33
 		private WeightedSelection<DirectorCard> monsterCards
 		{
 			get
@@ -21,12 +21,12 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x1700012F RID: 303
-		// (get) Token: 0x06000DCE RID: 3534 RVA: 0x0000AB91 File Offset: 0x00008D91
-		// (set) Token: 0x06000DCF RID: 3535 RVA: 0x0000AB99 File Offset: 0x00008D99
+		// Token: 0x1700012B RID: 299
+		// (get) Token: 0x06000DC7 RID: 3527 RVA: 0x0000AB3F File Offset: 0x00008D3F
+		// (set) Token: 0x06000DC8 RID: 3528 RVA: 0x0000AB47 File Offset: 0x00008D47
 		public BossGroup bossGroup { get; private set; }
 
-		// Token: 0x06000DD0 RID: 3536 RVA: 0x000559D0 File Offset: 0x00053BD0
+		// Token: 0x06000DC9 RID: 3529 RVA: 0x00055A8C File Offset: 0x00053C8C
 		private void Awake()
 		{
 			if (NetworkServer.active)
@@ -44,13 +44,13 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000DD1 RID: 3537 RVA: 0x0000ABA2 File Offset: 0x00008DA2
+		// Token: 0x06000DCA RID: 3530 RVA: 0x0000AB50 File Offset: 0x00008D50
 		private void OnEnable()
 		{
 			CombatDirector.instancesList.Add(this);
 		}
 
-		// Token: 0x06000DD2 RID: 3538 RVA: 0x00055A74 File Offset: 0x00053C74
+		// Token: 0x06000DCB RID: 3531 RVA: 0x00055B30 File Offset: 0x00053D30
 		private void OnDisable()
 		{
 			CombatDirector.instancesList.Remove(this);
@@ -70,7 +70,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000DD3 RID: 3539 RVA: 0x00055B2C File Offset: 0x00053D2C
+		// Token: 0x06000DCC RID: 3532 RVA: 0x00055BE8 File Offset: 0x00053DE8
 		private void GenerateAmbush(Vector3 victimPosition)
 		{
 			NodeGraph groundNodes = SceneInfo.instance.groundNodes;
@@ -100,7 +100,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000DD4 RID: 3540 RVA: 0x00055C04 File Offset: 0x00053E04
+		// Token: 0x06000DCD RID: 3533 RVA: 0x00055CC0 File Offset: 0x00053EC0
 		private static bool IsAcceptableAmbushSpiderStep(NodeGraph nodeGraph, NodeGraph.NodeIndex startNode, NodeGraphSpider.StepInfo stepInfo)
 		{
 			int num = 0;
@@ -120,13 +120,13 @@ namespace RoR2
 			return false;
 		}
 
-		// Token: 0x06000DD5 RID: 3541 RVA: 0x0000ABAF File Offset: 0x00008DAF
+		// Token: 0x06000DCE RID: 3534 RVA: 0x0000AB5D File Offset: 0x00008D5D
 		public void OverrideCurrentMonsterCard(DirectorCard overrideMonsterCard)
 		{
 			this.currentMonsterCard = overrideMonsterCard;
 		}
 
-		// Token: 0x06000DD6 RID: 3542 RVA: 0x00055C44 File Offset: 0x00053E44
+		// Token: 0x06000DCF RID: 3535 RVA: 0x00055D00 File Offset: 0x00053F00
 		public void SetNextSpawnAsBoss()
 		{
 			WeightedSelection<DirectorCard> weightedSelection = new WeightedSelection<DirectorCard>(8);
@@ -157,7 +157,7 @@ namespace RoR2
 			this.monsterSpawnTimer = -600f;
 		}
 
-		// Token: 0x06000DD7 RID: 3543 RVA: 0x00055D64 File Offset: 0x00053F64
+		// Token: 0x06000DD0 RID: 3536 RVA: 0x00055E20 File Offset: 0x00054020
 		private void PickPlayerAsSpawnTarget()
 		{
 			ReadOnlyCollection<PlayerCharacterMasterController> instances = PlayerCharacterMasterController.instances;
@@ -175,7 +175,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000DD8 RID: 3544 RVA: 0x00055DF4 File Offset: 0x00053FF4
+		// Token: 0x06000DD1 RID: 3537 RVA: 0x00055EB0 File Offset: 0x000540B0
 		private void Simulate(float deltaTime)
 		{
 			if (this.targetPlayers)
@@ -214,7 +214,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000DD9 RID: 3545 RVA: 0x00055F04 File Offset: 0x00054104
+		// Token: 0x06000DD2 RID: 3538 RVA: 0x00055FC0 File Offset: 0x000541C0
 		private bool AttemptSpawnOnTarget(GameObject spawnTarget)
 		{
 			if (spawnTarget)
@@ -300,7 +300,7 @@ namespace RoR2
 			return false;
 		}
 
-		// Token: 0x06000DDA RID: 3546 RVA: 0x0005627C File Offset: 0x0005447C
+		// Token: 0x06000DD3 RID: 3539 RVA: 0x00056338 File Offset: 0x00054538
 		private void FixedUpdate()
 		{
 			if (CombatDirector.cvDirectorCombatDisable.value)
@@ -319,100 +319,100 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x040011BD RID: 4541
+		// Token: 0x040011AB RID: 4523
 		public float monsterCredit;
 
-		// Token: 0x040011BE RID: 4542
+		// Token: 0x040011AC RID: 4524
 		[HideInInspector]
 		public float monsterSpawnTimer;
 
-		// Token: 0x040011BF RID: 4543
+		// Token: 0x040011AD RID: 4525
 		[HideInInspector]
 		public DirectorCard lastAttemptedMonsterCard;
 
-		// Token: 0x040011C0 RID: 4544
+		// Token: 0x040011AE RID: 4526
 		private DirectorCard currentMonsterCard;
 
-		// Token: 0x040011C1 RID: 4545
+		// Token: 0x040011AF RID: 4527
 		private EliteIndex currentActiveEliteIndex;
 
-		// Token: 0x040011C2 RID: 4546
+		// Token: 0x040011B0 RID: 4528
 		public float expRewardCoefficient = 0.2f;
 
-		// Token: 0x040011C3 RID: 4547
+		// Token: 0x040011B1 RID: 4529
 		public float minSeriesSpawnInterval = 0.1f;
 
-		// Token: 0x040011C4 RID: 4548
+		// Token: 0x040011B2 RID: 4530
 		public float maxSeriesSpawnInterval = 1f;
 
-		// Token: 0x040011C5 RID: 4549
+		// Token: 0x040011B3 RID: 4531
 		public float minRerollSpawnInterval = 2.33333325f;
 
-		// Token: 0x040011C6 RID: 4550
+		// Token: 0x040011B4 RID: 4532
 		public float maxRerollSpawnInterval = 4.33333349f;
 
-		// Token: 0x040011C7 RID: 4551
+		// Token: 0x040011B5 RID: 4533
 		public bool isBoss;
 
-		// Token: 0x040011C8 RID: 4552
+		// Token: 0x040011B6 RID: 4534
 		public bool shouldSpawnOneWave;
 
-		// Token: 0x040011C9 RID: 4553
+		// Token: 0x040011B7 RID: 4535
 		public bool targetPlayers = true;
 
-		// Token: 0x040011CA RID: 4554
+		// Token: 0x040011B8 RID: 4536
 		public bool skipSpawnIfTooCheap = true;
 
-		// Token: 0x040011CB RID: 4555
+		// Token: 0x040011B9 RID: 4537
 		private bool hasStartedWave;
 
-		// Token: 0x040011CC RID: 4556
+		// Token: 0x040011BA RID: 4538
 		public RangeFloat[] moneyWaveIntervals;
 
-		// Token: 0x040011CD RID: 4557
+		// Token: 0x040011BB RID: 4539
 		public static readonly List<CombatDirector> instancesList = new List<CombatDirector>();
 
-		// Token: 0x040011CE RID: 4558
+		// Token: 0x040011BC RID: 4540
 		[Tooltip("How much to multiply money wave yield by.")]
 		public float creditMultiplier = 1f;
 
-		// Token: 0x040011CF RID: 4559
+		// Token: 0x040011BD RID: 4541
 		[Tooltip("The coefficient to multiply spawn distances. Used for combat shrines, to keep spawns nearby.")]
 		public float spawnDistanceMultiplier = 1f;
 
-		// Token: 0x040011D1 RID: 4561
+		// Token: 0x040011BF RID: 4543
 		[Tooltip("The position from which a reward will be dropped when the associated BossGroup is defeated.")]
 		public Transform dropPosition;
 
-		// Token: 0x040011D2 RID: 4562
+		// Token: 0x040011C0 RID: 4544
 		[Tooltip("A special effect for when a monster appears will be instantiated at its position. Used for combat shrine.")]
 		public GameObject spawnEffectPrefab;
 
-		// Token: 0x040011D3 RID: 4563
+		// Token: 0x040011C1 RID: 4545
 		private Xoroshiro128Plus rng;
 
-		// Token: 0x040011D4 RID: 4564
+		// Token: 0x040011C2 RID: 4546
 		public GameObject currentSpawnTarget;
 
-		// Token: 0x040011D5 RID: 4565
+		// Token: 0x040011C3 RID: 4547
 		private float playerRetargetTimer;
 
-		// Token: 0x040011D6 RID: 4566
+		// Token: 0x040011C4 RID: 4548
 		public static float maximumNumberToSpawnBeforeSkipping = 4f;
 
-		// Token: 0x040011D7 RID: 4567
+		// Token: 0x040011C5 RID: 4549
 		public static float eliteMultiplierCost = 6f;
 
-		// Token: 0x040011D8 RID: 4568
+		// Token: 0x040011C6 RID: 4550
 		private static readonly BoolConVar cvDirectorCombatDisable = new BoolConVar("director_combat_disable", ConVarFlags.SenderMustBeServer | ConVarFlags.Cheat, "0", "Disables all combat directors.");
 
-		// Token: 0x040011D9 RID: 4569
+		// Token: 0x040011C7 RID: 4551
 		private CombatDirector.DirectorMoneyWave[] moneyWaves;
 
-		// Token: 0x020002A6 RID: 678
+		// Token: 0x020002A4 RID: 676
 		private class DirectorMoneyWave
 		{
-			// Token: 0x06000DDD RID: 3549 RVA: 0x00056364 File Offset: 0x00054564
+			// Token: 0x06000DD6 RID: 3542 RVA: 0x00056420 File Offset: 0x00054620
 			public float Update(float deltaTime, float difficultyCoefficient)
 			{
 				this.timer += deltaTime;
@@ -429,16 +429,16 @@ namespace RoR2
 				return num4;
 			}
 
-			// Token: 0x040011DA RID: 4570
+			// Token: 0x040011C8 RID: 4552
 			public float interval;
 
-			// Token: 0x040011DB RID: 4571
+			// Token: 0x040011C9 RID: 4553
 			public float timer;
 
-			// Token: 0x040011DC RID: 4572
+			// Token: 0x040011CA RID: 4554
 			public float multiplier;
 
-			// Token: 0x040011DD RID: 4573
+			// Token: 0x040011CB RID: 4555
 			private float accumulatedAward;
 		}
 	}

@@ -8,7 +8,7 @@ namespace RoR2
 	// Token: 0x0200025A RID: 602
 	public class AnimationEvents : MonoBehaviour
 	{
-		// Token: 0x06000B34 RID: 2868 RVA: 0x0004B558 File Offset: 0x00049758
+		// Token: 0x06000B31 RID: 2865 RVA: 0x0004B34C File Offset: 0x0004954C
 		private void Start()
 		{
 			this.childLocator = base.GetComponent<ChildLocator>();
@@ -25,7 +25,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000B35 RID: 2869 RVA: 0x0004B5D8 File Offset: 0x000497D8
+		// Token: 0x06000B32 RID: 2866 RVA: 0x0004B3CC File Offset: 0x000495CC
 		public void UpdateIKState(AnimationEvent animationEvent)
 		{
 			IIKTargetBehavior component = this.childLocator.FindChild(animationEvent.stringParameter).GetComponent<IIKTargetBehavior>();
@@ -35,13 +35,13 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000B36 RID: 2870 RVA: 0x00009008 File Offset: 0x00007208
+		// Token: 0x06000B33 RID: 2867 RVA: 0x00008FE3 File Offset: 0x000071E3
 		public void PlaySound(string soundString)
 		{
 			Util.PlaySound(soundString, this.soundCenter ? this.soundCenter : this.body);
 		}
 
-		// Token: 0x06000B37 RID: 2871 RVA: 0x0000902C File Offset: 0x0000722C
+		// Token: 0x06000B34 RID: 2868 RVA: 0x00009007 File Offset: 0x00007207
 		public void NormalizeToFloor()
 		{
 			if (this.modelLocator)
@@ -50,7 +50,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000B38 RID: 2872 RVA: 0x0004B60C File Offset: 0x0004980C
+		// Token: 0x06000B35 RID: 2869 RVA: 0x0004B400 File Offset: 0x00049600
 		public void CreateEffect(AnimationEvent animationEvent)
 		{
 			Transform transform = this.childLocator.FindChild(animationEvent.stringParameter);
@@ -60,7 +60,7 @@ namespace RoR2
 			EffectManager.instance.SpawnEffect((GameObject)animationEvent.objectReferenceParameter, effectData, animationEvent.intParameter != 0);
 		}
 
-		// Token: 0x06000B39 RID: 2873 RVA: 0x0004B67C File Offset: 0x0004987C
+		// Token: 0x06000B36 RID: 2870 RVA: 0x0004B470 File Offset: 0x00049670
 		public void CreatePrefab(AnimationEvent animationEvent)
 		{
 			GameObject gameObject = (GameObject)animationEvent.objectReferenceParameter;
@@ -91,7 +91,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000B3A RID: 2874 RVA: 0x0004B73C File Offset: 0x0004993C
+		// Token: 0x06000B37 RID: 2871 RVA: 0x0004B530 File Offset: 0x00049730
 		public void ItemDrop()
 		{
 			if (NetworkServer.active && this.entityLocator)
@@ -106,7 +106,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000B3B RID: 2875 RVA: 0x0004B788 File Offset: 0x00049988
+		// Token: 0x06000B38 RID: 2872 RVA: 0x0004B57C File Offset: 0x0004977C
 		public void BeginPrint(AnimationEvent animationEvent)
 		{
 			if (this.meshRenderer)
@@ -121,7 +121,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000B3C RID: 2876 RVA: 0x00009047 File Offset: 0x00007247
+		// Token: 0x06000B39 RID: 2873 RVA: 0x00009022 File Offset: 0x00007222
 		private IEnumerator startPrint(float maxPrintTime, float maxPrintHeight, MaterialPropertyBlock printPropertyBlock)
 		{
 			if (this.meshRenderer)
@@ -140,7 +140,7 @@ namespace RoR2
 			yield break;
 		}
 
-		// Token: 0x06000B3D RID: 2877 RVA: 0x0004B7EC File Offset: 0x000499EC
+		// Token: 0x06000B3A RID: 2874 RVA: 0x0004B5E0 File Offset: 0x000497E0
 		public void SetChildEnable(AnimationEvent animationEvent)
 		{
 			string stringParameter = animationEvent.stringParameter;
@@ -155,7 +155,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000B3E RID: 2878 RVA: 0x0004B83C File Offset: 0x00049A3C
+		// Token: 0x06000B3B RID: 2875 RVA: 0x0004B630 File Offset: 0x00049830
 		public void SwapMaterial(AnimationEvent animationEvent)
 		{
 			Material material = (Material)animationEvent.objectReferenceParameter;
@@ -165,31 +165,31 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04000F44 RID: 3908
+		// Token: 0x04000F3E RID: 3902
 		public GameObject soundCenter;
 
-		// Token: 0x04000F45 RID: 3909
+		// Token: 0x04000F3F RID: 3903
 		private GameObject body;
 
-		// Token: 0x04000F46 RID: 3910
+		// Token: 0x04000F40 RID: 3904
 		private CharacterModel characterModel;
 
-		// Token: 0x04000F47 RID: 3911
+		// Token: 0x04000F41 RID: 3905
 		private ChildLocator childLocator;
 
-		// Token: 0x04000F48 RID: 3912
+		// Token: 0x04000F42 RID: 3906
 		private EntityLocator entityLocator;
 
-		// Token: 0x04000F49 RID: 3913
+		// Token: 0x04000F43 RID: 3907
 		private Renderer meshRenderer;
 
-		// Token: 0x04000F4A RID: 3914
+		// Token: 0x04000F44 RID: 3908
 		private ModelLocator modelLocator;
 
-		// Token: 0x04000F4B RID: 3915
+		// Token: 0x04000F45 RID: 3909
 		private float printHeight;
 
-		// Token: 0x04000F4C RID: 3916
+		// Token: 0x04000F46 RID: 3910
 		private float printTime;
 	}
 }

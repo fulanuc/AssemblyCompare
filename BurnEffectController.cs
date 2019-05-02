@@ -7,7 +7,7 @@ namespace RoR2
 	// Token: 0x02000274 RID: 628
 	public class BurnEffectController : MonoBehaviour
 	{
-		// Token: 0x06000BD9 RID: 3033 RVA: 0x0004D30C File Offset: 0x0004B50C
+		// Token: 0x06000BD0 RID: 3024 RVA: 0x0004D100 File Offset: 0x0004B300
 		[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
 		private static void Init()
 		{
@@ -27,7 +27,7 @@ namespace RoR2
 			};
 		}
 
-		// Token: 0x06000BDA RID: 3034 RVA: 0x0004D39C File Offset: 0x0004B59C
+		// Token: 0x06000BD1 RID: 3025 RVA: 0x0004D190 File Offset: 0x0004B390
 		private void Start()
 		{
 			Util.PlaySound(this.effectType.startSound, base.gameObject);
@@ -56,7 +56,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000BDB RID: 3035 RVA: 0x0004D470 File Offset: 0x0004B670
+		// Token: 0x06000BD2 RID: 3026 RVA: 0x0004D264 File Offset: 0x0004B464
 		private void OnDestroy()
 		{
 			Util.PlaySound(this.effectType.stopSound, base.gameObject);
@@ -75,7 +75,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000BDC RID: 3036 RVA: 0x0004D524 File Offset: 0x0004B724
+		// Token: 0x06000BD3 RID: 3027 RVA: 0x0004D318 File Offset: 0x0004B518
 		private GameObject AddFireParticles(Renderer modelRenderer, GameObject target)
 		{
 			if (modelRenderer is MeshRenderer || modelRenderer is SkinnedMeshRenderer)
@@ -111,43 +111,43 @@ namespace RoR2
 			return null;
 		}
 
-		// Token: 0x04000FC3 RID: 4035
+		// Token: 0x04000FBD RID: 4029
 		private List<GameObject> particles;
 
-		// Token: 0x04000FC4 RID: 4036
+		// Token: 0x04000FBE RID: 4030
 		public GameObject target;
 
-		// Token: 0x04000FC5 RID: 4037
+		// Token: 0x04000FBF RID: 4031
 		private TemporaryOverlay temporaryOverlay;
 
-		// Token: 0x04000FC6 RID: 4038
+		// Token: 0x04000FC0 RID: 4032
 		private int soundID;
 
-		// Token: 0x04000FC7 RID: 4039
+		// Token: 0x04000FC1 RID: 4033
 		public BurnEffectController.EffectParams effectType = BurnEffectController.normalEffect;
 
-		// Token: 0x04000FC8 RID: 4040
+		// Token: 0x04000FC2 RID: 4034
 		public static BurnEffectController.EffectParams normalEffect;
 
-		// Token: 0x04000FC9 RID: 4041
+		// Token: 0x04000FC3 RID: 4035
 		public static BurnEffectController.EffectParams helfireEffect;
 
-		// Token: 0x04000FCA RID: 4042
+		// Token: 0x04000FC4 RID: 4036
 		public float fireParticleSize = 5f;
 
 		// Token: 0x02000275 RID: 629
 		public class EffectParams
 		{
-			// Token: 0x04000FCB RID: 4043
+			// Token: 0x04000FC5 RID: 4037
 			public string startSound;
 
-			// Token: 0x04000FCC RID: 4044
+			// Token: 0x04000FC6 RID: 4038
 			public string stopSound;
 
-			// Token: 0x04000FCD RID: 4045
+			// Token: 0x04000FC7 RID: 4039
 			public Material overlayMaterial;
 
-			// Token: 0x04000FCE RID: 4046
+			// Token: 0x04000FC8 RID: 4040
 			public GameObject fireEffectPrefab;
 		}
 	}

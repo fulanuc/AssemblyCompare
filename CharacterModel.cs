@@ -10,9 +10,9 @@ namespace RoR2
 	// Token: 0x02000290 RID: 656
 	public class CharacterModel : MonoBehaviour
 	{
-		// Token: 0x17000115 RID: 277
-		// (get) Token: 0x06000D29 RID: 3369 RVA: 0x0000A530 File Offset: 0x00008730
-		// (set) Token: 0x06000D2A RID: 3370 RVA: 0x0000A538 File Offset: 0x00008738
+		// Token: 0x17000112 RID: 274
+		// (get) Token: 0x06000D28 RID: 3368 RVA: 0x0000A4CB File Offset: 0x000086CB
+		// (set) Token: 0x06000D29 RID: 3369 RVA: 0x0000A4D3 File Offset: 0x000086D3
 		public VisibilityLevel visibility
 		{
 			get
@@ -29,9 +29,9 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x17000116 RID: 278
-		// (get) Token: 0x06000D2B RID: 3371 RVA: 0x0000A551 File Offset: 0x00008751
-		// (set) Token: 0x06000D2C RID: 3372 RVA: 0x0000A559 File Offset: 0x00008759
+		// Token: 0x17000113 RID: 275
+		// (get) Token: 0x06000D2A RID: 3370 RVA: 0x0000A4EC File Offset: 0x000086EC
+		// (set) Token: 0x06000D2B RID: 3371 RVA: 0x0000A4F4 File Offset: 0x000086F4
 		public bool isGhost
 		{
 			get
@@ -48,13 +48,14 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000D2D RID: 3373 RVA: 0x0005366C File Offset: 0x0005186C
+		// Token: 0x06000D2C RID: 3372 RVA: 0x000537E0 File Offset: 0x000519E0
 		[RuntimeInitializeOnLoadMethod]
 		private static void Init()
 		{
 			CharacterModel.revealedMaterial = Resources.Load<Material>("Materials/matRevealedEffect");
 			CharacterModel.cloakedMaterial = Resources.Load<Material>("Materials/matCloakedEffect");
 			CharacterModel.ghostMaterial = Resources.Load<Material>("Materials/matGhostEffect");
+			CharacterModel.repairModeMaterial = Resources.Load<Material>("Materials/matRepairModeOverlay");
 			CharacterModel.wolfhatMaterial = Resources.Load<Material>("Materials/matWolfhatOverlay");
 			CharacterModel.energyShieldMaterial = Resources.Load<Material>("Materials/matEnergyShield");
 			CharacterModel.beetleJuiceMaterial = Resources.Load<Material>("Materials/matBeetleJuice");
@@ -66,7 +67,7 @@ namespace RoR2
 			CharacterModel.bellBuffMaterial = Resources.Load<Material>("Materials/matBellBuff");
 		}
 
-		// Token: 0x06000D2E RID: 3374 RVA: 0x00053730 File Offset: 0x00051930
+		// Token: 0x06000D2D RID: 3373 RVA: 0x000538B0 File Offset: 0x00051AB0
 		private void Awake()
 		{
 			this.childLocator = base.GetComponent<ChildLocator>();
@@ -102,14 +103,14 @@ namespace RoR2
 			this.propertyStorage = new MaterialPropertyBlock();
 		}
 
-		// Token: 0x06000D2F RID: 3375 RVA: 0x0000A572 File Offset: 0x00008772
+		// Token: 0x06000D2E RID: 3374 RVA: 0x0000A50D File Offset: 0x0000870D
 		private void Start()
 		{
 			this.visibility = VisibilityLevel.Invisible;
 			this.UpdateMaterials();
 		}
 
-		// Token: 0x06000D30 RID: 3376 RVA: 0x000537FC File Offset: 0x000519FC
+		// Token: 0x06000D2F RID: 3375 RVA: 0x0005397C File Offset: 0x00051B7C
 		private static void RefreshObstructorsForCamera(CameraRigController cameraRigController)
 		{
 			Vector3 position = cameraRigController.transform.position;
@@ -120,7 +121,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000D31 RID: 3377 RVA: 0x00053864 File Offset: 0x00051A64
+		// Token: 0x06000D30 RID: 3376 RVA: 0x000539E4 File Offset: 0x00051BE4
 		private float GetNearestHurtBoxDistance(Vector3 cameraPosition)
 		{
 			float num = float.PositiveInfinity;
@@ -135,7 +136,7 @@ namespace RoR2
 			return num;
 		}
 
-		// Token: 0x06000D32 RID: 3378 RVA: 0x000538C8 File Offset: 0x00051AC8
+		// Token: 0x06000D31 RID: 3377 RVA: 0x00053A48 File Offset: 0x00051C48
 		private void UpdateForCamera(CameraRigController cameraRigController)
 		{
 			this.visibility = VisibilityLevel.Visible;
@@ -172,13 +173,13 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000D33 RID: 3379 RVA: 0x000539A0 File Offset: 0x00051BA0
+		// Token: 0x06000D32 RID: 3378 RVA: 0x00053B20 File Offset: 0x00051D20
 		static CharacterModel()
 		{
 			SceneCamera.onSceneCameraPreRender += CharacterModel.OnSceneCameraPreRender;
 		}
 
-		// Token: 0x06000D34 RID: 3380 RVA: 0x00053A14 File Offset: 0x00051C14
+		// Token: 0x06000D33 RID: 3379 RVA: 0x00053B94 File Offset: 0x00051D94
 		private static void OnSceneCameraPreRender(SceneCamera sceneCamera)
 		{
 			if (sceneCamera.cameraRigController)
@@ -194,7 +195,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000D35 RID: 3381 RVA: 0x0000A581 File Offset: 0x00008781
+		// Token: 0x06000D34 RID: 3380 RVA: 0x0000A51C File Offset: 0x0000871C
 		private void OnEnable()
 		{
 			CharacterModel.instancesList.Add(this);
@@ -204,7 +205,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000D36 RID: 3382 RVA: 0x0000A5AD File Offset: 0x000087AD
+		// Token: 0x06000D35 RID: 3381 RVA: 0x0000A548 File Offset: 0x00008748
 		private void OnDisable()
 		{
 			CharacterModel.instancesList.Remove(this);
@@ -214,7 +215,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000D37 RID: 3383 RVA: 0x00053A74 File Offset: 0x00051C74
+		// Token: 0x06000D36 RID: 3382 RVA: 0x00053BF4 File Offset: 0x00051DF4
 		private void OnInventoryChanged()
 		{
 			if (this.body)
@@ -229,7 +230,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000D38 RID: 3384 RVA: 0x00053AC4 File Offset: 0x00051CC4
+		// Token: 0x06000D37 RID: 3383 RVA: 0x00053C44 File Offset: 0x00051E44
 		private void UpdateMaterials()
 		{
 			if (this.visibility == VisibilityLevel.Invisible)
@@ -288,7 +289,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000D39 RID: 3385 RVA: 0x00053D70 File Offset: 0x00051F70
+		// Token: 0x06000D38 RID: 3384 RVA: 0x00053EF0 File Offset: 0x000520F0
 		private void UpdateOverlays()
 		{
 			for (int i = 0; i < this.overlaysCount; i++)
@@ -318,68 +319,82 @@ namespace RoR2
 				bool flag = this.body.HasBuff(BuffIndex.ClayGoo);
 				Inventory inventory = this.body.inventory;
 				this.isGhost = (inventory != null && inventory.GetItemCount(ItemIndex.Ghost) > 0);
-				if (this.body.HasBuff(BuffIndex.AttackSpeedOnCrit))
+				if (this.body.HasBuff(BuffIndex.RepairMode))
 				{
 					Material[] array = this.currentOverlays;
 					int j = this.overlaysCount;
 					this.overlaysCount = j + 1;
-					array[j] = CharacterModel.wolfhatMaterial;
+					array[j] = CharacterModel.repairModeMaterial;
 				}
-				if (this.body.healthComponent && this.body.healthComponent.shield > 0f)
+				if (this.body.HasBuff(BuffIndex.AttackSpeedOnCrit))
 				{
 					Material[] array2 = this.currentOverlays;
 					int j = this.overlaysCount;
 					this.overlaysCount = j + 1;
-					array2[j] = CharacterModel.energyShieldMaterial;
+					array2[j] = CharacterModel.wolfhatMaterial;
 				}
-				if (this.body.HasBuff(BuffIndex.FullCrit))
+				if (this.body.healthComponent && this.body.healthComponent.shield > 0f)
 				{
 					Material[] array3 = this.currentOverlays;
 					int j = this.overlaysCount;
 					this.overlaysCount = j + 1;
-					array3[j] = CharacterModel.fullCritMaterial;
+					array3[j] = CharacterModel.energyShieldMaterial;
 				}
-				if (this.body.HasBuff(BuffIndex.BeetleJuice))
+				if (this.body.HasBuff(BuffIndex.FullCrit))
 				{
 					Material[] array4 = this.currentOverlays;
 					int j = this.overlaysCount;
 					this.overlaysCount = j + 1;
-					array4[j] = CharacterModel.beetleJuiceMaterial;
+					array4[j] = CharacterModel.fullCritMaterial;
 				}
-				if (this.body.HasBuff(BuffIndex.Immune))
+				if (this.body.HasBuff(BuffIndex.BeetleJuice))
 				{
 					Material[] array5 = this.currentOverlays;
 					int j = this.overlaysCount;
 					this.overlaysCount = j + 1;
-					array5[j] = CharacterModel.immuneMaterial;
+					array5[j] = CharacterModel.beetleJuiceMaterial;
 				}
-				if (this.body.HasBuff(BuffIndex.Slow80))
+				if (this.body.HasBuff(BuffIndex.Immune))
 				{
 					Material[] array6 = this.currentOverlays;
 					int j = this.overlaysCount;
 					this.overlaysCount = j + 1;
-					array6[j] = CharacterModel.slow80Material;
+					array6[j] = CharacterModel.immuneMaterial;
 				}
-				if (flag)
+				if (this.body.HasBuff(BuffIndex.Slow80))
 				{
 					Material[] array7 = this.currentOverlays;
 					int j = this.overlaysCount;
 					this.overlaysCount = j + 1;
-					array7[j] = CharacterModel.clayGooMaterial;
+					array7[j] = CharacterModel.slow80Material;
 				}
-				if (this.body.inventory && this.body.inventory.GetItemCount(ItemIndex.LunarDagger) > 0)
+				if (this.body.HasBuff(BuffIndex.Invincibility))
 				{
 					Material[] array8 = this.currentOverlays;
 					int j = this.overlaysCount;
 					this.overlaysCount = j + 1;
-					array8[j] = CharacterModel.brittleMaterial;
+					array8[j] = CharacterModel.bellBuffMaterial;
 				}
-				if (this.isGhost)
+				if (flag)
 				{
 					Material[] array9 = this.currentOverlays;
 					int j = this.overlaysCount;
 					this.overlaysCount = j + 1;
-					array9[j] = CharacterModel.ghostMaterial;
+					array9[j] = CharacterModel.clayGooMaterial;
+				}
+				if (this.body.inventory && this.body.inventory.GetItemCount(ItemIndex.LunarDagger) > 0)
+				{
+					Material[] array10 = this.currentOverlays;
+					int j = this.overlaysCount;
+					this.overlaysCount = j + 1;
+					array10[j] = CharacterModel.brittleMaterial;
+				}
+				if (this.isGhost)
+				{
+					Material[] array11 = this.currentOverlays;
+					int j = this.overlaysCount;
+					this.overlaysCount = j + 1;
+					array11[j] = CharacterModel.ghostMaterial;
 				}
 				if (this.body.equipmentSlot)
 				{
@@ -425,15 +440,15 @@ namespace RoR2
 			}
 			for (int k = 0; k < this.temporaryOverlays.Count; k++)
 			{
-				Material[] array11 = this.currentOverlays;
+				Material[] array13 = this.currentOverlays;
 				int j = this.overlaysCount;
 				this.overlaysCount = j + 1;
-				array11[j] = this.temporaryOverlays[k].materialInstance;
+				array13[j] = this.temporaryOverlays[k].materialInstance;
 			}
 			this.materialsDirty = true;
 		}
 
-		// Token: 0x06000D3A RID: 3386 RVA: 0x000541A0 File Offset: 0x000523A0
+		// Token: 0x06000D39 RID: 3385 RVA: 0x00054378 File Offset: 0x00052578
 		private void UpdateRendererMaterials(Renderer renderer, Material defaultMaterial, bool ignoreOverlays)
 		{
 			Material material = null;
@@ -479,7 +494,7 @@ namespace RoR2
 			renderer.sharedMaterials = array;
 		}
 
-		// Token: 0x06000D3B RID: 3387 RVA: 0x00054264 File Offset: 0x00052464
+		// Token: 0x06000D3A RID: 3386 RVA: 0x0005443C File Offset: 0x0005263C
 		private void InstantiateDisplayRuleGroup(DisplayRuleGroup displayRuleGroup, ItemIndex itemIndex, EquipmentIndex equipmentIndex)
 		{
 			if (displayRuleGroup.rules != null)
@@ -519,7 +534,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000D3C RID: 3388 RVA: 0x00054370 File Offset: 0x00052570
+		// Token: 0x06000D3B RID: 3387 RVA: 0x00054548 File Offset: 0x00052748
 		private void SetEquipmentDisplay(EquipmentIndex newEquipmentIndex)
 		{
 			if (newEquipmentIndex == this.currentEquipmentDisplayIndex)
@@ -547,7 +562,7 @@ namespace RoR2
 			this.InstantiateDisplayRuleGroup(equipmentDisplayRuleGroup, ItemIndex.None, newEquipmentIndex);
 		}
 
-		// Token: 0x06000D3D RID: 3389 RVA: 0x00054440 File Offset: 0x00052640
+		// Token: 0x06000D3C RID: 3388 RVA: 0x00054618 File Offset: 0x00052818
 		private void EnableItemDisplay(ItemIndex itemIndex)
 		{
 			if (this.enabledItemDisplays[(int)itemIndex])
@@ -559,7 +574,7 @@ namespace RoR2
 			this.InstantiateDisplayRuleGroup(itemDisplayRuleGroup, itemIndex, EquipmentIndex.None);
 		}
 
-		// Token: 0x06000D3E RID: 3390 RVA: 0x00054480 File Offset: 0x00052680
+		// Token: 0x06000D3D RID: 3389 RVA: 0x00054658 File Offset: 0x00052858
 		private void DisableItemDisplay(ItemIndex itemIndex)
 		{
 			if (!this.enabledItemDisplays[(int)itemIndex])
@@ -585,7 +600,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000D3F RID: 3391 RVA: 0x00054544 File Offset: 0x00052744
+		// Token: 0x06000D3E RID: 3390 RVA: 0x0005471C File Offset: 0x0005291C
 		public void UpdateItemDisplay(Inventory inventory)
 		{
 			for (ItemIndex itemIndex = ItemIndex.Syringe; itemIndex < ItemIndex.Count; itemIndex++)
@@ -601,7 +616,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000D40 RID: 3392 RVA: 0x00054578 File Offset: 0x00052778
+		// Token: 0x06000D3F RID: 3391 RVA: 0x00054750 File Offset: 0x00052950
 		public void HighlightItemDisplay(ItemIndex itemIndex)
 		{
 			if (!this.enabledItemDisplays[(int)itemIndex])
@@ -645,7 +660,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000D41 RID: 3393 RVA: 0x0005466C File Offset: 0x0005286C
+		// Token: 0x06000D40 RID: 3392 RVA: 0x00054844 File Offset: 0x00052A44
 		public List<GameObject> GetEquipmentDisplayObjects(EquipmentIndex equipmentIndex)
 		{
 			List<GameObject> list = new List<GameObject>();
@@ -660,161 +675,164 @@ namespace RoR2
 			return list;
 		}
 
-		// Token: 0x0400112A RID: 4394
+		// Token: 0x0400111F RID: 4383
 		public CharacterBody body;
 
-		// Token: 0x0400112B RID: 4395
+		// Token: 0x04001120 RID: 4384
 		public ItemDisplayRuleSet itemDisplayRuleSet;
 
-		// Token: 0x0400112C RID: 4396
+		// Token: 0x04001121 RID: 4385
 		public CharacterModel.RendererInfo[] rendererInfos;
 
-		// Token: 0x0400112D RID: 4397
+		// Token: 0x04001122 RID: 4386
 		private ChildLocator childLocator;
 
-		// Token: 0x0400112E RID: 4398
+		// Token: 0x04001123 RID: 4387
 		private GameObject goldAffixEffect;
 
-		// Token: 0x0400112F RID: 4399
+		// Token: 0x04001124 RID: 4388
 		private static readonly CharacterModel.HurtBoxInfo[] emptyHurtBoxInfos = new CharacterModel.HurtBoxInfo[0];
 
-		// Token: 0x04001130 RID: 4400
+		// Token: 0x04001125 RID: 4389
 		private CharacterModel.HurtBoxInfo[] hurtBoxInfos = CharacterModel.emptyHurtBoxInfos;
 
-		// Token: 0x04001131 RID: 4401
+		// Token: 0x04001126 RID: 4390
 		private Transform coreTransform;
 
-		// Token: 0x04001132 RID: 4402
+		// Token: 0x04001127 RID: 4391
 		public static Material revealedMaterial;
 
-		// Token: 0x04001133 RID: 4403
+		// Token: 0x04001128 RID: 4392
 		public static Material cloakedMaterial;
 
-		// Token: 0x04001134 RID: 4404
+		// Token: 0x04001129 RID: 4393
 		public static Material ghostMaterial;
 
-		// Token: 0x04001135 RID: 4405
+		// Token: 0x0400112A RID: 4394
 		public static Material bellBuffMaterial;
 
-		// Token: 0x04001136 RID: 4406
+		// Token: 0x0400112B RID: 4395
+		public static Material repairModeMaterial;
+
+		// Token: 0x0400112C RID: 4396
 		public static Material wolfhatMaterial;
 
-		// Token: 0x04001137 RID: 4407
+		// Token: 0x0400112D RID: 4397
 		public static Material energyShieldMaterial;
 
-		// Token: 0x04001138 RID: 4408
+		// Token: 0x0400112E RID: 4398
 		public static Material fullCritMaterial;
 
-		// Token: 0x04001139 RID: 4409
+		// Token: 0x0400112F RID: 4399
 		public static Material beetleJuiceMaterial;
 
-		// Token: 0x0400113A RID: 4410
+		// Token: 0x04001130 RID: 4400
 		public static Material brittleMaterial;
 
-		// Token: 0x0400113B RID: 4411
+		// Token: 0x04001131 RID: 4401
 		public static Material clayGooMaterial;
 
-		// Token: 0x0400113C RID: 4412
+		// Token: 0x04001132 RID: 4402
 		public static Material slow80Material;
 
-		// Token: 0x0400113D RID: 4413
+		// Token: 0x04001133 RID: 4403
 		public static Material immuneMaterial;
 
-		// Token: 0x0400113E RID: 4414
+		// Token: 0x04001134 RID: 4404
 		private static Color hitFlashBaseColor = new Color32(193, 108, 51, byte.MaxValue);
 
-		// Token: 0x0400113F RID: 4415
+		// Token: 0x04001135 RID: 4405
 		private static Color hitFlashShieldColor = new Color32(132, 159, byte.MaxValue, byte.MaxValue);
 
-		// Token: 0x04001140 RID: 4416
+		// Token: 0x04001136 RID: 4406
 		private const float hitFlashDuration = 0.15f;
 
-		// Token: 0x04001141 RID: 4417
+		// Token: 0x04001137 RID: 4407
 		private VisibilityLevel _visibility = VisibilityLevel.Visible;
 
-		// Token: 0x04001142 RID: 4418
+		// Token: 0x04001138 RID: 4408
 		private bool _isGhost;
 
-		// Token: 0x04001143 RID: 4419
+		// Token: 0x04001139 RID: 4409
 		[HideInInspector]
 		public int invisibilityCount;
 
-		// Token: 0x04001144 RID: 4420
+		// Token: 0x0400113A RID: 4410
 		[NonSerialized]
 		public List<TemporaryOverlay> temporaryOverlays = new List<TemporaryOverlay>();
 
-		// Token: 0x04001145 RID: 4421
+		// Token: 0x0400113B RID: 4411
 		private bool materialsDirty = true;
 
-		// Token: 0x04001146 RID: 4422
+		// Token: 0x0400113C RID: 4412
 		private EquipmentIndex inventoryEquipmentIndex = EquipmentIndex.None;
 
-		// Token: 0x04001147 RID: 4423
+		// Token: 0x0400113D RID: 4413
 		private MaterialPropertyBlock propertyStorage;
 
-		// Token: 0x04001148 RID: 4424
+		// Token: 0x0400113E RID: 4414
 		private int myEliteIndex = -1;
 
-		// Token: 0x04001149 RID: 4425
+		// Token: 0x0400113F RID: 4415
 		private float fade = 1f;
 
-		// Token: 0x0400114A RID: 4426
+		// Token: 0x04001140 RID: 4416
 		private float firstPersonFade = 1f;
 
-		// Token: 0x0400114B RID: 4427
+		// Token: 0x04001141 RID: 4417
 		private CharacterModel.LimbFlagSet limbFlagSet = new CharacterModel.LimbFlagSet();
 
-		// Token: 0x0400114C RID: 4428
+		// Token: 0x04001142 RID: 4418
 		private static List<CharacterModel> instancesList = new List<CharacterModel>();
 
-		// Token: 0x0400114D RID: 4429
+		// Token: 0x04001143 RID: 4419
 		private BitArray enabledItemDisplays = new BitArray(78);
 
-		// Token: 0x0400114E RID: 4430
+		// Token: 0x04001144 RID: 4420
 		private List<CharacterModel.ParentedPrefabDisplay> parentedPrefabDisplays = new List<CharacterModel.ParentedPrefabDisplay>();
 
-		// Token: 0x0400114F RID: 4431
+		// Token: 0x04001145 RID: 4421
 		private List<CharacterModel.LimbMaskDisplay> limbMaskDisplays = new List<CharacterModel.LimbMaskDisplay>();
 
-		// Token: 0x04001150 RID: 4432
+		// Token: 0x04001146 RID: 4422
 		private const int maxOverlays = 8;
 
-		// Token: 0x04001151 RID: 4433
+		// Token: 0x04001147 RID: 4423
 		private Material[] currentOverlays = new Material[8];
 
-		// Token: 0x04001152 RID: 4434
+		// Token: 0x04001148 RID: 4424
 		private int overlaysCount;
 
-		// Token: 0x04001153 RID: 4435
+		// Token: 0x04001149 RID: 4425
 		private bool wasPreviouslyClayGooed;
 
-		// Token: 0x04001154 RID: 4436
+		// Token: 0x0400114A RID: 4426
 		private EquipmentIndex currentEquipmentDisplayIndex = EquipmentIndex.None;
 
 		// Token: 0x02000291 RID: 657
 		[Serializable]
 		public struct RendererInfo
 		{
-			// Token: 0x04001155 RID: 4437
+			// Token: 0x0400114B RID: 4427
 			public Renderer renderer;
 
-			// Token: 0x04001156 RID: 4438
+			// Token: 0x0400114C RID: 4428
 			public Material defaultMaterial;
 
-			// Token: 0x04001157 RID: 4439
+			// Token: 0x0400114D RID: 4429
 			public ShadowCastingMode defaultShadowCastingMode;
 
-			// Token: 0x04001158 RID: 4440
+			// Token: 0x0400114E RID: 4430
 			public bool ignoreOverlays;
 		}
 
 		// Token: 0x02000292 RID: 658
 		private struct HurtBoxInfo
 		{
-			// Token: 0x04001159 RID: 4441
+			// Token: 0x0400114F RID: 4431
 			public Transform transform;
 
-			// Token: 0x0400115A RID: 4442
+			// Token: 0x04001150 RID: 4432
 			public float estimatedRadius;
 		}
 
@@ -822,18 +840,18 @@ namespace RoR2
 		[Serializable]
 		private class LimbFlagSet
 		{
-			// Token: 0x17000117 RID: 279
-			// (get) Token: 0x06000D43 RID: 3395 RVA: 0x0000A5DA File Offset: 0x000087DA
-			// (set) Token: 0x06000D44 RID: 3396 RVA: 0x0000A5E2 File Offset: 0x000087E2
+			// Token: 0x17000114 RID: 276
+			// (get) Token: 0x06000D42 RID: 3394 RVA: 0x0000A575 File Offset: 0x00008775
+			// (set) Token: 0x06000D43 RID: 3395 RVA: 0x0000A57D File Offset: 0x0000877D
 			public float materialMaskValue { get; private set; }
 
-			// Token: 0x06000D45 RID: 3397 RVA: 0x0000A5EB File Offset: 0x000087EB
+			// Token: 0x06000D44 RID: 3396 RVA: 0x0000A586 File Offset: 0x00008786
 			public LimbFlagSet()
 			{
 				this.materialMaskValue = 1f;
 			}
 
-			// Token: 0x06000D46 RID: 3398 RVA: 0x00054764 File Offset: 0x00052964
+			// Token: 0x06000D45 RID: 3397 RVA: 0x0005493C File Offset: 0x00052B3C
 			static LimbFlagSet()
 			{
 				int[] array = new int[]
@@ -859,13 +877,13 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x06000D47 RID: 3399 RVA: 0x0000A60A File Offset: 0x0000880A
+			// Token: 0x06000D46 RID: 3398 RVA: 0x0000A5A5 File Offset: 0x000087A5
 			private static float ConvertLimbFlagsToMaterialMask(LimbFlags limbFlags)
 			{
 				return CharacterModel.LimbFlagSet.primeConversionTable[(int)limbFlags];
 			}
 
-			// Token: 0x06000D48 RID: 3400 RVA: 0x000547C8 File Offset: 0x000529C8
+			// Token: 0x06000D47 RID: 3399 RVA: 0x000549A0 File Offset: 0x00052BA0
 			public void AddFlags(LimbFlags addedFlags)
 			{
 				LimbFlags limbFlags = this.flags;
@@ -885,7 +903,7 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x06000D49 RID: 3401 RVA: 0x00054834 File Offset: 0x00052A34
+			// Token: 0x06000D48 RID: 3400 RVA: 0x00054A0C File Offset: 0x00052C0C
 			public void RemoveFlags(LimbFlags removedFlags)
 			{
 				LimbFlags limbFlags = this.flags;
@@ -909,30 +927,30 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x0400115B RID: 4443
+			// Token: 0x04001151 RID: 4433
 			private readonly byte[] flagCounts = new byte[5];
 
-			// Token: 0x0400115C RID: 4444
+			// Token: 0x04001152 RID: 4434
 			private LimbFlags flags;
 
-			// Token: 0x0400115E RID: 4446
+			// Token: 0x04001154 RID: 4436
 			private static readonly float[] primeConversionTable;
 		}
 
 		// Token: 0x02000294 RID: 660
 		private struct ParentedPrefabDisplay
 		{
-			// Token: 0x17000118 RID: 280
-			// (get) Token: 0x06000D4A RID: 3402 RVA: 0x0000A613 File Offset: 0x00008813
-			// (set) Token: 0x06000D4B RID: 3403 RVA: 0x0000A61B File Offset: 0x0000881B
+			// Token: 0x17000115 RID: 277
+			// (get) Token: 0x06000D49 RID: 3401 RVA: 0x0000A5AE File Offset: 0x000087AE
+			// (set) Token: 0x06000D4A RID: 3402 RVA: 0x0000A5B6 File Offset: 0x000087B6
 			public GameObject instance { get; private set; }
 
-			// Token: 0x17000119 RID: 281
-			// (get) Token: 0x06000D4C RID: 3404 RVA: 0x0000A624 File Offset: 0x00008824
-			// (set) Token: 0x06000D4D RID: 3405 RVA: 0x0000A62C File Offset: 0x0000882C
+			// Token: 0x17000116 RID: 278
+			// (get) Token: 0x06000D4B RID: 3403 RVA: 0x0000A5BF File Offset: 0x000087BF
+			// (set) Token: 0x06000D4C RID: 3404 RVA: 0x0000A5C7 File Offset: 0x000087C7
 			public ItemDisplay itemDisplay { get; private set; }
 
-			// Token: 0x06000D4E RID: 3406 RVA: 0x000548A4 File Offset: 0x00052AA4
+			// Token: 0x06000D4D RID: 3405 RVA: 0x00054A7C File Offset: 0x00052C7C
 			public void Apply(CharacterModel characterModel, GameObject prefab, Transform parent, Vector3 localPosition, Quaternion localRotation, Vector3 localScale)
 			{
 				this.instance = UnityEngine.Object.Instantiate<GameObject>(prefab.gameObject, parent);
@@ -947,7 +965,7 @@ namespace RoR2
 				this.itemDisplay = this.instance.GetComponent<ItemDisplay>();
 			}
 
-			// Token: 0x06000D4F RID: 3407 RVA: 0x0000A635 File Offset: 0x00008835
+			// Token: 0x06000D4E RID: 3406 RVA: 0x0000A5D0 File Offset: 0x000087D0
 			public void Undo()
 			{
 				if (this.instance)
@@ -957,36 +975,36 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x0400115F RID: 4447
+			// Token: 0x04001155 RID: 4437
 			public ItemIndex itemIndex;
 
-			// Token: 0x04001160 RID: 4448
+			// Token: 0x04001156 RID: 4438
 			public EquipmentIndex equipmentIndex;
 		}
 
 		// Token: 0x02000295 RID: 661
 		private struct LimbMaskDisplay
 		{
-			// Token: 0x06000D50 RID: 3408 RVA: 0x0000A656 File Offset: 0x00008856
+			// Token: 0x06000D4F RID: 3407 RVA: 0x0000A5F1 File Offset: 0x000087F1
 			public void Apply(CharacterModel characterModel, LimbFlags mask)
 			{
 				this.maskValue = mask;
 				characterModel.limbFlagSet.AddFlags(mask);
 			}
 
-			// Token: 0x06000D51 RID: 3409 RVA: 0x0000A66B File Offset: 0x0000886B
+			// Token: 0x06000D50 RID: 3408 RVA: 0x0000A606 File Offset: 0x00008806
 			public void Undo(CharacterModel characterModel)
 			{
 				characterModel.limbFlagSet.RemoveFlags(this.maskValue);
 			}
 
-			// Token: 0x04001163 RID: 4451
+			// Token: 0x04001159 RID: 4441
 			public ItemIndex itemIndex;
 
-			// Token: 0x04001164 RID: 4452
+			// Token: 0x0400115A RID: 4442
 			public EquipmentIndex equipmentIndex;
 
-			// Token: 0x04001165 RID: 4453
+			// Token: 0x0400115B RID: 4443
 			public LimbFlags maskValue;
 		}
 	}

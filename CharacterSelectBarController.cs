@@ -6,16 +6,16 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x0200040B RID: 1035
+	// Token: 0x02000405 RID: 1029
 	public class CharacterSelectBarController : MonoBehaviour
 	{
-		// Token: 0x0600173D RID: 5949 RVA: 0x00011782 File Offset: 0x0000F982
+		// Token: 0x060016FA RID: 5882 RVA: 0x00011356 File Offset: 0x0000F556
 		private bool ShouldDisplaySurvivor(SurvivorDef survivorDef)
 		{
 			return survivorDef != null;
 		}
 
-		// Token: 0x0600173E RID: 5950 RVA: 0x000795D8 File Offset: 0x000777D8
+		// Token: 0x060016FB RID: 5883 RVA: 0x00079018 File Offset: 0x00077218
 		private void Build()
 		{
 			List<SurvivorIndex> list = new List<SurvivorIndex>();
@@ -40,23 +40,23 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600173F RID: 5951 RVA: 0x00011788 File Offset: 0x0000F988
+		// Token: 0x060016FC RID: 5884 RVA: 0x0001135C File Offset: 0x0000F55C
 		private void Awake()
 		{
 			this.survivorIconControllers = new UIElementAllocator<SurvivorIconController>(this.iconContainer, this.choiceButtonPrefab);
 			this.Build();
 		}
 
-		// Token: 0x04001A42 RID: 6722
+		// Token: 0x04001A19 RID: 6681
 		public GameObject choiceButtonPrefab;
 
-		// Token: 0x04001A43 RID: 6723
+		// Token: 0x04001A1A RID: 6682
 		public GameObject WIPButtonPrefab;
 
-		// Token: 0x04001A44 RID: 6724
+		// Token: 0x04001A1B RID: 6683
 		public RectTransform iconContainer;
 
-		// Token: 0x04001A45 RID: 6725
+		// Token: 0x04001A1C RID: 6684
 		private UIElementAllocator<SurvivorIconController> survivorIconControllers;
 	}
 }

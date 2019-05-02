@@ -9,13 +9,13 @@ namespace RoR2
 	[RequireComponent(typeof(TeamFilter))]
 	public class BuffWard : NetworkBehaviour
 	{
-		// Token: 0x06000BCE RID: 3022 RVA: 0x00009549 File Offset: 0x00007749
+		// Token: 0x06000BC5 RID: 3013 RVA: 0x000094F1 File Offset: 0x000076F1
 		private void Awake()
 		{
 			this.teamFilter = base.GetComponent<TeamFilter>();
 		}
 
-		// Token: 0x06000BCF RID: 3023 RVA: 0x0004CFB4 File Offset: 0x0004B1B4
+		// Token: 0x06000BC6 RID: 3014 RVA: 0x0004CDA8 File Offset: 0x0004AFA8
 		private void Start()
 		{
 			RaycastHit raycastHit;
@@ -34,7 +34,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000BD0 RID: 3024 RVA: 0x0004D054 File Offset: 0x0004B254
+		// Token: 0x06000BC7 RID: 3015 RVA: 0x0004CE48 File Offset: 0x0004B048
 		private void Update()
 		{
 			this.calculatedRadius = (this.animateRadius ? (this.radius * this.radiusCoefficientCurve.Evaluate(this.stopwatch / this.expireDuration)) : this.radius);
@@ -50,7 +50,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000BD1 RID: 3025 RVA: 0x0004D118 File Offset: 0x0004B318
+		// Token: 0x06000BC8 RID: 3016 RVA: 0x0004CF0C File Offset: 0x0004B10C
 		private void FixedUpdate()
 		{
 			if (NetworkServer.active)
@@ -77,7 +77,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000BD2 RID: 3026 RVA: 0x0004D1C0 File Offset: 0x0004B3C0
+		// Token: 0x06000BC9 RID: 3017 RVA: 0x0004CFB4 File Offset: 0x0004B1B4
 		private void BuffTeam(IEnumerable<TeamComponent> recipients, float radiusSqr, Vector3 currentPosition)
 		{
 			if (!NetworkServer.active)
@@ -97,14 +97,14 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000BD4 RID: 3028 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06000BCB RID: 3019 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x170000D1 RID: 209
-		// (get) Token: 0x06000BD5 RID: 3029 RVA: 0x0004D248 File Offset: 0x0004B448
-		// (set) Token: 0x06000BD6 RID: 3030 RVA: 0x0000956A File Offset: 0x0000776A
+		// Token: 0x170000D0 RID: 208
+		// (get) Token: 0x06000BCC RID: 3020 RVA: 0x0004D03C File Offset: 0x0004B23C
+		// (set) Token: 0x06000BCD RID: 3021 RVA: 0x00009512 File Offset: 0x00007712
 		public float Networkradius
 		{
 			get
@@ -117,7 +117,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000BD7 RID: 3031 RVA: 0x0004D25C File Offset: 0x0004B45C
+		// Token: 0x06000BCE RID: 3022 RVA: 0x0004D050 File Offset: 0x0004B250
 		public override bool OnSerialize(NetworkWriter writer, bool forceAll)
 		{
 			if (forceAll)
@@ -142,7 +142,7 @@ namespace RoR2
 			return flag;
 		}
 
-		// Token: 0x06000BD8 RID: 3032 RVA: 0x0004D2C8 File Offset: 0x0004B4C8
+		// Token: 0x06000BCF RID: 3023 RVA: 0x0004D0BC File Offset: 0x0004B2BC
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 			if (initialState)
@@ -157,61 +157,61 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04000FB3 RID: 4019
+		// Token: 0x04000FAD RID: 4013
 		[SyncVar]
 		[Tooltip("The area of effect.")]
 		public float radius;
 
-		// Token: 0x04000FB4 RID: 4020
+		// Token: 0x04000FAE RID: 4014
 		[Tooltip("How long between buff pulses in the area of effect.")]
 		public float interval = 1f;
 
-		// Token: 0x04000FB5 RID: 4021
+		// Token: 0x04000FAF RID: 4015
 		[Tooltip("The child range indicator object. Will be scaled to the radius.")]
 		public Transform rangeIndicator;
 
-		// Token: 0x04000FB6 RID: 4022
+		// Token: 0x04000FB0 RID: 4016
 		[Tooltip("The buff type to grant")]
 		public BuffIndex buffType;
 
-		// Token: 0x04000FB7 RID: 4023
+		// Token: 0x04000FB1 RID: 4017
 		[Tooltip("The buff duration")]
 		public float buffDuration;
 
-		// Token: 0x04000FB8 RID: 4024
+		// Token: 0x04000FB2 RID: 4018
 		[Tooltip("Should the ward be floored on start")]
 		public bool floorWard;
 
-		// Token: 0x04000FB9 RID: 4025
+		// Token: 0x04000FB3 RID: 4019
 		[Tooltip("Does the ward disappear over time?")]
 		public bool expires;
 
-		// Token: 0x04000FBA RID: 4026
+		// Token: 0x04000FB4 RID: 4020
 		[Tooltip("If set, applies to all teams BUT the one selected.")]
 		public bool invertTeamFilter;
 
-		// Token: 0x04000FBB RID: 4027
+		// Token: 0x04000FB5 RID: 4021
 		public float expireDuration;
 
-		// Token: 0x04000FBC RID: 4028
+		// Token: 0x04000FB6 RID: 4022
 		public bool animateRadius;
 
-		// Token: 0x04000FBD RID: 4029
+		// Token: 0x04000FB7 RID: 4023
 		public AnimationCurve radiusCoefficientCurve;
 
-		// Token: 0x04000FBE RID: 4030
+		// Token: 0x04000FB8 RID: 4024
 		private TeamFilter teamFilter;
 
-		// Token: 0x04000FBF RID: 4031
+		// Token: 0x04000FB9 RID: 4025
 		private float buffTimer;
 
-		// Token: 0x04000FC0 RID: 4032
+		// Token: 0x04000FBA RID: 4026
 		private float rangeIndicatorScaleVelocity;
 
-		// Token: 0x04000FC1 RID: 4033
+		// Token: 0x04000FBB RID: 4027
 		private float stopwatch;
 
-		// Token: 0x04000FC2 RID: 4034
+		// Token: 0x04000FBC RID: 4028
 		private float calculatedRadius;
 	}
 }

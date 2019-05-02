@@ -7,7 +7,7 @@ namespace RoR2
 	// Token: 0x02000203 RID: 515
 	public class BlastAttack
 	{
-		// Token: 0x06000A0E RID: 2574 RVA: 0x00046974 File Offset: 0x00044B74
+		// Token: 0x06000A0B RID: 2571 RVA: 0x000466C8 File Offset: 0x000448C8
 		public void Fire()
 		{
 			Collider[] array = Physics.OverlapSphere(this.position, this.radius, LayerIndex.entityPrecise.mask);
@@ -85,84 +85,84 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04000D4D RID: 3405
+		// Token: 0x04000D49 RID: 3401
 		public GameObject attacker;
 
-		// Token: 0x04000D4E RID: 3406
+		// Token: 0x04000D4A RID: 3402
 		public GameObject inflictor;
 
-		// Token: 0x04000D4F RID: 3407
+		// Token: 0x04000D4B RID: 3403
 		public TeamIndex teamIndex;
 
-		// Token: 0x04000D50 RID: 3408
+		// Token: 0x04000D4C RID: 3404
 		public bool canHurtAttacker;
 
-		// Token: 0x04000D51 RID: 3409
+		// Token: 0x04000D4D RID: 3405
 		public Vector3 position;
 
-		// Token: 0x04000D52 RID: 3410
+		// Token: 0x04000D4E RID: 3406
 		public float radius;
 
-		// Token: 0x04000D53 RID: 3411
+		// Token: 0x04000D4F RID: 3407
 		public BlastAttack.FalloffModel falloffModel = BlastAttack.FalloffModel.Linear;
 
-		// Token: 0x04000D54 RID: 3412
+		// Token: 0x04000D50 RID: 3408
 		public float baseDamage;
 
-		// Token: 0x04000D55 RID: 3413
+		// Token: 0x04000D51 RID: 3409
 		public float baseForce;
 
-		// Token: 0x04000D56 RID: 3414
+		// Token: 0x04000D52 RID: 3410
 		public Vector3 bonusForce;
 
-		// Token: 0x04000D57 RID: 3415
+		// Token: 0x04000D53 RID: 3411
 		public bool crit;
 
-		// Token: 0x04000D58 RID: 3416
+		// Token: 0x04000D54 RID: 3412
 		public DamageType damageType;
 
-		// Token: 0x04000D59 RID: 3417
+		// Token: 0x04000D55 RID: 3413
 		public DamageColorIndex damageColorIndex;
 
-		// Token: 0x04000D5A RID: 3418
+		// Token: 0x04000D56 RID: 3414
 		public ProcChainMask procChainMask;
 
-		// Token: 0x04000D5B RID: 3419
+		// Token: 0x04000D57 RID: 3415
 		public float procCoefficient = 1f;
 
-		// Token: 0x04000D5C RID: 3420
+		// Token: 0x04000D58 RID: 3416
 		private static readonly Dictionary<HealthComponent, BlastAttack.HitPoint> bestHitPoints = new Dictionary<HealthComponent, BlastAttack.HitPoint>();
 
 		// Token: 0x02000204 RID: 516
 		public enum FalloffModel
 		{
-			// Token: 0x04000D5E RID: 3422
+			// Token: 0x04000D5A RID: 3418
 			None,
-			// Token: 0x04000D5F RID: 3423
+			// Token: 0x04000D5B RID: 3419
 			Linear,
-			// Token: 0x04000D60 RID: 3424
+			// Token: 0x04000D5C RID: 3420
 			SweetSpot
 		}
 
 		// Token: 0x02000205 RID: 517
 		private struct HitPoint
 		{
-			// Token: 0x06000A11 RID: 2577 RVA: 0x00008219 File Offset: 0x00006419
+			// Token: 0x06000A0E RID: 2574 RVA: 0x0000820A File Offset: 0x0000640A
 			public static int DistanceSort(BlastAttack.HitPoint a, BlastAttack.HitPoint b)
 			{
 				return a.distanceSqr.CompareTo(b.distanceSqr);
 			}
 
-			// Token: 0x04000D61 RID: 3425
+			// Token: 0x04000D5D RID: 3421
 			public HurtBox hurtBox;
 
-			// Token: 0x04000D62 RID: 3426
+			// Token: 0x04000D5E RID: 3422
 			public Vector3 hitPosition;
 
-			// Token: 0x04000D63 RID: 3427
+			// Token: 0x04000D5F RID: 3423
 			public Vector3 hitNormal;
 
-			// Token: 0x04000D64 RID: 3428
+			// Token: 0x04000D60 RID: 3424
 			public float distanceSqr;
 		}
 	}

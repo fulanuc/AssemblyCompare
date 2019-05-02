@@ -6,7 +6,7 @@ namespace RoR2
 	// Token: 0x02000255 RID: 597
 	public class AlignToNormal : MonoBehaviour
 	{
-		// Token: 0x06000B26 RID: 2854 RVA: 0x0004B1A8 File Offset: 0x000493A8
+		// Token: 0x06000B23 RID: 2851 RVA: 0x0004AF9C File Offset: 0x0004919C
 		private void Start()
 		{
 			RaycastHit raycastHit;
@@ -20,15 +20,15 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04000F29 RID: 3881
+		// Token: 0x04000F23 RID: 3875
 		[Tooltip("The amount to raycast down from.")]
 		public float maxDistance;
 
-		// Token: 0x04000F2A RID: 3882
+		// Token: 0x04000F24 RID: 3876
 		[Tooltip("The amount to pull the object out of the ground initially to test.")]
 		public float offsetDistance;
 
-		// Token: 0x04000F2B RID: 3883
+		// Token: 0x04000F25 RID: 3877
 		[Tooltip("Send to floor only - don't change normals.")]
 		public bool changePositionOnly;
 	}

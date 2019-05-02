@@ -6,13 +6,13 @@ namespace RoR2
 	// Token: 0x02000269 RID: 617
 	public class BlueprintController : MonoBehaviour
 	{
-		// Token: 0x06000B9F RID: 2975 RVA: 0x0000939B File Offset: 0x0000759B
+		// Token: 0x06000B96 RID: 2966 RVA: 0x00009343 File Offset: 0x00007543
 		private void Awake()
 		{
 			this.transform = base.transform;
 		}
 
-		// Token: 0x06000BA0 RID: 2976 RVA: 0x0004C308 File Offset: 0x0004A508
+		// Token: 0x06000B97 RID: 2967 RVA: 0x0004C0FC File Offset: 0x0004A2FC
 		private void Update()
 		{
 			Material sharedMaterial = this.ok ? this.okMaterial : this.invalidMaterial;
@@ -22,7 +22,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000BA1 RID: 2977 RVA: 0x000093A9 File Offset: 0x000075A9
+		// Token: 0x06000B98 RID: 2968 RVA: 0x00009351 File Offset: 0x00007551
 		public void PushState(Vector3 position, Quaternion rotation, bool ok)
 		{
 			this.transform.position = position;
@@ -30,20 +30,20 @@ namespace RoR2
 			this.ok = ok;
 		}
 
-		// Token: 0x04000F7E RID: 3966
+		// Token: 0x04000F78 RID: 3960
 		[NonSerialized]
 		public bool ok;
 
-		// Token: 0x04000F7F RID: 3967
+		// Token: 0x04000F79 RID: 3961
 		public Material okMaterial;
 
-		// Token: 0x04000F80 RID: 3968
+		// Token: 0x04000F7A RID: 3962
 		public Material invalidMaterial;
 
-		// Token: 0x04000F81 RID: 3969
+		// Token: 0x04000F7B RID: 3963
 		public Renderer[] renderers;
 
-		// Token: 0x04000F82 RID: 3970
+		// Token: 0x04000F7C RID: 3964
 		private new Transform transform;
 	}
 }

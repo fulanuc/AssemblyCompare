@@ -5,13 +5,13 @@ namespace RoR2
 	// Token: 0x02000202 RID: 514
 	public static class ArtifactCatalog
 	{
-		// Token: 0x06000A0B RID: 2571 RVA: 0x000081D6 File Offset: 0x000063D6
+		// Token: 0x06000A08 RID: 2568 RVA: 0x000081C7 File Offset: 0x000063C7
 		private static void RegisterArtifact(ArtifactIndex artifactIndex, ArtifactDef artifactDef)
 		{
 			ArtifactCatalog.artifactDefs[(int)artifactIndex] = artifactDef;
 		}
 
-		// Token: 0x06000A0C RID: 2572 RVA: 0x00046848 File Offset: 0x00044A48
+		// Token: 0x06000A09 RID: 2569 RVA: 0x0004659C File Offset: 0x0004479C
 		static ArtifactCatalog()
 		{
 			ArtifactCatalog.RegisterArtifact(ArtifactIndex.Command, new ArtifactDef
@@ -51,7 +51,7 @@ namespace RoR2
 			});
 		}
 
-		// Token: 0x06000A0D RID: 2573 RVA: 0x000081E0 File Offset: 0x000063E0
+		// Token: 0x06000A0A RID: 2570 RVA: 0x000081D1 File Offset: 0x000063D1
 		public static ArtifactDef GetArtifactDef(ArtifactIndex artifactIndex)
 		{
 			if (artifactIndex < ArtifactIndex.Command || artifactIndex >= ArtifactIndex.Count)
@@ -61,7 +61,7 @@ namespace RoR2
 			return ArtifactCatalog.artifactDefs[(int)artifactIndex];
 		}
 
-		// Token: 0x04000D4C RID: 3404
+		// Token: 0x04000D48 RID: 3400
 		private static ArtifactDef[] artifactDefs = new ArtifactDef[5];
 	}
 }

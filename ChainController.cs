@@ -8,11 +8,11 @@ using UnityEngine.Networking;
 namespace RoR2
 {
 	// Token: 0x02000280 RID: 640
-	[RequireComponent(typeof(ProjectileController))]
 	[RequireComponent(typeof(Rigidbody))]
+	[RequireComponent(typeof(ProjectileController))]
 	public class ChainController : MonoBehaviour, IProjectileImpactBehavior
 	{
-		// Token: 0x06000C22 RID: 3106 RVA: 0x0004F280 File Offset: 0x0004D480
+		// Token: 0x06000C17 RID: 3095 RVA: 0x0004F040 File Offset: 0x0004D240
 		private void Start()
 		{
 			if (!NetworkServer.active)
@@ -29,7 +29,7 @@ namespace RoR2
 			this.pastTargetList = new List<Transform>();
 		}
 
-		// Token: 0x06000C23 RID: 3107 RVA: 0x0004F304 File Offset: 0x0004D504
+		// Token: 0x06000C18 RID: 3096 RVA: 0x0004F0C4 File Offset: 0x0004D2C4
 		private void FixedUpdate()
 		{
 			if (!this.currentTarget)
@@ -65,7 +65,7 @@ namespace RoR2
 			this.rigidbody.velocity = this.transform.forward * Mathf.Min(this.maxVelocity, Vector3.Magnitude(vector) / Time.fixedDeltaTime);
 		}
 
-		// Token: 0x06000C24 RID: 3108 RVA: 0x0004F468 File Offset: 0x0004D668
+		// Token: 0x06000C19 RID: 3097 RVA: 0x0004F228 File Offset: 0x0004D428
 		private Transform FindTarget()
 		{
 			TeamIndex teamIndex = TeamIndex.Monster;
@@ -101,7 +101,7 @@ namespace RoR2
 			return result;
 		}
 
-		// Token: 0x06000C25 RID: 3109 RVA: 0x0004F56C File Offset: 0x0004D76C
+		// Token: 0x06000C1A RID: 3098 RVA: 0x0004F32C File Offset: 0x0004D52C
 		public void OnProjectileImpact(ProjectileImpactInfo impactInfo)
 		{
 			if (!this.alive)
@@ -183,89 +183,89 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04001037 RID: 4151
+		// Token: 0x04001030 RID: 4144
 		private new Transform transform;
 
-		// Token: 0x04001038 RID: 4152
+		// Token: 0x04001031 RID: 4145
 		private Rigidbody rigidbody;
 
-		// Token: 0x04001039 RID: 4153
+		// Token: 0x04001032 RID: 4146
 		[HideInInspector]
 		public Transform currentTarget;
 
-		// Token: 0x0400103A RID: 4154
+		// Token: 0x04001033 RID: 4147
 		private Transform lastTarget;
 
-		// Token: 0x0400103B RID: 4155
+		// Token: 0x04001034 RID: 4148
 		private TeamFilter teamFilter;
 
-		// Token: 0x0400103C RID: 4156
+		// Token: 0x04001035 RID: 4149
 		private ProjectileController projectileController;
 
-		// Token: 0x0400103D RID: 4157
+		// Token: 0x04001036 RID: 4150
 		private ProjectileDamage projectileDamage;
 
-		// Token: 0x0400103E RID: 4158
+		// Token: 0x04001037 RID: 4151
 		private bool alive = true;
 
-		// Token: 0x0400103F RID: 4159
+		// Token: 0x04001038 RID: 4152
 		private int bounceCount;
 
-		// Token: 0x04001040 RID: 4160
+		// Token: 0x04001039 RID: 4153
 		[HideInInspector]
 		public List<Transform> pastTargetList;
 
-		// Token: 0x04001041 RID: 4161
+		// Token: 0x0400103A RID: 4154
 		public GameObject impactEffect;
 
-		// Token: 0x04001042 RID: 4162
+		// Token: 0x0400103B RID: 4155
 		public float maxVelocity;
 
-		// Token: 0x04001043 RID: 4163
+		// Token: 0x0400103C RID: 4156
 		public int maxBounceCount = 3;
 
-		// Token: 0x04001044 RID: 4164
+		// Token: 0x0400103D RID: 4157
 		public float maxChainDistance = 10f;
 
-		// Token: 0x04001045 RID: 4165
+		// Token: 0x0400103E RID: 4158
 		public float lifeTime = 5f;
 
-		// Token: 0x04001046 RID: 4166
+		// Token: 0x0400103F RID: 4159
 		private float stopwatch;
 
-		// Token: 0x04001047 RID: 4167
+		// Token: 0x04001040 RID: 4160
 		[Tooltip("Multiplier for damage on every chain. >1 for increasing damage, <1 for decreasing damage.")]
 		public float damageMultiplier = 1f;
 
-		// Token: 0x04001048 RID: 4168
+		// Token: 0x04001041 RID: 4161
 		[Tooltip("Whether or not the projectile will automatically detect its first target or fly dumb until the first hit.")]
 		public bool assignFirstTarget;
 
-		// Token: 0x04001049 RID: 4169
+		// Token: 0x04001042 RID: 4162
 		[Tooltip("Whether or not the projectile will automatically ignore the first target, preventing it from getting hit.")]
 		public bool ignoreFirstTarget;
 
-		// Token: 0x0400104A RID: 4170
+		// Token: 0x04001043 RID: 4163
 		[Tooltip("Whether or not the projectile will destroy itself on colliding with terrain.")]
 		public bool destroyOnWorldIfNoTarget;
 
-		// Token: 0x0400104B RID: 4171
+		// Token: 0x04001044 RID: 4164
 		[Tooltip("Whether or not the projectile can bounce between the same targets.")]
 		public bool canBounceToSameTarget;
 
-		// Token: 0x0400104C RID: 4172
+		// Token: 0x04001045 RID: 4165
 		[Tooltip("Whether or not the projectile can hit targets accidentally on the way.")]
 		public bool canHitNonTarget;
 
-		// Token: 0x0400104D RID: 4173
+		// Token: 0x04001046 RID: 4166
 		[Tooltip("Whether or not the projectile will raycast to make sure it can hit its target. Can be expensive.")]
 		public bool smartSeeking;
 
-		// Token: 0x0400104E RID: 4174
+		// Token: 0x04001047 RID: 4167
 		[Tooltip("Whether or not the projectile will continue to search for targets after its first failure. Can be expensive, especially with smart seeking.")]
 		public bool searchAfterFirstFailure;
 
-		// Token: 0x0400104F RID: 4175
+		// Token: 0x04001048 RID: 4168
 		[Tooltip("Whether or not the projectile should destruct on failure.")]
 		public bool destroyOnFailure;
 	}

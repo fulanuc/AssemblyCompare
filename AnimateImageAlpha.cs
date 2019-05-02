@@ -7,19 +7,19 @@ namespace RoR2
 	// Token: 0x02000258 RID: 600
 	public class AnimateImageAlpha : MonoBehaviour
 	{
-		// Token: 0x06000B2D RID: 2861 RVA: 0x00008FD5 File Offset: 0x000071D5
+		// Token: 0x06000B2A RID: 2858 RVA: 0x00008FB0 File Offset: 0x000071B0
 		private void OnEnable()
 		{
 			this.stopwatch = 0f;
 		}
 
-		// Token: 0x06000B2E RID: 2862 RVA: 0x00008FD5 File Offset: 0x000071D5
+		// Token: 0x06000B2B RID: 2859 RVA: 0x00008FB0 File Offset: 0x000071B0
 		public void ResetStopwatch()
 		{
 			this.stopwatch = 0f;
 		}
 
-		// Token: 0x06000B2F RID: 2863 RVA: 0x0004B38C File Offset: 0x0004958C
+		// Token: 0x06000B2C RID: 2860 RVA: 0x0004B180 File Offset: 0x00049380
 		private void LateUpdate()
 		{
 			this.stopwatch += Time.unscaledDeltaTime;
@@ -33,19 +33,19 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04000F35 RID: 3893
+		// Token: 0x04000F2F RID: 3887
 		public AnimationCurve alphaCurve;
 
-		// Token: 0x04000F36 RID: 3894
+		// Token: 0x04000F30 RID: 3888
 		public Image[] images;
 
-		// Token: 0x04000F37 RID: 3895
+		// Token: 0x04000F31 RID: 3889
 		public float timeMax = 5f;
 
-		// Token: 0x04000F38 RID: 3896
+		// Token: 0x04000F32 RID: 3890
 		public float delayBetweenElements;
 
-		// Token: 0x04000F39 RID: 3897
+		// Token: 0x04000F33 RID: 3891
 		[HideInInspector]
 		public float stopwatch;
 	}

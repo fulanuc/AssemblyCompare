@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -9,62 +8,55 @@ namespace RoR2
 	// Token: 0x0200029A RID: 666
 	public class ChestRevealer : NetworkBehaviour
 	{
-		// Token: 0x06000D9F RID: 3487 RVA: 0x000551E8 File Offset: 0x000533E8
+		// Token: 0x06000D9C RID: 3484 RVA: 0x0000A9A5 File Offset: 0x00008BA5
 		[RuntimeInitializeOnLoadMethod]
 		private static void Init()
 		{
 			RoR2Application.onFixedUpdate += ChestRevealer.StaticFixedUpdate;
-			ChestRevealer.typesToCheck = (from t in typeof(ChestRevealer).Assembly.GetTypes()
-			where typeof(IInteractable).IsAssignableFrom(t)
-			select t).ToArray<Type>();
 		}
 
-		// Token: 0x06000DA0 RID: 3488 RVA: 0x00055248 File Offset: 0x00053448
+		// Token: 0x06000D9D RID: 3485 RVA: 0x00055348 File Offset: 0x00053548
 		private static void StaticFixedUpdate()
 		{
 			ChestRevealer.pendingReveals.Sort();
-			while (ChestRevealer.pendingReveals.Count > 0)
+			while (ChestRevealer.pendingReveals.Count > 0 && ChestRevealer.pendingReveals[0].time.hasPassed)
 			{
-				ChestRevealer.PendingReveal pendingReveal = ChestRevealer.pendingReveals[0];
-				if (!pendingReveal.time.hasPassed)
+				if (ChestRevealer.pendingReveals[0].gameObject)
 				{
-					break;
-				}
-				if (pendingReveal.gameObject)
-				{
-					ChestRevealer.RevealedObject.RevealObject(pendingReveal.gameObject, pendingReveal.duration);
+					ChestRevealer.RevealedObject.RevealObject(ChestRevealer.pendingReveals[0].gameObject, ChestRevealer.pendingReveals[0].duration);
 				}
 				ChestRevealer.pendingReveals.RemoveAt(0);
 			}
 		}
 
-		// Token: 0x06000DA1 RID: 3489 RVA: 0x000552B4 File Offset: 0x000534B4
+		// Token: 0x06000D9E RID: 3486 RVA: 0x000553D0 File Offset: 0x000535D0
 		public void Pulse()
 		{
-			ChestRevealer.<>c__DisplayClass12_0 CS$<>8__locals1;
-			CS$<>8__locals1.<>4__this = this;
-			CS$<>8__locals1.origin = base.transform.position;
-			CS$<>8__locals1.radiusSqr = this.radius * this.radius;
-			CS$<>8__locals1.invPulseTravelSpeed = 1f / this.pulseTravelSpeed;
-			Type[] array = ChestRevealer.typesToCheck;
-			for (int i = 0; i < array.Length; i++)
+			Vector3 position = base.transform.position;
+			float num = this.radius * this.radius;
+			foreach (PurchaseInteraction purchaseInteraction in PurchaseInteraction.readOnlyInstancesList)
 			{
-				foreach (MonoBehaviour monoBehaviour in InstanceTracker.FindInstancesEnumerable(array[i]))
+				float sqrMagnitude = (purchaseInteraction.transform.position - position).sqrMagnitude;
+				if (sqrMagnitude <= num && purchaseInteraction.available)
 				{
-					if (((IInteractable)monoBehaviour).ShouldShowOnScanner())
+					float b = Mathf.Sqrt(sqrMagnitude) / this.pulseTravelSpeed;
+					ChestRevealer.PendingReveal item = new ChestRevealer.PendingReveal
 					{
-						this.<Pulse>g__TryAddRevealable|12_0(monoBehaviour.transform, ref CS$<>8__locals1);
-					}
+						gameObject = purchaseInteraction.gameObject,
+						time = Run.FixedTimeStamp.now + b,
+						duration = this.revealDuration
+					};
+					ChestRevealer.pendingReveals.Add(item);
 				}
 			}
 			EffectManager.instance.SpawnEffect(this.pulseEffectPrefab, new EffectData
 			{
-				origin = CS$<>8__locals1.origin,
+				origin = position,
 				scale = this.radius * this.pulseEffectScale
 			}, false);
 		}
 
-		// Token: 0x06000DA2 RID: 3490 RVA: 0x0000A9EC File Offset: 0x00008BEC
+		// Token: 0x06000D9F RID: 3487 RVA: 0x0000A9B8 File Offset: 0x00008BB8
 		private void FixedUpdate()
 		{
 			if (this.nextPulse.hasPassed)
@@ -74,14 +66,14 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000DA6 RID: 3494 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06000DA2 RID: 3490 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x1700012A RID: 298
-		// (get) Token: 0x06000DA7 RID: 3495 RVA: 0x00055428 File Offset: 0x00053628
-		// (set) Token: 0x06000DA8 RID: 3496 RVA: 0x0000AA62 File Offset: 0x00008C62
+		// Token: 0x17000126 RID: 294
+		// (get) Token: 0x06000DA3 RID: 3491 RVA: 0x000554E4 File Offset: 0x000536E4
+		// (set) Token: 0x06000DA4 RID: 3492 RVA: 0x0000AA2E File Offset: 0x00008C2E
 		public float Networkradius
 		{
 			get
@@ -94,7 +86,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000DA9 RID: 3497 RVA: 0x0005543C File Offset: 0x0005363C
+		// Token: 0x06000DA5 RID: 3493 RVA: 0x000554F8 File Offset: 0x000536F8
 		public override bool OnSerialize(NetworkWriter writer, bool forceAll)
 		{
 			if (forceAll)
@@ -119,7 +111,7 @@ namespace RoR2
 			return flag;
 		}
 
-		// Token: 0x06000DAA RID: 3498 RVA: 0x000554A8 File Offset: 0x000536A8
+		// Token: 0x06000DA6 RID: 3494 RVA: 0x00055564 File Offset: 0x00053764
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 			if (initialState)
@@ -134,57 +126,54 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0400118C RID: 4492
+		// Token: 0x04001181 RID: 4481
 		[SyncVar]
 		public float radius;
 
-		// Token: 0x0400118D RID: 4493
+		// Token: 0x04001182 RID: 4482
 		public float pulseTravelSpeed = 10f;
 
-		// Token: 0x0400118E RID: 4494
+		// Token: 0x04001183 RID: 4483
 		public float revealDuration = 10f;
 
-		// Token: 0x0400118F RID: 4495
+		// Token: 0x04001184 RID: 4484
 		public float pulseInterval = 1f;
 
-		// Token: 0x04001190 RID: 4496
+		// Token: 0x04001185 RID: 4485
 		private Run.FixedTimeStamp nextPulse = Run.FixedTimeStamp.negativeInfinity;
 
-		// Token: 0x04001191 RID: 4497
+		// Token: 0x04001186 RID: 4486
 		public GameObject pulseEffectPrefab;
 
-		// Token: 0x04001192 RID: 4498
+		// Token: 0x04001187 RID: 4487
 		public float pulseEffectScale = 1f;
 
-		// Token: 0x04001193 RID: 4499
+		// Token: 0x04001188 RID: 4488
 		private static readonly List<ChestRevealer.PendingReveal> pendingReveals = new List<ChestRevealer.PendingReveal>();
-
-		// Token: 0x04001194 RID: 4500
-		private static Type[] typesToCheck;
 
 		// Token: 0x0200029B RID: 667
 		private struct PendingReveal : IComparable<ChestRevealer.PendingReveal>
 		{
-			// Token: 0x06000DAB RID: 3499 RVA: 0x0000AA76 File Offset: 0x00008C76
+			// Token: 0x06000DA7 RID: 3495 RVA: 0x0000AA42 File Offset: 0x00008C42
 			public int CompareTo(ChestRevealer.PendingReveal other)
 			{
 				return this.time.CompareTo(other.time);
 			}
 
-			// Token: 0x04001195 RID: 4501
+			// Token: 0x04001189 RID: 4489
 			public GameObject gameObject;
 
-			// Token: 0x04001196 RID: 4502
+			// Token: 0x0400118A RID: 4490
 			public Run.FixedTimeStamp time;
 
-			// Token: 0x04001197 RID: 4503
+			// Token: 0x0400118B RID: 4491
 			public float duration;
 		}
 
 		// Token: 0x0200029C RID: 668
 		private class RevealedObject : MonoBehaviour
 		{
-			// Token: 0x06000DAC RID: 3500 RVA: 0x000554EC File Offset: 0x000536EC
+			// Token: 0x06000DA8 RID: 3496 RVA: 0x000555A8 File Offset: 0x000537A8
 			public static void RevealObject(GameObject gameObject, float duration)
 			{
 				ChestRevealer.RevealedObject revealedObject;
@@ -198,7 +187,7 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x06000DAD RID: 3501 RVA: 0x00055520 File Offset: 0x00053720
+			// Token: 0x06000DA9 RID: 3497 RVA: 0x000555DC File Offset: 0x000537DC
 			private void OnEnable()
 			{
 				GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/PositionIndicators/PoiPositionIndicator"), base.transform.position, base.transform.rotation);
@@ -207,7 +196,7 @@ namespace RoR2
 				ChestRevealer.RevealedObject.currentlyRevealedObjects[base.gameObject] = this;
 			}
 
-			// Token: 0x06000DAE RID: 3502 RVA: 0x0000AA89 File Offset: 0x00008C89
+			// Token: 0x06000DAA RID: 3498 RVA: 0x0000AA55 File Offset: 0x00008C55
 			private void OnDisable()
 			{
 				ChestRevealer.RevealedObject.currentlyRevealedObjects.Remove(base.gameObject);
@@ -215,7 +204,7 @@ namespace RoR2
 				this.positionIndicator = null;
 			}
 
-			// Token: 0x06000DAF RID: 3503 RVA: 0x0000AAB3 File Offset: 0x00008CB3
+			// Token: 0x06000DAB RID: 3499 RVA: 0x0000AA7F File Offset: 0x00008C7F
 			private void FixedUpdate()
 			{
 				this.lifetime -= Time.fixedDeltaTime;
@@ -225,13 +214,13 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x04001198 RID: 4504
+			// Token: 0x0400118C RID: 4492
 			private float lifetime;
 
-			// Token: 0x04001199 RID: 4505
+			// Token: 0x0400118D RID: 4493
 			private static readonly Dictionary<GameObject, ChestRevealer.RevealedObject> currentlyRevealedObjects = new Dictionary<GameObject, ChestRevealer.RevealedObject>();
 
-			// Token: 0x0400119A RID: 4506
+			// Token: 0x0400118E RID: 4494
 			private PositionIndicator positionIndicator;
 		}
 	}

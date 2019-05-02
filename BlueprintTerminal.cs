@@ -7,7 +7,7 @@ namespace RoR2
 	// Token: 0x0200026A RID: 618
 	public class BlueprintTerminal : NetworkBehaviour
 	{
-		// Token: 0x06000BA3 RID: 2979 RVA: 0x000093CA File Offset: 0x000075CA
+		// Token: 0x06000B9A RID: 2970 RVA: 0x00009372 File Offset: 0x00007572
 		private void SetHasBeenPurchased(bool newHasBeenPurchased)
 		{
 			if (this.hasBeenPurchased != newHasBeenPurchased)
@@ -17,7 +17,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000BA4 RID: 2980 RVA: 0x000093E2 File Offset: 0x000075E2
+		// Token: 0x06000B9B RID: 2971 RVA: 0x0000938A File Offset: 0x0000758A
 		public void Start()
 		{
 			if (NetworkServer.active)
@@ -30,7 +30,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000BA5 RID: 2981 RVA: 0x0004C350 File Offset: 0x0004A550
+		// Token: 0x06000B9C RID: 2972 RVA: 0x0004C144 File Offset: 0x0004A344
 		private void RollChoice()
 		{
 			WeightedSelection<int> weightedSelection = new WeightedSelection<int>(8);
@@ -42,7 +42,7 @@ namespace RoR2
 			this.Rebuild();
 		}
 
-		// Token: 0x06000BA6 RID: 2982 RVA: 0x0004C3A8 File Offset: 0x0004A5A8
+		// Token: 0x06000B9D RID: 2973 RVA: 0x0004C19C File Offset: 0x0004A39C
 		private void Rebuild()
 		{
 			BlueprintTerminal.UnlockableOption unlockableOption = this.unlockableOptions[this.unlockableChoice];
@@ -83,7 +83,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000BA7 RID: 2983 RVA: 0x0004C53C File Offset: 0x0004A73C
+		// Token: 0x06000B9E RID: 2974 RVA: 0x0004C330 File Offset: 0x0004A530
 		[Server]
 		public void GrantUnlock(Interactor interactor)
 		{
@@ -119,14 +119,14 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000BA9 RID: 2985 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06000BA0 RID: 2976 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x170000CE RID: 206
-		// (get) Token: 0x06000BAA RID: 2986 RVA: 0x0004C628 File Offset: 0x0004A828
-		// (set) Token: 0x06000BAB RID: 2987 RVA: 0x00009411 File Offset: 0x00007611
+		// Token: 0x170000CD RID: 205
+		// (get) Token: 0x06000BA1 RID: 2977 RVA: 0x0004C41C File Offset: 0x0004A61C
+		// (set) Token: 0x06000BA2 RID: 2978 RVA: 0x000093B9 File Offset: 0x000075B9
 		public bool NetworkhasBeenPurchased
 		{
 			get
@@ -146,7 +146,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000BAC RID: 2988 RVA: 0x0004C63C File Offset: 0x0004A83C
+		// Token: 0x06000BA3 RID: 2979 RVA: 0x0004C430 File Offset: 0x0004A630
 		public override bool OnSerialize(NetworkWriter writer, bool forceAll)
 		{
 			if (forceAll)
@@ -171,7 +171,7 @@ namespace RoR2
 			return flag;
 		}
 
-		// Token: 0x06000BAD RID: 2989 RVA: 0x0004C6A8 File Offset: 0x0004A8A8
+		// Token: 0x06000BA4 RID: 2980 RVA: 0x0004C49C File Offset: 0x0004A69C
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 			if (initialState)
@@ -186,43 +186,43 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04000F83 RID: 3971
+		// Token: 0x04000F7D RID: 3965
 		[SyncVar(hook = "SetHasBeenPurchased")]
 		private bool hasBeenPurchased;
 
-		// Token: 0x04000F84 RID: 3972
+		// Token: 0x04000F7E RID: 3966
 		public Transform displayBaseTransform;
 
-		// Token: 0x04000F85 RID: 3973
+		// Token: 0x04000F7F RID: 3967
 		[Tooltip("The unlockable string to grant")]
 		public BlueprintTerminal.UnlockableOption[] unlockableOptions;
 
-		// Token: 0x04000F86 RID: 3974
+		// Token: 0x04000F80 RID: 3968
 		private int unlockableChoice;
 
-		// Token: 0x04000F87 RID: 3975
+		// Token: 0x04000F81 RID: 3969
 		public string unlockSoundString;
 
-		// Token: 0x04000F88 RID: 3976
+		// Token: 0x04000F82 RID: 3970
 		public float idealDisplayVolume = 1.5f;
 
-		// Token: 0x04000F89 RID: 3977
+		// Token: 0x04000F83 RID: 3971
 		public GameObject unlockEffect;
 
-		// Token: 0x04000F8A RID: 3978
+		// Token: 0x04000F84 RID: 3972
 		private GameObject displayInstance;
 
 		// Token: 0x0200026B RID: 619
 		[Serializable]
 		public struct UnlockableOption
 		{
-			// Token: 0x04000F8B RID: 3979
+			// Token: 0x04000F85 RID: 3973
 			public string unlockableName;
 
-			// Token: 0x04000F8C RID: 3980
+			// Token: 0x04000F86 RID: 3974
 			public int cost;
 
-			// Token: 0x04000F8D RID: 3981
+			// Token: 0x04000F87 RID: 3975
 			public float weight;
 		}
 	}

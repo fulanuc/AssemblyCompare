@@ -12,13 +12,13 @@ namespace RoR2
 	// Token: 0x02000299 RID: 665
 	public class ChestBehavior : NetworkBehaviour
 	{
-		// Token: 0x06000D94 RID: 3476 RVA: 0x00009162 File Offset: 0x00007362
+		// Token: 0x06000D91 RID: 3473 RVA: 0x0000913D File Offset: 0x0000733D
 		public override int GetNetworkChannel()
 		{
 			return QosChannelIndex.defaultReliable.intVal;
 		}
 
-		// Token: 0x06000D95 RID: 3477 RVA: 0x00054FC4 File Offset: 0x000531C4
+		// Token: 0x06000D92 RID: 3474 RVA: 0x00055124 File Offset: 0x00053324
 		[Server]
 		private void PickFromList(List<PickupIndex> dropList)
 		{
@@ -34,7 +34,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000D96 RID: 3478 RVA: 0x00055020 File Offset: 0x00053220
+		// Token: 0x06000D93 RID: 3475 RVA: 0x00055180 File Offset: 0x00053380
 		[Server]
 		public void RollItem()
 		{
@@ -52,7 +52,7 @@ namespace RoR2
 			this.PickFromList(dropList);
 		}
 
-		// Token: 0x06000D97 RID: 3479 RVA: 0x0000A999 File Offset: 0x00008B99
+		// Token: 0x06000D94 RID: 3476 RVA: 0x0000A952 File Offset: 0x00008B52
 		[Server]
 		public void RollEquipment()
 		{
@@ -64,7 +64,7 @@ namespace RoR2
 			this.PickFromList(Run.instance.availableEquipmentDropList);
 		}
 
-		// Token: 0x06000D98 RID: 3480 RVA: 0x0000A9C0 File Offset: 0x00008BC0
+		// Token: 0x06000D95 RID: 3477 RVA: 0x0000A979 File Offset: 0x00008B79
 		private void Start()
 		{
 			if (NetworkServer.active)
@@ -78,7 +78,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000D99 RID: 3481 RVA: 0x000550BC File Offset: 0x000532BC
+		// Token: 0x06000D96 RID: 3478 RVA: 0x0005521C File Offset: 0x0005341C
 		[Server]
 		public void Open()
 		{
@@ -94,7 +94,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000D9A RID: 3482 RVA: 0x00055100 File Offset: 0x00053300
+		// Token: 0x06000D97 RID: 3479 RVA: 0x00055260 File Offset: 0x00053460
 		[Server]
 		public void ItemDrop()
 		{
@@ -111,42 +111,42 @@ namespace RoR2
 			this.dropPickup = PickupIndex.none;
 		}
 
-		// Token: 0x06000D9C RID: 3484 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06000D99 RID: 3481 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x06000D9D RID: 3485 RVA: 0x0004AA24 File Offset: 0x00048C24
+		// Token: 0x06000D9A RID: 3482 RVA: 0x0004A818 File Offset: 0x00048A18
 		public override bool OnSerialize(NetworkWriter writer, bool forceAll)
 		{
 			bool result;
 			return result;
 		}
 
-		// Token: 0x06000D9E RID: 3486 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06000D9B RID: 3483 RVA: 0x000025F6 File Offset: 0x000007F6
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 		}
 
-		// Token: 0x04001185 RID: 4485
+		// Token: 0x0400117A RID: 4474
 		private PickupIndex dropPickup = PickupIndex.none;
 
-		// Token: 0x04001186 RID: 4486
+		// Token: 0x0400117B RID: 4475
 		public float tier1Chance = 0.8f;
 
-		// Token: 0x04001187 RID: 4487
+		// Token: 0x0400117C RID: 4476
 		public float tier2Chance = 0.2f;
 
-		// Token: 0x04001188 RID: 4488
+		// Token: 0x0400117D RID: 4477
 		public float tier3Chance = 0.01f;
 
-		// Token: 0x04001189 RID: 4489
+		// Token: 0x0400117E RID: 4478
 		public float lunarChance;
 
-		// Token: 0x0400118A RID: 4490
+		// Token: 0x0400117F RID: 4479
 		public UnityEvent dropRoller;
 
-		// Token: 0x0400118B RID: 4491
+		// Token: 0x04001180 RID: 4480
 		public SerializableEntityStateType openState = new SerializableEntityStateType(typeof(Opening));
 	}
 }

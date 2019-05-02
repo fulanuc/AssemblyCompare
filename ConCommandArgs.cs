@@ -4,16 +4,16 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x020002AD RID: 685
+	// Token: 0x020002AB RID: 683
 	public struct ConCommandArgs
 	{
-		// Token: 0x06000DE7 RID: 3559 RVA: 0x0000AC34 File Offset: 0x00008E34
+		// Token: 0x06000DE0 RID: 3552 RVA: 0x0000ABE2 File Offset: 0x00008DE2
 		public void CheckArgumentCount(int count)
 		{
 			ConCommandException.CheckArgumentCount(this.userArgs, count);
 		}
 
-		// Token: 0x17000130 RID: 304
+		// Token: 0x1700012C RID: 300
 		public string this[int i]
 		{
 			get
@@ -22,8 +22,8 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x17000131 RID: 305
-		// (get) Token: 0x06000DE9 RID: 3561 RVA: 0x0000AC50 File Offset: 0x00008E50
+		// Token: 0x1700012D RID: 301
+		// (get) Token: 0x06000DE2 RID: 3554 RVA: 0x0000ABFE File Offset: 0x00008DFE
 		public int Count
 		{
 			get
@@ -32,8 +32,8 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x17000132 RID: 306
-		// (get) Token: 0x06000DEA RID: 3562 RVA: 0x0000AC5D File Offset: 0x00008E5D
+		// Token: 0x1700012E RID: 302
+		// (get) Token: 0x06000DE3 RID: 3555 RVA: 0x0000AC0B File Offset: 0x00008E0B
 		public GameObject senderMasterObject
 		{
 			get
@@ -46,7 +46,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000DEB RID: 3563 RVA: 0x00056510 File Offset: 0x00054710
+		// Token: 0x06000DE4 RID: 3556 RVA: 0x000565CC File Offset: 0x000547CC
 		public ulong? TryGetArgUlong(int index)
 		{
 			ulong value;
@@ -57,18 +57,7 @@ namespace RoR2
 			return null;
 		}
 
-		// Token: 0x06000DEC RID: 3564 RVA: 0x00056550 File Offset: 0x00054750
-		public ulong GetArgULong(int index)
-		{
-			ulong? num = this.TryGetArgUlong(index);
-			if (num == null)
-			{
-				throw new ConCommandException(string.Format("Argument {0} must be an unsigned integer.", index));
-			}
-			return num.Value;
-		}
-
-		// Token: 0x06000DED RID: 3565 RVA: 0x0005658C File Offset: 0x0005478C
+		// Token: 0x06000DE5 RID: 3557 RVA: 0x0005660C File Offset: 0x0005480C
 		public int? TryGetArgInt(int index)
 		{
 			int value;
@@ -79,18 +68,7 @@ namespace RoR2
 			return null;
 		}
 
-		// Token: 0x06000DEE RID: 3566 RVA: 0x000565CC File Offset: 0x000547CC
-		public int GetArgInt(int index)
-		{
-			int? num = this.TryGetArgInt(index);
-			if (num == null)
-			{
-				throw new ConCommandException(string.Format("Argument {0} must be an integer.", index));
-			}
-			return num.Value;
-		}
-
-		// Token: 0x06000DEF RID: 3567 RVA: 0x00056608 File Offset: 0x00054808
+		// Token: 0x06000DE6 RID: 3558 RVA: 0x0005664C File Offset: 0x0005484C
 		public bool? TryGetArgBool(int index)
 		{
 			int? num = this.TryGetArgInt(index);
@@ -103,24 +81,13 @@ namespace RoR2
 			return null;
 		}
 
-		// Token: 0x06000DF0 RID: 3568 RVA: 0x0005664C File Offset: 0x0005484C
-		public bool GetArgBool(int index)
-		{
-			int? num = this.TryGetArgInt(index);
-			if (num == null)
-			{
-				throw new ConCommandException(string.Format("Argument {0} must be a boolean.", index));
-			}
-			return num.Value > 0;
-		}
-
-		// Token: 0x040011EC RID: 4588
+		// Token: 0x040011DA RID: 4570
 		public List<string> userArgs;
 
-		// Token: 0x040011ED RID: 4589
+		// Token: 0x040011DB RID: 4571
 		public NetworkUser sender;
 
-		// Token: 0x040011EE RID: 4590
+		// Token: 0x040011DC RID: 4572
 		public string commandName;
 	}
 }

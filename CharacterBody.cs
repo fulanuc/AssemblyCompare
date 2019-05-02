@@ -17,19 +17,19 @@ namespace RoR2
 	[DisallowMultipleComponent]
 	public class CharacterBody : NetworkBehaviour, ILifeBehavior, IDisplayNameProvider
 	{
-		// Token: 0x06000C27 RID: 3111 RVA: 0x000098A7 File Offset: 0x00007AA7
+		// Token: 0x06000C1C RID: 3100 RVA: 0x00009853 File Offset: 0x00007A53
 		public string GetDisplayName()
 		{
 			return Language.GetString(this.baseNameToken);
 		}
 
-		// Token: 0x06000C28 RID: 3112 RVA: 0x000098B4 File Offset: 0x00007AB4
+		// Token: 0x06000C1D RID: 3101 RVA: 0x00009860 File Offset: 0x00007A60
 		public string GetSubtitle()
 		{
 			return Language.GetString(this.subtitleNameToken);
 		}
 
-		// Token: 0x06000C29 RID: 3113 RVA: 0x0004F898 File Offset: 0x0004DA98
+		// Token: 0x06000C1E RID: 3102 RVA: 0x0004F658 File Offset: 0x0004D858
 		public string GetUserName()
 		{
 			string text = "";
@@ -48,7 +48,7 @@ namespace RoR2
 			return text;
 		}
 
-		// Token: 0x06000C2A RID: 3114 RVA: 0x0004F8E4 File Offset: 0x0004DAE4
+		// Token: 0x06000C1F RID: 3103 RVA: 0x0004F6A4 File Offset: 0x0004D8A4
 		public string GetColoredUserName()
 		{
 			Color32 userColor = new Color32(127, 127, 127, byte.MaxValue);
@@ -77,7 +77,7 @@ namespace RoR2
 			return Util.GenerateColoredString(text, userColor);
 		}
 
-		// Token: 0x06000C2B RID: 3115 RVA: 0x000098C1 File Offset: 0x00007AC1
+		// Token: 0x06000C20 RID: 3104 RVA: 0x0000986D File Offset: 0x00007A6D
 		[Server]
 		public void AddBuff(BuffIndex buffType)
 		{
@@ -89,7 +89,7 @@ namespace RoR2
 			this.SetBuffCount(buffType, this.buffs[(int)buffType] + 1);
 		}
 
-		// Token: 0x06000C2C RID: 3116 RVA: 0x0004F968 File Offset: 0x0004DB68
+		// Token: 0x06000C21 RID: 3105 RVA: 0x0004F728 File Offset: 0x0004D928
 		[Server]
 		public void RemoveBuff(BuffIndex buffType)
 		{
@@ -111,7 +111,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000C2D RID: 3117 RVA: 0x0004FA24 File Offset: 0x0004DC24
+		// Token: 0x06000C22 RID: 3106 RVA: 0x0004F7E4 File Offset: 0x0004D9E4
 		[Server]
 		private void SetBuffCount(BuffIndex buffType, int newCount)
 		{
@@ -136,28 +136,14 @@ namespace RoR2
 				}
 				base.SetDirtyBit(2u);
 			}
-			if (buffType != BuffIndex.AttackSpeedOnCrit)
-			{
-				if (buffType != BuffIndex.OnFire)
-				{
-					if (buffType == BuffIndex.BeetleJuice)
-					{
-						base.SetDirtyBit(128u);
-					}
-				}
-				else
-				{
-					base.SetDirtyBit(64u);
-				}
-			}
-			else
+			if (buffType == BuffIndex.AttackSpeedOnCrit)
 			{
 				base.SetDirtyBit(4u);
 			}
 			this.statsDirty = true;
 		}
 
-		// Token: 0x06000C2E RID: 3118 RVA: 0x000098E9 File Offset: 0x00007AE9
+		// Token: 0x06000C23 RID: 3107 RVA: 0x00009895 File Offset: 0x00007A95
 		public int GetBuffCount(BuffIndex buffType)
 		{
 			if (NetworkServer.active)
@@ -175,13 +161,13 @@ namespace RoR2
 			return 1;
 		}
 
-		// Token: 0x06000C2F RID: 3119 RVA: 0x0000991D File Offset: 0x00007B1D
+		// Token: 0x06000C24 RID: 3108 RVA: 0x000098C9 File Offset: 0x00007AC9
 		public bool HasBuff(BuffIndex buffType)
 		{
 			return this.buffMask.HasBuff(buffType);
 		}
 
-		// Token: 0x06000C30 RID: 3120 RVA: 0x0004FAE0 File Offset: 0x0004DCE0
+		// Token: 0x06000C25 RID: 3109 RVA: 0x0004F87C File Offset: 0x0004DA7C
 		[Server]
 		public void AddTimedBuff(BuffIndex buffType, float duration)
 		{
@@ -190,22 +176,18 @@ namespace RoR2
 				Debug.LogWarning("[Server] function 'System.Void RoR2.CharacterBody::AddTimedBuff(RoR2.BuffIndex,System.Single)' called on client");
 				return;
 			}
-			BuffDef buffDef = BuffCatalog.GetBuffDef(buffType);
 			if (buffType != BuffIndex.AttackSpeedOnCrit)
 			{
 				if (buffType != BuffIndex.BeetleJuice)
 				{
 					bool flag = false;
-					if (!buffDef.canStack)
+					for (int i = 0; i < this.timedBuffs.Count; i++)
 					{
-						for (int i = 0; i < this.timedBuffs.Count; i++)
+						if (this.timedBuffs[i].buffIndex == buffType)
 						{
-							if (this.timedBuffs[i].buffIndex == buffType)
-							{
-								flag = true;
-								this.timedBuffs[i].timer = Mathf.Max(this.timedBuffs[i].timer, duration);
-								break;
-							}
+							flag = true;
+							this.timedBuffs[i].timer = Mathf.Max(this.timedBuffs[i].timer, duration);
+							break;
 						}
 					}
 					if (!flag)
@@ -291,7 +273,7 @@ namespace RoR2
 			Util.PlaySound("Play_item_proc_crit_attack_speed" + Mathf.Min(3, num3 + 1), base.gameObject);
 		}
 
-		// Token: 0x06000C31 RID: 3121 RVA: 0x0004FDCC File Offset: 0x0004DFCC
+		// Token: 0x06000C26 RID: 3110 RVA: 0x0004FB58 File Offset: 0x0004DD58
 		[Server]
 		public void ClearTimedBuffs(BuffIndex buffType)
 		{
@@ -310,7 +292,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000C32 RID: 3122 RVA: 0x0004FE40 File Offset: 0x0004E040
+		// Token: 0x06000C27 RID: 3111 RVA: 0x0004FBCC File Offset: 0x0004DDCC
 		[Server]
 		private void UpdateBuffs(float deltaTime)
 		{
@@ -330,7 +312,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000C33 RID: 3123 RVA: 0x0004FED0 File Offset: 0x0004E0D0
+		// Token: 0x06000C28 RID: 3112 RVA: 0x0004FC5C File Offset: 0x0004DE5C
 		[Client]
 		private void OnClientBuffsChanged(BuffMask oldBuffMask)
 		{
@@ -356,8 +338,8 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x170000DC RID: 220
-		// (get) Token: 0x06000C34 RID: 3124 RVA: 0x0000992B File Offset: 0x00007B2B
+		// Token: 0x170000DA RID: 218
+		// (get) Token: 0x06000C29 RID: 3113 RVA: 0x000098D7 File Offset: 0x00007AD7
 		public CharacterMaster master
 		{
 			get
@@ -370,17 +352,17 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x170000DD RID: 221
-		// (get) Token: 0x06000C35 RID: 3125 RVA: 0x00009942 File Offset: 0x00007B42
-		// (set) Token: 0x06000C36 RID: 3126 RVA: 0x0000994A File Offset: 0x00007B4A
+		// Token: 0x170000DB RID: 219
+		// (get) Token: 0x06000C2A RID: 3114 RVA: 0x000098EE File Offset: 0x00007AEE
+		// (set) Token: 0x06000C2B RID: 3115 RVA: 0x000098F6 File Offset: 0x00007AF6
 		public Inventory inventory { get; private set; }
 
-		// Token: 0x170000DE RID: 222
-		// (get) Token: 0x06000C37 RID: 3127 RVA: 0x00009953 File Offset: 0x00007B53
-		// (set) Token: 0x06000C38 RID: 3128 RVA: 0x0000995B File Offset: 0x00007B5B
+		// Token: 0x170000DC RID: 220
+		// (get) Token: 0x06000C2C RID: 3116 RVA: 0x000098FF File Offset: 0x00007AFF
+		// (set) Token: 0x06000C2D RID: 3117 RVA: 0x00009907 File Offset: 0x00007B07
 		public bool isPlayerControlled { get; private set; }
 
-		// Token: 0x06000C39 RID: 3129 RVA: 0x0004FF8C File Offset: 0x0004E18C
+		// Token: 0x06000C2E RID: 3118 RVA: 0x0004FD18 File Offset: 0x0004DF18
 		private void OnInventoryChanged()
 		{
 			EquipmentIndex currentEquipmentIndex = this.inventory.currentEquipmentIndex;
@@ -430,7 +412,7 @@ namespace RoR2
 			action();
 		}
 
-		// Token: 0x06000C3A RID: 3130 RVA: 0x00009964 File Offset: 0x00007B64
+		// Token: 0x06000C2F RID: 3119 RVA: 0x00009910 File Offset: 0x00007B10
 		private void OnEquipmentLost(EquipmentDef equipmentDef)
 		{
 			if (NetworkServer.active && equipmentDef.passiveBuff != BuffIndex.None)
@@ -439,7 +421,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000C3B RID: 3131 RVA: 0x00009982 File Offset: 0x00007B82
+		// Token: 0x06000C30 RID: 3120 RVA: 0x0000992E File Offset: 0x00007B2E
 		private void OnEquipmentGained(EquipmentDef equipmentDef)
 		{
 			if (NetworkServer.active && equipmentDef.passiveBuff != BuffIndex.None)
@@ -449,13 +431,13 @@ namespace RoR2
 		}
 
 		// Token: 0x14000009 RID: 9
-		// (add) Token: 0x06000C3C RID: 3132 RVA: 0x00050090 File Offset: 0x0004E290
-		// (remove) Token: 0x06000C3D RID: 3133 RVA: 0x000500C8 File Offset: 0x0004E2C8
+		// (add) Token: 0x06000C31 RID: 3121 RVA: 0x0004FE1C File Offset: 0x0004E01C
+		// (remove) Token: 0x06000C32 RID: 3122 RVA: 0x0004FE54 File Offset: 0x0004E054
 		public event Action onInventoryChanged;
 
-		// Token: 0x170000DF RID: 223
-		// (get) Token: 0x06000C3E RID: 3134 RVA: 0x00050100 File Offset: 0x0004E300
-		// (set) Token: 0x06000C3F RID: 3135 RVA: 0x000099A0 File Offset: 0x00007BA0
+		// Token: 0x170000DD RID: 221
+		// (get) Token: 0x06000C33 RID: 3123 RVA: 0x0004FE8C File Offset: 0x0004E08C
+		// (set) Token: 0x06000C34 RID: 3124 RVA: 0x0000994C File Offset: 0x00007B4C
 		public GameObject masterObject
 		{
 			get
@@ -496,7 +478,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000C40 RID: 3136 RVA: 0x000099BA File Offset: 0x00007BBA
+		// Token: 0x06000C35 RID: 3125 RVA: 0x00009966 File Offset: 0x00007B66
 		private void UpdateMasterLink()
 		{
 			if (!this.linkedToMaster && this.master && this.master)
@@ -506,47 +488,42 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x170000E0 RID: 224
-		// (get) Token: 0x06000C41 RID: 3137 RVA: 0x000099F1 File Offset: 0x00007BF1
-		// (set) Token: 0x06000C42 RID: 3138 RVA: 0x000099F9 File Offset: 0x00007BF9
-		public CharacterMotor characterMotor { get; private set; }
-
-		// Token: 0x170000E1 RID: 225
-		// (get) Token: 0x06000C43 RID: 3139 RVA: 0x00009A02 File Offset: 0x00007C02
-		// (set) Token: 0x06000C44 RID: 3140 RVA: 0x00009A0A File Offset: 0x00007C0A
+		// Token: 0x170000DE RID: 222
+		// (get) Token: 0x06000C36 RID: 3126 RVA: 0x0000999D File Offset: 0x00007B9D
+		// (set) Token: 0x06000C37 RID: 3127 RVA: 0x000099A5 File Offset: 0x00007BA5
 		public TeamComponent teamComponent { get; private set; }
 
-		// Token: 0x170000E2 RID: 226
-		// (get) Token: 0x06000C45 RID: 3141 RVA: 0x00009A13 File Offset: 0x00007C13
-		// (set) Token: 0x06000C46 RID: 3142 RVA: 0x00009A1B File Offset: 0x00007C1B
+		// Token: 0x170000DF RID: 223
+		// (get) Token: 0x06000C38 RID: 3128 RVA: 0x000099AE File Offset: 0x00007BAE
+		// (set) Token: 0x06000C39 RID: 3129 RVA: 0x000099B6 File Offset: 0x00007BB6
 		public HealthComponent healthComponent { get; private set; }
 
-		// Token: 0x170000E3 RID: 227
-		// (get) Token: 0x06000C47 RID: 3143 RVA: 0x00009A24 File Offset: 0x00007C24
-		// (set) Token: 0x06000C48 RID: 3144 RVA: 0x00009A2C File Offset: 0x00007C2C
+		// Token: 0x170000E0 RID: 224
+		// (get) Token: 0x06000C3A RID: 3130 RVA: 0x000099BF File Offset: 0x00007BBF
+		// (set) Token: 0x06000C3B RID: 3131 RVA: 0x000099C7 File Offset: 0x00007BC7
 		public EquipmentSlot equipmentSlot { get; private set; }
 
-		// Token: 0x170000E4 RID: 228
-		// (get) Token: 0x06000C49 RID: 3145 RVA: 0x00009A35 File Offset: 0x00007C35
-		// (set) Token: 0x06000C4A RID: 3146 RVA: 0x00009A3D File Offset: 0x00007C3D
+		// Token: 0x170000E1 RID: 225
+		// (get) Token: 0x06000C3C RID: 3132 RVA: 0x000099D0 File Offset: 0x00007BD0
+		// (set) Token: 0x06000C3D RID: 3133 RVA: 0x000099D8 File Offset: 0x00007BD8
 		public ModelLocator modelLocator { get; private set; }
 
-		// Token: 0x170000E5 RID: 229
-		// (get) Token: 0x06000C4B RID: 3147 RVA: 0x00009A46 File Offset: 0x00007C46
-		// (set) Token: 0x06000C4C RID: 3148 RVA: 0x00009A4E File Offset: 0x00007C4E
+		// Token: 0x170000E2 RID: 226
+		// (get) Token: 0x06000C3E RID: 3134 RVA: 0x000099E1 File Offset: 0x00007BE1
+		// (set) Token: 0x06000C3F RID: 3135 RVA: 0x000099E9 File Offset: 0x00007BE9
 		public HurtBoxGroup hurtBoxGroup { get; private set; }
 
-		// Token: 0x170000E6 RID: 230
-		// (get) Token: 0x06000C4D RID: 3149 RVA: 0x00009A57 File Offset: 0x00007C57
-		// (set) Token: 0x06000C4E RID: 3150 RVA: 0x00009A5F File Offset: 0x00007C5F
+		// Token: 0x170000E3 RID: 227
+		// (get) Token: 0x06000C40 RID: 3136 RVA: 0x000099F2 File Offset: 0x00007BF2
+		// (set) Token: 0x06000C41 RID: 3137 RVA: 0x000099FA File Offset: 0x00007BFA
 		public HurtBox mainHurtBox { get; private set; }
 
-		// Token: 0x170000E7 RID: 231
-		// (get) Token: 0x06000C4F RID: 3151 RVA: 0x00009A68 File Offset: 0x00007C68
-		// (set) Token: 0x06000C50 RID: 3152 RVA: 0x00009A70 File Offset: 0x00007C70
+		// Token: 0x170000E4 RID: 228
+		// (get) Token: 0x06000C42 RID: 3138 RVA: 0x00009A03 File Offset: 0x00007C03
+		// (set) Token: 0x06000C43 RID: 3139 RVA: 0x00009A0B File Offset: 0x00007C0B
 		public Transform coreTransform { get; private set; }
 
-		// Token: 0x06000C51 RID: 3153 RVA: 0x00050214 File Offset: 0x0004E414
+		// Token: 0x06000C44 RID: 3140 RVA: 0x0004FFA0 File Offset: 0x0004E1A0
 		private void Awake()
 		{
 			this.transform = base.transform;
@@ -582,7 +559,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000C52 RID: 3154 RVA: 0x00050330 File Offset: 0x0004E530
+		// Token: 0x06000C45 RID: 3141 RVA: 0x000500BC File Offset: 0x0004E2BC
 		private void Start()
 		{
 			bool flag = (this.bodyFlags & CharacterBody.BodyFlags.Masterless) > CharacterBody.BodyFlags.None;
@@ -604,14 +581,14 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000C53 RID: 3155 RVA: 0x00009A79 File Offset: 0x00007C79
+		// Token: 0x06000C46 RID: 3142 RVA: 0x00009A14 File Offset: 0x00007C14
 		public void Update()
 		{
 			this.UpdateSpreadBloom(Time.deltaTime);
 			this.UpdateAllTemporaryVisualEffects();
 		}
 
-		// Token: 0x06000C54 RID: 3156 RVA: 0x000503B4 File Offset: 0x0004E5B4
+		// Token: 0x06000C47 RID: 3143 RVA: 0x00050140 File Offset: 0x0004E340
 		public void FixedUpdate()
 		{
 			this.outOfCombatStopwatch += Time.fixedDeltaTime;
@@ -691,7 +668,7 @@ namespace RoR2
 			this.UpdateFireTrail();
 		}
 
-		// Token: 0x06000C55 RID: 3157 RVA: 0x00009A8C File Offset: 0x00007C8C
+		// Token: 0x06000C48 RID: 3144 RVA: 0x00009A27 File Offset: 0x00007C27
 		public void OnDeathStart()
 		{
 			base.enabled = false;
@@ -701,7 +678,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000C56 RID: 3158 RVA: 0x00009AAD File Offset: 0x00007CAD
+		// Token: 0x06000C49 RID: 3145 RVA: 0x00009A48 File Offset: 0x00007C48
 		public void OnTakeDamage(DamageInfo damageInfo)
 		{
 			this.outOfDangerStopwatch = 0f;
@@ -711,7 +688,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000C57 RID: 3159 RVA: 0x00009AD3 File Offset: 0x00007CD3
+		// Token: 0x06000C4A RID: 3146 RVA: 0x00009A6E File Offset: 0x00007C6E
 		public void OnSkillActivated(GenericSkill skill)
 		{
 			if (skill.isCombatSkill)
@@ -725,12 +702,12 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000C58 RID: 3160 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06000C4B RID: 3147 RVA: 0x000025F6 File Offset: 0x000007F6
 		public void OnDamageDealt(DamageReport damageReport)
 		{
 		}
 
-		// Token: 0x06000C59 RID: 3161 RVA: 0x00009B02 File Offset: 0x00007D02
+		// Token: 0x06000C4C RID: 3148 RVA: 0x00009A9D File Offset: 0x00007C9D
 		public void OnDestroy()
 		{
 			if (this.inventory)
@@ -743,7 +720,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000C5A RID: 3162 RVA: 0x000505C0 File Offset: 0x0004E7C0
+		// Token: 0x06000C4D RID: 3149 RVA: 0x0005034C File Offset: 0x0004E54C
 		public float GetNormalizedThreatValue()
 		{
 			if (Run.instance)
@@ -753,21 +730,21 @@ namespace RoR2
 			return 0f;
 		}
 
-		// Token: 0x06000C5B RID: 3163 RVA: 0x00009B40 File Offset: 0x00007D40
+		// Token: 0x06000C4E RID: 3150 RVA: 0x00009ADB File Offset: 0x00007CDB
 		private void OnEnable()
 		{
 			CharacterBody.instancesList.Add(this);
 		}
 
-		// Token: 0x06000C5C RID: 3164 RVA: 0x00009B4D File Offset: 0x00007D4D
+		// Token: 0x06000C4F RID: 3151 RVA: 0x00009AE8 File Offset: 0x00007CE8
 		private void OnDisable()
 		{
 			CharacterBody.instancesList.Remove(this);
 		}
 
-		// Token: 0x170000E8 RID: 232
-		// (get) Token: 0x06000C5D RID: 3165 RVA: 0x00009B5B File Offset: 0x00007D5B
-		// (set) Token: 0x06000C5E RID: 3166 RVA: 0x00050618 File Offset: 0x0004E818
+		// Token: 0x170000E5 RID: 229
+		// (get) Token: 0x06000C50 RID: 3152 RVA: 0x00009AF6 File Offset: 0x00007CF6
+		// (set) Token: 0x06000C51 RID: 3153 RVA: 0x000503A4 File Offset: 0x0004E5A4
 		public bool isSprinting
 		{
 			get
@@ -801,38 +778,38 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000C5F RID: 3167 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06000C52 RID: 3154 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void OnSprintStart()
 		{
 		}
 
-		// Token: 0x06000C60 RID: 3168 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06000C53 RID: 3155 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void OnSprintStop()
 		{
 		}
 
-		// Token: 0x06000C61 RID: 3169 RVA: 0x00009B63 File Offset: 0x00007D63
+		// Token: 0x06000C54 RID: 3156 RVA: 0x00009AFE File Offset: 0x00007CFE
 		[Command]
 		private void CmdUpdateSprint(bool newIsSprinting)
 		{
 			this.isSprinting = newIsSprinting;
 		}
 
-		// Token: 0x06000C62 RID: 3170 RVA: 0x00009B6C File Offset: 0x00007D6C
+		// Token: 0x06000C55 RID: 3157 RVA: 0x00009B07 File Offset: 0x00007D07
 		[Command]
 		private void CmdOnSkillActivated(sbyte skillIndex)
 		{
 			this.OnSkillActivated(this.skillLocator.GetSkill((SkillSlot)skillIndex));
 		}
 
-		// Token: 0x170000E9 RID: 233
-		// (get) Token: 0x06000C63 RID: 3171 RVA: 0x00009B80 File Offset: 0x00007D80
-		// (set) Token: 0x06000C64 RID: 3172 RVA: 0x00009B88 File Offset: 0x00007D88
+		// Token: 0x170000E6 RID: 230
+		// (get) Token: 0x06000C56 RID: 3158 RVA: 0x00009B1B File Offset: 0x00007D1B
+		// (set) Token: 0x06000C57 RID: 3159 RVA: 0x00009B23 File Offset: 0x00007D23
 		public bool outOfCombat { get; private set; } = true;
 
-		// Token: 0x170000EA RID: 234
-		// (get) Token: 0x06000C65 RID: 3173 RVA: 0x00009B91 File Offset: 0x00007D91
-		// (set) Token: 0x06000C66 RID: 3174 RVA: 0x00009B99 File Offset: 0x00007D99
+		// Token: 0x170000E7 RID: 231
+		// (get) Token: 0x06000C58 RID: 3160 RVA: 0x00009B2C File Offset: 0x00007D2C
+		// (set) Token: 0x06000C59 RID: 3161 RVA: 0x00009B34 File Offset: 0x00007D34
 		public bool outOfDanger
 		{
 			get
@@ -850,7 +827,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000C67 RID: 3175 RVA: 0x00009BB2 File Offset: 0x00007DB2
+		// Token: 0x06000C5A RID: 3162 RVA: 0x00009B4D File Offset: 0x00007D4D
 		private void OnOutOfDangerChanged()
 		{
 			if (this.outOfDanger && this.healthComponent.shield != this.healthComponent.fullShield)
@@ -859,7 +836,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000C68 RID: 3176 RVA: 0x0005066C File Offset: 0x0004E86C
+		// Token: 0x06000C5B RID: 3163 RVA: 0x000503F8 File Offset: 0x0004E5F8
 		[Server]
 		private void OnOutOfCombatAndDangerServer()
 		{
@@ -887,7 +864,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000C69 RID: 3177 RVA: 0x00009BE5 File Offset: 0x00007DE5
+		// Token: 0x06000C5C RID: 3164 RVA: 0x00009B80 File Offset: 0x00007D80
 		[Server]
 		public bool GetNotMoving()
 		{
@@ -899,82 +876,82 @@ namespace RoR2
 			return this.notMovingStopwatch >= 2f;
 		}
 
-		// Token: 0x170000EB RID: 235
-		// (get) Token: 0x06000C6A RID: 3178 RVA: 0x00009C0D File Offset: 0x00007E0D
-		// (set) Token: 0x06000C6B RID: 3179 RVA: 0x00009C15 File Offset: 0x00007E15
+		// Token: 0x170000E8 RID: 232
+		// (get) Token: 0x06000C5D RID: 3165 RVA: 0x00009BA8 File Offset: 0x00007DA8
+		// (set) Token: 0x06000C5E RID: 3166 RVA: 0x00009BB0 File Offset: 0x00007DB0
 		public float experience { get; private set; }
 
-		// Token: 0x170000EC RID: 236
-		// (get) Token: 0x06000C6C RID: 3180 RVA: 0x00009C1E File Offset: 0x00007E1E
-		// (set) Token: 0x06000C6D RID: 3181 RVA: 0x00009C26 File Offset: 0x00007E26
+		// Token: 0x170000E9 RID: 233
+		// (get) Token: 0x06000C5F RID: 3167 RVA: 0x00009BB9 File Offset: 0x00007DB9
+		// (set) Token: 0x06000C60 RID: 3168 RVA: 0x00009BC1 File Offset: 0x00007DC1
 		public float level { get; private set; }
 
-		// Token: 0x170000ED RID: 237
-		// (get) Token: 0x06000C6E RID: 3182 RVA: 0x00009C2F File Offset: 0x00007E2F
-		// (set) Token: 0x06000C6F RID: 3183 RVA: 0x00009C37 File Offset: 0x00007E37
+		// Token: 0x170000EA RID: 234
+		// (get) Token: 0x06000C61 RID: 3169 RVA: 0x00009BCA File Offset: 0x00007DCA
+		// (set) Token: 0x06000C62 RID: 3170 RVA: 0x00009BD2 File Offset: 0x00007DD2
 		public float maxHealth { get; private set; }
 
-		// Token: 0x170000EE RID: 238
-		// (get) Token: 0x06000C70 RID: 3184 RVA: 0x00009C40 File Offset: 0x00007E40
-		// (set) Token: 0x06000C71 RID: 3185 RVA: 0x00009C48 File Offset: 0x00007E48
+		// Token: 0x170000EB RID: 235
+		// (get) Token: 0x06000C63 RID: 3171 RVA: 0x00009BDB File Offset: 0x00007DDB
+		// (set) Token: 0x06000C64 RID: 3172 RVA: 0x00009BE3 File Offset: 0x00007DE3
 		public float regen { get; private set; }
 
-		// Token: 0x170000EF RID: 239
-		// (get) Token: 0x06000C72 RID: 3186 RVA: 0x00009C51 File Offset: 0x00007E51
-		// (set) Token: 0x06000C73 RID: 3187 RVA: 0x00009C59 File Offset: 0x00007E59
+		// Token: 0x170000EC RID: 236
+		// (get) Token: 0x06000C65 RID: 3173 RVA: 0x00009BEC File Offset: 0x00007DEC
+		// (set) Token: 0x06000C66 RID: 3174 RVA: 0x00009BF4 File Offset: 0x00007DF4
 		public float maxShield { get; private set; }
 
-		// Token: 0x170000F0 RID: 240
-		// (get) Token: 0x06000C74 RID: 3188 RVA: 0x00009C62 File Offset: 0x00007E62
-		// (set) Token: 0x06000C75 RID: 3189 RVA: 0x00009C6A File Offset: 0x00007E6A
+		// Token: 0x170000ED RID: 237
+		// (get) Token: 0x06000C67 RID: 3175 RVA: 0x00009BFD File Offset: 0x00007DFD
+		// (set) Token: 0x06000C68 RID: 3176 RVA: 0x00009C05 File Offset: 0x00007E05
 		public float moveSpeed { get; private set; }
 
-		// Token: 0x170000F1 RID: 241
-		// (get) Token: 0x06000C76 RID: 3190 RVA: 0x00009C73 File Offset: 0x00007E73
-		// (set) Token: 0x06000C77 RID: 3191 RVA: 0x00009C7B File Offset: 0x00007E7B
+		// Token: 0x170000EE RID: 238
+		// (get) Token: 0x06000C69 RID: 3177 RVA: 0x00009C0E File Offset: 0x00007E0E
+		// (set) Token: 0x06000C6A RID: 3178 RVA: 0x00009C16 File Offset: 0x00007E16
 		public float acceleration { get; private set; }
 
-		// Token: 0x170000F2 RID: 242
-		// (get) Token: 0x06000C78 RID: 3192 RVA: 0x00009C84 File Offset: 0x00007E84
-		// (set) Token: 0x06000C79 RID: 3193 RVA: 0x00009C8C File Offset: 0x00007E8C
+		// Token: 0x170000EF RID: 239
+		// (get) Token: 0x06000C6B RID: 3179 RVA: 0x00009C1F File Offset: 0x00007E1F
+		// (set) Token: 0x06000C6C RID: 3180 RVA: 0x00009C27 File Offset: 0x00007E27
 		public float jumpPower { get; private set; }
 
-		// Token: 0x170000F3 RID: 243
-		// (get) Token: 0x06000C7A RID: 3194 RVA: 0x00009C95 File Offset: 0x00007E95
-		// (set) Token: 0x06000C7B RID: 3195 RVA: 0x00009C9D File Offset: 0x00007E9D
+		// Token: 0x170000F0 RID: 240
+		// (get) Token: 0x06000C6D RID: 3181 RVA: 0x00009C30 File Offset: 0x00007E30
+		// (set) Token: 0x06000C6E RID: 3182 RVA: 0x00009C38 File Offset: 0x00007E38
 		public int maxJumpCount { get; private set; }
 
-		// Token: 0x170000F4 RID: 244
-		// (get) Token: 0x06000C7C RID: 3196 RVA: 0x00009CA6 File Offset: 0x00007EA6
-		// (set) Token: 0x06000C7D RID: 3197 RVA: 0x00009CAE File Offset: 0x00007EAE
+		// Token: 0x170000F1 RID: 241
+		// (get) Token: 0x06000C6F RID: 3183 RVA: 0x00009C41 File Offset: 0x00007E41
+		// (set) Token: 0x06000C70 RID: 3184 RVA: 0x00009C49 File Offset: 0x00007E49
 		public float maxJumpHeight { get; private set; }
 
-		// Token: 0x170000F5 RID: 245
-		// (get) Token: 0x06000C7E RID: 3198 RVA: 0x00009CB7 File Offset: 0x00007EB7
-		// (set) Token: 0x06000C7F RID: 3199 RVA: 0x00009CBF File Offset: 0x00007EBF
+		// Token: 0x170000F2 RID: 242
+		// (get) Token: 0x06000C71 RID: 3185 RVA: 0x00009C52 File Offset: 0x00007E52
+		// (set) Token: 0x06000C72 RID: 3186 RVA: 0x00009C5A File Offset: 0x00007E5A
 		public float damage { get; private set; }
 
-		// Token: 0x170000F6 RID: 246
-		// (get) Token: 0x06000C80 RID: 3200 RVA: 0x00009CC8 File Offset: 0x00007EC8
-		// (set) Token: 0x06000C81 RID: 3201 RVA: 0x00009CD0 File Offset: 0x00007ED0
+		// Token: 0x170000F3 RID: 243
+		// (get) Token: 0x06000C73 RID: 3187 RVA: 0x00009C63 File Offset: 0x00007E63
+		// (set) Token: 0x06000C74 RID: 3188 RVA: 0x00009C6B File Offset: 0x00007E6B
 		public float attackSpeed { get; private set; }
 
-		// Token: 0x170000F7 RID: 247
-		// (get) Token: 0x06000C82 RID: 3202 RVA: 0x00009CD9 File Offset: 0x00007ED9
-		// (set) Token: 0x06000C83 RID: 3203 RVA: 0x00009CE1 File Offset: 0x00007EE1
+		// Token: 0x170000F4 RID: 244
+		// (get) Token: 0x06000C75 RID: 3189 RVA: 0x00009C74 File Offset: 0x00007E74
+		// (set) Token: 0x06000C76 RID: 3190 RVA: 0x00009C7C File Offset: 0x00007E7C
 		public float crit { get; private set; }
 
-		// Token: 0x170000F8 RID: 248
-		// (get) Token: 0x06000C84 RID: 3204 RVA: 0x00009CEA File Offset: 0x00007EEA
-		// (set) Token: 0x06000C85 RID: 3205 RVA: 0x00009CF2 File Offset: 0x00007EF2
+		// Token: 0x170000F5 RID: 245
+		// (get) Token: 0x06000C77 RID: 3191 RVA: 0x00009C85 File Offset: 0x00007E85
+		// (set) Token: 0x06000C78 RID: 3192 RVA: 0x00009C8D File Offset: 0x00007E8D
 		public float armor { get; private set; }
 
-		// Token: 0x170000F9 RID: 249
-		// (get) Token: 0x06000C86 RID: 3206 RVA: 0x00009CFB File Offset: 0x00007EFB
-		// (set) Token: 0x06000C87 RID: 3207 RVA: 0x00009D03 File Offset: 0x00007F03
+		// Token: 0x170000F6 RID: 246
+		// (get) Token: 0x06000C79 RID: 3193 RVA: 0x00009C96 File Offset: 0x00007E96
+		// (set) Token: 0x06000C7A RID: 3194 RVA: 0x00009C9E File Offset: 0x00007E9E
 		public float critHeal { get; private set; }
 
-		// Token: 0x06000C88 RID: 3208 RVA: 0x00009D0C File Offset: 0x00007F0C
+		// Token: 0x06000C7B RID: 3195 RVA: 0x00009CA7 File Offset: 0x00007EA7
 		public float CalcLunarDaggerPower()
 		{
 			if (this.inventory)
@@ -984,7 +961,7 @@ namespace RoR2
 			return 1f;
 		}
 
-		// Token: 0x06000C89 RID: 3209 RVA: 0x00050720 File Offset: 0x0004E920
+		// Token: 0x06000C7C RID: 3196 RVA: 0x000504AC File Offset: 0x0004E6AC
 		public void RecalculateStats()
 		{
 			this.experience = TeamManager.instance.GetTeamExperience(this.teamComponent.teamIndex);
@@ -1047,8 +1024,6 @@ namespace RoR2
 			}
 			float num25 = this.level - 1f;
 			this.isElite = this.buffMask.containsEliteBuff;
-			float maxHealth = this.maxHealth;
-			float maxShield = this.maxShield;
 			float num26 = this.baseMaxHealth + this.levelMaxHealth * num25;
 			float num27 = 1f;
 			num27 += (float)num16 * 0.1f;
@@ -1058,6 +1033,10 @@ namespace RoR2
 			}
 			num26 += (float)num15 * 40f;
 			num26 *= num27;
+			if (this.HasBuff(BuffIndex.AffixBlue))
+			{
+				num26 *= 0.5f;
+			}
 			num26 /= num23;
 			this.maxHealth = num26;
 			float num28 = this.baseRegen + this.levelRegen * num25;
@@ -1082,177 +1061,175 @@ namespace RoR2
 			{
 				num29 += this.maxHealth * 0.5f;
 			}
+			if (this.HasBuff(BuffIndex.AffixBlue))
+			{
+				num29 += this.maxHealth;
+			}
 			if (num13 > 0)
 			{
 				num29 += this.maxHealth * (1.5f + (float)(num13 - 1) * 0.25f);
 				this.maxHealth = 1f;
 			}
-			if (this.buffMask.HasBuff(BuffIndex.AffixBlue))
-			{
-				float num30 = this.maxHealth * 0.5f;
-				this.maxHealth -= num30;
-				num29 += this.maxHealth;
-			}
 			this.maxShield = num29;
-			float num31 = this.baseMoveSpeed + this.levelMoveSpeed * num25;
-			float num32 = 1f;
+			float num30 = this.baseMoveSpeed + this.levelMoveSpeed * num25;
+			float num31 = 1f;
 			if (Run.instance.enabledArtifacts.HasArtifact(ArtifactIndex.Spirit))
 			{
-				float num33 = 1f;
+				float num32 = 1f;
 				if (this.healthComponent)
 				{
-					num33 = this.healthComponent.combinedHealthFraction;
+					num32 = this.healthComponent.combinedHealthFraction;
 				}
-				num32 += 1f - num33;
+				num31 += 1f - num32;
 			}
 			if (equipmentIndex == EquipmentIndex.AffixYellow)
 			{
-				num31 += 2f;
+				num30 += 2f;
 			}
 			if (this.isSprinting)
 			{
-				num31 *= this.sprintingSpeedMultiplier;
+				num30 *= this.sprintingSpeedMultiplier;
 			}
 			if (this.outOfCombat && this.outOfDanger && num5 > 0)
 			{
-				num32 += (float)num5 * 0.3f;
+				num31 += (float)num5 * 0.3f;
 			}
-			num32 += (float)num4 * 0.14f;
+			num31 += (float)num4 * 0.14f;
 			if (this.isSprinting && num18 > 0)
 			{
-				num32 += (0.1f + 0.2f * (float)num18) / this.sprintingSpeedMultiplier;
+				num31 += (0.1f + 0.2f * (float)num18) / this.sprintingSpeedMultiplier;
 			}
 			if (this.HasBuff(BuffIndex.BugWings))
 			{
-				num32 += 0.2f;
+				num31 += 0.2f;
 			}
 			if (this.HasBuff(BuffIndex.Warbanner))
 			{
-				num32 += 0.3f;
+				num31 += 0.3f;
 			}
 			if (this.HasBuff(BuffIndex.EnrageAncientWisp))
 			{
-				num32 += 0.4f;
+				num31 += 0.4f;
 			}
 			if (this.HasBuff(BuffIndex.CloakSpeed))
 			{
-				num32 += 0.4f;
+				num31 += 0.4f;
 			}
 			if (this.HasBuff(BuffIndex.TempestSpeed))
 			{
-				num32 += 1f;
+				num31 += 1f;
 			}
 			if (this.HasBuff(BuffIndex.WarCryBuff))
 			{
-				num32 += 0.5f;
+				num31 += 0.5f;
 			}
 			if (this.HasBuff(BuffIndex.EngiTeamShield))
 			{
-				num32 += 0.3f;
+				num31 += 0.3f;
 			}
-			float num34 = 1f;
+			float num33 = 1f;
 			if (this.HasBuff(BuffIndex.Slow50))
 			{
-				num34 += 0.5f;
+				num33 += 0.5f;
 			}
 			if (this.HasBuff(BuffIndex.Slow60))
 			{
-				num34 += 0.6f;
+				num33 += 0.6f;
 			}
 			if (this.HasBuff(BuffIndex.Slow80))
 			{
-				num34 += 0.8f;
+				num33 += 0.8f;
 			}
 			if (this.HasBuff(BuffIndex.ClayGoo))
 			{
-				num34 += 0.5f;
+				num33 += 0.5f;
 			}
 			if (this.HasBuff(BuffIndex.Slow30))
 			{
-				num34 += 0.3f;
+				num33 += 0.3f;
 			}
 			if (this.HasBuff(BuffIndex.Cripple))
 			{
-				num34 += 1f;
+				num33 += 1f;
 			}
-			num31 *= num32 / num34;
+			num30 *= num31 / num33;
 			if (num12 > 0)
 			{
-				num31 *= 1f - 0.05f * (float)num12;
+				num30 *= 1f - 0.05f * (float)num12;
 			}
-			this.moveSpeed = num31;
+			this.moveSpeed = num30;
 			this.acceleration = this.moveSpeed / this.baseMoveSpeed * this.baseAcceleration;
 			float jumpPower = this.baseJumpPower + this.levelJumpPower * num25;
 			this.jumpPower = jumpPower;
 			this.maxJumpHeight = Trajectory.CalculateApex(this.jumpPower);
 			this.maxJumpCount = this.baseJumpCount + num6;
-			float num35 = this.baseDamage + this.levelDamage * num25;
-			float num36 = 1f;
-			int num37 = this.inventory ? this.inventory.GetItemCount(ItemIndex.BoostDamage) : 0;
-			if (num37 > 0)
+			float num34 = this.baseDamage + this.levelDamage * num25;
+			float num35 = 1f;
+			int num36 = this.inventory ? this.inventory.GetItemCount(ItemIndex.BoostDamage) : 0;
+			if (num36 > 0)
 			{
-				num36 += (float)num37 * 0.1f;
+				num35 += (float)num36 * 0.1f;
 			}
 			if (num12 > 0)
 			{
-				num36 -= 0.05f * (float)num12;
+				num35 -= 0.05f * (float)num12;
 			}
 			if (this.HasBuff(BuffIndex.GoldEmpowered))
 			{
-				num36 += 1f;
+				num35 += 1f;
 			}
-			num36 += num23 - 1f;
-			num35 *= num36;
-			this.damage = num35;
-			float num38 = this.baseAttackSpeed + this.levelAttackSpeed * num25;
-			float num39 = 1f;
-			num39 += (float)num7 * 0.15f;
+			num35 += num23 - 1f;
+			num34 *= num35;
+			this.damage = num34;
+			float num37 = this.baseAttackSpeed + this.levelAttackSpeed * num25;
+			float num38 = 1f;
+			num38 += (float)num7 * 0.15f;
 			if (equipmentIndex == EquipmentIndex.AffixYellow)
 			{
-				num39 += 0.5f;
+				num38 += 0.5f;
 			}
-			num39 += (float)this.buffs[2] * 0.12f;
+			num38 += (float)this.buffs[2] * 0.12f;
 			if (this.HasBuff(BuffIndex.Warbanner))
 			{
-				num39 += 0.3f;
+				num38 += 0.3f;
 			}
 			if (this.HasBuff(BuffIndex.EnrageAncientWisp))
 			{
-				num39 += 2f;
+				num38 += 2f;
 			}
 			if (this.HasBuff(BuffIndex.WarCryBuff))
 			{
-				num39 += 1f;
+				num38 += 1f;
 			}
-			num38 *= num39;
+			num37 *= num38;
 			if (num12 > 0)
 			{
-				num38 *= 1f - 0.05f * (float)num12;
+				num37 *= 1f - 0.05f * (float)num12;
 			}
-			this.attackSpeed = num38;
-			float num40 = this.baseCrit + this.levelCrit * num25;
-			num40 += (float)num8 * 10f;
+			this.attackSpeed = num37;
+			float num39 = this.baseCrit + this.levelCrit * num25;
+			num39 += (float)num8 * 10f;
 			if (num9 > 0)
 			{
-				num40 += 5f;
+				num39 += 5f;
 			}
 			if (num10 > 0)
 			{
-				num40 += 5f;
+				num39 += 5f;
 			}
 			if (num11 > 0)
 			{
-				num40 += 5f;
+				num39 += 5f;
 			}
 			if (num17 > 0)
 			{
-				num40 += 5f;
+				num39 += 5f;
 			}
 			if (this.HasBuff(BuffIndex.FullCrit))
 			{
-				num40 += 100f;
+				num39 += 100f;
 			}
-			this.crit = num40;
+			this.crit = num39;
 			this.armor = this.baseArmor + this.levelArmor * num25 + (this.HasBuff(BuffIndex.ArmorBoost) ? 200f : 0f);
 			this.armor += (float)num22 * 70f;
 			if (this.HasBuff(BuffIndex.Cripple))
@@ -1263,41 +1240,41 @@ namespace RoR2
 			{
 				this.armor += (float)(num19 * 30);
 			}
-			float num41 = 1f;
+			float num40 = 1f;
 			if (this.HasBuff(BuffIndex.GoldEmpowered))
 			{
-				num41 *= 0.25f;
+				num40 *= 0.25f;
 			}
 			for (int i = 0; i < num14; i++)
 			{
-				num41 *= 0.75f;
+				num40 *= 0.75f;
 			}
 			if (this.HasBuff(BuffIndex.NoCooldowns))
 			{
-				num41 = 0f;
+				num40 = 0f;
 			}
 			if (this.skillLocator.primary)
 			{
-				this.skillLocator.primary.cooldownScale = num41;
+				this.skillLocator.primary.cooldownScale = num40;
 			}
 			if (this.skillLocator.secondary)
 			{
-				this.skillLocator.secondary.cooldownScale = num41;
+				this.skillLocator.secondary.cooldownScale = num40;
 				this.skillLocator.secondary.SetBonusStockFromBody(bonusStockFromBody);
 			}
 			if (this.skillLocator.utility)
 			{
-				float num42 = num41;
+				float num41 = num40;
 				if (num20 > 0)
 				{
-					num42 *= 0.6666667f;
+					num41 *= 0.6666667f;
 				}
-				this.skillLocator.utility.cooldownScale = num42;
+				this.skillLocator.utility.cooldownScale = num41;
 				this.skillLocator.utility.SetBonusStockFromBody(num20 * 2);
 			}
 			if (this.skillLocator.special)
 			{
-				this.skillLocator.special.cooldownScale = num41;
+				this.skillLocator.special.cooldownScale = num40;
 			}
 			this.critHeal = 0f;
 			if (num17 > 0)
@@ -1306,40 +1283,23 @@ namespace RoR2
 				this.crit /= (float)(num17 + 1);
 				this.critHeal = crit - this.crit;
 			}
-			if (NetworkServer.active)
-			{
-				float num43 = this.maxHealth - maxHealth;
-				float num44 = this.maxShield - maxShield;
-				if (num43 > 0f)
-				{
-					this.healthComponent.Heal(num43, default(ProcChainMask), false);
-				}
-				else if (this.healthComponent.health > this.maxHealth)
-				{
-					this.healthComponent.Networkhealth = this.maxHealth;
-				}
-				if (num44 > 0f)
-				{
-					this.healthComponent.RechargeShield(num44);
-				}
-			}
 			this.statsDirty = false;
 		}
 
-		// Token: 0x06000C8A RID: 3210 RVA: 0x00009D39 File Offset: 0x00007F39
+		// Token: 0x06000C7D RID: 3197 RVA: 0x00009CD4 File Offset: 0x00007ED4
 		public void OnLevelChanged()
 		{
 			this.statsDirty = true;
 		}
 
-		// Token: 0x06000C8B RID: 3211 RVA: 0x00009D42 File Offset: 0x00007F42
+		// Token: 0x06000C7E RID: 3198 RVA: 0x00009CDD File Offset: 0x00007EDD
 		public void SetAimTimer(float duration)
 		{
 			this.aimTimer = duration;
 		}
 
-		// Token: 0x170000FA RID: 250
-		// (get) Token: 0x06000C8C RID: 3212 RVA: 0x00009D4B File Offset: 0x00007F4B
+		// Token: 0x170000F7 RID: 247
+		// (get) Token: 0x06000C7F RID: 3199 RVA: 0x00009CE6 File Offset: 0x00007EE6
 		public bool shouldAim
 		{
 			get
@@ -1348,7 +1308,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000C8D RID: 3213 RVA: 0x00051154 File Offset: 0x0004F354
+		// Token: 0x06000C80 RID: 3200 RVA: 0x00050E48 File Offset: 0x0004F048
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 			byte b = reader.ReadByte();
@@ -1408,33 +1368,15 @@ namespace RoR2
 					this.isSprinting = flag3;
 				}
 			}
-			if ((b & 64) != 0)
-			{
-				byte b3 = reader.ReadByte();
-				if (this.buffs[4] != (int)b3)
-				{
-					this.buffs[4] = (int)b3;
-					this.statsDirty = true;
-				}
-			}
-			if ((b & 128) != 0)
-			{
-				byte b4 = reader.ReadByte();
-				if (this.buffs[18] != (int)b4)
-				{
-					this.buffs[18] = (int)b4;
-					this.statsDirty = true;
-				}
-			}
 		}
 
-		// Token: 0x06000C8E RID: 3214 RVA: 0x000512CC File Offset: 0x0004F4CC
+		// Token: 0x06000C81 RID: 3201 RVA: 0x00050F64 File Offset: 0x0004F164
 		public override bool OnSerialize(NetworkWriter writer, bool initialState)
 		{
 			uint num = base.syncVarDirtyBits;
 			if (initialState)
 			{
-				num = 255u;
+				num = 63u;
 			}
 			bool flag = (num & 1u) > 0u;
 			bool flag2 = (num & 2u) > 0u;
@@ -1442,8 +1384,6 @@ namespace RoR2
 			bool flag4 = (num & 8u) > 0u;
 			bool flag5 = (num & 16u) > 0u;
 			bool flag6 = (num & 32u) > 0u;
-			bool flag7 = (num & 64u) > 0u;
-			bool flag8 = (num & 128u) > 0u;
 			writer.Write((byte)num);
 			if (flag)
 			{
@@ -1469,18 +1409,10 @@ namespace RoR2
 			{
 				writer.Write(this.isSprinting);
 			}
-			if (flag7)
-			{
-				writer.Write((byte)this.buffs[4]);
-			}
-			if (flag8)
-			{
-				writer.Write((byte)this.buffs[18]);
-			}
 			return !initialState && num > 0u;
 		}
 
-		// Token: 0x06000C8F RID: 3215 RVA: 0x000513C4 File Offset: 0x0004F5C4
+		// Token: 0x06000C82 RID: 3202 RVA: 0x0005101C File Offset: 0x0004F21C
 		public T AddItemBehavior<T>(int stack) where T : CharacterBody.ItemBehavior
 		{
 			T t = base.GetComponent<T>();
@@ -1501,9 +1433,9 @@ namespace RoR2
 			return default(T);
 		}
 
-		// Token: 0x170000FB RID: 251
-		// (get) Token: 0x06000C90 RID: 3216 RVA: 0x00009D65 File Offset: 0x00007F65
-		// (set) Token: 0x06000C91 RID: 3217 RVA: 0x00009D6D File Offset: 0x00007F6D
+		// Token: 0x170000F8 RID: 248
+		// (get) Token: 0x06000C83 RID: 3203 RVA: 0x00009D00 File Offset: 0x00007F00
+		// (set) Token: 0x06000C84 RID: 3204 RVA: 0x00009D08 File Offset: 0x00007F08
 		public bool warCryReady
 		{
 			get
@@ -1523,7 +1455,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000C92 RID: 3218 RVA: 0x00051430 File Offset: 0x0004F630
+		// Token: 0x06000C85 RID: 3205 RVA: 0x00051088 File Offset: 0x0004F288
 		[Server]
 		private void ActivateWarCryAura(int stacks)
 		{
@@ -1544,7 +1476,7 @@ namespace RoR2
 			this.warCryAuraController.GetComponent<NetworkedBodyAttachment>().AttachToGameObjectAndSpawn(base.gameObject);
 		}
 
-		// Token: 0x06000C93 RID: 3219 RVA: 0x00009D8D File Offset: 0x00007F8D
+		// Token: 0x06000C86 RID: 3206 RVA: 0x00009D28 File Offset: 0x00007F28
 		[ClientRpc]
 		private void RpcSyncWarCryReady(bool value)
 		{
@@ -1554,7 +1486,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000C94 RID: 3220 RVA: 0x00051500 File Offset: 0x0004F700
+		// Token: 0x06000C87 RID: 3207 RVA: 0x00051158 File Offset: 0x0004F358
 		private void OnKilledOther(DamageReport damageReport)
 		{
 			this.killCount++;
@@ -1566,7 +1498,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000C95 RID: 3221 RVA: 0x00051538 File Offset: 0x0004F738
+		// Token: 0x06000C88 RID: 3208 RVA: 0x00051190 File Offset: 0x0004F390
 		[Server]
 		private void UpdateTeslaCoil()
 		{
@@ -1631,13 +1563,13 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000C96 RID: 3222 RVA: 0x00009D9D File Offset: 0x00007F9D
+		// Token: 0x06000C89 RID: 3209 RVA: 0x00009D38 File Offset: 0x00007F38
 		public void AddHelfireDuration(float duration)
 		{
 			this.helfireLifetime = duration;
 		}
 
-		// Token: 0x06000C97 RID: 3223 RVA: 0x00051718 File Offset: 0x0004F918
+		// Token: 0x06000C8A RID: 3210 RVA: 0x00051370 File Offset: 0x0004F570
 		[Server]
 		private void UpdateHelfire()
 		{
@@ -1665,7 +1597,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000C98 RID: 3224 RVA: 0x000517D8 File Offset: 0x0004F9D8
+		// Token: 0x06000C8B RID: 3211 RVA: 0x00051430 File Offset: 0x0004F630
 		private void UpdateFireTrail()
 		{
 			bool flag = this.HasBuff(BuffIndex.AffixRed);
@@ -1690,7 +1622,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000C99 RID: 3225 RVA: 0x0005189C File Offset: 0x0004FA9C
+		// Token: 0x06000C8C RID: 3212 RVA: 0x000514F4 File Offset: 0x0004F6F4
 		private void UpdateBeetleGuardAllies()
 		{
 			if (NetworkServer.active)
@@ -1740,8 +1672,8 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x170000FC RID: 252
-		// (get) Token: 0x06000C9A RID: 3226 RVA: 0x00009DA6 File Offset: 0x00007FA6
+		// Token: 0x170000F9 RID: 249
+		// (get) Token: 0x06000C8D RID: 3213 RVA: 0x00009D41 File Offset: 0x00007F41
 		private float bestFitRadius
 		{
 			get
@@ -1750,7 +1682,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000C9B RID: 3227 RVA: 0x00051A14 File Offset: 0x0004FC14
+		// Token: 0x06000C8E RID: 3214 RVA: 0x0005166C File Offset: 0x0004F86C
 		private void UpdateAllTemporaryVisualEffects()
 		{
 			this.UpdateSingleTemporaryVisualEffect(ref this.engiShieldTempEffect, "Prefabs/TemporaryVisualEffects/EngiShield", this.bestFitRadius, this.healthComponent.shield > 0f && this.HasBuff(BuffIndex.EngiShield));
@@ -1759,7 +1691,7 @@ namespace RoR2
 			this.UpdateSingleTemporaryVisualEffect(ref this.crippleEffect, "Prefabs/TemporaryVisualEffects/CrippleEffect", this.radius, this.HasBuff(BuffIndex.Cripple));
 		}
 
-		// Token: 0x06000C9C RID: 3228 RVA: 0x00051AC8 File Offset: 0x0004FCC8
+		// Token: 0x06000C8F RID: 3215 RVA: 0x00051720 File Offset: 0x0004F920
 		private void UpdateSingleTemporaryVisualEffect(ref TemporaryVisualEffect tempEffect, string resourceString, float effectRadius, bool active)
 		{
 			bool flag = tempEffect != null;
@@ -1785,7 +1717,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000C9D RID: 3229 RVA: 0x00051B48 File Offset: 0x0004FD48
+		// Token: 0x06000C90 RID: 3216 RVA: 0x000517A0 File Offset: 0x0004F9A0
 		public VisibilityLevel GetVisibilityLevel(CharacterBody observer)
 		{
 			if (!this.HasBuff(BuffIndex.Cloak))
@@ -1805,13 +1737,13 @@ namespace RoR2
 			return VisibilityLevel.Revealed;
 		}
 
-		// Token: 0x06000C9E RID: 3230 RVA: 0x00009DD2 File Offset: 0x00007FD2
+		// Token: 0x06000C91 RID: 3217 RVA: 0x00009D6D File Offset: 0x00007F6D
 		public void AddSpreadBloom(float value)
 		{
 			this.spreadBloomInternal = Mathf.Min(this.spreadBloomInternal + value, 1f);
 		}
 
-		// Token: 0x06000C9F RID: 3231 RVA: 0x00009DEC File Offset: 0x00007FEC
+		// Token: 0x06000C92 RID: 3218 RVA: 0x00009D87 File Offset: 0x00007F87
 		public void SetSpreadBloom(float value, bool canOnlyIncreaseBloom = true)
 		{
 			if (canOnlyIncreaseBloom)
@@ -1822,15 +1754,15 @@ namespace RoR2
 			this.spreadBloomInternal = Mathf.Min(value, 1f);
 		}
 
-		// Token: 0x06000CA0 RID: 3232 RVA: 0x00051BA8 File Offset: 0x0004FDA8
+		// Token: 0x06000C93 RID: 3219 RVA: 0x00051800 File Offset: 0x0004FA00
 		private void UpdateSpreadBloom(float dt)
 		{
 			float num = 1f / this.spreadBloomDecayTime;
 			this.spreadBloomInternal = Mathf.Max(this.spreadBloomInternal - num * dt, 0f);
 		}
 
-		// Token: 0x170000FD RID: 253
-		// (get) Token: 0x06000CA1 RID: 3233 RVA: 0x00009E1A File Offset: 0x0000801A
+		// Token: 0x170000FA RID: 250
+		// (get) Token: 0x06000C94 RID: 3220 RVA: 0x00009DB5 File Offset: 0x00007FB5
 		public float spreadBloomAngle
 		{
 			get
@@ -1839,7 +1771,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000CA2 RID: 3234 RVA: 0x00051BDC File Offset: 0x0004FDDC
+		// Token: 0x06000C95 RID: 3221 RVA: 0x00051834 File Offset: 0x0004FA34
 		[Client]
 		public void SendConstructTurret(CharacterBody builder, Vector3 position, Quaternion rotation)
 		{
@@ -1855,7 +1787,7 @@ namespace RoR2
 			ClientScene.readyConnection.Send(62, constructTurretMessage);
 		}
 
-		// Token: 0x06000CA3 RID: 3235 RVA: 0x00051C2C File Offset: 0x0004FE2C
+		// Token: 0x06000C96 RID: 3222 RVA: 0x00051884 File Offset: 0x0004FA84
 		[NetworkMessageHandler(msgType = 62, server = true)]
 		private static void HandleConstructTurret(NetworkMessage netMsg)
 		{
@@ -1889,12 +1821,12 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x170000FE RID: 254
-		// (get) Token: 0x06000CA4 RID: 3236 RVA: 0x00009E2D File Offset: 0x0000802D
-		// (set) Token: 0x06000CA5 RID: 3237 RVA: 0x00009E35 File Offset: 0x00008035
+		// Token: 0x170000FB RID: 251
+		// (get) Token: 0x06000C97 RID: 3223 RVA: 0x00009DC8 File Offset: 0x00007FC8
+		// (set) Token: 0x06000C98 RID: 3224 RVA: 0x00009DD0 File Offset: 0x00007FD0
 		public int multiKillCount { get; private set; }
 
-		// Token: 0x06000CA6 RID: 3238 RVA: 0x00051D34 File Offset: 0x0004FF34
+		// Token: 0x06000C99 RID: 3225 RVA: 0x0005198C File Offset: 0x0004FB8C
 		[Server]
 		public void AddMultiKill(int kills)
 		{
@@ -1912,7 +1844,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000CA7 RID: 3239 RVA: 0x00051DB0 File Offset: 0x0004FFB0
+		// Token: 0x06000C9A RID: 3226 RVA: 0x00051A08 File Offset: 0x0004FC08
 		[Server]
 		private void UpdateMultiKill(float deltaTime)
 		{
@@ -1929,8 +1861,8 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x170000FF RID: 255
-		// (get) Token: 0x06000CA8 RID: 3240 RVA: 0x00009E3E File Offset: 0x0000803E
+		// Token: 0x170000FC RID: 252
+		// (get) Token: 0x06000C9B RID: 3227 RVA: 0x00009DD9 File Offset: 0x00007FD9
 		public Vector3 corePosition
 		{
 			get
@@ -1939,8 +1871,8 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x17000100 RID: 256
-		// (get) Token: 0x06000CA9 RID: 3241 RVA: 0x00051E00 File Offset: 0x00050000
+		// Token: 0x170000FD RID: 253
+		// (get) Token: 0x06000C9C RID: 3228 RVA: 0x00051A58 File Offset: 0x0004FC58
 		public Vector3 footPosition
 		{
 			get
@@ -1954,13 +1886,13 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x17000101 RID: 257
-		// (get) Token: 0x06000CAA RID: 3242 RVA: 0x00009E4B File Offset: 0x0000804B
-		// (set) Token: 0x06000CAB RID: 3243 RVA: 0x00009E53 File Offset: 0x00008053
+		// Token: 0x170000FE RID: 254
+		// (get) Token: 0x06000C9D RID: 3229 RVA: 0x00009DE6 File Offset: 0x00007FE6
+		// (set) Token: 0x06000C9E RID: 3230 RVA: 0x00009DEE File Offset: 0x00007FEE
 		public float radius { get; private set; }
 
-		// Token: 0x17000102 RID: 258
-		// (get) Token: 0x06000CAC RID: 3244 RVA: 0x00009E5C File Offset: 0x0000805C
+		// Token: 0x170000FF RID: 255
+		// (get) Token: 0x06000C9F RID: 3231 RVA: 0x00009DF7 File Offset: 0x00007FF7
 		public Vector3 aimOrigin
 		{
 			get
@@ -1973,13 +1905,13 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x17000103 RID: 259
-		// (get) Token: 0x06000CAD RID: 3245 RVA: 0x00009E7D File Offset: 0x0000807D
-		// (set) Token: 0x06000CAE RID: 3246 RVA: 0x00009E85 File Offset: 0x00008085
+		// Token: 0x17000100 RID: 256
+		// (get) Token: 0x06000CA0 RID: 3232 RVA: 0x00009E18 File Offset: 0x00008018
+		// (set) Token: 0x06000CA1 RID: 3233 RVA: 0x00009E20 File Offset: 0x00008020
 		public bool isElite { get; private set; }
 
-		// Token: 0x17000104 RID: 260
-		// (get) Token: 0x06000CAF RID: 3247 RVA: 0x00009E8E File Offset: 0x0000808E
+		// Token: 0x17000101 RID: 257
+		// (get) Token: 0x06000CA2 RID: 3234 RVA: 0x00009E29 File Offset: 0x00008029
 		public bool isBoss
 		{
 			get
@@ -1988,7 +1920,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000CB0 RID: 3248 RVA: 0x00009EAA File Offset: 0x000080AA
+		// Token: 0x06000CA3 RID: 3235 RVA: 0x00009E45 File Offset: 0x00008045
 		[ClientRpc]
 		public void RpcBark()
 		{
@@ -1998,7 +1930,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000CB2 RID: 3250 RVA: 0x00051EB0 File Offset: 0x000500B0
+		// Token: 0x06000CA5 RID: 3237 RVA: 0x00051B08 File Offset: 0x0004FD08
 		static CharacterBody()
 		{
 			NetworkBehaviour.RegisterCommandDelegate(typeof(CharacterBody), CharacterBody.kCmdCmdUpdateSprint, new NetworkBehaviour.CmdDelegate(CharacterBody.InvokeCmdCmdUpdateSprint));
@@ -2011,12 +1943,12 @@ namespace RoR2
 			NetworkCRC.RegisterBehaviour("CharacterBody", 0);
 		}
 
-		// Token: 0x06000CB3 RID: 3251 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06000CA6 RID: 3238 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x06000CB4 RID: 3252 RVA: 0x00009ED0 File Offset: 0x000080D0
+		// Token: 0x06000CA7 RID: 3239 RVA: 0x00009E6B File Offset: 0x0000806B
 		protected static void InvokeCmdCmdUpdateSprint(NetworkBehaviour obj, NetworkReader reader)
 		{
 			if (!NetworkServer.active)
@@ -2027,7 +1959,7 @@ namespace RoR2
 			((CharacterBody)obj).CmdUpdateSprint(reader.ReadBoolean());
 		}
 
-		// Token: 0x06000CB5 RID: 3253 RVA: 0x00009EF9 File Offset: 0x000080F9
+		// Token: 0x06000CA8 RID: 3240 RVA: 0x00009E94 File Offset: 0x00008094
 		protected static void InvokeCmdCmdOnSkillActivated(NetworkBehaviour obj, NetworkReader reader)
 		{
 			if (!NetworkServer.active)
@@ -2038,7 +1970,7 @@ namespace RoR2
 			((CharacterBody)obj).CmdOnSkillActivated((sbyte)reader.ReadPackedUInt32());
 		}
 
-		// Token: 0x06000CB6 RID: 3254 RVA: 0x00051F90 File Offset: 0x00050190
+		// Token: 0x06000CA9 RID: 3241 RVA: 0x00051BE8 File Offset: 0x0004FDE8
 		public void CallCmdUpdateSprint(bool newIsSprinting)
 		{
 			if (!NetworkClient.active)
@@ -2060,7 +1992,7 @@ namespace RoR2
 			base.SendCommandInternal(networkWriter, 0, "CmdUpdateSprint");
 		}
 
-		// Token: 0x06000CB7 RID: 3255 RVA: 0x0005201C File Offset: 0x0005021C
+		// Token: 0x06000CAA RID: 3242 RVA: 0x00051C74 File Offset: 0x0004FE74
 		public void CallCmdOnSkillActivated(sbyte skillIndex)
 		{
 			if (!NetworkClient.active)
@@ -2082,7 +2014,7 @@ namespace RoR2
 			base.SendCommandInternal(networkWriter, 0, "CmdOnSkillActivated");
 		}
 
-		// Token: 0x06000CB8 RID: 3256 RVA: 0x00009F22 File Offset: 0x00008122
+		// Token: 0x06000CAB RID: 3243 RVA: 0x00009EBD File Offset: 0x000080BD
 		protected static void InvokeRpcRpcSyncWarCryReady(NetworkBehaviour obj, NetworkReader reader)
 		{
 			if (!NetworkClient.active)
@@ -2093,7 +2025,7 @@ namespace RoR2
 			((CharacterBody)obj).RpcSyncWarCryReady(reader.ReadBoolean());
 		}
 
-		// Token: 0x06000CB9 RID: 3257 RVA: 0x00009F4B File Offset: 0x0000814B
+		// Token: 0x06000CAC RID: 3244 RVA: 0x00009EE6 File Offset: 0x000080E6
 		protected static void InvokeRpcRpcBark(NetworkBehaviour obj, NetworkReader reader)
 		{
 			if (!NetworkClient.active)
@@ -2104,7 +2036,7 @@ namespace RoR2
 			((CharacterBody)obj).RpcBark();
 		}
 
-		// Token: 0x06000CBA RID: 3258 RVA: 0x000520A8 File Offset: 0x000502A8
+		// Token: 0x06000CAD RID: 3245 RVA: 0x00051D00 File Offset: 0x0004FF00
 		public void CallRpcSyncWarCryReady(bool value)
 		{
 			if (!NetworkServer.active)
@@ -2121,7 +2053,7 @@ namespace RoR2
 			this.SendRPCInternal(networkWriter, 0, "RpcSyncWarCryReady");
 		}
 
-		// Token: 0x06000CBB RID: 3259 RVA: 0x0005211C File Offset: 0x0005031C
+		// Token: 0x06000CAE RID: 3246 RVA: 0x00051D74 File Offset: 0x0004FF74
 		public void CallRpcBark()
 		{
 			if (!NetworkServer.active)
@@ -2137,325 +2069,322 @@ namespace RoR2
 			this.SendRPCInternal(networkWriter, 0, "RpcBark");
 		}
 
-		// Token: 0x04001050 RID: 4176
+		// Token: 0x04001049 RID: 4169
 		[Tooltip("The language token to use as the base name of this character.")]
 		public string baseNameToken;
 
-		// Token: 0x04001051 RID: 4177
+		// Token: 0x0400104A RID: 4170
 		public string subtitleNameToken;
 
-		// Token: 0x04001052 RID: 4178
+		// Token: 0x0400104B RID: 4171
 		private int[] buffs = new int[31];
 
-		// Token: 0x04001053 RID: 4179
+		// Token: 0x0400104C RID: 4172
 		private List<CharacterBody.TimedBuff> timedBuffs = new List<CharacterBody.TimedBuff>();
 
-		// Token: 0x04001054 RID: 4180
+		// Token: 0x0400104D RID: 4173
 		private BuffMask buffMask;
 
-		// Token: 0x04001055 RID: 4181
+		// Token: 0x0400104E RID: 4174
 		private GameObject warCryEffectInstance;
 
-		// Token: 0x04001056 RID: 4182
+		// Token: 0x0400104F RID: 4175
 		[EnumMask(typeof(CharacterBody.BodyFlags))]
 		public CharacterBody.BodyFlags bodyFlags;
 
-		// Token: 0x04001057 RID: 4183
+		// Token: 0x04001050 RID: 4176
 		private NetworkInstanceId masterObjectId;
 
-		// Token: 0x04001058 RID: 4184
+		// Token: 0x04001051 RID: 4177
 		private GameObject _masterObject;
 
-		// Token: 0x04001059 RID: 4185
+		// Token: 0x04001052 RID: 4178
 		private CharacterMaster _master;
 
-		// Token: 0x0400105B RID: 4187
+		// Token: 0x04001054 RID: 4180
 		private bool linkedToMaster;
 
-		// Token: 0x0400105D RID: 4189
+		// Token: 0x04001056 RID: 4182
 		private bool disablingHurtBoxes;
 
-		// Token: 0x0400105E RID: 4190
+		// Token: 0x04001057 RID: 4183
 		private EquipmentIndex previousEquipmentIndex;
 
-		// Token: 0x04001060 RID: 4192
+		// Token: 0x04001059 RID: 4185
 		private new Transform transform;
 
-		// Token: 0x04001065 RID: 4197
+		// Token: 0x0400105A RID: 4186
+		private CharacterMotor characterMotor;
+
+		// Token: 0x0400105E RID: 4190
 		private SkillLocator skillLocator;
 
-		// Token: 0x04001066 RID: 4198
+		// Token: 0x0400105F RID: 4191
 		private SfxLocator sfxLocator;
 
-		// Token: 0x0400106B RID: 4203
+		// Token: 0x04001064 RID: 4196
 		private static List<CharacterBody> instancesList = new List<CharacterBody>();
 
-		// Token: 0x0400106C RID: 4204
+		// Token: 0x04001065 RID: 4197
 		public static readonly ReadOnlyCollection<CharacterBody> readOnlyInstancesList = new ReadOnlyCollection<CharacterBody>(CharacterBody.instancesList);
 
-		// Token: 0x0400106D RID: 4205
+		// Token: 0x04001066 RID: 4198
 		private bool _isSprinting;
 
-		// Token: 0x0400106E RID: 4206
+		// Token: 0x04001067 RID: 4199
 		private float sprintingSpeedMultiplier = 1.45f;
 
-		// Token: 0x0400106F RID: 4207
+		// Token: 0x04001068 RID: 4200
 		private const float outOfCombatDelay = 5f;
 
-		// Token: 0x04001070 RID: 4208
+		// Token: 0x04001069 RID: 4201
 		private const float outOfDangerDelay = 7f;
 
-		// Token: 0x04001071 RID: 4209
+		// Token: 0x0400106A RID: 4202
 		private float outOfCombatStopwatch;
 
-		// Token: 0x04001072 RID: 4210
+		// Token: 0x0400106B RID: 4203
 		private float outOfDangerStopwatch;
 
-		// Token: 0x04001074 RID: 4212
+		// Token: 0x0400106D RID: 4205
 		private bool _outOfDanger = true;
 
-		// Token: 0x04001075 RID: 4213
+		// Token: 0x0400106E RID: 4206
 		private Vector3 previousPosition;
 
-		// Token: 0x04001076 RID: 4214
+		// Token: 0x0400106F RID: 4207
 		private const float notMovingWait = 2f;
 
-		// Token: 0x04001077 RID: 4215
+		// Token: 0x04001070 RID: 4208
 		private float notMovingStopwatch;
 
-		// Token: 0x04001078 RID: 4216
+		// Token: 0x04001071 RID: 4209
 		public bool rootMotionInMainState;
 
-		// Token: 0x04001079 RID: 4217
+		// Token: 0x04001072 RID: 4210
 		public float mainRootSpeed;
 
-		// Token: 0x0400107A RID: 4218
+		// Token: 0x04001073 RID: 4211
 		public float baseMaxHealth;
 
-		// Token: 0x0400107B RID: 4219
+		// Token: 0x04001074 RID: 4212
 		public float baseRegen;
 
-		// Token: 0x0400107C RID: 4220
+		// Token: 0x04001075 RID: 4213
 		public float baseMaxShield;
 
-		// Token: 0x0400107D RID: 4221
+		// Token: 0x04001076 RID: 4214
 		public float baseMoveSpeed;
 
-		// Token: 0x0400107E RID: 4222
+		// Token: 0x04001077 RID: 4215
 		public float baseAcceleration;
 
-		// Token: 0x0400107F RID: 4223
+		// Token: 0x04001078 RID: 4216
 		public float baseJumpPower;
 
-		// Token: 0x04001080 RID: 4224
+		// Token: 0x04001079 RID: 4217
 		public float baseDamage;
 
-		// Token: 0x04001081 RID: 4225
+		// Token: 0x0400107A RID: 4218
 		public float baseAttackSpeed;
 
-		// Token: 0x04001082 RID: 4226
+		// Token: 0x0400107B RID: 4219
 		public float baseCrit;
 
-		// Token: 0x04001083 RID: 4227
+		// Token: 0x0400107C RID: 4220
 		public float baseArmor;
 
-		// Token: 0x04001084 RID: 4228
+		// Token: 0x0400107D RID: 4221
 		public int baseJumpCount = 1;
 
-		// Token: 0x04001085 RID: 4229
+		// Token: 0x0400107E RID: 4222
 		public bool autoCalculateLevelStats;
 
-		// Token: 0x04001086 RID: 4230
+		// Token: 0x0400107F RID: 4223
 		public float levelMaxHealth;
 
-		// Token: 0x04001087 RID: 4231
+		// Token: 0x04001080 RID: 4224
 		public float levelRegen;
 
-		// Token: 0x04001088 RID: 4232
+		// Token: 0x04001081 RID: 4225
 		public float levelMaxShield;
 
-		// Token: 0x04001089 RID: 4233
+		// Token: 0x04001082 RID: 4226
 		public float levelMoveSpeed;
 
-		// Token: 0x0400108A RID: 4234
+		// Token: 0x04001083 RID: 4227
 		public float levelJumpPower;
 
-		// Token: 0x0400108B RID: 4235
+		// Token: 0x04001084 RID: 4228
 		public float levelDamage;
 
-		// Token: 0x0400108C RID: 4236
+		// Token: 0x04001085 RID: 4229
 		public float levelAttackSpeed;
 
-		// Token: 0x0400108D RID: 4237
+		// Token: 0x04001086 RID: 4230
 		public float levelCrit;
 
-		// Token: 0x0400108E RID: 4238
+		// Token: 0x04001087 RID: 4231
 		public float levelArmor;
 
-		// Token: 0x0400109E RID: 4254
+		// Token: 0x04001097 RID: 4247
 		private bool statsDirty;
 
-		// Token: 0x0400109F RID: 4255
+		// Token: 0x04001098 RID: 4248
 		private float aimTimer;
 
-		// Token: 0x040010A0 RID: 4256
+		// Token: 0x04001099 RID: 4249
 		private const uint masterDirtyBit = 1u;
 
-		// Token: 0x040010A1 RID: 4257
+		// Token: 0x0400109A RID: 4250
 		private const uint buffMaskBit = 2u;
 
-		// Token: 0x040010A2 RID: 4258
+		// Token: 0x0400109B RID: 4251
 		private const uint attackSpeedOnCritBuffBit = 4u;
 
-		// Token: 0x040010A3 RID: 4259
+		// Token: 0x0400109C RID: 4252
 		private const uint outOfCombatBit = 8u;
 
-		// Token: 0x040010A4 RID: 4260
+		// Token: 0x0400109D RID: 4253
 		private const uint outOfDangerBit = 16u;
 
-		// Token: 0x040010A5 RID: 4261
+		// Token: 0x0400109E RID: 4254
 		private const uint sprintingBit = 32u;
 
-		// Token: 0x040010A6 RID: 4262
-		private const uint onFireBuffBit = 64u;
-
-		// Token: 0x040010A7 RID: 4263
-		private const uint beetleJuiceBuffBit = 128u;
-
-		// Token: 0x040010A8 RID: 4264
+		// Token: 0x0400109F RID: 4255
 		private GameObject warCryAuraController;
 
-		// Token: 0x040010A9 RID: 4265
+		// Token: 0x040010A0 RID: 4256
 		private float warCryTimer;
 
-		// Token: 0x040010AA RID: 4266
+		// Token: 0x040010A1 RID: 4257
 		private const float warCryChargeDuration = 30f;
 
-		// Token: 0x040010AB RID: 4267
+		// Token: 0x040010A2 RID: 4258
 		private bool _warCryReady;
 
-		// Token: 0x040010AC RID: 4268
+		// Token: 0x040010A3 RID: 4259
 		[HideInInspector]
 		public int killCount;
 
-		// Token: 0x040010AD RID: 4269
+		// Token: 0x040010A4 RID: 4260
 		private float teslaBuffRollTimer;
 
-		// Token: 0x040010AE RID: 4270
+		// Token: 0x040010A5 RID: 4261
 		private const float teslaRollInterval = 10f;
 
-		// Token: 0x040010AF RID: 4271
+		// Token: 0x040010A6 RID: 4262
 		private float teslaFireTimer;
 
-		// Token: 0x040010B0 RID: 4272
+		// Token: 0x040010A7 RID: 4263
 		private float teslaResetListTimer;
 
-		// Token: 0x040010B1 RID: 4273
+		// Token: 0x040010A8 RID: 4264
 		private float teslaResetListInterval = 0.5f;
 
-		// Token: 0x040010B2 RID: 4274
+		// Token: 0x040010A9 RID: 4265
 		private const float teslaFireInterval = 0.0833333358f;
 
-		// Token: 0x040010B3 RID: 4275
+		// Token: 0x040010AA RID: 4266
 		private bool teslaCrit;
 
-		// Token: 0x040010B4 RID: 4276
+		// Token: 0x040010AB RID: 4267
 		private List<HealthComponent> previousTeslaTargetList = new List<HealthComponent>();
 
-		// Token: 0x040010B5 RID: 4277
+		// Token: 0x040010AC RID: 4268
 		private HelfireController helfireController;
 
-		// Token: 0x040010B6 RID: 4278
+		// Token: 0x040010AD RID: 4269
 		private float helfireLifetime;
 
-		// Token: 0x040010B7 RID: 4279
+		// Token: 0x040010AE RID: 4270
 		private DamageTrail fireTrail;
 
-		// Token: 0x040010B8 RID: 4280
+		// Token: 0x040010AF RID: 4271
 		public bool wasLucky;
 
-		// Token: 0x040010B9 RID: 4281
+		// Token: 0x040010B0 RID: 4272
 		private const float timeBetweenGuardResummons = 30f;
 
-		// Token: 0x040010BA RID: 4282
+		// Token: 0x040010B1 RID: 4273
 		private float guardResummonCooldown;
 
-		// Token: 0x040010BB RID: 4283
+		// Token: 0x040010B2 RID: 4274
 		private TemporaryVisualEffect engiShieldTempEffect;
 
-		// Token: 0x040010BC RID: 4284
+		// Token: 0x040010B3 RID: 4275
 		private TemporaryVisualEffect bucklerShieldTempEffect;
 
-		// Token: 0x040010BD RID: 4285
+		// Token: 0x040010B4 RID: 4276
 		private TemporaryVisualEffect slowDownTimeTempEffect;
 
-		// Token: 0x040010BE RID: 4286
+		// Token: 0x040010B5 RID: 4277
 		private TemporaryVisualEffect crippleEffect;
 
-		// Token: 0x040010BF RID: 4287
+		// Token: 0x040010B6 RID: 4278
 		[Tooltip("How long it takes for spread bloom to reset from full.")]
 		public float spreadBloomDecayTime = 0.45f;
 
-		// Token: 0x040010C0 RID: 4288
+		// Token: 0x040010B7 RID: 4279
 		[Tooltip("The spread bloom interpretation curve.")]
 		public AnimationCurve spreadBloomCurve;
 
-		// Token: 0x040010C1 RID: 4289
+		// Token: 0x040010B8 RID: 4280
 		private float spreadBloomInternal;
 
-		// Token: 0x040010C2 RID: 4290
+		// Token: 0x040010B9 RID: 4281
 		[Tooltip("The crosshair prefab used for this body.")]
 		public GameObject crosshairPrefab;
 
-		// Token: 0x040010C3 RID: 4291
+		// Token: 0x040010BA RID: 4282
 		[HideInInspector]
 		public bool hideCrosshair;
 
-		// Token: 0x040010C4 RID: 4292
+		// Token: 0x040010BB RID: 4283
 		private const float multiKillMaxInterval = 1f;
 
-		// Token: 0x040010C5 RID: 4293
+		// Token: 0x040010BC RID: 4284
 		private float multiKillTimer;
 
-		// Token: 0x040010C7 RID: 4295
+		// Token: 0x040010BE RID: 4286
 		private const int multiKillThresholdForWarcry = 4;
 
-		// Token: 0x040010C9 RID: 4297
+		// Token: 0x040010C0 RID: 4288
 		[Tooltip("The child transform to be used as the aiming origin.")]
 		public Transform aimOriginTransform;
 
-		// Token: 0x040010CA RID: 4298
+		// Token: 0x040010C1 RID: 4289
 		[Tooltip("The hull size to use when pathfinding for this object.")]
 		public HullClassification hullClassification;
 
-		// Token: 0x040010CB RID: 4299
+		// Token: 0x040010C2 RID: 4290
 		[Tooltip("The icon displayed for ally healthbars")]
 		public Texture portraitIcon;
 
-		// Token: 0x040010CC RID: 4300
+		// Token: 0x040010C3 RID: 4291
 		[FormerlySerializedAs("isBoss")]
 		[Tooltip("Whether or not this is a boss for dropping items on death.")]
 		public bool isChampion;
 
-		// Token: 0x040010CE RID: 4302
+		// Token: 0x040010C5 RID: 4293
 		private static int kCmdCmdUpdateSprint = -1006016914;
 
-		// Token: 0x040010CF RID: 4303
+		// Token: 0x040010C6 RID: 4294
 		private static int kCmdCmdOnSkillActivated;
 
-		// Token: 0x040010D0 RID: 4304
+		// Token: 0x040010C7 RID: 4295
 		private static int kRpcRpcSyncWarCryReady;
 
-		// Token: 0x040010D1 RID: 4305
+		// Token: 0x040010C8 RID: 4296
 		private static int kRpcRpcBark;
 
 		// Token: 0x02000282 RID: 642
 		private class TimedBuff
 		{
-			// Token: 0x040010D2 RID: 4306
+			// Token: 0x040010C9 RID: 4297
 			public BuffIndex buffIndex;
 
-			// Token: 0x040010D3 RID: 4307
+			// Token: 0x040010CA RID: 4298
 			public float timer;
 		}
 
@@ -2463,36 +2392,32 @@ namespace RoR2
 		[Flags]
 		public enum BodyFlags : byte
 		{
-			// Token: 0x040010D5 RID: 4309
+			// Token: 0x040010CC RID: 4300
 			None = 0,
-			// Token: 0x040010D6 RID: 4310
+			// Token: 0x040010CD RID: 4301
 			IgnoreFallDamage = 1,
-			// Token: 0x040010D7 RID: 4311
+			// Token: 0x040010CE RID: 4302
 			Mechanical = 2,
-			// Token: 0x040010D8 RID: 4312
+			// Token: 0x040010CF RID: 4303
 			Masterless = 4,
-			// Token: 0x040010D9 RID: 4313
-			ImmuneToGoo = 8,
-			// Token: 0x040010DA RID: 4314
-			ImmuneToExecutes = 16,
-			// Token: 0x040010DB RID: 4315
-			SprintAnyDirection = 32
+			// Token: 0x040010D0 RID: 4304
+			ImmuneToGoo = 8
 		}
 
 		// Token: 0x02000284 RID: 644
 		public class ItemBehavior : MonoBehaviour
 		{
-			// Token: 0x040010DC RID: 4316
+			// Token: 0x040010D1 RID: 4305
 			public CharacterBody body;
 
-			// Token: 0x040010DD RID: 4317
+			// Token: 0x040010D2 RID: 4306
 			public int stack;
 		}
 
 		// Token: 0x02000285 RID: 645
 		public class MushroomItemBehavior : CharacterBody.ItemBehavior
 		{
-			// Token: 0x06000CBE RID: 3262 RVA: 0x00052188 File Offset: 0x00050388
+			// Token: 0x06000CB1 RID: 3249 RVA: 0x00051DE0 File Offset: 0x0004FFE0
 			private void FixedUpdate()
 			{
 				if (!NetworkServer.active)
@@ -2525,7 +2450,7 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x06000CBF RID: 3263 RVA: 0x00009F6E File Offset: 0x0000816E
+			// Token: 0x06000CB2 RID: 3250 RVA: 0x00009F09 File Offset: 0x00008109
 			private void OnDisable()
 			{
 				if (this.mushroomWard)
@@ -2534,14 +2459,14 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x040010DE RID: 4318
+			// Token: 0x040010D3 RID: 4307
 			private GameObject mushroomWard;
 		}
 
 		// Token: 0x02000286 RID: 646
 		public class IcicleItemBehavior : CharacterBody.ItemBehavior
 		{
-			// Token: 0x06000CC1 RID: 3265 RVA: 0x00052278 File Offset: 0x00050478
+			// Token: 0x06000CB4 RID: 3252 RVA: 0x00051ED0 File Offset: 0x000500D0
 			private void FixedUpdate()
 			{
 				if (!NetworkServer.active)
@@ -2564,7 +2489,7 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x06000CC2 RID: 3266 RVA: 0x00009F90 File Offset: 0x00008190
+			// Token: 0x06000CB5 RID: 3253 RVA: 0x00009F2B File Offset: 0x0000812B
 			public void OnOwnerKillOther()
 			{
 				if (this.icicleAura)
@@ -2573,7 +2498,7 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x06000CC3 RID: 3267 RVA: 0x00009FAA File Offset: 0x000081AA
+			// Token: 0x06000CB6 RID: 3254 RVA: 0x00009F45 File Offset: 0x00008145
 			private void OnDisable()
 			{
 				if (this.icicleAura)
@@ -2582,14 +2507,14 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x040010DF RID: 4319
+			// Token: 0x040010D4 RID: 4308
 			private IcicleAuraController icicleAura;
 		}
 
 		// Token: 0x02000287 RID: 647
 		public class HeadstomperItemBehavior : CharacterBody.ItemBehavior
 		{
-			// Token: 0x06000CC5 RID: 3269 RVA: 0x00052304 File Offset: 0x00050504
+			// Token: 0x06000CB8 RID: 3256 RVA: 0x00051F5C File Offset: 0x0005015C
 			private void FixedUpdate()
 			{
 				bool flag = this.stack > 0;
@@ -2605,7 +2530,7 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x06000CC6 RID: 3270 RVA: 0x00009FC4 File Offset: 0x000081C4
+			// Token: 0x06000CB9 RID: 3257 RVA: 0x00009F5F File Offset: 0x0000815F
 			private void OnDisable()
 			{
 				if (this.headstompersControllerObject)
@@ -2614,14 +2539,14 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x040010E0 RID: 4320
+			// Token: 0x040010D5 RID: 4309
 			private GameObject headstompersControllerObject;
 		}
 
 		// Token: 0x02000288 RID: 648
 		private class ConstructTurretMessage : MessageBase
 		{
-			// Token: 0x06000CC9 RID: 3273 RVA: 0x00009FDE File Offset: 0x000081DE
+			// Token: 0x06000CBC RID: 3260 RVA: 0x00009F79 File Offset: 0x00008179
 			public override void Serialize(NetworkWriter writer)
 			{
 				writer.Write(this.builder);
@@ -2629,7 +2554,7 @@ namespace RoR2
 				writer.Write(this.rotation);
 			}
 
-			// Token: 0x06000CCA RID: 3274 RVA: 0x0000A004 File Offset: 0x00008204
+			// Token: 0x06000CBD RID: 3261 RVA: 0x00009F9F File Offset: 0x0000819F
 			public override void Deserialize(NetworkReader reader)
 			{
 				this.builder = reader.ReadGameObject();
@@ -2637,13 +2562,13 @@ namespace RoR2
 				this.rotation = reader.ReadQuaternion();
 			}
 
-			// Token: 0x040010E1 RID: 4321
+			// Token: 0x040010D6 RID: 4310
 			public GameObject builder;
 
-			// Token: 0x040010E2 RID: 4322
+			// Token: 0x040010D7 RID: 4311
 			public Vector3 position;
 
-			// Token: 0x040010E3 RID: 4323
+			// Token: 0x040010D8 RID: 4312
 			public Quaternion rotation;
 		}
 	}

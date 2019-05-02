@@ -9,17 +9,17 @@ namespace RoR2
 	// Token: 0x02000270 RID: 624
 	public class BossGroup : NetworkBehaviour
 	{
-		// Token: 0x170000CF RID: 207
-		// (get) Token: 0x06000BB6 RID: 2998 RVA: 0x0000947F File Offset: 0x0000767F
-		// (set) Token: 0x06000BB7 RID: 2999 RVA: 0x00009486 File Offset: 0x00007686
+		// Token: 0x170000CE RID: 206
+		// (get) Token: 0x06000BAD RID: 2989 RVA: 0x00009427 File Offset: 0x00007627
+		// (set) Token: 0x06000BAE RID: 2990 RVA: 0x0000942E File Offset: 0x0000762E
 		public static BossGroup instance { get; private set; }
 
-		// Token: 0x170000D0 RID: 208
-		// (get) Token: 0x06000BB8 RID: 3000 RVA: 0x0000948E File Offset: 0x0000768E
-		// (set) Token: 0x06000BB9 RID: 3001 RVA: 0x00009496 File Offset: 0x00007696
+		// Token: 0x170000CF RID: 207
+		// (get) Token: 0x06000BAF RID: 2991 RVA: 0x00009436 File Offset: 0x00007636
+		// (set) Token: 0x06000BB0 RID: 2992 RVA: 0x0000943E File Offset: 0x0000763E
 		public ReadOnlyCollection<CharacterMaster> readOnlyMembersList { get; private set; }
 
-		// Token: 0x06000BBA RID: 3002 RVA: 0x0004C884 File Offset: 0x0004AA84
+		// Token: 0x06000BB1 RID: 2993 RVA: 0x0004C678 File Offset: 0x0004A878
 		private void Awake()
 		{
 			if (NetworkServer.active)
@@ -38,7 +38,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000BBB RID: 3003 RVA: 0x0004C918 File Offset: 0x0004AB18
+		// Token: 0x06000BB2 RID: 2994 RVA: 0x0004C70C File Offset: 0x0004A90C
 		private void OnDestroy()
 		{
 			if (NetworkServer.active)
@@ -54,13 +54,13 @@ namespace RoR2
 			BossGroup.instance = ((BossGroup._instancesList.Count > 0) ? BossGroup._instancesList[0] : null);
 		}
 
-		// Token: 0x06000BBC RID: 3004 RVA: 0x0000949F File Offset: 0x0000769F
+		// Token: 0x06000BB3 RID: 2995 RVA: 0x00009447 File Offset: 0x00007647
 		private void FixedUpdate()
 		{
 			this.fixedAge += Time.fixedDeltaTime;
 		}
 
-		// Token: 0x06000BBD RID: 3005 RVA: 0x0004C990 File Offset: 0x0004AB90
+		// Token: 0x06000BB4 RID: 2996 RVA: 0x0004C784 File Offset: 0x0004A984
 		[Server]
 		public void AddMember(CharacterMaster memberMaster)
 		{
@@ -86,7 +86,7 @@ namespace RoR2
 			Run.instance.OnServerBossAdded(this, memberMaster);
 		}
 
-		// Token: 0x06000BBE RID: 3006 RVA: 0x0004CA34 File Offset: 0x0004AC34
+		// Token: 0x06000BB5 RID: 2997 RVA: 0x0004C828 File Offset: 0x0004AA28
 		[Server]
 		private void OnCharacterDeathCallback(DamageReport damageReport)
 		{
@@ -165,11 +165,11 @@ namespace RoR2
 		}
 
 		// Token: 0x14000007 RID: 7
-		// (add) Token: 0x06000BBF RID: 3007 RVA: 0x0004CCA8 File Offset: 0x0004AEA8
-		// (remove) Token: 0x06000BC0 RID: 3008 RVA: 0x0004CCDC File Offset: 0x0004AEDC
+		// (add) Token: 0x06000BB6 RID: 2998 RVA: 0x0004CA9C File Offset: 0x0004AC9C
+		// (remove) Token: 0x06000BB7 RID: 2999 RVA: 0x0004CAD0 File Offset: 0x0004ACD0
 		public static event Action<BossGroup> onBossGroupDefeatedServer;
 
-		// Token: 0x06000BC1 RID: 3009 RVA: 0x0004CD10 File Offset: 0x0004AF10
+		// Token: 0x06000BB8 RID: 3000 RVA: 0x0004CB04 File Offset: 0x0004AD04
 		[Server]
 		private void RemoveMember(CharacterMaster memberMaster)
 		{
@@ -185,7 +185,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000BC2 RID: 3010 RVA: 0x000094B3 File Offset: 0x000076B3
+		// Token: 0x06000BB9 RID: 3001 RVA: 0x0000945B File Offset: 0x0000765B
 		private void RemoveMemberAt(int memberIndex)
 		{
 			this.membersList.RemoveAt(memberIndex);
@@ -197,7 +197,7 @@ namespace RoR2
 			base.SetDirtyBit(1u);
 		}
 
-		// Token: 0x06000BC3 RID: 3011 RVA: 0x0004CD4C File Offset: 0x0004AF4C
+		// Token: 0x06000BBA RID: 3002 RVA: 0x0004CB40 File Offset: 0x0004AD40
 		[Server]
 		public void OnMemberDestroyed(OnDestroyCallback onDestroyCallback)
 		{
@@ -217,7 +217,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000BC4 RID: 3012 RVA: 0x0004CDA4 File Offset: 0x0004AFA4
+		// Token: 0x06000BBB RID: 3003 RVA: 0x0004CB98 File Offset: 0x0004AD98
 		public override bool OnSerialize(NetworkWriter writer, bool initialState)
 		{
 			uint num = base.syncVarDirtyBits;
@@ -240,7 +240,7 @@ namespace RoR2
 			return !initialState && num > 0u;
 		}
 
-		// Token: 0x06000BC5 RID: 3013 RVA: 0x0004CE24 File Offset: 0x0004B024
+		// Token: 0x06000BBC RID: 3004 RVA: 0x0004CC18 File Offset: 0x0004AE18
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 			if ((reader.ReadByte() & 1) > 0)
@@ -268,7 +268,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000BC6 RID: 3014 RVA: 0x0004CEDC File Offset: 0x0004B0DC
+		// Token: 0x06000BBD RID: 3005 RVA: 0x0004CCD0 File Offset: 0x0004AED0
 		public static int GetTotalBossCount()
 		{
 			if (BossGroup.totalBossCountDirty)
@@ -283,48 +283,48 @@ namespace RoR2
 			return BossGroup.lastTotalBossCount;
 		}
 
-		// Token: 0x06000BC9 RID: 3017 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06000BC0 RID: 3008 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x04000F9D RID: 3997
+		// Token: 0x04000F97 RID: 3991
 		private static readonly List<BossGroup> _instancesList = new List<BossGroup>();
 
-		// Token: 0x04000F9E RID: 3998
+		// Token: 0x04000F98 RID: 3992
 		public static readonly ReadOnlyCollection<BossGroup> readOnlyInstancesList = new ReadOnlyCollection<BossGroup>(BossGroup._instancesList);
 
-		// Token: 0x04000F9F RID: 3999
+		// Token: 0x04000F99 RID: 3993
 		private readonly List<CharacterMaster> membersList = new List<CharacterMaster>();
 
-		// Token: 0x04000FA1 RID: 4001
+		// Token: 0x04000F9B RID: 3995
 		private List<OnDestroyCallback> onDestroyCallbacks;
 
-		// Token: 0x04000FA2 RID: 4002
+		// Token: 0x04000F9C RID: 3996
 		private bool defeated;
 
-		// Token: 0x04000FA3 RID: 4003
+		// Token: 0x04000F9D RID: 3997
 		private Xoroshiro128Plus rng;
 
-		// Token: 0x04000FA4 RID: 4004
+		// Token: 0x04000F9E RID: 3998
 		public Transform dropPosition;
 
-		// Token: 0x04000FA5 RID: 4005
+		// Token: 0x04000F9F RID: 3999
 		public float bossDropChance = 0.15f;
 
-		// Token: 0x04000FA6 RID: 4006
+		// Token: 0x04000FA0 RID: 4000
 		private const uint membersListDirtyBit = 1u;
 
-		// Token: 0x04000FA7 RID: 4007
+		// Token: 0x04000FA1 RID: 4001
 		public float fixedAge;
 
-		// Token: 0x04000FA8 RID: 4008
+		// Token: 0x04000FA2 RID: 4002
 		private List<PickupIndex> bossDrops;
 
-		// Token: 0x04000FAA RID: 4010
+		// Token: 0x04000FA4 RID: 4004
 		private static int lastTotalBossCount = 0;
 
-		// Token: 0x04000FAB RID: 4011
+		// Token: 0x04000FA5 RID: 4005
 		private static bool totalBossCountDirty = false;
 	}
 }

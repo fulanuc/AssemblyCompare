@@ -5,11 +5,11 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x0200029F RID: 671
+	// Token: 0x0200029D RID: 669
 	[RequireComponent(typeof(SceneInfo))]
 	public class ClassicStageInfo : MonoBehaviour
 	{
-		// Token: 0x06000DB5 RID: 3509 RVA: 0x00055584 File Offset: 0x00053784
+		// Token: 0x06000DAE RID: 3502 RVA: 0x00055640 File Offset: 0x00053840
 		private WeightedSelection<DirectorCard> GenerateDirectorCardWeightedSelection(DirectorCardCategorySelection categorySelection)
 		{
 			WeightedSelection<DirectorCard> weightedSelection = new WeightedSelection<DirectorCard>(8);
@@ -24,12 +24,12 @@ namespace RoR2
 			return weightedSelection;
 		}
 
-		// Token: 0x1700012B RID: 299
-		// (get) Token: 0x06000DB6 RID: 3510 RVA: 0x0000AB04 File Offset: 0x00008D04
-		// (set) Token: 0x06000DB7 RID: 3511 RVA: 0x0000AB0B File Offset: 0x00008D0B
+		// Token: 0x17000127 RID: 295
+		// (get) Token: 0x06000DAF RID: 3503 RVA: 0x0000AAB2 File Offset: 0x00008CB2
+		// (set) Token: 0x06000DB0 RID: 3504 RVA: 0x0000AAB9 File Offset: 0x00008CB9
 		public static ClassicStageInfo instance { get; private set; }
 
-		// Token: 0x06000DB8 RID: 3512 RVA: 0x000555FC File Offset: 0x000537FC
+		// Token: 0x06000DB1 RID: 3505 RVA: 0x000556B8 File Offset: 0x000538B8
 		private void Awake()
 		{
 			this.interactableSelection = this.GenerateDirectorCardWeightedSelection(this.interactableCategories);
@@ -54,7 +54,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000DB9 RID: 3513 RVA: 0x0000AB13 File Offset: 0x00008D13
+		// Token: 0x06000DB2 RID: 3506 RVA: 0x0000AAC1 File Offset: 0x00008CC1
 		private IEnumerator BroadcastFamilySelection(ClassicStageInfo.MonsterFamily selectedFamily)
 		{
 			yield return new WaitForSeconds(1f);
@@ -65,19 +65,19 @@ namespace RoR2
 			yield break;
 		}
 
-		// Token: 0x06000DBA RID: 3514 RVA: 0x0000AB22 File Offset: 0x00008D22
+		// Token: 0x06000DB3 RID: 3507 RVA: 0x0000AAD0 File Offset: 0x00008CD0
 		private void OnEnable()
 		{
 			ClassicStageInfo.instance = this;
 		}
 
-		// Token: 0x06000DBB RID: 3515 RVA: 0x0000AB2A File Offset: 0x00008D2A
+		// Token: 0x06000DB4 RID: 3508 RVA: 0x0000AAD8 File Offset: 0x00008CD8
 		private void OnDisable()
 		{
 			ClassicStageInfo.instance = null;
 		}
 
-		// Token: 0x06000DBC RID: 3516 RVA: 0x00055708 File Offset: 0x00053908
+		// Token: 0x06000DB5 RID: 3509 RVA: 0x000557C4 File Offset: 0x000539C4
 		private static float CalculateTotalWeight(DirectorCard[] cards)
 		{
 			float num = 0f;
@@ -88,91 +88,91 @@ namespace RoR2
 			return num;
 		}
 
-		// Token: 0x06000DBD RID: 3517 RVA: 0x0005573C File Offset: 0x0005393C
+		// Token: 0x06000DB6 RID: 3510 RVA: 0x000557F8 File Offset: 0x000539F8
 		private static bool CardIsMiniBoss(DirectorCard card)
 		{
 			string name = card.spawnCard.prefab.name;
 			return name == "GolemMaster" || name == "BisonMaster" || name == "GreaterWispMaster" || name == "BeetleGuardMaster";
 		}
 
-		// Token: 0x06000DBE RID: 3518 RVA: 0x00055790 File Offset: 0x00053990
+		// Token: 0x06000DB7 RID: 3511 RVA: 0x0005584C File Offset: 0x00053A4C
 		private static bool CardIsChest(DirectorCard card)
 		{
 			string name = card.spawnCard.prefab.name;
 			return name == "EquipmentBarrel" || name.Contains("Chest") || card.spawnCard.prefab.name.Contains("TripleShop");
 		}
 
-		// Token: 0x06000DBF RID: 3519 RVA: 0x000557E8 File Offset: 0x000539E8
+		// Token: 0x06000DB8 RID: 3512 RVA: 0x000558A4 File Offset: 0x00053AA4
 		private static bool CardIsBarrel(DirectorCard card)
 		{
 			string name = card.spawnCard.prefab.name;
 			return name != "EquipmentBarrel" && name.Contains("Barrel");
 		}
 
-		// Token: 0x06000DC0 RID: 3520 RVA: 0x0000AB32 File Offset: 0x00008D32
+		// Token: 0x06000DB9 RID: 3513 RVA: 0x0000AAE0 File Offset: 0x00008CE0
 		private static bool CardIsChampion(DirectorCard card)
 		{
 			return card.spawnCard.prefab.GetComponent<CharacterMaster>().bodyPrefab.GetComponent<CharacterBody>().isChampion;
 		}
 
-		// Token: 0x040011A1 RID: 4513
+		// Token: 0x0400118F RID: 4495
 		[Tooltip("Stages that can be destinations of the teleporter.")]
 		public SceneField[] destinations;
 
-		// Token: 0x040011A2 RID: 4514
+		// Token: 0x04001190 RID: 4496
 		[SerializeField]
 		private DirectorCardCategorySelection interactableCategories;
 
-		// Token: 0x040011A3 RID: 4515
+		// Token: 0x04001191 RID: 4497
 		[SerializeField]
 		private DirectorCardCategorySelection monsterCategories;
 
-		// Token: 0x040011A4 RID: 4516
+		// Token: 0x04001192 RID: 4498
 		public ClassicStageInfo.MonsterFamily[] possibleMonsterFamilies;
 
-		// Token: 0x040011A5 RID: 4517
+		// Token: 0x04001193 RID: 4499
 		public WeightedSelection<DirectorCard> interactableSelection;
 
-		// Token: 0x040011A6 RID: 4518
+		// Token: 0x04001194 RID: 4500
 		public WeightedSelection<DirectorCard> monsterSelection;
 
-		// Token: 0x040011A7 RID: 4519
+		// Token: 0x04001195 RID: 4501
 		[SerializeField]
 		[HideInInspector]
 		private DirectorCard[] monsterCards;
 
-		// Token: 0x040011A8 RID: 4520
+		// Token: 0x04001196 RID: 4502
 		[SerializeField]
 		[HideInInspector]
 		public DirectorCard[] interactableCards;
 
-		// Token: 0x040011A9 RID: 4521
+		// Token: 0x04001197 RID: 4503
 		public int sceneDirectorInteractibleCredits = 200;
 
-		// Token: 0x040011AA RID: 4522
+		// Token: 0x04001198 RID: 4504
 		public int sceneDirectorMonsterCredits = 20;
 
-		// Token: 0x040011AC RID: 4524
+		// Token: 0x0400119A RID: 4506
 		private const float monsterFamilyChance = 2f;
 
-		// Token: 0x020002A0 RID: 672
+		// Token: 0x0200029E RID: 670
 		[Serializable]
 		public struct MonsterFamily
 		{
-			// Token: 0x040011AD RID: 4525
+			// Token: 0x0400119B RID: 4507
 			[SerializeField]
 			public DirectorCardCategorySelection monsterFamilyCategories;
 
-			// Token: 0x040011AE RID: 4526
+			// Token: 0x0400119C RID: 4508
 			public string familySelectionChatString;
 
-			// Token: 0x040011AF RID: 4527
+			// Token: 0x0400119D RID: 4509
 			public float selectionWeight;
 
-			// Token: 0x040011B0 RID: 4528
+			// Token: 0x0400119E RID: 4510
 			public int minimumStageCompletion;
 
-			// Token: 0x040011B1 RID: 4529
+			// Token: 0x0400119F RID: 4511
 			public int maximumStageCompletion;
 		}
 	}

@@ -7,7 +7,7 @@ namespace RoR2
 	// Token: 0x0200026E RID: 622
 	public class BoneParticleController : MonoBehaviour
 	{
-		// Token: 0x06000BB0 RID: 2992 RVA: 0x0004C750 File Offset: 0x0004A950
+		// Token: 0x06000BA7 RID: 2983 RVA: 0x0004C544 File Offset: 0x0004A744
 		private void Start()
 		{
 			this.bonesList = new List<Transform>();
@@ -24,7 +24,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06000BB1 RID: 2993 RVA: 0x0004C7E4 File Offset: 0x0004A9E4
+		// Token: 0x06000BA8 RID: 2984 RVA: 0x0004C5D8 File Offset: 0x0004A7D8
 		private void Update()
 		{
 			if (this.skinnedMeshRenderer)
@@ -43,19 +43,19 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04000F96 RID: 3990
+		// Token: 0x04000F90 RID: 3984
 		public GameObject childParticlePrefab;
 
-		// Token: 0x04000F97 RID: 3991
+		// Token: 0x04000F91 RID: 3985
 		public float spawnFrequency;
 
-		// Token: 0x04000F98 RID: 3992
+		// Token: 0x04000F92 RID: 3986
 		public SkinnedMeshRenderer skinnedMeshRenderer;
 
-		// Token: 0x04000F99 RID: 3993
+		// Token: 0x04000F93 RID: 3987
 		private float stopwatch;
 
-		// Token: 0x04000F9A RID: 3994
+		// Token: 0x04000F94 RID: 3988
 		private List<Transform> bonesList;
 	}
 }
