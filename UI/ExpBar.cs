@@ -3,17 +3,17 @@ using UnityEngine;
 
 namespace RoR2.UI
 {
-	// Token: 0x020005E8 RID: 1512
+	// Token: 0x020005D6 RID: 1494
 	[RequireComponent(typeof(RectTransform))]
 	public class ExpBar : MonoBehaviour
 	{
-		// Token: 0x06002215 RID: 8725 RVA: 0x00018CFA File Offset: 0x00016EFA
+		// Token: 0x06002184 RID: 8580 RVA: 0x00018600 File Offset: 0x00016800
 		private void Awake()
 		{
 			this.rectTransform = base.GetComponent<RectTransform>();
 		}
 
-		// Token: 0x06002216 RID: 8726 RVA: 0x000A3660 File Offset: 0x000A1860
+		// Token: 0x06002185 RID: 8581 RVA: 0x000A208C File Offset: 0x000A028C
 		public void Update()
 		{
 			TeamIndex teamIndex = this.source ? this.source.teamIndex : TeamIndex.Neutral;
@@ -32,13 +32,13 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x04002486 RID: 9350
+		// Token: 0x04002432 RID: 9266
 		public CharacterMaster source;
 
-		// Token: 0x04002487 RID: 9351
+		// Token: 0x04002433 RID: 9267
 		public RectTransform fillRectTransform;
 
-		// Token: 0x04002488 RID: 9352
+		// Token: 0x04002434 RID: 9268
 		private RectTransform rectTransform;
 	}
 }

@@ -3,19 +3,19 @@ using UnityEngine;
 
 namespace RoR2.UI
 {
-	// Token: 0x0200060B RID: 1547
+	// Token: 0x020005F9 RID: 1529
 	[RequireComponent(typeof(RectTransform))]
 	[ExecuteInEditMode]
 	public class MainUIArea : MonoBehaviour
 	{
-		// Token: 0x060022DD RID: 8925 RVA: 0x000196BD File Offset: 0x000178BD
+		// Token: 0x0600224D RID: 8781 RVA: 0x00019010 File Offset: 0x00017210
 		private void Awake()
 		{
 			this.rectTransform = base.GetComponent<RectTransform>();
 			this.parentRectTransform = this.rectTransform.parent.GetComponent<RectTransform>();
 		}
 
-		// Token: 0x060022DE RID: 8926 RVA: 0x000A71C0 File Offset: 0x000A53C0
+		// Token: 0x0600224E RID: 8782 RVA: 0x000A5B44 File Offset: 0x000A3D44
 		private void Update()
 		{
 			Rect rect = this.parentRectTransform.rect;
@@ -25,10 +25,10 @@ namespace RoR2.UI
 			this.rectTransform.offsetMax = new Vector2(-num, -num2);
 		}
 
-		// Token: 0x040025AE RID: 9646
+		// Token: 0x04002553 RID: 9555
 		private RectTransform rectTransform;
 
-		// Token: 0x040025AF RID: 9647
+		// Token: 0x04002554 RID: 9556
 		private RectTransform parentRectTransform;
 	}
 }

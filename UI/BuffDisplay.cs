@@ -4,17 +4,17 @@ using UnityEngine;
 
 namespace RoR2.UI
 {
-	// Token: 0x020005C2 RID: 1474
+	// Token: 0x020005B0 RID: 1456
 	[RequireComponent(typeof(RectTransform))]
 	public class BuffDisplay : MonoBehaviour
 	{
-		// Token: 0x0600213B RID: 8507 RVA: 0x000183CF File Offset: 0x000165CF
+		// Token: 0x060020AA RID: 8362 RVA: 0x00017CD5 File Offset: 0x00015ED5
 		private void Awake()
 		{
 			this.rectTranform = base.GetComponent<RectTransform>();
 		}
 
-		// Token: 0x0600213C RID: 8508 RVA: 0x0009FC64 File Offset: 0x0009DE64
+		// Token: 0x060020AB RID: 8363 RVA: 0x0009E690 File Offset: 0x0009C890
 		private void AllocateIcons()
 		{
 			int num = 0;
@@ -44,7 +44,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x0600213D RID: 8509 RVA: 0x0009FD34 File Offset: 0x0009DF34
+		// Token: 0x060020AC RID: 8364 RVA: 0x0009E760 File Offset: 0x0009C960
 		private void UpdateLayout()
 		{
 			this.AllocateIcons();
@@ -69,25 +69,25 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x0600213E RID: 8510 RVA: 0x000183DD File Offset: 0x000165DD
+		// Token: 0x060020AD RID: 8365 RVA: 0x00017CE3 File Offset: 0x00015EE3
 		private void Update()
 		{
 			this.UpdateLayout();
 		}
 
-		// Token: 0x04002379 RID: 9081
+		// Token: 0x04002325 RID: 8997
 		private RectTransform rectTranform;
 
-		// Token: 0x0400237A RID: 9082
+		// Token: 0x04002326 RID: 8998
 		public CharacterBody source;
 
-		// Token: 0x0400237B RID: 9083
+		// Token: 0x04002327 RID: 8999
 		public GameObject buffIconPrefab;
 
-		// Token: 0x0400237C RID: 9084
+		// Token: 0x04002328 RID: 9000
 		public float iconWidth = 24f;
 
-		// Token: 0x0400237D RID: 9085
+		// Token: 0x04002329 RID: 9001
 		[SerializeField]
 		[HideInInspector]
 		private List<BuffIcon> buffIcons;

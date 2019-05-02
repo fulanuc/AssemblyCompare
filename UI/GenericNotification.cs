@@ -5,16 +5,16 @@ using UnityEngine.UI;
 
 namespace RoR2.UI
 {
-	// Token: 0x020005EC RID: 1516
+	// Token: 0x020005DA RID: 1498
 	public class GenericNotification : MonoBehaviour
 	{
-		// Token: 0x0600222C RID: 8748 RVA: 0x00018E0E File Offset: 0x0001700E
+		// Token: 0x0600219B RID: 8603 RVA: 0x00018714 File Offset: 0x00016914
 		private void Start()
 		{
 			this.age = 0f;
 		}
 
-		// Token: 0x0600222D RID: 8749 RVA: 0x000A4184 File Offset: 0x000A2384
+		// Token: 0x0600219C RID: 8604 RVA: 0x000A2BB0 File Offset: 0x000A0DB0
 		private void Update()
 		{
 			this.age += Time.deltaTime;
@@ -30,7 +30,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x0600222E RID: 8750 RVA: 0x000A4200 File Offset: 0x000A2400
+		// Token: 0x0600219D RID: 8605 RVA: 0x000A2C2C File Offset: 0x000A0E2C
 		public void SetItem(ItemIndex itemIndex)
 		{
 			ItemDef itemDef = ItemCatalog.GetItemDef(itemIndex);
@@ -43,7 +43,7 @@ namespace RoR2.UI
 			this.titleTMP.color = ColorCatalog.GetColor(itemDef.colorIndex);
 		}
 
-		// Token: 0x0600222F RID: 8751 RVA: 0x000A4270 File Offset: 0x000A2470
+		// Token: 0x0600219E RID: 8606 RVA: 0x000A2C9C File Offset: 0x000A0E9C
 		public void SetEquipment(EquipmentIndex equipmentIndex)
 		{
 			EquipmentDef equipmentDef = EquipmentCatalog.GetEquipmentDef(equipmentIndex);
@@ -56,28 +56,28 @@ namespace RoR2.UI
 			this.titleTMP.color = ColorCatalog.GetColor(equipmentDef.colorIndex);
 		}
 
-		// Token: 0x040024AE RID: 9390
+		// Token: 0x0400245A RID: 9306
 		public LanguageTextMeshController titleText;
 
-		// Token: 0x040024AF RID: 9391
+		// Token: 0x0400245B RID: 9307
 		public TextMeshProUGUI titleTMP;
 
-		// Token: 0x040024B0 RID: 9392
+		// Token: 0x0400245C RID: 9308
 		public LanguageTextMeshController descriptionText;
 
-		// Token: 0x040024B1 RID: 9393
+		// Token: 0x0400245D RID: 9309
 		public RawImage iconImage;
 
-		// Token: 0x040024B2 RID: 9394
+		// Token: 0x0400245E RID: 9310
 		public CanvasRenderer[] fadeRenderers;
 
-		// Token: 0x040024B3 RID: 9395
+		// Token: 0x0400245F RID: 9311
 		public float duration = 1.5f;
 
-		// Token: 0x040024B4 RID: 9396
+		// Token: 0x04002460 RID: 9312
 		public float fadeTime = 0.5f;
 
-		// Token: 0x040024B5 RID: 9397
+		// Token: 0x04002461 RID: 9313
 		private float age;
 	}
 }

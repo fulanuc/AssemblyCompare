@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 namespace RoR2.UI
 {
-	// Token: 0x020005E6 RID: 1510
+	// Token: 0x020005D4 RID: 1492
 	public class EquipmentIcon : MonoBehaviour
 	{
-		// Token: 0x170002F9 RID: 761
-		// (get) Token: 0x0600220B RID: 8715 RVA: 0x00018CC5 File Offset: 0x00016EC5
+		// Token: 0x170002E6 RID: 742
+		// (get) Token: 0x0600217A RID: 8570 RVA: 0x000185CB File Offset: 0x000167CB
 		public bool hasEquipment
 		{
 			get
@@ -18,7 +18,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x0600220C RID: 8716 RVA: 0x000A3238 File Offset: 0x000A1438
+		// Token: 0x0600217B RID: 8571 RVA: 0x000A1C64 File Offset: 0x0009FE64
 		private void SetDisplayData(EquipmentIcon.DisplayData newDisplayData)
 		{
 			if (!this.currentDisplayData.isReady && newDisplayData.isReady)
@@ -101,7 +101,7 @@ namespace RoR2.UI
 			this.currentDisplayData = newDisplayData;
 		}
 
-		// Token: 0x0600220D RID: 8717 RVA: 0x000A349C File Offset: 0x000A169C
+		// Token: 0x0600217C RID: 8572 RVA: 0x000A1EC8 File Offset: 0x000A00C8
 		private void DoReminderFlash()
 		{
 			if (this.reminderFlashPanelObject)
@@ -116,7 +116,7 @@ namespace RoR2.UI
 			this.equipmentReminderTimer = 5f;
 		}
 
-		// Token: 0x0600220E RID: 8718 RVA: 0x000A34EC File Offset: 0x000A16EC
+		// Token: 0x0600217D RID: 8573 RVA: 0x000A1F18 File Offset: 0x000A0118
 		private void DoStockFlash()
 		{
 			this.DoReminderFlash();
@@ -131,7 +131,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x0600220F RID: 8719 RVA: 0x000A3538 File Offset: 0x000A1738
+		// Token: 0x0600217E RID: 8574 RVA: 0x000A1F64 File Offset: 0x000A0164
 		private EquipmentIcon.DisplayData GenerateDisplayData()
 		{
 			EquipmentIcon.DisplayData result = default(EquipmentIcon.DisplayData);
@@ -160,7 +160,7 @@ namespace RoR2.UI
 			return result;
 		}
 
-		// Token: 0x06002210 RID: 8720 RVA: 0x000A3608 File Offset: 0x000A1808
+		// Token: 0x0600217F RID: 8575 RVA: 0x000A2034 File Offset: 0x000A0234
 		private void Update()
 		{
 			this.SetDisplayData(this.GenerateDisplayData());
@@ -171,59 +171,59 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x04002471 RID: 9329
+		// Token: 0x0400241D RID: 9245
 		public Inventory targetInventory;
 
-		// Token: 0x04002472 RID: 9330
+		// Token: 0x0400241E RID: 9246
 		public EquipmentSlot targetEquipmentSlot;
 
-		// Token: 0x04002473 RID: 9331
+		// Token: 0x0400241F RID: 9247
 		public GameObject displayRoot;
 
-		// Token: 0x04002474 RID: 9332
+		// Token: 0x04002420 RID: 9248
 		public PlayerCharacterMasterController playerCharacterMasterController;
 
-		// Token: 0x04002475 RID: 9333
+		// Token: 0x04002421 RID: 9249
 		public RawImage iconImage;
 
-		// Token: 0x04002476 RID: 9334
+		// Token: 0x04002422 RID: 9250
 		public TextMeshProUGUI cooldownText;
 
-		// Token: 0x04002477 RID: 9335
+		// Token: 0x04002423 RID: 9251
 		public TextMeshProUGUI stockText;
 
-		// Token: 0x04002478 RID: 9336
+		// Token: 0x04002424 RID: 9252
 		public GameObject stockFlashPanelObject;
 
-		// Token: 0x04002479 RID: 9337
+		// Token: 0x04002425 RID: 9253
 		public GameObject reminderFlashPanelObject;
 
-		// Token: 0x0400247A RID: 9338
+		// Token: 0x04002426 RID: 9254
 		public GameObject isReadyPanelObject;
 
-		// Token: 0x0400247B RID: 9339
+		// Token: 0x04002427 RID: 9255
 		public GameObject isAutoCastPanelObject;
 
-		// Token: 0x0400247C RID: 9340
+		// Token: 0x04002428 RID: 9256
 		public TooltipProvider tooltipProvider;
 
-		// Token: 0x0400247D RID: 9341
+		// Token: 0x04002429 RID: 9257
 		public bool displayAlternateEquipment;
 
-		// Token: 0x0400247E RID: 9342
+		// Token: 0x0400242A RID: 9258
 		private int previousStockCount;
 
-		// Token: 0x0400247F RID: 9343
+		// Token: 0x0400242B RID: 9259
 		private float equipmentReminderTimer;
 
-		// Token: 0x04002480 RID: 9344
+		// Token: 0x0400242C RID: 9260
 		private EquipmentIcon.DisplayData currentDisplayData;
 
-		// Token: 0x020005E7 RID: 1511
+		// Token: 0x020005D5 RID: 1493
 		private struct DisplayData
 		{
-			// Token: 0x170002FA RID: 762
-			// (get) Token: 0x06002212 RID: 8722 RVA: 0x00018CD2 File Offset: 0x00016ED2
+			// Token: 0x170002E7 RID: 743
+			// (get) Token: 0x06002181 RID: 8577 RVA: 0x000185D8 File Offset: 0x000167D8
 			public bool isReady
 			{
 				get
@@ -232,8 +232,8 @@ namespace RoR2.UI
 				}
 			}
 
-			// Token: 0x170002FB RID: 763
-			// (get) Token: 0x06002213 RID: 8723 RVA: 0x00018CDD File Offset: 0x00016EDD
+			// Token: 0x170002E8 RID: 744
+			// (get) Token: 0x06002182 RID: 8578 RVA: 0x000185E3 File Offset: 0x000167E3
 			public bool hasEquipment
 			{
 				get
@@ -242,8 +242,8 @@ namespace RoR2.UI
 				}
 			}
 
-			// Token: 0x170002FC RID: 764
-			// (get) Token: 0x06002214 RID: 8724 RVA: 0x00018CE8 File Offset: 0x00016EE8
+			// Token: 0x170002E9 RID: 745
+			// (get) Token: 0x06002183 RID: 8579 RVA: 0x000185EE File Offset: 0x000167EE
 			public bool showCooldown
 			{
 				get
@@ -252,19 +252,19 @@ namespace RoR2.UI
 				}
 			}
 
-			// Token: 0x04002481 RID: 9345
+			// Token: 0x0400242D RID: 9261
 			public EquipmentDef equipmentDef;
 
-			// Token: 0x04002482 RID: 9346
+			// Token: 0x0400242E RID: 9262
 			public int cooldownValue;
 
-			// Token: 0x04002483 RID: 9347
+			// Token: 0x0400242F RID: 9263
 			public int stock;
 
-			// Token: 0x04002484 RID: 9348
+			// Token: 0x04002430 RID: 9264
 			public int maxStock;
 
-			// Token: 0x04002485 RID: 9349
+			// Token: 0x04002431 RID: 9265
 			public bool hideEntireDisplay;
 		}
 	}

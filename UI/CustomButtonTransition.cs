@@ -6,17 +6,17 @@ using UnityEngine.UI;
 
 namespace RoR2.UI
 {
-	// Token: 0x020005DE RID: 1502
+	// Token: 0x020005CC RID: 1484
 	public class CustomButtonTransition : MPButton
 	{
-		// Token: 0x060021DF RID: 8671 RVA: 0x00018B15 File Offset: 0x00016D15
+		// Token: 0x0600214E RID: 8526 RVA: 0x0001841B File Offset: 0x0001661B
 		protected override void Awake()
 		{
 			base.Awake();
 			this.textMeshProUGui = base.GetComponent<TextMeshProUGUI>();
 		}
 
-		// Token: 0x060021E0 RID: 8672 RVA: 0x000A2200 File Offset: 0x000A0400
+		// Token: 0x0600214F RID: 8527 RVA: 0x000A0C2C File Offset: 0x0009EE2C
 		protected override void Start()
 		{
 			base.Start();
@@ -28,7 +28,7 @@ namespace RoR2.UI
 			this.newPosition = this.originalPosition;
 		}
 
-		// Token: 0x060021E1 RID: 8673 RVA: 0x000A2268 File Offset: 0x000A0468
+		// Token: 0x06002150 RID: 8528 RVA: 0x000A0C94 File Offset: 0x0009EE94
 		protected override void DoStateTransition(Selectable.SelectionState state, bool instant)
 		{
 			base.DoStateTransition(state, instant);
@@ -59,13 +59,13 @@ namespace RoR2.UI
 			this.originalColor = base.targetGraphic.color;
 		}
 
-		// Token: 0x060021E2 RID: 8674 RVA: 0x00018B29 File Offset: 0x00016D29
+		// Token: 0x06002151 RID: 8529 RVA: 0x0001842F File Offset: 0x0001662F
 		public void OnClickCustom()
 		{
 			Util.PlaySound("Play_UI_menuClick", RoR2Application.instance.gameObject);
 		}
 
-		// Token: 0x060021E3 RID: 8675 RVA: 0x000A2374 File Offset: 0x000A0574
+		// Token: 0x06002152 RID: 8530 RVA: 0x000A0DA0 File Offset: 0x0009EFA0
 		private void LateUpdate()
 		{
 			this.stopwatch += Time.deltaTime;
@@ -100,46 +100,46 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x04002421 RID: 9249
+		// Token: 0x040023CD RID: 9165
 		private TextMeshProUGUI textMeshProUGui;
 
-		// Token: 0x04002422 RID: 9250
+		// Token: 0x040023CE RID: 9166
 		private Vector3 originalPosition;
 
-		// Token: 0x04002423 RID: 9251
+		// Token: 0x040023CF RID: 9167
 		private Vector3 newPosition;
 
-		// Token: 0x04002424 RID: 9252
+		// Token: 0x040023D0 RID: 9168
 		private float newButtonScale = 1f;
 
-		// Token: 0x04002425 RID: 9253
+		// Token: 0x040023D1 RID: 9169
 		private float stopwatch;
 
-		// Token: 0x04002426 RID: 9254
+		// Token: 0x040023D2 RID: 9170
 		private Color originalColor;
 
-		// Token: 0x04002427 RID: 9255
+		// Token: 0x040023D3 RID: 9171
 		public bool scaleButtonOnHover = true;
 
-		// Token: 0x04002428 RID: 9256
+		// Token: 0x040023D4 RID: 9172
 		public bool showImageOnHover;
 
-		// Token: 0x04002429 RID: 9257
+		// Token: 0x040023D5 RID: 9173
 		public Image imageOnHover;
 
-		// Token: 0x0400242A RID: 9258
+		// Token: 0x040023D6 RID: 9174
 		public Image imageOnInteractable;
 
-		// Token: 0x0400242B RID: 9259
+		// Token: 0x040023D7 RID: 9175
 		private bool hovering;
 
-		// Token: 0x0400242C RID: 9260
+		// Token: 0x040023D8 RID: 9176
 		private float buttonScaleVelocity;
 
-		// Token: 0x0400242D RID: 9261
+		// Token: 0x040023D9 RID: 9177
 		private float imageOnHoverAlphaVelocity;
 
-		// Token: 0x0400242E RID: 9262
+		// Token: 0x040023DA RID: 9178
 		private float imageOnHoverScaleVelocity;
 	}
 }

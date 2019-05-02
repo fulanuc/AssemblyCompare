@@ -4,23 +4,23 @@ using UnityEngine.EventSystems;
 
 namespace RoR2.UI
 {
-	// Token: 0x020005E5 RID: 1509
+	// Token: 0x020005D3 RID: 1491
 	[RequireComponent(typeof(RectTransform))]
 	public class DragResize : MonoBehaviour, IBeginDragHandler, IEventSystemHandler, IDragHandler
 	{
-		// Token: 0x06002206 RID: 8710 RVA: 0x00018C7C File Offset: 0x00016E7C
+		// Token: 0x06002175 RID: 8565 RVA: 0x00018582 File Offset: 0x00016782
 		private void OnAwake()
 		{
 			this.rectTransform = (RectTransform)base.transform;
 		}
 
-		// Token: 0x06002207 RID: 8711 RVA: 0x00018C8F File Offset: 0x00016E8F
+		// Token: 0x06002176 RID: 8566 RVA: 0x00018595 File Offset: 0x00016795
 		public void OnDrag(PointerEventData eventData)
 		{
 			this.UpdateDrag(eventData);
 		}
 
-		// Token: 0x06002208 RID: 8712 RVA: 0x00018C98 File Offset: 0x00016E98
+		// Token: 0x06002177 RID: 8567 RVA: 0x0001859E File Offset: 0x0001679E
 		public void OnBeginDrag(PointerEventData eventData)
 		{
 			if (this.targetTransform)
@@ -29,7 +29,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x06002209 RID: 8713 RVA: 0x000A31B0 File Offset: 0x000A13B0
+		// Token: 0x06002178 RID: 8568 RVA: 0x000A1BDC File Offset: 0x0009FDDC
 		private void UpdateDrag(PointerEventData eventData)
 		{
 			if (eventData.button != PointerEventData.InputButton.Left)
@@ -48,16 +48,16 @@ namespace RoR2.UI
 			this.targetTransform.sizeDelta = Vector2.Max(this.targetTransform.sizeDelta + vector, this.minSize);
 		}
 
-		// Token: 0x0400246D RID: 9325
+		// Token: 0x04002419 RID: 9241
 		public RectTransform targetTransform;
 
-		// Token: 0x0400246E RID: 9326
+		// Token: 0x0400241A RID: 9242
 		public Vector2 minSize;
 
-		// Token: 0x0400246F RID: 9327
+		// Token: 0x0400241B RID: 9243
 		private Vector2 grabPoint;
 
-		// Token: 0x04002470 RID: 9328
+		// Token: 0x0400241C RID: 9244
 		private RectTransform rectTransform;
 	}
 }

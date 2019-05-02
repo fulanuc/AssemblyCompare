@@ -4,16 +4,16 @@ using UnityEngine;
 
 namespace RoR2.UI
 {
-	// Token: 0x020005BA RID: 1466
+	// Token: 0x020005A8 RID: 1448
 	public class AllyCardManager : MonoBehaviour
 	{
-		// Token: 0x06002113 RID: 8467 RVA: 0x000181F9 File Offset: 0x000163F9
+		// Token: 0x06002082 RID: 8322 RVA: 0x00017AFF File Offset: 0x00015CFF
 		private void Awake()
 		{
 			this.cardAllocator = new UIElementAllocator<AllyCardController>((RectTransform)base.transform, Resources.Load<GameObject>("Prefabs/UI/AllyCard"));
 		}
 
-		// Token: 0x06002114 RID: 8468 RVA: 0x0009F6E0 File Offset: 0x0009D8E0
+		// Token: 0x06002083 RID: 8323 RVA: 0x0009E10C File Offset: 0x0009C30C
 		private void Update()
 		{
 			TeamIndex teamIndex = TeamIndex.None;
@@ -46,10 +46,10 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x04002355 RID: 9045
+		// Token: 0x04002301 RID: 8961
 		public GameObject sourceGameObject;
 
-		// Token: 0x04002356 RID: 9046
+		// Token: 0x04002302 RID: 8962
 		private UIElementAllocator<AllyCardController> cardAllocator;
 	}
 }

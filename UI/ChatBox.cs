@@ -6,11 +6,11 @@ using UnityEngine.UI;
 
 namespace RoR2.UI
 {
-	// Token: 0x020005CE RID: 1486
+	// Token: 0x020005BC RID: 1468
 	[RequireComponent(typeof(MPEventSystemLocator))]
 	public class ChatBox : MonoBehaviour
 	{
-		// Token: 0x06002175 RID: 8565 RVA: 0x000A0C74 File Offset: 0x0009EE74
+		// Token: 0x060020E4 RID: 8420 RVA: 0x0009F6A0 File Offset: 0x0009D8A0
 		private void UpdateFade(float deltaTime)
 		{
 			this.fadeTimer -= deltaTime;
@@ -39,14 +39,14 @@ namespace RoR2.UI
 			this.fadeGroup.alpha = alpha;
 		}
 
-		// Token: 0x06002176 RID: 8566 RVA: 0x00018603 File Offset: 0x00016803
+		// Token: 0x060020E5 RID: 8421 RVA: 0x00017F09 File Offset: 0x00016109
 		private void ResetFadeTimer()
 		{
 			this.fadeTimer = 10f;
 		}
 
-		// Token: 0x170002EF RID: 751
-		// (get) Token: 0x06002177 RID: 8567 RVA: 0x00018610 File Offset: 0x00016810
+		// Token: 0x170002DC RID: 732
+		// (get) Token: 0x060020E6 RID: 8422 RVA: 0x00017F16 File Offset: 0x00016116
 		private bool showKeybindTipOnStart
 		{
 			get
@@ -55,9 +55,9 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x170002F0 RID: 752
-		// (get) Token: 0x06002178 RID: 8568 RVA: 0x0001861F File Offset: 0x0001681F
-		// (set) Token: 0x06002179 RID: 8569 RVA: 0x000A0D10 File Offset: 0x0009EF10
+		// Token: 0x170002DD RID: 733
+		// (get) Token: 0x060020E7 RID: 8423 RVA: 0x00017F25 File Offset: 0x00016125
+		// (set) Token: 0x060020E8 RID: 8424 RVA: 0x0009F73C File Offset: 0x0009D93C
 		private bool showInput
 		{
 			get
@@ -91,7 +91,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x0600217A RID: 8570 RVA: 0x000A0DB4 File Offset: 0x0009EFB4
+		// Token: 0x060020E9 RID: 8425 RVA: 0x0009F7E0 File Offset: 0x0009D9E0
 		public void SubmitChat()
 		{
 			string text = this.inputField.text;
@@ -115,12 +115,12 @@ namespace RoR2.UI
 			this.showInput = false;
 		}
 
-		// Token: 0x0600217B RID: 8571 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x060020EA RID: 8426 RVA: 0x000025F6 File Offset: 0x000007F6
 		public void OnInputFieldEndEdit()
 		{
 		}
 
-		// Token: 0x0600217C RID: 8572 RVA: 0x00018627 File Offset: 0x00016827
+		// Token: 0x060020EB RID: 8427 RVA: 0x00017F2D File Offset: 0x0001612D
 		private void Awake()
 		{
 			this.eventSystemLocator = base.GetComponent<MPEventSystemLocator>();
@@ -128,7 +128,7 @@ namespace RoR2.UI
 			this.showInput = false;
 		}
 
-		// Token: 0x0600217D RID: 8573 RVA: 0x00018643 File Offset: 0x00016843
+		// Token: 0x060020EC RID: 8428 RVA: 0x00017F49 File Offset: 0x00016149
 		private void Start()
 		{
 			if (this.showKeybindTipOnStart && !RoR2Application.isInSinglePlayer)
@@ -140,7 +140,7 @@ namespace RoR2.UI
 			this.inputField.resetOnDeActivation = true;
 		}
 
-		// Token: 0x0600217E RID: 8574 RVA: 0x0001867B File Offset: 0x0001687B
+		// Token: 0x060020ED RID: 8429 RVA: 0x00017F81 File Offset: 0x00016181
 		private void OnEnable()
 		{
 			this.BuildChat();
@@ -149,13 +149,13 @@ namespace RoR2.UI
 			Chat.onChatChanged += this.OnChatChangedHandler;
 		}
 
-		// Token: 0x0600217F RID: 8575 RVA: 0x000186AA File Offset: 0x000168AA
+		// Token: 0x060020EE RID: 8430 RVA: 0x00017FB0 File Offset: 0x000161B0
 		private void OnDisable()
 		{
 			Chat.onChatChanged -= this.OnChatChangedHandler;
 		}
 
-		// Token: 0x06002180 RID: 8576 RVA: 0x000186BD File Offset: 0x000168BD
+		// Token: 0x060020EF RID: 8431 RVA: 0x00017FC3 File Offset: 0x000161C3
 		private void OnChatChangedHandler()
 		{
 			float value = this.messagesText.verticalScrollbar.value;
@@ -164,14 +164,14 @@ namespace RoR2.UI
 			this.ScrollToBottom();
 		}
 
-		// Token: 0x06002181 RID: 8577 RVA: 0x000186E2 File Offset: 0x000168E2
+		// Token: 0x060020F0 RID: 8432 RVA: 0x00017FE8 File Offset: 0x000161E8
 		public void ScrollToBottom()
 		{
 			this.messagesText.verticalScrollbar.value = 0f;
 			this.messagesText.verticalScrollbar.value = 1f;
 		}
 
-		// Token: 0x06002182 RID: 8578 RVA: 0x000A0E64 File Offset: 0x0009F064
+		// Token: 0x060020F1 RID: 8433 RVA: 0x0009F890 File Offset: 0x0009DA90
 		private void BuildChat()
 		{
 			ReadOnlyCollection<string> readOnlyLog = Chat.readOnlyLog;
@@ -180,7 +180,7 @@ namespace RoR2.UI
 			this.messagesText.text = string.Join("\n", array);
 		}
 
-		// Token: 0x06002183 RID: 8579 RVA: 0x000A0EA0 File Offset: 0x0009F0A0
+		// Token: 0x060020F2 RID: 8434 RVA: 0x0009F8CC File Offset: 0x0009DACC
 		private void Update()
 		{
 			this.UpdateFade(Time.deltaTime);
@@ -217,7 +217,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x06002184 RID: 8580 RVA: 0x000A0F60 File Offset: 0x0009F160
+		// Token: 0x060020F3 RID: 8435 RVA: 0x0009F98C File Offset: 0x0009DB8C
 		private void FocusInputField()
 		{
 			MPEventSystem eventSystem = this.eventSystemLocator.eventSystem;
@@ -229,7 +229,7 @@ namespace RoR2.UI
 			this.inputField.text = "";
 		}
 
-		// Token: 0x06002185 RID: 8581 RVA: 0x000A0FB0 File Offset: 0x0009F1B0
+		// Token: 0x060020F4 RID: 8436 RVA: 0x0009F9DC File Offset: 0x0009DBDC
 		private void UnfocusInputField()
 		{
 			MPEventSystem eventSystem = this.eventSystemLocator.eventSystem;
@@ -240,35 +240,35 @@ namespace RoR2.UI
 			this.inputField.DeactivateInputField();
 		}
 
-		// Token: 0x040023C8 RID: 9160
+		// Token: 0x04002374 RID: 9076
 		public TMP_InputField messagesText;
 
-		// Token: 0x040023C9 RID: 9161
+		// Token: 0x04002375 RID: 9077
 		public TMP_InputField inputField;
 
-		// Token: 0x040023CA RID: 9162
+		// Token: 0x04002376 RID: 9078
 		public Button sendButton;
 
-		// Token: 0x040023CB RID: 9163
+		// Token: 0x04002377 RID: 9079
 		public Graphic[] gameplayHiddenGraphics;
 
-		// Token: 0x040023CC RID: 9164
+		// Token: 0x04002378 RID: 9080
 		[Tooltip("The canvas group to use to fade this chat box. Leave empty for no fading behavior.")]
 		public CanvasGroup fadeGroup;
 
-		// Token: 0x040023CD RID: 9165
+		// Token: 0x04002379 RID: 9081
 		private const float fadeWait = 5f;
 
-		// Token: 0x040023CE RID: 9166
+		// Token: 0x0400237A RID: 9082
 		private const float fadeDuration = 5f;
 
-		// Token: 0x040023CF RID: 9167
+		// Token: 0x0400237B RID: 9083
 		private float fadeTimer;
 
-		// Token: 0x040023D0 RID: 9168
+		// Token: 0x0400237C RID: 9084
 		private MPEventSystemLocator eventSystemLocator;
 
-		// Token: 0x040023D1 RID: 9169
+		// Token: 0x0400237D RID: 9085
 		private bool _showInput;
 	}
 }

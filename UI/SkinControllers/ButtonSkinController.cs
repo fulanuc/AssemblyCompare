@@ -1,16 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace RoR2.UI.SkinControllers
 {
-	// Token: 0x0200066B RID: 1643
+	// Token: 0x02000659 RID: 1625
 	[RequireComponent(typeof(Button))]
 	public class ButtonSkinController : BaseSkinController
 	{
-		// Token: 0x060024E7 RID: 9447 RVA: 0x0001AE46 File Offset: 0x00019046
+		// Token: 0x06002456 RID: 9302 RVA: 0x0001A74D File Offset: 0x0001894D
 		protected new void Awake()
 		{
 			this.button = base.GetComponent<Button>();
@@ -18,59 +17,13 @@ namespace RoR2.UI.SkinControllers
 			base.Awake();
 		}
 
-		// Token: 0x060024E8 RID: 9448 RVA: 0x0001AE66 File Offset: 0x00019066
-		[RuntimeInitializeOnLoadMethod]
-		private static void Init()
-		{
-			RoR2Application.onUpdate += ButtonSkinController.StaticUpdate;
-		}
-
-		// Token: 0x060024E9 RID: 9449 RVA: 0x0001AE79 File Offset: 0x00019079
-		private void OnEnable()
-		{
-			ButtonSkinController.instancesList.Add(this);
-		}
-
-		// Token: 0x060024EA RID: 9450 RVA: 0x0001AE86 File Offset: 0x00019086
-		private void OnDisable()
-		{
-			ButtonSkinController.instancesList.Remove(this);
-		}
-
-		// Token: 0x060024EB RID: 9451 RVA: 0x000ADFF8 File Offset: 0x000AC1F8
-		private static void StaticUpdate()
-		{
-			foreach (ButtonSkinController buttonSkinController in ButtonSkinController.instancesList)
-			{
-				buttonSkinController.UpdateLabelStyle(ref buttonSkinController.skinData.buttonStyle);
-			}
-		}
-
-		// Token: 0x060024EC RID: 9452 RVA: 0x000AE054 File Offset: 0x000AC254
-		private void UpdateLabelStyle(ref UISkinData.ButtonStyle buttonStyle)
-		{
-			if (this.useRecommendedLabel)
-			{
-				TextMeshProUGUI componentInChildren = this.button.GetComponentInChildren<TextMeshProUGUI>();
-				if (componentInChildren)
-				{
-					if (this.button.interactable)
-					{
-						buttonStyle.interactableTextStyle.Apply(componentInChildren, this.useRecommendedAlignment);
-						return;
-					}
-					buttonStyle.disabledTextStyle.Apply(componentInChildren, this.useRecommendedAlignment);
-				}
-			}
-		}
-
-		// Token: 0x060024ED RID: 9453 RVA: 0x0001AE94 File Offset: 0x00019094
+		// Token: 0x06002457 RID: 9303 RVA: 0x0001A76D File Offset: 0x0001896D
 		protected override void OnSkinUI()
 		{
 			this.ApplyButtonStyle(ref this.skinData.buttonStyle);
 		}
 
-		// Token: 0x060024EE RID: 9454 RVA: 0x000AE0B0 File Offset: 0x000AC2B0
+		// Token: 0x06002458 RID: 9304 RVA: 0x000AC978 File Offset: 0x000AAB78
 		private void ApplyButtonStyle(ref UISkinData.ButtonStyle buttonStyle)
 		{
 			if (this.useRecommendedMaterial)
@@ -101,34 +54,43 @@ namespace RoR2.UI.SkinControllers
 					this.layoutElement.preferredHeight = buttonStyle.recommendedHeight;
 				}
 			}
-			this.UpdateLabelStyle(ref buttonStyle);
+			if (this.useRecommendedLabel)
+			{
+				TextMeshProUGUI componentInChildren = this.button.GetComponentInChildren<TextMeshProUGUI>();
+				if (componentInChildren)
+				{
+					if (this.button.interactable)
+					{
+						buttonStyle.interactableTextStyle.Apply(componentInChildren, this.useRecommendedAlignment);
+						return;
+					}
+					buttonStyle.disabledTextStyle.Apply(componentInChildren, this.useRecommendedAlignment);
+				}
+			}
 		}
 
-		// Token: 0x0400279C RID: 10140
-		private static readonly List<ButtonSkinController> instancesList = new List<ButtonSkinController>();
-
-		// Token: 0x0400279D RID: 10141
+		// Token: 0x04002741 RID: 10049
 		private Button button;
 
-		// Token: 0x0400279E RID: 10142
+		// Token: 0x04002742 RID: 10050
 		public bool useRecommendedButtonWidth = true;
 
-		// Token: 0x0400279F RID: 10143
+		// Token: 0x04002743 RID: 10051
 		public bool useRecommendedButtonHeight = true;
 
-		// Token: 0x040027A0 RID: 10144
+		// Token: 0x04002744 RID: 10052
 		public bool useRecommendedImage = true;
 
-		// Token: 0x040027A1 RID: 10145
+		// Token: 0x04002745 RID: 10053
 		public bool useRecommendedMaterial = true;
 
-		// Token: 0x040027A2 RID: 10146
+		// Token: 0x04002746 RID: 10054
 		public bool useRecommendedAlignment = true;
 
-		// Token: 0x040027A3 RID: 10147
+		// Token: 0x04002747 RID: 10055
 		public bool useRecommendedLabel = true;
 
-		// Token: 0x040027A4 RID: 10148
+		// Token: 0x04002748 RID: 10056
 		private LayoutElement layoutElement;
 	}
 }

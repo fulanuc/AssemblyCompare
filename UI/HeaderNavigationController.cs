@@ -4,16 +4,16 @@ using UnityEngine;
 
 namespace RoR2.UI
 {
-	// Token: 0x020005ED RID: 1517
+	// Token: 0x020005DB RID: 1499
 	public class HeaderNavigationController : MonoBehaviour
 	{
-		// Token: 0x06002231 RID: 8753 RVA: 0x00018E39 File Offset: 0x00017039
+		// Token: 0x060021A0 RID: 8608 RVA: 0x0001873F File Offset: 0x0001693F
 		private void Start()
 		{
 			this.RebuildHeaders();
 		}
 
-		// Token: 0x06002232 RID: 8754 RVA: 0x000A42E0 File Offset: 0x000A24E0
+		// Token: 0x060021A1 RID: 8609 RVA: 0x000A2D0C File Offset: 0x000A0F0C
 		private void LateUpdate()
 		{
 			for (int i = 0; i < this.headers.Length; i++)
@@ -30,7 +30,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x06002233 RID: 8755 RVA: 0x000A4338 File Offset: 0x000A2538
+		// Token: 0x060021A2 RID: 8610 RVA: 0x000A2D64 File Offset: 0x000A0F64
 		public void ChooseHeader(string headerName)
 		{
 			for (int i = 0; i < this.headers.Length; i++)
@@ -44,7 +44,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x06002234 RID: 8756 RVA: 0x000A4380 File Offset: 0x000A2580
+		// Token: 0x060021A3 RID: 8611 RVA: 0x000A2DAC File Offset: 0x000A0FAC
 		public void ChooseHeaderByButton(MPButton mpButton)
 		{
 			for (int i = 0; i < this.headers.Length; i++)
@@ -58,7 +58,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x06002235 RID: 8757 RVA: 0x000A43C8 File Offset: 0x000A25C8
+		// Token: 0x060021A4 RID: 8612 RVA: 0x000A2DF4 File Offset: 0x000A0FF4
 		private void RebuildHeaders()
 		{
 			for (int i = 0; i < this.headers.Length; i++)
@@ -88,35 +88,35 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x06002236 RID: 8758 RVA: 0x00018E41 File Offset: 0x00017041
+		// Token: 0x060021A5 RID: 8613 RVA: 0x00018747 File Offset: 0x00016947
 		private HeaderNavigationController.Header GetCurrentHeader()
 		{
 			return this.headers[this.currentHeaderIndex];
 		}
 
-		// Token: 0x040024B6 RID: 9398
+		// Token: 0x04002462 RID: 9314
 		public HeaderNavigationController.Header[] headers;
 
-		// Token: 0x040024B7 RID: 9399
+		// Token: 0x04002463 RID: 9315
 		public GameObject buttonSelectionRoot;
 
-		// Token: 0x040024B8 RID: 9400
+		// Token: 0x04002464 RID: 9316
 		public int currentHeaderIndex;
 
-		// Token: 0x020005EE RID: 1518
+		// Token: 0x020005DC RID: 1500
 		[Serializable]
 		public struct Header
 		{
-			// Token: 0x040024B9 RID: 9401
+			// Token: 0x04002465 RID: 9317
 			public MPButton headerButton;
 
-			// Token: 0x040024BA RID: 9402
+			// Token: 0x04002466 RID: 9318
 			public string headerName;
 
-			// Token: 0x040024BB RID: 9403
+			// Token: 0x04002467 RID: 9319
 			public TextMeshProUGUI tmpHeaderText;
 
-			// Token: 0x040024BC RID: 9404
+			// Token: 0x04002468 RID: 9320
 			public GameObject headerRoot;
 		}
 	}

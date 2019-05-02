@@ -6,11 +6,11 @@ using UnityEngine;
 
 namespace RoR2.UI
 {
-	// Token: 0x020005FA RID: 1530
+	// Token: 0x020005E8 RID: 1512
 	[RequireComponent(typeof(MPEventSystemLocator))]
 	public class InputBindingControl : MonoBehaviour
 	{
-		// Token: 0x0600227D RID: 8829 RVA: 0x000A5D78 File Offset: 0x000A3F78
+		// Token: 0x060021EC RID: 8684 RVA: 0x000A47C4 File Offset: 0x000A29C4
 		public void Awake()
 		{
 			this.eventSystemLocator = base.GetComponent<MPEventSystemLocator>();
@@ -22,8 +22,8 @@ namespace RoR2.UI
 			this.action = ReInput.mapping.GetAction(this.actionName);
 		}
 
-		// Token: 0x17000305 RID: 773
-		// (get) Token: 0x0600227E RID: 8830 RVA: 0x0001921F File Offset: 0x0001741F
+		// Token: 0x170002F2 RID: 754
+		// (get) Token: 0x060021ED RID: 8685 RVA: 0x00018B25 File Offset: 0x00016D25
 		private bool isListening
 		{
 			get
@@ -32,7 +32,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x0600227F RID: 8831 RVA: 0x0001922C File Offset: 0x0001742C
+		// Token: 0x060021EE RID: 8686 RVA: 0x00018B32 File Offset: 0x00016D32
 		public void ToggleListening()
 		{
 			if (!this.isListening)
@@ -43,7 +43,7 @@ namespace RoR2.UI
 			this.StopListening();
 		}
 
-		// Token: 0x06002280 RID: 8832 RVA: 0x000A5E04 File Offset: 0x000A4004
+		// Token: 0x060021EF RID: 8687 RVA: 0x000A4850 File Offset: 0x000A2A50
 		public void StartListening()
 		{
 			this.inputMapperHelper.Stop();
@@ -87,7 +87,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x06002281 RID: 8833 RVA: 0x00019243 File Offset: 0x00017443
+		// Token: 0x060021F0 RID: 8688 RVA: 0x00018B49 File Offset: 0x00016D49
 		private void StopListening()
 		{
 			if (this.currentPlayer == null)
@@ -98,7 +98,7 @@ namespace RoR2.UI
 			this.inputMapperHelper.Stop();
 		}
 
-		// Token: 0x06002282 RID: 8834 RVA: 0x00019260 File Offset: 0x00017460
+		// Token: 0x060021F1 RID: 8689 RVA: 0x00018B66 File Offset: 0x00016D66
 		private void OnEnable()
 		{
 			if (!this.eventSystemLocator.eventSystem)
@@ -109,13 +109,13 @@ namespace RoR2.UI
 			this.inputMapperHelper = this.eventSystemLocator.eventSystem.inputMapperHelper;
 		}
 
-		// Token: 0x06002283 RID: 8835 RVA: 0x00019292 File Offset: 0x00017492
+		// Token: 0x060021F2 RID: 8690 RVA: 0x00018B98 File Offset: 0x00016D98
 		private void OnDisable()
 		{
 			this.StopListening();
 		}
 
-		// Token: 0x06002284 RID: 8836 RVA: 0x000A5EDC File Offset: 0x000A40DC
+		// Token: 0x060021F3 RID: 8691 RVA: 0x000A4928 File Offset: 0x000A2B28
 		private void Update()
 		{
 			if (this.button)
@@ -129,37 +129,37 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x0400253B RID: 9531
+		// Token: 0x040024E6 RID: 9446
 		public string actionName;
 
-		// Token: 0x0400253C RID: 9532
+		// Token: 0x040024E7 RID: 9447
 		public AxisRange axisRange;
 
-		// Token: 0x0400253D RID: 9533
+		// Token: 0x040024E8 RID: 9448
 		public LanguageTextMeshController nameLabel;
 
-		// Token: 0x0400253E RID: 9534
+		// Token: 0x040024E9 RID: 9449
 		public InputBindingDisplayController bindingDisplay;
 
-		// Token: 0x0400253F RID: 9535
+		// Token: 0x040024EA RID: 9450
 		public MPEventSystem.InputSource inputSource;
 
-		// Token: 0x04002540 RID: 9536
+		// Token: 0x040024EB RID: 9451
 		public MPButton button;
 
-		// Token: 0x04002541 RID: 9537
+		// Token: 0x040024EC RID: 9452
 		private MPEventSystemLocator eventSystemLocator;
 
-		// Token: 0x04002542 RID: 9538
+		// Token: 0x040024ED RID: 9453
 		private InputAction action;
 
-		// Token: 0x04002543 RID: 9539
+		// Token: 0x040024EE RID: 9454
 		private InputMapperHelper inputMapperHelper;
 
-		// Token: 0x04002544 RID: 9540
+		// Token: 0x040024EF RID: 9455
 		private Player currentPlayer;
 
-		// Token: 0x04002545 RID: 9541
+		// Token: 0x040024F0 RID: 9456
 		private float buttonReactivationTime;
 	}
 }

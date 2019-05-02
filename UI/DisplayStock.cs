@@ -4,16 +4,16 @@ using UnityEngine.UI;
 
 namespace RoR2.UI
 {
-	// Token: 0x020005E3 RID: 1507
+	// Token: 0x020005D1 RID: 1489
 	public class DisplayStock : MonoBehaviour
 	{
-		// Token: 0x060021FE RID: 8702 RVA: 0x00018C25 File Offset: 0x00016E25
+		// Token: 0x0600216D RID: 8557 RVA: 0x0001852B File Offset: 0x0001672B
 		private void Awake()
 		{
 			this.hudElement = base.GetComponent<HudElement>();
 		}
 
-		// Token: 0x060021FF RID: 8703 RVA: 0x000A305C File Offset: 0x000A125C
+		// Token: 0x0600216E RID: 8558 RVA: 0x000A1A88 File Offset: 0x0009FC88
 		private void Update()
 		{
 			if (this.hudElement.targetCharacterBody)
@@ -45,28 +45,28 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x04002462 RID: 9314
+		// Token: 0x0400240E RID: 9230
 		public SkillSlot skillSlot;
 
-		// Token: 0x04002463 RID: 9315
+		// Token: 0x0400240F RID: 9231
 		public Image[] stockImages;
 
-		// Token: 0x04002464 RID: 9316
+		// Token: 0x04002410 RID: 9232
 		public Sprite fullStockSprite;
 
-		// Token: 0x04002465 RID: 9317
+		// Token: 0x04002411 RID: 9233
 		public Color fullStockColor;
 
-		// Token: 0x04002466 RID: 9318
+		// Token: 0x04002412 RID: 9234
 		public Sprite emptyStockSprite;
 
-		// Token: 0x04002467 RID: 9319
+		// Token: 0x04002413 RID: 9235
 		public Color emptyStockColor;
 
-		// Token: 0x04002468 RID: 9320
+		// Token: 0x04002414 RID: 9236
 		private HudElement hudElement;
 
-		// Token: 0x04002469 RID: 9321
+		// Token: 0x04002415 RID: 9237
 		private SkillLocator skillLocator;
 	}
 }

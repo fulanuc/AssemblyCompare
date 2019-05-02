@@ -7,12 +7,12 @@ using UnityEngine.UI;
 
 namespace RoR2.UI.LogBook
 {
-	// Token: 0x02000678 RID: 1656
+	// Token: 0x02000666 RID: 1638
 	public class CategoryDef
 	{
-		// Token: 0x17000332 RID: 818
-		// (get) Token: 0x0600252A RID: 9514 RVA: 0x0001B21F File Offset: 0x0001941F
-		// (set) Token: 0x0600252B RID: 9515 RVA: 0x0001B227 File Offset: 0x00019427
+		// Token: 0x17000320 RID: 800
+		// (get) Token: 0x06002493 RID: 9363 RVA: 0x0001AAEC File Offset: 0x00018CEC
+		// (set) Token: 0x06002494 RID: 9364 RVA: 0x0001AAF4 File Offset: 0x00018CF4
 		public GameObject iconPrefab
 		{
 			get
@@ -27,7 +27,7 @@ namespace RoR2.UI.LogBook
 			}
 		}
 
-		// Token: 0x0600252C RID: 9516 RVA: 0x000AEA14 File Offset: 0x000ACC14
+		// Token: 0x06002495 RID: 9365 RVA: 0x000AD324 File Offset: 0x000AB524
 		public static void InitializeDefault(GameObject gameObject, Entry entry, EntryStatus status, UserProfile userProfile)
 		{
 			Texture texture = null;
@@ -96,7 +96,7 @@ namespace RoR2.UI.LogBook
 			}
 		}
 
-		// Token: 0x0600252D RID: 9517 RVA: 0x000AEB7C File Offset: 0x000ACD7C
+		// Token: 0x06002496 RID: 9366 RVA: 0x000AD48C File Offset: 0x000AB68C
 		public static void InitializeChallenge(GameObject gameObject, Entry entry, EntryStatus status, UserProfile userProfile)
 		{
 			TextMeshProUGUI textMeshProUGUI = null;
@@ -159,27 +159,27 @@ namespace RoR2.UI.LogBook
 			rawImage.enabled = false;
 		}
 
-		// Token: 0x040027E7 RID: 10215
+		// Token: 0x0400278B RID: 10123
 		[NotNull]
 		public string nameToken = string.Empty;
 
-		// Token: 0x040027E8 RID: 10216
+		// Token: 0x0400278C RID: 10124
 		[NotNull]
 		public Entry[] entries = Array.Empty<Entry>();
 
-		// Token: 0x040027E9 RID: 10217
+		// Token: 0x0400278D RID: 10125
 		private GameObject _iconPrefab;
 
-		// Token: 0x040027EA RID: 10218
+		// Token: 0x0400278E RID: 10126
 		public Vector2 iconSize = Vector2.one;
 
-		// Token: 0x040027EB RID: 10219
+		// Token: 0x0400278F RID: 10127
 		public bool fullWidth;
 
-		// Token: 0x040027EC RID: 10220
+		// Token: 0x04002790 RID: 10128
 		public Action<GameObject, Entry, EntryStatus, UserProfile> initializeElementGraphics = new Action<GameObject, Entry, EntryStatus, UserProfile>(CategoryDef.InitializeDefault);
 
-		// Token: 0x040027ED RID: 10221
+		// Token: 0x04002791 RID: 10129
 		public ViewablesCatalog.Node viewableNode;
 	}
 }

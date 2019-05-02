@@ -10,17 +10,17 @@ using UnityEngine.SceneManagement;
 
 namespace RoR2.UI
 {
-	// Token: 0x02000613 RID: 1555
+	// Token: 0x02000601 RID: 1537
 	[RequireComponent(typeof(RewiredStandaloneInputModule))]
 	public class MPEventSystem : EventSystem
 	{
-		// Token: 0x17000310 RID: 784
-		// (get) Token: 0x06002333 RID: 9011 RVA: 0x00019AD9 File Offset: 0x00017CD9
-		// (set) Token: 0x06002334 RID: 9012 RVA: 0x00019AE0 File Offset: 0x00017CE0
+		// Token: 0x170002FE RID: 766
+		// (get) Token: 0x060022A3 RID: 8867 RVA: 0x00019422 File Offset: 0x00017622
+		// (set) Token: 0x060022A4 RID: 8868 RVA: 0x00019429 File Offset: 0x00017629
 		public static int activeCount { get; private set; }
 
-		// Token: 0x17000311 RID: 785
-		// (get) Token: 0x06002335 RID: 9013 RVA: 0x00019AE8 File Offset: 0x00017CE8
+		// Token: 0x170002FF RID: 767
+		// (get) Token: 0x060022A5 RID: 8869 RVA: 0x00019431 File Offset: 0x00017631
 		public bool isHovering
 		{
 			get
@@ -29,8 +29,8 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x17000312 RID: 786
-		// (get) Token: 0x06002336 RID: 9014 RVA: 0x00019B09 File Offset: 0x00017D09
+		// Token: 0x17000300 RID: 768
+		// (get) Token: 0x060022A6 RID: 8870 RVA: 0x00019452 File Offset: 0x00017652
 		public bool isCursorVisible
 		{
 			get
@@ -39,7 +39,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x06002337 RID: 9015 RVA: 0x000A879C File Offset: 0x000A699C
+		// Token: 0x060022A7 RID: 8871 RVA: 0x000A7120 File Offset: 0x000A5320
 		public static MPEventSystem FindByPlayer(Player player)
 		{
 			foreach (MPEventSystem mpeventSystem in MPEventSystem.instancesList)
@@ -52,7 +52,7 @@ namespace RoR2.UI
 			return null;
 		}
 
-		// Token: 0x06002338 RID: 9016 RVA: 0x000A87F8 File Offset: 0x000A69F8
+		// Token: 0x060022A8 RID: 8872 RVA: 0x000A717C File Offset: 0x000A537C
 		protected override void Update()
 		{
 			EventSystem current = EventSystem.current;
@@ -65,7 +65,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x06002339 RID: 9017 RVA: 0x00019B1B File Offset: 0x00017D1B
+		// Token: 0x060022A9 RID: 8873 RVA: 0x00019464 File Offset: 0x00017664
 		protected override void Awake()
 		{
 			base.Awake();
@@ -74,13 +74,13 @@ namespace RoR2.UI
 			this.inputMapperHelper = new InputMapperHelper(this);
 		}
 
-		// Token: 0x0600233A RID: 9018 RVA: 0x00019B5A File Offset: 0x00017D5A
+		// Token: 0x060022AA RID: 8874 RVA: 0x000194A3 File Offset: 0x000176A3
 		private static void OnActiveSceneChanged(Scene scene1, Scene scene2)
 		{
 			MPEventSystem.RecenterCursors();
 		}
 
-		// Token: 0x0600233B RID: 9019 RVA: 0x000A8854 File Offset: 0x000A6A54
+		// Token: 0x060022AB RID: 8875 RVA: 0x000A71D8 File Offset: 0x000A53D8
 		private static void RecenterCursors()
 		{
 			foreach (MPEventSystem mpeventSystem in MPEventSystem.instancesList)
@@ -92,7 +92,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x0600233C RID: 9020 RVA: 0x00019B61 File Offset: 0x00017D61
+		// Token: 0x060022AC RID: 8876 RVA: 0x000194AA File Offset: 0x000176AA
 		protected override void OnDestroy()
 		{
 			this.player.controllers.RemoveLastActiveControllerChangedDelegate(new PlayerActiveControllerChangedDelegate(this.OnLastActiveControllerChanged));
@@ -101,7 +101,7 @@ namespace RoR2.UI
 			base.OnDestroy();
 		}
 
-		// Token: 0x0600233D RID: 9021 RVA: 0x000A88CC File Offset: 0x000A6ACC
+		// Token: 0x060022AD RID: 8877 RVA: 0x000A7250 File Offset: 0x000A5450
 		protected override void Start()
 		{
 			base.Start();
@@ -114,14 +114,14 @@ namespace RoR2.UI
 			this.OnLastActiveControllerChanged(this.player, this.player.controllers.GetLastActiveController());
 		}
 
-		// Token: 0x0600233E RID: 9022 RVA: 0x00019B9C File Offset: 0x00017D9C
+		// Token: 0x060022AE RID: 8878 RVA: 0x000194E5 File Offset: 0x000176E5
 		protected override void OnEnable()
 		{
 			base.OnEnable();
 			MPEventSystem.activeCount++;
 		}
 
-		// Token: 0x0600233F RID: 9023 RVA: 0x00019BB0 File Offset: 0x00017DB0
+		// Token: 0x060022AF RID: 8879 RVA: 0x000194F9 File Offset: 0x000176F9
 		protected override void OnDisable()
 		{
 			this.SetCursorIndicatorEnabled(false);
@@ -129,12 +129,12 @@ namespace RoR2.UI
 			MPEventSystem.activeCount--;
 		}
 
-		// Token: 0x17000313 RID: 787
-		// (get) Token: 0x06002340 RID: 9024 RVA: 0x00019BCB File Offset: 0x00017DCB
-		// (set) Token: 0x06002341 RID: 9025 RVA: 0x00019BD3 File Offset: 0x00017DD3
+		// Token: 0x17000301 RID: 769
+		// (get) Token: 0x060022B0 RID: 8880 RVA: 0x00019514 File Offset: 0x00017714
+		// (set) Token: 0x060022B1 RID: 8881 RVA: 0x0001951C File Offset: 0x0001771C
 		public MPEventSystem.InputSource currentInputSource { get; private set; } = MPEventSystem.InputSource.Gamepad;
 
-		// Token: 0x06002342 RID: 9026 RVA: 0x000A8954 File Offset: 0x000A6B54
+		// Token: 0x060022B2 RID: 8882 RVA: 0x000A72D8 File Offset: 0x000A54D8
 		protected void LateUpdate()
 		{
 			bool flag = this.cursorOpenerCount > 0 && base.currentInputModule && base.currentInputModule.input;
@@ -160,7 +160,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x06002343 RID: 9027 RVA: 0x000A8A0C File Offset: 0x000A6C0C
+		// Token: 0x060022B3 RID: 8883 RVA: 0x000A7390 File Offset: 0x000A5590
 		private void OnLastActiveControllerChanged(Player player, Controller controller)
 		{
 			if (controller == null)
@@ -180,7 +180,7 @@ namespace RoR2.UI
 			this.currentInputSource = MPEventSystem.InputSource.Gamepad;
 		}
 
-		// Token: 0x06002344 RID: 9028 RVA: 0x000A8A3C File Offset: 0x000A6C3C
+		// Token: 0x060022B4 RID: 8884 RVA: 0x000A73C0 File Offset: 0x000A55C0
 		private void SetCursorIndicatorEnabled(bool cursorIndicatorEnabled)
 		{
 			if (this.cursorIndicatorController.gameObject.activeSelf != cursorIndicatorEnabled)
@@ -193,7 +193,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x06002345 RID: 9029 RVA: 0x00019BDC File Offset: 0x00017DDC
+		// Token: 0x060022B5 RID: 8885 RVA: 0x00019525 File Offset: 0x00017725
 		public Color GetColor()
 		{
 			if (MPEventSystem.activeCount <= 1)
@@ -203,7 +203,7 @@ namespace RoR2.UI
 			return ColorCatalog.GetMultiplayerColor(this.playerSlot);
 		}
 
-		// Token: 0x06002346 RID: 9030 RVA: 0x00019BF7 File Offset: 0x00017DF7
+		// Token: 0x060022B6 RID: 8886 RVA: 0x00019540 File Offset: 0x00017740
 		public bool GetCursorPosition(out Vector2 position)
 		{
 			if (base.currentInputModule)
@@ -215,7 +215,7 @@ namespace RoR2.UI
 			return false;
 		}
 
-		// Token: 0x06002347 RID: 9031 RVA: 0x000A8A8C File Offset: 0x000A6C8C
+		// Token: 0x060022B7 RID: 8887 RVA: 0x000A7410 File Offset: 0x000A5610
 		public Rect GetScreenRect()
 		{
 			LocalUser localUser = this.localUser;
@@ -227,14 +227,14 @@ namespace RoR2.UI
 			return cameraRigController.viewport;
 		}
 
-		// Token: 0x06002348 RID: 9032 RVA: 0x000A8AD8 File Offset: 0x000A6CD8
+		// Token: 0x060022B8 RID: 8888 RVA: 0x000A745C File Offset: 0x000A565C
 		private static Vector2 RandomOnCircle()
 		{
 			float value = UnityEngine.Random.value;
 			return new Vector2(Mathf.Cos(value * 3.14159274f * 2f), Mathf.Sin(value * 3.14159274f * 2f));
 		}
 
-		// Token: 0x06002349 RID: 9033 RVA: 0x000A8B14 File Offset: 0x000A6D14
+		// Token: 0x060022B9 RID: 8889 RVA: 0x000A7498 File Offset: 0x000A5698
 		private static Vector2 CalculateCursorPushVector(Vector2 positionA, Vector2 positionB)
 		{
 			Vector2 vector = positionA - positionB;
@@ -253,7 +253,7 @@ namespace RoR2.UI
 			return vector / num * d * 10f * 0.5f;
 		}
 
-		// Token: 0x0600234A RID: 9034 RVA: 0x000A8B8C File Offset: 0x000A6D8C
+		// Token: 0x060022BA RID: 8890 RVA: 0x000A7510 File Offset: 0x000A5710
 		private static void PushCursorsApart()
 		{
 			if (MPEventSystem.activeCount <= 1)
@@ -303,89 +303,89 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x0600234B RID: 9035 RVA: 0x000A8D4C File Offset: 0x000A6F4C
+		// Token: 0x060022BB RID: 8891 RVA: 0x000A76D0 File Offset: 0x000A58D0
 		static MPEventSystem()
 		{
 			RoR2Application.onUpdate += MPEventSystem.PushCursorsApart;
 			SceneManager.activeSceneChanged += MPEventSystem.OnActiveSceneChanged;
 		}
 
-		// Token: 0x17000314 RID: 788
-		// (get) Token: 0x0600234C RID: 9036 RVA: 0x00019C2A File Offset: 0x00017E2A
-		// (set) Token: 0x0600234D RID: 9037 RVA: 0x00019C32 File Offset: 0x00017E32
+		// Token: 0x17000302 RID: 770
+		// (get) Token: 0x060022BC RID: 8892 RVA: 0x00019573 File Offset: 0x00017773
+		// (set) Token: 0x060022BD RID: 8893 RVA: 0x0001957B File Offset: 0x0001777B
 		public InputMapperHelper inputMapperHelper { get; private set; }
 
-		// Token: 0x040025F9 RID: 9721
+		// Token: 0x0400259E RID: 9630
 		private static readonly List<MPEventSystem> instancesList = new List<MPEventSystem>();
 
-		// Token: 0x040025FA RID: 9722
+		// Token: 0x0400259F RID: 9631
 		public static ReadOnlyCollection<MPEventSystem> readOnlyInstancesList = new ReadOnlyCollection<MPEventSystem>(MPEventSystem.instancesList);
 
-		// Token: 0x040025FC RID: 9724
+		// Token: 0x040025A1 RID: 9633
 		public int cursorOpenerCount;
 
-		// Token: 0x040025FD RID: 9725
+		// Token: 0x040025A2 RID: 9634
 		public int playerSlot = -1;
 
-		// Token: 0x040025FE RID: 9726
+		// Token: 0x040025A3 RID: 9635
 		[NonSerialized]
 		public bool allowCursorPush = true;
 
-		// Token: 0x040025FF RID: 9727
+		// Token: 0x040025A4 RID: 9636
 		[NonSerialized]
 		public bool isCombinedEventSystem;
 
-		// Token: 0x04002601 RID: 9729
+		// Token: 0x040025A6 RID: 9638
 		private CursorIndicatorController cursorIndicatorController;
 
-		// Token: 0x04002602 RID: 9730
+		// Token: 0x040025A7 RID: 9639
 		[NotNull]
 		public Player player;
 
-		// Token: 0x04002603 RID: 9731
+		// Token: 0x040025A8 RID: 9640
 		[CanBeNull]
 		public LocalUser localUser;
 
-		// Token: 0x04002604 RID: 9732
+		// Token: 0x040025A9 RID: 9641
 		public TooltipProvider currentTooltipProvider;
 
-		// Token: 0x04002605 RID: 9733
+		// Token: 0x040025AA RID: 9642
 		public TooltipController currentTooltip;
 
-		// Token: 0x04002606 RID: 9734
+		// Token: 0x040025AB RID: 9643
 		private static MPEventSystem.PushInfo[] pushInfos = Array.Empty<MPEventSystem.PushInfo>();
 
-		// Token: 0x04002607 RID: 9735
+		// Token: 0x040025AC RID: 9644
 		private const float radius = 24f;
 
-		// Token: 0x04002608 RID: 9736
+		// Token: 0x040025AD RID: 9645
 		private const float invRadius = 0.0416666679f;
 
-		// Token: 0x04002609 RID: 9737
+		// Token: 0x040025AE RID: 9646
 		private const float radiusSqr = 576f;
 
-		// Token: 0x0400260A RID: 9738
+		// Token: 0x040025AF RID: 9647
 		private const float pushFactor = 10f;
 
-		// Token: 0x02000614 RID: 1556
+		// Token: 0x02000602 RID: 1538
 		public enum InputSource
 		{
-			// Token: 0x0400260D RID: 9741
+			// Token: 0x040025B2 RID: 9650
 			Keyboard,
-			// Token: 0x0400260E RID: 9742
+			// Token: 0x040025B3 RID: 9651
 			Gamepad
 		}
 
-		// Token: 0x02000615 RID: 1557
+		// Token: 0x02000603 RID: 1539
 		private struct PushInfo
 		{
-			// Token: 0x0400260F RID: 9743
+			// Token: 0x040025B4 RID: 9652
 			public int index;
 
-			// Token: 0x04002610 RID: 9744
+			// Token: 0x040025B5 RID: 9653
 			public Vector2 position;
 
-			// Token: 0x04002611 RID: 9745
+			// Token: 0x040025B6 RID: 9654
 			public Vector2 pushVector;
 		}
 	}

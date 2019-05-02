@@ -6,11 +6,11 @@ using UnityEngine.EventSystems;
 
 namespace RoR2.UI
 {
-	// Token: 0x020005FC RID: 1532
+	// Token: 0x020005EA RID: 1514
 	[RequireComponent(typeof(RectTransform))]
 	public class ItemInventoryDisplay : UIBehaviour
 	{
-		// Token: 0x0600228C RID: 8844 RVA: 0x000A60A0 File Offset: 0x000A42A0
+		// Token: 0x060021FB RID: 8699 RVA: 0x000A4AEC File Offset: 0x000A2CEC
 		public void SetSubscribedInventory([CanBeNull] Inventory newInventory)
 		{
 			if (this.inventory == newInventory && this.inventory == this.inventoryWasValid)
@@ -31,7 +31,7 @@ namespace RoR2.UI
 			this.OnInventoryChanged();
 		}
 
-		// Token: 0x0600228D RID: 8845 RVA: 0x000A6134 File Offset: 0x000A4334
+		// Token: 0x060021FC RID: 8700 RVA: 0x000A4B80 File Offset: 0x000A2D80
 		private void OnInventoryChanged()
 		{
 			if (!base.isActiveAndEnabled)
@@ -52,14 +52,14 @@ namespace RoR2.UI
 			this.RequestUpdateDisplay();
 		}
 
-		// Token: 0x0600228E RID: 8846 RVA: 0x000A61B8 File Offset: 0x000A43B8
+		// Token: 0x060021FD RID: 8701 RVA: 0x000A4C04 File Offset: 0x000A2E04
 		private static bool ItemIsVisible(ItemIndex itemIndex)
 		{
 			ItemDef itemDef = ItemCatalog.GetItemDef(itemIndex);
 			return itemDef != null && !itemDef.hidden;
 		}
 
-		// Token: 0x0600228F RID: 8847 RVA: 0x000A61DC File Offset: 0x000A43DC
+		// Token: 0x060021FE RID: 8702 RVA: 0x000A4C28 File Offset: 0x000A2E28
 		private void AllocateIcons(int desiredItemCount)
 		{
 			if (desiredItemCount != this.itemIcons.Count)
@@ -79,7 +79,7 @@ namespace RoR2.UI
 			this.OnIconCountChanged();
 		}
 
-		// Token: 0x06002290 RID: 8848 RVA: 0x000A6290 File Offset: 0x000A4490
+		// Token: 0x060021FF RID: 8703 RVA: 0x000A4CDC File Offset: 0x000A2EDC
 		private float CalculateIconScale(int iconCount)
 		{
 			int num = (int)this.rectTransform.rect.width;
@@ -103,7 +103,7 @@ namespace RoR2.UI
 			return (float)num4 / (float)num3;
 		}
 
-		// Token: 0x06002291 RID: 8849 RVA: 0x000A6314 File Offset: 0x000A4514
+		// Token: 0x06002200 RID: 8704 RVA: 0x000A4D60 File Offset: 0x000A2F60
 		private void OnIconCountChanged()
 		{
 			float num = this.CalculateIconScale(this.itemIcons.Count);
@@ -114,13 +114,13 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x06002292 RID: 8850 RVA: 0x000192CE File Offset: 0x000174CE
+		// Token: 0x06002201 RID: 8705 RVA: 0x00018BD4 File Offset: 0x00016DD4
 		private void OnIconScaleChanged()
 		{
 			this.LayoutAllIcons();
 		}
 
-		// Token: 0x06002293 RID: 8851 RVA: 0x000A634C File Offset: 0x000A454C
+		// Token: 0x06002202 RID: 8706 RVA: 0x000A4D98 File Offset: 0x000A2F98
 		private void CalculateLayoutValues(out ItemInventoryDisplay.LayoutValues v)
 		{
 			Rect rect = this.rectTransform.rect;
@@ -134,7 +134,7 @@ namespace RoR2.UI
 			v.topLeftCorner = new Vector3(rect.xMin + num, rect.yMax);
 		}
 
-		// Token: 0x06002294 RID: 8852 RVA: 0x000A641C File Offset: 0x000A461C
+		// Token: 0x06002203 RID: 8707 RVA: 0x000A4E68 File Offset: 0x000A3068
 		private void LayoutAllIcons()
 		{
 			ItemInventoryDisplay.LayoutValues layoutValues;
@@ -165,7 +165,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x06002295 RID: 8853 RVA: 0x000A64E4 File Offset: 0x000A46E4
+		// Token: 0x06002204 RID: 8708 RVA: 0x000A4F30 File Offset: 0x000A3130
 		private void LayoutIndividualIcon(int i)
 		{
 			ItemInventoryDisplay.LayoutValues layoutValues;
@@ -180,7 +180,7 @@ namespace RoR2.UI
 			rectTransform.localScale = layoutValues.iconLocalScale;
 		}
 
-		// Token: 0x06002296 RID: 8854 RVA: 0x000192D6 File Offset: 0x000174D6
+		// Token: 0x06002205 RID: 8709 RVA: 0x00018BDC File Offset: 0x00016DDC
 		protected override void Awake()
 		{
 			base.Awake();
@@ -189,14 +189,14 @@ namespace RoR2.UI
 			this.itemOrder = ItemCatalog.RequestItemOrderBuffer();
 		}
 
-		// Token: 0x06002297 RID: 8855 RVA: 0x00019305 File Offset: 0x00017505
+		// Token: 0x06002206 RID: 8710 RVA: 0x00018C0B File Offset: 0x00016E0B
 		protected override void OnDestroy()
 		{
 			this.SetSubscribedInventory(null);
 			base.OnDestroy();
 		}
 
-		// Token: 0x06002298 RID: 8856 RVA: 0x00019314 File Offset: 0x00017514
+		// Token: 0x06002207 RID: 8711 RVA: 0x00018C1A File Offset: 0x00016E1A
 		protected override void OnEnable()
 		{
 			base.OnEnable();
@@ -208,7 +208,7 @@ namespace RoR2.UI
 			this.LayoutAllIcons();
 		}
 
-		// Token: 0x06002299 RID: 8857 RVA: 0x0001933B File Offset: 0x0001753B
+		// Token: 0x06002208 RID: 8712 RVA: 0x00018C41 File Offset: 0x00016E41
 		private void RequestUpdateDisplay()
 		{
 			if (!this.updateRequestPending)
@@ -218,7 +218,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x0600229A RID: 8858 RVA: 0x000A6560 File Offset: 0x000A4760
+		// Token: 0x06002209 RID: 8713 RVA: 0x000A4FAC File Offset: 0x000A31AC
 		public void UpdateDisplay()
 		{
 			this.updateRequestPending = false;
@@ -244,7 +244,7 @@ namespace RoR2.UI
 			ItemCatalog.ReturnItemOrderBuffer(array);
 		}
 
-		// Token: 0x0600229B RID: 8859 RVA: 0x000A65F8 File Offset: 0x000A47F8
+		// Token: 0x0600220A RID: 8714 RVA: 0x000A5044 File Offset: 0x000A3244
 		public void SetItems(List<ItemIndex> newItemOrder, uint[] newItemStacks)
 		{
 			this.itemOrderCount = newItemOrder.Count;
@@ -256,7 +256,7 @@ namespace RoR2.UI
 			this.RequestUpdateDisplay();
 		}
 
-		// Token: 0x0600229C RID: 8860 RVA: 0x0001935D File Offset: 0x0001755D
+		// Token: 0x0600220B RID: 8715 RVA: 0x00018C63 File Offset: 0x00016E63
 		public void SetItems(ItemIndex[] newItemOrder, int newItemOrderCount, int[] newItemStacks)
 		{
 			this.itemOrderCount = newItemOrderCount;
@@ -265,7 +265,7 @@ namespace RoR2.UI
 			this.RequestUpdateDisplay();
 		}
 
-		// Token: 0x0600229D RID: 8861 RVA: 0x00019392 File Offset: 0x00017592
+		// Token: 0x0600220C RID: 8716 RVA: 0x00018C98 File Offset: 0x00016E98
 		public void ResetItems()
 		{
 			this.itemOrderCount = 0;
@@ -273,7 +273,7 @@ namespace RoR2.UI
 			this.RequestUpdateDisplay();
 		}
 
-		// Token: 0x0600229E RID: 8862 RVA: 0x000A664C File Offset: 0x000A484C
+		// Token: 0x0600220D RID: 8717 RVA: 0x000A5098 File Offset: 0x000A3298
 		protected override void OnRectTransformDimensionsChange()
 		{
 			base.OnRectTransformDimensionsChange();
@@ -288,69 +288,69 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x0400254D RID: 9549
+		// Token: 0x040024F8 RID: 9464
 		private RectTransform rectTransform;
 
-		// Token: 0x0400254E RID: 9550
+		// Token: 0x040024F9 RID: 9465
 		public GameObject itemIconPrefab;
 
-		// Token: 0x0400254F RID: 9551
+		// Token: 0x040024FA RID: 9466
 		public float iconWidth = 64f;
 
-		// Token: 0x04002550 RID: 9552
+		// Token: 0x040024FB RID: 9467
 		public float maxHeight = 128f;
 
-		// Token: 0x04002551 RID: 9553
-		[HideInInspector]
+		// Token: 0x040024FC RID: 9468
 		[SerializeField]
+		[HideInInspector]
 		private List<ItemIcon> itemIcons;
 
-		// Token: 0x04002552 RID: 9554
+		// Token: 0x040024FD RID: 9469
 		private ItemIndex[] itemOrder;
 
-		// Token: 0x04002553 RID: 9555
+		// Token: 0x040024FE RID: 9470
 		private int itemOrderCount;
 
-		// Token: 0x04002554 RID: 9556
+		// Token: 0x040024FF RID: 9471
 		private int[] itemStacks;
 
-		// Token: 0x04002555 RID: 9557
+		// Token: 0x04002500 RID: 9472
 		private float currentIconScale = 1f;
 
-		// Token: 0x04002556 RID: 9558
+		// Token: 0x04002501 RID: 9473
 		private float previousWidth;
 
-		// Token: 0x04002557 RID: 9559
+		// Token: 0x04002502 RID: 9474
 		private bool updateRequestPending;
 
-		// Token: 0x04002558 RID: 9560
+		// Token: 0x04002503 RID: 9475
 		private Inventory inventory;
 
-		// Token: 0x04002559 RID: 9561
+		// Token: 0x04002504 RID: 9476
 		private bool inventoryWasValid;
 
-		// Token: 0x020005FD RID: 1533
+		// Token: 0x020005EB RID: 1515
 		private struct LayoutValues
 		{
-			// Token: 0x0400255A RID: 9562
+			// Token: 0x04002505 RID: 9477
 			public float width;
 
-			// Token: 0x0400255B RID: 9563
+			// Token: 0x04002506 RID: 9478
 			public float iconSize;
 
-			// Token: 0x0400255C RID: 9564
+			// Token: 0x04002507 RID: 9479
 			public int iconsPerRow;
 
-			// Token: 0x0400255D RID: 9565
+			// Token: 0x04002508 RID: 9480
 			public float rowWidth;
 
-			// Token: 0x0400255E RID: 9566
+			// Token: 0x04002509 RID: 9481
 			public int rowCount;
 
-			// Token: 0x0400255F RID: 9567
+			// Token: 0x0400250A RID: 9482
 			public Vector3 iconLocalScale;
 
-			// Token: 0x04002560 RID: 9568
+			// Token: 0x0400250B RID: 9483
 			public Vector3 topLeftCorner;
 		}
 	}

@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 namespace RoR2.UI
 {
-	// Token: 0x020005C5 RID: 1477
+	// Token: 0x020005B3 RID: 1459
 	public class CarouselController : BaseSettingsControl
 	{
-		// Token: 0x0600214A RID: 8522 RVA: 0x0009FF00 File Offset: 0x0009E100
+		// Token: 0x060020B9 RID: 8377 RVA: 0x0009E92C File Offset: 0x0009CB2C
 		protected override void OnUpdateControls()
 		{
 			string currentValue = base.GetCurrentValue();
@@ -40,7 +40,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x0600214B RID: 8523 RVA: 0x0009FFB0 File Offset: 0x0009E1B0
+		// Token: 0x060020BA RID: 8378 RVA: 0x0009E9DC File Offset: 0x0009CBDC
 		public void MoveCarousel(int direction)
 		{
 			this.selectionIndex = Mathf.Clamp(this.selectionIndex + direction, 0, this.choices.Length - 1);
@@ -48,7 +48,7 @@ namespace RoR2.UI
 			base.SubmitSetting(this.choices[this.selectionIndex].convarValue);
 		}
 
-		// Token: 0x0600214C RID: 8524 RVA: 0x00018454 File Offset: 0x00016654
+		// Token: 0x060020BB RID: 8379 RVA: 0x00017D5A File Offset: 0x00015F5A
 		public void BoolCarousel()
 		{
 			this.selectionIndex = ((this.selectionIndex == 0) ? 1 : 0);
@@ -56,7 +56,7 @@ namespace RoR2.UI
 			base.SubmitSetting(this.choices[this.selectionIndex].convarValue);
 		}
 
-		// Token: 0x0600214D RID: 8525 RVA: 0x000A0000 File Offset: 0x0009E200
+		// Token: 0x060020BC RID: 8380 RVA: 0x0009EA2C File Offset: 0x0009CC2C
 		private void UpdateFromSelectionIndex()
 		{
 			CarouselController.Choice choice = this.choices[this.selectionIndex];
@@ -70,7 +70,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x0600214E RID: 8526 RVA: 0x000A0060 File Offset: 0x0009E260
+		// Token: 0x060020BD RID: 8381 RVA: 0x0009EA8C File Offset: 0x0009CC8C
 		private void Update()
 		{
 			bool active = true;
@@ -93,38 +93,38 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x04002388 RID: 9096
+		// Token: 0x04002334 RID: 9012
 		public GameObject leftArrowButton;
 
-		// Token: 0x04002389 RID: 9097
+		// Token: 0x04002335 RID: 9013
 		public GameObject rightArrowButton;
 
-		// Token: 0x0400238A RID: 9098
+		// Token: 0x04002336 RID: 9014
 		public GameObject boolButton;
 
-		// Token: 0x0400238B RID: 9099
+		// Token: 0x04002337 RID: 9015
 		public Image optionalImage;
 
-		// Token: 0x0400238C RID: 9100
+		// Token: 0x04002338 RID: 9016
 		public TextMeshProUGUI optionalText;
 
-		// Token: 0x0400238D RID: 9101
+		// Token: 0x04002339 RID: 9017
 		public CarouselController.Choice[] choices;
 
-		// Token: 0x0400238E RID: 9102
+		// Token: 0x0400233A RID: 9018
 		private int selectionIndex;
 
-		// Token: 0x020005C6 RID: 1478
+		// Token: 0x020005B4 RID: 1460
 		[Serializable]
 		public struct Choice
 		{
-			// Token: 0x0400238F RID: 9103
+			// Token: 0x0400233B RID: 9019
 			public string suboptionDisplayToken;
 
-			// Token: 0x04002390 RID: 9104
+			// Token: 0x0400233C RID: 9020
 			public string convarValue;
 
-			// Token: 0x04002391 RID: 9105
+			// Token: 0x0400233D RID: 9021
 			public Sprite customSprite;
 		}
 	}

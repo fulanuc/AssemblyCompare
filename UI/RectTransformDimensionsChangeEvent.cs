@@ -3,15 +3,15 @@ using UnityEngine;
 
 namespace RoR2.UI
 {
-	// Token: 0x02000633 RID: 1587
+	// Token: 0x02000621 RID: 1569
 	public class RectTransformDimensionsChangeEvent : MonoBehaviour
 	{
-		// Token: 0x1400005C RID: 92
-		// (add) Token: 0x060023D3 RID: 9171 RVA: 0x000AA69C File Offset: 0x000A889C
-		// (remove) Token: 0x060023D4 RID: 9172 RVA: 0x000AA6D4 File Offset: 0x000A88D4
+		// Token: 0x14000059 RID: 89
+		// (add) Token: 0x06002343 RID: 9027 RVA: 0x000A9020 File Offset: 0x000A7220
+		// (remove) Token: 0x06002344 RID: 9028 RVA: 0x000A9058 File Offset: 0x000A7258
 		public event Action onRectTransformDimensionsChange;
 
-		// Token: 0x060023D5 RID: 9173 RVA: 0x0001A221 File Offset: 0x00018421
+		// Token: 0x06002345 RID: 9029 RVA: 0x00019B53 File Offset: 0x00017D53
 		private void OnRectTransformDimensionsChange()
 		{
 			if (this.onRectTransformDimensionsChange != null)

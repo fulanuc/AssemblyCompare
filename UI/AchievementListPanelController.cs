@@ -5,23 +5,23 @@ using UnityEngine;
 
 namespace RoR2.UI
 {
-	// Token: 0x020005B6 RID: 1462
+	// Token: 0x020005A4 RID: 1444
 	[RequireComponent(typeof(MPEventSystemLocator))]
 	public class AchievementListPanelController : MonoBehaviour
 	{
-		// Token: 0x060020FA RID: 8442 RVA: 0x00018095 File Offset: 0x00016295
+		// Token: 0x06002069 RID: 8297 RVA: 0x0001799B File Offset: 0x00015B9B
 		private void Awake()
 		{
 			this.eventSystemLocator = base.GetComponent<MPEventSystemLocator>();
 		}
 
-		// Token: 0x060020FB RID: 8443 RVA: 0x000180A3 File Offset: 0x000162A3
+		// Token: 0x0600206A RID: 8298 RVA: 0x000179A9 File Offset: 0x00015BA9
 		private void OnEnable()
 		{
 			this.Rebuild();
 		}
 
-		// Token: 0x060020FC RID: 8444 RVA: 0x0009F3E8 File Offset: 0x0009D5E8
+		// Token: 0x0600206B RID: 8299 RVA: 0x0009DE14 File Offset: 0x0009C014
 		private UserProfile GetUserProfile()
 		{
 			MPEventSystem eventSystem = this.eventSystemLocator.eventSystem;
@@ -36,14 +36,14 @@ namespace RoR2.UI
 			return null;
 		}
 
-		// Token: 0x060020FD RID: 8445 RVA: 0x000180AB File Offset: 0x000162AB
+		// Token: 0x0600206C RID: 8300 RVA: 0x000179B1 File Offset: 0x00015BB1
 		static AchievementListPanelController()
 		{
 			AchievementListPanelController.BuildAchievementListOrder();
 			AchievementManager.onAchievementsRegistered += AchievementListPanelController.BuildAchievementListOrder;
 		}
 
-		// Token: 0x060020FE RID: 8446 RVA: 0x0009F420 File Offset: 0x0009D620
+		// Token: 0x0600206D RID: 8301 RVA: 0x0009DE4C File Offset: 0x0009C04C
 		private static void BuildAchievementListOrder()
 		{
 			AchievementListPanelController.sortedAchievementIdentifiers.Clear();
@@ -59,7 +59,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x060020FF RID: 8447 RVA: 0x0009F478 File Offset: 0x0009D678
+		// Token: 0x0600206E RID: 8302 RVA: 0x0009DEA4 File Offset: 0x0009C0A4
 		private static void AddAchievementToOrderedList(string achievementIdentifier, HashSet<string> encounteredIdentifiers)
 		{
 			if (encounteredIdentifiers.Contains(achievementIdentifier))
@@ -75,7 +75,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x06002100 RID: 8448 RVA: 0x0009F4C8 File Offset: 0x0009D6C8
+		// Token: 0x0600206F RID: 8303 RVA: 0x0009DEF4 File Offset: 0x0009C0F4
 		private void SetCardCount(int desiredCardCount)
 		{
 			while (this.cardsList.Count < desiredCardCount)
@@ -90,7 +90,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x06002101 RID: 8449 RVA: 0x0009F554 File Offset: 0x0009D754
+		// Token: 0x06002070 RID: 8304 RVA: 0x0009DF80 File Offset: 0x0009C180
 		private void Rebuild()
 		{
 			UserProfile userProfile = this.GetUserProfile();
@@ -101,19 +101,19 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x04002346 RID: 9030
+		// Token: 0x040022F2 RID: 8946
 		public GameObject achievementCardPrefab;
 
-		// Token: 0x04002347 RID: 9031
+		// Token: 0x040022F3 RID: 8947
 		public RectTransform container;
 
-		// Token: 0x04002348 RID: 9032
+		// Token: 0x040022F4 RID: 8948
 		private MPEventSystemLocator eventSystemLocator;
 
-		// Token: 0x04002349 RID: 9033
+		// Token: 0x040022F5 RID: 8949
 		private readonly List<AchievementCardController> cardsList = new List<AchievementCardController>();
 
-		// Token: 0x0400234A RID: 9034
+		// Token: 0x040022F6 RID: 8950
 		private static readonly List<string> sortedAchievementIdentifiers = new List<string>();
 	}
 }

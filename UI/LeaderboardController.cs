@@ -8,10 +8,10 @@ using UnityEngine.UI;
 
 namespace RoR2.UI
 {
-	// Token: 0x020005FF RID: 1535
+	// Token: 0x020005ED RID: 1517
 	public class LeaderboardController : MonoBehaviour
 	{
-		// Token: 0x060022A9 RID: 8873 RVA: 0x000A6720 File Offset: 0x000A4920
+		// Token: 0x06002218 RID: 8728 RVA: 0x00018D76 File Offset: 0x00016F76
 		private void Update()
 		{
 			if (this.currentLeaderboard != null && this.currentLeaderboard.IsValid && !this.currentLeaderboard.IsQuerying)
@@ -23,13 +23,9 @@ namespace RoR2.UI
 				}
 				this.queuedRequest = null;
 			}
-			if (this.noEntryObject)
-			{
-				this.noEntryObject.SetActive(this.leaderboardInfoList.Count == 0);
-			}
 		}
 
-		// Token: 0x060022AA RID: 8874 RVA: 0x000A6790 File Offset: 0x000A4990
+		// Token: 0x06002219 RID: 8729 RVA: 0x000A516C File Offset: 0x000A336C
 		private void SetStripCount(int newCount)
 		{
 			while (this.stripList.Count > newCount)
@@ -44,7 +40,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x060022AB RID: 8875 RVA: 0x000A681C File Offset: 0x000A4A1C
+		// Token: 0x0600221A RID: 8730 RVA: 0x000A51F8 File Offset: 0x000A33F8
 		private void Rebuild()
 		{
 			this.SetStripCount(this.leaderboardInfoList.Count);
@@ -58,7 +54,6 @@ namespace RoR2.UI
 				this.stripList[i].usernameLabel.userSteamId = leaderboardInfo.userSteamID;
 				this.stripList[i].timeLabel.text = text;
 				this.stripList[i].classIcon.texture = SurvivorCatalog.GetSurvivorPortrait(leaderboardInfo.survivorIndex);
-				this.stripList[i].isMeImage.enabled = (leaderboardInfo.userSteamID == Client.Instance.SteamId);
 				this.stripList[i].usernameLabel.Refresh();
 			}
 			if (this.animateImageAlpha)
@@ -73,7 +68,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x060022AC RID: 8876 RVA: 0x000A69C8 File Offset: 0x000A4BC8
+		// Token: 0x0600221B RID: 8731 RVA: 0x000A537C File Offset: 0x000A357C
 		private void GenerateFakeLeaderboardList(int count)
 		{
 			this.leaderboardInfoList.Clear();
@@ -87,7 +82,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x060022AD RID: 8877 RVA: 0x000A6A34 File Offset: 0x000A4C34
+		// Token: 0x0600221C RID: 8732 RVA: 0x000A53E8 File Offset: 0x000A35E8
 		private void SetLeaderboardInfo(LeaderboardController.LeaderboardInfo[] leaderboardInfos)
 		{
 			this.leaderboardInfoList.Clear();
@@ -98,27 +93,22 @@ namespace RoR2.UI
 			this.Rebuild();
 		}
 
-		// Token: 0x17000308 RID: 776
-		// (get) Token: 0x060022AE RID: 8878 RVA: 0x00019470 File Offset: 0x00017670
-		// (set) Token: 0x060022AF RID: 8879 RVA: 0x00019478 File Offset: 0x00017678
+		// Token: 0x170002F5 RID: 757
+		// (get) Token: 0x0600221D RID: 8733 RVA: 0x00018DB2 File Offset: 0x00016FB2
+		// (set) Token: 0x0600221E RID: 8734 RVA: 0x00018DBA File Offset: 0x00016FBA
 		public int currentPage { get; private set; }
 
-		// Token: 0x17000309 RID: 777
-		// (get) Token: 0x060022B0 RID: 8880 RVA: 0x00019481 File Offset: 0x00017681
-		// (set) Token: 0x060022B1 RID: 8881 RVA: 0x00019489 File Offset: 0x00017689
+		// Token: 0x170002F6 RID: 758
+		// (get) Token: 0x0600221F RID: 8735 RVA: 0x00018DC3 File Offset: 0x00016FC3
+		// (set) Token: 0x06002220 RID: 8736 RVA: 0x00018DCB File Offset: 0x00016FCB
 		public string currentLeaderboardName { get; private set; }
 
-		// Token: 0x060022B2 RID: 8882 RVA: 0x000A6A78 File Offset: 0x000A4C78
-		public void SetRequestType(string requestTypeName)
-		{
-			LeaderboardController.RequestType requestType;
-			if (Enum.TryParse<LeaderboardController.RequestType>(requestTypeName, false, out requestType))
-			{
-				this.currentRequestType = requestType;
-			}
-		}
+		// Token: 0x170002F7 RID: 759
+		// (get) Token: 0x06002221 RID: 8737 RVA: 0x00018DD4 File Offset: 0x00016FD4
+		// (set) Token: 0x06002222 RID: 8738 RVA: 0x00018DDC File Offset: 0x00016FDC
+		public LeaderboardController.RequestType currentRequestType { get; private set; }
 
-		// Token: 0x060022B3 RID: 8883 RVA: 0x000A6A98 File Offset: 0x000A4C98
+		// Token: 0x06002223 RID: 8739 RVA: 0x000A542C File Offset: 0x000A362C
 		private static LeaderboardController.LeaderboardInfo LeaderboardInfoFromSteamLeaderboardEntry(Leaderboard.Entry entry)
 		{
 			SurvivorIndex survivorIndex = SurvivorIndex.None;
@@ -136,7 +126,7 @@ namespace RoR2.UI
 			};
 		}
 
-		// Token: 0x060022B4 RID: 8884 RVA: 0x000A6B10 File Offset: 0x000A4D10
+		// Token: 0x06002224 RID: 8740 RVA: 0x000A54A4 File Offset: 0x000A36A4
 		public void SetRequestedInfo(string newLeaderboardName, LeaderboardController.RequestType newRequestType, int newPage)
 		{
 			bool flag = this.currentLeaderboardName != newLeaderboardName;
@@ -162,7 +152,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x060022B5 RID: 8885 RVA: 0x00019492 File Offset: 0x00017692
+		// Token: 0x06002225 RID: 8741 RVA: 0x00018DE5 File Offset: 0x00016FE5
 		private Action GenerateRequest(Leaderboard leaderboard, LeaderboardController.RequestType callRequestType, int page)
 		{
 			Leaderboard.FetchScoresCallback <>9__1;
@@ -172,7 +162,7 @@ namespace RoR2.UI
 				{
 					return;
 				}
-				int num = page * this.entriesPerPage - this.entriesPerPage / 2;
+				int num = page * this.entriesPerPage;
 				Leaderboard leaderboard2 = this.currentLeaderboard;
 				Leaderboard.RequestType callRequestType2 = (Leaderboard.RequestType)callRequestType;
 				int start = num;
@@ -191,84 +181,66 @@ namespace RoR2.UI
 			};
 		}
 
-		// Token: 0x060022B6 RID: 8886 RVA: 0x000194C0 File Offset: 0x000176C0
+		// Token: 0x06002226 RID: 8742 RVA: 0x00018E13 File Offset: 0x00017013
 		private void OrderLeaderboardListByTime(ref List<LeaderboardController.LeaderboardInfo> leaderboardInfoList)
 		{
 			leaderboardInfoList.Sort(new Comparison<LeaderboardController.LeaderboardInfo>(LeaderboardController.SortByTime));
 		}
 
-		// Token: 0x060022B7 RID: 8887 RVA: 0x000194D5 File Offset: 0x000176D5
+		// Token: 0x06002227 RID: 8743 RVA: 0x00018E28 File Offset: 0x00017028
 		private static int SortByTime(LeaderboardController.LeaderboardInfo p1, LeaderboardController.LeaderboardInfo p2)
 		{
 			return p1.timeInSeconds.CompareTo(p2.timeInSeconds);
 		}
 
-		// Token: 0x04002568 RID: 9576
+		// Token: 0x04002513 RID: 9491
 		public GameObject stripPrefab;
 
-		// Token: 0x04002569 RID: 9577
+		// Token: 0x04002514 RID: 9492
 		public RectTransform container;
 
-		// Token: 0x0400256A RID: 9578
-		public GameObject noEntryObject;
-
-		// Token: 0x0400256B RID: 9579
+		// Token: 0x04002515 RID: 9493
 		public AnimateImageAlpha animateImageAlpha;
 
-		// Token: 0x0400256C RID: 9580
+		// Token: 0x04002516 RID: 9494
 		private List<LeaderboardStrip> stripList = new List<LeaderboardStrip>();
 
-		// Token: 0x0400256D RID: 9581
+		// Token: 0x04002517 RID: 9495
 		private List<LeaderboardController.LeaderboardInfo> leaderboardInfoList = new List<LeaderboardController.LeaderboardInfo>();
 
-		// Token: 0x0400256E RID: 9582
-		public MPButton nextPageButton;
-
-		// Token: 0x0400256F RID: 9583
-		public MPButton previousPageButton;
-
-		// Token: 0x04002570 RID: 9584
-		public MPButton resetPageButton;
-
-		// Token: 0x04002571 RID: 9585
+		// Token: 0x04002518 RID: 9496
 		public int entriesPerPage = 16;
 
-		// Token: 0x04002574 RID: 9588
-		public LeaderboardController.RequestType currentRequestType;
-
-		// Token: 0x04002575 RID: 9589
+		// Token: 0x0400251C RID: 9500
 		private Leaderboard currentLeaderboard;
 
-		// Token: 0x04002576 RID: 9590
+		// Token: 0x0400251D RID: 9501
 		private Action queuedRequest;
 
-		// Token: 0x02000600 RID: 1536
+		// Token: 0x020005EE RID: 1518
 		private struct LeaderboardInfo
 		{
-			// Token: 0x04002577 RID: 9591
+			// Token: 0x0400251E RID: 9502
 			public int rank;
 
-			// Token: 0x04002578 RID: 9592
+			// Token: 0x0400251F RID: 9503
 			public ulong userSteamID;
 
-			// Token: 0x04002579 RID: 9593
+			// Token: 0x04002520 RID: 9504
 			public SurvivorIndex survivorIndex;
 
-			// Token: 0x0400257A RID: 9594
+			// Token: 0x04002521 RID: 9505
 			public float timeInSeconds;
-
-			// Token: 0x0400257B RID: 9595
-			public bool isMe;
 		}
 
-		// Token: 0x02000601 RID: 1537
+		// Token: 0x020005EF RID: 1519
 		public enum RequestType
 		{
-			// Token: 0x0400257D RID: 9597
+			// Token: 0x04002523 RID: 9507
 			Global,
-			// Token: 0x0400257E RID: 9598
+			// Token: 0x04002524 RID: 9508
 			GlobalAroundUser,
-			// Token: 0x0400257F RID: 9599
+			// Token: 0x04002525 RID: 9509
 			Friends
 		}
 	}

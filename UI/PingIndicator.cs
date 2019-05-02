@@ -6,22 +6,22 @@ using UnityEngine;
 
 namespace RoR2.UI
 {
-	// Token: 0x0200062B RID: 1579
+	// Token: 0x02000619 RID: 1561
 	public class PingIndicator : MonoBehaviour
 	{
-		// Token: 0x060023BB RID: 9147 RVA: 0x0001A18D File Offset: 0x0001838D
+		// Token: 0x0600232B RID: 9003 RVA: 0x00019ABF File Offset: 0x00017CBF
 		private void OnEnable()
 		{
 			PingIndicator.instancesList.Add(this);
 		}
 
-		// Token: 0x060023BC RID: 9148 RVA: 0x0001A19A File Offset: 0x0001839A
+		// Token: 0x0600232C RID: 9004 RVA: 0x00019ACC File Offset: 0x00017CCC
 		private void OnDisable()
 		{
 			PingIndicator.instancesList.Remove(this);
 		}
 
-		// Token: 0x060023BD RID: 9149 RVA: 0x000A9E64 File Offset: 0x000A8064
+		// Token: 0x0600232D RID: 9005 RVA: 0x000A87E8 File Offset: 0x000A69E8
 		public void RebuildPing()
 		{
 			base.transform.rotation = Util.QuaternionSafeLookRotation(this.pingNormal);
@@ -71,10 +71,10 @@ namespace RoR2.UI
 					}
 				}
 			}
-			string bestMasterName = Util.GetBestMasterName(this.pingOwner.GetComponent<CharacterMaster>());
-			string text = ((MonoBehaviour)componentInParent) ? Util.GetBestBodyName(((MonoBehaviour)componentInParent).gameObject) : "";
+			string displayName = this.pingOwner.GetComponent<PlayerCharacterMasterController>().GetDisplayName();
+			string text = (componentInParent != null) ? componentInParent.GetDisplayName() : "";
 			this.pingText.enabled = true;
-			this.pingText.text = bestMasterName;
+			this.pingText.text = displayName;
 			switch (this.pingType)
 			{
 			case PingIndicator.PingType.Default:
@@ -86,7 +86,7 @@ namespace RoR2.UI
 				{
 					array[i].SetActive(true);
 				}
-				Chat.AddMessage(string.Format(Language.GetString("PLAYER_PING_DEFAULT"), bestMasterName));
+				Chat.AddMessage(string.Format(Language.GetString("PLAYER_PING_DEFAULT"), displayName));
 				break;
 			case PingIndicator.PingType.Enemy:
 				this.pingColor = this.enemyPingColor;
@@ -118,7 +118,7 @@ namespace RoR2.UI
 							}
 						}
 					}
-					Chat.AddMessage(string.Format(Language.GetString("PLAYER_PING_ENEMY"), bestMasterName, text));
+					Chat.AddMessage(string.Format(Language.GetString("PLAYER_PING_ENEMY"), displayName, text));
 				}
 				break;
 			case PingIndicator.PingType.Interactable:
@@ -157,6 +157,7 @@ namespace RoR2.UI
 				{
 					array[i].SetActive(true);
 				}
+				base.transform.parent.GetComponentInChildren<Renderer>();
 				Renderer componentInChildren;
 				if (modelLocator)
 				{
@@ -174,7 +175,7 @@ namespace RoR2.UI
 					this.pingHighlight.isOn = true;
 				}
 				component3.sprite = sprite;
-				Chat.AddMessage(string.Format(Language.GetString("PLAYER_PING_INTERACTABLE"), bestMasterName, text));
+				Chat.AddMessage(string.Format(Language.GetString("PLAYER_PING_INTERACTABLE"), displayName, text));
 				break;
 			}
 			}
@@ -182,7 +183,7 @@ namespace RoR2.UI
 			this.fixedTimer = this.pingDuration;
 		}
 
-		// Token: 0x060023BE RID: 9150 RVA: 0x000AA414 File Offset: 0x000A8614
+		// Token: 0x0600232E RID: 9006 RVA: 0x000A8D98 File Offset: 0x000A6F98
 		private void Update()
 		{
 			if (this.pingType == PingIndicator.PingType.Interactable && this.pingTargetPurchaseInteraction && !this.pingTargetPurchaseInteraction.available)
@@ -196,95 +197,95 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x0400265A RID: 9818
+		// Token: 0x040025FF RID: 9727
 		public PositionIndicator positionIndicator;
 
-		// Token: 0x0400265B RID: 9819
+		// Token: 0x04002600 RID: 9728
 		public TextMeshPro pingText;
 
-		// Token: 0x0400265C RID: 9820
+		// Token: 0x04002601 RID: 9729
 		public Highlight pingHighlight;
 
-		// Token: 0x0400265D RID: 9821
+		// Token: 0x04002602 RID: 9730
 		public ObjectScaleCurve pingObjectScaleCurve;
 
-		// Token: 0x0400265E RID: 9822
+		// Token: 0x04002603 RID: 9731
 		public GameObject positionIndicatorRoot;
 
-		// Token: 0x0400265F RID: 9823
+		// Token: 0x04002604 RID: 9732
 		public Color textBaseColor;
 
-		// Token: 0x04002660 RID: 9824
+		// Token: 0x04002605 RID: 9733
 		public GameObject[] defaultPingGameObjects;
 
-		// Token: 0x04002661 RID: 9825
+		// Token: 0x04002606 RID: 9734
 		public Color defaultPingColor;
 
-		// Token: 0x04002662 RID: 9826
+		// Token: 0x04002607 RID: 9735
 		public float defaultPingDuration;
 
-		// Token: 0x04002663 RID: 9827
+		// Token: 0x04002608 RID: 9736
 		public GameObject[] enemyPingGameObjects;
 
-		// Token: 0x04002664 RID: 9828
+		// Token: 0x04002609 RID: 9737
 		public Color enemyPingColor;
 
-		// Token: 0x04002665 RID: 9829
+		// Token: 0x0400260A RID: 9738
 		public float enemyPingDuration;
 
-		// Token: 0x04002666 RID: 9830
+		// Token: 0x0400260B RID: 9739
 		public GameObject[] interactablePingGameObjects;
 
-		// Token: 0x04002667 RID: 9831
+		// Token: 0x0400260C RID: 9740
 		public Color interactablePingColor;
 
-		// Token: 0x04002668 RID: 9832
+		// Token: 0x0400260D RID: 9741
 		public float interactablePingDuration;
 
-		// Token: 0x04002669 RID: 9833
+		// Token: 0x0400260E RID: 9742
 		public static List<PingIndicator> instancesList = new List<PingIndicator>();
 
-		// Token: 0x0400266A RID: 9834
+		// Token: 0x0400260F RID: 9743
 		private PingIndicator.PingType pingType;
 
-		// Token: 0x0400266B RID: 9835
+		// Token: 0x04002610 RID: 9744
 		private Color pingColor;
 
-		// Token: 0x0400266C RID: 9836
+		// Token: 0x04002611 RID: 9745
 		private float pingDuration;
 
-		// Token: 0x0400266D RID: 9837
+		// Token: 0x04002612 RID: 9746
 		private PurchaseInteraction pingTargetPurchaseInteraction;
 
-		// Token: 0x0400266E RID: 9838
+		// Token: 0x04002613 RID: 9747
 		[HideInInspector]
 		public Vector3 pingOrigin;
 
-		// Token: 0x0400266F RID: 9839
+		// Token: 0x04002614 RID: 9748
 		[HideInInspector]
 		public Vector3 pingNormal;
 
-		// Token: 0x04002670 RID: 9840
+		// Token: 0x04002615 RID: 9749
 		[HideInInspector]
 		public GameObject pingOwner;
 
-		// Token: 0x04002671 RID: 9841
+		// Token: 0x04002616 RID: 9750
 		[HideInInspector]
 		public GameObject pingTarget;
 
-		// Token: 0x04002672 RID: 9842
+		// Token: 0x04002617 RID: 9751
 		private float fixedTimer;
 
-		// Token: 0x0200062C RID: 1580
+		// Token: 0x0200061A RID: 1562
 		public enum PingType
 		{
-			// Token: 0x04002674 RID: 9844
+			// Token: 0x04002619 RID: 9753
 			Default,
-			// Token: 0x04002675 RID: 9845
+			// Token: 0x0400261A RID: 9754
 			Enemy,
-			// Token: 0x04002676 RID: 9846
+			// Token: 0x0400261B RID: 9755
 			Interactable,
-			// Token: 0x04002677 RID: 9847
+			// Token: 0x0400261C RID: 9756
 			Count
 		}
 	}

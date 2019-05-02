@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace RoR2.UI
 {
-	// Token: 0x020005F9 RID: 1529
+	// Token: 0x020005E7 RID: 1511
 	[RequireComponent(typeof(HUD))]
 	public class HUDTutorialController : MonoBehaviour
 	{
-		// Token: 0x06002278 RID: 8824 RVA: 0x000A5BB4 File Offset: 0x000A3DB4
+		// Token: 0x060021E7 RID: 8679 RVA: 0x000A4600 File Offset: 0x000A2800
 		private void Awake()
 		{
 			this.hud = base.GetComponent<HUD>();
@@ -26,13 +26,13 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x06002279 RID: 8825 RVA: 0x000191C5 File Offset: 0x000173C5
+		// Token: 0x060021E8 RID: 8680 RVA: 0x00018ACB File Offset: 0x00016CCB
 		private UserProfile GetUserProfile()
 		{
 			return this.hud.localUserViewer.userProfile;
 		}
 
-		// Token: 0x0600227A RID: 8826 RVA: 0x000191D7 File Offset: 0x000173D7
+		// Token: 0x060021E9 RID: 8681 RVA: 0x00018ADD File Offset: 0x00016CDD
 		private void HandleTutorial(GameObject tutorialPopup, ref UserProfile.TutorialProgression tutorialProgression, bool dismiss = false, bool progress = true)
 		{
 			if (tutorialPopup && !dismiss)
@@ -46,7 +46,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x0600227B RID: 8827 RVA: 0x000A5C18 File Offset: 0x000A3E18
+		// Token: 0x060021EA RID: 8682 RVA: 0x000A4664 File Offset: 0x000A2864
 		private void Update()
 		{
 			UserProfile userProfile = this.GetUserProfile();
@@ -89,37 +89,37 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x04002533 RID: 9523
+		// Token: 0x040024DE RID: 9438
 		private HUD hud;
 
-		// Token: 0x04002534 RID: 9524
+		// Token: 0x040024DF RID: 9439
 		[Header("Equipment Tutorial")]
 		[Tooltip("The tutorial popup object.")]
 		public GameObject equipmentTutorialObject;
 
-		// Token: 0x04002535 RID: 9525
+		// Token: 0x040024E0 RID: 9440
 		[Tooltip("The equipment icon to monitor for a change to trigger the tutorial popup.")]
 		public EquipmentIcon equipmentIcon;
 
-		// Token: 0x04002536 RID: 9526
+		// Token: 0x040024E1 RID: 9441
 		[Tooltip("The tutorial popup object.")]
 		[Header("Difficulty Tutorial")]
 		public GameObject difficultyTutorialObject;
 
-		// Token: 0x04002537 RID: 9527
+		// Token: 0x040024E2 RID: 9442
 		[Tooltip("The time at which to trigger the tutorial popup.")]
 		public float difficultyTutorialTriggerTime = 60f;
 
-		// Token: 0x04002538 RID: 9528
+		// Token: 0x040024E3 RID: 9443
 		[Tooltip("The tutorial popup object.")]
 		[Header("Sprint Tutorial")]
 		public GameObject sprintTutorialObject;
 
-		// Token: 0x04002539 RID: 9529
+		// Token: 0x040024E4 RID: 9444
 		[Tooltip("How long to wait for the player to sprint before showing the tutorial popup.")]
 		public float sprintTutorialTriggerTime = 30f;
 
-		// Token: 0x0400253A RID: 9530
+		// Token: 0x040024E5 RID: 9445
 		private float sprintTutorialStopwatch;
 	}
 }

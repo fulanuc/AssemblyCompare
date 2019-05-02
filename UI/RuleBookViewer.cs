@@ -4,16 +4,16 @@ using UnityEngine;
 
 namespace RoR2.UI
 {
-	// Token: 0x02000638 RID: 1592
+	// Token: 0x02000626 RID: 1574
 	public class RuleBookViewer : MonoBehaviour
 	{
-		// Token: 0x060023E9 RID: 9193 RVA: 0x0001A325 File Offset: 0x00018525
+		// Token: 0x06002359 RID: 9049 RVA: 0x00019C57 File Offset: 0x00017E57
 		private void Start()
 		{
 			this.AllocateCategories(RuleCatalog.categoryCount);
 		}
 
-		// Token: 0x060023EA RID: 9194 RVA: 0x0001A332 File Offset: 0x00018532
+		// Token: 0x0600235A RID: 9050 RVA: 0x00019C64 File Offset: 0x00017E64
 		private void Update()
 		{
 			if (PreGameController.instance)
@@ -22,7 +22,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x060023EB RID: 9195 RVA: 0x000AAA3C File Offset: 0x000A8C3C
+		// Token: 0x0600235B RID: 9051 RVA: 0x000A93C0 File Offset: 0x000A75C0
 		private void AllocateCategories(int desiredCount)
 		{
 			while (this.categoryControllers.Count > desiredCount)
@@ -38,7 +38,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x060023EC RID: 9196 RVA: 0x000AAABC File Offset: 0x000A8CBC
+		// Token: 0x0600235C RID: 9052 RVA: 0x000A9440 File Offset: 0x000A7640
 		private void SetData(RuleChoiceMask choiceAvailability, RuleBook ruleBook)
 		{
 			if (choiceAvailability.Equals(this.cachedRuleChoiceMask) && ruleBook.Equals(this.cachedRuleBook))
@@ -54,24 +54,24 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x04002696 RID: 9878
+		// Token: 0x0400263B RID: 9787
 		[Tooltip("The prefab to instantiate for a rule strip.")]
 		public GameObject stripPrefab;
 
-		// Token: 0x04002697 RID: 9879
+		// Token: 0x0400263C RID: 9788
 		[Tooltip("The prefab to use for categories.")]
 		public GameObject categoryPrefab;
 
-		// Token: 0x04002698 RID: 9880
+		// Token: 0x0400263D RID: 9789
 		public RectTransform categoryContainer;
 
-		// Token: 0x04002699 RID: 9881
+		// Token: 0x0400263E RID: 9790
 		private readonly List<RuleCategoryController> categoryControllers = new List<RuleCategoryController>();
 
-		// Token: 0x0400269A RID: 9882
+		// Token: 0x0400263F RID: 9791
 		private readonly RuleChoiceMask cachedRuleChoiceMask = new RuleChoiceMask();
 
-		// Token: 0x0400269B RID: 9883
+		// Token: 0x04002640 RID: 9792
 		private readonly RuleBook cachedRuleBook = new RuleBook();
 	}
 }

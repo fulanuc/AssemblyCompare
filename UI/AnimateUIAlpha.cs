@@ -4,10 +4,10 @@ using UnityEngine.UI;
 
 namespace RoR2.UI
 {
-	// Token: 0x020005BB RID: 1467
+	// Token: 0x020005A9 RID: 1449
 	public class AnimateUIAlpha : MonoBehaviour
 	{
-		// Token: 0x06002116 RID: 8470 RVA: 0x0009F79C File Offset: 0x0009D99C
+		// Token: 0x06002085 RID: 8325 RVA: 0x0009E1C8 File Offset: 0x0009C3C8
 		private void Start()
 		{
 			if (this.image)
@@ -25,19 +25,19 @@ namespace RoR2.UI
 			this.UpdateAlphas(0f);
 		}
 
-		// Token: 0x06002117 RID: 8471 RVA: 0x0001821B File Offset: 0x0001641B
+		// Token: 0x06002086 RID: 8326 RVA: 0x00017B21 File Offset: 0x00015D21
 		private void OnDisable()
 		{
 			this.time = 0f;
 		}
 
-		// Token: 0x06002118 RID: 8472 RVA: 0x00018228 File Offset: 0x00016428
+		// Token: 0x06002087 RID: 8327 RVA: 0x00017B2E File Offset: 0x00015D2E
 		private void Update()
 		{
 			this.UpdateAlphas(Time.unscaledDeltaTime);
 		}
 
-		// Token: 0x06002119 RID: 8473 RVA: 0x0009F810 File Offset: 0x0009DA10
+		// Token: 0x06002088 RID: 8328 RVA: 0x0009E23C File Offset: 0x0009C43C
 		private void UpdateAlphas(float deltaTime)
 		{
 			this.time = Mathf.Min(this.timeMax, this.time + deltaTime);
@@ -69,35 +69,35 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x04002357 RID: 9047
+		// Token: 0x04002303 RID: 8963
 		public AnimationCurve alphaCurve;
 
-		// Token: 0x04002358 RID: 9048
+		// Token: 0x04002304 RID: 8964
 		public Image image;
 
-		// Token: 0x04002359 RID: 9049
+		// Token: 0x04002305 RID: 8965
 		public RawImage rawImage;
 
-		// Token: 0x0400235A RID: 9050
+		// Token: 0x04002306 RID: 8966
 		public SpriteRenderer spriteRenderer;
 
-		// Token: 0x0400235B RID: 9051
+		// Token: 0x04002307 RID: 8967
 		public float timeMax = 5f;
 
-		// Token: 0x0400235C RID: 9052
+		// Token: 0x04002308 RID: 8968
 		public bool destroyOnEnd;
 
-		// Token: 0x0400235D RID: 9053
+		// Token: 0x04002309 RID: 8969
 		public bool loopOnEnd;
 
-		// Token: 0x0400235E RID: 9054
+		// Token: 0x0400230A RID: 8970
 		public bool disableGameObjectOnEnd;
 
-		// Token: 0x0400235F RID: 9055
+		// Token: 0x0400230B RID: 8971
 		[HideInInspector]
 		public float time;
 
-		// Token: 0x04002360 RID: 9056
+		// Token: 0x0400230C RID: 8972
 		private Color originalColor;
 	}
 }

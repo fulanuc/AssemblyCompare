@@ -5,23 +5,23 @@ using UnityEngine.UI;
 
 namespace RoR2.UI
 {
-	// Token: 0x020005D7 RID: 1495
+	// Token: 0x020005C5 RID: 1477
 	[RequireComponent(typeof(RectTransform))]
 	public class CrosshairManager : MonoBehaviour
 	{
-		// Token: 0x060021C4 RID: 8644 RVA: 0x00018A1C File Offset: 0x00016C1C
+		// Token: 0x06002133 RID: 8499 RVA: 0x00018322 File Offset: 0x00016522
 		private void OnEnable()
 		{
 			CrosshairManager.instancesList.Add(this);
 		}
 
-		// Token: 0x060021C5 RID: 8645 RVA: 0x00018A29 File Offset: 0x00016C29
+		// Token: 0x06002134 RID: 8500 RVA: 0x0001832F File Offset: 0x0001652F
 		private void OnDisable()
 		{
 			CrosshairManager.instancesList.Remove(this);
 		}
 
-		// Token: 0x060021C6 RID: 8646 RVA: 0x000A1CF0 File Offset: 0x0009FEF0
+		// Token: 0x06002135 RID: 8501 RVA: 0x000A071C File Offset: 0x0009E91C
 		private static void StaticLateUpdate()
 		{
 			for (int i = 0; i < CrosshairManager.instancesList.Count; i++)
@@ -30,7 +30,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x060021C7 RID: 8647 RVA: 0x000A1D24 File Offset: 0x0009FF24
+		// Token: 0x06002136 RID: 8502 RVA: 0x000A0750 File Offset: 0x0009E950
 		private void DoLateUpdate()
 		{
 			if (this.cameraRigController)
@@ -40,7 +40,7 @@ namespace RoR2.UI
 			this.UpdateHitMarker();
 		}
 
-		// Token: 0x060021C8 RID: 8648 RVA: 0x000A1D88 File Offset: 0x0009FF88
+		// Token: 0x06002137 RID: 8503 RVA: 0x000A07B4 File Offset: 0x0009E9B4
 		private void UpdateCrosshair(CharacterBody targetBody, Vector3 crosshairWorldPosition, Camera uiCamera)
 		{
 			GameObject gameObject = null;
@@ -80,7 +80,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x060021C9 RID: 8649 RVA: 0x000A1E98 File Offset: 0x000A0098
+		// Token: 0x06002138 RID: 8504 RVA: 0x000A08C4 File Offset: 0x0009EAC4
 		public void RefreshHitmarker(bool crit)
 		{
 			this.hitmarkerTimer = 0.2f;
@@ -93,7 +93,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x060021CA RID: 8650 RVA: 0x000A1F00 File Offset: 0x000A0100
+		// Token: 0x06002139 RID: 8505 RVA: 0x000A092C File Offset: 0x0009EB2C
 		private void UpdateHitMarker()
 		{
 			this.hitmarkerAlpha = Mathf.Pow(this.hitmarkerTimer / 0.2f, 0.75f);
@@ -106,7 +106,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x060021CB RID: 8651 RVA: 0x000A1F78 File Offset: 0x000A0178
+		// Token: 0x0600213A RID: 8506 RVA: 0x000A09A4 File Offset: 0x0009EBA4
 		private static void HandleHitMarker(DamageDealtMessage damageDealtMessage)
 		{
 			for (int i = 0; i < CrosshairManager.instancesList.Count; i++)
@@ -119,43 +119,43 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x060021CC RID: 8652 RVA: 0x00018A37 File Offset: 0x00016C37
+		// Token: 0x0600213B RID: 8507 RVA: 0x0001833D File Offset: 0x0001653D
 		static CrosshairManager()
 		{
 			GlobalEventManager.onClientDamageNotified += CrosshairManager.HandleHitMarker;
 			RoR2Application.onLateUpdate += CrosshairManager.StaticLateUpdate;
 		}
 
-		// Token: 0x04002408 RID: 9224
+		// Token: 0x040023B4 RID: 9140
 		[Tooltip("The transform which should act as the container for the crosshair.")]
 		public RectTransform container;
 
-		// Token: 0x04002409 RID: 9225
+		// Token: 0x040023B5 RID: 9141
 		public CameraRigController cameraRigController;
 
-		// Token: 0x0400240A RID: 9226
+		// Token: 0x040023B6 RID: 9142
 		[Tooltip("The hitmarker image.")]
 		public Image hitmarker;
 
-		// Token: 0x0400240B RID: 9227
+		// Token: 0x040023B7 RID: 9143
 		private float hitmarkerAlpha;
 
-		// Token: 0x0400240C RID: 9228
+		// Token: 0x040023B8 RID: 9144
 		private float hitmarkerTimer;
 
-		// Token: 0x0400240D RID: 9229
+		// Token: 0x040023B9 RID: 9145
 		private const float hitmarkerDuration = 0.2f;
 
-		// Token: 0x0400240E RID: 9230
+		// Token: 0x040023BA RID: 9146
 		private GameObject currentCrosshairPrefab;
 
-		// Token: 0x0400240F RID: 9231
+		// Token: 0x040023BB RID: 9147
 		private CrosshairController crosshairController;
 
-		// Token: 0x04002410 RID: 9232
+		// Token: 0x040023BC RID: 9148
 		private HudElement crosshairHudElement;
 
-		// Token: 0x04002411 RID: 9233
+		// Token: 0x040023BD RID: 9149
 		private static readonly List<CrosshairManager> instancesList = new List<CrosshairManager>();
 	}
 }

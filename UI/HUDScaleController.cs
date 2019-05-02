@@ -5,28 +5,28 @@ using UnityEngine;
 
 namespace RoR2.UI
 {
-	// Token: 0x020005F7 RID: 1527
+	// Token: 0x020005E5 RID: 1509
 	public class HUDScaleController : MonoBehaviour
 	{
-		// Token: 0x0600226E RID: 8814 RVA: 0x0001916D File Offset: 0x0001736D
+		// Token: 0x060021DD RID: 8669 RVA: 0x00018A73 File Offset: 0x00016C73
 		public void OnEnable()
 		{
 			HUDScaleController.instancesList.Add(this);
 		}
 
-		// Token: 0x0600226F RID: 8815 RVA: 0x0001917A File Offset: 0x0001737A
+		// Token: 0x060021DE RID: 8670 RVA: 0x00018A80 File Offset: 0x00016C80
 		public void OnDisable()
 		{
 			HUDScaleController.instancesList.Remove(this);
 		}
 
-		// Token: 0x06002270 RID: 8816 RVA: 0x00019188 File Offset: 0x00017388
+		// Token: 0x060021DF RID: 8671 RVA: 0x00018A8E File Offset: 0x00016C8E
 		private void Start()
 		{
 			this.SetScale();
 		}
 
-		// Token: 0x06002271 RID: 8817 RVA: 0x000A5AE0 File Offset: 0x000A3CE0
+		// Token: 0x060021E0 RID: 8672 RVA: 0x000A452C File Offset: 0x000A272C
 		private void SetScale()
 		{
 			BaseConVar baseConVar = Console.instance.FindConVar("hud_scale");
@@ -42,21 +42,21 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x0400252F RID: 9519
+		// Token: 0x040024DA RID: 9434
 		public RectTransform[] rectTransforms;
 
-		// Token: 0x04002530 RID: 9520
+		// Token: 0x040024DB RID: 9435
 		private static List<HUDScaleController> instancesList = new List<HUDScaleController>();
 
-		// Token: 0x020005F8 RID: 1528
+		// Token: 0x020005E6 RID: 1510
 		private class HUDScaleConVar : BaseConVar
 		{
-			// Token: 0x06002274 RID: 8820 RVA: 0x000090CD File Offset: 0x000072CD
+			// Token: 0x060021E3 RID: 8675 RVA: 0x000090A8 File Offset: 0x000072A8
 			private HUDScaleConVar(string name, ConVarFlags flags, string defaultValue, string helpText) : base(name, flags, defaultValue, helpText)
 			{
 			}
 
-			// Token: 0x06002275 RID: 8821 RVA: 0x000A5B50 File Offset: 0x000A3D50
+			// Token: 0x060021E4 RID: 8676 RVA: 0x000A459C File Offset: 0x000A279C
 			public override void SetString(string newValue)
 			{
 				int num;
@@ -70,16 +70,16 @@ namespace RoR2.UI
 				}
 			}
 
-			// Token: 0x06002276 RID: 8822 RVA: 0x0001919C File Offset: 0x0001739C
+			// Token: 0x060021E5 RID: 8677 RVA: 0x00018AA2 File Offset: 0x00016CA2
 			public override string GetString()
 			{
 				return TextSerialization.ToStringInvariant(this.intValue);
 			}
 
-			// Token: 0x04002531 RID: 9521
+			// Token: 0x040024DC RID: 9436
 			public static HUDScaleController.HUDScaleConVar instance = new HUDScaleController.HUDScaleConVar("hud_scale", ConVarFlags.Archive, "100", "Scales the size of HUD elements in-game. Defaults to 100.");
 
-			// Token: 0x04002532 RID: 9522
+			// Token: 0x040024DD RID: 9437
 			private int intValue;
 		}
 	}

@@ -5,16 +5,16 @@ using UnityEngine.UI;
 
 namespace RoR2.UI
 {
-	// Token: 0x020005B9 RID: 1465
+	// Token: 0x020005A7 RID: 1447
 	public class AllyCardController : MonoBehaviour
 	{
-		// Token: 0x06002110 RID: 8464 RVA: 0x000181F1 File Offset: 0x000163F1
+		// Token: 0x0600207F RID: 8319 RVA: 0x00017AF7 File Offset: 0x00015CF7
 		private void LateUpdate()
 		{
 			this.UpdateInfo();
 		}
 
-		// Token: 0x06002111 RID: 8465 RVA: 0x0009F664 File Offset: 0x0009D864
+		// Token: 0x06002080 RID: 8320 RVA: 0x0009E090 File Offset: 0x0009C290
 		private void UpdateInfo()
 		{
 			HealthComponent source = null;
@@ -35,16 +35,16 @@ namespace RoR2.UI
 			this.portraitIconImage.texture = texture;
 		}
 
-		// Token: 0x04002351 RID: 9041
+		// Token: 0x040022FD RID: 8957
 		public HealthBar healthBar;
 
-		// Token: 0x04002352 RID: 9042
+		// Token: 0x040022FE RID: 8958
 		public TextMeshProUGUI nameLabel;
 
-		// Token: 0x04002353 RID: 9043
+		// Token: 0x040022FF RID: 8959
 		public RawImage portraitIconImage;
 
-		// Token: 0x04002354 RID: 9044
+		// Token: 0x04002300 RID: 8960
 		[HideInInspector]
 		public GameObject sourceGameObject;
 	}

@@ -6,23 +6,23 @@ using UnityEngine.UI;
 
 namespace RoR2.UI
 {
-	// Token: 0x020005C3 RID: 1475
+	// Token: 0x020005B1 RID: 1457
 	[RequireComponent(typeof(RectTransform))]
 	public class BuffIcon : MonoBehaviour
 	{
-		// Token: 0x170002ED RID: 749
-		// (get) Token: 0x06002140 RID: 8512 RVA: 0x000183F8 File Offset: 0x000165F8
-		// (set) Token: 0x06002141 RID: 8513 RVA: 0x00018400 File Offset: 0x00016600
+		// Token: 0x170002DA RID: 730
+		// (get) Token: 0x060020AF RID: 8367 RVA: 0x00017CFE File Offset: 0x00015EFE
+		// (set) Token: 0x060020B0 RID: 8368 RVA: 0x00017D06 File Offset: 0x00015F06
 		public RectTransform rectTransform { get; private set; }
 
-		// Token: 0x06002142 RID: 8514 RVA: 0x00018409 File Offset: 0x00016609
+		// Token: 0x060020B1 RID: 8369 RVA: 0x00017D0F File Offset: 0x00015F0F
 		private void Awake()
 		{
 			this.rectTransform = base.GetComponent<RectTransform>();
 			this.UpdateIcon();
 		}
 
-		// Token: 0x06002143 RID: 8515 RVA: 0x0009FDD8 File Offset: 0x0009DFD8
+		// Token: 0x060020B2 RID: 8370 RVA: 0x0009E804 File Offset: 0x0009CA04
 		public void Flash()
 		{
 			BuffDef buffDef = BuffCatalog.GetBuffDef(this.buffIndex);
@@ -30,7 +30,7 @@ namespace RoR2.UI
 			this.iconImage.CrossFadeColor(buffDef.buffColor, 0.25f, true, false);
 		}
 
-		// Token: 0x06002144 RID: 8516 RVA: 0x0009FE1C File Offset: 0x0009E01C
+		// Token: 0x060020B3 RID: 8371 RVA: 0x0009E848 File Offset: 0x0009CA48
 		public void UpdateIcon()
 		{
 			BuffDef buffDef = BuffCatalog.GetBuffDef(this.buffIndex);
@@ -53,7 +53,7 @@ namespace RoR2.UI
 			this.stackCount.enabled = false;
 		}
 
-		// Token: 0x06002145 RID: 8517 RVA: 0x0001841D File Offset: 0x0001661D
+		// Token: 0x060020B4 RID: 8372 RVA: 0x00017D23 File Offset: 0x00015F23
 		private void Update()
 		{
 			if (this.lastBuffIndex != this.buffIndex)
@@ -62,28 +62,28 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x0400237E RID: 9086
+		// Token: 0x0400232A RID: 9002
 		private BuffIndex lastBuffIndex;
 
-		// Token: 0x0400237F RID: 9087
+		// Token: 0x0400232B RID: 9003
 		public BuffIndex buffIndex = BuffIndex.None;
 
-		// Token: 0x04002380 RID: 9088
+		// Token: 0x0400232C RID: 9004
 		public Image iconImage;
 
-		// Token: 0x04002381 RID: 9089
+		// Token: 0x0400232D RID: 9005
 		public TextMeshProUGUI stackCount;
 
-		// Token: 0x04002382 RID: 9090
+		// Token: 0x0400232E RID: 9006
 		public int buffCount;
 
-		// Token: 0x04002383 RID: 9091
+		// Token: 0x0400232F RID: 9007
 		private float stopwatch;
 
-		// Token: 0x04002384 RID: 9092
+		// Token: 0x04002330 RID: 9008
 		private const float flashDuration = 0.25f;
 
-		// Token: 0x04002385 RID: 9093
+		// Token: 0x04002331 RID: 9009
 		private static readonly StringBuilder sharedStringBuilder = new StringBuilder();
 	}
 }

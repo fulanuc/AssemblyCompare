@@ -7,10 +7,10 @@ using UnityEngine.UI;
 
 namespace RoR2.UI
 {
-	// Token: 0x020005F4 RID: 1524
+	// Token: 0x020005E2 RID: 1506
 	public class HUDBossHealthBarController : MonoBehaviour
 	{
-		// Token: 0x0600225C RID: 8796 RVA: 0x000A5724 File Offset: 0x000A3924
+		// Token: 0x060021CB RID: 8651 RVA: 0x000A4150 File Offset: 0x000A2350
 		private void LateUpdate()
 		{
 			this.container.SetActive(HUDBossHealthBarController.shouldBeActive);
@@ -24,7 +24,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x0600225D RID: 8797 RVA: 0x000A5798 File Offset: 0x000A3998
+		// Token: 0x060021CC RID: 8652 RVA: 0x000A41C4 File Offset: 0x000A23C4
 		private static HUDBossHealthBarController.BossMemory GetBossMemory(CharacterMaster bossMaster)
 		{
 			if (!bossMaster)
@@ -52,12 +52,16 @@ namespace RoR2.UI
 					text = Language.GetString("NULL_SUBTITLE");
 				}
 				HUDBossHealthBarController.bossSubtitleResolvedString = "<sprite name=\"CloudLeft\" tint=1> " + text + "<sprite name=\"CloudRight\" tint=1>";
-				HUDBossHealthBarController.bossNameString = Util.GetBestBodyName(bossMaster.GetBodyObject());
+				EliteIndex eliteIndex = EliteCatalog.IsEquipmentElite(bossMaster.inventory.currentEquipmentIndex);
+				if (eliteIndex != EliteIndex.None)
+				{
+					HUDBossHealthBarController.bossNameString = EliteCatalog.GetEliteDef(eliteIndex).prefix + HUDBossHealthBarController.bossNameString;
+				}
 			}
 			return bossMemory;
 		}
 
-		// Token: 0x0600225E RID: 8798 RVA: 0x000A5874 File Offset: 0x000A3A74
+		// Token: 0x060021CD RID: 8653 RVA: 0x000A42C0 File Offset: 0x000A24C0
 		private static HealthComponent GetCharacterHealthComponent(CharacterMaster master)
 		{
 			if (master)
@@ -71,7 +75,7 @@ namespace RoR2.UI
 			return null;
 		}
 
-		// Token: 0x0600225F RID: 8799 RVA: 0x000A58A0 File Offset: 0x000A3AA0
+		// Token: 0x060021CE RID: 8654 RVA: 0x000A42EC File Offset: 0x000A24EC
 		private static void Recalculate()
 		{
 			HUDBossHealthBarController.totalBossHealth = 0f;
@@ -102,7 +106,7 @@ namespace RoR2.UI
 			HUDBossHealthBarController.bossMemoryList.Clear();
 		}
 
-		// Token: 0x06002260 RID: 8800 RVA: 0x00019094 File Offset: 0x00017294
+		// Token: 0x060021CF RID: 8655 RVA: 0x0001899A File Offset: 0x00016B9A
 		private void OnEnable()
 		{
 			if (HUDBossHealthBarController.enabledCount++ == 0)
@@ -111,7 +115,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x06002261 RID: 8801 RVA: 0x000190B6 File Offset: 0x000172B6
+		// Token: 0x060021D0 RID: 8656 RVA: 0x000189BC File Offset: 0x00016BBC
 		private void OnDisable()
 		{
 			if (--HUDBossHealthBarController.enabledCount == 0)
@@ -120,62 +124,62 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x04002515 RID: 9493
+		// Token: 0x040024C1 RID: 9409
 		public GameObject container;
 
-		// Token: 0x04002516 RID: 9494
+		// Token: 0x040024C2 RID: 9410
 		public Image fillRectImage;
 
-		// Token: 0x04002517 RID: 9495
+		// Token: 0x040024C3 RID: 9411
 		public Image delayRectImage;
 
-		// Token: 0x04002518 RID: 9496
+		// Token: 0x040024C4 RID: 9412
 		public TextMeshProUGUI healthLabel;
 
-		// Token: 0x04002519 RID: 9497
+		// Token: 0x040024C5 RID: 9413
 		public TextMeshProUGUI bossNameLabel;
 
-		// Token: 0x0400251A RID: 9498
+		// Token: 0x040024C6 RID: 9414
 		public TextMeshProUGUI bossSubtitleLabel;
 
-		// Token: 0x0400251B RID: 9499
+		// Token: 0x040024C7 RID: 9415
 		private static List<HUDBossHealthBarController.BossMemory> bossMemoryList = new List<HUDBossHealthBarController.BossMemory>();
 
-		// Token: 0x0400251C RID: 9500
+		// Token: 0x040024C8 RID: 9416
 		private static bool shouldBeActive = false;
 
-		// Token: 0x0400251D RID: 9501
+		// Token: 0x040024C9 RID: 9417
 		private static float totalBossHealth = 0f;
 
-		// Token: 0x0400251E RID: 9502
+		// Token: 0x040024CA RID: 9418
 		private static float totalMaxBossHealth = 0f;
 
-		// Token: 0x0400251F RID: 9503
+		// Token: 0x040024CB RID: 9419
 		private static float totalHealthFraction;
 
-		// Token: 0x04002520 RID: 9504
+		// Token: 0x040024CC RID: 9420
 		private static float delayedTotalHealthFraction;
 
-		// Token: 0x04002521 RID: 9505
+		// Token: 0x040024CD RID: 9421
 		private static string healthString = "";
 
-		// Token: 0x04002522 RID: 9506
+		// Token: 0x040024CE RID: 9422
 		private static string bossNameString = "";
 
-		// Token: 0x04002523 RID: 9507
+		// Token: 0x040024CF RID: 9423
 		private static string bossSubtitleResolvedString = "";
 
-		// Token: 0x04002524 RID: 9508
+		// Token: 0x040024D0 RID: 9424
 		private static float healthFractionVelocity = 0f;
 
-		// Token: 0x04002525 RID: 9509
+		// Token: 0x040024D1 RID: 9425
 		private static int enabledCount = 0;
 
-		// Token: 0x020005F5 RID: 1525
+		// Token: 0x020005E3 RID: 1507
 		private class BossMemory
 		{
-			// Token: 0x17000301 RID: 769
-			// (get) Token: 0x06002264 RID: 8804 RVA: 0x000A5A38 File Offset: 0x000A3C38
+			// Token: 0x170002EE RID: 750
+			// (get) Token: 0x060021D3 RID: 8659 RVA: 0x000A4484 File Offset: 0x000A2684
 			public HealthComponent healthComponent
 			{
 				get
@@ -193,7 +197,7 @@ namespace RoR2.UI
 				}
 			}
 
-			// Token: 0x06002265 RID: 8805 RVA: 0x000A5A88 File Offset: 0x000A3C88
+			// Token: 0x060021D4 RID: 8660 RVA: 0x000A44D4 File Offset: 0x000A26D4
 			public void UpdateLastKnownHealth()
 			{
 				HealthComponent healthComponent = this.healthComponent;
@@ -206,23 +210,20 @@ namespace RoR2.UI
 				this.lastKnownHealth = 0f;
 			}
 
-			// Token: 0x04002526 RID: 9510
+			// Token: 0x040024D2 RID: 9426
 			public CharacterMaster master;
 
-			// Token: 0x04002527 RID: 9511
+			// Token: 0x040024D3 RID: 9427
 			private bool foundBodyObject;
 
-			// Token: 0x04002528 RID: 9512
+			// Token: 0x040024D4 RID: 9428
 			private HealthComponent _healthComponent;
 
-			// Token: 0x04002529 RID: 9513
+			// Token: 0x040024D5 RID: 9429
 			public float lastKnownHealth;
 
-			// Token: 0x0400252A RID: 9514
+			// Token: 0x040024D6 RID: 9430
 			public float lastKnownMaxHealth;
-
-			// Token: 0x0400252B RID: 9515
-			public string lastKnownName;
 		}
 	}
 }

@@ -7,17 +7,17 @@ using UnityEngine.Serialization;
 
 namespace RoR2.UI
 {
-	// Token: 0x020005B4 RID: 1460
+	// Token: 0x020005A2 RID: 1442
 	public class MPInput : BaseInput, IMouseInputSource
 	{
-		// Token: 0x060020E2 RID: 8418 RVA: 0x00017F68 File Offset: 0x00016168
+		// Token: 0x06002051 RID: 8273 RVA: 0x0001786E File Offset: 0x00015A6E
 		protected override void Awake()
 		{
 			base.Awake();
 			this.eventSystem = base.GetComponent<MPEventSystem>();
 		}
 
-		// Token: 0x060020E3 RID: 8419 RVA: 0x00017F7C File Offset: 0x0001617C
+		// Token: 0x06002052 RID: 8274 RVA: 0x00017882 File Offset: 0x00015A82
 		private static int MouseButtonToAction(int button)
 		{
 			switch (button)
@@ -33,31 +33,31 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x060020E4 RID: 8420 RVA: 0x00017F9C File Offset: 0x0001619C
+		// Token: 0x06002053 RID: 8275 RVA: 0x000178A2 File Offset: 0x00015AA2
 		public override bool GetMouseButtonDown(int button)
 		{
 			return this.player.GetButtonDown(MPInput.MouseButtonToAction(button));
 		}
 
-		// Token: 0x060020E5 RID: 8421 RVA: 0x00017FAF File Offset: 0x000161AF
+		// Token: 0x06002054 RID: 8276 RVA: 0x000178B5 File Offset: 0x00015AB5
 		public override bool GetMouseButtonUp(int button)
 		{
 			return this.player.GetButtonUp(MPInput.MouseButtonToAction(button));
 		}
 
-		// Token: 0x060020E6 RID: 8422 RVA: 0x00017FC2 File Offset: 0x000161C2
+		// Token: 0x06002055 RID: 8277 RVA: 0x000178C8 File Offset: 0x00015AC8
 		public override bool GetMouseButton(int button)
 		{
 			return this.player.GetButton(MPInput.MouseButtonToAction(button));
 		}
 
-		// Token: 0x060020E7 RID: 8423 RVA: 0x00017FD5 File Offset: 0x000161D5
+		// Token: 0x06002056 RID: 8278 RVA: 0x000178DB File Offset: 0x00015ADB
 		public void CenterCursor()
 		{
 			this.internalMousePosition = new Vector2((float)Screen.width * 0.5f, (float)Screen.height * 0.5f);
 		}
 
-		// Token: 0x060020E8 RID: 8424 RVA: 0x0009F048 File Offset: 0x0009D248
+		// Token: 0x06002057 RID: 8279 RVA: 0x0009DA74 File Offset: 0x0009BC74
 		public void Update()
 		{
 			if (!this.eventSystem.isCursorVisible)
@@ -95,8 +95,8 @@ namespace RoR2.UI
 			this._scrollDelta = new Vector2(0f, this.player.GetAxis(26));
 		}
 
-		// Token: 0x170002E3 RID: 739
-		// (get) Token: 0x060020E9 RID: 8425 RVA: 0x00017FFA File Offset: 0x000161FA
+		// Token: 0x170002D0 RID: 720
+		// (get) Token: 0x06002058 RID: 8280 RVA: 0x00017900 File Offset: 0x00015B00
 		public override Vector2 mousePosition
 		{
 			get
@@ -105,8 +105,8 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x170002E4 RID: 740
-		// (get) Token: 0x060020EA RID: 8426 RVA: 0x00018002 File Offset: 0x00016202
+		// Token: 0x170002D1 RID: 721
+		// (get) Token: 0x06002059 RID: 8281 RVA: 0x00017908 File Offset: 0x00015B08
 		public override Vector2 mouseScrollDelta
 		{
 			get
@@ -115,26 +115,26 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x060020EB RID: 8427 RVA: 0x0001800A File Offset: 0x0001620A
+		// Token: 0x0600205A RID: 8282 RVA: 0x00017910 File Offset: 0x00015B10
 		public bool GetButtonDown(int button)
 		{
 			return this.GetMouseButtonDown(button);
 		}
 
-		// Token: 0x060020EC RID: 8428 RVA: 0x00018013 File Offset: 0x00016213
+		// Token: 0x0600205B RID: 8283 RVA: 0x00017919 File Offset: 0x00015B19
 		public bool GetButtonUp(int button)
 		{
 			return this.GetMouseButtonUp(button);
 		}
 
-		// Token: 0x060020ED RID: 8429 RVA: 0x0001801C File Offset: 0x0001621C
+		// Token: 0x0600205C RID: 8284 RVA: 0x00017922 File Offset: 0x00015B22
 		public bool GetButton(int button)
 		{
 			return this.GetMouseButton(button);
 		}
 
-		// Token: 0x170002E5 RID: 741
-		// (get) Token: 0x060020EE RID: 8430 RVA: 0x00018025 File Offset: 0x00016225
+		// Token: 0x170002D2 RID: 722
+		// (get) Token: 0x0600205D RID: 8285 RVA: 0x0001792B File Offset: 0x00015B2B
 		public int playerId
 		{
 			get
@@ -143,8 +143,8 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x170002E6 RID: 742
-		// (get) Token: 0x060020EF RID: 8431 RVA: 0x00018032 File Offset: 0x00016232
+		// Token: 0x170002D3 RID: 723
+		// (get) Token: 0x0600205E RID: 8286 RVA: 0x00017938 File Offset: 0x00015B38
 		public bool locked
 		{
 			get
@@ -153,8 +153,8 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x170002E7 RID: 743
-		// (get) Token: 0x060020F0 RID: 8432 RVA: 0x00003BDD File Offset: 0x00001DDD
+		// Token: 0x170002D4 RID: 724
+		// (get) Token: 0x0600205F RID: 8287 RVA: 0x00003BDD File Offset: 0x00001DDD
 		public int buttonCount
 		{
 			get
@@ -163,8 +163,8 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x170002E8 RID: 744
-		// (get) Token: 0x060020F1 RID: 8433 RVA: 0x00017FFA File Offset: 0x000161FA
+		// Token: 0x170002D5 RID: 725
+		// (get) Token: 0x06002060 RID: 8288 RVA: 0x00017900 File Offset: 0x00015B00
 		public Vector2 screenPosition
 		{
 			get
@@ -173,8 +173,8 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x170002E9 RID: 745
-		// (get) Token: 0x060020F2 RID: 8434 RVA: 0x00018042 File Offset: 0x00016242
+		// Token: 0x170002D6 RID: 726
+		// (get) Token: 0x06002061 RID: 8289 RVA: 0x00017948 File Offset: 0x00015B48
 		public Vector2 screenPositionDelta
 		{
 			get
@@ -183,8 +183,8 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x170002EA RID: 746
-		// (get) Token: 0x060020F3 RID: 8435 RVA: 0x00018002 File Offset: 0x00016202
+		// Token: 0x170002D7 RID: 727
+		// (get) Token: 0x06002062 RID: 8290 RVA: 0x00017908 File Offset: 0x00015B08
 		public Vector2 wheelDelta
 		{
 			get
@@ -193,42 +193,42 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x060020F5 RID: 8437 RVA: 0x0001807A File Offset: 0x0001627A
+		// Token: 0x06002064 RID: 8292 RVA: 0x00017980 File Offset: 0x00015B80
 		bool IMouseInputSource.get_enabled()
 		{
 			return base.enabled;
 		}
 
-		// Token: 0x04002334 RID: 9012
+		// Token: 0x040022E0 RID: 8928
 		public Player player;
 
-		// Token: 0x04002335 RID: 9013
+		// Token: 0x040022E1 RID: 8929
 		private MPEventSystem eventSystem;
 
-		// Token: 0x04002336 RID: 9014
+		// Token: 0x040022E2 RID: 8930
 		[FormerlySerializedAs("useAcceleration")]
 		public bool useCursorAcceleration = true;
 
-		// Token: 0x04002337 RID: 9015
+		// Token: 0x040022E3 RID: 8931
 		[FormerlySerializedAs("acceleration")]
 		public float cursorAcceleration = 8f;
 
-		// Token: 0x04002338 RID: 9016
+		// Token: 0x040022E4 RID: 8932
 		public float cursorStickyModifier = 0.333333343f;
 
-		// Token: 0x04002339 RID: 9017
+		// Token: 0x040022E5 RID: 8933
 		public float cursorScreenSpeed = 0.75f;
 
-		// Token: 0x0400233A RID: 9018
+		// Token: 0x040022E6 RID: 8934
 		private float stickMagnitude;
 
-		// Token: 0x0400233B RID: 9019
+		// Token: 0x040022E7 RID: 8935
 		private Vector2 _scrollDelta;
 
-		// Token: 0x0400233C RID: 9020
+		// Token: 0x040022E8 RID: 8936
 		private Vector2 internalScreenPositionDelta;
 
-		// Token: 0x0400233D RID: 9021
+		// Token: 0x040022E9 RID: 8937
 		public Vector2 internalMousePosition;
 	}
 }

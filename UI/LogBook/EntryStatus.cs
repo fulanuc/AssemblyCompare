@@ -2,20 +2,20 @@
 
 namespace RoR2.UI.LogBook
 {
-	// Token: 0x0200067C RID: 1660
+	// Token: 0x0200066A RID: 1642
 	public enum EntryStatus
 	{
-		// Token: 0x04002801 RID: 10241
+		// Token: 0x040027A5 RID: 10149
 		None,
-		// Token: 0x04002802 RID: 10242
+		// Token: 0x040027A6 RID: 10150
 		Unimplemented,
-		// Token: 0x04002803 RID: 10243
+		// Token: 0x040027A7 RID: 10151
 		Locked,
-		// Token: 0x04002804 RID: 10244
+		// Token: 0x040027A8 RID: 10152
 		Unencountered,
-		// Token: 0x04002805 RID: 10245
+		// Token: 0x040027A9 RID: 10153
 		Available,
-		// Token: 0x04002806 RID: 10246
+		// Token: 0x040027AA RID: 10154
 		New
 	}
 }

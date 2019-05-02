@@ -7,11 +7,11 @@ using UnityEngine;
 
 namespace RoR2.UI.LogBook
 {
-	// Token: 0x0200068D RID: 1677
+	// Token: 0x0200067B RID: 1659
 	public class PageBuilder
 	{
-		// Token: 0x17000334 RID: 820
-		// (get) Token: 0x06002597 RID: 9623 RVA: 0x0001B657 File Offset: 0x00019857
+		// Token: 0x17000322 RID: 802
+		// (get) Token: 0x06002500 RID: 9472 RVA: 0x0001AF24 File Offset: 0x00019124
 		private StatSheet statSheet
 		{
 			get
@@ -20,7 +20,7 @@ namespace RoR2.UI.LogBook
 			}
 		}
 
-		// Token: 0x06002598 RID: 9624 RVA: 0x000B1068 File Offset: 0x000AF268
+		// Token: 0x06002501 RID: 9473 RVA: 0x000AF978 File Offset: 0x000ADB78
 		public void Destroy()
 		{
 			foreach (GameObject obj in this.managedObjects)
@@ -29,7 +29,7 @@ namespace RoR2.UI.LogBook
 			}
 		}
 
-		// Token: 0x06002599 RID: 9625 RVA: 0x000B10B8 File Offset: 0x000AF2B8
+		// Token: 0x06002502 RID: 9474 RVA: 0x000AF9C8 File Offset: 0x000ADBC8
 		public void AddSimpleTextPanel(string text)
 		{
 			GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/UI/Logbook/SimpleTextPanel"), this.container);
@@ -37,13 +37,13 @@ namespace RoR2.UI.LogBook
 			this.managedObjects.Add(gameObject);
 		}
 
-		// Token: 0x0600259A RID: 9626 RVA: 0x0001B664 File Offset: 0x00019864
+		// Token: 0x06002503 RID: 9475 RVA: 0x0001AF31 File Offset: 0x00019131
 		public void AddSimpleTextPanel(params string[] textLines)
 		{
 			this.AddSimpleTextPanel(string.Join("\n", textLines));
 		}
 
-		// Token: 0x0600259B RID: 9627 RVA: 0x000B1104 File Offset: 0x000AF304
+		// Token: 0x06002504 RID: 9476 RVA: 0x000AFA14 File Offset: 0x000ADC14
 		public void AddSimplePickup(PickupIndex pickupIndex)
 		{
 			ItemIndex itemIndex = pickupIndex.itemIndex;
@@ -92,7 +92,7 @@ namespace RoR2.UI.LogBook
 			this.AddNotesPanel(Language.IsTokenInvalid(token) ? Language.GetString("EARLY_ACCESS_LORE") : Language.GetString(token));
 		}
 
-		// Token: 0x0600259C RID: 9628 RVA: 0x0001B677 File Offset: 0x00019877
+		// Token: 0x06002505 RID: 9477 RVA: 0x0001AF44 File Offset: 0x00019144
 		public void AddDescriptionPanel(string content)
 		{
 			this.AddSimpleTextPanel(Language.GetStringFormatted("DESCRIPTION_PREFIX_FORMAT", new object[]
@@ -101,7 +101,7 @@ namespace RoR2.UI.LogBook
 			}));
 		}
 
-		// Token: 0x0600259D RID: 9629 RVA: 0x0001B693 File Offset: 0x00019893
+		// Token: 0x06002506 RID: 9478 RVA: 0x0001AF60 File Offset: 0x00019160
 		public void AddNotesPanel(string content)
 		{
 			this.AddSimpleTextPanel(Language.GetStringFormatted("NOTES_PREFIX_FORMAT", new object[]
@@ -110,7 +110,7 @@ namespace RoR2.UI.LogBook
 			}));
 		}
 
-		// Token: 0x0600259E RID: 9630 RVA: 0x000B1284 File Offset: 0x000AF484
+		// Token: 0x06002507 RID: 9479 RVA: 0x000AFB94 File Offset: 0x000ADD94
 		public void AddBodyStatsPanel(CharacterBody bodyPrefabComponent)
 		{
 			float baseMaxHealth = bodyPrefabComponent.baseMaxHealth;
@@ -143,7 +143,7 @@ namespace RoR2.UI.LogBook
 			});
 		}
 
-		// Token: 0x0600259F RID: 9631 RVA: 0x000B1354 File Offset: 0x000AF554
+		// Token: 0x06002508 RID: 9480 RVA: 0x000AFC64 File Offset: 0x000ADE64
 		public void AddMonsterPanel(CharacterBody bodyPrefabComponent)
 		{
 			ulong statValueULong = this.statSheet.GetStatValueULong(PerBodyStatDef.killsAgainst, bodyPrefabComponent.gameObject.name);
@@ -169,7 +169,7 @@ namespace RoR2.UI.LogBook
 			});
 		}
 
-		// Token: 0x060025A0 RID: 9632 RVA: 0x000B1420 File Offset: 0x000AF620
+		// Token: 0x06002509 RID: 9481 RVA: 0x000AFD30 File Offset: 0x000ADF30
 		public void AddSurvivorPanel(CharacterBody bodyPrefabComponent)
 		{
 			string statDisplayValue = this.statSheet.GetStatDisplayValue(PerBodyStatDef.longestRun.FindStatDef(bodyPrefabComponent.name));
@@ -196,13 +196,13 @@ namespace RoR2.UI.LogBook
 			this.AddSimpleTextPanel(PageBuilder.sharedStringBuilder.ToString());
 		}
 
-		// Token: 0x060025A1 RID: 9633 RVA: 0x0001B6AF File Offset: 0x000198AF
+		// Token: 0x0600250A RID: 9482 RVA: 0x0001AF7C File Offset: 0x0001917C
 		public void AddSimpleBody(CharacterBody bodyPrefabComponent)
 		{
 			this.AddBodyStatsPanel(bodyPrefabComponent);
 		}
 
-		// Token: 0x060025A2 RID: 9634 RVA: 0x000B1518 File Offset: 0x000AF718
+		// Token: 0x0600250B RID: 9483 RVA: 0x000AFE28 File Offset: 0x000AE028
 		public void AddStagePanel(SceneDef sceneDef)
 		{
 			string statDisplayValue = this.userProfile.statSheet.GetStatDisplayValue(PerStageStatDef.totalTimesVisited.FindStatDef(sceneDef.sceneName));
@@ -222,7 +222,7 @@ namespace RoR2.UI.LogBook
 			this.AddSimpleTextPanel(PageBuilder.sharedStringBuilder.ToString());
 		}
 
-		// Token: 0x060025A3 RID: 9635 RVA: 0x000B15D4 File Offset: 0x000AF7D4
+		// Token: 0x0600250C RID: 9484 RVA: 0x000AFEE4 File Offset: 0x000AE0E4
 		public static void Stage(PageBuilder builder)
 		{
 			SceneDef sceneDef = (SceneDef)builder.entry.extraData;
@@ -230,19 +230,19 @@ namespace RoR2.UI.LogBook
 			builder.AddNotesPanel(Language.IsTokenInvalid(sceneDef.loreToken) ? Language.GetString("EARLY_ACCESS_LORE") : Language.GetString(sceneDef.loreToken));
 		}
 
-		// Token: 0x060025A4 RID: 9636 RVA: 0x0001B6B8 File Offset: 0x000198B8
+		// Token: 0x0600250D RID: 9485 RVA: 0x0001AF85 File Offset: 0x00019185
 		public static void SimplePickup(PageBuilder builder)
 		{
 			builder.AddSimplePickup((PickupIndex)builder.entry.extraData);
 		}
 
-		// Token: 0x060025A5 RID: 9637 RVA: 0x0001B6D0 File Offset: 0x000198D0
+		// Token: 0x0600250E RID: 9486 RVA: 0x0001AF9D File Offset: 0x0001919D
 		public static void SimpleBody(PageBuilder builder)
 		{
 			builder.AddSimpleBody((CharacterBody)builder.entry.extraData);
 		}
 
-		// Token: 0x060025A6 RID: 9638 RVA: 0x000B1624 File Offset: 0x000AF824
+		// Token: 0x0600250F RID: 9487 RVA: 0x000AFF34 File Offset: 0x000AE134
 		public static void MonsterBody(PageBuilder builder)
 		{
 			CharacterBody bodyPrefabComponent = (CharacterBody)builder.entry.extraData;
@@ -251,7 +251,7 @@ namespace RoR2.UI.LogBook
 			builder.AddNotesPanel(Language.GetString("EARLY_ACCESS_LORE"));
 		}
 
-		// Token: 0x060025A7 RID: 9639 RVA: 0x000B1660 File Offset: 0x000AF860
+		// Token: 0x06002510 RID: 9488 RVA: 0x000AFF70 File Offset: 0x000AE170
 		public static void SurvivorBody(PageBuilder builder)
 		{
 			CharacterBody bodyPrefabComponent = (CharacterBody)builder.entry.extraData;
@@ -260,7 +260,7 @@ namespace RoR2.UI.LogBook
 			builder.AddNotesPanel(Language.GetString("EARLY_ACCESS_LORE"));
 		}
 
-		// Token: 0x060025A8 RID: 9640 RVA: 0x000B169C File Offset: 0x000AF89C
+		// Token: 0x06002511 RID: 9489 RVA: 0x000AFFAC File Offset: 0x000AE1AC
 		public void AddRunReportPanel(RunReport runReport)
 		{
 			GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/UI/GameEndReportPanel"), this.container);
@@ -273,25 +273,25 @@ namespace RoR2.UI.LogBook
 			this.managedObjects.Add(gameObject);
 		}
 
-		// Token: 0x060025A9 RID: 9641 RVA: 0x0001B6E8 File Offset: 0x000198E8
+		// Token: 0x06002512 RID: 9490 RVA: 0x0001AFB5 File Offset: 0x000191B5
 		public static void RunReportPanel(PageBuilder builder)
 		{
 			builder.AddRunReportPanel(RunReport.Load("PreviousRun"));
 		}
 
-		// Token: 0x0400287D RID: 10365
+		// Token: 0x04002821 RID: 10273
 		private static readonly StringBuilder sharedStringBuilder = new StringBuilder();
 
-		// Token: 0x0400287E RID: 10366
+		// Token: 0x04002822 RID: 10274
 		public UserProfile userProfile;
 
-		// Token: 0x0400287F RID: 10367
+		// Token: 0x04002823 RID: 10275
 		public RectTransform container;
 
-		// Token: 0x04002880 RID: 10368
+		// Token: 0x04002824 RID: 10276
 		public Entry entry;
 
-		// Token: 0x04002881 RID: 10369
+		// Token: 0x04002825 RID: 10277
 		public readonly List<GameObject> managedObjects = new List<GameObject>();
 	}
 }

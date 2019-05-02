@@ -4,17 +4,17 @@ using UnityEngine.UI;
 
 namespace RoR2.UI
 {
-	// Token: 0x020005D5 RID: 1493
-	[RequireComponent(typeof(HudElement))]
+	// Token: 0x020005C3 RID: 1475
 	[RequireComponent(typeof(RectTransform))]
+	[RequireComponent(typeof(HudElement))]
 	public class CrosshairController : MonoBehaviour
 	{
-		// Token: 0x170002F7 RID: 759
-		// (get) Token: 0x060021BE RID: 8638 RVA: 0x000189E3 File Offset: 0x00016BE3
-		// (set) Token: 0x060021BF RID: 8639 RVA: 0x000189EB File Offset: 0x00016BEB
+		// Token: 0x170002E4 RID: 740
+		// (get) Token: 0x0600212D RID: 8493 RVA: 0x000182E9 File Offset: 0x000164E9
+		// (set) Token: 0x0600212E RID: 8494 RVA: 0x000182F1 File Offset: 0x000164F1
 		public RectTransform rectTransform { get; private set; }
 
-		// Token: 0x060021C0 RID: 8640 RVA: 0x000189F4 File Offset: 0x00016BF4
+		// Token: 0x0600212F RID: 8495 RVA: 0x000182FA File Offset: 0x000164FA
 		private void Awake()
 		{
 			this.rectTransform = base.GetComponent<RectTransform>();
@@ -22,7 +22,7 @@ namespace RoR2.UI
 			this.SetCrosshairSpread();
 		}
 
-		// Token: 0x060021C1 RID: 8641 RVA: 0x000A1C1C File Offset: 0x0009FE1C
+		// Token: 0x06002130 RID: 8496 RVA: 0x000A0648 File Offset: 0x0009E848
 		private void SetCrosshairSpread()
 		{
 			float num = 0f;
@@ -41,45 +41,45 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x060021C2 RID: 8642 RVA: 0x00018A14 File Offset: 0x00016C14
+		// Token: 0x06002131 RID: 8497 RVA: 0x0001831A File Offset: 0x0001651A
 		private void LateUpdate()
 		{
 			this.SetCrosshairSpread();
 		}
 
-		// Token: 0x040023FE RID: 9214
+		// Token: 0x040023AA RID: 9130
 		private HudElement hudElement;
 
-		// Token: 0x040023FF RID: 9215
+		// Token: 0x040023AB RID: 9131
 		public CrosshairController.SpritePosition[] spriteSpreadPositions;
 
-		// Token: 0x04002400 RID: 9216
+		// Token: 0x040023AC RID: 9132
 		public RawImage[] remapSprites;
 
-		// Token: 0x04002401 RID: 9217
+		// Token: 0x040023AD RID: 9133
 		public float minSpreadAlpha;
 
-		// Token: 0x04002402 RID: 9218
+		// Token: 0x040023AE RID: 9134
 		public float maxSpreadAlpha;
 
-		// Token: 0x04002403 RID: 9219
+		// Token: 0x040023AF RID: 9135
 		[Tooltip("The angle the crosshair represents when alpha = 1")]
 		public float maxSpreadAngle;
 
-		// Token: 0x04002404 RID: 9220
+		// Token: 0x040023B0 RID: 9136
 		private MaterialPropertyBlock _propBlock;
 
-		// Token: 0x020005D6 RID: 1494
+		// Token: 0x020005C4 RID: 1476
 		[Serializable]
 		public struct SpritePosition
 		{
-			// Token: 0x04002405 RID: 9221
+			// Token: 0x040023B1 RID: 9137
 			public RectTransform target;
 
-			// Token: 0x04002406 RID: 9222
+			// Token: 0x040023B2 RID: 9138
 			public Vector3 zeroPosition;
 
-			// Token: 0x04002407 RID: 9223
+			// Token: 0x040023B3 RID: 9139
 			public Vector3 onePosition;
 		}
 	}

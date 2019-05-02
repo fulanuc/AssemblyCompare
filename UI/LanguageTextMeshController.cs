@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 namespace RoR2.UI
 {
-	// Token: 0x020005FE RID: 1534
+	// Token: 0x020005EC RID: 1516
 	public class LanguageTextMeshController : MonoBehaviour
 	{
-		// Token: 0x17000307 RID: 775
-		// (get) Token: 0x060022A0 RID: 8864 RVA: 0x000193DE File Offset: 0x000175DE
-		// (set) Token: 0x060022A1 RID: 8865 RVA: 0x000193E6 File Offset: 0x000175E6
+		// Token: 0x170002F4 RID: 756
+		// (get) Token: 0x0600220F RID: 8719 RVA: 0x00018CE4 File Offset: 0x00016EE4
+		// (set) Token: 0x06002210 RID: 8720 RVA: 0x00018CEC File Offset: 0x00016EEC
 		public string token
 		{
 			get
@@ -28,14 +28,14 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x060022A2 RID: 8866 RVA: 0x00019409 File Offset: 0x00017609
+		// Token: 0x06002211 RID: 8721 RVA: 0x00018D0F File Offset: 0x00016F0F
 		public void ResolveString()
 		{
 			this.previousToken = this._token;
 			this.resolvedString = Language.GetString(this._token);
 		}
 
-		// Token: 0x060022A3 RID: 8867 RVA: 0x00019428 File Offset: 0x00017628
+		// Token: 0x06002212 RID: 8722 RVA: 0x00018D2E File Offset: 0x00016F2E
 		private void CacheComponents()
 		{
 			this.text = base.GetComponent<Text>();
@@ -44,26 +44,26 @@ namespace RoR2.UI
 			this.textMeshProUGui = base.GetComponent<TextMeshProUGUI>();
 		}
 
-		// Token: 0x060022A4 RID: 8868 RVA: 0x0001945A File Offset: 0x0001765A
+		// Token: 0x06002213 RID: 8723 RVA: 0x00018D60 File Offset: 0x00016F60
 		private void Awake()
 		{
 			this.CacheComponents();
 		}
 
-		// Token: 0x060022A5 RID: 8869 RVA: 0x0001945A File Offset: 0x0001765A
+		// Token: 0x06002214 RID: 8724 RVA: 0x00018D60 File Offset: 0x00016F60
 		private void OnValidate()
 		{
 			this.CacheComponents();
 		}
 
-		// Token: 0x060022A6 RID: 8870 RVA: 0x00019462 File Offset: 0x00017662
+		// Token: 0x06002215 RID: 8725 RVA: 0x00018D68 File Offset: 0x00016F68
 		private void Start()
 		{
 			this.ResolveString();
 			this.UpdateLabel();
 		}
 
-		// Token: 0x060022A7 RID: 8871 RVA: 0x000A6698 File Offset: 0x000A4898
+		// Token: 0x06002216 RID: 8726 RVA: 0x000A50E4 File Offset: 0x000A32E4
 		private void UpdateLabel()
 		{
 			if (this.text)
@@ -84,26 +84,26 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x04002561 RID: 9569
+		// Token: 0x0400250C RID: 9484
 		[SerializeField]
 		private string _token;
 
-		// Token: 0x04002562 RID: 9570
+		// Token: 0x0400250D RID: 9485
 		private string previousToken;
 
-		// Token: 0x04002563 RID: 9571
+		// Token: 0x0400250E RID: 9486
 		private string resolvedString;
 
-		// Token: 0x04002564 RID: 9572
+		// Token: 0x0400250F RID: 9487
 		private Text text;
 
-		// Token: 0x04002565 RID: 9573
+		// Token: 0x04002510 RID: 9488
 		private TextMesh textMesh;
 
-		// Token: 0x04002566 RID: 9574
+		// Token: 0x04002511 RID: 9489
 		private TextMeshPro textMeshPro;
 
-		// Token: 0x04002567 RID: 9575
+		// Token: 0x04002512 RID: 9490
 		private TextMeshProUGUI textMeshProUGui;
 	}
 }

@@ -6,11 +6,11 @@ using UnityEngine;
 
 namespace RoR2.UI.MainMenu
 {
-	// Token: 0x02000674 RID: 1652
+	// Token: 0x02000662 RID: 1634
 	[RequireComponent(typeof(MPEventSystemLocator))]
 	public class ProfileMainMenuScreen : BaseMainMenuScreen
 	{
-		// Token: 0x0600250A RID: 9482 RVA: 0x000AE660 File Offset: 0x000AC860
+		// Token: 0x06002473 RID: 9331 RVA: 0x000ACF70 File Offset: 0x000AB170
 		private string GuessDefaultProfileName()
 		{
 			Client instance = Client.Instance;
@@ -22,7 +22,7 @@ namespace RoR2.UI.MainMenu
 			return "Nameless Survivor";
 		}
 
-		// Token: 0x0600250B RID: 9483 RVA: 0x0001AFF9 File Offset: 0x000191F9
+		// Token: 0x06002474 RID: 9332 RVA: 0x0001A8C6 File Offset: 0x00018AC6
 		protected void Awake()
 		{
 			this.eventSystemLocator = base.GetComponent<MPEventSystemLocator>();
@@ -30,7 +30,7 @@ namespace RoR2.UI.MainMenu
 			this.existingProfileListController.onListRebuilt += this.OnListRebuilt;
 		}
 
-		// Token: 0x0600250C RID: 9484 RVA: 0x000AE690 File Offset: 0x000AC890
+		// Token: 0x06002475 RID: 9333 RVA: 0x000ACFA0 File Offset: 0x000AB1A0
 		protected void OnEnable()
 		{
 			this.firstTimeConfiguration = true;
@@ -55,7 +55,7 @@ namespace RoR2.UI.MainMenu
 			this.gotoSelectProfilePanelButtonContainer.SetActive(true);
 		}
 
-		// Token: 0x0600250D RID: 9485 RVA: 0x000AE71C File Offset: 0x000AC91C
+		// Token: 0x06002476 RID: 9334 RVA: 0x000AD02C File Offset: 0x000AB22C
 		public void OpenCreateProfileMenu(bool firstTime)
 		{
 			this.selectProfilePanel.SetActive(false);
@@ -68,18 +68,18 @@ namespace RoR2.UI.MainMenu
 			}
 		}
 
-		// Token: 0x0600250E RID: 9486 RVA: 0x0001B035 File Offset: 0x00019235
+		// Token: 0x06002477 RID: 9335 RVA: 0x0001A902 File Offset: 0x00018B02
 		private void OnListRebuilt()
 		{
 			this.existingProfileListController.GetReadOnlyElementsList();
 		}
 
-		// Token: 0x0600250F RID: 9487 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06002478 RID: 9336 RVA: 0x000025F6 File Offset: 0x000007F6
 		protected void OnDisable()
 		{
 		}
 
-		// Token: 0x06002510 RID: 9488 RVA: 0x000AE76C File Offset: 0x000AC96C
+		// Token: 0x06002479 RID: 9337 RVA: 0x000AD07C File Offset: 0x000AB27C
 		private void SetMainProfile(UserProfile profile)
 		{
 			LocalUserManager.SetLocalUsers(new LocalUserManager.LocalUserInitializationInfo[]
@@ -92,19 +92,19 @@ namespace RoR2.UI.MainMenu
 			this.myMainMenuController.desiredMenuScreen = this.myMainMenuController.titleMenuScreen;
 		}
 
-		// Token: 0x06002511 RID: 9489 RVA: 0x0001B043 File Offset: 0x00019243
+		// Token: 0x0600247A RID: 9338 RVA: 0x0001A910 File Offset: 0x00018B10
 		private static bool IsProfileCustom(UserProfile profile)
 		{
 			return profile.fileName != "default";
 		}
 
-		// Token: 0x06002512 RID: 9490 RVA: 0x0001B055 File Offset: 0x00019255
+		// Token: 0x0600247B RID: 9339 RVA: 0x0001A922 File Offset: 0x00018B22
 		private static bool IsNewProfileNameAcceptable(string newProfileName)
 		{
 			return UserProfile.GetProfile(newProfileName) == null && !(newProfileName == "");
 		}
 
-		// Token: 0x06002513 RID: 9491 RVA: 0x000AE7B4 File Offset: 0x000AC9B4
+		// Token: 0x0600247C RID: 9340 RVA: 0x000AD0C4 File Offset: 0x000AB2C4
 		public void OnAddProfilePressed()
 		{
 			if (this.eventSystemLocator.eventSystem.currentSelectedGameObject == this.createProfileNameInputField.gameObject && !Input.GetKeyDown(KeyCode.Return) && !Input.GetKeyDown(KeyCode.KeypadEnter))
@@ -124,7 +124,7 @@ namespace RoR2.UI.MainMenu
 			}
 		}
 
-		// Token: 0x06002514 RID: 9492 RVA: 0x000AE834 File Offset: 0x000ACA34
+		// Token: 0x0600247D RID: 9341 RVA: 0x000AD144 File Offset: 0x000AB344
 		protected void Update()
 		{
 			if (Input.GetKeyDown(KeyCode.Delete))
@@ -162,34 +162,34 @@ namespace RoR2.UI.MainMenu
 			}
 		}
 
-		// Token: 0x040027CC RID: 10188
+		// Token: 0x04002770 RID: 10096
 		public GameObject createProfilePanel;
 
-		// Token: 0x040027CD RID: 10189
+		// Token: 0x04002771 RID: 10097
 		public TMP_InputField createProfileNameInputField;
 
-		// Token: 0x040027CE RID: 10190
+		// Token: 0x04002772 RID: 10098
 		public MPButton submitProfileNameButton;
 
-		// Token: 0x040027CF RID: 10191
+		// Token: 0x04002773 RID: 10099
 		public GameObject gotoSelectProfilePanelButtonContainer;
 
-		// Token: 0x040027D0 RID: 10192
+		// Token: 0x04002774 RID: 10100
 		public GameObject selectProfilePanel;
 
-		// Token: 0x040027D1 RID: 10193
+		// Token: 0x04002775 RID: 10101
 		public MPButton gotoCreateProfilePanelButton;
 
-		// Token: 0x040027D2 RID: 10194
+		// Token: 0x04002776 RID: 10102
 		public UserProfileListController existingProfileListController;
 
-		// Token: 0x040027D3 RID: 10195
+		// Token: 0x04002777 RID: 10103
 		private MPEventSystemLocator eventSystemLocator;
 
-		// Token: 0x040027D4 RID: 10196
+		// Token: 0x04002778 RID: 10104
 		private bool firstTimeConfiguration;
 
-		// Token: 0x040027D5 RID: 10197
+		// Token: 0x04002779 RID: 10105
 		private const string defaultName = "Nameless Survivor";
 	}
 }

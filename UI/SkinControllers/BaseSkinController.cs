@@ -3,14 +3,14 @@ using UnityEngine;
 
 namespace RoR2.UI.SkinControllers
 {
-	// Token: 0x0200066A RID: 1642
+	// Token: 0x02000658 RID: 1624
 	[ExecuteAlways]
 	public abstract class BaseSkinController : MonoBehaviour
 	{
-		// Token: 0x060024E3 RID: 9443
+		// Token: 0x06002452 RID: 9298
 		protected abstract void OnSkinUI();
 
-		// Token: 0x060024E4 RID: 9444 RVA: 0x0001AE1C File Offset: 0x0001901C
+		// Token: 0x06002453 RID: 9299 RVA: 0x0001A723 File Offset: 0x00018923
 		protected void Awake()
 		{
 			if (this.skinData)
@@ -19,7 +19,7 @@ namespace RoR2.UI.SkinControllers
 			}
 		}
 
-		// Token: 0x060024E5 RID: 9445 RVA: 0x0001AE31 File Offset: 0x00019031
+		// Token: 0x06002454 RID: 9300 RVA: 0x0001A738 File Offset: 0x00018938
 		private void DoSkinUI()
 		{
 			if (this.skinData)
@@ -28,7 +28,7 @@ namespace RoR2.UI.SkinControllers
 			}
 		}
 
-		// Token: 0x0400279B RID: 10139
+		// Token: 0x04002740 RID: 10048
 		public UISkinData skinData;
 	}
 }

@@ -10,16 +10,16 @@ using UnityEngine.EventSystems;
 
 namespace RoR2.UI
 {
-	// Token: 0x020005D2 RID: 1490
+	// Token: 0x020005C0 RID: 1472
 	[RequireComponent(typeof(MPEventSystemProvider))]
 	public class ConsoleWindow : MonoBehaviour
 	{
-		// Token: 0x170002F5 RID: 757
-		// (get) Token: 0x060021A7 RID: 8615 RVA: 0x00018901 File Offset: 0x00016B01
-		// (set) Token: 0x060021A8 RID: 8616 RVA: 0x00018908 File Offset: 0x00016B08
+		// Token: 0x170002E2 RID: 738
+		// (get) Token: 0x06002116 RID: 8470 RVA: 0x00018207 File Offset: 0x00016407
+		// (set) Token: 0x06002117 RID: 8471 RVA: 0x0001820E File Offset: 0x0001640E
 		public static ConsoleWindow instance { get; private set; }
 
-		// Token: 0x060021A9 RID: 8617 RVA: 0x000A13D0 File Offset: 0x0009F5D0
+		// Token: 0x06002118 RID: 8472 RVA: 0x0009FDFC File Offset: 0x0009DFFC
 		public void Start()
 		{
 			base.GetComponent<MPEventSystemProvider>().eventSystem = MPEventSystemManager.kbmEventSystem;
@@ -30,7 +30,7 @@ namespace RoR2.UI
 			this.outputField.textComponent.gameObject.AddComponent<RectTransformDimensionsChangeEvent>().onRectTransformDimensionsChange += this.OnOutputFieldRectTransformDimensionsChange;
 		}
 
-		// Token: 0x060021AA RID: 8618 RVA: 0x00018910 File Offset: 0x00016B10
+		// Token: 0x06002119 RID: 8473 RVA: 0x00018216 File Offset: 0x00016416
 		private void OnOutputFieldRectTransformDimensionsChange()
 		{
 			if (this.outputField.verticalScrollbar)
@@ -40,7 +40,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x060021AB RID: 8619 RVA: 0x000A143C File Offset: 0x0009F63C
+		// Token: 0x0600211A RID: 8474 RVA: 0x0009FE68 File Offset: 0x0009E068
 		public void OnEnable()
 		{
 			Console.onLogReceived += this.OnLogReceived;
@@ -51,13 +51,13 @@ namespace RoR2.UI
 			ConsoleWindow.instance = this;
 		}
 
-		// Token: 0x060021AC RID: 8620 RVA: 0x0001894E File Offset: 0x00016B4E
+		// Token: 0x0600211B RID: 8475 RVA: 0x00018254 File Offset: 0x00016454
 		public void SubmitInputField()
 		{
 			this.inputField.onSubmit.Invoke(this.inputField.text);
 		}
 
-		// Token: 0x060021AD RID: 8621 RVA: 0x000A14B0 File Offset: 0x0009F6B0
+		// Token: 0x0600211C RID: 8476 RVA: 0x0009FEDC File Offset: 0x0009E0DC
 		public void Submit(string text)
 		{
 			if (this.inputField.text == "")
@@ -82,8 +82,8 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x170002F6 RID: 758
-		// (get) Token: 0x060021AE RID: 8622 RVA: 0x0001896B File Offset: 0x00016B6B
+		// Token: 0x170002E3 RID: 739
+		// (get) Token: 0x0600211D RID: 8477 RVA: 0x00018271 File Offset: 0x00016471
 		private bool autoCompleteInUse
 		{
 			get
@@ -92,7 +92,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x060021AF RID: 8623 RVA: 0x000A1548 File Offset: 0x0009F748
+		// Token: 0x0600211E RID: 8478 RVA: 0x0009FF74 File Offset: 0x0009E174
 		private void OnInputFieldValueChanged(string text)
 		{
 			if (!this.preventHistoryReset)
@@ -129,7 +129,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x060021B0 RID: 8624 RVA: 0x000A1650 File Offset: 0x0009F850
+		// Token: 0x0600211F RID: 8479 RVA: 0x000A007C File Offset: 0x0009E27C
 		public void Update()
 		{
 			EventSystem eventSystem = MPEventSystemManager.FindEventSystem(ReInput.players.GetPlayer(0));
@@ -225,7 +225,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x060021B1 RID: 8625 RVA: 0x000A1888 File Offset: 0x0009FA88
+		// Token: 0x06002120 RID: 8480 RVA: 0x000A02B4 File Offset: 0x0009E4B4
 		private void ApplyAutoComplete(int optionIndex)
 		{
 			if (this.autoCompleteDropdown && this.autoCompleteDropdown.options.Count > optionIndex)
@@ -237,7 +237,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x060021B2 RID: 8626 RVA: 0x000A18F4 File Offset: 0x0009FAF4
+		// Token: 0x06002121 RID: 8481 RVA: 0x000A0320 File Offset: 0x0009E520
 		public void OnDisable()
 		{
 			Console.onLogReceived -= this.OnLogReceived;
@@ -250,19 +250,19 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x060021B3 RID: 8627 RVA: 0x00018987 File Offset: 0x00016B87
+		// Token: 0x06002122 RID: 8482 RVA: 0x0001828D File Offset: 0x0001648D
 		private void OnLogReceived(Console.Log log)
 		{
 			this.RebuildOutput();
 		}
 
-		// Token: 0x060021B4 RID: 8628 RVA: 0x00018987 File Offset: 0x00016B87
+		// Token: 0x06002123 RID: 8483 RVA: 0x0001828D File Offset: 0x0001648D
 		private void OnClear()
 		{
 			this.RebuildOutput();
 		}
 
-		// Token: 0x060021B5 RID: 8629 RVA: 0x000A1970 File Offset: 0x0009FB70
+		// Token: 0x06002124 RID: 8484 RVA: 0x000A039C File Offset: 0x0009E59C
 		private void RebuildOutput()
 		{
 			float value = 0f;
@@ -284,7 +284,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x060021B6 RID: 8630 RVA: 0x000A1A3C File Offset: 0x0009FC3C
+		// Token: 0x06002125 RID: 8485 RVA: 0x000A0468 File Offset: 0x0009E668
 		private static void CheckConsoleKey()
 		{
 			bool keyDown = Input.GetKeyDown(KeyCode.BackQuote);
@@ -309,48 +309,48 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x060021B7 RID: 8631 RVA: 0x0001898F File Offset: 0x00016B8F
+		// Token: 0x06002126 RID: 8486 RVA: 0x00018295 File Offset: 0x00016495
 		[RuntimeInitializeOnLoadMethod]
 		public static void Init()
 		{
 			RoR2Application.onUpdate += ConsoleWindow.CheckConsoleKey;
 		}
 
-		// Token: 0x040023EB RID: 9195
+		// Token: 0x04002397 RID: 9111
 		public TMP_InputField inputField;
 
-		// Token: 0x040023EC RID: 9196
+		// Token: 0x04002398 RID: 9112
 		public TMP_InputField outputField;
 
-		// Token: 0x040023ED RID: 9197
+		// Token: 0x04002399 RID: 9113
 		private TMP_Dropdown autoCompleteDropdown;
 
-		// Token: 0x040023EE RID: 9198
+		// Token: 0x0400239A RID: 9114
 		private Console.AutoComplete autoComplete;
 
-		// Token: 0x040023EF RID: 9199
+		// Token: 0x0400239B RID: 9115
 		private bool preventAutoCompleteUpdate;
 
-		// Token: 0x040023F0 RID: 9200
+		// Token: 0x0400239C RID: 9116
 		private bool preventHistoryReset;
 
-		// Token: 0x040023F1 RID: 9201
+		// Token: 0x0400239D RID: 9117
 		private int historyIndex = -1;
 
-		// Token: 0x040023F2 RID: 9202
+		// Token: 0x0400239E RID: 9118
 		private const string consoleEnabledDefaultValue = "0";
 
-		// Token: 0x040023F3 RID: 9203
+		// Token: 0x0400239F RID: 9119
 		private static BoolConVar cvConsoleEnabled = new BoolConVar("console_enabled", ConVarFlags.None, "0", "Enables/Disables the console.");
 
-		// Token: 0x020005D3 RID: 1491
+		// Token: 0x020005C1 RID: 1473
 		private enum InputFieldState
 		{
-			// Token: 0x040023F5 RID: 9205
+			// Token: 0x040023A1 RID: 9121
 			Neutral,
-			// Token: 0x040023F6 RID: 9206
+			// Token: 0x040023A2 RID: 9122
 			History,
-			// Token: 0x040023F7 RID: 9207
+			// Token: 0x040023A3 RID: 9123
 			AutoComplete
 		}
 	}

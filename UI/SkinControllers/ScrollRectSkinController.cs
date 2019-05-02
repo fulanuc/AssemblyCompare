@@ -4,18 +4,18 @@ using UnityEngine.UI;
 
 namespace RoR2.UI.SkinControllers
 {
-	// Token: 0x02000670 RID: 1648
+	// Token: 0x0200065E RID: 1630
 	[RequireComponent(typeof(ScrollRect))]
 	public class ScrollRectSkinController : BaseSkinController
 	{
-		// Token: 0x060024F7 RID: 9463 RVA: 0x0001AF24 File Offset: 0x00019124
+		// Token: 0x06002460 RID: 9312 RVA: 0x0001A7F1 File Offset: 0x000189F1
 		protected new void Awake()
 		{
 			this.scrollRect = base.GetComponent<ScrollRect>();
 			base.Awake();
 		}
 
-		// Token: 0x060024F8 RID: 9464 RVA: 0x000AE27C File Offset: 0x000AC47C
+		// Token: 0x06002461 RID: 9313 RVA: 0x000ACB8C File Offset: 0x000AAD8C
 		protected override void OnSkinUI()
 		{
 			Image component = base.GetComponent<Image>();
@@ -33,7 +33,7 @@ namespace RoR2.UI.SkinControllers
 			}
 		}
 
-		// Token: 0x060024F9 RID: 9465 RVA: 0x000AE2F4 File Offset: 0x000AC4F4
+		// Token: 0x06002462 RID: 9314 RVA: 0x000ACC04 File Offset: 0x000AAE04
 		private void SkinScrollbar(Scrollbar scrollbar)
 		{
 			this.skinData.scrollRectStyle.scrollbarBackgroundStyle.Apply(scrollbar.GetComponent<Image>());
@@ -41,7 +41,7 @@ namespace RoR2.UI.SkinControllers
 			scrollbar.handleRect.GetComponent<Image>().sprite = this.skinData.scrollRectStyle.scrollbarHandleImage;
 		}
 
-		// Token: 0x040027B2 RID: 10162
+		// Token: 0x04002756 RID: 10070
 		private ScrollRect scrollRect;
 	}
 }

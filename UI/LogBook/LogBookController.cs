@@ -12,10 +12,10 @@ using UnityEngine.UI;
 
 namespace RoR2.UI.LogBook
 {
-	// Token: 0x0200067D RID: 1661
+	// Token: 0x0200066B RID: 1643
 	public class LogBookController : MonoBehaviour
 	{
-		// Token: 0x06002537 RID: 9527 RVA: 0x000AEE54 File Offset: 0x000AD054
+		// Token: 0x060024A0 RID: 9376 RVA: 0x000AD764 File Offset: 0x000AB964
 		private void Awake()
 		{
 			this.navigationCategoryButtonAllocator = new UIElementAllocator<MPButton>(this.categoryContainer, Resources.Load<GameObject>("Prefabs/UI/Logbook/CategoryButton"));
@@ -29,7 +29,7 @@ namespace RoR2.UI.LogBook
 			this.categoryHightlightRect.gameObject.SetActive(false);
 		}
 
-		// Token: 0x06002538 RID: 9528 RVA: 0x0001B2A2 File Offset: 0x000194A2
+		// Token: 0x060024A1 RID: 9377 RVA: 0x0001AB6F File Offset: 0x00018D6F
 		private void Start()
 		{
 			this.BuildCategoriesButtons();
@@ -40,7 +40,7 @@ namespace RoR2.UI.LogBook
 			});
 		}
 
-		// Token: 0x06002539 RID: 9529 RVA: 0x000AEF44 File Offset: 0x000AD144
+		// Token: 0x060024A2 RID: 9378 RVA: 0x000AD854 File Offset: 0x000ABA54
 		private void BuildCategoriesButtons()
 		{
 			this.navigationCategoryButtonAllocator.AllocateElements(LogBookController.categories.Length);
@@ -72,7 +72,7 @@ namespace RoR2.UI.LogBook
 			}
 		}
 
-		// Token: 0x0600253A RID: 9530 RVA: 0x0001B2C7 File Offset: 0x000194C7
+		// Token: 0x060024A3 RID: 9379 RVA: 0x0001AB94 File Offset: 0x00018D94
 		[RuntimeInitializeOnLoadMethod]
 		private static void Init()
 		{
@@ -82,7 +82,7 @@ namespace RoR2.UI.LogBook
 			});
 		}
 
-		// Token: 0x0600253B RID: 9531 RVA: 0x000AF05C File Offset: 0x000AD25C
+		// Token: 0x060024A4 RID: 9380 RVA: 0x000AD96C File Offset: 0x000ABB6C
 		private static EntryStatus GetPickupStatus(UserProfile userProfile, Entry entry)
 		{
 			PickupIndex pickupIndex = (PickupIndex)entry.extraData;
@@ -112,7 +112,7 @@ namespace RoR2.UI.LogBook
 			return EntryStatus.Available;
 		}
 
-		// Token: 0x0600253C RID: 9532 RVA: 0x000AF0C8 File Offset: 0x000AD2C8
+		// Token: 0x060024A5 RID: 9381 RVA: 0x000AD9D8 File Offset: 0x000ABBD8
 		private static TooltipContent GetPickupTooltipContent(UserProfile userProfile, Entry entry, EntryStatus status)
 		{
 			UnlockableDef unlockableDef = UnlockableCatalog.GetUnlockableDef(((PickupIndex)entry.extraData).GetUnlockableName());
@@ -150,7 +150,7 @@ namespace RoR2.UI.LogBook
 			return result;
 		}
 
-		// Token: 0x0600253D RID: 9533 RVA: 0x000AF1BC File Offset: 0x000AD3BC
+		// Token: 0x060024A6 RID: 9382 RVA: 0x000ADACC File Offset: 0x000ABCCC
 		private static TooltipContent GetMonsterTooltipContent(UserProfile userProfile, Entry entry, EntryStatus status)
 		{
 			TooltipContent result = default(TooltipContent);
@@ -170,7 +170,7 @@ namespace RoR2.UI.LogBook
 			return result;
 		}
 
-		// Token: 0x0600253E RID: 9534 RVA: 0x000AF230 File Offset: 0x000AD430
+		// Token: 0x060024A7 RID: 9383 RVA: 0x000ADB40 File Offset: 0x000ABD40
 		private static TooltipContent GetStageTooltipContent(UserProfile userProfile, Entry entry, EntryStatus status)
 		{
 			TooltipContent result = default(TooltipContent);
@@ -190,7 +190,7 @@ namespace RoR2.UI.LogBook
 			return result;
 		}
 
-		// Token: 0x0600253F RID: 9535 RVA: 0x000AF2A4 File Offset: 0x000AD4A4
+		// Token: 0x060024A8 RID: 9384 RVA: 0x000ADBB4 File Offset: 0x000ABDB4
 		private static TooltipContent GetSurvivorTooltipContent(UserProfile userProfile, Entry entry, EntryStatus status)
 		{
 			TooltipContent result = default(TooltipContent);
@@ -217,7 +217,7 @@ namespace RoR2.UI.LogBook
 			return result;
 		}
 
-		// Token: 0x06002540 RID: 9536 RVA: 0x000AF34C File Offset: 0x000AD54C
+		// Token: 0x060024A9 RID: 9385 RVA: 0x000ADC5C File Offset: 0x000ABE5C
 		private static TooltipContent GetWIPTooltipContent(UserProfile userProfile, Entry entry, EntryStatus status)
 		{
 			return new TooltipContent
@@ -228,19 +228,19 @@ namespace RoR2.UI.LogBook
 			};
 		}
 
-		// Token: 0x06002541 RID: 9537 RVA: 0x00003C44 File Offset: 0x00001E44
+		// Token: 0x060024AA RID: 9386 RVA: 0x00003C44 File Offset: 0x00001E44
 		private static EntryStatus GetAlwaysAvailable(UserProfile userProfile, Entry entry)
 		{
 			return EntryStatus.Available;
 		}
 
-		// Token: 0x06002542 RID: 9538 RVA: 0x000038B4 File Offset: 0x00001AB4
+		// Token: 0x060024AB RID: 9387 RVA: 0x000038B4 File Offset: 0x00001AB4
 		private static EntryStatus GetUnimplemented(UserProfile userProfile, Entry entry)
 		{
 			return EntryStatus.Unimplemented;
 		}
 
-		// Token: 0x06002543 RID: 9539 RVA: 0x000AF390 File Offset: 0x000AD590
+		// Token: 0x060024AC RID: 9388 RVA: 0x000ADCA0 File Offset: 0x000ABEA0
 		private static EntryStatus GetStageStatus(UserProfile userProfile, Entry entry)
 		{
 			UnlockableDef unlockableDef = UnlockableCatalog.GetUnlockableDef(SceneCatalog.GetUnlockableLogFromSceneName((entry.extraData as SceneDef).sceneName));
@@ -251,7 +251,7 @@ namespace RoR2.UI.LogBook
 			return EntryStatus.Unencountered;
 		}
 
-		// Token: 0x06002544 RID: 9540 RVA: 0x000AF3C8 File Offset: 0x000AD5C8
+		// Token: 0x060024AD RID: 9389 RVA: 0x000ADCD8 File Offset: 0x000ABED8
 		private static EntryStatus GetMonsterStatus(UserProfile userProfile, Entry entry)
 		{
 			CharacterBody characterBody = (CharacterBody)entry.extraData;
@@ -272,7 +272,7 @@ namespace RoR2.UI.LogBook
 			return EntryStatus.Locked;
 		}
 
-		// Token: 0x06002545 RID: 9541 RVA: 0x000AF42C File Offset: 0x000AD62C
+		// Token: 0x060024AE RID: 9390 RVA: 0x000ADD3C File Offset: 0x000ABF3C
 		private static EntryStatus GetSurvivorStatus(UserProfile userProfile, Entry entry)
 		{
 			CharacterBody characterBody = (CharacterBody)entry.extraData;
@@ -288,7 +288,7 @@ namespace RoR2.UI.LogBook
 			return EntryStatus.Available;
 		}
 
-		// Token: 0x06002546 RID: 9542 RVA: 0x000AF48C File Offset: 0x000AD68C
+		// Token: 0x060024AF RID: 9391 RVA: 0x000ADD9C File Offset: 0x000ABF9C
 		private static EntryStatus GetAchievementStatus(UserProfile userProfile, Entry entry)
 		{
 			string identifier = ((AchievementDef)entry.extraData).identifier;
@@ -304,7 +304,7 @@ namespace RoR2.UI.LogBook
 			return EntryStatus.Available;
 		}
 
-		// Token: 0x06002547 RID: 9543 RVA: 0x0001B2F2 File Offset: 0x000194F2
+		// Token: 0x060024B0 RID: 9392 RVA: 0x0001ABBF File Offset: 0x00018DBF
 		private static void BuildStaticData()
 		{
 			LogBookController.categories = LogBookController.BuildCategories();
@@ -312,9 +312,9 @@ namespace RoR2.UI.LogBook
 			LogBookController.availability.MakeAvailable();
 		}
 
-		// Token: 0x17000333 RID: 819
-		// (get) Token: 0x06002549 RID: 9545 RVA: 0x0001B329 File Offset: 0x00019529
-		// (set) Token: 0x0600254A RID: 9546 RVA: 0x000AF4C4 File Offset: 0x000AD6C4
+		// Token: 0x17000321 RID: 801
+		// (get) Token: 0x060024B2 RID: 9394 RVA: 0x0001ABF6 File Offset: 0x00018DF6
+		// (set) Token: 0x060024B3 RID: 9395 RVA: 0x000ADDD4 File Offset: 0x000ABFD4
 		private LogBookController.NavigationPageInfo[] availableNavigationPages
 		{
 			get
@@ -342,32 +342,32 @@ namespace RoR2.UI.LogBook
 			}
 		}
 
-		// Token: 0x0600254B RID: 9547 RVA: 0x0001B331 File Offset: 0x00019531
+		// Token: 0x060024B4 RID: 9396 RVA: 0x0001ABFE File Offset: 0x00018DFE
 		private LogBookController.NavigationPageInfo[] GetCategoryPages(int categoryIndex)
 		{
 			return this.navigationPagesByCategory[categoryIndex];
 		}
 
-		// Token: 0x0600254C RID: 9548 RVA: 0x0001B33B File Offset: 0x0001953B
+		// Token: 0x060024B5 RID: 9397 RVA: 0x0001AC08 File Offset: 0x00018E08
 		private void OnLeftButton()
 		{
 			this.desiredPageIndex--;
 		}
 
-		// Token: 0x0600254D RID: 9549 RVA: 0x0001B34B File Offset: 0x0001954B
+		// Token: 0x060024B6 RID: 9398 RVA: 0x0001AC18 File Offset: 0x00018E18
 		private void OnRightButton()
 		{
 			this.desiredPageIndex++;
 		}
 
-		// Token: 0x0600254E RID: 9550 RVA: 0x0001B35B File Offset: 0x0001955B
+		// Token: 0x060024B7 RID: 9399 RVA: 0x0001AC28 File Offset: 0x00018E28
 		private void OnCategoryClicked(int categoryIndex)
 		{
 			this.desiredCategoryIndex = categoryIndex;
 			this.goToEndOfNextCategory = false;
 		}
 
-		// Token: 0x0600254F RID: 9551 RVA: 0x000AF55C File Offset: 0x000AD75C
+		// Token: 0x060024B8 RID: 9400 RVA: 0x000ADE6C File Offset: 0x000AC06C
 		private void GeneratePages()
 		{
 			this.navigationPagesByCategory = new LogBookController.NavigationPageInfo[LogBookController.categories.Length][];
@@ -417,7 +417,7 @@ namespace RoR2.UI.LogBook
 			this.allNavigationPages = enumerable.ToArray<LogBookController.NavigationPageInfo>();
 		}
 
-		// Token: 0x06002550 RID: 9552 RVA: 0x000AF6E4 File Offset: 0x000AD8E4
+		// Token: 0x060024B9 RID: 9401 RVA: 0x000ADFF4 File Offset: 0x000AC1F4
 		private void Update()
 		{
 			if (this.desiredPageIndex > this.availableNavigationPages.Length - 1)
@@ -477,7 +477,7 @@ namespace RoR2.UI.LogBook
 			}
 		}
 
-		// Token: 0x06002551 RID: 9553 RVA: 0x0001B36B File Offset: 0x0001956B
+		// Token: 0x060024BA RID: 9402 RVA: 0x0001AC38 File Offset: 0x00018E38
 		private UserProfile LookUpUserProfile()
 		{
 			LocalUser localUser = LocalUserManager.readOnlyLocalUsersList.FirstOrDefault((LocalUser v) => v != null);
@@ -488,7 +488,7 @@ namespace RoR2.UI.LogBook
 			return localUser.userProfile;
 		}
 
-		// Token: 0x06002552 RID: 9554 RVA: 0x000AF8F0 File Offset: 0x000ADAF0
+		// Token: 0x060024BB RID: 9403 RVA: 0x000AE200 File Offset: 0x000AC400
 		private GameObject BuildEntriesPage(LogBookController.NavigationPageInfo navigationPageInfo)
 		{
 			Entry[] entries = navigationPageInfo.entries;
@@ -569,7 +569,7 @@ namespace RoR2.UI.LogBook
 			return gameObject;
 		}
 
-		// Token: 0x06002553 RID: 9555 RVA: 0x000AFB8C File Offset: 0x000ADD8C
+		// Token: 0x060024BC RID: 9404 RVA: 0x000AE49C File Offset: 0x000AC69C
 		private void ViewEntry(Entry entry)
 		{
 			this.OnViewEntry.Invoke();
@@ -580,14 +580,14 @@ namespace RoR2.UI.LogBook
 			ViewableTrigger.TriggerView((viewableNode != null) ? viewableNode.fullName : null);
 		}
 
-		// Token: 0x06002554 RID: 9556 RVA: 0x0001B3A1 File Offset: 0x000195A1
+		// Token: 0x060024BD RID: 9405 RVA: 0x0001AC6E File Offset: 0x00018E6E
 		private void ReturnToNavigation()
 		{
 			this.navigationPanel.SetActive(true);
 			this.pageViewerPanel.SetActive(false);
 		}
 
-		// Token: 0x06002555 RID: 9557 RVA: 0x000AFBE4 File Offset: 0x000ADDE4
+		// Token: 0x060024BE RID: 9406 RVA: 0x000AE4F4 File Offset: 0x000AC6F4
 		private static Entry[] BuildPickupEntries()
 		{
 			Entry entry = new Entry();
@@ -639,7 +639,7 @@ namespace RoR2.UI.LogBook
 			return enumerable.ToArray<Entry>();
 		}
 
-		// Token: 0x06002556 RID: 9558 RVA: 0x000AFDA4 File Offset: 0x000ADFA4
+		// Token: 0x060024BF RID: 9407 RVA: 0x000AE6B4 File Offset: 0x000AC8B4
 		private static CategoryDef[] BuildCategories()
 		{
 			CategoryDef[] array = new CategoryDef[5];
@@ -768,7 +768,7 @@ namespace RoR2.UI.LogBook
 			return array;
 		}
 
-		// Token: 0x06002557 RID: 9559 RVA: 0x000B0014 File Offset: 0x000AE214
+		// Token: 0x060024C0 RID: 9408 RVA: 0x000AE924 File Offset: 0x000ACB24
 		private static void RegisterViewables(CategoryDef[] categoriesToGenerateFrom)
 		{
 			ViewablesCatalog.Node node = new ViewablesCatalog.Node("Logbook", true, null);
@@ -803,142 +803,142 @@ namespace RoR2.UI.LogBook
 			ViewablesCatalog.AddNodeToRoot(node);
 		}
 
-		// Token: 0x04002807 RID: 10247
+		// Token: 0x040027AB RID: 10155
 		[Header("Navigation")]
 		public GameObject navigationPanel;
 
-		// Token: 0x04002808 RID: 10248
+		// Token: 0x040027AC RID: 10156
 		public RectTransform categoryContainer;
 
-		// Token: 0x04002809 RID: 10249
+		// Token: 0x040027AD RID: 10157
 		public GameObject categorySpaceFiller;
 
-		// Token: 0x0400280A RID: 10250
+		// Token: 0x040027AE RID: 10158
 		public int categorySpaceFillerCount;
 
-		// Token: 0x0400280B RID: 10251
+		// Token: 0x040027AF RID: 10159
 		public Color spaceFillerColor;
 
-		// Token: 0x0400280C RID: 10252
+		// Token: 0x040027B0 RID: 10160
 		private UIElementAllocator<MPButton> navigationCategoryButtonAllocator;
 
-		// Token: 0x0400280D RID: 10253
+		// Token: 0x040027B1 RID: 10161
 		public RectTransform entryPageContainer;
 
-		// Token: 0x0400280E RID: 10254
+		// Token: 0x040027B2 RID: 10162
 		public GameObject entryPagePrefab;
 
-		// Token: 0x0400280F RID: 10255
+		// Token: 0x040027B3 RID: 10163
 		public RectTransform navigationPageIndicatorContainer;
 
-		// Token: 0x04002810 RID: 10256
+		// Token: 0x040027B4 RID: 10164
 		public GameObject navigationPageIndicatorPrefab;
 
-		// Token: 0x04002811 RID: 10257
+		// Token: 0x040027B5 RID: 10165
 		private UIElementAllocator<MPButton> navigationPageIndicatorAllocator;
 
-		// Token: 0x04002812 RID: 10258
+		// Token: 0x040027B6 RID: 10166
 		public MPButton previousPageButton;
 
-		// Token: 0x04002813 RID: 10259
+		// Token: 0x040027B7 RID: 10167
 		public MPButton nextPageButton;
 
-		// Token: 0x04002814 RID: 10260
+		// Token: 0x040027B8 RID: 10168
 		public LanguageTextMeshController currentCategoryLabel;
 
-		// Token: 0x04002815 RID: 10261
+		// Token: 0x040027B9 RID: 10169
 		private RectTransform categoryHightlightRect;
 
-		// Token: 0x04002816 RID: 10262
+		// Token: 0x040027BA RID: 10170
 		[Header("PageViewer")]
 		public UnityEvent OnViewEntry;
 
-		// Token: 0x04002817 RID: 10263
+		// Token: 0x040027BB RID: 10171
 		public GameObject pageViewerPanel;
 
-		// Token: 0x04002818 RID: 10264
+		// Token: 0x040027BC RID: 10172
 		public MPButton pageViewerBackButton;
 
-		// Token: 0x04002819 RID: 10265
+		// Token: 0x040027BD RID: 10173
 		private EntityStateMachine stateMachine;
 
-		// Token: 0x0400281A RID: 10266
+		// Token: 0x040027BE RID: 10174
 		public static CategoryDef[] categories = Array.Empty<CategoryDef>();
 
-		// Token: 0x0400281B RID: 10267
+		// Token: 0x040027BF RID: 10175
 		public static ResourceAvailability availability = default(ResourceAvailability);
 
-		// Token: 0x0400281C RID: 10268
+		// Token: 0x040027C0 RID: 10176
 		private LogBookController.NavigationPageInfo[] _availableNavigationPages = Array.Empty<LogBookController.NavigationPageInfo>();
 
-		// Token: 0x0400281D RID: 10269
+		// Token: 0x040027C1 RID: 10177
 		private GameObject currentEntriesPageObject;
 
-		// Token: 0x0400281E RID: 10270
+		// Token: 0x040027C2 RID: 10178
 		private int currentCategoryIndex;
 
-		// Token: 0x0400281F RID: 10271
+		// Token: 0x040027C3 RID: 10179
 		private int desiredCategoryIndex;
 
-		// Token: 0x04002820 RID: 10272
+		// Token: 0x040027C4 RID: 10180
 		private int currentPageIndex;
 
-		// Token: 0x04002821 RID: 10273
+		// Token: 0x040027C5 RID: 10181
 		private int desiredPageIndex;
 
-		// Token: 0x04002822 RID: 10274
+		// Token: 0x040027C6 RID: 10182
 		private bool goToEndOfNextCategory;
 
-		// Token: 0x04002823 RID: 10275
+		// Token: 0x040027C7 RID: 10183
 		private LogBookController.NavigationPageInfo[] allNavigationPages;
 
-		// Token: 0x04002824 RID: 10276
+		// Token: 0x040027C8 RID: 10184
 		private LogBookController.NavigationPageInfo[][] navigationPagesByCategory;
 
-		// Token: 0x0200067E RID: 1662
+		// Token: 0x0200066C RID: 1644
 		private class NavigationPageInfo
 		{
-			// Token: 0x04002825 RID: 10277
+			// Token: 0x040027C9 RID: 10185
 			public CategoryDef categoryDef;
 
-			// Token: 0x04002826 RID: 10278
+			// Token: 0x040027CA RID: 10186
 			public Entry[] entries;
 
-			// Token: 0x04002827 RID: 10279
+			// Token: 0x040027CB RID: 10187
 			public int index;
 
-			// Token: 0x04002828 RID: 10280
+			// Token: 0x040027CC RID: 10188
 			public int indexInCategory;
 		}
 
-		// Token: 0x0200067F RID: 1663
+		// Token: 0x0200066D RID: 1645
 		private class LogBookState : EntityState
 		{
-			// Token: 0x0600255A RID: 9562 RVA: 0x0001B3CE File Offset: 0x000195CE
+			// Token: 0x060024C3 RID: 9411 RVA: 0x0001AC9B File Offset: 0x00018E9B
 			public override void OnEnter()
 			{
 				base.OnEnter();
 				this.logBookController = base.GetComponent<LogBookController>();
 			}
 
-			// Token: 0x0600255B RID: 9563 RVA: 0x0001B3E2 File Offset: 0x000195E2
+			// Token: 0x060024C4 RID: 9412 RVA: 0x0001ACAF File Offset: 0x00018EAF
 			public override void Update()
 			{
 				base.Update();
 				this.unscaledAge += Time.unscaledDeltaTime;
 			}
 
-			// Token: 0x04002829 RID: 10281
+			// Token: 0x040027CD RID: 10189
 			protected LogBookController logBookController;
 
-			// Token: 0x0400282A RID: 10282
+			// Token: 0x040027CE RID: 10190
 			protected float unscaledAge;
 		}
 
-		// Token: 0x02000680 RID: 1664
+		// Token: 0x0200066E RID: 1646
 		private class FadeState : LogBookController.LogBookState
 		{
-			// Token: 0x0600255D RID: 9565 RVA: 0x0001B3FC File Offset: 0x000195FC
+			// Token: 0x060024C6 RID: 9414 RVA: 0x0001ACC9 File Offset: 0x00018EC9
 			public override void OnEnter()
 			{
 				base.OnEnter();
@@ -949,7 +949,7 @@ namespace RoR2.UI.LogBook
 				}
 			}
 
-			// Token: 0x0600255E RID: 9566 RVA: 0x0001B42D File Offset: 0x0001962D
+			// Token: 0x060024C7 RID: 9415 RVA: 0x0001ACFA File Offset: 0x00018EFA
 			public override void OnExit()
 			{
 				if (this.canvasGroup)
@@ -959,7 +959,7 @@ namespace RoR2.UI.LogBook
 				base.OnExit();
 			}
 
-			// Token: 0x0600255F RID: 9567 RVA: 0x000B01B0 File Offset: 0x000AE3B0
+			// Token: 0x060024C8 RID: 9416 RVA: 0x000AEAC0 File Offset: 0x000ACCC0
 			public override void Update()
 			{
 				if (this.canvasGroup)
@@ -973,20 +973,20 @@ namespace RoR2.UI.LogBook
 				base.Update();
 			}
 
-			// Token: 0x0400282B RID: 10283
+			// Token: 0x040027CF RID: 10191
 			private CanvasGroup canvasGroup;
 
-			// Token: 0x0400282C RID: 10284
+			// Token: 0x040027D0 RID: 10192
 			public float duration = 0.5f;
 
-			// Token: 0x0400282D RID: 10285
+			// Token: 0x040027D1 RID: 10193
 			public float endValue;
 		}
 
-		// Token: 0x02000681 RID: 1665
+		// Token: 0x0200066F RID: 1647
 		private class ChangeEntriesPageState : LogBookController.LogBookState
 		{
-			// Token: 0x06002561 RID: 9569 RVA: 0x000B020C File Offset: 0x000AE40C
+			// Token: 0x060024CA RID: 9418 RVA: 0x000AEB1C File Offset: 0x000ACD1C
 			public override void OnEnter()
 			{
 				base.OnEnter();
@@ -1000,7 +1000,7 @@ namespace RoR2.UI.LogBook
 				this.SetPagePositions(0f);
 			}
 
-			// Token: 0x06002562 RID: 9570 RVA: 0x000B0290 File Offset: 0x000AE490
+			// Token: 0x060024CB RID: 9419 RVA: 0x000AEBA0 File Offset: 0x000ACDA0
 			public override void OnExit()
 			{
 				base.OnExit();
@@ -1012,7 +1012,7 @@ namespace RoR2.UI.LogBook
 				}
 			}
 
-			// Token: 0x06002563 RID: 9571 RVA: 0x000B02E4 File Offset: 0x000AE4E4
+			// Token: 0x060024CC RID: 9420 RVA: 0x000AEBF4 File Offset: 0x000ACDF4
 			private void SetPagePositions(float t)
 			{
 				Vector2 vector = new Vector2(this.containerSize.x * -this.moveDirection.x, this.containerSize.y * this.moveDirection.y);
@@ -1027,7 +1027,7 @@ namespace RoR2.UI.LogBook
 				}
 			}
 
-			// Token: 0x06002564 RID: 9572 RVA: 0x000B037C File Offset: 0x000AE57C
+			// Token: 0x060024CD RID: 9421 RVA: 0x000AEC8C File Offset: 0x000ACE8C
 			public override void Update()
 			{
 				base.Update();
@@ -1039,38 +1039,38 @@ namespace RoR2.UI.LogBook
 				}
 			}
 
-			// Token: 0x0400282E RID: 10286
+			// Token: 0x040027D2 RID: 10194
 			private int oldPageIndex;
 
-			// Token: 0x0400282F RID: 10287
+			// Token: 0x040027D3 RID: 10195
 			public LogBookController.NavigationPageInfo newNavigationPageInfo;
 
-			// Token: 0x04002830 RID: 10288
+			// Token: 0x040027D4 RID: 10196
 			public float duration = 0.1f;
 
-			// Token: 0x04002831 RID: 10289
+			// Token: 0x040027D5 RID: 10197
 			public Vector2 moveDirection;
 
-			// Token: 0x04002832 RID: 10290
+			// Token: 0x040027D6 RID: 10198
 			private GameObject oldPage;
 
-			// Token: 0x04002833 RID: 10291
+			// Token: 0x040027D7 RID: 10199
 			private GameObject newPage;
 
-			// Token: 0x04002834 RID: 10292
+			// Token: 0x040027D8 RID: 10200
 			private Vector2 oldPageTargetPosition;
 
-			// Token: 0x04002835 RID: 10293
+			// Token: 0x040027D9 RID: 10201
 			private Vector2 newPageTargetPosition;
 
-			// Token: 0x04002836 RID: 10294
+			// Token: 0x040027DA RID: 10202
 			private Vector2 containerSize = Vector2.zero;
 		}
 
-		// Token: 0x02000682 RID: 1666
+		// Token: 0x02000670 RID: 1648
 		private class ChangeCategoryState : LogBookController.LogBookState
 		{
-			// Token: 0x06002566 RID: 9574 RVA: 0x000B03C4 File Offset: 0x000AE5C4
+			// Token: 0x060024CF RID: 9423 RVA: 0x000AECD4 File Offset: 0x000ACED4
 			public override void OnEnter()
 			{
 				base.OnEnter();
@@ -1096,7 +1096,7 @@ namespace RoR2.UI.LogBook
 				this.SetPagePositions(0f);
 			}
 
-			// Token: 0x06002567 RID: 9575 RVA: 0x000B04F0 File Offset: 0x000AE6F0
+			// Token: 0x060024D0 RID: 9424 RVA: 0x000AEE00 File Offset: 0x000AD000
 			public override void OnExit()
 			{
 				EntityState.Destroy(this.oldPage);
@@ -1115,7 +1115,7 @@ namespace RoR2.UI.LogBook
 				base.OnExit();
 			}
 
-			// Token: 0x06002568 RID: 9576 RVA: 0x000B05FC File Offset: 0x000AE7FC
+			// Token: 0x060024D1 RID: 9425 RVA: 0x000AEF0C File Offset: 0x000AD10C
 			private void SetPagePositions(float t)
 			{
 				Vector2 vector = new Vector2(this.containerSize.x * -this.moveDirection.x, this.containerSize.y * this.moveDirection.y);
@@ -1134,7 +1134,7 @@ namespace RoR2.UI.LogBook
 				}
 			}
 
-			// Token: 0x06002569 RID: 9577 RVA: 0x000B06B0 File Offset: 0x000AE8B0
+			// Token: 0x060024D2 RID: 9426 RVA: 0x000AEFC0 File Offset: 0x000AD1C0
 			public override void Update()
 			{
 				base.Update();
@@ -1147,53 +1147,53 @@ namespace RoR2.UI.LogBook
 				}
 			}
 
-			// Token: 0x04002837 RID: 10295
+			// Token: 0x040027DB RID: 10203
 			private int oldCategoryIndex;
 
-			// Token: 0x04002838 RID: 10296
+			// Token: 0x040027DC RID: 10204
 			public int newCategoryIndex;
 
-			// Token: 0x04002839 RID: 10297
+			// Token: 0x040027DD RID: 10205
 			public bool goToLastPage;
 
-			// Token: 0x0400283A RID: 10298
+			// Token: 0x040027DE RID: 10206
 			public float duration = 0.1f;
 
-			// Token: 0x0400283B RID: 10299
+			// Token: 0x040027DF RID: 10207
 			private GameObject oldPage;
 
-			// Token: 0x0400283C RID: 10300
+			// Token: 0x040027E0 RID: 10208
 			private GameObject newPage;
 
-			// Token: 0x0400283D RID: 10301
+			// Token: 0x040027E1 RID: 10209
 			private Vector2 oldPageTargetPosition;
 
-			// Token: 0x0400283E RID: 10302
+			// Token: 0x040027E2 RID: 10210
 			private Vector2 newPageTargetPosition;
 
-			// Token: 0x0400283F RID: 10303
+			// Token: 0x040027E3 RID: 10211
 			private Vector2 moveDirection;
 
-			// Token: 0x04002840 RID: 10304
+			// Token: 0x040027E4 RID: 10212
 			private Vector2 containerSize = Vector2.zero;
 
-			// Token: 0x04002841 RID: 10305
+			// Token: 0x040027E5 RID: 10213
 			private LogBookController.NavigationPageInfo[] newNavigationPages;
 
-			// Token: 0x04002842 RID: 10306
+			// Token: 0x040027E6 RID: 10214
 			private int destinationPageIndex;
 
-			// Token: 0x04002843 RID: 10307
+			// Token: 0x040027E7 RID: 10215
 			private LogBookController.NavigationPageInfo newNavigationPageInfo;
 
-			// Token: 0x04002844 RID: 10308
+			// Token: 0x040027E8 RID: 10216
 			private int frame;
 		}
 
-		// Token: 0x02000683 RID: 1667
+		// Token: 0x02000671 RID: 1649
 		private class EnterLogViewState : LogBookController.LogBookState
 		{
-			// Token: 0x0600256B RID: 9579 RVA: 0x000B0704 File Offset: 0x000AE904
+			// Token: 0x060024D4 RID: 9428 RVA: 0x000AF014 File Offset: 0x000AD214
 			public override void OnEnter()
 			{
 				base.OnEnter();
@@ -1217,7 +1217,7 @@ namespace RoR2.UI.LogBook
 				this.SetIconRect(this.startRect);
 			}
 
-			// Token: 0x0600256C RID: 9580 RVA: 0x0001B4A2 File Offset: 0x000196A2
+			// Token: 0x060024D5 RID: 9429 RVA: 0x0001AD6F File Offset: 0x00018F6F
 			private void SetIconRect(Rect rect)
 			{
 				this.flyingIconTransform.position = rect.position;
@@ -1225,7 +1225,7 @@ namespace RoR2.UI.LogBook
 				this.flyingIconTransform.offsetMax = rect.max;
 			}
 
-			// Token: 0x0600256D RID: 9581 RVA: 0x000B082C File Offset: 0x000AEA2C
+			// Token: 0x060024D6 RID: 9430 RVA: 0x000AF13C File Offset: 0x000AD33C
 			private Rect GetRectRelativeToParent(Vector3[] corners)
 			{
 				for (int i = 0; i < 4; i++)
@@ -1241,7 +1241,7 @@ namespace RoR2.UI.LogBook
 				};
 			}
 
-			// Token: 0x0600256E RID: 9582 RVA: 0x000B08B8 File Offset: 0x000AEAB8
+			// Token: 0x060024D7 RID: 9431 RVA: 0x000AF1C8 File Offset: 0x000AD3C8
 			private static Rect RectFromWorldCorners(Vector3[] corners)
 			{
 				return new Rect
@@ -1253,7 +1253,7 @@ namespace RoR2.UI.LogBook
 				};
 			}
 
-			// Token: 0x0600256F RID: 9583 RVA: 0x000B091C File Offset: 0x000AEB1C
+			// Token: 0x060024D8 RID: 9432 RVA: 0x000AF22C File Offset: 0x000AD42C
 			private static Rect LerpRect(Rect a, Rect b, float t)
 			{
 				return new Rect
@@ -1263,14 +1263,14 @@ namespace RoR2.UI.LogBook
 				};
 			}
 
-			// Token: 0x06002570 RID: 9584 RVA: 0x0001B4DF File Offset: 0x000196DF
+			// Token: 0x060024D9 RID: 9433 RVA: 0x0001ADAC File Offset: 0x00018FAC
 			public override void OnExit()
 			{
 				EntityState.Destroy(this.flyingIcon);
 				base.OnExit();
 			}
 
-			// Token: 0x06002571 RID: 9585 RVA: 0x000B0968 File Offset: 0x000AEB68
+			// Token: 0x060024DA RID: 9434 RVA: 0x000AF278 File Offset: 0x000AD478
 			public override void Update()
 			{
 				base.Update();
@@ -1316,40 +1316,40 @@ namespace RoR2.UI.LogBook
 				}
 			}
 
-			// Token: 0x04002845 RID: 10309
+			// Token: 0x040027E9 RID: 10217
 			public Texture iconTexture;
 
-			// Token: 0x04002846 RID: 10310
+			// Token: 0x040027EA RID: 10218
 			public RectTransform startRectTransform;
 
-			// Token: 0x04002847 RID: 10311
+			// Token: 0x040027EB RID: 10219
 			public RectTransform endRectTransform;
 
-			// Token: 0x04002848 RID: 10312
+			// Token: 0x040027EC RID: 10220
 			public Entry entry;
 
-			// Token: 0x04002849 RID: 10313
+			// Token: 0x040027ED RID: 10221
 			private GameObject flyingIcon;
 
-			// Token: 0x0400284A RID: 10314
+			// Token: 0x040027EE RID: 10222
 			private RectTransform flyingIconTransform;
 
-			// Token: 0x0400284B RID: 10315
+			// Token: 0x040027EF RID: 10223
 			private RawImage flyingIconImage;
 
-			// Token: 0x0400284C RID: 10316
+			// Token: 0x040027F0 RID: 10224
 			private float duration = 0.75f;
 
-			// Token: 0x0400284D RID: 10317
+			// Token: 0x040027F1 RID: 10225
 			private Rect startRect;
 
-			// Token: 0x0400284E RID: 10318
+			// Token: 0x040027F2 RID: 10226
 			private Rect midRect;
 
-			// Token: 0x0400284F RID: 10319
+			// Token: 0x040027F3 RID: 10227
 			private Rect endRect;
 
-			// Token: 0x04002850 RID: 10320
+			// Token: 0x040027F4 RID: 10228
 			private bool submittedViewEntry;
 		}
 	}

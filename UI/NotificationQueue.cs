@@ -5,11 +5,11 @@ using UnityEngine;
 
 namespace RoR2.UI
 {
-	// Token: 0x0200061D RID: 1565
+	// Token: 0x0200060B RID: 1547
 	public class NotificationQueue : MonoBehaviour
 	{
-		// Token: 0x17000321 RID: 801
-		// (get) Token: 0x06002382 RID: 9090 RVA: 0x00019E4D File Offset: 0x0001804D
+		// Token: 0x1700030F RID: 783
+		// (get) Token: 0x060022F2 RID: 8946 RVA: 0x00019796 File Offset: 0x00017996
 		public static ReadOnlyCollection<NotificationQueue> readOnlyInstancesList
 		{
 			get
@@ -18,19 +18,19 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x06002383 RID: 9091 RVA: 0x00019E54 File Offset: 0x00018054
+		// Token: 0x060022F3 RID: 8947 RVA: 0x0001979D File Offset: 0x0001799D
 		private void OnEnable()
 		{
 			NotificationQueue.instancesList.Add(this);
 		}
 
-		// Token: 0x06002384 RID: 9092 RVA: 0x00019E61 File Offset: 0x00018061
+		// Token: 0x060022F4 RID: 8948 RVA: 0x000197AA File Offset: 0x000179AA
 		private void OnDisable()
 		{
 			NotificationQueue.instancesList.Remove(this);
 		}
 
-		// Token: 0x06002385 RID: 9093 RVA: 0x000A943C File Offset: 0x000A763C
+		// Token: 0x060022F5 RID: 8949 RVA: 0x000A7DC0 File Offset: 0x000A5FC0
 		private void OnItemPickup(CharacterMaster characterMaster, ItemIndex itemIndex)
 		{
 			ItemDef itemDef = ItemCatalog.GetItemDef(itemIndex);
@@ -48,7 +48,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x06002386 RID: 9094 RVA: 0x00019E6F File Offset: 0x0001806F
+		// Token: 0x060022F6 RID: 8950 RVA: 0x000197B8 File Offset: 0x000179B8
 		private void OnEquipmentPickup(CharacterMaster characterMaster, EquipmentIndex equipmentIndex)
 		{
 			if (this.hud.targetMaster == characterMaster)
@@ -61,7 +61,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x06002387 RID: 9095 RVA: 0x000A9490 File Offset: 0x000A7690
+		// Token: 0x060022F7 RID: 8951 RVA: 0x000A7E14 File Offset: 0x000A6014
 		public void OnPickup(CharacterMaster characterMaster, PickupIndex pickupIndex)
 		{
 			ItemIndex itemIndex = pickupIndex.itemIndex;
@@ -77,7 +77,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x06002388 RID: 9096 RVA: 0x000A94C8 File Offset: 0x000A76C8
+		// Token: 0x060022F8 RID: 8952 RVA: 0x000A7E4C File Offset: 0x000A604C
 		public void Update()
 		{
 			if (!this.currentNotification && this.notificationQueue.Count > 0)
@@ -100,40 +100,40 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x0400262B RID: 9771
+		// Token: 0x040025D0 RID: 9680
 		private static List<NotificationQueue> instancesList = new List<NotificationQueue>();
 
-		// Token: 0x0400262C RID: 9772
+		// Token: 0x040025D1 RID: 9681
 		private static ReadOnlyCollection<NotificationQueue> _readOnlyInstancesList = new ReadOnlyCollection<NotificationQueue>(NotificationQueue.instancesList);
 
-		// Token: 0x0400262D RID: 9773
+		// Token: 0x040025D2 RID: 9682
 		public HUD hud;
 
-		// Token: 0x0400262E RID: 9774
+		// Token: 0x040025D3 RID: 9683
 		private Queue<NotificationQueue.NotificationInfo> notificationQueue = new Queue<NotificationQueue.NotificationInfo>();
 
-		// Token: 0x0400262F RID: 9775
+		// Token: 0x040025D4 RID: 9684
 		private GenericNotification currentNotification;
 
-		// Token: 0x0200061E RID: 1566
+		// Token: 0x0200060C RID: 1548
 		private enum NotificationType
 		{
-			// Token: 0x04002631 RID: 9777
+			// Token: 0x040025D6 RID: 9686
 			ItemPickup,
-			// Token: 0x04002632 RID: 9778
+			// Token: 0x040025D7 RID: 9687
 			EquipmentPickup
 		}
 
-		// Token: 0x0200061F RID: 1567
+		// Token: 0x0200060D RID: 1549
 		private class NotificationInfo
 		{
-			// Token: 0x04002633 RID: 9779
+			// Token: 0x040025D8 RID: 9688
 			public NotificationQueue.NotificationType notificationType;
 
-			// Token: 0x04002634 RID: 9780
+			// Token: 0x040025D9 RID: 9689
 			public ItemIndex itemIndex = ItemIndex.None;
 
-			// Token: 0x04002635 RID: 9781
+			// Token: 0x040025DA RID: 9690
 			public EquipmentIndex equipmentIndex = EquipmentIndex.None;
 		}
 	}

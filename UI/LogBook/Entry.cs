@@ -3,55 +3,55 @@ using UnityEngine;
 
 namespace RoR2.UI.LogBook
 {
-	// Token: 0x0200067A RID: 1658
+	// Token: 0x02000668 RID: 1640
 	public class Entry
 	{
-		// Token: 0x06002531 RID: 9521 RVA: 0x000AEDBC File Offset: 0x000ACFBC
+		// Token: 0x0600249A RID: 9370 RVA: 0x000AD6CC File Offset: 0x000AB8CC
 		public static GameObject GetModelForPickup(Entry entry)
 		{
 			return ((PickupIndex)entry.extraData).GetPickupDisplayPrefab();
 		}
 
-		// Token: 0x040027EF RID: 10223
+		// Token: 0x04002793 RID: 10131
 		public string nameToken;
 
-		// Token: 0x040027F0 RID: 10224
+		// Token: 0x04002794 RID: 10132
 		public string categoryTypeToken;
 
-		// Token: 0x040027F1 RID: 10225
+		// Token: 0x04002795 RID: 10133
 		public GameObject pagePrefab;
 
-		// Token: 0x040027F2 RID: 10226
+		// Token: 0x04002796 RID: 10134
 		public Texture iconTexture;
 
-		// Token: 0x040027F3 RID: 10227
+		// Token: 0x04002797 RID: 10135
 		public Texture bgTexture;
 
-		// Token: 0x040027F4 RID: 10228
+		// Token: 0x04002798 RID: 10136
 		public Color color;
 
-		// Token: 0x040027F5 RID: 10229
+		// Token: 0x04002799 RID: 10137
 		public GameObject modelPrefab;
 
-		// Token: 0x040027F6 RID: 10230
+		// Token: 0x0400279A RID: 10138
 		public object extraData;
 
-		// Token: 0x040027F7 RID: 10231
+		// Token: 0x0400279B RID: 10139
 		public bool isWIP;
 
-		// Token: 0x040027F8 RID: 10232
+		// Token: 0x0400279C RID: 10140
 		public Func<UserProfile, Entry, EntryStatus> getStatus = (UserProfile userProfile, Entry entry) => EntryStatus.Unimplemented;
 
-		// Token: 0x040027F9 RID: 10233
+		// Token: 0x0400279D RID: 10141
 		public Func<UserProfile, Entry, EntryStatus, TooltipContent> getTooltipContent = (UserProfile userProfile, Entry entry, EntryStatus status) => default(TooltipContent);
 
-		// Token: 0x040027FA RID: 10234
+		// Token: 0x0400279E RID: 10142
 		public UnlockableDef associatedUnlockable;
 
-		// Token: 0x040027FB RID: 10235
+		// Token: 0x0400279F RID: 10143
 		public Action<PageBuilder> addEntries;
 
-		// Token: 0x040027FC RID: 10236
+		// Token: 0x040027A0 RID: 10144
 		public ViewablesCatalog.Node viewableNode;
 	}
 }

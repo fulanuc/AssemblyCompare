@@ -4,23 +4,23 @@ using UnityEngine.UI;
 
 namespace RoR2.UI
 {
-	// Token: 0x020005DF RID: 1503
+	// Token: 0x020005CD RID: 1485
 	public class CustomScrollbar : MPScrollbar
 	{
-		// Token: 0x060021E5 RID: 8677 RVA: 0x00018B5A File Offset: 0x00016D5A
+		// Token: 0x06002154 RID: 8532 RVA: 0x00018460 File Offset: 0x00016660
 		protected override void Awake()
 		{
 			base.Awake();
 		}
 
-		// Token: 0x060021E6 RID: 8678 RVA: 0x00018B62 File Offset: 0x00016D62
+		// Token: 0x06002155 RID: 8533 RVA: 0x00018468 File Offset: 0x00016668
 		protected override void Start()
 		{
 			base.Start();
 			this.newPosition = this.originalPosition;
 		}
 
-		// Token: 0x060021E7 RID: 8679 RVA: 0x000A252C File Offset: 0x000A072C
+		// Token: 0x06002156 RID: 8534 RVA: 0x000A0F58 File Offset: 0x0009F158
 		protected override void DoStateTransition(Selectable.SelectionState state, bool instant)
 		{
 			base.DoStateTransition(state, instant);
@@ -43,13 +43,13 @@ namespace RoR2.UI
 			this.originalColor = base.targetGraphic.color;
 		}
 
-		// Token: 0x060021E8 RID: 8680 RVA: 0x00018B29 File Offset: 0x00016D29
+		// Token: 0x06002157 RID: 8535 RVA: 0x0001842F File Offset: 0x0001662F
 		public void OnClickCustom()
 		{
 			Util.PlaySound("Play_UI_menuClick", RoR2Application.instance.gameObject);
 		}
 
-		// Token: 0x060021E9 RID: 8681 RVA: 0x000A25A4 File Offset: 0x000A07A4
+		// Token: 0x06002158 RID: 8536 RVA: 0x000A0FD0 File Offset: 0x0009F1D0
 		private void LateUpdate()
 		{
 			this.stopwatch += Time.deltaTime;
@@ -70,37 +70,37 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x0400242F RID: 9263
+		// Token: 0x040023DB RID: 9179
 		private Vector3 originalPosition;
 
-		// Token: 0x04002430 RID: 9264
+		// Token: 0x040023DC RID: 9180
 		private Vector3 newPosition;
 
-		// Token: 0x04002431 RID: 9265
+		// Token: 0x040023DD RID: 9181
 		private float newButtonScale = 1f;
 
-		// Token: 0x04002432 RID: 9266
+		// Token: 0x040023DE RID: 9182
 		private float stopwatch;
 
-		// Token: 0x04002433 RID: 9267
+		// Token: 0x040023DF RID: 9183
 		private Color originalColor;
 
-		// Token: 0x04002434 RID: 9268
+		// Token: 0x040023E0 RID: 9184
 		public bool scaleButtonOnHover = true;
 
-		// Token: 0x04002435 RID: 9269
+		// Token: 0x040023E1 RID: 9185
 		public bool showImageOnHover;
 
-		// Token: 0x04002436 RID: 9270
+		// Token: 0x040023E2 RID: 9186
 		public Image imageOnHover;
 
-		// Token: 0x04002437 RID: 9271
+		// Token: 0x040023E3 RID: 9187
 		public Image imageOnInteractable;
 
-		// Token: 0x04002438 RID: 9272
+		// Token: 0x040023E4 RID: 9188
 		private bool hovering;
 
-		// Token: 0x04002439 RID: 9273
+		// Token: 0x040023E5 RID: 9189
 		private float imageOnHoverAlphaVelocity;
 	}
 }

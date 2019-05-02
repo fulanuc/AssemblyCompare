@@ -3,17 +3,17 @@ using UnityEngine;
 
 namespace RoR2.UI
 {
-	// Token: 0x02000605 RID: 1541
+	// Token: 0x020005F3 RID: 1523
 	[RequireComponent(typeof(RectTransform))]
 	public class LerpUIRect : MonoBehaviour
 	{
-		// Token: 0x060022C0 RID: 8896 RVA: 0x0001953F File Offset: 0x0001773F
+		// Token: 0x06002230 RID: 8752 RVA: 0x00018E92 File Offset: 0x00017092
 		private void Start()
 		{
 			this.rectTransform = base.GetComponent<RectTransform>();
 		}
 
-		// Token: 0x060022C1 RID: 8897 RVA: 0x0001954D File Offset: 0x0001774D
+		// Token: 0x06002231 RID: 8753 RVA: 0x00018EA0 File Offset: 0x000170A0
 		private void OnDisable()
 		{
 			this.lerpState = LerpUIRect.LerpState.Entering;
@@ -21,14 +21,14 @@ namespace RoR2.UI
 			this.UpdateLerp();
 		}
 
-		// Token: 0x060022C2 RID: 8898 RVA: 0x00019567 File Offset: 0x00017767
+		// Token: 0x06002232 RID: 8754 RVA: 0x00018EBA File Offset: 0x000170BA
 		private void Update()
 		{
 			this.stopwatch += Time.deltaTime;
 			this.UpdateLerp();
 		}
 
-		// Token: 0x060022C3 RID: 8899 RVA: 0x000A6C44 File Offset: 0x000A4E44
+		// Token: 0x06002233 RID: 8755 RVA: 0x000A55C8 File Offset: 0x000A37C8
 		private void UpdateLerp()
 		{
 			LerpUIRect.LerpState lerpState = this.lerpState;
@@ -61,41 +61,41 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x0400258C RID: 9612
+		// Token: 0x04002531 RID: 9521
 		public Vector3 startLocalPosition;
 
-		// Token: 0x0400258D RID: 9613
+		// Token: 0x04002532 RID: 9522
 		public Vector3 finalLocalPosition;
 
-		// Token: 0x0400258E RID: 9614
+		// Token: 0x04002533 RID: 9523
 		public LerpUIRect.LerpState lerpState;
 
-		// Token: 0x0400258F RID: 9615
+		// Token: 0x04002534 RID: 9524
 		public AnimationCurve enterCurve;
 
-		// Token: 0x04002590 RID: 9616
+		// Token: 0x04002535 RID: 9525
 		public float enterDuration;
 
-		// Token: 0x04002591 RID: 9617
+		// Token: 0x04002536 RID: 9526
 		public AnimationCurve leavingCurve;
 
-		// Token: 0x04002592 RID: 9618
+		// Token: 0x04002537 RID: 9527
 		public float leaveDuration;
 
-		// Token: 0x04002593 RID: 9619
+		// Token: 0x04002538 RID: 9528
 		private float stopwatch;
 
-		// Token: 0x04002594 RID: 9620
+		// Token: 0x04002539 RID: 9529
 		private RectTransform rectTransform;
 
-		// Token: 0x02000606 RID: 1542
+		// Token: 0x020005F4 RID: 1524
 		public enum LerpState
 		{
-			// Token: 0x04002596 RID: 9622
+			// Token: 0x0400253B RID: 9531
 			Entering,
-			// Token: 0x04002597 RID: 9623
+			// Token: 0x0400253C RID: 9532
 			Holding,
-			// Token: 0x04002598 RID: 9624
+			// Token: 0x0400253D RID: 9533
 			Leaving
 		}
 	}

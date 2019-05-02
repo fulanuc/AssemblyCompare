@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace RoR2.UI
 {
-	// Token: 0x020005CD RID: 1485
+	// Token: 0x020005BB RID: 1467
 	public class ChargeIndicatorController : MonoBehaviour
 	{
-		// Token: 0x06002173 RID: 8563 RVA: 0x000A0B90 File Offset: 0x0009ED90
+		// Token: 0x060020E2 RID: 8418 RVA: 0x0009F5BC File Offset: 0x0009D7BC
 		private void Update()
 		{
 			Color color = this.spriteBaseColor;
@@ -49,49 +49,49 @@ namespace RoR2.UI
 			this.chargingText.color = color2;
 		}
 
-		// Token: 0x040023B9 RID: 9145
+		// Token: 0x04002365 RID: 9061
 		public SpriteRenderer[] iconSprites;
 
-		// Token: 0x040023BA RID: 9146
+		// Token: 0x04002366 RID: 9062
 		public TextMeshPro chargingText;
 
-		// Token: 0x040023BB RID: 9147
+		// Token: 0x04002367 RID: 9063
 		public Color spriteBaseColor;
 
-		// Token: 0x040023BC RID: 9148
+		// Token: 0x04002368 RID: 9064
 		public Color spriteFlashColor;
 
-		// Token: 0x040023BD RID: 9149
+		// Token: 0x04002369 RID: 9065
 		public Color spriteChargingColor;
 
-		// Token: 0x040023BE RID: 9150
+		// Token: 0x0400236A RID: 9066
 		public Color spriteChargedColor;
 
-		// Token: 0x040023BF RID: 9151
+		// Token: 0x0400236B RID: 9067
 		public Color textBaseColor;
 
-		// Token: 0x040023C0 RID: 9152
+		// Token: 0x0400236C RID: 9068
 		public Color textChargingColor;
 
-		// Token: 0x040023C1 RID: 9153
+		// Token: 0x0400236D RID: 9069
 		public bool isCharging;
 
-		// Token: 0x040023C2 RID: 9154
+		// Token: 0x0400236E RID: 9070
 		public bool isCharged;
 
-		// Token: 0x040023C3 RID: 9155
+		// Token: 0x0400236F RID: 9071
 		public bool disableTextWhenNotCharging;
 
-		// Token: 0x040023C4 RID: 9156
+		// Token: 0x04002370 RID: 9072
 		public bool disableTextWhenCharged;
 
-		// Token: 0x040023C5 RID: 9157
+		// Token: 0x04002371 RID: 9073
 		public bool flashWhenNotCharging;
 
-		// Token: 0x040023C6 RID: 9158
+		// Token: 0x04002372 RID: 9074
 		public float flashFrequency;
 
-		// Token: 0x040023C7 RID: 9159
+		// Token: 0x04002373 RID: 9075
 		private float flashStopwatch;
 	}
 }

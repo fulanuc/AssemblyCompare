@@ -8,12 +8,12 @@ using UnityEngine.UI;
 
 namespace RoR2.UI
 {
-	// Token: 0x020005CA RID: 1482
+	// Token: 0x020005B8 RID: 1464
 	[RequireComponent(typeof(MPEventSystemLocator))]
 	public class CharacterSelectController : MonoBehaviour
 	{
-		// Token: 0x170002EE RID: 750
-		// (get) Token: 0x06002164 RID: 8548 RVA: 0x00018564 File Offset: 0x00016764
+		// Token: 0x170002DB RID: 731
+		// (get) Token: 0x060020D3 RID: 8403 RVA: 0x00017E6A File Offset: 0x0001606A
 		private NetworkUser networkUser
 		{
 			get
@@ -27,7 +27,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x06002165 RID: 8549 RVA: 0x00018577 File Offset: 0x00016777
+		// Token: 0x060020D4 RID: 8404 RVA: 0x00017E7D File Offset: 0x0001607D
 		private void SetEventSystem(MPEventSystem newEventSystem)
 		{
 			if (newEventSystem == this.eventSystem)
@@ -38,13 +38,13 @@ namespace RoR2.UI
 			this.localUser = LocalUserManager.FindLocalUser(newEventSystem.player);
 		}
 
-		// Token: 0x06002166 RID: 8550 RVA: 0x000185A0 File Offset: 0x000167A0
+		// Token: 0x060020D5 RID: 8405 RVA: 0x00017EA6 File Offset: 0x000160A6
 		public void SelectSurvivor(SurvivorIndex survivor)
 		{
 			this.selectedSurvivorIndex = survivor;
 		}
 
-		// Token: 0x06002167 RID: 8551 RVA: 0x000A05BC File Offset: 0x0009E7BC
+		// Token: 0x060020D6 RID: 8406 RVA: 0x0009EFE8 File Offset: 0x0009D1E8
 		private void RebuildLocal()
 		{
 			SurvivorDef survivorDef = SurvivorCatalog.GetSurvivorDef(this.selectedSurvivorIndex);
@@ -74,7 +74,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x06002168 RID: 8552 RVA: 0x000A06BC File Offset: 0x0009E8BC
+		// Token: 0x060020D7 RID: 8407 RVA: 0x0009F0E8 File Offset: 0x0009D2E8
 		private void RebuildStrip(CharacterSelectController.SkillStrip skillStrip, GenericSkill skill)
 		{
 			if (skill)
@@ -88,7 +88,7 @@ namespace RoR2.UI
 			skillStrip.stripRoot.SetActive(false);
 		}
 
-		// Token: 0x06002169 RID: 8553 RVA: 0x000A0728 File Offset: 0x0009E928
+		// Token: 0x060020D8 RID: 8408 RVA: 0x0009F154 File Offset: 0x0009D354
 		private void RebuildStrip(CharacterSelectController.SkillStrip skillStrip, SkillLocator.PassiveSkill skill)
 		{
 			if (skill.enabled)
@@ -102,7 +102,7 @@ namespace RoR2.UI
 			skillStrip.stripRoot.SetActive(false);
 		}
 
-		// Token: 0x0600216A RID: 8554 RVA: 0x000185A9 File Offset: 0x000167A9
+		// Token: 0x060020D9 RID: 8409 RVA: 0x00017EAF File Offset: 0x000160AF
 		private void Awake()
 		{
 			this.eventSystemLocator = base.GetComponent<MPEventSystemLocator>();
@@ -111,7 +111,7 @@ namespace RoR2.UI
 			this.RebuildLocal();
 		}
 
-		// Token: 0x0600216B RID: 8555 RVA: 0x000A0794 File Offset: 0x0009E994
+		// Token: 0x060020DA RID: 8410 RVA: 0x0009F1C0 File Offset: 0x0009D3C0
 		private SurvivorIndex GetSelectedSurvivorIndexFromBodyPreference()
 		{
 			if (this.networkUser)
@@ -125,7 +125,7 @@ namespace RoR2.UI
 			return SurvivorIndex.Commando;
 		}
 
-		// Token: 0x0600216C RID: 8556 RVA: 0x000A07D8 File Offset: 0x0009E9D8
+		// Token: 0x060020DB RID: 8411 RVA: 0x0009F204 File Offset: 0x0009D404
 		private void Update()
 		{
 			this.SetEventSystem(this.eventSystemLocator.eventSystem);
@@ -205,7 +205,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x0600216D RID: 8557 RVA: 0x000185DA File Offset: 0x000167DA
+		// Token: 0x060020DC RID: 8412 RVA: 0x00017EE0 File Offset: 0x000160E0
 		private void ClearPadDisplay(CharacterSelectController.CharacterPad characterPad)
 		{
 			if (characterPad.displayInstance)
@@ -214,7 +214,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x0600216E RID: 8558 RVA: 0x000A0A00 File Offset: 0x0009EC00
+		// Token: 0x060020DD RID: 8413 RVA: 0x0009F42C File Offset: 0x0009D62C
 		private static bool InputPlayerIsAssigned(Player inputPlayer)
 		{
 			ReadOnlyCollection<NetworkUser> readOnlyInstancesList = NetworkUser.readOnlyInstancesList;
@@ -228,7 +228,7 @@ namespace RoR2.UI
 			return false;
 		}
 
-		// Token: 0x0600216F RID: 8559 RVA: 0x000A0A38 File Offset: 0x0009EC38
+		// Token: 0x060020DE RID: 8414 RVA: 0x0009F464 File Offset: 0x0009D664
 		public bool IsClientReady()
 		{
 			int num = 0;
@@ -259,7 +259,7 @@ namespace RoR2.UI
 			return num == NetworkUser.readOnlyLocalPlayersList.Count;
 		}
 
-		// Token: 0x06002170 RID: 8560 RVA: 0x000A0AD0 File Offset: 0x0009ECD0
+		// Token: 0x060020DF RID: 8415 RVA: 0x0009F4FC File Offset: 0x0009D6FC
 		public void ClientSetReady()
 		{
 			foreach (NetworkUser networkUser in NetworkUser.readOnlyLocalPlayersList)
@@ -275,7 +275,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x06002171 RID: 8561 RVA: 0x000A0B3C File Offset: 0x0009ED3C
+		// Token: 0x060020E0 RID: 8416 RVA: 0x0009F568 File Offset: 0x0009D768
 		public void ClientSetUnready()
 		{
 			foreach (NetworkUser networkUser in NetworkUser.readOnlyLocalPlayersList)
@@ -284,85 +284,85 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x040023A1 RID: 9121
+		// Token: 0x0400234D RID: 9037
 		private MPEventSystemLocator eventSystemLocator;
 
-		// Token: 0x040023A2 RID: 9122
+		// Token: 0x0400234E RID: 9038
 		private MPEventSystem eventSystem;
 
-		// Token: 0x040023A3 RID: 9123
+		// Token: 0x0400234F RID: 9039
 		private LocalUser localUser;
 
-		// Token: 0x040023A4 RID: 9124
+		// Token: 0x04002350 RID: 9040
 		public SurvivorIndex selectedSurvivorIndex;
 
-		// Token: 0x040023A5 RID: 9125
+		// Token: 0x04002351 RID: 9041
 		private SurvivorIndex previousSurvivorIndex = SurvivorIndex.None;
 
-		// Token: 0x040023A6 RID: 9126
+		// Token: 0x04002352 RID: 9042
 		public TextMeshProUGUI survivorName;
 
-		// Token: 0x040023A7 RID: 9127
+		// Token: 0x04002353 RID: 9043
 		public CharacterSelectController.SkillStrip primarySkillStrip;
 
-		// Token: 0x040023A8 RID: 9128
+		// Token: 0x04002354 RID: 9044
 		public CharacterSelectController.SkillStrip secondarySkillStrip;
 
-		// Token: 0x040023A9 RID: 9129
+		// Token: 0x04002355 RID: 9045
 		public CharacterSelectController.SkillStrip utilitySkillStrip;
 
-		// Token: 0x040023AA RID: 9130
+		// Token: 0x04002356 RID: 9046
 		public CharacterSelectController.SkillStrip specialSkillStrip;
 
-		// Token: 0x040023AB RID: 9131
+		// Token: 0x04002357 RID: 9047
 		public CharacterSelectController.SkillStrip passiveSkillStrip;
 
-		// Token: 0x040023AC RID: 9132
+		// Token: 0x04002358 RID: 9048
 		public TextMeshProUGUI survivorDescription;
 
-		// Token: 0x040023AD RID: 9133
+		// Token: 0x04002359 RID: 9049
 		public CharacterSelectController.CharacterPad[] characterDisplayPads;
 
-		// Token: 0x040023AE RID: 9134
+		// Token: 0x0400235A RID: 9050
 		public Image[] primaryColorImages;
 
-		// Token: 0x040023AF RID: 9135
+		// Token: 0x0400235B RID: 9051
 		public TextMeshProUGUI[] primaryColorTexts;
 
-		// Token: 0x040023B0 RID: 9136
+		// Token: 0x0400235C RID: 9052
 		public MPButton readyButton;
 
-		// Token: 0x040023B1 RID: 9137
+		// Token: 0x0400235D RID: 9053
 		public MPButton unreadyButton;
 
-		// Token: 0x020005CB RID: 1483
+		// Token: 0x020005B9 RID: 1465
 		[Serializable]
 		public struct SkillStrip
 		{
-			// Token: 0x040023B2 RID: 9138
+			// Token: 0x0400235E RID: 9054
 			public GameObject stripRoot;
 
-			// Token: 0x040023B3 RID: 9139
+			// Token: 0x0400235F RID: 9055
 			public Image skillIcon;
 
-			// Token: 0x040023B4 RID: 9140
+			// Token: 0x04002360 RID: 9056
 			public TextMeshProUGUI skillName;
 
-			// Token: 0x040023B5 RID: 9141
+			// Token: 0x04002361 RID: 9057
 			public TextMeshProUGUI skillDescription;
 		}
 
-		// Token: 0x020005CC RID: 1484
+		// Token: 0x020005BA RID: 1466
 		[Serializable]
 		public struct CharacterPad
 		{
-			// Token: 0x040023B6 RID: 9142
+			// Token: 0x04002362 RID: 9058
 			public Transform padTransform;
 
-			// Token: 0x040023B7 RID: 9143
+			// Token: 0x04002363 RID: 9059
 			public GameObject displayInstance;
 
-			// Token: 0x040023B8 RID: 9144
+			// Token: 0x04002364 RID: 9060
 			public SurvivorIndex displaySurvivorIndex;
 		}
 	}

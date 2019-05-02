@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 namespace RoR2.UI
 {
-	// Token: 0x0200061B RID: 1563
+	// Token: 0x02000609 RID: 1545
 	[RequireComponent(typeof(MPEventSystemLocator))]
 	public class MPScrollbar : Scrollbar
 	{
-		// Token: 0x17000320 RID: 800
-		// (get) Token: 0x0600236F RID: 9071 RVA: 0x00019D62 File Offset: 0x00017F62
+		// Token: 0x1700030E RID: 782
+		// (get) Token: 0x060022DF RID: 8927 RVA: 0x000196AB File Offset: 0x000178AB
 		private EventSystem eventSystem
 		{
 			get
@@ -19,14 +19,14 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x06002370 RID: 9072 RVA: 0x00019D6F File Offset: 0x00017F6F
+		// Token: 0x060022E0 RID: 8928 RVA: 0x000196B8 File Offset: 0x000178B8
 		protected override void Awake()
 		{
 			base.Awake();
 			this.eventSystemLocator = base.GetComponent<MPEventSystemLocator>();
 		}
 
-		// Token: 0x06002371 RID: 9073 RVA: 0x000A9194 File Offset: 0x000A7394
+		// Token: 0x060022E1 RID: 8929 RVA: 0x000A7B18 File Offset: 0x000A5D18
 		private Selectable FilterSelectable(Selectable selectable)
 		{
 			if (selectable)
@@ -40,7 +40,7 @@ namespace RoR2.UI
 			return selectable;
 		}
 
-		// Token: 0x06002372 RID: 9074 RVA: 0x000A91D4 File Offset: 0x000A73D4
+		// Token: 0x060022E2 RID: 8930 RVA: 0x000A7B58 File Offset: 0x000A5D58
 		public bool InputModuleIsAllowed(BaseInputModule inputModule)
 		{
 			if (this.allowAllEventSystems)
@@ -51,31 +51,31 @@ namespace RoR2.UI
 			return eventSystem && inputModule == eventSystem.currentInputModule;
 		}
 
-		// Token: 0x06002373 RID: 9075 RVA: 0x00019D83 File Offset: 0x00017F83
+		// Token: 0x060022E3 RID: 8931 RVA: 0x000196CC File Offset: 0x000178CC
 		public override Selectable FindSelectableOnDown()
 		{
 			return this.FilterSelectable(base.FindSelectableOnDown());
 		}
 
-		// Token: 0x06002374 RID: 9076 RVA: 0x00019D91 File Offset: 0x00017F91
+		// Token: 0x060022E4 RID: 8932 RVA: 0x000196DA File Offset: 0x000178DA
 		public override Selectable FindSelectableOnLeft()
 		{
 			return this.FilterSelectable(base.FindSelectableOnLeft());
 		}
 
-		// Token: 0x06002375 RID: 9077 RVA: 0x00019D9F File Offset: 0x00017F9F
+		// Token: 0x060022E5 RID: 8933 RVA: 0x000196E8 File Offset: 0x000178E8
 		public override Selectable FindSelectableOnRight()
 		{
 			return this.FilterSelectable(base.FindSelectableOnRight());
 		}
 
-		// Token: 0x06002376 RID: 9078 RVA: 0x00019DAD File Offset: 0x00017FAD
+		// Token: 0x060022E6 RID: 8934 RVA: 0x000196F6 File Offset: 0x000178F6
 		public override Selectable FindSelectableOnUp()
 		{
 			return this.FilterSelectable(base.FindSelectableOnUp());
 		}
 
-		// Token: 0x06002377 RID: 9079 RVA: 0x000A9208 File Offset: 0x000A7408
+		// Token: 0x060022E7 RID: 8935 RVA: 0x000A7B8C File Offset: 0x000A5D8C
 		public override void OnPointerUp(PointerEventData eventData)
 		{
 			if (!this.InputModuleIsAllowed(eventData.currentInputModule))
@@ -90,7 +90,7 @@ namespace RoR2.UI
 			base.OnPointerUp(eventData);
 		}
 
-		// Token: 0x06002378 RID: 9080 RVA: 0x00019DBB File Offset: 0x00017FBB
+		// Token: 0x060022E8 RID: 8936 RVA: 0x00019704 File Offset: 0x00017904
 		public override void OnSelect(BaseEventData eventData)
 		{
 			if (!this.InputModuleIsAllowed(eventData.currentInputModule))
@@ -100,7 +100,7 @@ namespace RoR2.UI
 			base.OnSelect(eventData);
 		}
 
-		// Token: 0x06002379 RID: 9081 RVA: 0x00019DD3 File Offset: 0x00017FD3
+		// Token: 0x060022E9 RID: 8937 RVA: 0x0001971C File Offset: 0x0001791C
 		public override void OnDeselect(BaseEventData eventData)
 		{
 			if (!this.InputModuleIsAllowed(eventData.currentInputModule))
@@ -110,7 +110,7 @@ namespace RoR2.UI
 			base.OnDeselect(eventData);
 		}
 
-		// Token: 0x0600237A RID: 9082 RVA: 0x00019DEB File Offset: 0x00017FEB
+		// Token: 0x060022EA RID: 8938 RVA: 0x00019734 File Offset: 0x00017934
 		public override void OnPointerEnter(PointerEventData eventData)
 		{
 			if (!this.InputModuleIsAllowed(eventData.currentInputModule))
@@ -120,7 +120,7 @@ namespace RoR2.UI
 			base.OnPointerEnter(eventData);
 		}
 
-		// Token: 0x0600237B RID: 9083 RVA: 0x00019E03 File Offset: 0x00018003
+		// Token: 0x060022EB RID: 8939 RVA: 0x0001974C File Offset: 0x0001794C
 		public override void OnPointerExit(PointerEventData eventData)
 		{
 			if (!this.InputModuleIsAllowed(eventData.currentInputModule))
@@ -130,7 +130,7 @@ namespace RoR2.UI
 			base.OnPointerExit(eventData);
 		}
 
-		// Token: 0x0600237C RID: 9084 RVA: 0x000A9260 File Offset: 0x000A7460
+		// Token: 0x060022EC RID: 8940 RVA: 0x000A7BE4 File Offset: 0x000A5DE4
 		public override void OnPointerDown(PointerEventData eventData)
 		{
 			if (eventData.button != PointerEventData.InputButton.Left)
@@ -144,7 +144,7 @@ namespace RoR2.UI
 			base.OnPointerDown(eventData);
 		}
 
-		// Token: 0x0600237D RID: 9085 RVA: 0x00019E1B File Offset: 0x0001801B
+		// Token: 0x060022ED RID: 8941 RVA: 0x00019764 File Offset: 0x00017964
 		public override void Select()
 		{
 			if (this.eventSystem.alreadySelecting)
@@ -154,13 +154,13 @@ namespace RoR2.UI
 			this.eventSystem.SetSelectedGameObject(base.gameObject);
 		}
 
-		// Token: 0x04002620 RID: 9760
+		// Token: 0x040025C5 RID: 9669
 		public bool allowAllEventSystems;
 
-		// Token: 0x04002621 RID: 9761
+		// Token: 0x040025C6 RID: 9670
 		private MPEventSystemLocator eventSystemLocator;
 
-		// Token: 0x04002622 RID: 9762
+		// Token: 0x040025C7 RID: 9671
 		private RectTransform viewPortRectTransform;
 	}
 }

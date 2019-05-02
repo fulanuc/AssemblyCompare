@@ -5,22 +5,22 @@ using UnityEngine.UI;
 
 namespace RoR2.UI
 {
-	// Token: 0x020005FB RID: 1531
+	// Token: 0x020005E9 RID: 1513
 	[RequireComponent(typeof(RectTransform))]
 	public class ItemIcon : MonoBehaviour
 	{
-		// Token: 0x17000306 RID: 774
-		// (get) Token: 0x06002286 RID: 8838 RVA: 0x0001929A File Offset: 0x0001749A
-		// (set) Token: 0x06002287 RID: 8839 RVA: 0x000192A2 File Offset: 0x000174A2
+		// Token: 0x170002F3 RID: 755
+		// (get) Token: 0x060021F5 RID: 8693 RVA: 0x00018BA0 File Offset: 0x00016DA0
+		// (set) Token: 0x060021F6 RID: 8694 RVA: 0x00018BA8 File Offset: 0x00016DA8
 		public RectTransform rectTransform { get; private set; }
 
-		// Token: 0x06002288 RID: 8840 RVA: 0x000192AB File Offset: 0x000174AB
+		// Token: 0x060021F7 RID: 8695 RVA: 0x00018BB1 File Offset: 0x00016DB1
 		private void Awake()
 		{
 			this.CacheRectTransform();
 		}
 
-		// Token: 0x06002289 RID: 8841 RVA: 0x000192B3 File Offset: 0x000174B3
+		// Token: 0x060021F8 RID: 8696 RVA: 0x00018BB9 File Offset: 0x00016DB9
 		public void CacheRectTransform()
 		{
 			if (this.rectTransform == null)
@@ -29,7 +29,7 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x0600228A RID: 8842 RVA: 0x000A5F44 File Offset: 0x000A4144
+		// Token: 0x060021F9 RID: 8697 RVA: 0x000A4990 File Offset: 0x000A2B90
 		public void SetItemIndex(ItemIndex newItemIndex, int newItemCount)
 		{
 			if (this.itemIndex == newItemIndex && this.itemCount == newItemCount)
@@ -72,22 +72,22 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x04002547 RID: 9543
+		// Token: 0x040024F2 RID: 9458
 		public RawImage glowImage;
 
-		// Token: 0x04002548 RID: 9544
+		// Token: 0x040024F3 RID: 9459
 		public RawImage image;
 
-		// Token: 0x04002549 RID: 9545
+		// Token: 0x040024F4 RID: 9460
 		public TextMeshProUGUI stackText;
 
-		// Token: 0x0400254A RID: 9546
+		// Token: 0x040024F5 RID: 9461
 		public TooltipProvider tooltipProvider;
 
-		// Token: 0x0400254B RID: 9547
+		// Token: 0x040024F6 RID: 9462
 		private ItemIndex itemIndex;
 
-		// Token: 0x0400254C RID: 9548
+		// Token: 0x040024F7 RID: 9463
 		private int itemCount;
 	}
 }

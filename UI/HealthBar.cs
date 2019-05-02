@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 namespace RoR2.UI
 {
-	// Token: 0x020005EF RID: 1519
+	// Token: 0x020005DD RID: 1501
 	[RequireComponent(typeof(RectTransform))]
 	public class HealthBar : MonoBehaviour
 	{
-		// Token: 0x06002238 RID: 8760 RVA: 0x00018E54 File Offset: 0x00017054
+		// Token: 0x060021A7 RID: 8615 RVA: 0x0001875A File Offset: 0x0001695A
 		private void Awake()
 		{
 			this.rectTransform = base.GetComponent<RectTransform>();
@@ -18,19 +18,19 @@ namespace RoR2.UI
 			this.originalFillColor = this.fillImage.color;
 		}
 
-		// Token: 0x06002239 RID: 8761 RVA: 0x00018E8F File Offset: 0x0001708F
+		// Token: 0x060021A8 RID: 8616 RVA: 0x00018795 File Offset: 0x00016995
 		private void Start()
 		{
 			this.UpdateHealthbar(0f);
 		}
 
-		// Token: 0x0600223A RID: 8762 RVA: 0x00018E9C File Offset: 0x0001709C
+		// Token: 0x060021A9 RID: 8617 RVA: 0x000187A2 File Offset: 0x000169A2
 		public void Update()
 		{
 			this.UpdateHealthbar(Time.deltaTime);
 		}
 
-		// Token: 0x0600223B RID: 8763 RVA: 0x000A44B8 File Offset: 0x000A26B8
+		// Token: 0x060021AA RID: 8618 RVA: 0x000A2EE4 File Offset: 0x000A10E4
 		private void UpdateHealthbar(float deltaTime)
 		{
 			float num = 0f;
@@ -68,7 +68,7 @@ namespace RoR2.UI
 				}
 				if (this.frozenCullThresholdRectTransform)
 				{
-					this.frozenCullThresholdRectTransform.gameObject.SetActive(this.source.isInFrozenState);
+					this.frozenCullThresholdRectTransform.gameObject.SetActive(this.source.isFrozen);
 				}
 				bool active = false;
 				if (this.source.fullShield > 0f)
@@ -170,7 +170,7 @@ namespace RoR2.UI
 			this.cachedFractionalValue = Mathf.SmoothDamp(this.cachedFractionalValue, num, ref this.healthFractionVelocity, 0.05f, float.PositiveInfinity, deltaTime);
 		}
 
-		// Token: 0x0600223C RID: 8764 RVA: 0x00018EA9 File Offset: 0x000170A9
+		// Token: 0x060021AB RID: 8619 RVA: 0x000187AF File Offset: 0x000169AF
 		public static Color GetCriticallyHurtColor()
 		{
 			if (Mathf.FloorToInt(Time.fixedTime * 10f) % 2 != 0)
@@ -180,91 +180,91 @@ namespace RoR2.UI
 			return Color.white;
 		}
 
-		// Token: 0x040024BD RID: 9405
+		// Token: 0x04002469 RID: 9321
 		public HealthComponent source;
 
-		// Token: 0x040024BE RID: 9406
+		// Token: 0x0400246A RID: 9322
 		public RectTransform fillRectTransform;
 
-		// Token: 0x040024BF RID: 9407
+		// Token: 0x0400246B RID: 9323
 		public RectTransform shieldFillRectTransform;
 
-		// Token: 0x040024C0 RID: 9408
+		// Token: 0x0400246C RID: 9324
 		public RectTransform delayfillRectTransform;
 
-		// Token: 0x040024C1 RID: 9409
+		// Token: 0x0400246D RID: 9325
 		public RectTransform flashRectTransform;
 
-		// Token: 0x040024C2 RID: 9410
+		// Token: 0x0400246E RID: 9326
 		public RectTransform eliteBackdropRectTransform;
 
-		// Token: 0x040024C3 RID: 9411
+		// Token: 0x0400246F RID: 9327
 		public RectTransform frozenCullThresholdRectTransform;
 
-		// Token: 0x040024C4 RID: 9412
+		// Token: 0x04002470 RID: 9328
 		public TextMeshProUGUI currentHealthText;
 
-		// Token: 0x040024C5 RID: 9413
+		// Token: 0x04002471 RID: 9329
 		public TextMeshProUGUI fullHealthText;
 
-		// Token: 0x040024C6 RID: 9414
+		// Token: 0x04002472 RID: 9330
 		public Image criticallyHurtImage;
 
-		// Token: 0x040024C7 RID: 9415
+		// Token: 0x04002473 RID: 9331
 		public Image deadImage;
 
-		// Token: 0x040024C8 RID: 9416
+		// Token: 0x04002474 RID: 9332
 		public float maxLastHitTimer = 1f;
 
-		// Token: 0x040024C9 RID: 9417
+		// Token: 0x04002475 RID: 9333
 		public bool scaleHealthbarWidth;
 
-		// Token: 0x040024CA RID: 9418
+		// Token: 0x04002476 RID: 9334
 		public float minHealthbarWidth;
 
-		// Token: 0x040024CB RID: 9419
+		// Token: 0x04002477 RID: 9335
 		public float maxHealthbarWidth;
 
-		// Token: 0x040024CC RID: 9420
+		// Token: 0x04002478 RID: 9336
 		public float minHealthbarHealth;
 
-		// Token: 0x040024CD RID: 9421
+		// Token: 0x04002479 RID: 9337
 		public float maxHealthbarHealth;
 
-		// Token: 0x040024CE RID: 9422
+		// Token: 0x0400247A RID: 9338
 		private float displayStringCurrentHealth;
 
-		// Token: 0x040024CF RID: 9423
+		// Token: 0x0400247B RID: 9339
 		private float displayStringFullHealth;
 
-		// Token: 0x040024D0 RID: 9424
+		// Token: 0x0400247C RID: 9340
 		private RectTransform rectTransform;
 
-		// Token: 0x040024D1 RID: 9425
+		// Token: 0x0400247D RID: 9341
 		private float lastHitTimer;
 
-		// Token: 0x040024D2 RID: 9426
+		// Token: 0x0400247E RID: 9342
 		private float cachedFractionalValue = 1f;
 
-		// Token: 0x040024D3 RID: 9427
+		// Token: 0x0400247F RID: 9343
 		private bool hasCachedInitialValue;
 
-		// Token: 0x040024D4 RID: 9428
+		// Token: 0x04002480 RID: 9344
 		private float healthbarScale = 1f;
 
-		// Token: 0x040024D5 RID: 9429
+		// Token: 0x04002481 RID: 9345
 		private Image fillImage;
 
-		// Token: 0x040024D6 RID: 9430
+		// Token: 0x04002482 RID: 9346
 		private Color originalFillColor;
 
-		// Token: 0x040024D7 RID: 9431
+		// Token: 0x04002483 RID: 9347
 		public static float criticallyHurtThreshold = 0.3f;
 
-		// Token: 0x040024D8 RID: 9432
+		// Token: 0x04002484 RID: 9348
 		private float theta;
 
-		// Token: 0x040024D9 RID: 9433
+		// Token: 0x04002485 RID: 9349
 		private float healthFractionVelocity;
 	}
 }

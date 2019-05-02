@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace RoR2.UI
 {
-	// Token: 0x02000618 RID: 1560
+	// Token: 0x02000606 RID: 1542
 	public class MPEventSystemProvider : MonoBehaviour
 	{
-		// Token: 0x1700031E RID: 798
-		// (get) Token: 0x0600235F RID: 9055 RVA: 0x00019CCB File Offset: 0x00017ECB
+		// Token: 0x1700030C RID: 780
+		// (get) Token: 0x060022CF RID: 8911 RVA: 0x00019614 File Offset: 0x00017814
 		public MPEventSystem resolvedEventSystem
 		{
 			get
@@ -24,10 +24,10 @@ namespace RoR2.UI
 			}
 		}
 
-		// Token: 0x0400261A RID: 9754
+		// Token: 0x040025BF RID: 9663
 		public MPEventSystem eventSystem;
 
-		// Token: 0x0400261B RID: 9755
+		// Token: 0x040025C0 RID: 9664
 		public bool fallBackToMainEventSystem = true;
 	}
 }

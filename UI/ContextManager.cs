@@ -5,23 +5,23 @@ using UnityEngine;
 
 namespace RoR2.UI
 {
-	// Token: 0x020005D4 RID: 1492
+	// Token: 0x020005C2 RID: 1474
 	[RequireComponent(typeof(MPEventSystemLocator))]
 	public class ContextManager : MonoBehaviour
 	{
-		// Token: 0x060021BA RID: 8634 RVA: 0x000189CD File Offset: 0x00016BCD
+		// Token: 0x06002129 RID: 8489 RVA: 0x000182D3 File Offset: 0x000164D3
 		private void Awake()
 		{
 			this.eventSystemLocator = base.GetComponent<MPEventSystemLocator>();
 		}
 
-		// Token: 0x060021BB RID: 8635 RVA: 0x000189DB File Offset: 0x00016BDB
+		// Token: 0x0600212A RID: 8490 RVA: 0x000182E1 File Offset: 0x000164E1
 		private void Start()
 		{
 			this.Update();
 		}
 
-		// Token: 0x060021BC RID: 8636 RVA: 0x000A1AF4 File Offset: 0x0009FCF4
+		// Token: 0x0600212B RID: 8491 RVA: 0x000A0520 File Offset: 0x0009E720
 		private void Update()
 		{
 			string text = "";
@@ -58,19 +58,19 @@ namespace RoR2.UI
 			this.contextDisplay.SetActive(active);
 		}
 
-		// Token: 0x040023F8 RID: 9208
+		// Token: 0x040023A4 RID: 9124
 		public TextMeshProUGUI glyphTMP;
 
-		// Token: 0x040023F9 RID: 9209
+		// Token: 0x040023A5 RID: 9125
 		public TextMeshProUGUI descriptionTMP;
 
-		// Token: 0x040023FA RID: 9210
+		// Token: 0x040023A6 RID: 9126
 		public GameObject contextDisplay;
 
-		// Token: 0x040023FB RID: 9211
+		// Token: 0x040023A7 RID: 9127
 		public HUD hud;
 
-		// Token: 0x040023FC RID: 9212
+		// Token: 0x040023A8 RID: 9128
 		private MPEventSystemLocator eventSystemLocator;
 	}
 }

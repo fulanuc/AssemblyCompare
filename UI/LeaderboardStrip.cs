@@ -5,22 +5,19 @@ using UnityEngine.UI;
 
 namespace RoR2.UI
 {
-	// Token: 0x02000604 RID: 1540
+	// Token: 0x020005F2 RID: 1522
 	public class LeaderboardStrip : MonoBehaviour
 	{
-		// Token: 0x04002587 RID: 9607
+		// Token: 0x0400252D RID: 9517
 		public TextMeshProUGUI rankLabel;
 
-		// Token: 0x04002588 RID: 9608
+		// Token: 0x0400252E RID: 9518
 		public SteamUsernameLabel usernameLabel;
 
-		// Token: 0x04002589 RID: 9609
+		// Token: 0x0400252F RID: 9519
 		public RawImage classIcon;
 
-		// Token: 0x0400258A RID: 9610
-		public Image isMeImage;
-
-		// Token: 0x0400258B RID: 9611
+		// Token: 0x04002530 RID: 9520
 		public TextMeshProUGUI timeLabel;
 	}
 }
