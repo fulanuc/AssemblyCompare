@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x02000388 RID: 904
+	// Token: 0x02000383 RID: 899
 	[RequireComponent(typeof(EffectComponent))]
 	public class ParticleSystemColorFromEffectData : MonoBehaviour
 	{
-		// Token: 0x060012E8 RID: 4840 RVA: 0x0006AA04 File Offset: 0x00068C04
+		// Token: 0x060012C8 RID: 4808 RVA: 0x0006A660 File Offset: 0x00068860
 		private void Start()
 		{
 			Color color = this.effectComponent.effectData.color;
@@ -19,10 +19,10 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x040016A2 RID: 5794
+		// Token: 0x04001686 RID: 5766
 		public ParticleSystem[] particleSystems;
 
-		// Token: 0x040016A3 RID: 5795
+		// Token: 0x04001687 RID: 5767
 		public EffectComponent effectComponent;
 	}
 }

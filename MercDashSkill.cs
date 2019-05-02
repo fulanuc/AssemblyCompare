@@ -3,15 +3,15 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x0200035B RID: 859
+	// Token: 0x02000358 RID: 856
 	public class MercDashSkill : GenericSkill
 	{
-		// Token: 0x1700018A RID: 394
-		// (get) Token: 0x060011C0 RID: 4544 RVA: 0x0000D820 File Offset: 0x0000BA20
-		// (set) Token: 0x060011C1 RID: 4545 RVA: 0x0000D828 File Offset: 0x0000BA28
+		// Token: 0x17000185 RID: 389
+		// (get) Token: 0x060011A9 RID: 4521 RVA: 0x0000D737 File Offset: 0x0000B937
+		// (set) Token: 0x060011AA RID: 4522 RVA: 0x0000D73F File Offset: 0x0000B93F
 		public int currentDashIndex { get; private set; }
 
-		// Token: 0x060011C2 RID: 4546 RVA: 0x00066E7C File Offset: 0x0006507C
+		// Token: 0x060011AB RID: 4523 RVA: 0x00066B44 File Offset: 0x00064D44
 		public void AddHit()
 		{
 			int num = this.currentDashIndex + 1;
@@ -25,7 +25,7 @@ namespace RoR2
 			this.currentDashIndex = 0;
 		}
 
-		// Token: 0x060011C3 RID: 4547 RVA: 0x00066EC0 File Offset: 0x000650C0
+		// Token: 0x060011AC RID: 4524 RVA: 0x00066B88 File Offset: 0x00064D88
 		protected new void FixedUpdate()
 		{
 			base.FixedUpdate();
@@ -43,23 +43,23 @@ namespace RoR2
 			this.icon = this.icons[num];
 		}
 
-		// Token: 0x060011C4 RID: 4548 RVA: 0x0000D831 File Offset: 0x0000BA31
+		// Token: 0x060011AD RID: 4525 RVA: 0x0000D748 File Offset: 0x0000B948
 		protected override void OnExecute()
 		{
 			base.OnExecute();
 			this.timeoutTimer = this.timeoutDuration;
 		}
 
-		// Token: 0x040015BB RID: 5563
+		// Token: 0x040015A2 RID: 5538
 		public int maxDashes;
 
-		// Token: 0x040015BC RID: 5564
+		// Token: 0x040015A3 RID: 5539
 		private float timeoutTimer;
 
-		// Token: 0x040015BD RID: 5565
+		// Token: 0x040015A4 RID: 5540
 		public float timeoutDuration;
 
-		// Token: 0x040015BE RID: 5566
+		// Token: 0x040015A5 RID: 5541
 		public Sprite[] icons;
 	}
 }

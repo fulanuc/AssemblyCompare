@@ -3,18 +3,18 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x02000379 RID: 889
-	[ExecuteInEditMode]
+	// Token: 0x02000376 RID: 886
 	[RequireComponent(typeof(ParticleSystem))]
+	[ExecuteInEditMode]
 	public class NormalizeParticleScale : MonoBehaviour
 	{
-		// Token: 0x060012B9 RID: 4793 RVA: 0x0000E588 File Offset: 0x0000C788
+		// Token: 0x060012A2 RID: 4770 RVA: 0x0000E490 File Offset: 0x0000C690
 		public void OnEnable()
 		{
 			this.UpdateParticleSystem();
 		}
 
-		// Token: 0x060012BA RID: 4794 RVA: 0x00069E04 File Offset: 0x00068004
+		// Token: 0x060012A3 RID: 4771 RVA: 0x00069AD0 File Offset: 0x00067CD0
 		private void UpdateParticleSystem()
 		{
 			if (!this.particleSystem)
@@ -35,7 +35,7 @@ namespace RoR2
 			main.startSize = startSize;
 		}
 
-		// Token: 0x04001653 RID: 5715
+		// Token: 0x0400163A RID: 5690
 		private ParticleSystem particleSystem;
 	}
 }

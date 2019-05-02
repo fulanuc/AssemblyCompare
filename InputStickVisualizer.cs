@@ -7,17 +7,17 @@ using UnityEngine.UI;
 
 namespace RoR2
 {
-	// Token: 0x0200040E RID: 1038
+	// Token: 0x02000408 RID: 1032
 	[RequireComponent(typeof(MPEventSystemLocator))]
 	public class InputStickVisualizer : MonoBehaviour
 	{
-		// Token: 0x06001747 RID: 5959 RVA: 0x000117E4 File Offset: 0x0000F9E4
+		// Token: 0x06001704 RID: 5892 RVA: 0x000113B8 File Offset: 0x0000F5B8
 		private void Awake()
 		{
 			this.eventSystemLocator = base.GetComponent<MPEventSystemLocator>();
 		}
 
-		// Token: 0x06001748 RID: 5960 RVA: 0x000117F2 File Offset: 0x0000F9F2
+		// Token: 0x06001705 RID: 5893 RVA: 0x000113C6 File Offset: 0x0000F5C6
 		private Player GetPlayer()
 		{
 			MPEventSystem eventSystem = this.eventSystemLocator.eventSystem;
@@ -28,7 +28,7 @@ namespace RoR2
 			return eventSystem.player;
 		}
 
-		// Token: 0x06001749 RID: 5961 RVA: 0x0001180A File Offset: 0x0000FA0A
+		// Token: 0x06001706 RID: 5894 RVA: 0x000113DE File Offset: 0x0000F5DE
 		private CameraRigController GetCameraRigController()
 		{
 			if (CameraRigController.readOnlyInstancesList.Count <= 0)
@@ -38,7 +38,7 @@ namespace RoR2
 			return CameraRigController.readOnlyInstancesList[0];
 		}
 
-		// Token: 0x0600174A RID: 5962 RVA: 0x00079724 File Offset: 0x00077924
+		// Token: 0x06001707 RID: 5895 RVA: 0x00079164 File Offset: 0x00077364
 		private void SetBarValues(Vector2 vector, Scrollbar scrollbarX, Scrollbar scrollbarY)
 		{
 			if (scrollbarX)
@@ -51,7 +51,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600174B RID: 5963 RVA: 0x0007978C File Offset: 0x0007798C
+		// Token: 0x06001708 RID: 5896 RVA: 0x000791CC File Offset: 0x000773CC
 		private void Update()
 		{
 			Player player = this.GetPlayer();
@@ -73,51 +73,51 @@ namespace RoR2
 			this.aimYLabel.text = string.Format("aim.y={0:0.0000}", vector2.y);
 		}
 
-		// Token: 0x04001A4D RID: 6733
+		// Token: 0x04001A24 RID: 6692
 		[Header("Move")]
 		public Scrollbar moveXBar;
 
-		// Token: 0x04001A4E RID: 6734
+		// Token: 0x04001A25 RID: 6693
 		public Scrollbar moveYBar;
 
-		// Token: 0x04001A4F RID: 6735
+		// Token: 0x04001A26 RID: 6694
 		public TextMeshProUGUI moveXLabel;
 
-		// Token: 0x04001A50 RID: 6736
+		// Token: 0x04001A27 RID: 6695
 		public TextMeshProUGUI moveYLabel;
 
-		// Token: 0x04001A51 RID: 6737
+		// Token: 0x04001A28 RID: 6696
 		[Header("Aim")]
 		public Scrollbar aimXBar;
 
-		// Token: 0x04001A52 RID: 6738
+		// Token: 0x04001A29 RID: 6697
 		public Scrollbar aimYBar;
 
-		// Token: 0x04001A53 RID: 6739
+		// Token: 0x04001A2A RID: 6698
 		public TextMeshProUGUI aimXLabel;
 
-		// Token: 0x04001A54 RID: 6740
+		// Token: 0x04001A2B RID: 6699
 		public TextMeshProUGUI aimYLabel;
 
-		// Token: 0x04001A55 RID: 6741
+		// Token: 0x04001A2C RID: 6700
 		public Scrollbar aimStickPostSmoothingXBar;
 
-		// Token: 0x04001A56 RID: 6742
+		// Token: 0x04001A2D RID: 6701
 		public Scrollbar aimStickPostSmoothingYBar;
 
-		// Token: 0x04001A57 RID: 6743
+		// Token: 0x04001A2E RID: 6702
 		public Scrollbar aimStickPostDualZoneXBar;
 
-		// Token: 0x04001A58 RID: 6744
+		// Token: 0x04001A2F RID: 6703
 		public Scrollbar aimStickPostDualZoneYBar;
 
-		// Token: 0x04001A59 RID: 6745
+		// Token: 0x04001A30 RID: 6704
 		public Scrollbar aimStickPostExponentXBar;
 
-		// Token: 0x04001A5A RID: 6746
+		// Token: 0x04001A31 RID: 6705
 		public Scrollbar aimStickPostExponentYBar;
 
-		// Token: 0x04001A5B RID: 6747
+		// Token: 0x04001A32 RID: 6706
 		private MPEventSystemLocator eventSystemLocator;
 	}
 }

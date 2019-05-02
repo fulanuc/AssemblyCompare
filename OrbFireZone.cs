@@ -6,15 +6,15 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x02000382 RID: 898
+	// Token: 0x0200037D RID: 893
 	public class OrbFireZone : MonoBehaviour
 	{
-		// Token: 0x060012D2 RID: 4818 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x060012B2 RID: 4786 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void Awake()
 		{
 		}
 
-		// Token: 0x060012D3 RID: 4819 RVA: 0x0006A0BC File Offset: 0x000682BC
+		// Token: 0x060012B3 RID: 4787 RVA: 0x00069D18 File Offset: 0x00067F18
 		private void FixedUpdate()
 		{
 			if (this.previousColliderList.Count > 0)
@@ -34,7 +34,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060012D4 RID: 4820 RVA: 0x0006A17C File Offset: 0x0006837C
+		// Token: 0x060012B4 RID: 4788 RVA: 0x00069DD8 File Offset: 0x00067FD8
 		private void OnTriggerStay(Collider other)
 		{
 			if (NetworkServer.active)
@@ -64,25 +64,25 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04001666 RID: 5734
+		// Token: 0x0400164A RID: 5706
 		public float baseDamage;
 
-		// Token: 0x04001667 RID: 5735
+		// Token: 0x0400164B RID: 5707
 		public float procCoefficient;
 
-		// Token: 0x04001668 RID: 5736
+		// Token: 0x0400164C RID: 5708
 		public float orbRemoveFromBottomOfListFrequency;
 
-		// Token: 0x04001669 RID: 5737
+		// Token: 0x0400164D RID: 5709
 		public float orbResetListFrequency;
 
-		// Token: 0x0400166A RID: 5738
+		// Token: 0x0400164E RID: 5710
 		private List<Collider> previousColliderList = new List<Collider>();
 
-		// Token: 0x0400166B RID: 5739
+		// Token: 0x0400164F RID: 5711
 		private float resetStopwatch;
 
-		// Token: 0x0400166C RID: 5740
+		// Token: 0x04001650 RID: 5712
 		private float removeFromBottomOfListStopwatch;
 	}
 }

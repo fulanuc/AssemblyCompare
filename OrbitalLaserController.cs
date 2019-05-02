@@ -3,17 +3,17 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x02000383 RID: 899
+	// Token: 0x0200037E RID: 894
 	public class OrbitalLaserController : MonoBehaviour
 	{
-		// Token: 0x060012D6 RID: 4822 RVA: 0x0000E68A File Offset: 0x0000C88A
+		// Token: 0x060012B6 RID: 4790 RVA: 0x0000E4FF File Offset: 0x0000C6FF
 		private void Start()
 		{
 			this.chargeEffect.SetActive(true);
 			this.chargeEffect.GetComponent<ObjectScaleCurve>().timeMax = this.chargeDuration;
 		}
 
-		// Token: 0x060012D7 RID: 4823 RVA: 0x0006A27C File Offset: 0x0006847C
+		// Token: 0x060012B7 RID: 4791 RVA: 0x00069ED8 File Offset: 0x000680D8
 		private void FixedUpdate()
 		{
 			this.stopwatch += Time.fixedDeltaTime;
@@ -88,80 +88,80 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0400166D RID: 5741
+		// Token: 0x04001651 RID: 5713
 		public CharacterBody ownerBody;
 
-		// Token: 0x0400166E RID: 5742
+		// Token: 0x04001652 RID: 5714
 		public GameObject chargeEffect;
 
-		// Token: 0x0400166F RID: 5743
+		// Token: 0x04001653 RID: 5715
 		public GameObject fireEffect;
 
-		// Token: 0x04001670 RID: 5744
+		// Token: 0x04001654 RID: 5716
 		public float chargeDuration = 3f;
 
-		// Token: 0x04001671 RID: 5745
+		// Token: 0x04001655 RID: 5717
 		public float fireDuration = 6f;
 
-		// Token: 0x04001672 RID: 5746
+		// Token: 0x04001656 RID: 5718
 		public float decayDuration = 1.5f;
 
-		// Token: 0x04001673 RID: 5747
+		// Token: 0x04001657 RID: 5719
 		public float chargeMaxVelocity = 20f;
 
-		// Token: 0x04001674 RID: 5748
+		// Token: 0x04001658 RID: 5720
 		public float fireMaxVelocity = 1f;
 
-		// Token: 0x04001675 RID: 5749
+		// Token: 0x04001659 RID: 5721
 		public float smoothDampTime = 0.3f;
 
-		// Token: 0x04001676 RID: 5750
+		// Token: 0x0400165A RID: 5722
 		public float fireFrequency = 5f;
 
-		// Token: 0x04001677 RID: 5751
+		// Token: 0x0400165B RID: 5723
 		public float damageCoefficientInitial = 6f;
 
-		// Token: 0x04001678 RID: 5752
+		// Token: 0x0400165C RID: 5724
 		public float damageCoefficientFinal = 6f;
 
-		// Token: 0x04001679 RID: 5753
+		// Token: 0x0400165D RID: 5725
 		public float procCoefficient = 0.5f;
 
-		// Token: 0x0400167A RID: 5754
+		// Token: 0x0400165E RID: 5726
 		public float force;
 
-		// Token: 0x0400167B RID: 5755
+		// Token: 0x0400165F RID: 5727
 		public GameObject tracerEffectPrefab;
 
-		// Token: 0x0400167C RID: 5756
+		// Token: 0x04001660 RID: 5728
 		public GameObject hitEffectPrefab;
 
-		// Token: 0x0400167D RID: 5757
+		// Token: 0x04001661 RID: 5729
 		private float stopwatch;
 
-		// Token: 0x0400167E RID: 5758
+		// Token: 0x04001662 RID: 5730
 		private float bulletAttackTimer;
 
-		// Token: 0x0400167F RID: 5759
+		// Token: 0x04001663 RID: 5731
 		private OrbitalLaserController.OrbitalLaserState orbitalLaserState;
 
-		// Token: 0x04001680 RID: 5760
+		// Token: 0x04001664 RID: 5732
 		private Vector3 refVelocity;
 
-		// Token: 0x04001681 RID: 5761
+		// Token: 0x04001665 RID: 5733
 		private Transform chargeEffectTransform;
 
-		// Token: 0x04001682 RID: 5762
+		// Token: 0x04001666 RID: 5734
 		private InputBankTest ownerInputBank;
 
-		// Token: 0x02000384 RID: 900
+		// Token: 0x0200037F RID: 895
 		public enum OrbitalLaserState
 		{
-			// Token: 0x04001684 RID: 5764
+			// Token: 0x04001668 RID: 5736
 			Charging,
-			// Token: 0x04001685 RID: 5765
+			// Token: 0x04001669 RID: 5737
 			Firing,
-			// Token: 0x04001686 RID: 5766
+			// Token: 0x0400166A RID: 5738
 			Decaying
 		}
 	}

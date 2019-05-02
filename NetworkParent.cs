@@ -5,22 +5,22 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x0200036E RID: 878
+	// Token: 0x0200036B RID: 875
 	public class NetworkParent : NetworkBehaviour
 	{
-		// Token: 0x06001220 RID: 4640 RVA: 0x0000DCA6 File Offset: 0x0000BEA6
+		// Token: 0x06001209 RID: 4617 RVA: 0x0000DBBD File Offset: 0x0000BDBD
 		private void Awake()
 		{
 			this.transform = base.transform;
 		}
 
-		// Token: 0x06001221 RID: 4641 RVA: 0x0000DCB4 File Offset: 0x0000BEB4
+		// Token: 0x0600120A RID: 4618 RVA: 0x0000DBCB File Offset: 0x0000BDCB
 		public override void OnStartServer()
 		{
 			this.ServerUpdateParent();
 		}
 
-		// Token: 0x06001222 RID: 4642 RVA: 0x0000DCBC File Offset: 0x0000BEBC
+		// Token: 0x0600120B RID: 4619 RVA: 0x0000DBD3 File Offset: 0x0000BDD3
 		private void OnTransformParentChanged()
 		{
 			if (NetworkServer.active)
@@ -32,7 +32,7 @@ namespace RoR2
 			this.transform.localScale = Vector3.one;
 		}
 
-		// Token: 0x06001223 RID: 4643 RVA: 0x00068540 File Offset: 0x00066740
+		// Token: 0x0600120C RID: 4620 RVA: 0x00068208 File Offset: 0x00066408
 		[Server]
 		private void ServerUpdateParent()
 		{
@@ -54,7 +54,7 @@ namespace RoR2
 			this.SetParentIdentifier(new NetworkParent.ParentIdentifier(transform));
 		}
 
-		// Token: 0x06001224 RID: 4644 RVA: 0x0000DCFB File Offset: 0x0000BEFB
+		// Token: 0x0600120D RID: 4621 RVA: 0x0000DC12 File Offset: 0x0000BE12
 		private void SetParentIdentifier(NetworkParent.ParentIdentifier newParentIdentifier)
 		{
 			this.NetworkparentIdentifier = newParentIdentifier;
@@ -64,14 +64,14 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001226 RID: 4646 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x0600120F RID: 4623 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x17000192 RID: 402
-		// (get) Token: 0x06001227 RID: 4647 RVA: 0x00068598 File Offset: 0x00066798
-		// (set) Token: 0x06001228 RID: 4648 RVA: 0x0000DD21 File Offset: 0x0000BF21
+		// Token: 0x1700018D RID: 397
+		// (get) Token: 0x06001210 RID: 4624 RVA: 0x00068260 File Offset: 0x00066460
+		// (set) Token: 0x06001211 RID: 4625 RVA: 0x0000DC38 File Offset: 0x0000BE38
 		public NetworkParent.ParentIdentifier NetworkparentIdentifier
 		{
 			get
@@ -91,7 +91,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001229 RID: 4649 RVA: 0x000685AC File Offset: 0x000667AC
+		// Token: 0x06001212 RID: 4626 RVA: 0x00068274 File Offset: 0x00066474
 		public override bool OnSerialize(NetworkWriter writer, bool forceAll)
 		{
 			if (forceAll)
@@ -116,7 +116,7 @@ namespace RoR2
 			return flag;
 		}
 
-		// Token: 0x0600122A RID: 4650 RVA: 0x00068618 File Offset: 0x00066818
+		// Token: 0x06001213 RID: 4627 RVA: 0x000682E0 File Offset: 0x000664E0
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 			if (initialState)
@@ -131,23 +131,23 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04001622 RID: 5666
+		// Token: 0x04001609 RID: 5641
 		private Transform cachedServerParentTransform;
 
-		// Token: 0x04001623 RID: 5667
+		// Token: 0x0400160A RID: 5642
 		private new Transform transform;
 
-		// Token: 0x04001624 RID: 5668
+		// Token: 0x0400160B RID: 5643
 		[SyncVar(hook = "SetParentIdentifier")]
 		private NetworkParent.ParentIdentifier parentIdentifier;
 
-		// Token: 0x0200036F RID: 879
+		// Token: 0x0200036C RID: 876
 		[Serializable]
 		private struct ParentIdentifier : IEquatable<NetworkParent.ParentIdentifier>
 		{
-			// Token: 0x17000193 RID: 403
-			// (get) Token: 0x0600122B RID: 4651 RVA: 0x0000DD60 File Offset: 0x0000BF60
-			// (set) Token: 0x0600122C RID: 4652 RVA: 0x0000DD6A File Offset: 0x0000BF6A
+			// Token: 0x1700018E RID: 398
+			// (get) Token: 0x06001214 RID: 4628 RVA: 0x0000DC77 File Offset: 0x0000BE77
+			// (set) Token: 0x06001215 RID: 4629 RVA: 0x0000DC81 File Offset: 0x0000BE81
 			public int indexInParentChildLocator
 			{
 				get
@@ -160,7 +160,7 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x0600122D RID: 4653 RVA: 0x0006865C File Offset: 0x0006685C
+			// Token: 0x06001216 RID: 4630 RVA: 0x00068324 File Offset: 0x00066524
 			private static ChildLocator LookUpChildLocator(Transform rootObject)
 			{
 				ModelLocator component = rootObject.GetComponent<ModelLocator>();
@@ -176,7 +176,7 @@ namespace RoR2
 				return modelTransform.GetComponent<ChildLocator>();
 			}
 
-			// Token: 0x0600122E RID: 4654 RVA: 0x00068694 File Offset: 0x00066894
+			// Token: 0x06001217 RID: 4631 RVA: 0x0006835C File Offset: 0x0006655C
 			public ParentIdentifier(Transform parent)
 			{
 				this.parentNetworkIdentity = null;
@@ -218,25 +218,25 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x0600122F RID: 4655 RVA: 0x0000DD76 File Offset: 0x0000BF76
+			// Token: 0x06001218 RID: 4632 RVA: 0x0000DC8D File Offset: 0x0000BE8D
 			public bool Equals(NetworkParent.ParentIdentifier other)
 			{
 				return object.Equals(this.parentNetworkIdentity, other.parentNetworkIdentity) && this.indexInParentChildLocatorPlusOne == other.indexInParentChildLocatorPlusOne;
 			}
 
-			// Token: 0x06001230 RID: 4656 RVA: 0x0000DD9B File Offset: 0x0000BF9B
+			// Token: 0x06001219 RID: 4633 RVA: 0x0000DCB2 File Offset: 0x0000BEB2
 			public override bool Equals(object obj)
 			{
 				return obj != null && obj is NetworkParent.ParentIdentifier && this.Equals((NetworkParent.ParentIdentifier)obj);
 			}
 
-			// Token: 0x06001231 RID: 4657 RVA: 0x0000DDB8 File Offset: 0x0000BFB8
+			// Token: 0x0600121A RID: 4634 RVA: 0x0000DCCF File Offset: 0x0000BECF
 			public override int GetHashCode()
 			{
 				return ((this.parentNetworkIdentity != null) ? this.parentNetworkIdentity.GetHashCode() : 0) * 397 ^ this.indexInParentChildLocatorPlusOne.GetHashCode();
 			}
 
-			// Token: 0x06001232 RID: 4658 RVA: 0x00068754 File Offset: 0x00066954
+			// Token: 0x0600121B RID: 4635 RVA: 0x0006841C File Offset: 0x0006661C
 			public Transform Resolve()
 			{
 				if (!this.parentNetworkIdentity)
@@ -255,10 +255,10 @@ namespace RoR2
 				return null;
 			}
 
-			// Token: 0x04001625 RID: 5669
+			// Token: 0x0400160C RID: 5644
 			public NetworkIdentity parentNetworkIdentity;
 
-			// Token: 0x04001626 RID: 5670
+			// Token: 0x0400160D RID: 5645
 			public byte indexInParentChildLocatorPlusOne;
 		}
 	}

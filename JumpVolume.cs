@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x0200034A RID: 842
+	// Token: 0x02000347 RID: 839
 	public class JumpVolume : MonoBehaviour
 	{
-		// Token: 0x0600118F RID: 4495 RVA: 0x00066534 File Offset: 0x00064734
+		// Token: 0x06001178 RID: 4472 RVA: 0x000661FC File Offset: 0x000643FC
 		public void OnTriggerStay(Collider other)
 		{
 			CharacterMotor component = other.GetComponent<CharacterMotor>();
@@ -22,7 +22,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001190 RID: 4496 RVA: 0x00066590 File Offset: 0x00064790
+		// Token: 0x06001179 RID: 4473 RVA: 0x00066258 File Offset: 0x00064458
 		private void OnDrawGizmos()
 		{
 			int num = 20;
@@ -40,16 +40,16 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04001587 RID: 5511
+		// Token: 0x0400156E RID: 5486
 		public Transform targetElevationTransform;
 
-		// Token: 0x04001588 RID: 5512
+		// Token: 0x0400156F RID: 5487
 		public Vector3 jumpVelocity;
 
-		// Token: 0x04001589 RID: 5513
+		// Token: 0x04001570 RID: 5488
 		public float time;
 
-		// Token: 0x0400158A RID: 5514
+		// Token: 0x04001571 RID: 5489
 		public string jumpSoundString;
 	}
 }

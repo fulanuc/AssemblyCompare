@@ -4,10 +4,10 @@ using RoR2.Navigation;
 
 namespace RoR2
 {
-	// Token: 0x0200046F RID: 1135
+	// Token: 0x02000464 RID: 1124
 	public class Path : IDisposable
 	{
-		// Token: 0x06001975 RID: 6517 RVA: 0x00012FBC File Offset: 0x000111BC
+		// Token: 0x06001918 RID: 6424 RVA: 0x00012AA2 File Offset: 0x00010CA2
 		private static Path.Waypoint[] GetWaypointsBuffer()
 		{
 			if (Path.waypointsBufferPool.Count == 0)
@@ -17,7 +17,7 @@ namespace RoR2
 			return Path.waypointsBufferPool.Pop();
 		}
 
-		// Token: 0x06001976 RID: 6518 RVA: 0x00012FDC File Offset: 0x000111DC
+		// Token: 0x06001919 RID: 6425 RVA: 0x00012AC2 File Offset: 0x00010CC2
 		private static void FreeWaypointsBuffer(Path.Waypoint[] buffer)
 		{
 			if (buffer.Length != 64)
@@ -27,7 +27,7 @@ namespace RoR2
 			Path.waypointsBufferPool.Push(buffer);
 		}
 
-		// Token: 0x06001977 RID: 6519 RVA: 0x00012FF1 File Offset: 0x000111F1
+		// Token: 0x0600191A RID: 6426 RVA: 0x00012AD7 File Offset: 0x00010CD7
 		public Path(NodeGraph nodeGraph)
 		{
 			this.nodeGraph = nodeGraph;
@@ -35,28 +35,28 @@ namespace RoR2
 			this.firstWaypointIndex = this.waypointsBuffer.Length;
 		}
 
-		// Token: 0x06001978 RID: 6520 RVA: 0x00013019 File Offset: 0x00011219
+		// Token: 0x0600191B RID: 6427 RVA: 0x00012AFF File Offset: 0x00010CFF
 		public void Dispose()
 		{
 			Path.FreeWaypointsBuffer(this.waypointsBuffer);
 		}
 
-		// Token: 0x17000258 RID: 600
-		// (get) Token: 0x06001979 RID: 6521 RVA: 0x00013026 File Offset: 0x00011226
-		// (set) Token: 0x0600197A RID: 6522 RVA: 0x0001302E File Offset: 0x0001122E
+		// Token: 0x1700024C RID: 588
+		// (get) Token: 0x0600191C RID: 6428 RVA: 0x00012B0C File Offset: 0x00010D0C
+		// (set) Token: 0x0600191D RID: 6429 RVA: 0x00012B14 File Offset: 0x00010D14
 		public NodeGraph nodeGraph { get; private set; }
 
-		// Token: 0x17000259 RID: 601
-		// (get) Token: 0x0600197B RID: 6523 RVA: 0x00013037 File Offset: 0x00011237
-		// (set) Token: 0x0600197C RID: 6524 RVA: 0x0001303F File Offset: 0x0001123F
+		// Token: 0x1700024D RID: 589
+		// (get) Token: 0x0600191E RID: 6430 RVA: 0x00012B1D File Offset: 0x00010D1D
+		// (set) Token: 0x0600191F RID: 6431 RVA: 0x00012B25 File Offset: 0x00010D25
 		public PathStatus status { get; set; }
 
-		// Token: 0x1700025A RID: 602
-		// (get) Token: 0x0600197D RID: 6525 RVA: 0x00013048 File Offset: 0x00011248
-		// (set) Token: 0x0600197E RID: 6526 RVA: 0x00013050 File Offset: 0x00011250
+		// Token: 0x1700024E RID: 590
+		// (get) Token: 0x06001920 RID: 6432 RVA: 0x00012B2E File Offset: 0x00010D2E
+		// (set) Token: 0x06001921 RID: 6433 RVA: 0x00012B36 File Offset: 0x00010D36
 		public int waypointsCount { get; private set; }
 
-		// Token: 0x1700025B RID: 603
+		// Token: 0x1700024F RID: 591
 		public Path.Waypoint this[int i]
 		{
 			get
@@ -65,7 +65,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001980 RID: 6528 RVA: 0x000834FC File Offset: 0x000816FC
+		// Token: 0x06001923 RID: 6435 RVA: 0x00082B54 File Offset: 0x00080D54
 		public void PushWaypointToFront(NodeGraph.NodeIndex nodeIndex, float minJumpHeight)
 		{
 			if (this.waypointsCount + 1 >= this.waypointsBuffer.Length)
@@ -86,7 +86,7 @@ namespace RoR2
 			};
 		}
 
-		// Token: 0x06001981 RID: 6529 RVA: 0x000835A4 File Offset: 0x000817A4
+		// Token: 0x06001924 RID: 6436 RVA: 0x00082BFC File Offset: 0x00080DFC
 		public void WriteWaypointsToList(List<Path.Waypoint> waypointsList)
 		{
 			if (waypointsList.Capacity < waypointsList.Count + this.waypointsCount)
@@ -99,7 +99,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001982 RID: 6530 RVA: 0x0001306E File Offset: 0x0001126E
+		// Token: 0x06001925 RID: 6437 RVA: 0x00012B54 File Offset: 0x00010D54
 		public void Clear()
 		{
 			this.status = PathStatus.Invalid;
@@ -107,25 +107,25 @@ namespace RoR2
 			this.firstWaypointIndex = this.waypointsBuffer.Length;
 		}
 
-		// Token: 0x04001CC6 RID: 7366
+		// Token: 0x04001C92 RID: 7314
 		private static readonly Stack<Path.Waypoint[]> waypointsBufferPool = new Stack<Path.Waypoint[]>();
 
-		// Token: 0x04001CC7 RID: 7367
+		// Token: 0x04001C93 RID: 7315
 		private const int pooledBufferSize = 64;
 
-		// Token: 0x04001CCA RID: 7370
+		// Token: 0x04001C96 RID: 7318
 		private Path.Waypoint[] waypointsBuffer;
 
-		// Token: 0x04001CCC RID: 7372
+		// Token: 0x04001C98 RID: 7320
 		private int firstWaypointIndex;
 
-		// Token: 0x02000470 RID: 1136
+		// Token: 0x02000465 RID: 1125
 		public struct Waypoint
 		{
-			// Token: 0x04001CCD RID: 7373
+			// Token: 0x04001C99 RID: 7321
 			public NodeGraph.NodeIndex nodeIndex;
 
-			// Token: 0x04001CCE RID: 7374
+			// Token: 0x04001C9A RID: 7322
 			public float minJumpHeight;
 		}
 	}

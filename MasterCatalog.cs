@@ -7,11 +7,11 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x02000464 RID: 1124
+	// Token: 0x02000459 RID: 1113
 	public static class MasterCatalog
 	{
-		// Token: 0x17000254 RID: 596
-		// (get) Token: 0x06001950 RID: 6480 RVA: 0x00012E28 File Offset: 0x00011028
+		// Token: 0x17000249 RID: 585
+		// (get) Token: 0x060018F4 RID: 6388 RVA: 0x0001291B File Offset: 0x00010B1B
 		public static IEnumerable<CharacterMaster> allMasters
 		{
 			get
@@ -20,8 +20,8 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x17000255 RID: 597
-		// (get) Token: 0x06001951 RID: 6481 RVA: 0x00012E2F File Offset: 0x0001102F
+		// Token: 0x1700024A RID: 586
+		// (get) Token: 0x060018F5 RID: 6389 RVA: 0x00012922 File Offset: 0x00010B22
 		public static IEnumerable<CharacterMaster> allAiMasters
 		{
 			get
@@ -30,7 +30,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001952 RID: 6482 RVA: 0x00012E36 File Offset: 0x00011036
+		// Token: 0x060018F6 RID: 6390 RVA: 0x00012929 File Offset: 0x00010B29
 		public static GameObject GetMasterPrefab(int index)
 		{
 			if (index < 0)
@@ -40,7 +40,7 @@ namespace RoR2
 			return MasterCatalog.masterPrefabs[index];
 		}
 
-		// Token: 0x06001953 RID: 6483 RVA: 0x00082914 File Offset: 0x00080B14
+		// Token: 0x060018F7 RID: 6391 RVA: 0x00081F6C File Offset: 0x0008016C
 		public static int FindMasterIndex([NotNull] string bodyName)
 		{
 			int result;
@@ -51,7 +51,7 @@ namespace RoR2
 			return -1;
 		}
 
-		// Token: 0x06001954 RID: 6484 RVA: 0x00012E45 File Offset: 0x00011045
+		// Token: 0x060018F8 RID: 6392 RVA: 0x00012938 File Offset: 0x00010B38
 		public static int FindMasterIndex(GameObject bodyObject)
 		{
 			if (!bodyObject)
@@ -61,7 +61,7 @@ namespace RoR2
 			return MasterCatalog.FindMasterIndex(bodyObject.name);
 		}
 
-		// Token: 0x06001955 RID: 6485 RVA: 0x00082934 File Offset: 0x00080B34
+		// Token: 0x060018F9 RID: 6393 RVA: 0x00081F8C File Offset: 0x0008018C
 		public static GameObject FindMasterPrefab([NotNull] string bodyName)
 		{
 			int num = MasterCatalog.FindMasterIndex(bodyName);
@@ -72,7 +72,7 @@ namespace RoR2
 			return null;
 		}
 
-		// Token: 0x06001956 RID: 6486 RVA: 0x00082954 File Offset: 0x00080B54
+		// Token: 0x060018FA RID: 6394 RVA: 0x00081FAC File Offset: 0x000801AC
 		[RuntimeInitializeOnLoadMethod]
 		private static void Init()
 		{
@@ -90,19 +90,19 @@ namespace RoR2
 			MasterCatalog.availability.MakeAvailable();
 		}
 
-		// Token: 0x04001C8B RID: 7307
+		// Token: 0x04001C57 RID: 7255
 		public static ResourceAvailability availability = default(ResourceAvailability);
 
-		// Token: 0x04001C8C RID: 7308
+		// Token: 0x04001C58 RID: 7256
 		private static GameObject[] masterPrefabs;
 
-		// Token: 0x04001C8D RID: 7309
+		// Token: 0x04001C59 RID: 7257
 		private static CharacterMaster[] masterPrefabMasterComponents;
 
-		// Token: 0x04001C8E RID: 7310
+		// Token: 0x04001C5A RID: 7258
 		private static CharacterMaster[] aiMasterPrefabs;
 
-		// Token: 0x04001C8F RID: 7311
+		// Token: 0x04001C5B RID: 7259
 		private static readonly Dictionary<string, int> nameToIndexMap = new Dictionary<string, int>();
 	}
 }

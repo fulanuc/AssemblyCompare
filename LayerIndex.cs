@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x0200045C RID: 1116
+	// Token: 0x02000451 RID: 1105
 	public struct LayerIndex
 	{
-		// Token: 0x17000247 RID: 583
-		// (get) Token: 0x060018FA RID: 6394 RVA: 0x00012C0A File Offset: 0x00010E0A
+		// Token: 0x1700023C RID: 572
+		// (get) Token: 0x0600189E RID: 6302 RVA: 0x000126FD File Offset: 0x000108FD
 		public LayerMask mask
 		{
 			get
@@ -16,7 +16,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060018FB RID: 6395 RVA: 0x0008143C File Offset: 0x0007F63C
+		// Token: 0x0600189F RID: 6303 RVA: 0x00080A9C File Offset: 0x0007EC9C
 		static LayerIndex()
 		{
 			for (int i = 0; i < 32; i++)
@@ -32,8 +32,8 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x17000248 RID: 584
-		// (get) Token: 0x060018FC RID: 6396 RVA: 0x00012C2D File Offset: 0x00010E2D
+		// Token: 0x1700023D RID: 573
+		// (get) Token: 0x060018A0 RID: 6304 RVA: 0x00012720 File Offset: 0x00010920
 		public LayerMask collisionMask
 		{
 			get
@@ -42,7 +42,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060018FD RID: 6397 RVA: 0x000815D0 File Offset: 0x0007F7D0
+		// Token: 0x060018A1 RID: 6305 RVA: 0x00080C30 File Offset: 0x0007EE30
 		private static LayerIndex GetLayerIndex(string layerName)
 		{
 			LayerIndex layerIndex = new LayerIndex
@@ -63,7 +63,7 @@ namespace RoR2
 			return layerIndex;
 		}
 
-		// Token: 0x060018FE RID: 6398 RVA: 0x00081634 File Offset: 0x0007F834
+		// Token: 0x060018A2 RID: 6306 RVA: 0x00080C94 File Offset: 0x0007EE94
 		private static LayerMask[] CalcCollisionMasks()
 		{
 			LayerMask[] array = new LayerMask[32];
@@ -82,76 +82,76 @@ namespace RoR2
 			return array;
 		}
 
-		// Token: 0x04001C47 RID: 7239
+		// Token: 0x04001C13 RID: 7187
 		public int intVal;
 
-		// Token: 0x04001C48 RID: 7240
+		// Token: 0x04001C14 RID: 7188
 		private static uint assignedLayerMask = 0u;
 
-		// Token: 0x04001C49 RID: 7241
+		// Token: 0x04001C15 RID: 7189
 		public static readonly LayerIndex invalidLayer = new LayerIndex
 		{
 			intVal = -1
 		};
 
-		// Token: 0x04001C4A RID: 7242
+		// Token: 0x04001C16 RID: 7190
 		public static readonly LayerIndex defaultLayer = LayerIndex.GetLayerIndex("Default");
 
-		// Token: 0x04001C4B RID: 7243
+		// Token: 0x04001C17 RID: 7191
 		public static readonly LayerIndex transparentFX = LayerIndex.GetLayerIndex("TransparentFX");
 
-		// Token: 0x04001C4C RID: 7244
+		// Token: 0x04001C18 RID: 7192
 		public static readonly LayerIndex ignoreRaycast = LayerIndex.GetLayerIndex("Ignore Raycast");
 
-		// Token: 0x04001C4D RID: 7245
+		// Token: 0x04001C19 RID: 7193
 		public static readonly LayerIndex water = LayerIndex.GetLayerIndex("Water");
 
-		// Token: 0x04001C4E RID: 7246
+		// Token: 0x04001C1A RID: 7194
 		public static readonly LayerIndex ui = LayerIndex.GetLayerIndex("UI");
 
-		// Token: 0x04001C4F RID: 7247
+		// Token: 0x04001C1B RID: 7195
 		public static readonly LayerIndex fakeActor = LayerIndex.GetLayerIndex("FakeActor");
 
-		// Token: 0x04001C50 RID: 7248
+		// Token: 0x04001C1C RID: 7196
 		public static readonly LayerIndex noCollision = LayerIndex.GetLayerIndex("NoCollision");
 
-		// Token: 0x04001C51 RID: 7249
+		// Token: 0x04001C1D RID: 7197
 		public static readonly LayerIndex pickups = LayerIndex.GetLayerIndex("Pickups");
 
-		// Token: 0x04001C52 RID: 7250
+		// Token: 0x04001C1E RID: 7198
 		public static readonly LayerIndex world = LayerIndex.GetLayerIndex("World");
 
-		// Token: 0x04001C53 RID: 7251
+		// Token: 0x04001C1F RID: 7199
 		public static readonly LayerIndex entityPrecise = LayerIndex.GetLayerIndex("EntityPrecise");
 
-		// Token: 0x04001C54 RID: 7252
+		// Token: 0x04001C20 RID: 7200
 		public static readonly LayerIndex debris = LayerIndex.GetLayerIndex("Debris");
 
-		// Token: 0x04001C55 RID: 7253
+		// Token: 0x04001C21 RID: 7201
 		public static readonly LayerIndex projectile = LayerIndex.GetLayerIndex("Projectile");
 
-		// Token: 0x04001C56 RID: 7254
+		// Token: 0x04001C22 RID: 7202
 		public static readonly LayerIndex manualRender = LayerIndex.GetLayerIndex("ManualRender");
 
-		// Token: 0x04001C57 RID: 7255
+		// Token: 0x04001C23 RID: 7203
 		public static readonly LayerIndex background = LayerIndex.GetLayerIndex("Background");
 
-		// Token: 0x04001C58 RID: 7256
+		// Token: 0x04001C24 RID: 7204
 		public static readonly LayerIndex ragdoll = LayerIndex.GetLayerIndex("Ragdoll");
 
-		// Token: 0x04001C59 RID: 7257
+		// Token: 0x04001C25 RID: 7205
 		public static readonly LayerIndex noDraw = LayerIndex.GetLayerIndex("NoDraw");
 
-		// Token: 0x04001C5A RID: 7258
+		// Token: 0x04001C26 RID: 7206
 		public static readonly LayerIndex prefabBrush = LayerIndex.GetLayerIndex("PrefabBrush");
 
-		// Token: 0x04001C5B RID: 7259
+		// Token: 0x04001C27 RID: 7207
 		public static readonly LayerIndex postProcess = LayerIndex.GetLayerIndex("PostProcess");
 
-		// Token: 0x04001C5C RID: 7260
+		// Token: 0x04001C28 RID: 7208
 		public static readonly LayerIndex uiWorldSpace = LayerIndex.GetLayerIndex("UI, WorldSpace");
 
-		// Token: 0x04001C5D RID: 7261
+		// Token: 0x04001C29 RID: 7209
 		private static readonly LayerMask[] collisionMasks = LayerIndex.CalcCollisionMasks();
 	}
 }

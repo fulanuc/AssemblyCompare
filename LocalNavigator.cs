@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x0200045D RID: 1117
+	// Token: 0x02000452 RID: 1106
 	public class LocalNavigator
 	{
-		// Token: 0x060018FF RID: 6399 RVA: 0x00081690 File Offset: 0x0007F890
+		// Token: 0x060018A3 RID: 6307 RVA: 0x00080CF0 File Offset: 0x0007EEF0
 		public void SetBody(CharacterBody newBody)
 		{
 			this.transform = null;
@@ -20,17 +20,17 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x17000249 RID: 585
-		// (get) Token: 0x06001900 RID: 6400 RVA: 0x00012C3F File Offset: 0x00010E3F
-		// (set) Token: 0x06001901 RID: 6401 RVA: 0x00012C47 File Offset: 0x00010E47
+		// Token: 0x1700023E RID: 574
+		// (get) Token: 0x060018A4 RID: 6308 RVA: 0x00012732 File Offset: 0x00010932
+		// (set) Token: 0x060018A5 RID: 6309 RVA: 0x0001273A File Offset: 0x0001093A
 		public Vector3 moveVector { get; private set; }
 
-		// Token: 0x1700024A RID: 586
-		// (get) Token: 0x06001902 RID: 6402 RVA: 0x00012C50 File Offset: 0x00010E50
-		// (set) Token: 0x06001903 RID: 6403 RVA: 0x00012C58 File Offset: 0x00010E58
+		// Token: 0x1700023F RID: 575
+		// (get) Token: 0x060018A6 RID: 6310 RVA: 0x00012743 File Offset: 0x00010943
+		// (set) Token: 0x060018A7 RID: 6311 RVA: 0x0001274B File Offset: 0x0001094B
 		public float jumpSpeed { get; private set; }
 
-		// Token: 0x06001904 RID: 6404 RVA: 0x000816F4 File Offset: 0x0007F8F4
+		// Token: 0x060018A8 RID: 6312 RVA: 0x00080D54 File Offset: 0x0007EF54
 		public void Update(float deltaTime)
 		{
 			if (this.transform)
@@ -130,40 +130,40 @@ namespace RoR2
 			this.previousPosition = this.currentPosition;
 		}
 
-		// Token: 0x04001C5E RID: 7262
+		// Token: 0x04001C2A RID: 7210
 		private Vector3 currentPosition;
 
-		// Token: 0x04001C5F RID: 7263
+		// Token: 0x04001C2B RID: 7211
 		private Vector3 previousPosition;
 
-		// Token: 0x04001C60 RID: 7264
+		// Token: 0x04001C2C RID: 7212
 		public Vector3 targetPosition;
 
-		// Token: 0x04001C61 RID: 7265
+		// Token: 0x04001C2D RID: 7213
 		public float lookAheadDistance = 3.5f;
 
-		// Token: 0x04001C62 RID: 7266
+		// Token: 0x04001C2E RID: 7214
 		public float avoidanceDuration = 0.5f;
 
-		// Token: 0x04001C63 RID: 7267
+		// Token: 0x04001C2F RID: 7215
 		private float avoidanceTimer;
 
-		// Token: 0x04001C64 RID: 7268
+		// Token: 0x04001C30 RID: 7216
 		private CharacterBody body;
 
-		// Token: 0x04001C65 RID: 7269
+		// Token: 0x04001C31 RID: 7217
 		private Transform transform;
 
-		// Token: 0x04001C66 RID: 7270
+		// Token: 0x04001C32 RID: 7218
 		private CharacterMotor motor;
 
-		// Token: 0x04001C67 RID: 7271
+		// Token: 0x04001C33 RID: 7219
 		private Collider characterCollider;
 
-		// Token: 0x04001C6A RID: 7274
+		// Token: 0x04001C36 RID: 7222
 		private float walkFrustration;
 
-		// Token: 0x04001C6B RID: 7275
+		// Token: 0x04001C37 RID: 7223
 		private float backupRestrictionTimer;
 	}
 }

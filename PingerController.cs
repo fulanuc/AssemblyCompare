@@ -7,10 +7,10 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x0200038C RID: 908
+	// Token: 0x02000387 RID: 903
 	public class PingerController : NetworkBehaviour
 	{
-		// Token: 0x06001301 RID: 4865 RVA: 0x0006B098 File Offset: 0x00069298
+		// Token: 0x060012E3 RID: 4835 RVA: 0x0006AE3C File Offset: 0x0006903C
 		private void RebuildPing(PingerController.PingInfo pingInfo)
 		{
 			if (!pingInfo.active && this.pingIndicator != null)
@@ -31,7 +31,7 @@ namespace RoR2
 			this.pingIndicator.RebuildPing();
 		}
 
-		// Token: 0x06001302 RID: 4866 RVA: 0x0000E8AE File Offset: 0x0000CAAE
+		// Token: 0x060012E4 RID: 4836 RVA: 0x0000E723 File Offset: 0x0000C923
 		private void OnDestroy()
 		{
 			if (this.pingIndicator)
@@ -40,7 +40,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001303 RID: 4867 RVA: 0x0000E8CD File Offset: 0x0000CACD
+		// Token: 0x060012E5 RID: 4837 RVA: 0x0000E742 File Offset: 0x0000C942
 		private void OnSyncCurrentPing(PingerController.PingInfo newPingInfo)
 		{
 			if (base.hasAuthority)
@@ -50,7 +50,7 @@ namespace RoR2
 			this.SetCurrentPing(newPingInfo);
 		}
 
-		// Token: 0x06001304 RID: 4868 RVA: 0x0000E8DF File Offset: 0x0000CADF
+		// Token: 0x060012E6 RID: 4838 RVA: 0x0000E754 File Offset: 0x0000C954
 		private void SetCurrentPing(PingerController.PingInfo newPingInfo)
 		{
 			this.NetworkcurrentPing = newPingInfo;
@@ -61,14 +61,14 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001305 RID: 4869 RVA: 0x0000E908 File Offset: 0x0000CB08
+		// Token: 0x060012E7 RID: 4839 RVA: 0x0000E77D File Offset: 0x0000C97D
 		[Command]
 		private void CmdPing(PingerController.PingInfo incomingPing)
 		{
 			this.NetworkcurrentPing = incomingPing;
 		}
 
-		// Token: 0x06001306 RID: 4870 RVA: 0x0006B14C File Offset: 0x0006934C
+		// Token: 0x060012E8 RID: 4840 RVA: 0x0006AEF0 File Offset: 0x000690F0
 		private void FixedUpdate()
 		{
 			if (base.hasAuthority)
@@ -82,7 +82,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001307 RID: 4871 RVA: 0x0006B1A0 File Offset: 0x000693A0
+		// Token: 0x060012E9 RID: 4841 RVA: 0x0006AF44 File Offset: 0x00069144
 		public void AttemptPing(Ray aimRay, GameObject bodyObject)
 		{
 			if (this.pingStock <= 0)
@@ -138,21 +138,21 @@ namespace RoR2
 			this.SetCurrentPing(pingInfo);
 		}
 
-		// Token: 0x06001309 RID: 4873 RVA: 0x0000E920 File Offset: 0x0000CB20
+		// Token: 0x060012EB RID: 4843 RVA: 0x0000E795 File Offset: 0x0000C995
 		static PingerController()
 		{
 			NetworkBehaviour.RegisterCommandDelegate(typeof(PingerController), PingerController.kCmdCmdPing, new NetworkBehaviour.CmdDelegate(PingerController.InvokeCmdCmdPing));
 			NetworkCRC.RegisterBehaviour("PingerController", 0);
 		}
 
-		// Token: 0x0600130A RID: 4874 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x060012EC RID: 4844 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x170001A8 RID: 424
-		// (get) Token: 0x0600130B RID: 4875 RVA: 0x0006B39C File Offset: 0x0006959C
-		// (set) Token: 0x0600130C RID: 4876 RVA: 0x0000E95B File Offset: 0x0000CB5B
+		// Token: 0x170001A3 RID: 419
+		// (get) Token: 0x060012ED RID: 4845 RVA: 0x0006B140 File Offset: 0x00069340
+		// (set) Token: 0x060012EE RID: 4846 RVA: 0x0000E7D0 File Offset: 0x0000C9D0
 		public PingerController.PingInfo NetworkcurrentPing
 		{
 			get
@@ -172,7 +172,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600130D RID: 4877 RVA: 0x0000E99A File Offset: 0x0000CB9A
+		// Token: 0x060012EF RID: 4847 RVA: 0x0000E80F File Offset: 0x0000CA0F
 		protected static void InvokeCmdCmdPing(NetworkBehaviour obj, NetworkReader reader)
 		{
 			if (!NetworkServer.active)
@@ -183,7 +183,7 @@ namespace RoR2
 			((PingerController)obj).CmdPing(GeneratedNetworkCode._ReadPingInfo_PingerController(reader));
 		}
 
-		// Token: 0x0600130E RID: 4878 RVA: 0x0006B3B0 File Offset: 0x000695B0
+		// Token: 0x060012F0 RID: 4848 RVA: 0x0006B154 File Offset: 0x00069354
 		public void CallCmdPing(PingerController.PingInfo incomingPing)
 		{
 			if (!NetworkClient.active)
@@ -205,7 +205,7 @@ namespace RoR2
 			base.SendCommandInternal(networkWriter, 0, "CmdPing");
 		}
 
-		// Token: 0x0600130F RID: 4879 RVA: 0x0006B43C File Offset: 0x0006963C
+		// Token: 0x060012F1 RID: 4849 RVA: 0x0006B1E0 File Offset: 0x000693E0
 		public override bool OnSerialize(NetworkWriter writer, bool forceAll)
 		{
 			if (forceAll)
@@ -230,7 +230,7 @@ namespace RoR2
 			return flag;
 		}
 
-		// Token: 0x06001310 RID: 4880 RVA: 0x0006B4A8 File Offset: 0x000696A8
+		// Token: 0x060012F2 RID: 4850 RVA: 0x0006B24C File Offset: 0x0006944C
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 			if (initialState)
@@ -245,37 +245,37 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x040016BB RID: 5819
+		// Token: 0x0400169F RID: 5791
 		private int pingStock = 3;
 
-		// Token: 0x040016BC RID: 5820
+		// Token: 0x040016A0 RID: 5792
 		private float pingRechargeStopwatch;
 
-		// Token: 0x040016BD RID: 5821
+		// Token: 0x040016A1 RID: 5793
 		private const int maximumPingStock = 3;
 
-		// Token: 0x040016BE RID: 5822
+		// Token: 0x040016A2 RID: 5794
 		private const float pingRechargeInterval = 1.5f;
 
-		// Token: 0x040016BF RID: 5823
+		// Token: 0x040016A3 RID: 5795
 		private static readonly PingerController.PingInfo emptyPing;
 
-		// Token: 0x040016C0 RID: 5824
+		// Token: 0x040016A4 RID: 5796
 		private PingIndicator pingIndicator;
 
-		// Token: 0x040016C1 RID: 5825
+		// Token: 0x040016A5 RID: 5797
 		[SyncVar(hook = "OnSyncCurrentPing")]
 		public PingerController.PingInfo currentPing;
 
-		// Token: 0x040016C2 RID: 5826
+		// Token: 0x040016A6 RID: 5798
 		private static int kCmdCmdPing = 1170265357;
 
-		// Token: 0x0200038D RID: 909
+		// Token: 0x02000388 RID: 904
 		[Serializable]
 		public struct PingInfo
 		{
-			// Token: 0x170001A9 RID: 425
-			// (get) Token: 0x06001311 RID: 4881 RVA: 0x0000E9C3 File Offset: 0x0000CBC3
+			// Token: 0x170001A4 RID: 420
+			// (get) Token: 0x060012F3 RID: 4851 RVA: 0x0000E838 File Offset: 0x0000CA38
 			public GameObject targetGameObject
 			{
 				get
@@ -288,16 +288,16 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x040016C3 RID: 5827
+			// Token: 0x040016A7 RID: 5799
 			public bool active;
 
-			// Token: 0x040016C4 RID: 5828
+			// Token: 0x040016A8 RID: 5800
 			public Vector3 origin;
 
-			// Token: 0x040016C5 RID: 5829
+			// Token: 0x040016A9 RID: 5801
 			public Vector3 normal;
 
-			// Token: 0x040016C6 RID: 5830
+			// Token: 0x040016AA RID: 5802
 			public NetworkIdentity targetNetworkIdentity;
 		}
 	}

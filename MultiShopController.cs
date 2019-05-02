@@ -5,10 +5,10 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x02000366 RID: 870
+	// Token: 0x02000363 RID: 867
 	public class MultiShopController : NetworkBehaviour, IHologramContentProvider
 	{
-		// Token: 0x060011ED RID: 4589 RVA: 0x0000DA91 File Offset: 0x0000BC91
+		// Token: 0x060011D6 RID: 4566 RVA: 0x0000D9A8 File Offset: 0x0000BBA8
 		private void Awake()
 		{
 			if (NetworkServer.active)
@@ -17,7 +17,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060011EE RID: 4590 RVA: 0x00067858 File Offset: 0x00065A58
+		// Token: 0x060011D7 RID: 4567 RVA: 0x00067520 File Offset: 0x00065720
 		private void Start()
 		{
 			if (Run.instance && NetworkServer.active)
@@ -36,7 +36,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060011EF RID: 4591 RVA: 0x000678CC File Offset: 0x00065ACC
+		// Token: 0x060011D8 RID: 4568 RVA: 0x00067594 File Offset: 0x00065794
 		private void OnDestroy()
 		{
 			if (this.terminalGameObjects != null)
@@ -49,7 +49,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060011F0 RID: 4592 RVA: 0x0006790C File Offset: 0x00065B0C
+		// Token: 0x060011D9 RID: 4569 RVA: 0x000675D4 File Offset: 0x000657D4
 		private void CreateTerminals()
 		{
 			this.terminalGameObjects = new GameObject[this.terminalPositions.Length];
@@ -84,7 +84,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060011F1 RID: 4593 RVA: 0x00067AD4 File Offset: 0x00065CD4
+		// Token: 0x060011DA RID: 4570 RVA: 0x0006779C File Offset: 0x0006599C
 		private void DisableAllTerminals(Interactor interactor)
 		{
 			foreach (GameObject gameObject in this.terminalGameObjects)
@@ -95,19 +95,19 @@ namespace RoR2
 			this.Networkavailable = false;
 		}
 
-		// Token: 0x060011F2 RID: 4594 RVA: 0x0000DAA0 File Offset: 0x0000BCA0
+		// Token: 0x060011DB RID: 4571 RVA: 0x0000D9B7 File Offset: 0x0000BBB7
 		public bool ShouldDisplayHologram(GameObject viewer)
 		{
 			return this.available;
 		}
 
-		// Token: 0x060011F3 RID: 4595 RVA: 0x000092D8 File Offset: 0x000074D8
+		// Token: 0x060011DC RID: 4572 RVA: 0x00009298 File Offset: 0x00007498
 		public GameObject GetHologramContentPrefab()
 		{
 			return Resources.Load<GameObject>("Prefabs/CostHologramContent");
 		}
 
-		// Token: 0x060011F4 RID: 4596 RVA: 0x00067B18 File Offset: 0x00065D18
+		// Token: 0x060011DD RID: 4573 RVA: 0x000677E0 File Offset: 0x000659E0
 		public void UpdateHologramContent(GameObject hologramContentObject)
 		{
 			CostHologramContent component = hologramContentObject.GetComponent<CostHologramContent>();
@@ -118,14 +118,14 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060011F6 RID: 4598 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x060011DF RID: 4575 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x1700018D RID: 397
-		// (get) Token: 0x060011F7 RID: 4599 RVA: 0x00067B4C File Offset: 0x00065D4C
-		// (set) Token: 0x060011F8 RID: 4600 RVA: 0x0000DABE File Offset: 0x0000BCBE
+		// Token: 0x17000188 RID: 392
+		// (get) Token: 0x060011E0 RID: 4576 RVA: 0x00067814 File Offset: 0x00065A14
+		// (set) Token: 0x060011E1 RID: 4577 RVA: 0x0000D9D5 File Offset: 0x0000BBD5
 		public bool Networkavailable
 		{
 			get
@@ -138,9 +138,9 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x1700018E RID: 398
-		// (get) Token: 0x060011F9 RID: 4601 RVA: 0x00067B60 File Offset: 0x00065D60
-		// (set) Token: 0x060011FA RID: 4602 RVA: 0x0000DAD2 File Offset: 0x0000BCD2
+		// Token: 0x17000189 RID: 393
+		// (get) Token: 0x060011E2 RID: 4578 RVA: 0x00067828 File Offset: 0x00065A28
+		// (set) Token: 0x060011E3 RID: 4579 RVA: 0x0000D9E9 File Offset: 0x0000BBE9
 		public int Networkcost
 		{
 			get
@@ -153,7 +153,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060011FB RID: 4603 RVA: 0x00067B74 File Offset: 0x00065D74
+		// Token: 0x060011E4 RID: 4580 RVA: 0x0006783C File Offset: 0x00065A3C
 		public override bool OnSerialize(NetworkWriter writer, bool forceAll)
 		{
 			if (forceAll)
@@ -188,7 +188,7 @@ namespace RoR2
 			return flag;
 		}
 
-		// Token: 0x060011FC RID: 4604 RVA: 0x00067C20 File Offset: 0x00065E20
+		// Token: 0x060011E5 RID: 4581 RVA: 0x000678E8 File Offset: 0x00065AE8
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 			if (initialState)
@@ -208,36 +208,36 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x040015FA RID: 5626
+		// Token: 0x040015E1 RID: 5601
 		[Tooltip("The shop terminal prefab to instantiate.")]
 		public GameObject terminalPrefab;
 
-		// Token: 0x040015FB RID: 5627
+		// Token: 0x040015E2 RID: 5602
 		[Tooltip("The positions at which to instantiate shop terminals.")]
 		public Transform[] terminalPositions;
 
-		// Token: 0x040015FC RID: 5628
+		// Token: 0x040015E3 RID: 5603
 		[Tooltip("The tier of items to drop")]
 		public ItemTier itemTier;
 
-		// Token: 0x040015FD RID: 5629
+		// Token: 0x040015E4 RID: 5604
 		[Tooltip("Whether or not there's a chance the item contents are replaced with a '?'")]
 		private bool hideDisplayContent = true;
 
-		// Token: 0x040015FE RID: 5630
+		// Token: 0x040015E5 RID: 5605
 		private GameObject[] terminalGameObjects;
 
-		// Token: 0x040015FF RID: 5631
+		// Token: 0x040015E6 RID: 5606
 		[SyncVar]
 		private bool available = true;
 
-		// Token: 0x04001600 RID: 5632
+		// Token: 0x040015E7 RID: 5607
 		public int baseCost;
 
-		// Token: 0x04001601 RID: 5633
+		// Token: 0x040015E8 RID: 5608
 		public CostType costType;
 
-		// Token: 0x04001602 RID: 5634
+		// Token: 0x040015E9 RID: 5609
 		[SyncVar]
 		private int cost;
 	}

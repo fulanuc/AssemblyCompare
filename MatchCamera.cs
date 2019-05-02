@@ -3,18 +3,18 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x0200035A RID: 858
-	[RequireComponent(typeof(Camera))]
+	// Token: 0x02000357 RID: 855
 	[ExecuteInEditMode]
+	[RequireComponent(typeof(Camera))]
 	public class MatchCamera : MonoBehaviour
 	{
-		// Token: 0x060011BD RID: 4541 RVA: 0x0000D7D7 File Offset: 0x0000B9D7
+		// Token: 0x060011A6 RID: 4518 RVA: 0x0000D6EE File Offset: 0x0000B8EE
 		private void Awake()
 		{
 			this.destCamera = base.GetComponent<Camera>();
 		}
 
-		// Token: 0x060011BE RID: 4542 RVA: 0x0000D7E5 File Offset: 0x0000B9E5
+		// Token: 0x060011A7 RID: 4519 RVA: 0x0000D6FC File Offset: 0x0000B8FC
 		private void LateUpdate()
 		{
 			if (this.srcCamera)
@@ -24,10 +24,10 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x040015B8 RID: 5560
+		// Token: 0x0400159F RID: 5535
 		private Camera destCamera;
 
-		// Token: 0x040015B9 RID: 5561
+		// Token: 0x040015A0 RID: 5536
 		public Camera srcCamera;
 	}
 }

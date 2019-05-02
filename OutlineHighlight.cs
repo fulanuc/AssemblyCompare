@@ -5,17 +5,17 @@ using UnityEngine.Rendering;
 
 namespace RoR2
 {
-	// Token: 0x020004FB RID: 1275
+	// Token: 0x020004EC RID: 1260
 	[RequireComponent(typeof(Camera))]
 	[RequireComponent(typeof(SceneCamera))]
 	public class OutlineHighlight : MonoBehaviour
 	{
-		// Token: 0x1700029C RID: 668
-		// (get) Token: 0x06001D03 RID: 7427 RVA: 0x000154F4 File Offset: 0x000136F4
-		// (set) Token: 0x06001D04 RID: 7428 RVA: 0x000154FC File Offset: 0x000136FC
+		// Token: 0x1700028F RID: 655
+		// (get) Token: 0x06001C9C RID: 7324 RVA: 0x00015045 File Offset: 0x00013245
+		// (set) Token: 0x06001C9D RID: 7325 RVA: 0x0001504D File Offset: 0x0001324D
 		public SceneCamera sceneCamera { get; private set; }
 
-		// Token: 0x06001D05 RID: 7429 RVA: 0x0008DF3C File Offset: 0x0008C13C
+		// Token: 0x06001C9E RID: 7326 RVA: 0x0008D1E0 File Offset: 0x0008B3E0
 		private void Awake()
 		{
 			this.sceneCamera = base.GetComponent<SceneCamera>();
@@ -25,25 +25,25 @@ namespace RoR2
 			this.m_RTHeight = (int)((float)Screen.height / (float)this.m_resolution);
 		}
 
-		// Token: 0x06001D06 RID: 7430 RVA: 0x00015505 File Offset: 0x00013705
+		// Token: 0x06001C9F RID: 7327 RVA: 0x00015056 File Offset: 0x00013256
 		private void CreateBuffers()
 		{
 			this.commandBuffer = new CommandBuffer();
 		}
 
-		// Token: 0x06001D07 RID: 7431 RVA: 0x00015512 File Offset: 0x00013712
+		// Token: 0x06001CA0 RID: 7328 RVA: 0x00015063 File Offset: 0x00013263
 		private void ClearCommandBuffers()
 		{
 			this.commandBuffer.Clear();
 		}
 
-		// Token: 0x06001D08 RID: 7432 RVA: 0x0001551F File Offset: 0x0001371F
+		// Token: 0x06001CA1 RID: 7329 RVA: 0x00015070 File Offset: 0x00013270
 		private void CreateMaterials()
 		{
 			this.highlightMaterial = new Material(Shader.Find("Custom/OutlineHighlight"));
 		}
 
-		// Token: 0x06001D09 RID: 7433 RVA: 0x0008DF8C File Offset: 0x0008C18C
+		// Token: 0x06001CA2 RID: 7330 RVA: 0x0008D230 File Offset: 0x0008B430
 		private void RenderHighlights(RenderTexture rt)
 		{
 			RenderTargetIdentifier renderTarget = new RenderTargetIdentifier(rt);
@@ -79,7 +79,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001D0A RID: 7434 RVA: 0x0008E0C0 File Offset: 0x0008C2C0
+		// Token: 0x06001CA3 RID: 7331 RVA: 0x0008D364 File Offset: 0x0008B564
 		private void OnRenderImage(RenderTexture source, RenderTexture destination)
 		{
 			RenderTexture renderTexture = RenderTexture.active = RenderTexture.GetTemporary(this.m_RTWidth, this.m_RTHeight, 0, RenderTextureFormat.ARGB32);
@@ -93,54 +93,54 @@ namespace RoR2
 			RenderTexture.ReleaseTemporary(renderTexture);
 		}
 
-		// Token: 0x04001ED5 RID: 7893
+		// Token: 0x04001E97 RID: 7831
 		public OutlineHighlight.RTResolution m_resolution = OutlineHighlight.RTResolution.Full;
 
-		// Token: 0x04001ED6 RID: 7894
+		// Token: 0x04001E98 RID: 7832
 		public readonly Queue<OutlineHighlight.HighlightInfo> highlightQueue = new Queue<OutlineHighlight.HighlightInfo>();
 
-		// Token: 0x04001ED8 RID: 7896
+		// Token: 0x04001E9A RID: 7834
 		private Material highlightMaterial;
 
-		// Token: 0x04001ED9 RID: 7897
+		// Token: 0x04001E9B RID: 7835
 		private CommandBuffer commandBuffer;
 
-		// Token: 0x04001EDA RID: 7898
+		// Token: 0x04001E9C RID: 7836
 		private int m_RTWidth = 512;
 
-		// Token: 0x04001EDB RID: 7899
+		// Token: 0x04001E9D RID: 7837
 		private int m_RTHeight = 512;
 
-		// Token: 0x04001EDC RID: 7900
+		// Token: 0x04001E9E RID: 7838
 		public static Action<OutlineHighlight> onPreRenderOutlineHighlight;
 
-		// Token: 0x020004FC RID: 1276
+		// Token: 0x020004ED RID: 1261
 		private enum Passes
 		{
-			// Token: 0x04001EDE RID: 7902
+			// Token: 0x04001EA0 RID: 7840
 			FillPass,
-			// Token: 0x04001EDF RID: 7903
+			// Token: 0x04001EA1 RID: 7841
 			Blit
 		}
 
-		// Token: 0x020004FD RID: 1277
+		// Token: 0x020004EE RID: 1262
 		public enum RTResolution
 		{
-			// Token: 0x04001EE1 RID: 7905
+			// Token: 0x04001EA3 RID: 7843
 			Quarter = 4,
-			// Token: 0x04001EE2 RID: 7906
+			// Token: 0x04001EA4 RID: 7844
 			Half = 2,
-			// Token: 0x04001EE3 RID: 7907
+			// Token: 0x04001EA5 RID: 7845
 			Full = 1
 		}
 
-		// Token: 0x020004FE RID: 1278
+		// Token: 0x020004EF RID: 1263
 		public struct HighlightInfo
 		{
-			// Token: 0x04001EE4 RID: 7908
+			// Token: 0x04001EA6 RID: 7846
 			public Color color;
 
-			// Token: 0x04001EE5 RID: 7909
+			// Token: 0x04001EA7 RID: 7847
 			public Renderer renderer;
 		}
 	}

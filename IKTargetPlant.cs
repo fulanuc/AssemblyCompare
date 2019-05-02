@@ -3,16 +3,16 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x02000337 RID: 823
+	// Token: 0x02000335 RID: 821
 	public class IKTargetPlant : MonoBehaviour, IIKTargetBehavior
 	{
-		// Token: 0x060010F7 RID: 4343 RVA: 0x0000CED0 File Offset: 0x0000B0D0
+		// Token: 0x060010E2 RID: 4322 RVA: 0x0000CDE7 File Offset: 0x0000AFE7
 		private void Awake()
 		{
 			this.ikChain = base.GetComponent<IKSimpleChain>();
 		}
 
-		// Token: 0x060010F8 RID: 4344 RVA: 0x0000CEDE File Offset: 0x0000B0DE
+		// Token: 0x060010E3 RID: 4323 RVA: 0x0000CDF5 File Offset: 0x0000AFF5
 		public void UpdateIKState(int targetState)
 		{
 			if (this.ikState != IKTargetPlant.IKState.Reset)
@@ -21,13 +21,13 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060010F9 RID: 4345 RVA: 0x0000CEF0 File Offset: 0x0000B0F0
+		// Token: 0x060010E4 RID: 4324 RVA: 0x0000CE07 File Offset: 0x0000B007
 		public Vector3 GetArcPosition(Vector3 start, Vector3 end, float arcHeight, float t)
 		{
 			return Vector3.Lerp(start, end, Mathf.Sin(t * 3.14159274f * 0.5f)) + new Vector3(0f, Mathf.Sin(t * 3.14159274f) * arcHeight, 0f);
 		}
 
-		// Token: 0x060010FA RID: 4346 RVA: 0x00064338 File Offset: 0x00062538
+		// Token: 0x060010E5 RID: 4325 RVA: 0x000640AC File Offset: 0x000622AC
 		public void UpdateIKTargetPosition()
 		{
 			if (this.animator)
@@ -91,7 +91,7 @@ namespace RoR2
 			this.lastTransformPosition = base.transform.position;
 		}
 
-		// Token: 0x060010FB RID: 4347 RVA: 0x00064574 File Offset: 0x00062774
+		// Token: 0x060010E6 RID: 4326 RVA: 0x000642E8 File Offset: 0x000624E8
 		public void RaycastIKTarget(Vector3 position)
 		{
 			RaycastHit raycastHit;
@@ -111,89 +111,89 @@ namespace RoR2
 			this.targetPosition = position;
 		}
 
-		// Token: 0x0400150C RID: 5388
+		// Token: 0x040014F8 RID: 5368
 		[Tooltip("The max offset to step up")]
 		public float minHeight = -0.3f;
 
-		// Token: 0x0400150D RID: 5389
+		// Token: 0x040014F9 RID: 5369
 		[Tooltip("The max offset to step down")]
 		public float maxHeight = 1f;
 
-		// Token: 0x0400150E RID: 5390
+		// Token: 0x040014FA RID: 5370
 		[Tooltip("The strength of the IK as a lerp (0-1)")]
 		public float ikWeight = 1f;
 
-		// Token: 0x0400150F RID: 5391
+		// Token: 0x040014FB RID: 5371
 		[Tooltip("The time to restep")]
 		public float timeToReset = 0.6f;
 
-		// Token: 0x04001510 RID: 5392
+		// Token: 0x040014FC RID: 5372
 		[Tooltip("The max positional IK error before restepping")]
 		public float maxXZPositionalError = 4f;
 
-		// Token: 0x04001511 RID: 5393
+		// Token: 0x040014FD RID: 5373
 		public GameObject plantEffect;
 
-		// Token: 0x04001512 RID: 5394
+		// Token: 0x040014FE RID: 5374
 		public Animator animator;
 
-		// Token: 0x04001513 RID: 5395
+		// Token: 0x040014FF RID: 5375
 		[Tooltip("The IK weight float parameter if used")]
 		public string animatorIKWeightFloat;
 
-		// Token: 0x04001514 RID: 5396
+		// Token: 0x04001500 RID: 5376
 		[Tooltip("The lift animation trigger string if used")]
 		public string animatorLiftTrigger;
 
-		// Token: 0x04001515 RID: 5397
+		// Token: 0x04001501 RID: 5377
 		[Tooltip("The scale of the leg for calculating if the leg is too short to reach the IK target")]
 		public float legScale = 1f;
 
-		// Token: 0x04001516 RID: 5398
+		// Token: 0x04001502 RID: 5378
 		[Tooltip("The height of the step arc")]
 		public float arcHeight = 1f;
 
-		// Token: 0x04001517 RID: 5399
+		// Token: 0x04001503 RID: 5379
 		[Tooltip("The smoothing duration for the IK. Higher will be smoother but will be delayed.")]
 		public float smoothDampTime = 0.1f;
 
-		// Token: 0x04001518 RID: 5400
+		// Token: 0x04001504 RID: 5380
 		[Tooltip("Spherecasts will have more hits but take higher performance.")]
 		public bool useSpherecast;
 
-		// Token: 0x04001519 RID: 5401
+		// Token: 0x04001505 RID: 5381
 		public float spherecastRadius = 0.5f;
 
-		// Token: 0x0400151A RID: 5402
+		// Token: 0x04001506 RID: 5382
 		public IKTargetPlant.IKState ikState;
 
-		// Token: 0x0400151B RID: 5403
+		// Token: 0x04001507 RID: 5383
 		private bool isPlanted;
 
-		// Token: 0x0400151C RID: 5404
+		// Token: 0x04001508 RID: 5384
 		private Vector3 lastTransformPosition;
 
-		// Token: 0x0400151D RID: 5405
+		// Token: 0x04001509 RID: 5385
 		private Vector3 smoothDampRefVelocity;
 
-		// Token: 0x0400151E RID: 5406
+		// Token: 0x0400150A RID: 5386
 		private Vector3 targetPosition;
 
-		// Token: 0x0400151F RID: 5407
+		// Token: 0x0400150B RID: 5387
 		private Vector3 plantPosition;
 
-		// Token: 0x04001520 RID: 5408
+		// Token: 0x0400150C RID: 5388
 		private IKSimpleChain ikChain;
 
-		// Token: 0x04001521 RID: 5409
+		// Token: 0x0400150D RID: 5389
 		private float resetTimer;
 
-		// Token: 0x02000338 RID: 824
+		// Token: 0x02000336 RID: 822
 		public enum IKState
 		{
-			// Token: 0x04001523 RID: 5411
+			// Token: 0x0400150F RID: 5391
 			Plant,
-			// Token: 0x04001524 RID: 5412
+			// Token: 0x04001510 RID: 5392
 			Reset
 		}
 	}

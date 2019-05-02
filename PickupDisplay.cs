@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x0200038A RID: 906
+	// Token: 0x02000385 RID: 901
 	public class PickupDisplay : MonoBehaviour
 	{
-		// Token: 0x060012ED RID: 4845 RVA: 0x0000E7A0 File Offset: 0x0000C9A0
+		// Token: 0x060012CD RID: 4813 RVA: 0x0000E615 File Offset: 0x0000C815
 		public void SetPickupIndex(PickupIndex newPickupIndex, bool newHidden = false)
 		{
 			if (this.pickupIndex == newPickupIndex && this.hidden == newHidden)
@@ -18,7 +18,7 @@ namespace RoR2
 			this.RebuildModel();
 		}
 
-		// Token: 0x060012EE RID: 4846 RVA: 0x0000E7CE File Offset: 0x0000C9CE
+		// Token: 0x060012CE RID: 4814 RVA: 0x0000E643 File Offset: 0x0000C843
 		private void DestroyModel()
 		{
 			if (this.modelObject)
@@ -29,7 +29,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060012EF RID: 4847 RVA: 0x0006AB24 File Offset: 0x00068D24
+		// Token: 0x060012CF RID: 4815 RVA: 0x0006A780 File Offset: 0x00068980
 		private void RebuildModel()
 		{
 			GameObject y = this.hidden ? this.pickupIndex.GetHiddenPickupDisplayPrefab() : this.pickupIndex.GetPickupDisplayPrefab();
@@ -105,13 +105,13 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x170001A5 RID: 421
-		// (get) Token: 0x060012F0 RID: 4848 RVA: 0x0000E7F6 File Offset: 0x0000C9F6
-		// (set) Token: 0x060012F1 RID: 4849 RVA: 0x0000E7FE File Offset: 0x0000C9FE
+		// Token: 0x170001A0 RID: 416
+		// (get) Token: 0x060012D0 RID: 4816 RVA: 0x0000E66B File Offset: 0x0000C86B
+		// (set) Token: 0x060012D1 RID: 4817 RVA: 0x0000E673 File Offset: 0x0000C873
 		public Renderer modelRenderer { get; private set; }
 
-		// Token: 0x170001A6 RID: 422
-		// (get) Token: 0x060012F2 RID: 4850 RVA: 0x0000E807 File Offset: 0x0000CA07
+		// Token: 0x170001A1 RID: 417
+		// (get) Token: 0x060012D2 RID: 4818 RVA: 0x0000E67C File Offset: 0x0000C87C
 		private Vector3 localModelPivotPosition
 		{
 			get
@@ -120,13 +120,13 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060012F3 RID: 4851 RVA: 0x0000E824 File Offset: 0x0000CA24
+		// Token: 0x060012D3 RID: 4819 RVA: 0x0000E699 File Offset: 0x0000C899
 		private void Start()
 		{
 			this.localTime = 0f;
 		}
 
-		// Token: 0x060012F4 RID: 4852 RVA: 0x0006AE20 File Offset: 0x00069020
+		// Token: 0x060012D4 RID: 4820 RVA: 0x0006AA7C File Offset: 0x00068C7C
 		private void Update()
 		{
 			this.localTime += Time.deltaTime;
@@ -140,7 +140,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060012F5 RID: 4853 RVA: 0x0006AE84 File Offset: 0x00069084
+		// Token: 0x060012D5 RID: 4821 RVA: 0x0006AAE0 File Offset: 0x00068CE0
 		private void OnDrawGizmos()
 		{
 			Gizmos.color = Color.yellow;
@@ -150,61 +150,61 @@ namespace RoR2
 			Gizmos.matrix = matrix;
 		}
 
-		// Token: 0x040016A6 RID: 5798
+		// Token: 0x0400168A RID: 5770
 		[Tooltip("The vertical motion of the display model.")]
 		public Wave verticalWave;
 
-		// Token: 0x040016A7 RID: 5799
+		// Token: 0x0400168B RID: 5771
 		[Tooltip("The speed in degrees/second at which the display model rotates about the y axis.")]
 		public float spinSpeed = 75f;
 
-		// Token: 0x040016A8 RID: 5800
+		// Token: 0x0400168C RID: 5772
 		public GameObject tier1ParticleEffect;
 
-		// Token: 0x040016A9 RID: 5801
+		// Token: 0x0400168D RID: 5773
 		public GameObject tier2ParticleEffect;
 
-		// Token: 0x040016AA RID: 5802
+		// Token: 0x0400168E RID: 5774
 		public GameObject tier3ParticleEffect;
 
-		// Token: 0x040016AB RID: 5803
+		// Token: 0x0400168F RID: 5775
 		public GameObject equipmentParticleEffect;
 
-		// Token: 0x040016AC RID: 5804
+		// Token: 0x04001690 RID: 5776
 		public GameObject lunarParticleEffect;
 
-		// Token: 0x040016AD RID: 5805
+		// Token: 0x04001691 RID: 5777
 		public GameObject bossParticleEffect;
 
-		// Token: 0x040016AE RID: 5806
+		// Token: 0x04001692 RID: 5778
 		[Tooltip("The particle system to tint.")]
 		public ParticleSystem[] coloredParticleSystems;
 
-		// Token: 0x040016AF RID: 5807
+		// Token: 0x04001693 RID: 5779
 		private PickupIndex pickupIndex = PickupIndex.none;
 
-		// Token: 0x040016B0 RID: 5808
+		// Token: 0x04001694 RID: 5780
 		private bool hidden;
 
-		// Token: 0x040016B1 RID: 5809
+		// Token: 0x04001695 RID: 5781
 		public Highlight highlight;
 
-		// Token: 0x040016B2 RID: 5810
+		// Token: 0x04001696 RID: 5782
 		private static readonly Vector3 idealModelBox = Vector3.one;
 
-		// Token: 0x040016B3 RID: 5811
+		// Token: 0x04001697 RID: 5783
 		private static readonly float idealVolume = PickupDisplay.idealModelBox.x * PickupDisplay.idealModelBox.y * PickupDisplay.idealModelBox.z;
 
-		// Token: 0x040016B4 RID: 5812
+		// Token: 0x04001698 RID: 5784
 		private GameObject modelObject;
 
-		// Token: 0x040016B6 RID: 5814
+		// Token: 0x0400169A RID: 5786
 		private GameObject modelPrefab;
 
-		// Token: 0x040016B7 RID: 5815
+		// Token: 0x0400169B RID: 5787
 		private float modelScale;
 
-		// Token: 0x040016B8 RID: 5816
+		// Token: 0x0400169C RID: 5788
 		private float localTime;
 	}
 }

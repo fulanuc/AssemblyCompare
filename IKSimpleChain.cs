@@ -3,16 +3,16 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x02000334 RID: 820
+	// Token: 0x02000332 RID: 818
 	public class IKSimpleChain : MonoBehaviour
 	{
-		// Token: 0x060010E8 RID: 4328 RVA: 0x0000CDEE File Offset: 0x0000AFEE
+		// Token: 0x060010D3 RID: 4307 RVA: 0x0000CD05 File Offset: 0x0000AF05
 		private void Start()
 		{
 			this.ikTarget = base.GetComponent<IIKTargetBehavior>();
 		}
 
-		// Token: 0x060010E9 RID: 4329 RVA: 0x00063A98 File Offset: 0x00061C98
+		// Token: 0x060010D4 RID: 4308 RVA: 0x0006380C File Offset: 0x00061A0C
 		private void LateUpdate()
 		{
 			if (this.firstRun)
@@ -29,7 +29,7 @@ namespace RoR2
 			this.firstRun = false;
 		}
 
-		// Token: 0x060010EA RID: 4330 RVA: 0x00063B10 File Offset: 0x00061D10
+		// Token: 0x060010D5 RID: 4309 RVA: 0x00063884 File Offset: 0x00061A84
 		public bool LegTooShort(float legScale = 1f)
 		{
 			bool result = false;
@@ -40,7 +40,7 @@ namespace RoR2
 			return result;
 		}
 
-		// Token: 0x060010EB RID: 4331 RVA: 0x00063B5C File Offset: 0x00061D5C
+		// Token: 0x060010D6 RID: 4310 RVA: 0x000638D0 File Offset: 0x00061AD0
 		private float CalculateLegLength(Transform[] bones)
 		{
 			float[] array = new float[bones.Length - 1];
@@ -53,7 +53,7 @@ namespace RoR2
 			return num;
 		}
 
-		// Token: 0x060010EC RID: 4332 RVA: 0x00063BB8 File Offset: 0x00061DB8
+		// Token: 0x060010D7 RID: 4311 RVA: 0x0006392C File Offset: 0x00061B2C
 		public void Solve(Transform[] bones, Vector3 target)
 		{
 			Transform transform = bones[bones.Length - 1];
@@ -178,7 +178,7 @@ namespace RoR2
 			this.tmpBone = bones[this.startBone];
 		}
 
-		// Token: 0x060010ED RID: 4333 RVA: 0x0006411C File Offset: 0x0006231C
+		// Token: 0x060010D8 RID: 4312 RVA: 0x00063E90 File Offset: 0x00062090
 		private float SignedAngle(Vector3 vecU, Vector3 vecV, Vector3 normal)
 		{
 			float num = Vector3.Angle(vecU, vecV);
@@ -189,7 +189,7 @@ namespace RoR2
 			return -num;
 		}
 
-		// Token: 0x060010EE RID: 4334 RVA: 0x00064150 File Offset: 0x00062350
+		// Token: 0x060010D9 RID: 4313 RVA: 0x00063EC4 File Offset: 0x000620C4
 		private float AngleDir(Vector3 fwd, Vector3 targetDir, Vector3 up)
 		{
 			float num = Vector3.Dot(Vector3.Cross(fwd, targetDir), up);
@@ -204,73 +204,73 @@ namespace RoR2
 			return 0f;
 		}
 
-		// Token: 0x040014E7 RID: 5351
+		// Token: 0x040014D3 RID: 5331
 		public float scale = 1f;
 
-		// Token: 0x040014E8 RID: 5352
+		// Token: 0x040014D4 RID: 5332
 		public int maxIterations = 100;
 
-		// Token: 0x040014E9 RID: 5353
+		// Token: 0x040014D5 RID: 5333
 		public float positionAccuracy = 0.001f;
 
-		// Token: 0x040014EA RID: 5354
+		// Token: 0x040014D6 RID: 5334
 		private float posAccuracy = 0.001f;
 
-		// Token: 0x040014EB RID: 5355
+		// Token: 0x040014D7 RID: 5335
 		public float bendingLow;
 
-		// Token: 0x040014EC RID: 5356
+		// Token: 0x040014D8 RID: 5336
 		public float bendingHigh;
 
-		// Token: 0x040014ED RID: 5357
+		// Token: 0x040014D9 RID: 5337
 		public int chainResolution;
 
-		// Token: 0x040014EE RID: 5358
+		// Token: 0x040014DA RID: 5338
 		private int startBone;
 
-		// Token: 0x040014EF RID: 5359
+		// Token: 0x040014DB RID: 5339
 		private bool minIsFound;
 
-		// Token: 0x040014F0 RID: 5360
+		// Token: 0x040014DC RID: 5340
 		private bool bendMore;
 
-		// Token: 0x040014F1 RID: 5361
+		// Token: 0x040014DD RID: 5341
 		private Vector3 targetPosition;
 
-		// Token: 0x040014F2 RID: 5362
+		// Token: 0x040014DE RID: 5342
 		public float legLength;
 
-		// Token: 0x040014F3 RID: 5363
+		// Token: 0x040014DF RID: 5343
 		public float poleAngle;
 
-		// Token: 0x040014F4 RID: 5364
+		// Token: 0x040014E0 RID: 5344
 		public IKSimpleChain.InnerAxis innerAxis = IKSimpleChain.InnerAxis.Right;
 
-		// Token: 0x040014F5 RID: 5365
+		// Token: 0x040014E1 RID: 5345
 		private Transform tmpBone;
 
-		// Token: 0x040014F6 RID: 5366
+		// Token: 0x040014E2 RID: 5346
 		public Transform ikPole;
 
-		// Token: 0x040014F7 RID: 5367
+		// Token: 0x040014E3 RID: 5347
 		public Transform[] boneList;
 
-		// Token: 0x040014F8 RID: 5368
+		// Token: 0x040014E4 RID: 5348
 		private bool firstRun = true;
 
-		// Token: 0x040014F9 RID: 5369
+		// Token: 0x040014E5 RID: 5349
 		private IIKTargetBehavior ikTarget;
 
-		// Token: 0x02000335 RID: 821
+		// Token: 0x02000333 RID: 819
 		public enum InnerAxis
 		{
-			// Token: 0x040014FB RID: 5371
+			// Token: 0x040014E7 RID: 5351
 			Left,
-			// Token: 0x040014FC RID: 5372
+			// Token: 0x040014E8 RID: 5352
 			Right,
-			// Token: 0x040014FD RID: 5373
+			// Token: 0x040014E9 RID: 5353
 			Forward,
-			// Token: 0x040014FE RID: 5374
+			// Token: 0x040014EA RID: 5354
 			Backward
 		}
 	}

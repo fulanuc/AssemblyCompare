@@ -3,18 +3,18 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x02000364 RID: 868
+	// Token: 0x02000361 RID: 865
 	[RequireComponent(typeof(LineRenderer))]
 	[ExecuteAlways]
 	public class MultiPointBezierCurveLine : MonoBehaviour
 	{
-		// Token: 0x060011E9 RID: 4585 RVA: 0x0000DA83 File Offset: 0x0000BC83
+		// Token: 0x060011D2 RID: 4562 RVA: 0x0000D99A File Offset: 0x0000BB9A
 		private void Start()
 		{
 			this.lineRenderer = base.GetComponent<LineRenderer>();
 		}
 
-		// Token: 0x060011EA RID: 4586 RVA: 0x000676C0 File Offset: 0x000658C0
+		// Token: 0x060011D3 RID: 4563 RVA: 0x00067388 File Offset: 0x00065588
 		private void LateUpdate()
 		{
 			for (int i = 0; i < this.linePositionList.Length; i++)
@@ -25,7 +25,7 @@ namespace RoR2
 			this.lineRenderer.SetPositions(this.linePositionList);
 		}
 
-		// Token: 0x060011EB RID: 4587 RVA: 0x00067714 File Offset: 0x00065914
+		// Token: 0x060011D4 RID: 4564 RVA: 0x000673DC File Offset: 0x000655DC
 		private Vector3 EvaluateBezier(float globalT)
 		{
 			int num = this.vertexList.Length - 1;
@@ -49,27 +49,27 @@ namespace RoR2
 			return Vector3.Lerp(a2, b3, num4);
 		}
 
-		// Token: 0x040015F4 RID: 5620
+		// Token: 0x040015DB RID: 5595
 		public MultiPointBezierCurveLine.Vertex[] vertexList;
 
-		// Token: 0x040015F5 RID: 5621
+		// Token: 0x040015DC RID: 5596
 		public Vector3[] linePositionList;
 
-		// Token: 0x040015F6 RID: 5622
+		// Token: 0x040015DD RID: 5597
 		[HideInInspector]
 		public LineRenderer lineRenderer;
 
-		// Token: 0x02000365 RID: 869
+		// Token: 0x02000362 RID: 866
 		[Serializable]
 		public struct Vertex
 		{
-			// Token: 0x040015F7 RID: 5623
+			// Token: 0x040015DE RID: 5598
 			public Transform vertexTransform;
 
-			// Token: 0x040015F8 RID: 5624
+			// Token: 0x040015DF RID: 5599
 			public Vector3 position;
 
-			// Token: 0x040015F9 RID: 5625
+			// Token: 0x040015E0 RID: 5600
 			public Vector3 localVelocity;
 		}
 	}

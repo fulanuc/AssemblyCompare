@@ -8,10 +8,10 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x02000456 RID: 1110
+	// Token: 0x0200044C RID: 1100
 	public static class ItemCatalog
 	{
-		// Token: 0x060018D2 RID: 6354 RVA: 0x0007F64C File Offset: 0x0007D84C
+		// Token: 0x0600187D RID: 6269 RVA: 0x0007EE6C File Offset: 0x0007D06C
 		static ItemCatalog()
 		{
 			ItemCatalog.DefineItems();
@@ -37,7 +37,7 @@ namespace RoR2
 			});
 		}
 
-		// Token: 0x060018D3 RID: 6355 RVA: 0x00012A4E File Offset: 0x00010C4E
+		// Token: 0x0600187E RID: 6270 RVA: 0x00012577 File Offset: 0x00010777
 		public static ItemIndex[] RequestItemOrderBuffer()
 		{
 			if (ItemCatalog.itemOrderBuffers.Count > 0)
@@ -47,13 +47,13 @@ namespace RoR2
 			return new ItemIndex[78];
 		}
 
-		// Token: 0x060018D4 RID: 6356 RVA: 0x00012A6F File Offset: 0x00010C6F
+		// Token: 0x0600187F RID: 6271 RVA: 0x00012598 File Offset: 0x00010798
 		public static void ReturnItemOrderBuffer(ItemIndex[] buffer)
 		{
 			ItemCatalog.itemOrderBuffers.Push(buffer);
 		}
 
-		// Token: 0x060018D5 RID: 6357 RVA: 0x00012A7C File Offset: 0x00010C7C
+		// Token: 0x06001880 RID: 6272 RVA: 0x000125A5 File Offset: 0x000107A5
 		public static int[] RequestItemStackArray()
 		{
 			if (ItemCatalog.itemStackArrays.Count > 0)
@@ -63,14 +63,14 @@ namespace RoR2
 			return new int[78];
 		}
 
-		// Token: 0x060018D6 RID: 6358 RVA: 0x00012A9D File Offset: 0x00010C9D
+		// Token: 0x06001881 RID: 6273 RVA: 0x000125C6 File Offset: 0x000107C6
 		public static void ReturnItemStackArray(int[] itemStackArray)
 		{
 			Array.Clear(itemStackArray, 0, itemStackArray.Length);
 			ItemCatalog.itemStackArrays.Push(itemStackArray);
 		}
 
-		// Token: 0x060018D7 RID: 6359 RVA: 0x0007F6C0 File Offset: 0x0007D8C0
+		// Token: 0x06001882 RID: 6274 RVA: 0x0007EEE0 File Offset: 0x0007D0E0
 		private static void RegisterItem(ItemIndex itemIndex, ItemDef itemDef)
 		{
 			itemDef.itemIndex = itemIndex;
@@ -90,7 +90,7 @@ namespace RoR2
 				ItemCatalog.lunarItemList.Add(itemIndex);
 				break;
 			}
-			string arg = itemIndex.ToString().ToUpper(CultureInfo.InvariantCulture);
+			string arg = itemIndex.ToString().ToUpper();
 			if (itemDef.nameToken == null)
 			{
 				itemDef.nameToken = string.Format(CultureInfo.InvariantCulture, "ITEM_{0}_NAME", arg);
@@ -117,7 +117,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060018D8 RID: 6360 RVA: 0x00012AB4 File Offset: 0x00010CB4
+		// Token: 0x06001883 RID: 6275 RVA: 0x000125DD File Offset: 0x000107DD
 		public static ItemDef GetItemDef(ItemIndex itemIndex)
 		{
 			if (itemIndex < ItemIndex.Syringe || itemIndex >= ItemIndex.Count)
@@ -127,7 +127,7 @@ namespace RoR2
 			return ItemCatalog.itemDefs[(int)itemIndex];
 		}
 
-		// Token: 0x060018D9 RID: 6361 RVA: 0x0007F7E4 File Offset: 0x0007D9E4
+		// Token: 0x06001884 RID: 6276 RVA: 0x0007F000 File Offset: 0x0007D200
 		private static void DefineItems()
 		{
 			ItemCatalog.itemDefs = new ItemDef[78];
@@ -887,48 +887,48 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04001C36 RID: 7222
+		// Token: 0x04001C04 RID: 7172
 		public static List<ItemIndex> tier1ItemList = new List<ItemIndex>();
 
-		// Token: 0x04001C37 RID: 7223
+		// Token: 0x04001C05 RID: 7173
 		public static List<ItemIndex> tier2ItemList = new List<ItemIndex>();
 
-		// Token: 0x04001C38 RID: 7224
+		// Token: 0x04001C06 RID: 7174
 		public static List<ItemIndex> tier3ItemList = new List<ItemIndex>();
 
-		// Token: 0x04001C39 RID: 7225
+		// Token: 0x04001C07 RID: 7175
 		public static List<ItemIndex> lunarItemList = new List<ItemIndex>();
 
-		// Token: 0x04001C3A RID: 7226
+		// Token: 0x04001C08 RID: 7176
 		private static ItemDef[] itemDefs;
 
-		// Token: 0x04001C3B RID: 7227
+		// Token: 0x04001C09 RID: 7177
 		private static readonly Stack<ItemIndex[]> itemOrderBuffers = new Stack<ItemIndex[]>();
 
-		// Token: 0x04001C3C RID: 7228
+		// Token: 0x04001C0A RID: 7178
 		private static readonly Stack<int[]> itemStackArrays = new Stack<int[]>();
 
-		// Token: 0x04001C3D RID: 7229
+		// Token: 0x04001C0B RID: 7179
 		public static readonly GenericStaticEnumerable<ItemIndex, ItemCatalog.AllItemsEnumerator> allItems;
 
-		// Token: 0x02000457 RID: 1111
+		// Token: 0x0200044D RID: 1101
 		public struct AllItemsEnumerator : IEnumerator<ItemIndex>, IEnumerator, IDisposable
 		{
-			// Token: 0x060018DA RID: 6362 RVA: 0x00012AC8 File Offset: 0x00010CC8
+			// Token: 0x06001885 RID: 6277 RVA: 0x000125F1 File Offset: 0x000107F1
 			public bool MoveNext()
 			{
 				this.position++;
 				return this.position < ItemIndex.Count;
 			}
 
-			// Token: 0x060018DB RID: 6363 RVA: 0x00012AE2 File Offset: 0x00010CE2
+			// Token: 0x06001886 RID: 6278 RVA: 0x0001260B File Offset: 0x0001080B
 			public void Reset()
 			{
 				this.position = ItemIndex.None;
 			}
 
-			// Token: 0x17000245 RID: 581
-			// (get) Token: 0x060018DC RID: 6364 RVA: 0x00012AEB File Offset: 0x00010CEB
+			// Token: 0x1700023A RID: 570
+			// (get) Token: 0x06001887 RID: 6279 RVA: 0x00012614 File Offset: 0x00010814
 			public ItemIndex Current
 			{
 				get
@@ -937,8 +937,8 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x17000246 RID: 582
-			// (get) Token: 0x060018DD RID: 6365 RVA: 0x00012AF3 File Offset: 0x00010CF3
+			// Token: 0x1700023B RID: 571
+			// (get) Token: 0x06001888 RID: 6280 RVA: 0x0001261C File Offset: 0x0001081C
 			object IEnumerator.Current
 			{
 				get
@@ -947,12 +947,12 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x060018DE RID: 6366 RVA: 0x000025DA File Offset: 0x000007DA
+			// Token: 0x06001889 RID: 6281 RVA: 0x000025F6 File Offset: 0x000007F6
 			void IDisposable.Dispose()
 			{
 			}
 
-			// Token: 0x04001C3E RID: 7230
+			// Token: 0x04001C0C RID: 7180
 			private ItemIndex position;
 		}
 	}

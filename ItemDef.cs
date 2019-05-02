@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x02000455 RID: 1109
+	// Token: 0x0200044B RID: 1099
 	public class ItemDef
 	{
-		// Token: 0x1700023F RID: 575
-		// (get) Token: 0x060018CB RID: 6347 RVA: 0x00012A0C File Offset: 0x00010C0C
+		// Token: 0x17000234 RID: 564
+		// (get) Token: 0x06001876 RID: 6262 RVA: 0x00012535 File Offset: 0x00010735
 		public bool inDroppableTier
 		{
 			get
@@ -16,8 +16,8 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x17000240 RID: 576
-		// (get) Token: 0x060018CC RID: 6348 RVA: 0x00012A1A File Offset: 0x00010C1A
+		// Token: 0x17000235 RID: 565
+		// (get) Token: 0x06001877 RID: 6263 RVA: 0x00012543 File Offset: 0x00010743
 		public Texture pickupIconTexture
 		{
 			get
@@ -26,8 +26,8 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x17000241 RID: 577
-		// (get) Token: 0x060018CD RID: 6349 RVA: 0x0007F568 File Offset: 0x0007D768
+		// Token: 0x17000236 RID: 566
+		// (get) Token: 0x06001878 RID: 6264 RVA: 0x0007ED88 File Offset: 0x0007CF88
 		public Texture bgIconTexture
 		{
 			get
@@ -50,8 +50,8 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x17000242 RID: 578
-		// (get) Token: 0x060018CE RID: 6350 RVA: 0x00012A27 File Offset: 0x00010C27
+		// Token: 0x17000237 RID: 567
+		// (get) Token: 0x06001879 RID: 6265 RVA: 0x00012550 File Offset: 0x00010750
 		public Sprite pickupIconSprite
 		{
 			get
@@ -60,8 +60,8 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x17000243 RID: 579
-		// (get) Token: 0x060018CF RID: 6351 RVA: 0x0007F5D0 File Offset: 0x0007D7D0
+		// Token: 0x17000238 RID: 568
+		// (get) Token: 0x0600187A RID: 6266 RVA: 0x0007EDF0 File Offset: 0x0007CFF0
 		public ColorCatalog.ColorIndex colorIndex
 		{
 			get
@@ -84,8 +84,8 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x17000244 RID: 580
-		// (get) Token: 0x060018D0 RID: 6352 RVA: 0x0007F60C File Offset: 0x0007D80C
+		// Token: 0x17000239 RID: 569
+		// (get) Token: 0x0600187B RID: 6267 RVA: 0x0007EE2C File Offset: 0x0007D02C
 		public ColorCatalog.ColorIndex darkColorIndex
 		{
 			get
@@ -108,43 +108,43 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04001C29 RID: 7209
+		// Token: 0x04001BF7 RID: 7159
 		public ItemIndex itemIndex;
 
-		// Token: 0x04001C2A RID: 7210
+		// Token: 0x04001BF8 RID: 7160
 		public ItemTier tier;
 
-		// Token: 0x04001C2B RID: 7211
+		// Token: 0x04001BF9 RID: 7161
 		public string pickupModelPath;
 
-		// Token: 0x04001C2C RID: 7212
+		// Token: 0x04001BFA RID: 7162
 		public string nameToken;
 
-		// Token: 0x04001C2D RID: 7213
+		// Token: 0x04001BFB RID: 7163
 		public string pickupToken;
 
-		// Token: 0x04001C2E RID: 7214
+		// Token: 0x04001BFC RID: 7164
 		public string descriptionToken;
 
-		// Token: 0x04001C2F RID: 7215
+		// Token: 0x04001BFD RID: 7165
 		public string loreToken;
 
-		// Token: 0x04001C30 RID: 7216
+		// Token: 0x04001BFE RID: 7166
 		public string addressToken;
 
-		// Token: 0x04001C31 RID: 7217
+		// Token: 0x04001BFF RID: 7167
 		public string pickupIconPath;
 
-		// Token: 0x04001C32 RID: 7218
+		// Token: 0x04001C00 RID: 7168
 		public string unlockableName = "";
 
-		// Token: 0x04001C33 RID: 7219
+		// Token: 0x04001C01 RID: 7169
 		public bool hidden;
 
-		// Token: 0x04001C34 RID: 7220
+		// Token: 0x04001C02 RID: 7170
 		public bool canRemove = true;
 
-		// Token: 0x04001C35 RID: 7221
+		// Token: 0x04001C03 RID: 7171
 		public MageElement mageElement;
 	}
 }

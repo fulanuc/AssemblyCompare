@@ -4,10 +4,10 @@ using UnityEngine.EventSystems;
 
 namespace RoR2
 {
-	// Token: 0x02000343 RID: 835
+	// Token: 0x02000341 RID: 833
 	public interface ITeleportHandler : IEventSystemHandler
 	{
-		// Token: 0x0600115D RID: 4445
+		// Token: 0x06001149 RID: 4425
 		void OnTeleport(Vector3 oldPosition, Vector3 newPosition);
 	}
 }

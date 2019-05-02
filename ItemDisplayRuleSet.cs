@@ -8,7 +8,7 @@ namespace RoR2
 	[CreateAssetMenu]
 	public class ItemDisplayRuleSet : ScriptableObject
 	{
-		// Token: 0x06000AB1 RID: 2737 RVA: 0x0004900C File Offset: 0x0004720C
+		// Token: 0x06000AAD RID: 2733 RVA: 0x00048D50 File Offset: 0x00046F50
 		public DisplayRuleGroup GetItemDisplayRuleGroup(ItemIndex itemIndex)
 		{
 			if (itemIndex < ItemIndex.Syringe || itemIndex >= (ItemIndex)this.itemRuleGroups.Length)
@@ -21,7 +21,7 @@ namespace RoR2
 			return this.itemRuleGroups[(int)itemIndex];
 		}
 
-		// Token: 0x06000AB2 RID: 2738 RVA: 0x000089EA File Offset: 0x00006BEA
+		// Token: 0x06000AAE RID: 2734 RVA: 0x000089C5 File Offset: 0x00006BC5
 		public void SetItemDisplayRuleGroup(ItemIndex itemIndex, DisplayRuleGroup displayRuleGroup)
 		{
 			if (itemIndex < ItemIndex.Syringe || itemIndex >= (ItemIndex)this.itemRuleGroups.Length)
@@ -31,7 +31,7 @@ namespace RoR2
 			this.itemRuleGroups[(int)itemIndex] = displayRuleGroup;
 		}
 
-		// Token: 0x06000AB3 RID: 2739 RVA: 0x00049048 File Offset: 0x00047248
+		// Token: 0x06000AAF RID: 2735 RVA: 0x00048D8C File Offset: 0x00046F8C
 		public DisplayRuleGroup GetEquipmentDisplayRuleGroup(EquipmentIndex equipmentIndex)
 		{
 			if (equipmentIndex < EquipmentIndex.CommandMissile || equipmentIndex >= (EquipmentIndex)this.equipmentRuleGroups.Length)
@@ -44,7 +44,7 @@ namespace RoR2
 			return this.equipmentRuleGroups[(int)equipmentIndex];
 		}
 
-		// Token: 0x06000AB4 RID: 2740 RVA: 0x00008A09 File Offset: 0x00006C09
+		// Token: 0x06000AB0 RID: 2736 RVA: 0x000089E4 File Offset: 0x00006BE4
 		public void SetEquipmentDisplayRuleGroup(EquipmentIndex equipmentIndex, DisplayRuleGroup displayRuleGroup)
 		{
 			if (equipmentIndex < EquipmentIndex.CommandMissile || equipmentIndex >= (EquipmentIndex)this.equipmentRuleGroups.Length)
@@ -54,19 +54,19 @@ namespace RoR2
 			this.equipmentRuleGroups[(int)equipmentIndex] = displayRuleGroup;
 		}
 
-		// Token: 0x06000AB5 RID: 2741 RVA: 0x00008A28 File Offset: 0x00006C28
+		// Token: 0x06000AB1 RID: 2737 RVA: 0x00008A03 File Offset: 0x00006C03
 		public void Reset()
 		{
 			this.itemRuleGroups = new DisplayRuleGroup[78];
 			this.equipmentRuleGroups = new DisplayRuleGroup[27];
 		}
 
-		// Token: 0x04000E19 RID: 3609
+		// Token: 0x04000E15 RID: 3605
 		[FormerlySerializedAs("ruleGroups")]
 		[SerializeField]
 		private DisplayRuleGroup[] itemRuleGroups = new DisplayRuleGroup[78];
 
-		// Token: 0x04000E1A RID: 3610
+		// Token: 0x04000E16 RID: 3606
 		[SerializeField]
 		private DisplayRuleGroup[] equipmentRuleGroups = new DisplayRuleGroup[27];
 	}

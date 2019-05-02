@@ -2,10 +2,10 @@
 
 namespace RoR2
 {
-	// Token: 0x02000445 RID: 1093
+	// Token: 0x0200043D RID: 1085
 	public class IndexAllocator
 	{
-		// Token: 0x06001873 RID: 6259 RVA: 0x0001251C File Offset: 0x0001071C
+		// Token: 0x06001826 RID: 6182 RVA: 0x000120A8 File Offset: 0x000102A8
 		public IndexAllocator()
 		{
 			this.ranges = new IndexAllocator.Range[16];
@@ -13,7 +13,7 @@ namespace RoR2
 			this.rangeCount = 1;
 		}
 
-		// Token: 0x06001874 RID: 6260 RVA: 0x0001254F File Offset: 0x0001074F
+		// Token: 0x06001827 RID: 6183 RVA: 0x000120DB File Offset: 0x000102DB
 		public int RequestIndex()
 		{
 			int result = this.ranges[0].TakeIndex();
@@ -24,19 +24,19 @@ namespace RoR2
 			return result;
 		}
 
-		// Token: 0x06001875 RID: 6261 RVA: 0x0001257C File Offset: 0x0001077C
+		// Token: 0x06001828 RID: 6184 RVA: 0x00012108 File Offset: 0x00010308
 		private void RemoveAt(int i)
 		{
 			HGArrayUtilities.ArrayRemoveAt<IndexAllocator.Range>(ref this.ranges, ref this.rangeCount, i, 1);
 		}
 
-		// Token: 0x06001876 RID: 6262 RVA: 0x00012591 File Offset: 0x00010791
+		// Token: 0x06001829 RID: 6185 RVA: 0x0001211D File Offset: 0x0001031D
 		private void InsertAt(int i, IndexAllocator.Range range)
 		{
 			HGArrayUtilities.ArrayInsert<IndexAllocator.Range>(ref this.ranges, ref this.rangeCount, i, ref range);
 		}
 
-		// Token: 0x06001877 RID: 6263 RVA: 0x0007E718 File Offset: 0x0007C918
+		// Token: 0x0600182A RID: 6186 RVA: 0x0007DF5C File Offset: 0x0007C15C
 		public void FreeIndex(int index)
 		{
 			if (index < this.ranges[0].startIndex)
@@ -103,23 +103,23 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04001BA5 RID: 7077
+		// Token: 0x04001B75 RID: 7029
 		private IndexAllocator.Range[] ranges;
 
-		// Token: 0x04001BA6 RID: 7078
+		// Token: 0x04001B76 RID: 7030
 		private int rangeCount;
 
-		// Token: 0x02000446 RID: 1094
+		// Token: 0x0200043E RID: 1086
 		private struct Range
 		{
-			// Token: 0x06001878 RID: 6264 RVA: 0x000125A7 File Offset: 0x000107A7
+			// Token: 0x0600182B RID: 6187 RVA: 0x00012133 File Offset: 0x00010333
 			public Range(int startIndex, int endIndex)
 			{
 				this.startIndex = startIndex;
 				this.endIndex = endIndex;
 			}
 
-			// Token: 0x06001879 RID: 6265 RVA: 0x0007E880 File Offset: 0x0007CA80
+			// Token: 0x0600182C RID: 6188 RVA: 0x0007E0C4 File Offset: 0x0007C2C4
 			public int TakeIndex()
 			{
 				int num = this.startIndex;
@@ -127,7 +127,7 @@ namespace RoR2
 				return num;
 			}
 
-			// Token: 0x0600187A RID: 6266 RVA: 0x000125B7 File Offset: 0x000107B7
+			// Token: 0x0600182D RID: 6189 RVA: 0x00012143 File Offset: 0x00010343
 			public bool TryExtending(int index)
 			{
 				if (index == this.startIndex - 1)
@@ -143,8 +143,8 @@ namespace RoR2
 				return false;
 			}
 
-			// Token: 0x17000236 RID: 566
-			// (get) Token: 0x0600187B RID: 6267 RVA: 0x000125EE File Offset: 0x000107EE
+			// Token: 0x1700022B RID: 555
+			// (get) Token: 0x0600182E RID: 6190 RVA: 0x0001217A File Offset: 0x0001037A
 			public bool empty
 			{
 				get
@@ -153,8 +153,8 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x17000237 RID: 567
-			// (get) Token: 0x0600187C RID: 6268 RVA: 0x000125FE File Offset: 0x000107FE
+			// Token: 0x1700022C RID: 556
+			// (get) Token: 0x0600182F RID: 6191 RVA: 0x0001218A File Offset: 0x0001038A
 			public int size
 			{
 				get
@@ -163,10 +163,10 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x04001BA7 RID: 7079
+			// Token: 0x04001B77 RID: 7031
 			public int startIndex;
 
-			// Token: 0x04001BA8 RID: 7080
+			// Token: 0x04001B78 RID: 7032
 			public int endIndex;
 		}
 	}

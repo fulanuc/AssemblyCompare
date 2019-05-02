@@ -8,7 +8,7 @@ namespace RoR2
 	[CreateAssetMenu(menuName = "SpawnCards")]
 	public class InteractableSpawnCard : SpawnCard
 	{
-		// Token: 0x06000AAF RID: 2735 RVA: 0x00048F04 File Offset: 0x00047104
+		// Token: 0x06000AAB RID: 2731 RVA: 0x00048C48 File Offset: 0x00046E48
 		public override GameObject DoSpawn(Vector3 position, Quaternion rotation)
 		{
 			GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(this.prefab, position, rotation);
@@ -28,16 +28,16 @@ namespace RoR2
 			return gameObject;
 		}
 
-		// Token: 0x04000E15 RID: 3605
+		// Token: 0x04000E11 RID: 3601
 		public bool orientToFloor;
 
-		// Token: 0x04000E16 RID: 3606
+		// Token: 0x04000E12 RID: 3602
 		public bool slightlyRandomizeOrientation;
 
-		// Token: 0x04000E17 RID: 3607
+		// Token: 0x04000E13 RID: 3603
 		private const float raycastLength = 6f;
 
-		// Token: 0x04000E18 RID: 3608
+		// Token: 0x04000E14 RID: 3604
 		private const float floorOffset = 3f;
 	}
 }

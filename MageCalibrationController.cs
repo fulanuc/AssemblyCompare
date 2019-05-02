@@ -6,11 +6,11 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x02000351 RID: 849
+	// Token: 0x0200034E RID: 846
 	[RequireComponent(typeof(CharacterBody))]
 	public class MageCalibrationController : MonoBehaviour
 	{
-		// Token: 0x0600119F RID: 4511 RVA: 0x0000D6D0 File Offset: 0x0000B8D0
+		// Token: 0x06001188 RID: 4488 RVA: 0x0000D5E7 File Offset: 0x0000B7E7
 		private void Awake()
 		{
 			this.characterBody = base.GetComponent<CharacterBody>();
@@ -18,22 +18,22 @@ namespace RoR2
 			this.hasEffectiveAuthority = Util.HasEffectiveAuthority(base.gameObject);
 		}
 
-		// Token: 0x060011A0 RID: 4512 RVA: 0x0000D706 File Offset: 0x0000B906
+		// Token: 0x06001189 RID: 4489 RVA: 0x0000D61D File Offset: 0x0000B81D
 		private void Start()
 		{
 			this.currentElement = this.GetAwardedElementFromInventory();
 			this.RefreshCalibrationElement(this.currentElement);
 		}
 
-		// Token: 0x060011A1 RID: 4513 RVA: 0x0000D720 File Offset: 0x0000B920
+		// Token: 0x0600118A RID: 4490 RVA: 0x0000D637 File Offset: 0x0000B837
 		private void OnDestroy()
 		{
 			this.characterBody.onInventoryChanged -= this.OnInventoryChanged;
 		}
 
-		// Token: 0x17000188 RID: 392
-		// (get) Token: 0x060011A2 RID: 4514 RVA: 0x0000D739 File Offset: 0x0000B939
-		// (set) Token: 0x060011A3 RID: 4515 RVA: 0x0000D741 File Offset: 0x0000B941
+		// Token: 0x17000183 RID: 387
+		// (get) Token: 0x0600118B RID: 4491 RVA: 0x0000D650 File Offset: 0x0000B850
+		// (set) Token: 0x0600118C RID: 4492 RVA: 0x0000D658 File Offset: 0x0000B858
 		private MageElement currentElement
 		{
 			get
@@ -51,13 +51,13 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060011A4 RID: 4516 RVA: 0x0000D760 File Offset: 0x0000B960
+		// Token: 0x0600118D RID: 4493 RVA: 0x0000D677 File Offset: 0x0000B877
 		private void OnInventoryChanged()
 		{
 			base.enabled = true;
 		}
 
-		// Token: 0x060011A5 RID: 4517 RVA: 0x0006694C File Offset: 0x00064B4C
+		// Token: 0x0600118E RID: 4494 RVA: 0x00066614 File Offset: 0x00064814
 		private void FixedUpdate()
 		{
 			base.enabled = false;
@@ -74,7 +74,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060011A6 RID: 4518 RVA: 0x000669B8 File Offset: 0x00064BB8
+		// Token: 0x0600118F RID: 4495 RVA: 0x00066680 File Offset: 0x00064880
 		private MageElement GetAwardedElementFromInventory()
 		{
 			Inventory inventory = this.characterBody.inventory;
@@ -89,7 +89,7 @@ namespace RoR2
 			return MageElement.None;
 		}
 
-		// Token: 0x060011A7 RID: 4519 RVA: 0x000669F0 File Offset: 0x00064BF0
+		// Token: 0x06001190 RID: 4496 RVA: 0x000666B8 File Offset: 0x000648B8
 		private MageElement CalcElementToAward()
 		{
 			for (int i = 0; i < MageCalibrationController.elementCounter.Length; i++)
@@ -150,13 +150,13 @@ namespace RoR2
 			return MageElement.None;
 		}
 
-		// Token: 0x060011A8 RID: 4520 RVA: 0x0000D769 File Offset: 0x0000B969
+		// Token: 0x06001191 RID: 4497 RVA: 0x0000D680 File Offset: 0x0000B880
 		public MageElement GetActiveCalibrationElement()
 		{
 			return this.currentElement;
 		}
 
-		// Token: 0x060011A9 RID: 4521 RVA: 0x00066B28 File Offset: 0x00064D28
+		// Token: 0x06001192 RID: 4498 RVA: 0x000667F0 File Offset: 0x000649F0
 		public void SetElement(MageElement newElement)
 		{
 			if (!NetworkServer.active)
@@ -175,7 +175,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060011AA RID: 4522 RVA: 0x00066B70 File Offset: 0x00064D70
+		// Token: 0x06001193 RID: 4499 RVA: 0x00066838 File Offset: 0x00064A38
 		public void RefreshCalibrationElement(MageElement targetElement)
 		{
 			MageCalibrationController.CalibrationInfo calibrationInfo = this.calibrationInfos[(int)targetElement];
@@ -183,40 +183,40 @@ namespace RoR2
 			this.calibrationOverlayRenderer.material = calibrationInfo.calibrationOverlayMaterial;
 		}
 
-		// Token: 0x0400159A RID: 5530
+		// Token: 0x04001581 RID: 5505
 		public MageCalibrationController.CalibrationInfo[] calibrationInfos;
 
-		// Token: 0x0400159B RID: 5531
+		// Token: 0x04001582 RID: 5506
 		public SkinnedMeshRenderer calibrationOverlayRenderer;
 
-		// Token: 0x0400159C RID: 5532
+		// Token: 0x04001583 RID: 5507
 		[Tooltip("The state machine upon which to perform the calibration state.")]
 		public EntityStateMachine stateMachine;
 
-		// Token: 0x0400159D RID: 5533
+		// Token: 0x04001584 RID: 5508
 		[Tooltip("The priority with which the calibration state will try to interrupt the current state.")]
 		public InterruptPriority calibrationStateInterruptPriority;
 
-		// Token: 0x0400159E RID: 5534
+		// Token: 0x04001585 RID: 5509
 		private CharacterBody characterBody;
 
-		// Token: 0x0400159F RID: 5535
+		// Token: 0x04001586 RID: 5510
 		private bool hasEffectiveAuthority;
 
-		// Token: 0x040015A0 RID: 5536
+		// Token: 0x04001587 RID: 5511
 		private MageElement _currentElement;
 
-		// Token: 0x040015A1 RID: 5537
+		// Token: 0x04001588 RID: 5512
 		private static readonly int[] elementCounter = new int[4];
 
-		// Token: 0x02000352 RID: 850
+		// Token: 0x0200034F RID: 847
 		[Serializable]
 		public struct CalibrationInfo
 		{
-			// Token: 0x040015A2 RID: 5538
+			// Token: 0x04001589 RID: 5513
 			public bool enableCalibrationOverlay;
 
-			// Token: 0x040015A3 RID: 5539
+			// Token: 0x0400158A RID: 5514
 			public Material calibrationOverlayMaterial;
 		}
 	}

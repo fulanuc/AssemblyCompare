@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x0200034E RID: 846
+	// Token: 0x0200034B RID: 843
 	public class LimbMatcher : MonoBehaviour
 	{
-		// Token: 0x06001199 RID: 4505 RVA: 0x000667CC File Offset: 0x000649CC
+		// Token: 0x06001182 RID: 4482 RVA: 0x00066494 File Offset: 0x00064694
 		public void SetChildLocator(ChildLocator childLocator)
 		{
 			for (int i = 0; i < this.limbPairs.Length; i++)
@@ -17,13 +17,13 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600119A RID: 4506 RVA: 0x0000D6C8 File Offset: 0x0000B8C8
+		// Token: 0x06001183 RID: 4483 RVA: 0x0000D5DF File Offset: 0x0000B7DF
 		private void LateUpdate()
 		{
 			this.UpdateLimbs();
 		}
 
-		// Token: 0x0600119B RID: 4507 RVA: 0x00066818 File Offset: 0x00064A18
+		// Token: 0x06001184 RID: 4484 RVA: 0x000664E0 File Offset: 0x000646E0
 		private void UpdateLimbs()
 		{
 			for (int i = 0; i < this.limbPairs.Length; i++)
@@ -46,23 +46,23 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04001591 RID: 5521
+		// Token: 0x04001578 RID: 5496
 		public LimbMatcher.LimbPair[] limbPairs;
 
-		// Token: 0x0200034F RID: 847
+		// Token: 0x0200034C RID: 844
 		[Serializable]
 		public struct LimbPair
 		{
-			// Token: 0x04001592 RID: 5522
+			// Token: 0x04001579 RID: 5497
 			public Transform originalTransform;
 
-			// Token: 0x04001593 RID: 5523
+			// Token: 0x0400157A RID: 5498
 			public string targetChildLimb;
 
-			// Token: 0x04001594 RID: 5524
+			// Token: 0x0400157B RID: 5499
 			public float originalLimbLength;
 
-			// Token: 0x04001595 RID: 5525
+			// Token: 0x0400157C RID: 5500
 			[NonSerialized]
 			public Transform targetTransform;
 		}

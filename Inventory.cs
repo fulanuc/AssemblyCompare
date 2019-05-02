@@ -8,16 +8,16 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x0200033F RID: 831
+	// Token: 0x0200033D RID: 829
 	public class Inventory : NetworkBehaviour
 	{
 		// Token: 0x14000013 RID: 19
-		// (add) Token: 0x0600111F RID: 4383 RVA: 0x00064C98 File Offset: 0x00062E98
-		// (remove) Token: 0x06001120 RID: 4384 RVA: 0x00064CD0 File Offset: 0x00062ED0
+		// (add) Token: 0x0600110B RID: 4363 RVA: 0x00064A58 File Offset: 0x00062C58
+		// (remove) Token: 0x0600110C RID: 4364 RVA: 0x00064A90 File Offset: 0x00062C90
 		public event Action onInventoryChanged;
 
-		// Token: 0x1700017C RID: 380
-		// (get) Token: 0x06001121 RID: 4385 RVA: 0x0000D0F3 File Offset: 0x0000B2F3
+		// Token: 0x17000177 RID: 375
+		// (get) Token: 0x0600110D RID: 4365 RVA: 0x0000D00A File Offset: 0x0000B20A
 		public EquipmentIndex currentEquipmentIndex
 		{
 			get
@@ -26,8 +26,8 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x1700017D RID: 381
-		// (get) Token: 0x06001122 RID: 4386 RVA: 0x0000D100 File Offset: 0x0000B300
+		// Token: 0x17000178 RID: 376
+		// (get) Token: 0x0600110E RID: 4366 RVA: 0x0000D017 File Offset: 0x0000B217
 		public EquipmentState currentEquipmentState
 		{
 			get
@@ -36,8 +36,8 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x1700017E RID: 382
-		// (get) Token: 0x06001123 RID: 4387 RVA: 0x0000D10E File Offset: 0x0000B30E
+		// Token: 0x17000179 RID: 377
+		// (get) Token: 0x0600110F RID: 4367 RVA: 0x0000D025 File Offset: 0x0000B225
 		public EquipmentIndex alternateEquipmentIndex
 		{
 			get
@@ -46,8 +46,8 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x1700017F RID: 383
-		// (get) Token: 0x06001124 RID: 4388 RVA: 0x00064D08 File Offset: 0x00062F08
+		// Token: 0x1700017A RID: 378
+		// (get) Token: 0x06001110 RID: 4368 RVA: 0x00064AC8 File Offset: 0x00062CC8
 		public EquipmentState alternateEquipmentState
 		{
 			get
@@ -65,12 +65,12 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x17000180 RID: 384
-		// (get) Token: 0x06001125 RID: 4389 RVA: 0x0000D11B File Offset: 0x0000B31B
-		// (set) Token: 0x06001126 RID: 4390 RVA: 0x0000D123 File Offset: 0x0000B323
+		// Token: 0x1700017B RID: 379
+		// (get) Token: 0x06001111 RID: 4369 RVA: 0x0000D032 File Offset: 0x0000B232
+		// (set) Token: 0x06001112 RID: 4370 RVA: 0x0000D03A File Offset: 0x0000B23A
 		public byte activeEquipmentSlot { get; private set; }
 
-		// Token: 0x06001127 RID: 4391 RVA: 0x00064D40 File Offset: 0x00062F40
+		// Token: 0x06001113 RID: 4371 RVA: 0x00064B00 File Offset: 0x00062D00
 		private bool SetEquipmentInternal(EquipmentState equipmentState, uint slot)
 		{
 			if ((long)this.equipmentStateSlots.Length <= (long)((ulong)slot))
@@ -90,7 +90,7 @@ namespace RoR2
 			return true;
 		}
 
-		// Token: 0x06001128 RID: 4392 RVA: 0x0000D12C File Offset: 0x0000B32C
+		// Token: 0x06001114 RID: 4372 RVA: 0x0000D043 File Offset: 0x0000B243
 		[Server]
 		public void SetEquipment(EquipmentState equipmentState, uint slot)
 		{
@@ -114,7 +114,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001129 RID: 4393 RVA: 0x0000D16C File Offset: 0x0000B36C
+		// Token: 0x06001115 RID: 4373 RVA: 0x0000D083 File Offset: 0x0000B283
 		public EquipmentState GetEquipment(uint slot)
 		{
 			if ((ulong)slot >= (ulong)((long)this.equipmentStateSlots.Length))
@@ -124,7 +124,7 @@ namespace RoR2
 			return this.equipmentStateSlots[(int)slot];
 		}
 
-		// Token: 0x0600112A RID: 4394 RVA: 0x0000D18D File Offset: 0x0000B38D
+		// Token: 0x06001116 RID: 4374 RVA: 0x0000D0A4 File Offset: 0x0000B2A4
 		[Server]
 		public void SetActiveEquipmentSlot(byte slotIndex)
 		{
@@ -143,13 +143,13 @@ namespace RoR2
 			action();
 		}
 
-		// Token: 0x0600112B RID: 4395 RVA: 0x0000D1C3 File Offset: 0x0000B3C3
+		// Token: 0x06001117 RID: 4375 RVA: 0x0000D0DA File Offset: 0x0000B2DA
 		public int GetEquipmentSlotCount()
 		{
 			return this.equipmentStateSlots.Length;
 		}
 
-		// Token: 0x0600112C RID: 4396 RVA: 0x00064DB8 File Offset: 0x00062FB8
+		// Token: 0x06001118 RID: 4376 RVA: 0x00064B78 File Offset: 0x00062D78
 		[Server]
 		public void SetEquipmentIndex(EquipmentIndex newEquipmentIndex)
 		{
@@ -171,22 +171,22 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600112D RID: 4397 RVA: 0x0000D1CD File Offset: 0x0000B3CD
+		// Token: 0x06001119 RID: 4377 RVA: 0x0000D0E4 File Offset: 0x0000B2E4
 		public EquipmentIndex GetEquipmentIndex()
 		{
 			return this.currentEquipmentIndex;
 		}
 
-		// Token: 0x0600112E RID: 4398 RVA: 0x00064E1C File Offset: 0x0006301C
+		// Token: 0x0600111A RID: 4378 RVA: 0x00064BDC File Offset: 0x00062DDC
 		[Server]
-		public void DeductEquipmentCharges(byte slot, int deduction)
+		public void DeductActiveEquipmentCharges(int deduction)
 		{
 			if (!NetworkServer.active)
 			{
-				Debug.LogWarning("[Server] function 'System.Void RoR2.Inventory::DeductEquipmentCharges(System.Byte,System.Int32)' called on client");
+				Debug.LogWarning("[Server] function 'System.Void RoR2.Inventory::DeductActiveEquipmentCharges(System.Int32)' called on client");
 				return;
 			}
-			EquipmentState equipment = this.GetEquipment((uint)slot);
+			EquipmentState equipment = this.GetEquipment((uint)this.activeEquipmentSlot);
 			byte b = equipment.charges;
 			if ((int)b < deduction)
 			{
@@ -196,10 +196,10 @@ namespace RoR2
 			{
 				b -= (byte)deduction;
 			}
-			this.SetEquipment(new EquipmentState(equipment.equipmentIndex, equipment.chargeFinishTime, b), (uint)slot);
+			this.SetEquipment(new EquipmentState(equipment.equipmentIndex, equipment.chargeFinishTime, b), (uint)this.activeEquipmentSlot);
 		}
 
-		// Token: 0x0600112F RID: 4399 RVA: 0x00064E74 File Offset: 0x00063074
+		// Token: 0x0600111B RID: 4379 RVA: 0x00064C40 File Offset: 0x00062E40
 		[Server]
 		public void DeductActiveEquipmentCooldown(float seconds)
 		{
@@ -212,13 +212,13 @@ namespace RoR2
 			this.SetEquipment(new EquipmentState(equipment.equipmentIndex, equipment.chargeFinishTime - seconds, equipment.charges), (uint)this.activeEquipmentSlot);
 		}
 
-		// Token: 0x06001130 RID: 4400 RVA: 0x0000D1D5 File Offset: 0x0000B3D5
+		// Token: 0x0600111C RID: 4380 RVA: 0x0000D0EC File Offset: 0x0000B2EC
 		public int GetActiveEquipmentMaxCharges()
 		{
 			return 1 + this.GetItemCount(ItemIndex.EquipmentMagazine);
 		}
 
-		// Token: 0x06001131 RID: 4401 RVA: 0x00064ECC File Offset: 0x000630CC
+		// Token: 0x0600111D RID: 4381 RVA: 0x00064C98 File Offset: 0x00062E98
 		[Server]
 		private void UpdateEquipment()
 		{
@@ -265,7 +265,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001132 RID: 4402 RVA: 0x0000D1E1 File Offset: 0x0000B3E1
+		// Token: 0x0600111E RID: 4382 RVA: 0x0000D0F8 File Offset: 0x0000B2F8
 		private void Start()
 		{
 			if (NetworkServer.active && Run.instance.enabledArtifacts.HasArtifact(ArtifactIndex.Enigma))
@@ -274,7 +274,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001133 RID: 4403 RVA: 0x0000D204 File Offset: 0x0000B404
+		// Token: 0x0600111F RID: 4383 RVA: 0x0000D11B File Offset: 0x0000B31B
 		private void FixedUpdate()
 		{
 			if (NetworkServer.active)
@@ -283,12 +283,12 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x17000181 RID: 385
-		// (get) Token: 0x06001134 RID: 4404 RVA: 0x0000D213 File Offset: 0x0000B413
-		// (set) Token: 0x06001135 RID: 4405 RVA: 0x0000D21B File Offset: 0x0000B41B
+		// Token: 0x1700017C RID: 380
+		// (get) Token: 0x06001120 RID: 4384 RVA: 0x0000D12A File Offset: 0x0000B32A
+		// (set) Token: 0x06001121 RID: 4385 RVA: 0x0000D132 File Offset: 0x0000B332
 		public uint infusionBonus { get; private set; }
 
-		// Token: 0x06001136 RID: 4406 RVA: 0x0000D224 File Offset: 0x0000B424
+		// Token: 0x06001122 RID: 4386 RVA: 0x0000D13B File Offset: 0x0000B33B
 		[Server]
 		public void AddInfusionBonus(uint value)
 		{
@@ -310,7 +310,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001137 RID: 4407 RVA: 0x0000D263 File Offset: 0x0000B463
+		// Token: 0x06001123 RID: 4387 RVA: 0x0000D17A File Offset: 0x0000B37A
 		[Server]
 		public void GiveItemString(string itemString)
 		{
@@ -322,7 +322,7 @@ namespace RoR2
 			this.GiveItem((ItemIndex)Enum.Parse(typeof(ItemIndex), itemString), 1);
 		}
 
-		// Token: 0x06001138 RID: 4408 RVA: 0x0000D296 File Offset: 0x0000B496
+		// Token: 0x06001124 RID: 4388 RVA: 0x0000D1AD File Offset: 0x0000B3AD
 		[Server]
 		public void GiveEquipmentString(string equipmentString)
 		{
@@ -334,7 +334,7 @@ namespace RoR2
 			this.SetEquipmentIndex((EquipmentIndex)Enum.Parse(typeof(EquipmentIndex), equipmentString));
 		}
 
-		// Token: 0x06001139 RID: 4409 RVA: 0x00065010 File Offset: 0x00063210
+		// Token: 0x06001125 RID: 4389 RVA: 0x00064DDC File Offset: 0x00062FDC
 		[Server]
 		public void GiveItem(ItemIndex itemIndex, int count = 1)
 		{
@@ -371,11 +371,11 @@ namespace RoR2
 		}
 
 		// Token: 0x14000014 RID: 20
-		// (add) Token: 0x0600113A RID: 4410 RVA: 0x000650A0 File Offset: 0x000632A0
-		// (remove) Token: 0x0600113B RID: 4411 RVA: 0x000650D4 File Offset: 0x000632D4
+		// (add) Token: 0x06001126 RID: 4390 RVA: 0x00064E6C File Offset: 0x0006306C
+		// (remove) Token: 0x06001127 RID: 4391 RVA: 0x00064EA0 File Offset: 0x000630A0
 		public static event Action<Inventory, ItemIndex, int> onServerItemGiven;
 
-		// Token: 0x0600113C RID: 4412 RVA: 0x0000D2C8 File Offset: 0x0000B4C8
+		// Token: 0x06001128 RID: 4392 RVA: 0x0000D1DF File Offset: 0x0000B3DF
 		private IEnumerator HighlightNewItem(ItemIndex itemIndex)
 		{
 			yield return new WaitForSeconds(0.05f);
@@ -403,14 +403,14 @@ namespace RoR2
 			yield break;
 		}
 
-		// Token: 0x0600113D RID: 4413 RVA: 0x0000D2DE File Offset: 0x0000B4DE
+		// Token: 0x06001129 RID: 4393 RVA: 0x0000D1F5 File Offset: 0x0000B3F5
 		[ClientRpc]
 		private void RpcItemAdded(ItemIndex itemIndex)
 		{
 			base.StartCoroutine(this.HighlightNewItem(itemIndex));
 		}
 
-		// Token: 0x0600113E RID: 4414 RVA: 0x00065108 File Offset: 0x00063308
+		// Token: 0x0600112A RID: 4394 RVA: 0x00064ED4 File Offset: 0x000630D4
 		[Server]
 		public void RemoveItem(ItemIndex itemIndex, int count = 0)
 		{
@@ -447,7 +447,7 @@ namespace RoR2
 			action();
 		}
 
-		// Token: 0x0600113F RID: 4415 RVA: 0x00065190 File Offset: 0x00063390
+		// Token: 0x0600112B RID: 4395 RVA: 0x00064F5C File Offset: 0x0006315C
 		[Server]
 		public void ResetItem(ItemIndex itemIndex)
 		{
@@ -471,7 +471,7 @@ namespace RoR2
 			action();
 		}
 
-		// Token: 0x06001140 RID: 4416 RVA: 0x000651E8 File Offset: 0x000633E8
+		// Token: 0x0600112C RID: 4396 RVA: 0x00064FB4 File Offset: 0x000631B4
 		[Server]
 		public void CopyEquipmentFrom(Inventory other)
 		{
@@ -486,7 +486,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001141 RID: 4417 RVA: 0x00065240 File Offset: 0x00063440
+		// Token: 0x0600112D RID: 4397 RVA: 0x0006500C File Offset: 0x0006320C
 		[Server]
 		public void CopyItemsFrom(Inventory other)
 		{
@@ -508,7 +508,7 @@ namespace RoR2
 			action();
 		}
 
-		// Token: 0x06001142 RID: 4418 RVA: 0x000652B0 File Offset: 0x000634B0
+		// Token: 0x0600112E RID: 4398 RVA: 0x0006507C File Offset: 0x0006327C
 		[Server]
 		public void ShrineRestackInventory([NotNull] Xoroshiro128Plus rng)
 		{
@@ -573,13 +573,13 @@ namespace RoR2
 			this.GiveItem(itemIndex6, num5);
 		}
 
-		// Token: 0x06001143 RID: 4419 RVA: 0x0000D2EE File Offset: 0x0000B4EE
+		// Token: 0x0600112F RID: 4399 RVA: 0x0000D205 File Offset: 0x0000B405
 		public int GetItemCount(ItemIndex itemIndex)
 		{
 			return this.itemStacks[(int)itemIndex];
 		}
 
-		// Token: 0x06001144 RID: 4420 RVA: 0x000654E0 File Offset: 0x000636E0
+		// Token: 0x06001130 RID: 4400 RVA: 0x000652AC File Offset: 0x000634AC
 		public bool HasAtLeastXTotalItemsOfTier(ItemTier itemTier, int x)
 		{
 			int num = 0;
@@ -597,7 +597,7 @@ namespace RoR2
 			return false;
 		}
 
-		// Token: 0x06001145 RID: 4421 RVA: 0x0006551C File Offset: 0x0006371C
+		// Token: 0x06001131 RID: 4401 RVA: 0x000652E8 File Offset: 0x000634E8
 		public int GetTotalItemCountOfTier(ItemTier itemTier)
 		{
 			int num = 0;
@@ -611,19 +611,19 @@ namespace RoR2
 			return num;
 		}
 
-		// Token: 0x06001146 RID: 4422 RVA: 0x0000D2F8 File Offset: 0x0000B4F8
+		// Token: 0x06001132 RID: 4402 RVA: 0x0000D20F File Offset: 0x0000B40F
 		public void WriteItemStacks(int[] output)
 		{
 			Array.Copy(this.itemStacks, output, output.Length);
 		}
 
-		// Token: 0x06001147 RID: 4423 RVA: 0x00009162 File Offset: 0x00007362
+		// Token: 0x06001133 RID: 4403 RVA: 0x0000913D File Offset: 0x0000733D
 		public override int GetNetworkChannel()
 		{
 			return QosChannelIndex.defaultReliable.intVal;
 		}
 
-		// Token: 0x06001148 RID: 4424 RVA: 0x00065554 File Offset: 0x00063754
+		// Token: 0x06001134 RID: 4404 RVA: 0x00065320 File Offset: 0x00063520
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 			byte b = reader.ReadByte();
@@ -670,13 +670,13 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001149 RID: 4425 RVA: 0x0006563C File Offset: 0x0006383C
+		// Token: 0x06001135 RID: 4405 RVA: 0x00065408 File Offset: 0x00063608
 		public override bool OnSerialize(NetworkWriter writer, bool initialState)
 		{
 			uint num = base.syncVarDirtyBits;
 			if (initialState)
 			{
-				num = 29u;
+				num = 17u;
 			}
 			for (int i = 0; i < this.equipmentStateSlots.Length; i++)
 			{
@@ -727,12 +727,12 @@ namespace RoR2
 			return !initialState && num > 0u;
 		}
 
-		// Token: 0x0600114B RID: 4427 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06001137 RID: 4407 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x0600114C RID: 4428 RVA: 0x0000D334 File Offset: 0x0000B534
+		// Token: 0x06001138 RID: 4408 RVA: 0x0000D24B File Offset: 0x0000B44B
 		protected static void InvokeRpcRpcItemAdded(NetworkBehaviour obj, NetworkReader reader)
 		{
 			if (!NetworkClient.active)
@@ -743,7 +743,7 @@ namespace RoR2
 			((Inventory)obj).RpcItemAdded((ItemIndex)reader.ReadInt32());
 		}
 
-		// Token: 0x0600114D RID: 4429 RVA: 0x00065788 File Offset: 0x00063988
+		// Token: 0x06001139 RID: 4409 RVA: 0x00065554 File Offset: 0x00063754
 		public void CallRpcItemAdded(ItemIndex itemIndex)
 		{
 			if (!NetworkServer.active)
@@ -760,38 +760,35 @@ namespace RoR2
 			this.SendRPCInternal(networkWriter, 0, "RpcItemAdded");
 		}
 
-		// Token: 0x0600114E RID: 4430 RVA: 0x0000D35D File Offset: 0x0000B55D
+		// Token: 0x0600113A RID: 4410 RVA: 0x0000D274 File Offset: 0x0000B474
 		static Inventory()
 		{
 			NetworkBehaviour.RegisterRpcDelegate(typeof(Inventory), Inventory.kRpcRpcItemAdded, new NetworkBehaviour.CmdDelegate(Inventory.InvokeRpcRpcItemAdded));
 			NetworkCRC.RegisterBehaviour("Inventory", 0);
 		}
 
-		// Token: 0x04001546 RID: 5446
+		// Token: 0x04001532 RID: 5426
 		private readonly int[] itemStacks = new int[78];
 
-		// Token: 0x04001547 RID: 5447
+		// Token: 0x04001533 RID: 5427
 		public readonly List<ItemIndex> itemAcquisitionOrder = new List<ItemIndex>();
 
-		// Token: 0x04001548 RID: 5448
+		// Token: 0x04001534 RID: 5428
 		private const uint itemListDirtyBit = 1u;
 
-		// Token: 0x04001549 RID: 5449
+		// Token: 0x04001535 RID: 5429
 		private const uint infusionBonusDirtyBit = 4u;
 
-		// Token: 0x0400154A RID: 5450
+		// Token: 0x04001536 RID: 5430
 		private const uint itemAcquisitionOrderDirtyBit = 8u;
 
-		// Token: 0x0400154B RID: 5451
+		// Token: 0x04001537 RID: 5431
 		private const uint equipmentDirtyBit = 16u;
 
-		// Token: 0x0400154C RID: 5452
-		private const uint allDirtyBits = 29u;
-
-		// Token: 0x0400154F RID: 5455
+		// Token: 0x0400153A RID: 5434
 		private EquipmentState[] equipmentStateSlots = Array.Empty<EquipmentState>();
 
-		// Token: 0x04001552 RID: 5458
+		// Token: 0x0400153D RID: 5437
 		private static int kRpcRpcItemAdded = 1978705787;
 	}
 }

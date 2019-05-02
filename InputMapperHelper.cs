@@ -7,21 +7,21 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x0200044C RID: 1100
+	// Token: 0x02000444 RID: 1092
 	public class InputMapperHelper : IDisposable
 	{
-		// Token: 0x1700023E RID: 574
-		// (get) Token: 0x060018A4 RID: 6308 RVA: 0x00012831 File Offset: 0x00010A31
-		// (set) Token: 0x060018A5 RID: 6309 RVA: 0x00012839 File Offset: 0x00010A39
+		// Token: 0x17000233 RID: 563
+		// (get) Token: 0x06001857 RID: 6231 RVA: 0x000123BD File Offset: 0x000105BD
+		// (set) Token: 0x06001858 RID: 6232 RVA: 0x000123C5 File Offset: 0x000105C5
 		public bool isListening { get; private set; }
 
-		// Token: 0x060018A6 RID: 6310 RVA: 0x00012842 File Offset: 0x00010A42
+		// Token: 0x06001859 RID: 6233 RVA: 0x000123CE File Offset: 0x000105CE
 		public InputMapperHelper(MPEventSystem eventSystem)
 		{
 			this.eventSystem = eventSystem;
 		}
 
-		// Token: 0x060018A7 RID: 6311 RVA: 0x0007ED74 File Offset: 0x0007CF74
+		// Token: 0x0600185A RID: 6234 RVA: 0x0007E5B8 File Offset: 0x0007C7B8
 		private InputMapper AddInputMapper()
 		{
 			InputMapper inputMapper = new InputMapper();
@@ -53,7 +53,7 @@ namespace RoR2
 			return inputMapper;
 		}
 
-		// Token: 0x060018A8 RID: 6312 RVA: 0x0007EE8C File Offset: 0x0007D08C
+		// Token: 0x0600185B RID: 6235 RVA: 0x0007E6D0 File Offset: 0x0007C8D0
 		private void RemoveInputMapper(InputMapper inputMapper)
 		{
 			inputMapper.ConflictFoundEvent -= this.InputMapperOnConflictFoundEvent;
@@ -66,7 +66,7 @@ namespace RoR2
 			this.inputMappers.Remove(inputMapper);
 		}
 
-		// Token: 0x060018A9 RID: 6313 RVA: 0x0007EF24 File Offset: 0x0007D124
+		// Token: 0x0600185C RID: 6236 RVA: 0x0007E768 File Offset: 0x0007C968
 		public void Start(Player player, IList<Controller> controllers, InputAction action, AxisRange axisRange)
 		{
 			this.Stop();
@@ -95,7 +95,7 @@ namespace RoR2
 			RoR2Application.onUpdate += this.Update;
 		}
 
-		// Token: 0x060018AA RID: 6314 RVA: 0x0007F040 File Offset: 0x0007D240
+		// Token: 0x0600185D RID: 6237 RVA: 0x0007E884 File Offset: 0x0007CA84
 		public void Stop()
 		{
 			if (!this.isListening)
@@ -120,7 +120,7 @@ namespace RoR2
 			RoR2Application.onUpdate -= this.Update;
 		}
 
-		// Token: 0x060018AB RID: 6315 RVA: 0x0007F0E0 File Offset: 0x0007D2E0
+		// Token: 0x0600185E RID: 6238 RVA: 0x0007E924 File Offset: 0x0007CB24
 		private void Update()
 		{
 			float unscaledDeltaTime = Time.unscaledDeltaTime;
@@ -145,7 +145,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060018AC RID: 6316 RVA: 0x0007F184 File Offset: 0x0007D384
+		// Token: 0x0600185F RID: 6239 RVA: 0x0007E9C8 File Offset: 0x0007CBC8
 		private void UpdateDialogBoxString()
 		{
 			if (this.dialogBox && this.timer >= 0f)
@@ -168,25 +168,25 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060018AD RID: 6317 RVA: 0x00012872 File Offset: 0x00010A72
+		// Token: 0x06001860 RID: 6240 RVA: 0x000123FE File Offset: 0x000105FE
 		private void InputMapperOnTimedOutEvent(InputMapper.TimedOutEventData timedOutEventData)
 		{
 			Debug.Log("InputMapperOnTimedOutEvent");
 		}
 
-		// Token: 0x060018AE RID: 6318 RVA: 0x0001287E File Offset: 0x00010A7E
+		// Token: 0x06001861 RID: 6241 RVA: 0x0001240A File Offset: 0x0001060A
 		private void InputMapperOnStoppedEvent(InputMapper.StoppedEventData stoppedEventData)
 		{
 			Debug.Log("InputMapperOnStoppedEvent");
 		}
 
-		// Token: 0x060018AF RID: 6319 RVA: 0x0001288A File Offset: 0x00010A8A
+		// Token: 0x06001862 RID: 6242 RVA: 0x00012416 File Offset: 0x00010616
 		private void InputMapperOnStartedEvent(InputMapper.StartedEventData startedEventData)
 		{
 			Debug.Log("InputMapperOnStartedEvent");
 		}
 
-		// Token: 0x060018B0 RID: 6320 RVA: 0x0007F234 File Offset: 0x0007D434
+		// Token: 0x06001863 RID: 6243 RVA: 0x0007EA78 File Offset: 0x0007CC78
 		private void InputMapperOnInputMappedEvent(InputMapper.InputMappedEventData inputMappedEventData)
 		{
 			Debug.Log("InputMapperOnInputMappedEvent");
@@ -219,19 +219,19 @@ namespace RoR2
 			this.Stop();
 		}
 
-		// Token: 0x060018B1 RID: 6321 RVA: 0x00012896 File Offset: 0x00010A96
+		// Token: 0x06001864 RID: 6244 RVA: 0x00012422 File Offset: 0x00010622
 		private void InputMapperOnErrorEvent(InputMapper.ErrorEventData errorEventData)
 		{
 			Debug.Log("InputMapperOnErrorEvent");
 		}
 
-		// Token: 0x060018B2 RID: 6322 RVA: 0x000128A2 File Offset: 0x00010AA2
+		// Token: 0x06001865 RID: 6245 RVA: 0x0001242E File Offset: 0x0001062E
 		private void InputMapperOnCanceledEvent(InputMapper.CanceledEventData canceledEventData)
 		{
 			Debug.Log("InputMapperOnCanceledEvent");
 		}
 
-		// Token: 0x060018B3 RID: 6323 RVA: 0x0007F30C File Offset: 0x0007D50C
+		// Token: 0x06001866 RID: 6246 RVA: 0x0007EB50 File Offset: 0x0007CD50
 		private void InputMapperOnConflictFoundEvent(InputMapper.ConflictFoundEventData conflictFoundEventData)
 		{
 			Debug.Log("InputMapperOnConflictFoundEvent");
@@ -247,43 +247,43 @@ namespace RoR2
 			conflictFoundEventData.responseCallback(obj);
 		}
 
-		// Token: 0x060018B4 RID: 6324 RVA: 0x000128AE File Offset: 0x00010AAE
+		// Token: 0x06001867 RID: 6247 RVA: 0x0001243A File Offset: 0x0001063A
 		public void Dispose()
 		{
 			this.Stop();
 		}
 
-		// Token: 0x04001BB6 RID: 7094
+		// Token: 0x04001B86 RID: 7046
 		private readonly MPEventSystem eventSystem;
 
-		// Token: 0x04001BB7 RID: 7095
+		// Token: 0x04001B87 RID: 7047
 		private readonly List<InputMapper> inputMappers = new List<InputMapper>();
 
-		// Token: 0x04001BB8 RID: 7096
+		// Token: 0x04001B88 RID: 7048
 		private ControllerMap[] maps = Array.Empty<ControllerMap>();
 
-		// Token: 0x04001BB9 RID: 7097
+		// Token: 0x04001B89 RID: 7049
 		private SimpleDialogBox dialogBox;
 
-		// Token: 0x04001BBA RID: 7098
+		// Token: 0x04001B8A RID: 7050
 		public float timeout = 5f;
 
-		// Token: 0x04001BBB RID: 7099
+		// Token: 0x04001B8B RID: 7051
 		private float timer;
 
-		// Token: 0x04001BBC RID: 7100
+		// Token: 0x04001B8C RID: 7052
 		private Player currentPlayer;
 
-		// Token: 0x04001BBD RID: 7101
+		// Token: 0x04001B8D RID: 7053
 		private InputAction currentAction;
 
-		// Token: 0x04001BBE RID: 7102
+		// Token: 0x04001B8E RID: 7054
 		private AxisRange currentAxisRange;
 
-		// Token: 0x04001BC0 RID: 7104
+		// Token: 0x04001B90 RID: 7056
 		private Action<InputMapper.ConflictResponse> conflictResponseCallback;
 
-		// Token: 0x04001BC1 RID: 7105
+		// Token: 0x04001B91 RID: 7057
 		private static readonly HashSet<string> forbiddenElements = new HashSet<string>
 		{
 			"Left Stick X",

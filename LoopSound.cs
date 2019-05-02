@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x02000350 RID: 848
+	// Token: 0x0200034D RID: 845
 	public class LoopSound : MonoBehaviour
 	{
-		// Token: 0x0600119D RID: 4509 RVA: 0x000668F4 File Offset: 0x00064AF4
+		// Token: 0x06001186 RID: 4486 RVA: 0x000665BC File Offset: 0x000647BC
 		private void Update()
 		{
 			this.stopwatch += Time.deltaTime;
@@ -17,16 +17,16 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04001596 RID: 5526
+		// Token: 0x0400157D RID: 5501
 		public string akSoundString;
 
-		// Token: 0x04001597 RID: 5527
+		// Token: 0x0400157E RID: 5502
 		public float repeatInterval;
 
-		// Token: 0x04001598 RID: 5528
+		// Token: 0x0400157F RID: 5503
 		public Transform soundOwner;
 
-		// Token: 0x04001599 RID: 5529
+		// Token: 0x04001580 RID: 5504
 		private float stopwatch;
 	}
 }

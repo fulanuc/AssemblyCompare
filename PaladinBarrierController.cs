@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x02000387 RID: 903
+	// Token: 0x02000382 RID: 898
 	public class PaladinBarrierController : MonoBehaviour, IBarrier
 	{
-		// Token: 0x060012E2 RID: 4834 RVA: 0x0006A948 File Offset: 0x00068B48
+		// Token: 0x060012C2 RID: 4802 RVA: 0x0006A5A4 File Offset: 0x000687A4
 		public void BlockedDamage(DamageInfo damageInfo, float actualDamageBlocked)
 		{
 			this.totalDamageBlocked += actualDamageBlocked;
@@ -28,21 +28,21 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060012E3 RID: 4835 RVA: 0x0000E71B File Offset: 0x0000C91B
+		// Token: 0x060012C3 RID: 4803 RVA: 0x0000E590 File Offset: 0x0000C790
 		public void EnableBarrier()
 		{
 			this.barrierPivotTransform.gameObject.SetActive(true);
 			this.barrierIsOn = true;
 		}
 
-		// Token: 0x060012E4 RID: 4836 RVA: 0x0000E735 File Offset: 0x0000C935
+		// Token: 0x060012C4 RID: 4804 RVA: 0x0000E5AA File Offset: 0x0000C7AA
 		public void DisableBarrier()
 		{
 			this.barrierPivotTransform.gameObject.SetActive(false);
 			this.barrierIsOn = false;
 		}
 
-		// Token: 0x060012E5 RID: 4837 RVA: 0x0000E74F File Offset: 0x0000C94F
+		// Token: 0x060012C5 RID: 4805 RVA: 0x0000E5C4 File Offset: 0x0000C7C4
 		private void Start()
 		{
 			this.inputBank = base.GetComponent<InputBankTest>();
@@ -51,7 +51,7 @@ namespace RoR2
 			this.DisableBarrier();
 		}
 
-		// Token: 0x060012E6 RID: 4838 RVA: 0x0000E77B File Offset: 0x0000C97B
+		// Token: 0x060012C6 RID: 4806 RVA: 0x0000E5F0 File Offset: 0x0000C7F0
 		private void Update()
 		{
 			if (this.barrierIsOn)
@@ -60,31 +60,31 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04001699 RID: 5785
+		// Token: 0x0400167D RID: 5757
 		public float blockLaserDamageCoefficient;
 
-		// Token: 0x0400169A RID: 5786
+		// Token: 0x0400167E RID: 5758
 		public float blockLaserProcCoefficient;
 
-		// Token: 0x0400169B RID: 5787
+		// Token: 0x0400167F RID: 5759
 		public float blockLaserDistance;
 
-		// Token: 0x0400169C RID: 5788
+		// Token: 0x04001680 RID: 5760
 		private float totalDamageBlocked;
 
-		// Token: 0x0400169D RID: 5789
+		// Token: 0x04001681 RID: 5761
 		private CharacterBody characterBody;
 
-		// Token: 0x0400169E RID: 5790
+		// Token: 0x04001682 RID: 5762
 		private InputBankTest inputBank;
 
-		// Token: 0x0400169F RID: 5791
+		// Token: 0x04001683 RID: 5763
 		private TeamComponent teamComponent;
 
-		// Token: 0x040016A0 RID: 5792
+		// Token: 0x04001684 RID: 5764
 		private bool barrierIsOn;
 
-		// Token: 0x040016A1 RID: 5793
+		// Token: 0x04001685 RID: 5765
 		public Transform barrierPivotTransform;
 	}
 }

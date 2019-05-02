@@ -6,10 +6,10 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x0200046A RID: 1130
+	// Token: 0x0200045F RID: 1119
 	public class OverlapAttack
 	{
-		// Token: 0x0600196A RID: 6506 RVA: 0x00082BB8 File Offset: 0x00080DB8
+		// Token: 0x0600190D RID: 6413 RVA: 0x00082210 File Offset: 0x00080410
 		private bool HurtBoxPassesFilter(HurtBox hurtBox)
 		{
 			if (!hurtBox.healthComponent)
@@ -28,7 +28,7 @@ namespace RoR2
 			return !component || component.teamIndex != this.teamIndex;
 		}
 
-		// Token: 0x0600196B RID: 6507 RVA: 0x00082C30 File Offset: 0x00080E30
+		// Token: 0x0600190E RID: 6414 RVA: 0x00082288 File Offset: 0x00080488
 		public bool Fire(List<HealthComponent> hitResults = null)
 		{
 			if (!this.hitBoxGroup)
@@ -97,7 +97,7 @@ namespace RoR2
 			return result;
 		}
 
-		// Token: 0x0600196C RID: 6508 RVA: 0x00082EE8 File Offset: 0x000810E8
+		// Token: 0x0600190F RID: 6415 RVA: 0x00082540 File Offset: 0x00080740
 		[NetworkMessageHandler(msgType = 71, client = false, server = true)]
 		public static void HandleOverlapAttackHits(NetworkMessage netMsg)
 		{
@@ -105,7 +105,7 @@ namespace RoR2
 			OverlapAttack.PerformDamage(OverlapAttack.incomingMessage.attacker, OverlapAttack.incomingMessage.inflictor, OverlapAttack.incomingMessage.damage, OverlapAttack.incomingMessage.isCrit, OverlapAttack.incomingMessage.procChainMask, OverlapAttack.incomingMessage.procCoefficient, OverlapAttack.incomingMessage.damageColorIndex, OverlapAttack.incomingMessage.damageType, OverlapAttack.incomingMessage.forceVector, OverlapAttack.incomingMessage.pushAwayForce, OverlapAttack.incomingMessage.overlapInfoList);
 		}
 
-		// Token: 0x0600196D RID: 6509 RVA: 0x00082F74 File Offset: 0x00081174
+		// Token: 0x06001910 RID: 6416 RVA: 0x000825CC File Offset: 0x000807CC
 		private void ProcessHits(List<OverlapAttack.OverlapInfo> hitList)
 		{
 			if (hitList.Count == 0)
@@ -161,7 +161,7 @@ namespace RoR2
 			GameNetworkManager.singleton.client.connection.SendByChannel(71, OverlapAttack.outgoingMessage, QosChannelIndex.defaultReliable.intVal);
 		}
 
-		// Token: 0x0600196E RID: 6510 RVA: 0x00083200 File Offset: 0x00081400
+		// Token: 0x06001911 RID: 6417 RVA: 0x00082858 File Offset: 0x00080A58
 		private static void PerformDamage(GameObject attacker, GameObject inflictor, float damage, bool isCrit, ProcChainMask procChainMask, float procCoefficient, DamageColorIndex damageColorIndex, DamageType damageType, Vector3 forceVector, float pushAwayForce, List<OverlapAttack.OverlapInfo> hitList)
 		{
 			for (int i = 0; i < hitList.Count; i++)
@@ -192,108 +192,108 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600196F RID: 6511 RVA: 0x00012F47 File Offset: 0x00011147
+		// Token: 0x06001912 RID: 6418 RVA: 0x00012A2D File Offset: 0x00010C2D
 		public void ResetIgnoredHealthComponents()
 		{
 			this.ignoredHealthComponentList.Clear();
 		}
 
-		// Token: 0x04001C9B RID: 7323
+		// Token: 0x04001C67 RID: 7271
 		public GameObject attacker;
 
-		// Token: 0x04001C9C RID: 7324
+		// Token: 0x04001C68 RID: 7272
 		public GameObject inflictor;
 
-		// Token: 0x04001C9D RID: 7325
+		// Token: 0x04001C69 RID: 7273
 		public TeamIndex teamIndex;
 
-		// Token: 0x04001C9E RID: 7326
+		// Token: 0x04001C6A RID: 7274
 		public Vector3 forceVector = Vector3.zero;
 
-		// Token: 0x04001C9F RID: 7327
+		// Token: 0x04001C6B RID: 7275
 		public float pushAwayForce;
 
-		// Token: 0x04001CA0 RID: 7328
+		// Token: 0x04001C6C RID: 7276
 		public float damage = 1f;
 
-		// Token: 0x04001CA1 RID: 7329
+		// Token: 0x04001C6D RID: 7277
 		public bool isCrit;
 
-		// Token: 0x04001CA2 RID: 7330
+		// Token: 0x04001C6E RID: 7278
 		public ProcChainMask procChainMask;
 
-		// Token: 0x04001CA3 RID: 7331
+		// Token: 0x04001C6F RID: 7279
 		public float procCoefficient = 1f;
 
-		// Token: 0x04001CA4 RID: 7332
+		// Token: 0x04001C70 RID: 7280
 		public HitBoxGroup hitBoxGroup;
 
-		// Token: 0x04001CA5 RID: 7333
+		// Token: 0x04001C71 RID: 7281
 		public GameObject hitEffectPrefab;
 
-		// Token: 0x04001CA6 RID: 7334
+		// Token: 0x04001C72 RID: 7282
 		public DamageColorIndex damageColorIndex;
 
-		// Token: 0x04001CA7 RID: 7335
+		// Token: 0x04001C73 RID: 7283
 		public DamageType damageType;
 
-		// Token: 0x04001CA8 RID: 7336
+		// Token: 0x04001C74 RID: 7284
 		private readonly List<HealthComponent> ignoredHealthComponentList = new List<HealthComponent>();
 
-		// Token: 0x04001CA9 RID: 7337
+		// Token: 0x04001C75 RID: 7285
 		private readonly List<OverlapAttack.OverlapInfo> overlapList = new List<OverlapAttack.OverlapInfo>();
 
-		// Token: 0x04001CAA RID: 7338
+		// Token: 0x04001C76 RID: 7286
 		private static readonly OverlapAttack.OverlapAttackMessage incomingMessage = new OverlapAttack.OverlapAttackMessage();
 
-		// Token: 0x04001CAB RID: 7339
+		// Token: 0x04001C77 RID: 7287
 		private static readonly OverlapAttack.OverlapAttackMessage outgoingMessage = new OverlapAttack.OverlapAttackMessage();
 
-		// Token: 0x0200046B RID: 1131
+		// Token: 0x02000460 RID: 1120
 		private struct OverlapInfo
 		{
-			// Token: 0x04001CAC RID: 7340
+			// Token: 0x04001C78 RID: 7288
 			public HurtBox hurtBox;
 
-			// Token: 0x04001CAD RID: 7341
+			// Token: 0x04001C79 RID: 7289
 			public Vector3 hitPosition;
 
-			// Token: 0x04001CAE RID: 7342
+			// Token: 0x04001C7A RID: 7290
 			public Vector3 pushDirection;
 		}
 
-		// Token: 0x0200046C RID: 1132
+		// Token: 0x02000461 RID: 1121
 		public struct AttackInfo
 		{
-			// Token: 0x04001CAF RID: 7343
+			// Token: 0x04001C7B RID: 7291
 			public GameObject attacker;
 
-			// Token: 0x04001CB0 RID: 7344
+			// Token: 0x04001C7C RID: 7292
 			public GameObject inflictor;
 
-			// Token: 0x04001CB1 RID: 7345
+			// Token: 0x04001C7D RID: 7293
 			public float damage;
 
-			// Token: 0x04001CB2 RID: 7346
+			// Token: 0x04001C7E RID: 7294
 			public bool isCrit;
 
-			// Token: 0x04001CB3 RID: 7347
+			// Token: 0x04001C7F RID: 7295
 			public float procCoefficient;
 
-			// Token: 0x04001CB4 RID: 7348
+			// Token: 0x04001C80 RID: 7296
 			public DamageColorIndex damageColorIndex;
 
-			// Token: 0x04001CB5 RID: 7349
+			// Token: 0x04001C81 RID: 7297
 			public DamageType damageType;
 
-			// Token: 0x04001CB6 RID: 7350
+			// Token: 0x04001C82 RID: 7298
 			public Vector3 forceVector;
 		}
 
-		// Token: 0x0200046D RID: 1133
+		// Token: 0x02000462 RID: 1122
 		private class OverlapAttackMessage : MessageBase
 		{
-			// Token: 0x06001972 RID: 6514 RVA: 0x000832F8 File Offset: 0x000814F8
+			// Token: 0x06001915 RID: 6421 RVA: 0x00082950 File Offset: 0x00080B50
 			public override void Serialize(NetworkWriter writer)
 			{
 				base.Serialize(writer);
@@ -316,7 +316,7 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x06001973 RID: 6515 RVA: 0x00083400 File Offset: 0x00081600
+			// Token: 0x06001916 RID: 6422 RVA: 0x00082A58 File Offset: 0x00080C58
 			public override void Deserialize(NetworkReader reader)
 			{
 				base.Deserialize(reader);
@@ -345,37 +345,37 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x04001CB7 RID: 7351
+			// Token: 0x04001C83 RID: 7299
 			public GameObject attacker;
 
-			// Token: 0x04001CB8 RID: 7352
+			// Token: 0x04001C84 RID: 7300
 			public GameObject inflictor;
 
-			// Token: 0x04001CB9 RID: 7353
+			// Token: 0x04001C85 RID: 7301
 			public float damage;
 
-			// Token: 0x04001CBA RID: 7354
+			// Token: 0x04001C86 RID: 7302
 			public bool isCrit;
 
-			// Token: 0x04001CBB RID: 7355
+			// Token: 0x04001C87 RID: 7303
 			public ProcChainMask procChainMask;
 
-			// Token: 0x04001CBC RID: 7356
+			// Token: 0x04001C88 RID: 7304
 			public float procCoefficient;
 
-			// Token: 0x04001CBD RID: 7357
+			// Token: 0x04001C89 RID: 7305
 			public DamageColorIndex damageColorIndex;
 
-			// Token: 0x04001CBE RID: 7358
+			// Token: 0x04001C8A RID: 7306
 			public DamageType damageType;
 
-			// Token: 0x04001CBF RID: 7359
+			// Token: 0x04001C8B RID: 7307
 			public Vector3 forceVector;
 
-			// Token: 0x04001CC0 RID: 7360
+			// Token: 0x04001C8C RID: 7308
 			public float pushAwayForce;
 
-			// Token: 0x04001CC1 RID: 7361
+			// Token: 0x04001C8D RID: 7309
 			public readonly List<OverlapAttack.OverlapInfo> overlapInfoList = new List<OverlapAttack.OverlapInfo>();
 		}
 	}

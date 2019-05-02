@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x02000346 RID: 838
+	// Token: 0x02000344 RID: 836
 	public class ItemFollower : MonoBehaviour
 	{
-		// Token: 0x0600116A RID: 4458 RVA: 0x00065BA8 File Offset: 0x00063DA8
+		// Token: 0x06001156 RID: 4438 RVA: 0x00065974 File Offset: 0x00063B74
 		private void Start()
 		{
 			if (!this.followerInstance)
@@ -21,7 +21,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600116B RID: 4459 RVA: 0x00065C34 File Offset: 0x00063E34
+		// Token: 0x06001157 RID: 4439 RVA: 0x00065A00 File Offset: 0x00063C00
 		private void Update()
 		{
 			Transform transform = this.followerInstance.transform;
@@ -36,7 +36,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600116C RID: 4460 RVA: 0x0000D4D7 File Offset: 0x0000B6D7
+		// Token: 0x06001158 RID: 4440 RVA: 0x0000D3EE File Offset: 0x0000B5EE
 		private void OnDestroy()
 		{
 			if (this.followerInstance)
@@ -45,31 +45,31 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04001566 RID: 5478
+		// Token: 0x04001551 RID: 5457
 		public GameObject followerPrefab;
 
-		// Token: 0x04001567 RID: 5479
+		// Token: 0x04001552 RID: 5458
 		public GameObject targetObject;
 
-		// Token: 0x04001568 RID: 5480
+		// Token: 0x04001553 RID: 5459
 		public BezierCurveLine followerCurve;
 
-		// Token: 0x04001569 RID: 5481
+		// Token: 0x04001554 RID: 5460
 		public float distanceDampTime;
 
-		// Token: 0x0400156A RID: 5482
+		// Token: 0x04001555 RID: 5461
 		public float distanceMaxSpeed;
 
-		// Token: 0x0400156B RID: 5483
+		// Token: 0x04001556 RID: 5462
 		private Vector3 velocityDistance;
 
-		// Token: 0x0400156C RID: 5484
+		// Token: 0x04001557 RID: 5463
 		private Vector3 v0;
 
-		// Token: 0x0400156D RID: 5485
+		// Token: 0x04001558 RID: 5464
 		private Vector3 v1;
 
-		// Token: 0x0400156E RID: 5486
+		// Token: 0x04001559 RID: 5465
 		[HideInInspector]
 		public GameObject followerInstance;
 	}

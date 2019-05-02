@@ -5,10 +5,10 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x02000371 RID: 881
+	// Token: 0x0200036E RID: 878
 	public class NetworkRuleChoiceMask : NetworkBehaviour
 	{
-		// Token: 0x06001238 RID: 4664 RVA: 0x0000DE4C File Offset: 0x0000C04C
+		// Token: 0x06001221 RID: 4641 RVA: 0x0000DD63 File Offset: 0x0000BF63
 		[Server]
 		public void SetRuleChoiceMask([NotNull] RuleChoiceMask newRuleChoiceMask)
 		{
@@ -25,7 +25,7 @@ namespace RoR2
 			this.ruleChoiceMask.Copy(newRuleChoiceMask);
 		}
 
-		// Token: 0x06001239 RID: 4665 RVA: 0x000687EC File Offset: 0x000669EC
+		// Token: 0x06001222 RID: 4642 RVA: 0x000684B4 File Offset: 0x000666B4
 		public override bool OnSerialize(NetworkWriter writer, bool initialState)
 		{
 			uint num = base.syncVarDirtyBits;
@@ -42,7 +42,7 @@ namespace RoR2
 			return !initialState && num > 0u;
 		}
 
-		// Token: 0x0600123A RID: 4666 RVA: 0x0000DE85 File Offset: 0x0000C085
+		// Token: 0x06001223 RID: 4643 RVA: 0x0000DD9C File Offset: 0x0000BF9C
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 			if ((reader.ReadByte() & 1) != 0)
@@ -51,15 +51,15 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600123C RID: 4668 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06001225 RID: 4645 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x04001629 RID: 5673
+		// Token: 0x04001610 RID: 5648
 		public readonly RuleChoiceMask ruleChoiceMask = new RuleChoiceMask();
 
-		// Token: 0x0400162A RID: 5674
+		// Token: 0x04001611 RID: 5649
 		private const uint maskDirtyBit = 1u;
 	}
 }

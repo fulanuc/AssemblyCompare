@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x0200037C RID: 892
+	// Token: 0x02000377 RID: 887
 	public class OmniEffect : MonoBehaviour
 	{
-		// Token: 0x060012C5 RID: 4805 RVA: 0x00069F0C File Offset: 0x0006810C
+		// Token: 0x060012A5 RID: 4773 RVA: 0x00069B68 File Offset: 0x00067D68
 		private void Start()
 		{
 			this.radius = base.transform.localScale.x;
@@ -26,17 +26,17 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04001657 RID: 5719
+		// Token: 0x0400163B RID: 5691
 		public OmniEffect.OmniEffectGroup[] omniEffectGroups;
 
-		// Token: 0x04001658 RID: 5720
+		// Token: 0x0400163C RID: 5692
 		private float radius;
 
-		// Token: 0x0200037D RID: 893
+		// Token: 0x02000378 RID: 888
 		[Serializable]
 		public class OmniEffectElement
 		{
-			// Token: 0x060012C7 RID: 4807 RVA: 0x00069F98 File Offset: 0x00068198
+			// Token: 0x060012A7 RID: 4775 RVA: 0x00069BF4 File Offset: 0x00067DF4
 			public void ProcessEffectElement(float radius, float minimumValidRadius)
 			{
 				if (this.particleSystem)
@@ -61,33 +61,33 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x04001659 RID: 5721
+			// Token: 0x0400163D RID: 5693
 			public string name;
 
-			// Token: 0x0400165A RID: 5722
+			// Token: 0x0400163E RID: 5694
 			public ParticleSystem particleSystem;
 
-			// Token: 0x0400165B RID: 5723
+			// Token: 0x0400163F RID: 5695
 			public bool particleSystemEmitParticles;
 
-			// Token: 0x0400165C RID: 5724
+			// Token: 0x04001640 RID: 5696
 			public Material particleSystemOverrideMaterial;
 
-			// Token: 0x0400165D RID: 5725
+			// Token: 0x04001641 RID: 5697
 			public float maximumValidRadius = float.PositiveInfinity;
 
-			// Token: 0x0400165E RID: 5726
+			// Token: 0x04001642 RID: 5698
 			public float bonusEmissionPerBonusRadius;
 		}
 
-		// Token: 0x0200037E RID: 894
+		// Token: 0x02000379 RID: 889
 		[Serializable]
 		public class OmniEffectGroup
 		{
-			// Token: 0x0400165F RID: 5727
+			// Token: 0x04001643 RID: 5699
 			public string name;
 
-			// Token: 0x04001660 RID: 5728
+			// Token: 0x04001644 RID: 5700
 			public OmniEffect.OmniEffectElement[] omniEffectElements;
 		}
 	}

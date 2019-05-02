@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x02000362 RID: 866
+	// Token: 0x0200035F RID: 863
 	public class ModelLocator : MonoBehaviour, ILifeBehavior
 	{
-		// Token: 0x060011DD RID: 4573 RVA: 0x0000D98A File Offset: 0x0000BB8A
+		// Token: 0x060011C6 RID: 4550 RVA: 0x0000D8A1 File Offset: 0x0000BAA1
 		public void Start()
 		{
 			if (this.modelTransform)
@@ -19,7 +19,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060011DE RID: 4574 RVA: 0x000675B0 File Offset: 0x000657B0
+		// Token: 0x060011C7 RID: 4551 RVA: 0x00067278 File Offset: 0x00065478
 		private void UpdateModelTransform(float deltaTime)
 		{
 			if (this.modelTransform && this.modelParentTransform)
@@ -33,13 +33,13 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060011DF RID: 4575 RVA: 0x0000D9BE File Offset: 0x0000BBBE
+		// Token: 0x060011C8 RID: 4552 RVA: 0x0000D8D5 File Offset: 0x0000BAD5
 		private void SmoothNormals(float deltaTime)
 		{
 			this.currentNormal = Vector3.SmoothDamp(this.currentNormal, this.targetNormal, ref this.normalSmoothdampVelocity, 0.1f, float.PositiveInfinity, deltaTime);
 		}
 
-		// Token: 0x060011E0 RID: 4576 RVA: 0x00067620 File Offset: 0x00065820
+		// Token: 0x060011C9 RID: 4553 RVA: 0x000672E8 File Offset: 0x000654E8
 		private void UpdateTargetNormal()
 		{
 			if (!this.normalizeToFloor)
@@ -55,7 +55,7 @@ namespace RoR2
 			this.characterMotor = base.GetComponent<CharacterMotor>();
 		}
 
-		// Token: 0x060011E1 RID: 4577 RVA: 0x0000D9E8 File Offset: 0x0000BBE8
+		// Token: 0x060011CA RID: 4554 RVA: 0x0000D8FF File Offset: 0x0000BAFF
 		public void LateUpdate()
 		{
 			if (this.autoUpdateModelTransform)
@@ -64,7 +64,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060011E2 RID: 4578 RVA: 0x0006766C File Offset: 0x0006586C
+		// Token: 0x060011CB RID: 4555 RVA: 0x00067334 File Offset: 0x00065534
 		private void OnDestroy()
 		{
 			if (this.modelTransform)
@@ -82,7 +82,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060011E3 RID: 4579 RVA: 0x0000D9FD File Offset: 0x0000BBFD
+		// Token: 0x060011CC RID: 4556 RVA: 0x0000D914 File Offset: 0x0000BB14
 		public void OnDeathStart()
 		{
 			if (!this.dontReleaseModelOnDeath)
@@ -91,50 +91,50 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x040015E5 RID: 5605
+		// Token: 0x040015CC RID: 5580
 		[Tooltip("The transform of the child gameobject which acts as the model for this entity.")]
 		public Transform modelTransform;
 
-		// Token: 0x040015E6 RID: 5606
+		// Token: 0x040015CD RID: 5581
 		[Tooltip("The transform of the child gameobject which acts as the base for this entity's model. If provided, this will be detached from the hierarchy and positioned to match this object's position.")]
 		public Transform modelBaseTransform;
 
-		// Token: 0x040015E7 RID: 5607
+		// Token: 0x040015CE RID: 5582
 		[Tooltip("Whether or not the model reference should be released upon the death of this character.")]
 		public bool dontReleaseModelOnDeath;
 
-		// Token: 0x040015E8 RID: 5608
+		// Token: 0x040015CF RID: 5583
 		[Tooltip("Whether or not to update the model transforms automatically.")]
 		public bool autoUpdateModelTransform = true;
 
-		// Token: 0x040015E9 RID: 5609
+		// Token: 0x040015D0 RID: 5584
 		public bool dontDetatchFromParent;
 
-		// Token: 0x040015EA RID: 5610
+		// Token: 0x040015D1 RID: 5585
 		private Transform modelParentTransform;
 
-		// Token: 0x040015EB RID: 5611
+		// Token: 0x040015D2 RID: 5586
 		public bool noCorpse;
 
-		// Token: 0x040015EC RID: 5612
+		// Token: 0x040015D3 RID: 5587
 		public bool normalizeToFloor;
 
-		// Token: 0x040015ED RID: 5613
+		// Token: 0x040015D4 RID: 5588
 		private const float normalSmoothdampTime = 0.1f;
 
-		// Token: 0x040015EE RID: 5614
+		// Token: 0x040015D5 RID: 5589
 		private Vector3 normalSmoothdampVelocity;
 
-		// Token: 0x040015EF RID: 5615
+		// Token: 0x040015D6 RID: 5590
 		private Vector3 targetNormal = Vector3.up;
 
-		// Token: 0x040015F0 RID: 5616
+		// Token: 0x040015D7 RID: 5591
 		private Vector3 currentNormal = Vector3.up;
 
-		// Token: 0x040015F1 RID: 5617
+		// Token: 0x040015D8 RID: 5592
 		private CharacterMotor characterMotor;
 
-		// Token: 0x040015F2 RID: 5618
+		// Token: 0x040015D9 RID: 5593
 		public bool preserveModel;
 	}
 }

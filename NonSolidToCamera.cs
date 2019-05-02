@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x02000378 RID: 888
+	// Token: 0x02000375 RID: 885
 	[DisallowMultipleComponent]
 	public class NonSolidToCamera : MonoBehaviour
 	{

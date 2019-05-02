@@ -8,10 +8,10 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x0200035C RID: 860
+	// Token: 0x02000359 RID: 857
 	public class MeteorStormController : MonoBehaviour
 	{
-		// Token: 0x060011C6 RID: 4550 RVA: 0x0000D845 File Offset: 0x0000BA45
+		// Token: 0x060011AF RID: 4527 RVA: 0x0000D75C File Offset: 0x0000B95C
 		private void Start()
 		{
 			if (NetworkServer.active)
@@ -21,7 +21,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060011C7 RID: 4551 RVA: 0x00066F34 File Offset: 0x00065134
+		// Token: 0x060011B0 RID: 4528 RVA: 0x00066BFC File Offset: 0x00064DFC
 		private void FixedUpdate()
 		{
 			if (!NetworkServer.active)
@@ -80,13 +80,13 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060011C8 RID: 4552 RVA: 0x0000D864 File Offset: 0x0000BA64
+		// Token: 0x060011B1 RID: 4529 RVA: 0x0000D77B File Offset: 0x0000B97B
 		private void OnDestroy()
 		{
 			this.onDestroyEvents.Invoke();
 		}
 
-		// Token: 0x060011C9 RID: 4553 RVA: 0x0000D871 File Offset: 0x0000BA71
+		// Token: 0x060011B2 RID: 4530 RVA: 0x0000D788 File Offset: 0x0000B988
 		private void DoMeteorEffect(MeteorStormController.Meteor meteor)
 		{
 			meteor.didTravelEffect = true;
@@ -99,7 +99,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060011CA RID: 4554 RVA: 0x00067128 File Offset: 0x00065328
+		// Token: 0x060011B3 RID: 4531 RVA: 0x00066DF0 File Offset: 0x00064FF0
 		private void DetonateMeteor(MeteorStormController.Meteor meteor)
 		{
 			EffectData effectData = new EffectData
@@ -126,86 +126,86 @@ namespace RoR2
 			}.Fire();
 		}
 
-		// Token: 0x040015BF RID: 5567
+		// Token: 0x040015A6 RID: 5542
 		public int waveCount;
 
-		// Token: 0x040015C0 RID: 5568
+		// Token: 0x040015A7 RID: 5543
 		public float waveMinInterval;
 
-		// Token: 0x040015C1 RID: 5569
+		// Token: 0x040015A8 RID: 5544
 		public float waveMaxInterval;
 
-		// Token: 0x040015C2 RID: 5570
+		// Token: 0x040015A9 RID: 5545
 		public GameObject warningEffectPrefab;
 
-		// Token: 0x040015C3 RID: 5571
+		// Token: 0x040015AA RID: 5546
 		public GameObject travelEffectPrefab;
 
-		// Token: 0x040015C4 RID: 5572
+		// Token: 0x040015AB RID: 5547
 		public float travelEffectDuration;
 
-		// Token: 0x040015C5 RID: 5573
+		// Token: 0x040015AC RID: 5548
 		public GameObject impactEffectPrefab;
 
-		// Token: 0x040015C6 RID: 5574
+		// Token: 0x040015AD RID: 5549
 		public float impactDelay;
 
-		// Token: 0x040015C7 RID: 5575
+		// Token: 0x040015AE RID: 5550
 		public float blastDamageCoefficient;
 
-		// Token: 0x040015C8 RID: 5576
+		// Token: 0x040015AF RID: 5551
 		public float blastRadius;
 
-		// Token: 0x040015C9 RID: 5577
+		// Token: 0x040015B0 RID: 5552
 		public float blastForce;
 
-		// Token: 0x040015CA RID: 5578
+		// Token: 0x040015B1 RID: 5553
 		[NonSerialized]
 		public GameObject owner;
 
-		// Token: 0x040015CB RID: 5579
+		// Token: 0x040015B2 RID: 5554
 		[NonSerialized]
 		public float ownerDamage;
 
-		// Token: 0x040015CC RID: 5580
+		// Token: 0x040015B3 RID: 5555
 		[NonSerialized]
 		public bool isCrit;
 
-		// Token: 0x040015CD RID: 5581
+		// Token: 0x040015B4 RID: 5556
 		public UnityEvent onDestroyEvents;
 
-		// Token: 0x040015CE RID: 5582
+		// Token: 0x040015B5 RID: 5557
 		private List<MeteorStormController.Meteor> meteorList;
 
-		// Token: 0x040015CF RID: 5583
+		// Token: 0x040015B6 RID: 5558
 		private List<MeteorStormController.MeteorWave> waveList;
 
-		// Token: 0x040015D0 RID: 5584
+		// Token: 0x040015B7 RID: 5559
 		private int wavesPerformed;
 
-		// Token: 0x040015D1 RID: 5585
+		// Token: 0x040015B8 RID: 5560
 		private float waveTimer;
 
-		// Token: 0x0200035D RID: 861
+		// Token: 0x0200035A RID: 858
 		private class Meteor
 		{
-			// Token: 0x040015D2 RID: 5586
+			// Token: 0x040015B9 RID: 5561
 			public Vector3 impactPosition;
 
-			// Token: 0x040015D3 RID: 5587
+			// Token: 0x040015BA RID: 5562
 			public float startTime;
 
-			// Token: 0x040015D4 RID: 5588
+			// Token: 0x040015BB RID: 5563
 			public bool didTravelEffect;
 
-			// Token: 0x040015D5 RID: 5589
+			// Token: 0x040015BC RID: 5564
 			public bool valid = true;
 		}
 
-		// Token: 0x0200035E RID: 862
+		// Token: 0x0200035B RID: 859
 		private class MeteorWave
 		{
-			// Token: 0x060011CD RID: 4557 RVA: 0x000671FC File Offset: 0x000653FC
+			// Token: 0x060011B6 RID: 4534 RVA: 0x00066EC4 File Offset: 0x000650C4
 			public MeteorWave(CharacterBody[] targets, Vector3 center)
 			{
 				this.targets = new CharacterBody[targets.Length];
@@ -222,7 +222,7 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x060011CE RID: 4558 RVA: 0x00067290 File Offset: 0x00065490
+			// Token: 0x060011B7 RID: 4535 RVA: 0x00066F58 File Offset: 0x00065158
 			public MeteorStormController.Meteor GetNextMeteor()
 			{
 				if (this.currentStep >= this.targets.Length)
@@ -261,22 +261,22 @@ namespace RoR2
 				return meteor;
 			}
 
-			// Token: 0x040015D6 RID: 5590
+			// Token: 0x040015BD RID: 5565
 			private readonly CharacterBody[] targets;
 
-			// Token: 0x040015D7 RID: 5591
+			// Token: 0x040015BE RID: 5566
 			private int currentStep;
 
-			// Token: 0x040015D8 RID: 5592
+			// Token: 0x040015BF RID: 5567
 			private float hitChance = 0.4f;
 
-			// Token: 0x040015D9 RID: 5593
+			// Token: 0x040015C0 RID: 5568
 			private readonly Vector3 center;
 
-			// Token: 0x040015DA RID: 5594
+			// Token: 0x040015C1 RID: 5569
 			public float timer;
 
-			// Token: 0x040015DB RID: 5595
+			// Token: 0x040015C2 RID: 5570
 			private NodeGraphSpider nodeGraphSpider;
 		}
 	}

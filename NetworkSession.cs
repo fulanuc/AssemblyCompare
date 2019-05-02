@@ -5,22 +5,22 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x02000372 RID: 882
+	// Token: 0x0200036F RID: 879
 	public class NetworkSession : NetworkBehaviour
 	{
-		// Token: 0x17000194 RID: 404
-		// (get) Token: 0x0600123D RID: 4669 RVA: 0x0000DEB0 File Offset: 0x0000C0B0
-		// (set) Token: 0x0600123E RID: 4670 RVA: 0x0000DEB7 File Offset: 0x0000C0B7
+		// Token: 0x1700018F RID: 399
+		// (get) Token: 0x06001226 RID: 4646 RVA: 0x0000DDC7 File Offset: 0x0000BFC7
+		// (set) Token: 0x06001227 RID: 4647 RVA: 0x0000DDCE File Offset: 0x0000BFCE
 		public static NetworkSession instance { get; private set; }
 
-		// Token: 0x0600123F RID: 4671 RVA: 0x0000DEBF File Offset: 0x0000C0BF
+		// Token: 0x06001228 RID: 4648 RVA: 0x0000DDD6 File Offset: 0x0000BFD6
 		private void OnSyncSteamId(ulong newValue)
 		{
 			this.NetworksteamId = newValue;
 			this.SteamworksAdvertiseGame();
 		}
 
-		// Token: 0x06001240 RID: 4672 RVA: 0x0006882C File Offset: 0x00066A2C
+		// Token: 0x06001229 RID: 4649 RVA: 0x000684F4 File Offset: 0x000666F4
 		private void SteamworksAdvertiseGame()
 		{
 			if (RoR2Application.instance.steamworksClient != null)
@@ -37,19 +37,19 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001241 RID: 4673 RVA: 0x0000DECE File Offset: 0x0000C0CE
+		// Token: 0x0600122A RID: 4650 RVA: 0x0000DDE5 File Offset: 0x0000BFE5
 		private void OnEnable()
 		{
 			NetworkSession.instance = SingletonHelper.Assign<NetworkSession>(NetworkSession.instance, this);
 		}
 
-		// Token: 0x06001242 RID: 4674 RVA: 0x0000DEE0 File Offset: 0x0000C0E0
+		// Token: 0x0600122B RID: 4651 RVA: 0x0000DDF7 File Offset: 0x0000BFF7
 		private void OnDisable()
 		{
 			NetworkSession.instance = SingletonHelper.Unassign<NetworkSession>(NetworkSession.instance, this);
 		}
 
-		// Token: 0x06001243 RID: 4675 RVA: 0x0000DEF2 File Offset: 0x0000C0F2
+		// Token: 0x0600122C RID: 4652 RVA: 0x0000DE09 File Offset: 0x0000C009
 		private void Start()
 		{
 			UnityEngine.Object.DontDestroyOnLoad(base.gameObject);
@@ -59,7 +59,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001244 RID: 4676 RVA: 0x00068894 File Offset: 0x00066A94
+		// Token: 0x0600122D RID: 4653 RVA: 0x0006855C File Offset: 0x0006675C
 		[Server]
 		public Run BeginRun(Run runPrefabComponent)
 		{
@@ -77,7 +77,7 @@ namespace RoR2
 			return null;
 		}
 
-		// Token: 0x06001245 RID: 4677 RVA: 0x0000DF11 File Offset: 0x0000C111
+		// Token: 0x0600122E RID: 4654 RVA: 0x0000DE28 File Offset: 0x0000C028
 		[Server]
 		public void EndRun()
 		{
@@ -92,14 +92,14 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600124A RID: 4682 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06001233 RID: 4659 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x17000195 RID: 405
-		// (get) Token: 0x0600124B RID: 4683 RVA: 0x0006892C File Offset: 0x00066B2C
-		// (set) Token: 0x0600124C RID: 4684 RVA: 0x0000DF71 File Offset: 0x0000C171
+		// Token: 0x17000190 RID: 400
+		// (get) Token: 0x06001234 RID: 4660 RVA: 0x000685F4 File Offset: 0x000667F4
+		// (set) Token: 0x06001235 RID: 4661 RVA: 0x0000DE88 File Offset: 0x0000C088
 		public ulong NetworksteamId
 		{
 			get
@@ -119,7 +119,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600124D RID: 4685 RVA: 0x00068940 File Offset: 0x00066B40
+		// Token: 0x06001236 RID: 4662 RVA: 0x00068608 File Offset: 0x00066808
 		public override bool OnSerialize(NetworkWriter writer, bool forceAll)
 		{
 			if (forceAll)
@@ -144,7 +144,7 @@ namespace RoR2
 			return flag;
 		}
 
-		// Token: 0x0600124E RID: 4686 RVA: 0x000689AC File Offset: 0x00066BAC
+		// Token: 0x06001237 RID: 4663 RVA: 0x00068674 File Offset: 0x00066874
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 			if (initialState)
@@ -159,7 +159,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0400162C RID: 5676
+		// Token: 0x04001613 RID: 5651
 		[SyncVar(hook = "OnSyncSteamId")]
 		private ulong steamId;
 	}

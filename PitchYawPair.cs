@@ -3,18 +3,18 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x02000475 RID: 1141
+	// Token: 0x0200046A RID: 1130
 	[Serializable]
 	public struct PitchYawPair
 	{
-		// Token: 0x060019B8 RID: 6584 RVA: 0x000132C3 File Offset: 0x000114C3
+		// Token: 0x0600195B RID: 6491 RVA: 0x00012DA9 File Offset: 0x00010FA9
 		public PitchYawPair(float pitch, float yaw)
 		{
 			this.pitch = pitch;
 			this.yaw = yaw;
 		}
 
-		// Token: 0x060019B9 RID: 6585 RVA: 0x00083F24 File Offset: 0x00082124
+		// Token: 0x0600195C RID: 6492 RVA: 0x0008357C File Offset: 0x0008177C
 		public static PitchYawPair Lerp(PitchYawPair a, PitchYawPair b, float t)
 		{
 			float num = Mathf.LerpAngle(a.pitch, b.pitch, t);
@@ -22,7 +22,7 @@ namespace RoR2
 			return new PitchYawPair(num, num2);
 		}
 
-		// Token: 0x060019BA RID: 6586 RVA: 0x00083F5C File Offset: 0x0008215C
+		// Token: 0x0600195D RID: 6493 RVA: 0x000835B4 File Offset: 0x000817B4
 		public static PitchYawPair SmoothDamp(PitchYawPair current, PitchYawPair target, ref PitchYawPair velocity, float smoothTime, float maxSpeed)
 		{
 			float num = Mathf.SmoothDampAngle(current.pitch, target.pitch, ref velocity.pitch, smoothTime, maxSpeed);
@@ -30,13 +30,13 @@ namespace RoR2
 			return new PitchYawPair(num, num2);
 		}
 
-		// Token: 0x04001CEC RID: 7404
+		// Token: 0x04001CB8 RID: 7352
 		public static readonly PitchYawPair zero = new PitchYawPair(0f, 0f);
 
-		// Token: 0x04001CED RID: 7405
+		// Token: 0x04001CB9 RID: 7353
 		public float pitch;
 
-		// Token: 0x04001CEE RID: 7406
+		// Token: 0x04001CBA RID: 7354
 		public float yaw;
 	}
 }

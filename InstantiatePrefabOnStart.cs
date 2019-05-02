@@ -4,10 +4,10 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x0200033C RID: 828
+	// Token: 0x0200033A RID: 826
 	public class InstantiatePrefabOnStart : MonoBehaviour
 	{
-		// Token: 0x06001106 RID: 4358 RVA: 0x000646B4 File Offset: 0x000628B4
+		// Token: 0x060010F2 RID: 4338 RVA: 0x00064474 File Offset: 0x00062674
 		public void Start()
 		{
 			if (!this.networkedPrefab || NetworkServer.active)
@@ -23,23 +23,23 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04001536 RID: 5430
+		// Token: 0x04001522 RID: 5410
 		[Tooltip("The prefab to instantiate.")]
 		public GameObject prefab;
 
-		// Token: 0x04001537 RID: 5431
+		// Token: 0x04001523 RID: 5411
 		[Tooltip("The object upon which the prefab will be positioned.")]
 		public Transform targetTransform;
 
-		// Token: 0x04001538 RID: 5432
+		// Token: 0x04001524 RID: 5412
 		[Tooltip("The transform upon which to instantiate the prefab.")]
 		public bool copyTargetRotation;
 
-		// Token: 0x04001539 RID: 5433
+		// Token: 0x04001525 RID: 5413
 		[Tooltip("Whether or not to parent the instantiated prefab to the specified transform.")]
 		public bool parentToTarget;
 
-		// Token: 0x0400153A RID: 5434
+		// Token: 0x04001526 RID: 5414
 		[Tooltip("Whether or not this is a networked prefab. If so, this will only run on the server, and will be spawned over the network.")]
 		public bool networkedPrefab;
 	}

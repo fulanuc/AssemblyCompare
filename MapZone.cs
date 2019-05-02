@@ -5,10 +5,11 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x02000355 RID: 853
+	// Token: 0x02000352 RID: 850
+	[RequireComponent(typeof(TeamFilter))]
 	public class MapZone : MonoBehaviour
 	{
-		// Token: 0x060011B2 RID: 4530 RVA: 0x0000D798 File Offset: 0x0000B998
+		// Token: 0x0600119B RID: 4507 RVA: 0x0000D6AF File Offset: 0x0000B8AF
 		public void OnTriggerEnter(Collider other)
 		{
 			if (this.triggerType == MapZone.TriggerType.TriggerEnter)
@@ -17,7 +18,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060011B3 RID: 4531 RVA: 0x0000D7AA File Offset: 0x0000B9AA
+		// Token: 0x0600119C RID: 4508 RVA: 0x0000D6C1 File Offset: 0x0000B8C1
 		public void OnTriggerExit(Collider other)
 		{
 			if (this.triggerType == MapZone.TriggerType.TriggerExit)
@@ -26,7 +27,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060011B4 RID: 4532 RVA: 0x00066C18 File Offset: 0x00064E18
+		// Token: 0x0600119D RID: 4509 RVA: 0x000668E0 File Offset: 0x00064AE0
 		private void TryZone(Collider other)
 		{
 			CharacterBody component = other.GetComponent<CharacterBody>();
@@ -65,7 +66,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060011B5 RID: 4533 RVA: 0x00066C9C File Offset: 0x00064E9C
+		// Token: 0x0600119E RID: 4510 RVA: 0x00066964 File Offset: 0x00064B64
 		private void TeleportBody(CharacterBody characterBody)
 		{
 			if (!Physics.GetIgnoreLayerCollision(base.gameObject.layer, characterBody.gameObject.layer))
@@ -97,27 +98,27 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x040015AA RID: 5546
+		// Token: 0x04001591 RID: 5521
 		public MapZone.TriggerType triggerType;
 
-		// Token: 0x040015AB RID: 5547
+		// Token: 0x04001592 RID: 5522
 		public MapZone.ZoneType zoneType;
 
-		// Token: 0x02000356 RID: 854
+		// Token: 0x02000353 RID: 851
 		public enum TriggerType
 		{
-			// Token: 0x040015AD RID: 5549
+			// Token: 0x04001594 RID: 5524
 			TriggerExit,
-			// Token: 0x040015AE RID: 5550
+			// Token: 0x04001595 RID: 5525
 			TriggerEnter
 		}
 
-		// Token: 0x02000357 RID: 855
+		// Token: 0x02000354 RID: 852
 		public enum ZoneType
 		{
-			// Token: 0x040015B0 RID: 5552
+			// Token: 0x04001597 RID: 5527
 			OutOfBounds,
-			// Token: 0x040015B1 RID: 5553
+			// Token: 0x04001598 RID: 5528
 			KickOutPlayers
 		}
 	}

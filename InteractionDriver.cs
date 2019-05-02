@@ -4,17 +4,17 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x0200033D RID: 829
+	// Token: 0x0200033B RID: 827
 	[RequireComponent(typeof(Interactor))]
 	[RequireComponent(typeof(InputBankTest))]
 	public class InteractionDriver : MonoBehaviour, ILifeBehavior
 	{
-		// Token: 0x1700017B RID: 379
-		// (get) Token: 0x06001108 RID: 4360 RVA: 0x0000CFED File Offset: 0x0000B1ED
-		// (set) Token: 0x06001109 RID: 4361 RVA: 0x0000CFF5 File Offset: 0x0000B1F5
+		// Token: 0x17000176 RID: 374
+		// (get) Token: 0x060010F4 RID: 4340 RVA: 0x0000CF04 File Offset: 0x0000B104
+		// (set) Token: 0x060010F5 RID: 4341 RVA: 0x0000CF0C File Offset: 0x0000B10C
 		public Interactor interactor { get; private set; }
 
-		// Token: 0x0600110A RID: 4362 RVA: 0x0000CFFE File Offset: 0x0000B1FE
+		// Token: 0x060010F6 RID: 4342 RVA: 0x0000CF15 File Offset: 0x0000B115
 		private void Awake()
 		{
 			this.networkIdentity = base.GetComponent<NetworkIdentity>();
@@ -22,7 +22,7 @@ namespace RoR2
 			this.inputBank = base.GetComponent<InputBankTest>();
 		}
 
-		// Token: 0x0600110B RID: 4363 RVA: 0x0006473C File Offset: 0x0006293C
+		// Token: 0x060010F7 RID: 4343 RVA: 0x000644FC File Offset: 0x000626FC
 		private void FixedUpdate()
 		{
 			if (this.networkIdentity.hasAuthority)
@@ -46,7 +46,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600110C RID: 4364 RVA: 0x000647FC File Offset: 0x000629FC
+		// Token: 0x060010F8 RID: 4344 RVA: 0x000645BC File Offset: 0x000627BC
 		public GameObject FindBestInteractableObject()
 		{
 			if (this.interactableOverride)
@@ -59,13 +59,13 @@ namespace RoR2
 			return this.interactor.FindBestInteractableObject(raycastRay, this.interactor.maxInteractionDistance + num, originalAimRay.origin, this.interactor.maxInteractionDistance);
 		}
 
-		// Token: 0x0600110D RID: 4365 RVA: 0x0000D024 File Offset: 0x0000B224
+		// Token: 0x060010F9 RID: 4345 RVA: 0x0000CF3B File Offset: 0x0000B13B
 		static InteractionDriver()
 		{
 			OutlineHighlight.onPreRenderOutlineHighlight = (Action<OutlineHighlight>)Delegate.Combine(OutlineHighlight.onPreRenderOutlineHighlight, new Action<OutlineHighlight>(InteractionDriver.OnPreRenderOutlineHighlight));
 		}
 
-		// Token: 0x0600110E RID: 4366 RVA: 0x0006487C File Offset: 0x00062A7C
+		// Token: 0x060010FA RID: 4346 RVA: 0x0006463C File Offset: 0x0006283C
 		private static void OnPreRenderOutlineHighlight(OutlineHighlight outlineHighlight)
 		{
 			if (!outlineHighlight.sceneCamera)
@@ -109,32 +109,32 @@ namespace RoR2
 			});
 		}
 
-		// Token: 0x0600110F RID: 4367 RVA: 0x0000A0C2 File Offset: 0x000082C2
+		// Token: 0x060010FB RID: 4347 RVA: 0x0000A05D File Offset: 0x0000825D
 		public void OnDeathStart()
 		{
 			base.enabled = false;
 		}
 
-		// Token: 0x0400153B RID: 5435
+		// Token: 0x04001527 RID: 5415
 		public bool highlightInteractor;
 
-		// Token: 0x0400153C RID: 5436
+		// Token: 0x04001528 RID: 5416
 		private bool inputReceived;
 
-		// Token: 0x0400153D RID: 5437
+		// Token: 0x04001529 RID: 5417
 		private NetworkIdentity networkIdentity;
 
-		// Token: 0x0400153F RID: 5439
+		// Token: 0x0400152B RID: 5419
 		private InputBankTest inputBank;
 
-		// Token: 0x04001540 RID: 5440
+		// Token: 0x0400152C RID: 5420
 		[NonSerialized]
 		public GameObject interactableOverride;
 
-		// Token: 0x04001541 RID: 5441
+		// Token: 0x0400152D RID: 5421
 		private const float interactableCooldownDuration = 0.25f;
 
-		// Token: 0x04001542 RID: 5442
+		// Token: 0x0400152E RID: 5422
 		private float interactableCooldown;
 	}
 }

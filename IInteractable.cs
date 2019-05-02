@@ -2,22 +2,19 @@
 
 namespace RoR2
 {
-	// Token: 0x02000333 RID: 819
+	// Token: 0x02000331 RID: 817
 	public interface IInteractable
 	{
-		// Token: 0x060010E3 RID: 4323
+		// Token: 0x060010CF RID: 4303
 		string GetContextString(Interactor activator);
 
-		// Token: 0x060010E4 RID: 4324
+		// Token: 0x060010D0 RID: 4304
 		Interactability GetInteractability(Interactor activator);
 
-		// Token: 0x060010E5 RID: 4325
+		// Token: 0x060010D1 RID: 4305
 		void OnInteractionBegin(Interactor activator);
 
-		// Token: 0x060010E6 RID: 4326
+		// Token: 0x060010D2 RID: 4306
 		bool ShouldIgnoreSpherecastForInteractibility(Interactor activator);
-
-		// Token: 0x060010E7 RID: 4327
-		bool ShouldShowOnScanner();
 	}
 }

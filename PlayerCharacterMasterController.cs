@@ -7,13 +7,13 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x0200038F RID: 911
+	// Token: 0x0200038A RID: 906
 	[RequireComponent(typeof(PingerController))]
 	[RequireComponent(typeof(CharacterMaster))]
 	public class PlayerCharacterMasterController : NetworkBehaviour
 	{
-		// Token: 0x170001AA RID: 426
-		// (get) Token: 0x06001316 RID: 4886 RVA: 0x0000EA0B File Offset: 0x0000CC0B
+		// Token: 0x170001A5 RID: 421
+		// (get) Token: 0x060012F8 RID: 4856 RVA: 0x0000E880 File Offset: 0x0000CA80
 		public static ReadOnlyCollection<PlayerCharacterMasterController> instances
 		{
 			get
@@ -22,13 +22,13 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x170001AB RID: 427
-		// (get) Token: 0x06001317 RID: 4887 RVA: 0x0000EA12 File Offset: 0x0000CC12
-		// (set) Token: 0x06001318 RID: 4888 RVA: 0x0000EA1A File Offset: 0x0000CC1A
+		// Token: 0x170001A6 RID: 422
+		// (get) Token: 0x060012F9 RID: 4857 RVA: 0x0000E887 File Offset: 0x0000CA87
+		// (set) Token: 0x060012FA RID: 4858 RVA: 0x0000E88F File Offset: 0x0000CA8F
 		public CharacterMaster master { get; private set; }
 
-		// Token: 0x170001AC RID: 428
-		// (get) Token: 0x06001319 RID: 4889 RVA: 0x0000EA23 File Offset: 0x0000CC23
+		// Token: 0x170001A7 RID: 423
+		// (get) Token: 0x060012FB RID: 4859 RVA: 0x0000E898 File Offset: 0x0000CA98
 		public bool hasEffectiveAuthority
 		{
 			get
@@ -37,7 +37,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600131A RID: 4890 RVA: 0x0000EA30 File Offset: 0x0000CC30
+		// Token: 0x060012FC RID: 4860 RVA: 0x0000E8A5 File Offset: 0x0000CAA5
 		private void OnSyncNetworkUserInstanceId(NetworkInstanceId value)
 		{
 			this.resolvedNetworkUserGameObjectInstance = null;
@@ -46,9 +46,9 @@ namespace RoR2
 			this.NetworknetworkUserInstanceId = value;
 		}
 
-		// Token: 0x170001AD RID: 429
-		// (get) Token: 0x0600131B RID: 4891 RVA: 0x0006B4EC File Offset: 0x000696EC
-		// (set) Token: 0x0600131C RID: 4892 RVA: 0x0006B544 File Offset: 0x00069744
+		// Token: 0x170001A8 RID: 424
+		// (get) Token: 0x060012FD RID: 4861 RVA: 0x0006B290 File Offset: 0x00069490
+		// (set) Token: 0x060012FE RID: 4862 RVA: 0x0006B2E8 File Offset: 0x000694E8
 		public GameObject networkUserObject
 		{
 			get
@@ -85,8 +85,8 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x170001AE RID: 430
-		// (get) Token: 0x0600131D RID: 4893 RVA: 0x0000EA58 File Offset: 0x0000CC58
+		// Token: 0x170001A9 RID: 425
+		// (get) Token: 0x060012FF RID: 4863 RVA: 0x0000E8CD File Offset: 0x0000CACD
 		public NetworkUser networkUser
 		{
 			get
@@ -99,8 +99,8 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x170001AF RID: 431
-		// (get) Token: 0x0600131E RID: 4894 RVA: 0x0000EA6F File Offset: 0x0000CC6F
+		// Token: 0x170001AA RID: 426
+		// (get) Token: 0x06001300 RID: 4864 RVA: 0x0000E8E4 File Offset: 0x0000CAE4
 		public bool isConnected
 		{
 			get
@@ -109,7 +109,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600131F RID: 4895 RVA: 0x0000EA7C File Offset: 0x0000CC7C
+		// Token: 0x06001301 RID: 4865 RVA: 0x0000E8F1 File Offset: 0x0000CAF1
 		private void Awake()
 		{
 			this.master = base.GetComponent<CharacterMaster>();
@@ -117,7 +117,7 @@ namespace RoR2
 			this.pingerController = base.GetComponent<PingerController>();
 		}
 
-		// Token: 0x06001320 RID: 4896 RVA: 0x0000EAA2 File Offset: 0x0000CCA2
+		// Token: 0x06001302 RID: 4866 RVA: 0x0000E917 File Offset: 0x0000CB17
 		private void OnEnable()
 		{
 			PlayerCharacterMasterController._instances.Add(this);
@@ -127,7 +127,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001321 RID: 4897 RVA: 0x0000EAC1 File Offset: 0x0000CCC1
+		// Token: 0x06001303 RID: 4867 RVA: 0x0000E936 File Offset: 0x0000CB36
 		private void OnDisable()
 		{
 			PlayerCharacterMasterController._instances.Remove(this);
@@ -137,7 +137,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001322 RID: 4898 RVA: 0x0000EAE1 File Offset: 0x0000CCE1
+		// Token: 0x06001304 RID: 4868 RVA: 0x0000E956 File Offset: 0x0000CB56
 		private void Start()
 		{
 			if (NetworkServer.active && this.networkUser)
@@ -146,7 +146,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001323 RID: 4899 RVA: 0x0006B5A4 File Offset: 0x000697A4
+		// Token: 0x06001305 RID: 4869 RVA: 0x0006B348 File Offset: 0x00069548
 		[ClientRpc]
 		private void RpcIncrementRunCount()
 		{
@@ -160,7 +160,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001324 RID: 4900 RVA: 0x0006B5E0 File Offset: 0x000697E0
+		// Token: 0x06001306 RID: 4870 RVA: 0x0006B384 File Offset: 0x00069584
 		private void Update()
 		{
 			if (this.netid.hasAuthority)
@@ -214,7 +214,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001325 RID: 4901 RVA: 0x0006B7F0 File Offset: 0x000699F0
+		// Token: 0x06001307 RID: 4871 RVA: 0x0006B594 File Offset: 0x00069794
 		private void FixedUpdate()
 		{
 			NetworkUser networkUser = this.networkUser;
@@ -240,7 +240,7 @@ namespace RoR2
 							Vector3 moveVector = this.bodyInputs.moveVector;
 							moveVector.y = 0f;
 							moveVector.Normalize();
-							if ((this.body.bodyFlags & CharacterBody.BodyFlags.SprintAnyDirection) == CharacterBody.BodyFlags.None && Vector3.Dot(aimDirection, moveVector) < PlayerCharacterMasterController.sprintMinAimMoveDot)
+							if (Vector3.Dot(aimDirection, moveVector) < PlayerCharacterMasterController.sprintMinAimMoveDot)
 							{
 								flag = false;
 							}
@@ -272,7 +272,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001326 RID: 4902 RVA: 0x0006BA68 File Offset: 0x00069C68
+		// Token: 0x06001308 RID: 4872 RVA: 0x0006B7FC File Offset: 0x000699FC
 		private void CheckPinging()
 		{
 			if (this.hasEffectiveAuthority && this.body && this.bodyInputs && this.bodyInputs.ping.justPressed)
@@ -281,7 +281,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001327 RID: 4903 RVA: 0x0006BADC File Offset: 0x00069CDC
+		// Token: 0x06001309 RID: 4873 RVA: 0x0006B870 File Offset: 0x00069A70
 		public string GetDisplayName()
 		{
 			string result = "";
@@ -296,7 +296,7 @@ namespace RoR2
 			return result;
 		}
 
-		// Token: 0x06001328 RID: 4904 RVA: 0x0006BB18 File Offset: 0x00069D18
+		// Token: 0x0600130A RID: 4874 RVA: 0x0006B8AC File Offset: 0x00069AAC
 		private void SetBody(GameObject newBody)
 		{
 			if (newBody)
@@ -311,8 +311,8 @@ namespace RoR2
 			this.bodyIsFlier = false;
 		}
 
-		// Token: 0x170001B0 RID: 432
-		// (get) Token: 0x06001329 RID: 4905 RVA: 0x0000EAFD File Offset: 0x0000CCFD
+		// Token: 0x170001AB RID: 427
+		// (get) Token: 0x0600130B RID: 4875 RVA: 0x0000E972 File Offset: 0x0000CB72
 		public bool preventGameOver
 		{
 			get
@@ -321,7 +321,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600132A RID: 4906 RVA: 0x0000EB0A File Offset: 0x0000CD0A
+		// Token: 0x0600130C RID: 4876 RVA: 0x0000E97F File Offset: 0x0000CB7F
 		[Server]
 		public void OnBodyDeath()
 		{
@@ -332,22 +332,22 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600132B RID: 4907 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x0600130D RID: 4877 RVA: 0x000025F6 File Offset: 0x000007F6
 		public void OnBodyStart()
 		{
 		}
 
 		// Token: 0x14000019 RID: 25
-		// (add) Token: 0x0600132C RID: 4908 RVA: 0x0006BB6C File Offset: 0x00069D6C
-		// (remove) Token: 0x0600132D RID: 4909 RVA: 0x0006BBA0 File Offset: 0x00069DA0
+		// (add) Token: 0x0600130E RID: 4878 RVA: 0x0006B900 File Offset: 0x00069B00
+		// (remove) Token: 0x0600130F RID: 4879 RVA: 0x0006B934 File Offset: 0x00069B34
 		public static event Action<PlayerCharacterMasterController> onPlayerAdded;
 
 		// Token: 0x1400001A RID: 26
-		// (add) Token: 0x0600132E RID: 4910 RVA: 0x0006BBD4 File Offset: 0x00069DD4
-		// (remove) Token: 0x0600132F RID: 4911 RVA: 0x0006BC08 File Offset: 0x00069E08
+		// (add) Token: 0x06001310 RID: 4880 RVA: 0x0006B968 File Offset: 0x00069B68
+		// (remove) Token: 0x06001311 RID: 4881 RVA: 0x0006B99C File Offset: 0x00069B9C
 		public static event Action<PlayerCharacterMasterController> onPlayerRemoved;
 
-		// Token: 0x06001330 RID: 4912 RVA: 0x0000EB21 File Offset: 0x0000CD21
+		// Token: 0x06001312 RID: 4882 RVA: 0x0000E996 File Offset: 0x0000CB96
 		[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
 		private static void Init()
 		{
@@ -374,21 +374,21 @@ namespace RoR2
 			};
 		}
 
-		// Token: 0x06001332 RID: 4914 RVA: 0x0006BC3C File Offset: 0x00069E3C
+		// Token: 0x06001314 RID: 4884 RVA: 0x0006B9D0 File Offset: 0x00069BD0
 		static PlayerCharacterMasterController()
 		{
 			NetworkBehaviour.RegisterRpcDelegate(typeof(PlayerCharacterMasterController), PlayerCharacterMasterController.kRpcRpcIncrementRunCount, new NetworkBehaviour.CmdDelegate(PlayerCharacterMasterController.InvokeRpcRpcIncrementRunCount));
 			NetworkCRC.RegisterBehaviour("PlayerCharacterMasterController", 0);
 		}
 
-		// Token: 0x06001333 RID: 4915 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06001315 RID: 4885 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x170001B1 RID: 433
-		// (get) Token: 0x06001334 RID: 4916 RVA: 0x0006BCAC File Offset: 0x00069EAC
-		// (set) Token: 0x06001335 RID: 4917 RVA: 0x0000EB70 File Offset: 0x0000CD70
+		// Token: 0x170001AC RID: 428
+		// (get) Token: 0x06001316 RID: 4886 RVA: 0x0006BA40 File Offset: 0x00069C40
+		// (set) Token: 0x06001317 RID: 4887 RVA: 0x0000E9E5 File Offset: 0x0000CBE5
 		public NetworkInstanceId NetworknetworkUserInstanceId
 		{
 			get
@@ -397,18 +397,11 @@ namespace RoR2
 			}
 			set
 			{
-				uint dirtyBit = 1u;
-				if (NetworkServer.localClientActive && !base.syncVarHookGuard)
-				{
-					base.syncVarHookGuard = true;
-					this.OnSyncNetworkUserInstanceId(value);
-					base.syncVarHookGuard = false;
-				}
-				base.SetSyncVar<NetworkInstanceId>(value, ref this.networkUserInstanceId, dirtyBit);
+				base.SetSyncVar<NetworkInstanceId>(value, ref this.networkUserInstanceId, 1u);
 			}
 		}
 
-		// Token: 0x06001336 RID: 4918 RVA: 0x0000EBAF File Offset: 0x0000CDAF
+		// Token: 0x06001318 RID: 4888 RVA: 0x0000E9F9 File Offset: 0x0000CBF9
 		protected static void InvokeRpcRpcIncrementRunCount(NetworkBehaviour obj, NetworkReader reader)
 		{
 			if (!NetworkClient.active)
@@ -419,7 +412,7 @@ namespace RoR2
 			((PlayerCharacterMasterController)obj).RpcIncrementRunCount();
 		}
 
-		// Token: 0x06001337 RID: 4919 RVA: 0x0006BCC0 File Offset: 0x00069EC0
+		// Token: 0x06001319 RID: 4889 RVA: 0x0006BA54 File Offset: 0x00069C54
 		public void CallRpcIncrementRunCount()
 		{
 			if (!NetworkServer.active)
@@ -435,7 +428,7 @@ namespace RoR2
 			this.SendRPCInternal(networkWriter, 0, "RpcIncrementRunCount");
 		}
 
-		// Token: 0x06001338 RID: 4920 RVA: 0x0006BD2C File Offset: 0x00069F2C
+		// Token: 0x0600131A RID: 4890 RVA: 0x0006BAC0 File Offset: 0x00069CC0
 		public override bool OnSerialize(NetworkWriter writer, bool forceAll)
 		{
 			if (forceAll)
@@ -460,7 +453,7 @@ namespace RoR2
 			return flag;
 		}
 
-		// Token: 0x06001339 RID: 4921 RVA: 0x0006BD98 File Offset: 0x00069F98
+		// Token: 0x0600131B RID: 4891 RVA: 0x0006BB2C File Offset: 0x00069D2C
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 			if (initialState)
@@ -471,66 +464,66 @@ namespace RoR2
 			int num = (int)reader.ReadPackedUInt32();
 			if ((num & 1) != 0)
 			{
-				this.OnSyncNetworkUserInstanceId(reader.ReadNetworkId());
+				this.networkUserInstanceId = reader.ReadNetworkId();
 			}
 		}
 
-		// Token: 0x040016D3 RID: 5843
+		// Token: 0x040016B7 RID: 5815
 		private static List<PlayerCharacterMasterController> _instances = new List<PlayerCharacterMasterController>();
 
-		// Token: 0x040016D4 RID: 5844
+		// Token: 0x040016B8 RID: 5816
 		private static ReadOnlyCollection<PlayerCharacterMasterController> _instancesReadOnly = new ReadOnlyCollection<PlayerCharacterMasterController>(PlayerCharacterMasterController._instances);
 
-		// Token: 0x040016D5 RID: 5845
+		// Token: 0x040016B9 RID: 5817
 		private CharacterBody body;
 
-		// Token: 0x040016D6 RID: 5846
+		// Token: 0x040016BA RID: 5818
 		private InputBankTest bodyInputs;
 
-		// Token: 0x040016D7 RID: 5847
+		// Token: 0x040016BB RID: 5819
 		private bool bodyIsFlier;
 
-		// Token: 0x040016D9 RID: 5849
+		// Token: 0x040016BD RID: 5821
 		private PingerController pingerController;
 
-		// Token: 0x040016DA RID: 5850
-		[SyncVar(hook = "OnSyncNetworkUserInstanceId")]
+		// Token: 0x040016BE RID: 5822
+		[SyncVar]
 		private NetworkInstanceId networkUserInstanceId;
 
-		// Token: 0x040016DB RID: 5851
+		// Token: 0x040016BF RID: 5823
 		private GameObject resolvedNetworkUserGameObjectInstance;
 
-		// Token: 0x040016DC RID: 5852
+		// Token: 0x040016C0 RID: 5824
 		private bool networkUserResolved;
 
-		// Token: 0x040016DD RID: 5853
+		// Token: 0x040016C1 RID: 5825
 		private NetworkUser resolvedNetworkUserInstance;
 
-		// Token: 0x040016DE RID: 5854
+		// Token: 0x040016C2 RID: 5826
 		public float cameraMinPitch = -70f;
 
-		// Token: 0x040016DF RID: 5855
+		// Token: 0x040016C3 RID: 5827
 		public float cameraMaxPitch = 70f;
 
-		// Token: 0x040016E0 RID: 5856
+		// Token: 0x040016C4 RID: 5828
 		public GameObject crosshair;
 
-		// Token: 0x040016E1 RID: 5857
+		// Token: 0x040016C5 RID: 5829
 		public Vector3 crosshairPosition;
 
-		// Token: 0x040016E2 RID: 5858
+		// Token: 0x040016C6 RID: 5830
 		private NetworkIdentity netid;
 
-		// Token: 0x040016E3 RID: 5859
+		// Token: 0x040016C7 RID: 5831
 		private static readonly float sprintMinAimMoveDot = Mathf.Cos(1.04719758f);
 
-		// Token: 0x040016E4 RID: 5860
+		// Token: 0x040016C8 RID: 5832
 		private bool sprintInputPressReceived;
 
-		// Token: 0x040016E7 RID: 5863
+		// Token: 0x040016CB RID: 5835
 		private float lunarCoinChanceMultiplier = 0.5f;
 
-		// Token: 0x040016E8 RID: 5864
+		// Token: 0x040016CC RID: 5836
 		private static int kRpcRpcIncrementRunCount = 1915650359;
 	}
 }

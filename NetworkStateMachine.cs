@@ -7,11 +7,11 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x02000374 RID: 884
+	// Token: 0x02000371 RID: 881
 	[DisallowMultipleComponent]
 	public class NetworkStateMachine : NetworkBehaviour
 	{
-		// Token: 0x06001251 RID: 4689 RVA: 0x000689F0 File Offset: 0x00066BF0
+		// Token: 0x0600123A RID: 4666 RVA: 0x000686B8 File Offset: 0x000668B8
 		private void Awake()
 		{
 			this.networkIdentity = base.GetComponent<NetworkIdentity>();
@@ -21,7 +21,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001252 RID: 4690 RVA: 0x00068A2C File Offset: 0x00066C2C
+		// Token: 0x0600123B RID: 4667 RVA: 0x000686F4 File Offset: 0x000668F4
 		public override bool OnSerialize(NetworkWriter writer, bool initialState)
 		{
 			if (initialState)
@@ -37,7 +37,7 @@ namespace RoR2
 			return false;
 		}
 
-		// Token: 0x06001253 RID: 4691 RVA: 0x00068A80 File Offset: 0x00066C80
+		// Token: 0x0600123C RID: 4668 RVA: 0x00068748 File Offset: 0x00066948
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 			if (initialState)
@@ -68,7 +68,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001254 RID: 4692 RVA: 0x00068B14 File Offset: 0x00066D14
+		// Token: 0x0600123D RID: 4669 RVA: 0x000687DC File Offset: 0x000669DC
 		[NetworkMessageHandler(msgType = 48, client = true, server = true)]
 		public static void HandleSetEntityState(NetworkMessage netMsg)
 		{
@@ -110,7 +110,7 @@ namespace RoR2
 			entityStateMachine.SetState(entityState);
 		}
 
-		// Token: 0x06001255 RID: 4693 RVA: 0x00068BDC File Offset: 0x00066DDC
+		// Token: 0x0600123E RID: 4670 RVA: 0x000688A4 File Offset: 0x00066AA4
 		public void SendSetEntityState(int stateMachineIndex)
 		{
 			if (!NetworkServer.active && !base.hasAuthority)
@@ -137,7 +137,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001256 RID: 4694 RVA: 0x00068C80 File Offset: 0x00066E80
+		// Token: 0x0600123F RID: 4671 RVA: 0x00068948 File Offset: 0x00066B48
 		private void OnValidate()
 		{
 			for (int i = 0; i < this.stateMachines.Length; i++)
@@ -152,17 +152,17 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001258 RID: 4696 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06001241 RID: 4673 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x0400162D RID: 5677
+		// Token: 0x04001614 RID: 5652
 		[Tooltip("The sibling state machine components to network.")]
 		[SerializeField]
 		private EntityStateMachine[] stateMachines;
 
-		// Token: 0x0400162E RID: 5678
+		// Token: 0x04001615 RID: 5653
 		private NetworkIdentity networkIdentity;
 	}
 }
