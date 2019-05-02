@@ -4,25 +4,25 @@ using UnityEngine.Networking;
 
 namespace RoR2.Projectile
 {
-	// Token: 0x0200055E RID: 1374
-	[RequireComponent(typeof(ProjectileController))]
+	// Token: 0x0200054F RID: 1359
 	[RequireComponent(typeof(ProjectileDamage))]
+	[RequireComponent(typeof(ProjectileController))]
 	public class ProjectileIntervalOverlapAttack : MonoBehaviour
 	{
-		// Token: 0x06001EC7 RID: 7879 RVA: 0x00016802 File Offset: 0x00014A02
+		// Token: 0x06001E5D RID: 7773 RVA: 0x00016323 File Offset: 0x00014523
 		private void Awake()
 		{
 			this.projectileController = base.GetComponent<ProjectileController>();
 			this.projectileDamage = base.GetComponent<ProjectileDamage>();
 		}
 
-		// Token: 0x06001EC8 RID: 7880 RVA: 0x0001681C File Offset: 0x00014A1C
+		// Token: 0x06001E5E RID: 7774 RVA: 0x0001633D File Offset: 0x0001453D
 		private void Start()
 		{
 			this.countdown = 0f;
 		}
 
-		// Token: 0x06001EC9 RID: 7881 RVA: 0x00096834 File Offset: 0x00094A34
+		// Token: 0x06001E5F RID: 7775 RVA: 0x00095B18 File Offset: 0x00093D18
 		private void FixedUpdate()
 		{
 			if (NetworkServer.active)
@@ -49,22 +49,22 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x04002122 RID: 8482
+		// Token: 0x040020E4 RID: 8420
 		public HitBoxGroup hitBoxGroup;
 
-		// Token: 0x04002123 RID: 8483
+		// Token: 0x040020E5 RID: 8421
 		public float interval;
 
-		// Token: 0x04002124 RID: 8484
+		// Token: 0x040020E6 RID: 8422
 		public float damageCoefficient = 1f;
 
-		// Token: 0x04002125 RID: 8485
+		// Token: 0x040020E7 RID: 8423
 		private float countdown;
 
-		// Token: 0x04002126 RID: 8486
+		// Token: 0x040020E8 RID: 8424
 		private ProjectileController projectileController;
 
-		// Token: 0x04002127 RID: 8487
+		// Token: 0x040020E9 RID: 8425
 		private ProjectileDamage projectileDamage;
 	}
 }

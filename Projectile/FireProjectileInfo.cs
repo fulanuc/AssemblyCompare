@@ -3,12 +3,12 @@ using UnityEngine;
 
 namespace RoR2.Projectile
 {
-	// Token: 0x02000561 RID: 1377
+	// Token: 0x02000552 RID: 1362
 	public struct FireProjectileInfo
 	{
-		// Token: 0x170002B1 RID: 689
-		// (get) Token: 0x06001ED5 RID: 7893 RVA: 0x000168C3 File Offset: 0x00014AC3
-		// (set) Token: 0x06001ED4 RID: 7892 RVA: 0x000168A9 File Offset: 0x00014AA9
+		// Token: 0x170002A4 RID: 676
+		// (get) Token: 0x06001E6B RID: 7787 RVA: 0x000163E4 File Offset: 0x000145E4
+		// (set) Token: 0x06001E6A RID: 7786 RVA: 0x000163CA File Offset: 0x000145CA
 		public float speedOverride
 		{
 			get
@@ -22,9 +22,9 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x170002B2 RID: 690
-		// (get) Token: 0x06001ED7 RID: 7895 RVA: 0x000168E5 File Offset: 0x00014AE5
-		// (set) Token: 0x06001ED6 RID: 7894 RVA: 0x000168CB File Offset: 0x00014ACB
+		// Token: 0x170002A5 RID: 677
+		// (get) Token: 0x06001E6D RID: 7789 RVA: 0x00016406 File Offset: 0x00014606
+		// (set) Token: 0x06001E6C RID: 7788 RVA: 0x000163EC File Offset: 0x000145EC
 		public float fuseOverride
 		{
 			get
@@ -38,46 +38,46 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x04002136 RID: 8502
+		// Token: 0x040020F8 RID: 8440
 		public GameObject projectilePrefab;
 
-		// Token: 0x04002137 RID: 8503
+		// Token: 0x040020F9 RID: 8441
 		public Vector3 position;
 
-		// Token: 0x04002138 RID: 8504
+		// Token: 0x040020FA RID: 8442
 		public Quaternion rotation;
 
-		// Token: 0x04002139 RID: 8505
+		// Token: 0x040020FB RID: 8443
 		public GameObject owner;
 
-		// Token: 0x0400213A RID: 8506
+		// Token: 0x040020FC RID: 8444
 		public GameObject target;
 
-		// Token: 0x0400213B RID: 8507
+		// Token: 0x040020FD RID: 8445
 		public bool useSpeedOverride;
 
-		// Token: 0x0400213C RID: 8508
+		// Token: 0x040020FE RID: 8446
 		private float _speedOverride;
 
-		// Token: 0x0400213D RID: 8509
+		// Token: 0x040020FF RID: 8447
 		public bool useFuseOverride;
 
-		// Token: 0x0400213E RID: 8510
+		// Token: 0x04002100 RID: 8448
 		private float _fuseOverride;
 
-		// Token: 0x0400213F RID: 8511
+		// Token: 0x04002101 RID: 8449
 		public float damage;
 
-		// Token: 0x04002140 RID: 8512
+		// Token: 0x04002102 RID: 8450
 		public float force;
 
-		// Token: 0x04002141 RID: 8513
+		// Token: 0x04002103 RID: 8451
 		public bool crit;
 
-		// Token: 0x04002142 RID: 8514
+		// Token: 0x04002104 RID: 8452
 		public DamageColorIndex damageColorIndex;
 
-		// Token: 0x04002143 RID: 8515
+		// Token: 0x04002105 RID: 8453
 		public ProcChainMask procChainMask;
 	}
 }

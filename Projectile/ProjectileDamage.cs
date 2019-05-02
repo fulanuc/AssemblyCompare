@@ -3,26 +3,26 @@ using UnityEngine;
 
 namespace RoR2.Projectile
 {
-	// Token: 0x0200054F RID: 1359
+	// Token: 0x02000540 RID: 1344
 	public class ProjectileDamage : MonoBehaviour
 	{
-		// Token: 0x040020B7 RID: 8375
+		// Token: 0x04002079 RID: 8313
 		[HideInInspector]
 		public float damage;
 
-		// Token: 0x040020B8 RID: 8376
+		// Token: 0x0400207A RID: 8314
 		[HideInInspector]
 		public bool crit;
 
-		// Token: 0x040020B9 RID: 8377
+		// Token: 0x0400207B RID: 8315
 		[HideInInspector]
 		public float force;
 
-		// Token: 0x040020BA RID: 8378
+		// Token: 0x0400207C RID: 8316
 		[HideInInspector]
 		public DamageColorIndex damageColorIndex;
 
-		// Token: 0x040020BB RID: 8379
+		// Token: 0x0400207D RID: 8317
 		public DamageType damageType;
 	}
 }

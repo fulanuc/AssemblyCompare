@@ -3,17 +3,17 @@ using UnityEngine;
 
 namespace RoR2.Projectile
 {
-	// Token: 0x0200055D RID: 1373
+	// Token: 0x0200054E RID: 1358
 	[RequireComponent(typeof(ProjectileController))]
 	public class ProjectileImpaleOnEnemy : MonoBehaviour, IProjectileImpactBehavior
 	{
-		// Token: 0x06001EC4 RID: 7876 RVA: 0x000167E5 File Offset: 0x000149E5
+		// Token: 0x06001E5A RID: 7770 RVA: 0x00016306 File Offset: 0x00014506
 		private void Awake()
 		{
 			this.rigidbody = base.GetComponent<Rigidbody>();
 		}
 
-		// Token: 0x06001EC5 RID: 7877 RVA: 0x00096794 File Offset: 0x00094994
+		// Token: 0x06001E5B RID: 7771 RVA: 0x00095A78 File Offset: 0x00093C78
 		public void OnProjectileImpact(ProjectileImpactInfo impactInfo)
 		{
 			if (!this.alive)
@@ -40,13 +40,13 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x0400211F RID: 8479
+		// Token: 0x040020E1 RID: 8417
 		private bool alive = true;
 
-		// Token: 0x04002120 RID: 8480
+		// Token: 0x040020E2 RID: 8418
 		public GameObject impalePrefab;
 
-		// Token: 0x04002121 RID: 8481
+		// Token: 0x040020E3 RID: 8419
 		private Rigidbody rigidbody;
 	}
 }

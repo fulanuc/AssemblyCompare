@@ -5,22 +5,22 @@ using UnityEngine.Networking;
 
 namespace RoR2.Projectile
 {
-	// Token: 0x0200056D RID: 1389
-	[RequireComponent(typeof(ProjectileNetworkTransform))]
-	[RequireComponent(typeof(Rigidbody))]
+	// Token: 0x0200055E RID: 1374
 	[RequireComponent(typeof(ProjectileController))]
+	[RequireComponent(typeof(Rigidbody))]
+	[RequireComponent(typeof(ProjectileNetworkTransform))]
 	public class ProjectileStickOnImpact : NetworkBehaviour, IProjectileImpactBehavior
 	{
-		// Token: 0x06001F2A RID: 7978 RVA: 0x00016D53 File Offset: 0x00014F53
+		// Token: 0x06001EC0 RID: 7872 RVA: 0x00016874 File Offset: 0x00014A74
 		private void Awake()
 		{
 			this.projectileController = base.GetComponent<ProjectileController>();
 			this.rigidbody = base.GetComponent<Rigidbody>();
 		}
 
-		// Token: 0x170002B7 RID: 695
-		// (get) Token: 0x06001F2B RID: 7979 RVA: 0x00016D6D File Offset: 0x00014F6D
-		// (set) Token: 0x06001F2C RID: 7980 RVA: 0x00016D75 File Offset: 0x00014F75
+		// Token: 0x170002AA RID: 682
+		// (get) Token: 0x06001EC1 RID: 7873 RVA: 0x0001688E File Offset: 0x00014A8E
+		// (set) Token: 0x06001EC2 RID: 7874 RVA: 0x00016896 File Offset: 0x00014A96
 		public GameObject victim
 		{
 			get
@@ -34,8 +34,8 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x170002B8 RID: 696
-		// (get) Token: 0x06001F2D RID: 7981 RVA: 0x00016D85 File Offset: 0x00014F85
+		// Token: 0x170002AB RID: 683
+		// (get) Token: 0x06001EC3 RID: 7875 RVA: 0x000168A6 File Offset: 0x00014AA6
 		public bool stuck
 		{
 			get
@@ -44,7 +44,7 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x06001F2E RID: 7982 RVA: 0x0009831C File Offset: 0x0009651C
+		// Token: 0x06001EC4 RID: 7876 RVA: 0x00097600 File Offset: 0x00095800
 		public void OnProjectileImpact(ProjectileImpactInfo impactInfo)
 		{
 			if (!this.victim)
@@ -104,7 +104,7 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x06001F2F RID: 7983 RVA: 0x000984B0 File Offset: 0x000966B0
+		// Token: 0x06001EC5 RID: 7877 RVA: 0x00097794 File Offset: 0x00095994
 		public void FixedUpdate()
 		{
 			bool flag = this.stuckTransform;
@@ -155,14 +155,14 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x06001F31 RID: 7985 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06001EC7 RID: 7879 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x170002B9 RID: 697
-		// (get) Token: 0x06001F32 RID: 7986 RVA: 0x000985D0 File Offset: 0x000967D0
-		// (set) Token: 0x06001F33 RID: 7987 RVA: 0x00016DA2 File Offset: 0x00014FA2
+		// Token: 0x170002AC RID: 684
+		// (get) Token: 0x06001EC8 RID: 7880 RVA: 0x000978B4 File Offset: 0x00095AB4
+		// (set) Token: 0x06001EC9 RID: 7881 RVA: 0x000168C3 File Offset: 0x00014AC3
 		public GameObject NetworksyncVictim
 		{
 			get
@@ -175,9 +175,9 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x170002BA RID: 698
-		// (get) Token: 0x06001F34 RID: 7988 RVA: 0x000985E4 File Offset: 0x000967E4
-		// (set) Token: 0x06001F35 RID: 7989 RVA: 0x00016DBC File Offset: 0x00014FBC
+		// Token: 0x170002AD RID: 685
+		// (get) Token: 0x06001ECA RID: 7882 RVA: 0x000978C8 File Offset: 0x00095AC8
+		// (set) Token: 0x06001ECB RID: 7883 RVA: 0x000168DD File Offset: 0x00014ADD
 		public sbyte NetworkhitHurtboxIndex
 		{
 			get
@@ -190,9 +190,9 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x170002BB RID: 699
-		// (get) Token: 0x06001F36 RID: 7990 RVA: 0x000985F8 File Offset: 0x000967F8
-		// (set) Token: 0x06001F37 RID: 7991 RVA: 0x00016DD0 File Offset: 0x00014FD0
+		// Token: 0x170002AE RID: 686
+		// (get) Token: 0x06001ECC RID: 7884 RVA: 0x000978DC File Offset: 0x00095ADC
+		// (set) Token: 0x06001ECD RID: 7885 RVA: 0x000168F1 File Offset: 0x00014AF1
 		public Vector3 NetworklocalPosition
 		{
 			get
@@ -205,9 +205,9 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x170002BC RID: 700
-		// (get) Token: 0x06001F38 RID: 7992 RVA: 0x0009860C File Offset: 0x0009680C
-		// (set) Token: 0x06001F39 RID: 7993 RVA: 0x00016DE4 File Offset: 0x00014FE4
+		// Token: 0x170002AF RID: 687
+		// (get) Token: 0x06001ECE RID: 7886 RVA: 0x000978F0 File Offset: 0x00095AF0
+		// (set) Token: 0x06001ECF RID: 7887 RVA: 0x00016905 File Offset: 0x00014B05
 		public Quaternion NetworklocalRotation
 		{
 			get
@@ -220,7 +220,7 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x06001F3A RID: 7994 RVA: 0x00098620 File Offset: 0x00096820
+		// Token: 0x06001ED0 RID: 7888 RVA: 0x00097904 File Offset: 0x00095B04
 		public override bool OnSerialize(NetworkWriter writer, bool forceAll)
 		{
 			if (forceAll)
@@ -275,7 +275,7 @@ namespace RoR2.Projectile
 			return flag;
 		}
 
-		// Token: 0x06001F3B RID: 7995 RVA: 0x00098748 File Offset: 0x00096948
+		// Token: 0x06001ED1 RID: 7889 RVA: 0x00097A2C File Offset: 0x00095C2C
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 			if (initialState)
@@ -305,7 +305,7 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x06001F3C RID: 7996 RVA: 0x00016DF8 File Offset: 0x00014FF8
+		// Token: 0x06001ED2 RID: 7890 RVA: 0x00016919 File Offset: 0x00014B19
 		public override void PreStartClient()
 		{
 			if (!this.___syncVictimNetId.IsEmpty())
@@ -314,50 +314,50 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x04002199 RID: 8601
+		// Token: 0x0400215B RID: 8539
 		public string stickSoundString;
 
-		// Token: 0x0400219A RID: 8602
+		// Token: 0x0400215C RID: 8540
 		public ParticleSystem[] stickParticleSystem;
 
-		// Token: 0x0400219B RID: 8603
+		// Token: 0x0400215D RID: 8541
 		private ProjectileController projectileController;
 
-		// Token: 0x0400219C RID: 8604
+		// Token: 0x0400215E RID: 8542
 		private Rigidbody rigidbody;
 
-		// Token: 0x0400219D RID: 8605
+		// Token: 0x0400215F RID: 8543
 		private Transform stuckTransform;
 
-		// Token: 0x0400219E RID: 8606
+		// Token: 0x04002160 RID: 8544
 		public bool ignoreCharacters;
 
-		// Token: 0x0400219F RID: 8607
+		// Token: 0x04002161 RID: 8545
 		public bool ignoreWorld;
 
-		// Token: 0x040021A0 RID: 8608
+		// Token: 0x04002162 RID: 8546
 		public UnityEvent stickEvent;
 
-		// Token: 0x040021A1 RID: 8609
+		// Token: 0x04002163 RID: 8547
 		private GameObject _victim;
 
-		// Token: 0x040021A2 RID: 8610
+		// Token: 0x04002164 RID: 8548
 		[SyncVar]
 		private GameObject syncVictim;
 
-		// Token: 0x040021A3 RID: 8611
+		// Token: 0x04002165 RID: 8549
 		[SyncVar]
 		private sbyte hitHurtboxIndex = -1;
 
-		// Token: 0x040021A4 RID: 8612
+		// Token: 0x04002166 RID: 8550
 		[SyncVar]
 		private Vector3 localPosition;
 
-		// Token: 0x040021A5 RID: 8613
+		// Token: 0x04002167 RID: 8551
 		[SyncVar]
 		private Quaternion localRotation;
 
-		// Token: 0x040021A6 RID: 8614
+		// Token: 0x04002168 RID: 8552
 		private NetworkInstanceId ___syncVictimNetId;
 	}
 }

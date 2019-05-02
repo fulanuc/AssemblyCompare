@@ -4,11 +4,11 @@ using UnityEngine.Networking;
 
 namespace RoR2.Projectile
 {
-	// Token: 0x02000546 RID: 1350
+	// Token: 0x02000537 RID: 1335
 	[RequireComponent(typeof(ProjectileController))]
 	public class HookProjectileImpact : NetworkBehaviour, IProjectileImpactBehavior
 	{
-		// Token: 0x06001E62 RID: 7778 RVA: 0x000947F0 File Offset: 0x000929F0
+		// Token: 0x06001DF8 RID: 7672 RVA: 0x00093AD4 File Offset: 0x00091CD4
 		private void Awake()
 		{
 			this.rigidbody = base.GetComponent<Rigidbody>();
@@ -21,7 +21,7 @@ namespace RoR2.Projectile
 			this.liveTimer = this.maxDistance / this.reelSpeed;
 		}
 
-		// Token: 0x06001E63 RID: 7779 RVA: 0x0009486C File Offset: 0x00092A6C
+		// Token: 0x06001DF9 RID: 7673 RVA: 0x00093B50 File Offset: 0x00091D50
 		public void OnProjectileImpact(ProjectileImpactInfo impactInfo)
 		{
 			EffectManager.instance.SimpleImpactEffect(this.impactSpark, impactInfo.estimatedPointOfImpact, -base.transform.forward, true);
@@ -77,7 +77,7 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x06001E64 RID: 7780 RVA: 0x00094A90 File Offset: 0x00092C90
+		// Token: 0x06001DFA RID: 7674 RVA: 0x00093D74 File Offset: 0x00091F74
 		private bool Reel()
 		{
 			Vector3 vector = this.projectileController.owner.transform.position - this.victim.transform.position;
@@ -175,7 +175,7 @@ namespace RoR2.Projectile
 			return flag;
 		}
 
-		// Token: 0x06001E65 RID: 7781 RVA: 0x00094CF8 File Offset: 0x00092EF8
+		// Token: 0x06001DFB RID: 7675 RVA: 0x00093FDC File Offset: 0x000921DC
 		public void FixedUpdate()
 		{
 			if (NetworkServer.active && !this.projectileController.owner)
@@ -264,14 +264,14 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x06001E67 RID: 7783 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06001DFD RID: 7677 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x170002AA RID: 682
-		// (get) Token: 0x06001E68 RID: 7784 RVA: 0x00094EF0 File Offset: 0x000930F0
-		// (set) Token: 0x06001E69 RID: 7785 RVA: 0x0001631B File Offset: 0x0001451B
+		// Token: 0x1700029D RID: 669
+		// (get) Token: 0x06001DFE RID: 7678 RVA: 0x000941D4 File Offset: 0x000923D4
+		// (set) Token: 0x06001DFF RID: 7679 RVA: 0x00015E3C File Offset: 0x0001403C
 		public HookProjectileImpact.HookState NetworkhookState
 		{
 			get
@@ -284,9 +284,9 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x170002AB RID: 683
-		// (get) Token: 0x06001E6A RID: 7786 RVA: 0x00094F04 File Offset: 0x00093104
-		// (set) Token: 0x06001E6B RID: 7787 RVA: 0x0001632F File Offset: 0x0001452F
+		// Token: 0x1700029E RID: 670
+		// (get) Token: 0x06001E00 RID: 7680 RVA: 0x000941E8 File Offset: 0x000923E8
+		// (set) Token: 0x06001E01 RID: 7681 RVA: 0x00015E50 File Offset: 0x00014050
 		public GameObject Networkvictim
 		{
 			get
@@ -299,7 +299,7 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x06001E6C RID: 7788 RVA: 0x00094F18 File Offset: 0x00093118
+		// Token: 0x06001E02 RID: 7682 RVA: 0x000941FC File Offset: 0x000923FC
 		public override bool OnSerialize(NetworkWriter writer, bool forceAll)
 		{
 			if (forceAll)
@@ -334,7 +334,7 @@ namespace RoR2.Projectile
 			return flag;
 		}
 
-		// Token: 0x06001E6D RID: 7789 RVA: 0x00094FC4 File Offset: 0x000931C4
+		// Token: 0x06001E03 RID: 7683 RVA: 0x000942A8 File Offset: 0x000924A8
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 			if (initialState)
@@ -354,7 +354,7 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x06001E6E RID: 7790 RVA: 0x00016349 File Offset: 0x00014549
+		// Token: 0x06001E04 RID: 7684 RVA: 0x00015E6A File Offset: 0x0001406A
 		public override void PreStartClient()
 		{
 			if (!this.___victimNetId.IsEmpty())
@@ -363,72 +363,72 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x04002072 RID: 8306
+		// Token: 0x04002034 RID: 8244
 		private ProjectileController projectileController;
 
-		// Token: 0x04002073 RID: 8307
+		// Token: 0x04002035 RID: 8245
 		public float reelDelayTime;
 
-		// Token: 0x04002074 RID: 8308
+		// Token: 0x04002036 RID: 8246
 		public float reelSpeed = 40f;
 
-		// Token: 0x04002075 RID: 8309
+		// Token: 0x04002037 RID: 8247
 		public float ownerPullFactor = 1f;
 
-		// Token: 0x04002076 RID: 8310
+		// Token: 0x04002038 RID: 8248
 		public float victimPullFactor = 1f;
 
-		// Token: 0x04002077 RID: 8311
+		// Token: 0x04002039 RID: 8249
 		public float maxDistance;
 
-		// Token: 0x04002078 RID: 8312
+		// Token: 0x0400203A RID: 8250
 		public GameObject impactSpark;
 
-		// Token: 0x04002079 RID: 8313
+		// Token: 0x0400203B RID: 8251
 		public GameObject impactSuccess;
 
-		// Token: 0x0400207A RID: 8314
+		// Token: 0x0400203C RID: 8252
 		[SyncVar]
 		private HookProjectileImpact.HookState hookState;
 
-		// Token: 0x0400207B RID: 8315
+		// Token: 0x0400203D RID: 8253
 		[SyncVar]
 		private GameObject victim;
 
-		// Token: 0x0400207C RID: 8316
+		// Token: 0x0400203E RID: 8254
 		private SetStateOnHurt victimSetStateOnHurt;
 
-		// Token: 0x0400207D RID: 8317
+		// Token: 0x0400203F RID: 8255
 		private Transform ownerTransform;
 
-		// Token: 0x0400207E RID: 8318
+		// Token: 0x04002040 RID: 8256
 		private ProjectileDamage projectileDamage;
 
-		// Token: 0x0400207F RID: 8319
+		// Token: 0x04002041 RID: 8257
 		private Rigidbody rigidbody;
 
-		// Token: 0x04002080 RID: 8320
+		// Token: 0x04002042 RID: 8258
 		private float liveTimer;
 
-		// Token: 0x04002081 RID: 8321
+		// Token: 0x04002043 RID: 8259
 		private float delayTimer;
 
-		// Token: 0x04002082 RID: 8322
+		// Token: 0x04002044 RID: 8260
 		private float flyTimer;
 
-		// Token: 0x04002083 RID: 8323
+		// Token: 0x04002045 RID: 8261
 		private NetworkInstanceId ___victimNetId;
 
-		// Token: 0x02000547 RID: 1351
+		// Token: 0x02000538 RID: 1336
 		private enum HookState
 		{
-			// Token: 0x04002085 RID: 8325
+			// Token: 0x04002047 RID: 8263
 			Flying,
-			// Token: 0x04002086 RID: 8326
+			// Token: 0x04002048 RID: 8264
 			HitDelay,
-			// Token: 0x04002087 RID: 8327
+			// Token: 0x04002049 RID: 8265
 			Reel,
-			// Token: 0x04002088 RID: 8328
+			// Token: 0x0400204A RID: 8266
 			ReelFail
 		}
 	}

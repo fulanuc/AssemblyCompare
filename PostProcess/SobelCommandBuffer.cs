@@ -4,24 +4,24 @@ using UnityEngine.Rendering;
 
 namespace RoR2.PostProcess
 {
-	// Token: 0x02000570 RID: 1392
-	[ExecuteInEditMode]
+	// Token: 0x02000561 RID: 1377
 	[RequireComponent(typeof(Camera))]
+	[ExecuteInEditMode]
 	public class SobelCommandBuffer : MonoBehaviour
 	{
-		// Token: 0x06001F41 RID: 8001 RVA: 0x00016E45 File Offset: 0x00015045
+		// Token: 0x06001ED7 RID: 7895 RVA: 0x00016966 File Offset: 0x00014B66
 		private void Awake()
 		{
 			this.camera = base.GetComponent<Camera>();
 		}
 
-		// Token: 0x06001F42 RID: 8002 RVA: 0x00016E53 File Offset: 0x00015053
+		// Token: 0x06001ED8 RID: 7896 RVA: 0x00016974 File Offset: 0x00014B74
 		private void OnPreRender()
 		{
 			this.SetupCommandBuffer();
 		}
 
-		// Token: 0x06001F43 RID: 8003 RVA: 0x00016E5B File Offset: 0x0001505B
+		// Token: 0x06001ED9 RID: 7897 RVA: 0x0001697C File Offset: 0x00014B7C
 		private void OnDisable()
 		{
 			if (this.camera != null && this.sobelCommandBuffer != null)
@@ -31,7 +31,7 @@ namespace RoR2.PostProcess
 			}
 		}
 
-		// Token: 0x06001F44 RID: 8004 RVA: 0x00098894 File Offset: 0x00096A94
+		// Token: 0x06001EDA RID: 7898 RVA: 0x00097B78 File Offset: 0x00095D78
 		private void SetupCommandBuffer()
 		{
 			if (!this.camera)
@@ -56,19 +56,19 @@ namespace RoR2.PostProcess
 			}
 		}
 
-		// Token: 0x040021AC RID: 8620
+		// Token: 0x0400216E RID: 8558
 		public CameraEvent cameraEvent = CameraEvent.BeforeLighting;
 
-		// Token: 0x040021AD RID: 8621
+		// Token: 0x0400216F RID: 8559
 		private RenderTexture sobelRT;
 
-		// Token: 0x040021AE RID: 8622
+		// Token: 0x04002170 RID: 8560
 		private CommandBuffer sobelCommandBuffer;
 
-		// Token: 0x040021AF RID: 8623
+		// Token: 0x04002171 RID: 8561
 		private Material sobelBufferMaterial;
 
-		// Token: 0x040021B0 RID: 8624
+		// Token: 0x04002172 RID: 8562
 		private Camera camera;
 	}
 }

@@ -4,11 +4,11 @@ using UnityEngine.Networking;
 
 namespace RoR2.Projectile
 {
-	// Token: 0x0200056F RID: 1391
+	// Token: 0x02000560 RID: 1376
 	[RequireComponent(typeof(ProjectileTargetComponent))]
 	public class ProjectileSteerTowardTarget : MonoBehaviour
 	{
-		// Token: 0x06001F3E RID: 7998 RVA: 0x00016E1C File Offset: 0x0001501C
+		// Token: 0x06001ED4 RID: 7892 RVA: 0x0001693D File Offset: 0x00014B3D
 		private void Start()
 		{
 			if (!NetworkServer.active)
@@ -20,7 +20,7 @@ namespace RoR2.Projectile
 			this.targetComponent = base.GetComponent<ProjectileTargetComponent>();
 		}
 
-		// Token: 0x06001F3F RID: 7999 RVA: 0x000987F8 File Offset: 0x000969F8
+		// Token: 0x06001ED5 RID: 7893 RVA: 0x00097ADC File Offset: 0x00095CDC
 		private void FixedUpdate()
 		{
 			if (this.targetComponent.target)
@@ -37,18 +37,18 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x040021A8 RID: 8616
+		// Token: 0x0400216A RID: 8554
 		[Tooltip("Constrains rotation to the Y axis only.")]
 		public bool yAxisOnly;
 
-		// Token: 0x040021A9 RID: 8617
+		// Token: 0x0400216B RID: 8555
 		[Tooltip("How fast to rotate in degrees per second. Rotation is linear.")]
 		public float rotationSpeed;
 
-		// Token: 0x040021AA RID: 8618
+		// Token: 0x0400216C RID: 8556
 		private new Transform transform;
 
-		// Token: 0x040021AB RID: 8619
+		// Token: 0x0400216D RID: 8557
 		private ProjectileTargetComponent targetComponent;
 	}
 }

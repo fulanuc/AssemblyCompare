@@ -5,11 +5,11 @@ using UnityEngine.Networking;
 
 namespace RoR2.Stats
 {
-	// Token: 0x0200050B RID: 1291
+	// Token: 0x020004FC RID: 1276
 	public struct StatField
 	{
-		// Token: 0x1700029F RID: 671
-		// (get) Token: 0x06001D4B RID: 7499 RVA: 0x00015844 File Offset: 0x00013A44
+		// Token: 0x17000292 RID: 658
+		// (get) Token: 0x06001CE4 RID: 7396 RVA: 0x0001539B File Offset: 0x0001359B
 		public string name
 		{
 			get
@@ -18,8 +18,8 @@ namespace RoR2.Stats
 			}
 		}
 
-		// Token: 0x170002A0 RID: 672
-		// (get) Token: 0x06001D4C RID: 7500 RVA: 0x00015851 File Offset: 0x00013A51
+		// Token: 0x17000293 RID: 659
+		// (get) Token: 0x06001CE5 RID: 7397 RVA: 0x000153A8 File Offset: 0x000135A8
 		public StatRecordType recordType
 		{
 			get
@@ -28,8 +28,8 @@ namespace RoR2.Stats
 			}
 		}
 
-		// Token: 0x170002A1 RID: 673
-		// (get) Token: 0x06001D4D RID: 7501 RVA: 0x0001585E File Offset: 0x00013A5E
+		// Token: 0x17000294 RID: 660
+		// (get) Token: 0x06001CE6 RID: 7398 RVA: 0x000153B5 File Offset: 0x000135B5
 		public StatDataType dataType
 		{
 			get
@@ -38,9 +38,9 @@ namespace RoR2.Stats
 			}
 		}
 
-		// Token: 0x170002A2 RID: 674
-		// (get) Token: 0x06001D4E RID: 7502 RVA: 0x0001586B File Offset: 0x00013A6B
-		// (set) Token: 0x06001D4F RID: 7503 RVA: 0x00015878 File Offset: 0x00013A78
+		// Token: 0x17000295 RID: 661
+		// (get) Token: 0x06001CE7 RID: 7399 RVA: 0x000153C2 File Offset: 0x000135C2
+		// (set) Token: 0x06001CE8 RID: 7400 RVA: 0x000153CF File Offset: 0x000135CF
 		private ulong ulongValue
 		{
 			get
@@ -53,9 +53,9 @@ namespace RoR2.Stats
 			}
 		}
 
-		// Token: 0x170002A3 RID: 675
-		// (get) Token: 0x06001D50 RID: 7504 RVA: 0x00015886 File Offset: 0x00013A86
-		// (set) Token: 0x06001D51 RID: 7505 RVA: 0x00015893 File Offset: 0x00013A93
+		// Token: 0x17000296 RID: 662
+		// (get) Token: 0x06001CE9 RID: 7401 RVA: 0x000153DD File Offset: 0x000135DD
+		// (set) Token: 0x06001CEA RID: 7402 RVA: 0x000153EA File Offset: 0x000135EA
 		private double doubleValue
 		{
 			get
@@ -68,7 +68,7 @@ namespace RoR2.Stats
 			}
 		}
 
-		// Token: 0x06001D52 RID: 7506 RVA: 0x0008F044 File Offset: 0x0008D244
+		// Token: 0x06001CEB RID: 7403 RVA: 0x0008E2B8 File Offset: 0x0008C4B8
 		public override string ToString()
 		{
 			StatDataType dataType = this.dataType;
@@ -83,28 +83,13 @@ namespace RoR2.Stats
 			return TextSerialization.ToStringInvariant(this.value.doubleValue);
 		}
 
-		// Token: 0x06001D53 RID: 7507 RVA: 0x0008F088 File Offset: 0x0008D288
-		public string ToLocalNumeric()
-		{
-			StatDataType dataType = this.dataType;
-			if (dataType == StatDataType.ULong)
-			{
-				return TextSerialization.ToStringNumeric(this.value.ulongValue);
-			}
-			if (dataType != StatDataType.Double)
-			{
-				throw new ArgumentOutOfRangeException();
-			}
-			return TextSerialization.ToStringNumeric(this.value.doubleValue);
-		}
-
-		// Token: 0x06001D54 RID: 7508 RVA: 0x000141EC File Offset: 0x000123EC
+		// Token: 0x06001CEC RID: 7404 RVA: 0x00013CDA File Offset: 0x00011EDA
 		public ulong CalculatePointValue()
 		{
 			throw new NotImplementedException();
 		}
 
-		// Token: 0x06001D55 RID: 7509 RVA: 0x0008F0CC File Offset: 0x0008D2CC
+		// Token: 0x06001CED RID: 7405 RVA: 0x0008E2FC File Offset: 0x0008C4FC
 		[Pure]
 		public static StatField GetDelta(ref StatField newerValue, ref StatField olderValue)
 		{
@@ -149,7 +134,7 @@ namespace RoR2.Stats
 			return result;
 		}
 
-		// Token: 0x06001D56 RID: 7510 RVA: 0x0008F1BC File Offset: 0x0008D3BC
+		// Token: 0x06001CEE RID: 7406 RVA: 0x0008E3EC File Offset: 0x0008C5EC
 		public void PushDelta(ref StatField deltaField)
 		{
 			StatDataType dataType = this.dataType;
@@ -165,7 +150,7 @@ namespace RoR2.Stats
 			this.PushStatValue(deltaField.doubleValue);
 		}
 
-		// Token: 0x06001D57 RID: 7511 RVA: 0x0008F1F8 File Offset: 0x0008D3F8
+		// Token: 0x06001CEF RID: 7407 RVA: 0x0008E428 File Offset: 0x0008C628
 		public void Write(NetworkWriter writer)
 		{
 			StatDataType dataType = this.dataType;
@@ -181,7 +166,7 @@ namespace RoR2.Stats
 			writer.Write(this.doubleValue);
 		}
 
-		// Token: 0x06001D58 RID: 7512 RVA: 0x0008F234 File Offset: 0x0008D434
+		// Token: 0x06001CF0 RID: 7408 RVA: 0x0008E464 File Offset: 0x0008C664
 		public void Read(NetworkReader reader)
 		{
 			StatDataType dataType = this.dataType;
@@ -197,7 +182,7 @@ namespace RoR2.Stats
 			this.doubleValue = reader.ReadDouble();
 		}
 
-		// Token: 0x06001D59 RID: 7513 RVA: 0x000158A1 File Offset: 0x00013AA1
+		// Token: 0x06001CF1 RID: 7409 RVA: 0x000153F8 File Offset: 0x000135F8
 		private void EnforceDataType(StatDataType otherDataType)
 		{
 			if (this.dataType != otherDataType)
@@ -206,7 +191,7 @@ namespace RoR2.Stats
 			}
 		}
 
-		// Token: 0x06001D5A RID: 7514 RVA: 0x0008F270 File Offset: 0x0008D470
+		// Token: 0x06001CF2 RID: 7410 RVA: 0x0008E4A0 File Offset: 0x0008C6A0
 		public void PushStatValue(ulong incomingValue)
 		{
 			this.EnforceDataType(StatDataType.ULong);
@@ -226,7 +211,7 @@ namespace RoR2.Stats
 			}
 		}
 
-		// Token: 0x06001D5B RID: 7515 RVA: 0x0008F2C8 File Offset: 0x0008D4C8
+		// Token: 0x06001CF3 RID: 7411 RVA: 0x0008E4F8 File Offset: 0x0008C6F8
 		public void PushStatValue(double incomingValue)
 		{
 			this.EnforceDataType(StatDataType.Double);
@@ -246,7 +231,7 @@ namespace RoR2.Stats
 			}
 		}
 
-		// Token: 0x06001D5C RID: 7516 RVA: 0x0008F320 File Offset: 0x0008D520
+		// Token: 0x06001CF4 RID: 7412 RVA: 0x0008E550 File Offset: 0x0008C750
 		public void SetFromString(string valueString)
 		{
 			StatDataType dataType = this.dataType;
@@ -266,21 +251,21 @@ namespace RoR2.Stats
 			this.value = doubleValue;
 		}
 
-		// Token: 0x06001D5D RID: 7517 RVA: 0x000158CD File Offset: 0x00013ACD
+		// Token: 0x06001CF5 RID: 7413 RVA: 0x00015424 File Offset: 0x00013624
 		public ulong GetULongValue()
 		{
 			this.EnforceDataType(StatDataType.ULong);
 			return this.ulongValue;
 		}
 
-		// Token: 0x06001D5E RID: 7518 RVA: 0x000158DC File Offset: 0x00013ADC
+		// Token: 0x06001CF6 RID: 7414 RVA: 0x00015433 File Offset: 0x00013633
 		public double GetDoubleValue()
 		{
 			this.EnforceDataType(StatDataType.Double);
 			return this.doubleValue;
 		}
 
-		// Token: 0x06001D5F RID: 7519 RVA: 0x0008F370 File Offset: 0x0008D570
+		// Token: 0x06001CF7 RID: 7415 RVA: 0x0008E5A0 File Offset: 0x0008C7A0
 		public bool IsDefault()
 		{
 			StatDataType dataType = this.dataType;
@@ -291,7 +276,7 @@ namespace RoR2.Stats
 			return this.ulongValue == 0UL;
 		}
 
-		// Token: 0x06001D60 RID: 7520 RVA: 0x0008F3AC File Offset: 0x0008D5AC
+		// Token: 0x06001CF8 RID: 7416 RVA: 0x0008E5DC File Offset: 0x0008C7DC
 		public void SetDefault()
 		{
 			StatDataType dataType = this.dataType;
@@ -307,7 +292,7 @@ namespace RoR2.Stats
 			this.doubleValue = 0.0;
 		}
 
-		// Token: 0x06001D61 RID: 7521 RVA: 0x0008F3E8 File Offset: 0x0008D5E8
+		// Token: 0x06001CF9 RID: 7417 RVA: 0x0008E618 File Offset: 0x0008C818
 		public ulong GetPointValue(double pointValue)
 		{
 			StatDataType dataType = this.dataType;
@@ -322,59 +307,59 @@ namespace RoR2.Stats
 			return (ulong)(this.doubleValue * pointValue);
 		}
 
-		// Token: 0x04001F5C RID: 8028
+		// Token: 0x04001F1E RID: 7966
 		public StatDef statDef;
 
-		// Token: 0x04001F5D RID: 8029
+		// Token: 0x04001F1F RID: 7967
 		private StatField.ValueUnion value;
 
-		// Token: 0x0200050C RID: 1292
+		// Token: 0x020004FD RID: 1277
 		[StructLayout(LayoutKind.Explicit)]
 		private struct ValueUnion
 		{
-			// Token: 0x06001D62 RID: 7522 RVA: 0x000158EB File Offset: 0x00013AEB
+			// Token: 0x06001CFA RID: 7418 RVA: 0x00015442 File Offset: 0x00013642
 			public static explicit operator ulong(StatField.ValueUnion v)
 			{
 				return v.ulongValue;
 			}
 
-			// Token: 0x06001D63 RID: 7523 RVA: 0x000158F3 File Offset: 0x00013AF3
+			// Token: 0x06001CFB RID: 7419 RVA: 0x0001544A File Offset: 0x0001364A
 			public static explicit operator double(StatField.ValueUnion v)
 			{
 				return v.doubleValue;
 			}
 
-			// Token: 0x06001D64 RID: 7524 RVA: 0x000158FB File Offset: 0x00013AFB
+			// Token: 0x06001CFC RID: 7420 RVA: 0x00015452 File Offset: 0x00013652
 			public static implicit operator StatField.ValueUnion(ulong ulongValue)
 			{
 				return new StatField.ValueUnion(ulongValue);
 			}
 
-			// Token: 0x06001D65 RID: 7525 RVA: 0x00015903 File Offset: 0x00013B03
+			// Token: 0x06001CFD RID: 7421 RVA: 0x0001545A File Offset: 0x0001365A
 			public static implicit operator StatField.ValueUnion(double doubleValue)
 			{
 				return new StatField.ValueUnion(doubleValue);
 			}
 
-			// Token: 0x06001D66 RID: 7526 RVA: 0x0001590B File Offset: 0x00013B0B
+			// Token: 0x06001CFE RID: 7422 RVA: 0x00015462 File Offset: 0x00013662
 			private ValueUnion(ulong ulongValue)
 			{
 				this = default(StatField.ValueUnion);
 				this.ulongValue = ulongValue;
 			}
 
-			// Token: 0x06001D67 RID: 7527 RVA: 0x0001591B File Offset: 0x00013B1B
+			// Token: 0x06001CFF RID: 7423 RVA: 0x00015472 File Offset: 0x00013672
 			private ValueUnion(double doubleValue)
 			{
 				this = default(StatField.ValueUnion);
 				this.doubleValue = doubleValue;
 			}
 
-			// Token: 0x04001F5E RID: 8030
+			// Token: 0x04001F20 RID: 7968
 			[FieldOffset(0)]
 			public readonly ulong ulongValue;
 
-			// Token: 0x04001F5F RID: 8031
+			// Token: 0x04001F21 RID: 7969
 			[FieldOffset(0)]
 			public readonly double doubleValue;
 		}

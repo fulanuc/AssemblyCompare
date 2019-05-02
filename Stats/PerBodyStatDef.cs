@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 namespace RoR2.Stats
 {
-	// Token: 0x02000505 RID: 1285
+	// Token: 0x020004F6 RID: 1270
 	public class PerBodyStatDef
 	{
-		// Token: 0x06001D38 RID: 7480 RVA: 0x0008EC00 File Offset: 0x0008CE00
+		// Token: 0x06001CD1 RID: 7377 RVA: 0x0008DE74 File Offset: 0x0008C074
 		public static void RegisterStatDefs(string[] bodyNames)
 		{
 			foreach (PerBodyStatDef perBodyStatDef in PerBodyStatDef.instancesList)
@@ -20,7 +20,7 @@ namespace RoR2.Stats
 			}
 		}
 
-		// Token: 0x06001D39 RID: 7481 RVA: 0x000156FD File Offset: 0x000138FD
+		// Token: 0x06001CD2 RID: 7378 RVA: 0x00015254 File Offset: 0x00013454
 		private PerBodyStatDef(string prefix, StatRecordType recordType, StatDataType dataType, StatDef.DisplayValueFormatterDelegate displayValueFormatter = null)
 		{
 			this.prefix = prefix;
@@ -29,7 +29,7 @@ namespace RoR2.Stats
 			this.displayValueFormatter = displayValueFormatter;
 		}
 
-		// Token: 0x06001D3A RID: 7482 RVA: 0x0008ECC0 File Offset: 0x0008CEC0
+		// Token: 0x06001CD3 RID: 7379 RVA: 0x0008DF34 File Offset: 0x0008C134
 		private static PerBodyStatDef Register(string prefix, StatRecordType recordType, StatDataType dataType, StatDef.DisplayValueFormatterDelegate displayValueFormatter = null)
 		{
 			PerBodyStatDef perBodyStatDef = new PerBodyStatDef(prefix, recordType, dataType, displayValueFormatter);
@@ -37,7 +37,7 @@ namespace RoR2.Stats
 			return perBodyStatDef;
 		}
 
-		// Token: 0x06001D3B RID: 7483 RVA: 0x0008ECE4 File Offset: 0x0008CEE4
+		// Token: 0x06001CD4 RID: 7380 RVA: 0x0008DF58 File Offset: 0x0008C158
 		public StatDef FindStatDef(string bodyName)
 		{
 			StatDef result;
@@ -45,61 +45,61 @@ namespace RoR2.Stats
 			return result;
 		}
 
-		// Token: 0x04001F28 RID: 7976
+		// Token: 0x04001EEA RID: 7914
 		private readonly string prefix;
 
-		// Token: 0x04001F29 RID: 7977
+		// Token: 0x04001EEB RID: 7915
 		private readonly StatRecordType recordType;
 
-		// Token: 0x04001F2A RID: 7978
+		// Token: 0x04001EEC RID: 7916
 		private readonly StatDataType dataType;
 
-		// Token: 0x04001F2B RID: 7979
+		// Token: 0x04001EED RID: 7917
 		private readonly StatDef.DisplayValueFormatterDelegate displayValueFormatter;
 
-		// Token: 0x04001F2C RID: 7980
+		// Token: 0x04001EEE RID: 7918
 		private readonly Dictionary<string, StatDef> bodyNameToStatDefDictionary = new Dictionary<string, StatDef>();
 
-		// Token: 0x04001F2D RID: 7981
+		// Token: 0x04001EEF RID: 7919
 		private static readonly List<PerBodyStatDef> instancesList = new List<PerBodyStatDef>();
 
-		// Token: 0x04001F2E RID: 7982
+		// Token: 0x04001EF0 RID: 7920
 		public static readonly PerBodyStatDef totalTimeAlive = PerBodyStatDef.Register("totalTimeAlive", StatRecordType.Sum, StatDataType.Double, null);
 
-		// Token: 0x04001F2F RID: 7983
+		// Token: 0x04001EF1 RID: 7921
 		public static readonly PerBodyStatDef totalWins = PerBodyStatDef.Register("totalWins", StatRecordType.Sum, StatDataType.ULong, null);
 
-		// Token: 0x04001F30 RID: 7984
+		// Token: 0x04001EF2 RID: 7922
 		public static readonly PerBodyStatDef longestRun = PerBodyStatDef.Register("longestRun", StatRecordType.Max, StatDataType.Double, new StatDef.DisplayValueFormatterDelegate(StatDef.TimeMMSSDisplayValueFormatter));
 
-		// Token: 0x04001F31 RID: 7985
+		// Token: 0x04001EF3 RID: 7923
 		public static readonly PerBodyStatDef damageDealtTo = PerBodyStatDef.Register("damageDealtTo", StatRecordType.Sum, StatDataType.ULong, null);
 
-		// Token: 0x04001F32 RID: 7986
+		// Token: 0x04001EF4 RID: 7924
 		public static readonly PerBodyStatDef damageDealtAs = PerBodyStatDef.Register("damageDealtAs", StatRecordType.Sum, StatDataType.ULong, null);
 
-		// Token: 0x04001F33 RID: 7987
+		// Token: 0x04001EF5 RID: 7925
 		public static readonly PerBodyStatDef damageTakenFrom = PerBodyStatDef.Register("damageTakenFrom", StatRecordType.Sum, StatDataType.ULong, null);
 
-		// Token: 0x04001F34 RID: 7988
+		// Token: 0x04001EF6 RID: 7926
 		public static readonly PerBodyStatDef damageTakenAs = PerBodyStatDef.Register("damageTakenAs", StatRecordType.Sum, StatDataType.ULong, null);
 
-		// Token: 0x04001F35 RID: 7989
+		// Token: 0x04001EF7 RID: 7927
 		public static readonly PerBodyStatDef killsAgainst = PerBodyStatDef.Register("killsAgainst", StatRecordType.Sum, StatDataType.ULong, null);
 
-		// Token: 0x04001F36 RID: 7990
+		// Token: 0x04001EF8 RID: 7928
 		public static readonly PerBodyStatDef killsAgainstElite = PerBodyStatDef.Register("killsAgainstElite", StatRecordType.Sum, StatDataType.ULong, null);
 
-		// Token: 0x04001F37 RID: 7991
+		// Token: 0x04001EF9 RID: 7929
 		public static readonly PerBodyStatDef deathsFrom = PerBodyStatDef.Register("deathsFrom", StatRecordType.Sum, StatDataType.ULong, null);
 
-		// Token: 0x04001F38 RID: 7992
+		// Token: 0x04001EFA RID: 7930
 		public static readonly PerBodyStatDef killsAs = PerBodyStatDef.Register("killsAs", StatRecordType.Sum, StatDataType.ULong, null);
 
-		// Token: 0x04001F39 RID: 7993
+		// Token: 0x04001EFB RID: 7931
 		public static readonly PerBodyStatDef deathsAs = PerBodyStatDef.Register("deathsAs", StatRecordType.Sum, StatDataType.ULong, null);
 
-		// Token: 0x04001F3A RID: 7994
+		// Token: 0x04001EFC RID: 7932
 		public static readonly PerBodyStatDef timesPicked = PerBodyStatDef.Register("timesPicked", StatRecordType.Sum, StatDataType.ULong, null);
 	}
 }

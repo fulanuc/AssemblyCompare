@@ -4,17 +4,17 @@ using UnityEngine.Networking;
 
 namespace RoR2.Projectile
 {
-	// Token: 0x02000553 RID: 1363
+	// Token: 0x02000544 RID: 1348
 	public class ProjectileFireChildren : MonoBehaviour
 	{
-		// Token: 0x06001EA0 RID: 7840 RVA: 0x000165D8 File Offset: 0x000147D8
+		// Token: 0x06001E36 RID: 7734 RVA: 0x000160F9 File Offset: 0x000142F9
 		private void Start()
 		{
 			this.projectileDamage = base.GetComponent<ProjectileDamage>();
 			this.projectileController = base.GetComponent<ProjectileController>();
 		}
 
-		// Token: 0x06001EA1 RID: 7841 RVA: 0x00095BBC File Offset: 0x00093DBC
+		// Token: 0x06001E37 RID: 7735 RVA: 0x00094EA0 File Offset: 0x000930A0
 		private void Update()
 		{
 			this.timer += Time.deltaTime;
@@ -55,34 +55,34 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x040020D9 RID: 8409
+		// Token: 0x0400209B RID: 8347
 		public float duration = 5f;
 
-		// Token: 0x040020DA RID: 8410
+		// Token: 0x0400209C RID: 8348
 		public int count = 5;
 
-		// Token: 0x040020DB RID: 8411
+		// Token: 0x0400209D RID: 8349
 		public GameObject childProjectilePrefab;
 
-		// Token: 0x040020DC RID: 8412
+		// Token: 0x0400209E RID: 8350
 		private float timer;
 
-		// Token: 0x040020DD RID: 8413
+		// Token: 0x0400209F RID: 8351
 		private float nextSpawnTimer;
 
-		// Token: 0x040020DE RID: 8414
+		// Token: 0x040020A0 RID: 8352
 		public float childDamageCoefficient = 1f;
 
-		// Token: 0x040020DF RID: 8415
+		// Token: 0x040020A1 RID: 8353
 		public float childProcCoefficient = 1f;
 
-		// Token: 0x040020E0 RID: 8416
+		// Token: 0x040020A2 RID: 8354
 		private ProjectileDamage projectileDamage;
 
-		// Token: 0x040020E1 RID: 8417
+		// Token: 0x040020A3 RID: 8355
 		private ProjectileController projectileController;
 
-		// Token: 0x040020E2 RID: 8418
+		// Token: 0x040020A4 RID: 8356
 		public bool ignoreParentForChainController;
 	}
 }

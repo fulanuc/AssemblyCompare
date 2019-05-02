@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace RoR2.Projectile
 {
-	// Token: 0x02000559 RID: 1369
+	// Token: 0x0200054A RID: 1354
 	[RequireComponent(typeof(ProjectileController))]
 	public class ProjectileImpactEventCaller : MonoBehaviour, IProjectileImpactBehavior
 	{
-		// Token: 0x06001EBA RID: 7866 RVA: 0x0001674E File Offset: 0x0001494E
+		// Token: 0x06001E50 RID: 7760 RVA: 0x0001626F File Offset: 0x0001446F
 		public void OnProjectileImpact(ProjectileImpactInfo impactInfo)
 		{
 			ProjectileImpactEvent projectileImpactEvent = this.impactEvent;
@@ -18,7 +18,7 @@ namespace RoR2.Projectile
 			projectileImpactEvent.Invoke(impactInfo);
 		}
 
-		// Token: 0x040020FB RID: 8443
+		// Token: 0x040020BD RID: 8381
 		public ProjectileImpactEvent impactEvent;
 	}
 }

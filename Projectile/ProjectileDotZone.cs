@@ -5,12 +5,12 @@ using UnityEngine.Networking;
 
 namespace RoR2.Projectile
 {
-	// Token: 0x02000552 RID: 1362
-	[RequireComponent(typeof(HitBoxGroup))]
+	// Token: 0x02000543 RID: 1347
 	[RequireComponent(typeof(ProjectileController))]
+	[RequireComponent(typeof(HitBoxGroup))]
 	public class ProjectileDotZone : MonoBehaviour, IProjectileImpactBehavior
 	{
-		// Token: 0x06001E9B RID: 7835 RVA: 0x00016579 File Offset: 0x00014779
+		// Token: 0x06001E31 RID: 7729 RVA: 0x0001609A File Offset: 0x0001429A
 		private void Start()
 		{
 			this.projectileController = base.GetComponent<ProjectileController>();
@@ -19,7 +19,7 @@ namespace RoR2.Projectile
 			this.onBegin.Invoke();
 		}
 
-		// Token: 0x06001E9C RID: 7836 RVA: 0x0009599C File Offset: 0x00093B9C
+		// Token: 0x06001E32 RID: 7730 RVA: 0x00094C80 File Offset: 0x00092E80
 		private void ResetOverlap()
 		{
 			this.attack = new OverlapAttack();
@@ -37,12 +37,12 @@ namespace RoR2.Projectile
 			this.attack.hitBoxGroup = base.GetComponent<HitBoxGroup>();
 		}
 
-		// Token: 0x06001E9D RID: 7837 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06001E33 RID: 7731 RVA: 0x000025F6 File Offset: 0x000007F6
 		public void OnProjectileImpact(ProjectileImpactInfo impactInfo)
 		{
 		}
 
-		// Token: 0x06001E9E RID: 7838 RVA: 0x00095ADC File Offset: 0x00093CDC
+		// Token: 0x06001E34 RID: 7732 RVA: 0x00094DC0 File Offset: 0x00092FC0
 		public void FixedUpdate()
 		{
 			if (NetworkServer.active)
@@ -68,53 +68,53 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x040020CA RID: 8394
+		// Token: 0x0400208C RID: 8332
 		private ProjectileController projectileController;
 
-		// Token: 0x040020CB RID: 8395
+		// Token: 0x0400208D RID: 8333
 		private ProjectileDamage projectileDamage;
 
-		// Token: 0x040020CC RID: 8396
+		// Token: 0x0400208E RID: 8334
 		public float damageCoefficient;
 
-		// Token: 0x040020CD RID: 8397
+		// Token: 0x0400208F RID: 8335
 		public GameObject impactEffect;
 
-		// Token: 0x040020CE RID: 8398
+		// Token: 0x04002090 RID: 8336
 		public Vector3 forceVector;
 
-		// Token: 0x040020CF RID: 8399
+		// Token: 0x04002091 RID: 8337
 		public float overlapProcCoefficient = 1f;
 
-		// Token: 0x040020D0 RID: 8400
+		// Token: 0x04002092 RID: 8338
 		[Tooltip("The frequency (1/time) at which the overlap attack is tested. Higher values are more accurate but more expensive.")]
 		public float fireFrequency = 1f;
 
-		// Token: 0x040020D1 RID: 8401
+		// Token: 0x04002093 RID: 8339
 		[Tooltip("The frequency  (1/time) at which the overlap attack is reset. Higher values means more frequent ticks of damage.")]
 		public float resetFrequency = 20f;
 
-		// Token: 0x040020D2 RID: 8402
+		// Token: 0x04002094 RID: 8340
 		public float lifetime = 30f;
 
-		// Token: 0x040020D3 RID: 8403
+		// Token: 0x04002095 RID: 8341
 		[Tooltip("The event that runs at the start.")]
 		public UnityEvent onBegin;
 
-		// Token: 0x040020D4 RID: 8404
+		// Token: 0x04002096 RID: 8342
 		[Tooltip("The event that runs at the start.")]
 		public UnityEvent onEnd;
 
-		// Token: 0x040020D5 RID: 8405
+		// Token: 0x04002097 RID: 8343
 		private OverlapAttack attack;
 
-		// Token: 0x040020D6 RID: 8406
+		// Token: 0x04002098 RID: 8344
 		private float fireStopwatch;
 
-		// Token: 0x040020D7 RID: 8407
+		// Token: 0x04002099 RID: 8345
 		private float resetStopwatch;
 
-		// Token: 0x040020D8 RID: 8408
+		// Token: 0x0400209A RID: 8346
 		private float totalStopwatch;
 	}
 }

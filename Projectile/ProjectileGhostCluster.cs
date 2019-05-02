@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace RoR2.Projectile
 {
-	// Token: 0x02000557 RID: 1367
+	// Token: 0x02000548 RID: 1352
 	public class ProjectileGhostCluster : MonoBehaviour
 	{
-		// Token: 0x06001EB2 RID: 7858 RVA: 0x00096054 File Offset: 0x00094254
+		// Token: 0x06001E48 RID: 7752 RVA: 0x00095338 File Offset: 0x00093538
 		private void Start()
 		{
 			float num = 1f / (Mathf.Log((float)this.clusterCount, 4f) + 1f);
@@ -32,21 +32,21 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x06001EB3 RID: 7859 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06001E49 RID: 7753 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void Update()
 		{
 		}
 
-		// Token: 0x040020F3 RID: 8435
+		// Token: 0x040020B5 RID: 8373
 		public GameObject ghostClusterPrefab;
 
-		// Token: 0x040020F4 RID: 8436
+		// Token: 0x040020B6 RID: 8374
 		public int clusterCount;
 
-		// Token: 0x040020F5 RID: 8437
+		// Token: 0x040020B7 RID: 8375
 		public bool distributeEvenly;
 
-		// Token: 0x040020F6 RID: 8438
+		// Token: 0x040020B8 RID: 8376
 		public float clusterDistance;
 	}
 }

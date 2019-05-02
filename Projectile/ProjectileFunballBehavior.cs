@@ -4,24 +4,24 @@ using UnityEngine.Networking;
 
 namespace RoR2.Projectile
 {
-	// Token: 0x02000555 RID: 1365
-	[RequireComponent(typeof(ProjectileController))]
+	// Token: 0x02000546 RID: 1350
 	[RequireComponent(typeof(TeamFilter))]
+	[RequireComponent(typeof(ProjectileController))]
 	public class ProjectileFunballBehavior : NetworkBehaviour
 	{
-		// Token: 0x06001EA5 RID: 7845 RVA: 0x0001663C File Offset: 0x0001483C
+		// Token: 0x06001E3B RID: 7739 RVA: 0x0001615D File Offset: 0x0001435D
 		private void Awake()
 		{
 			this.projectileController = base.GetComponent<ProjectileController>();
 		}
 
-		// Token: 0x06001EA6 RID: 7846 RVA: 0x0001664A File Offset: 0x0001484A
+		// Token: 0x06001E3C RID: 7740 RVA: 0x0001616B File Offset: 0x0001436B
 		private void Start()
 		{
 			this.Networktimer = -1f;
 		}
 
-		// Token: 0x06001EA7 RID: 7847 RVA: 0x00095E60 File Offset: 0x00094060
+		// Token: 0x06001E3D RID: 7741 RVA: 0x00095144 File Offset: 0x00093344
 		private void FixedUpdate()
 		{
 			if (NetworkServer.active && this.fuseStarted)
@@ -54,20 +54,20 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x06001EA8 RID: 7848 RVA: 0x00016657 File Offset: 0x00014857
+		// Token: 0x06001E3E RID: 7742 RVA: 0x00016178 File Offset: 0x00014378
 		private void OnCollisionEnter(Collision collision)
 		{
 			this.fuseStarted = true;
 		}
 
-		// Token: 0x06001EAA RID: 7850 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06001E40 RID: 7744 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x170002B0 RID: 688
-		// (get) Token: 0x06001EAB RID: 7851 RVA: 0x00095F90 File Offset: 0x00094190
-		// (set) Token: 0x06001EAC RID: 7852 RVA: 0x00016689 File Offset: 0x00014889
+		// Token: 0x170002A3 RID: 675
+		// (get) Token: 0x06001E41 RID: 7745 RVA: 0x00095274 File Offset: 0x00093474
+		// (set) Token: 0x06001E42 RID: 7746 RVA: 0x000161AA File Offset: 0x000143AA
 		public float Networktimer
 		{
 			get
@@ -80,7 +80,7 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x06001EAD RID: 7853 RVA: 0x00095FA4 File Offset: 0x000941A4
+		// Token: 0x06001E43 RID: 7747 RVA: 0x00095288 File Offset: 0x00093488
 		public override bool OnSerialize(NetworkWriter writer, bool forceAll)
 		{
 			if (forceAll)
@@ -105,7 +105,7 @@ namespace RoR2.Projectile
 			return flag;
 		}
 
-		// Token: 0x06001EAE RID: 7854 RVA: 0x00096010 File Offset: 0x00094210
+		// Token: 0x06001E44 RID: 7748 RVA: 0x000952F4 File Offset: 0x000934F4
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 			if (initialState)
@@ -120,34 +120,34 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x040020E9 RID: 8425
+		// Token: 0x040020AB RID: 8363
 		[Tooltip("The effect to use for the explosion.")]
 		public GameObject explosionPrefab;
 
-		// Token: 0x040020EA RID: 8426
+		// Token: 0x040020AC RID: 8364
 		[Tooltip("How many seconds until detonation.")]
 		public float duration;
 
-		// Token: 0x040020EB RID: 8427
+		// Token: 0x040020AD RID: 8365
 		[Tooltip("Radius of blast in meters.")]
 		public float blastRadius = 1f;
 
-		// Token: 0x040020EC RID: 8428
+		// Token: 0x040020AE RID: 8366
 		[Tooltip("Maximum damage of blast.")]
 		public float blastDamage = 1f;
 
-		// Token: 0x040020ED RID: 8429
+		// Token: 0x040020AF RID: 8367
 		[Tooltip("Force of blast.")]
 		public float blastForce = 1f;
 
-		// Token: 0x040020EE RID: 8430
+		// Token: 0x040020B0 RID: 8368
 		private ProjectileController projectileController;
 
-		// Token: 0x040020EF RID: 8431
+		// Token: 0x040020B1 RID: 8369
 		[SyncVar]
 		private float timer;
 
-		// Token: 0x040020F0 RID: 8432
+		// Token: 0x040020B2 RID: 8370
 		private bool fuseStarted;
 	}
 }

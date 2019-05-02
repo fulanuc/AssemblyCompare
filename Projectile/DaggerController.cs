@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace RoR2.Projectile
 {
-	// Token: 0x02000544 RID: 1348
+	// Token: 0x02000535 RID: 1333
 	[RequireComponent(typeof(Rigidbody))]
 	public class DaggerController : MonoBehaviour
 	{
-		// Token: 0x06001E5A RID: 7770 RVA: 0x00016286 File Offset: 0x00014486
+		// Token: 0x06001DF0 RID: 7664 RVA: 0x00015DA7 File Offset: 0x00013FA7
 		private void Awake()
 		{
 			this.transform = base.transform;
@@ -16,7 +16,7 @@ namespace RoR2.Projectile
 			this.rigidbody.AddRelativeForce(UnityEngine.Random.insideUnitSphere * 50f);
 		}
 
-		// Token: 0x06001E5B RID: 7771 RVA: 0x000945C8 File Offset: 0x000927C8
+		// Token: 0x06001DF1 RID: 7665 RVA: 0x000938AC File Offset: 0x00091AAC
 		private void FixedUpdate()
 		{
 			this.timer += Time.fixedDeltaTime;
@@ -62,7 +62,7 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x06001E5C RID: 7772 RVA: 0x00094700 File Offset: 0x00092900
+		// Token: 0x06001DF2 RID: 7666 RVA: 0x000939E4 File Offset: 0x00091BE4
 		private Transform FindTarget()
 		{
 			ReadOnlyCollection<TeamComponent> teamMembers = TeamComponent.GetTeamMembers(TeamIndex.Monster);
@@ -80,34 +80,34 @@ namespace RoR2.Projectile
 			return result;
 		}
 
-		// Token: 0x04002064 RID: 8292
+		// Token: 0x04002026 RID: 8230
 		private new Transform transform;
 
-		// Token: 0x04002065 RID: 8293
+		// Token: 0x04002027 RID: 8231
 		private Rigidbody rigidbody;
 
-		// Token: 0x04002066 RID: 8294
+		// Token: 0x04002028 RID: 8232
 		public Transform target;
 
-		// Token: 0x04002067 RID: 8295
+		// Token: 0x04002029 RID: 8233
 		public float acceleration;
 
-		// Token: 0x04002068 RID: 8296
+		// Token: 0x0400202A RID: 8234
 		public float delayTimer;
 
-		// Token: 0x04002069 RID: 8297
+		// Token: 0x0400202B RID: 8235
 		public float giveupTimer = 8f;
 
-		// Token: 0x0400206A RID: 8298
+		// Token: 0x0400202C RID: 8236
 		public float deathTimer = 10f;
 
-		// Token: 0x0400206B RID: 8299
+		// Token: 0x0400202D RID: 8237
 		private float timer;
 
-		// Token: 0x0400206C RID: 8300
+		// Token: 0x0400202E RID: 8238
 		public float turbulence;
 
-		// Token: 0x0400206D RID: 8301
+		// Token: 0x0400202F RID: 8239
 		private bool hasPlayedSound;
 	}
 }

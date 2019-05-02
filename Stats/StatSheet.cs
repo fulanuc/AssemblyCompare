@@ -6,10 +6,10 @@ using UnityEngine.Networking;
 
 namespace RoR2.Stats
 {
-	// Token: 0x02000515 RID: 1301
+	// Token: 0x02000506 RID: 1286
 	public class StatSheet
 	{
-		// Token: 0x06001D7F RID: 7551 RVA: 0x00015995 File Offset: 0x00013B95
+		// Token: 0x06001D17 RID: 7447 RVA: 0x000154EC File Offset: 0x000136EC
 		public void SetStatValueFromString([CanBeNull] StatDef statDef, string value)
 		{
 			if (statDef == null)
@@ -19,7 +19,7 @@ namespace RoR2.Stats
 			this.fields[statDef.index].SetFromString(value);
 		}
 
-		// Token: 0x06001D80 RID: 7552 RVA: 0x000159B2 File Offset: 0x00013BB2
+		// Token: 0x06001D18 RID: 7448 RVA: 0x00015509 File Offset: 0x00013709
 		public void PushStatValue([CanBeNull] StatDef statDef, ulong statValue)
 		{
 			if (statDef == null)
@@ -29,7 +29,7 @@ namespace RoR2.Stats
 			this.fields[statDef.index].PushStatValue(statValue);
 		}
 
-		// Token: 0x06001D81 RID: 7553 RVA: 0x000159CF File Offset: 0x00013BCF
+		// Token: 0x06001D19 RID: 7449 RVA: 0x00015526 File Offset: 0x00013726
 		public void PushStatValue([CanBeNull] StatDef statDef, double statValue)
 		{
 			if (statDef == null)
@@ -39,19 +39,19 @@ namespace RoR2.Stats
 			this.fields[statDef.index].PushStatValue(statValue);
 		}
 
-		// Token: 0x06001D82 RID: 7554 RVA: 0x000159EC File Offset: 0x00013BEC
+		// Token: 0x06001D1A RID: 7450 RVA: 0x00015543 File Offset: 0x00013743
 		public void PushStatValue([NotNull] PerBodyStatDef perBodyStatDef, [NotNull] string bodyName, ulong statValue)
 		{
 			this.PushStatValue(perBodyStatDef.FindStatDef(bodyName), statValue);
 		}
 
-		// Token: 0x06001D83 RID: 7555 RVA: 0x000159FC File Offset: 0x00013BFC
+		// Token: 0x06001D1B RID: 7451 RVA: 0x00015553 File Offset: 0x00013753
 		public void PushStatValue([NotNull] PerBodyStatDef perBodyStatDef, [NotNull] string bodyName, double statValue)
 		{
 			this.PushStatValue(perBodyStatDef.FindStatDef(bodyName), statValue);
 		}
 
-		// Token: 0x06001D84 RID: 7556 RVA: 0x00015A0C File Offset: 0x00013C0C
+		// Token: 0x06001D1C RID: 7452 RVA: 0x00015563 File Offset: 0x00013763
 		public ulong GetStatValueULong([CanBeNull] StatDef statDef)
 		{
 			if (statDef == null)
@@ -61,7 +61,7 @@ namespace RoR2.Stats
 			return this.fields[statDef.index].GetULongValue();
 		}
 
-		// Token: 0x06001D85 RID: 7557 RVA: 0x00015A2A File Offset: 0x00013C2A
+		// Token: 0x06001D1D RID: 7453 RVA: 0x00015581 File Offset: 0x00013781
 		public double GetStatValueDouble([CanBeNull] StatDef statDef)
 		{
 			if (statDef == null)
@@ -71,7 +71,7 @@ namespace RoR2.Stats
 			return this.fields[statDef.index].GetDoubleValue();
 		}
 
-		// Token: 0x06001D86 RID: 7558 RVA: 0x00015A4F File Offset: 0x00013C4F
+		// Token: 0x06001D1E RID: 7454 RVA: 0x000155A6 File Offset: 0x000137A6
 		[NotNull]
 		public string GetStatValueString([CanBeNull] StatDef statDef)
 		{
@@ -82,7 +82,7 @@ namespace RoR2.Stats
 			return this.fields[statDef.index].ToString();
 		}
 
-		// Token: 0x06001D87 RID: 7559 RVA: 0x00015A76 File Offset: 0x00013C76
+		// Token: 0x06001D1F RID: 7455 RVA: 0x000155CD File Offset: 0x000137CD
 		[NotNull]
 		public string GetStatDisplayValue([CanBeNull] StatDef statDef)
 		{
@@ -93,32 +93,32 @@ namespace RoR2.Stats
 			return statDef.displayValueFormatter(ref this.fields[statDef.index]);
 		}
 
-		// Token: 0x06001D88 RID: 7560 RVA: 0x00015A9D File Offset: 0x00013C9D
+		// Token: 0x06001D20 RID: 7456 RVA: 0x000155F4 File Offset: 0x000137F4
 		public ulong GetStatPointValue([NotNull] StatDef statDef)
 		{
 			return this.fields[statDef.index].GetPointValue(statDef.pointValue);
 		}
 
-		// Token: 0x06001D89 RID: 7561 RVA: 0x00015ABB File Offset: 0x00013CBB
+		// Token: 0x06001D21 RID: 7457 RVA: 0x00015612 File Offset: 0x00013812
 		public ulong GetStatValueULong([NotNull] PerBodyStatDef perBodyStatDef, [NotNull] string bodyName)
 		{
 			return this.GetStatValueULong(perBodyStatDef.FindStatDef(bodyName));
 		}
 
-		// Token: 0x06001D8A RID: 7562 RVA: 0x00015ACA File Offset: 0x00013CCA
+		// Token: 0x06001D22 RID: 7458 RVA: 0x00015621 File Offset: 0x00013821
 		public double GetStatValueDouble([NotNull] PerBodyStatDef perBodyStatDef, [NotNull] string bodyName)
 		{
 			return this.GetStatValueDouble(perBodyStatDef.FindStatDef(bodyName));
 		}
 
-		// Token: 0x06001D8B RID: 7563 RVA: 0x00015AD9 File Offset: 0x00013CD9
+		// Token: 0x06001D23 RID: 7459 RVA: 0x00015630 File Offset: 0x00013830
 		[NotNull]
 		public string GetStatValueString([NotNull] PerBodyStatDef perBodyStatDef, [NotNull] string bodyName)
 		{
 			return this.GetStatValueString(perBodyStatDef.FindStatDef(bodyName));
 		}
 
-		// Token: 0x06001D8C RID: 7564 RVA: 0x00015AE8 File Offset: 0x00013CE8
+		// Token: 0x06001D24 RID: 7460 RVA: 0x0001563F File Offset: 0x0001383F
 		[SystemInitializer(new Type[]
 		{
 			typeof(StatDef)
@@ -128,13 +128,13 @@ namespace RoR2.Stats
 			StatSheet.OnFieldsFinalized();
 		}
 
-		// Token: 0x06001D8D RID: 7565 RVA: 0x00015AEF File Offset: 0x00013CEF
+		// Token: 0x06001D25 RID: 7461 RVA: 0x00015646 File Offset: 0x00013846
 		static StatSheet()
 		{
 			HGXml.Register<StatSheet>(new HGXml.Serializer<StatSheet>(StatSheet.ToXml), new HGXml.Deserializer<StatSheet>(StatSheet.FromXml));
 		}
 
-		// Token: 0x06001D8E RID: 7566 RVA: 0x0008FEFC File Offset: 0x0008E0FC
+		// Token: 0x06001D26 RID: 7462 RVA: 0x0008F12C File Offset: 0x0008D32C
 		public static void ToXml(XElement element, StatSheet statSheet)
 		{
 			element.RemoveAll();
@@ -151,7 +151,7 @@ namespace RoR2.Stats
 			}
 		}
 
-		// Token: 0x06001D8F RID: 7567 RVA: 0x0008FF70 File Offset: 0x0008E170
+		// Token: 0x06001D27 RID: 7463 RVA: 0x0008F1A0 File Offset: 0x0008D3A0
 		public static bool FromXml(XElement element, ref StatSheet statSheet)
 		{
 			XElement xelement = element.Element("fields");
@@ -172,7 +172,7 @@ namespace RoR2.Stats
 			return true;
 		}
 
-		// Token: 0x06001D90 RID: 7568 RVA: 0x0008FFD8 File Offset: 0x0008E1D8
+		// Token: 0x06001D28 RID: 7464 RVA: 0x0008F208 File Offset: 0x0008D408
 		private static void OnFieldsFinalized()
 		{
 			StatSheet.fieldsTemplate = (from v in StatDef.allStatDefs
@@ -183,13 +183,13 @@ namespace RoR2.Stats
 			StatSheet.nonDefaultFieldsBuffer = new bool[StatSheet.fieldsTemplate.Length];
 		}
 
-		// Token: 0x06001D91 RID: 7569 RVA: 0x00015B0E File Offset: 0x00013D0E
+		// Token: 0x06001D29 RID: 7465 RVA: 0x00015665 File Offset: 0x00013865
 		private StatSheet([NotNull] StatField[] fields)
 		{
 			this.fields = fields;
 		}
 
-		// Token: 0x06001D92 RID: 7570 RVA: 0x0009002C File Offset: 0x0008E22C
+		// Token: 0x06001D2A RID: 7466 RVA: 0x0008F25C File Offset: 0x0008D45C
 		public static StatSheet New()
 		{
 			StatField[] array = new StatField[StatSheet.fieldsTemplate.Length];
@@ -200,25 +200,25 @@ namespace RoR2.Stats
 			return new StatSheet(array);
 		}
 
-		// Token: 0x06001D93 RID: 7571 RVA: 0x00015B28 File Offset: 0x00013D28
+		// Token: 0x06001D2B RID: 7467 RVA: 0x0001567F File Offset: 0x0001387F
 		public int GetUnlockableCount()
 		{
 			return this.unlockables.Length;
 		}
 
-		// Token: 0x06001D94 RID: 7572 RVA: 0x00015B32 File Offset: 0x00013D32
+		// Token: 0x06001D2C RID: 7468 RVA: 0x00015689 File Offset: 0x00013889
 		public UnlockableIndex GetUnlockableIndex(int index)
 		{
 			return this.unlockables[index];
 		}
 
-		// Token: 0x06001D95 RID: 7573 RVA: 0x00015B40 File Offset: 0x00013D40
+		// Token: 0x06001D2D RID: 7469 RVA: 0x00015697 File Offset: 0x00013897
 		public UnlockableDef GetUnlockable(int index)
 		{
 			return UnlockableCatalog.GetUnlockableDef(this.unlockables[index]);
 		}
 
-		// Token: 0x06001D96 RID: 7574 RVA: 0x0009006C File Offset: 0x0008E26C
+		// Token: 0x06001D2E RID: 7470 RVA: 0x0008F29C File Offset: 0x0008D49C
 		public bool HasUnlockable(UnlockableDef unlockableDef)
 		{
 			for (int i = 0; i < this.unlockables.Length; i++)
@@ -231,19 +231,19 @@ namespace RoR2.Stats
 			return false;
 		}
 
-		// Token: 0x06001D97 RID: 7575 RVA: 0x00015B53 File Offset: 0x00013D53
+		// Token: 0x06001D2F RID: 7471 RVA: 0x000156AA File Offset: 0x000138AA
 		private void AllocateUnlockables(int desiredCount)
 		{
 			Array.Resize<UnlockableIndex>(ref this.unlockables, desiredCount);
 		}
 
-		// Token: 0x06001D98 RID: 7576 RVA: 0x00015B61 File Offset: 0x00013D61
+		// Token: 0x06001D30 RID: 7472 RVA: 0x000156B8 File Offset: 0x000138B8
 		public void AddUnlockable([NotNull] UnlockableDef unlockableDef)
 		{
 			this.AddUnlockable(unlockableDef.index);
 		}
 
-		// Token: 0x06001D99 RID: 7577 RVA: 0x000900A8 File Offset: 0x0008E2A8
+		// Token: 0x06001D31 RID: 7473 RVA: 0x0008F2D8 File Offset: 0x0008D4D8
 		public void AddUnlockable(UnlockableIndex unlockIndex)
 		{
 			for (int i = 0; i < this.unlockables.Length; i++)
@@ -257,7 +257,7 @@ namespace RoR2.Stats
 			this.unlockables[this.unlockables.Length - 1] = unlockIndex;
 		}
 
-		// Token: 0x06001D9A RID: 7578 RVA: 0x00090108 File Offset: 0x0008E308
+		// Token: 0x06001D32 RID: 7474 RVA: 0x0008F338 File Offset: 0x0008D538
 		public void RemoveUnlockable(UnlockableIndex unlockIndex)
 		{
 			int num = Array.IndexOf<UnlockableIndex>(this.unlockables, unlockIndex);
@@ -270,7 +270,7 @@ namespace RoR2.Stats
 			Array.Resize<UnlockableIndex>(ref this.unlockables, newSize);
 		}
 
-		// Token: 0x06001D9B RID: 7579 RVA: 0x0009014C File Offset: 0x0008E34C
+		// Token: 0x06001D33 RID: 7475 RVA: 0x0008F37C File Offset: 0x0008D57C
 		public void Write(NetworkWriter writer)
 		{
 			for (int i = 0; i < this.fields.Length; i++)
@@ -292,7 +292,7 @@ namespace RoR2.Stats
 			}
 		}
 
-		// Token: 0x06001D9C RID: 7580 RVA: 0x000901F4 File Offset: 0x0008E3F4
+		// Token: 0x06001D34 RID: 7476 RVA: 0x0008F424 File Offset: 0x0008D624
 		public void Read(NetworkReader reader)
 		{
 			reader.ReadBitArray(StatSheet.nonDefaultFieldsBuffer);
@@ -315,7 +315,7 @@ namespace RoR2.Stats
 			}
 		}
 
-		// Token: 0x06001D9D RID: 7581 RVA: 0x0009027C File Offset: 0x0008E47C
+		// Token: 0x06001D35 RID: 7477 RVA: 0x0008F4AC File Offset: 0x0008D6AC
 		public static void GetDelta(StatSheet result, StatSheet newerStats, StatSheet olderStats)
 		{
 			StatField[] array = result.fields;
@@ -365,7 +365,7 @@ namespace RoR2.Stats
 			}
 		}
 
-		// Token: 0x06001D9E RID: 7582 RVA: 0x000903A0 File Offset: 0x0008E5A0
+		// Token: 0x06001D36 RID: 7478 RVA: 0x0008F5D0 File Offset: 0x0008D7D0
 		public void ApplyDelta(StatSheet deltaSheet)
 		{
 			StatField[] array = deltaSheet.fields;
@@ -379,7 +379,7 @@ namespace RoR2.Stats
 			}
 		}
 
-		// Token: 0x06001D9F RID: 7583 RVA: 0x00090404 File Offset: 0x0008E604
+		// Token: 0x06001D37 RID: 7479 RVA: 0x0008F634 File Offset: 0x0008D834
 		public static void Copy([NotNull] StatSheet src, [NotNull] StatSheet dest)
 		{
 			Array.Copy(src.fields, dest.fields, src.fields.Length);
@@ -387,16 +387,16 @@ namespace RoR2.Stats
 			Array.Copy(src.unlockables, dest.unlockables, src.unlockables.Length);
 		}
 
-		// Token: 0x04001F7E RID: 8062
+		// Token: 0x04001F40 RID: 8000
 		private static StatField[] fieldsTemplate;
 
-		// Token: 0x04001F7F RID: 8063
+		// Token: 0x04001F41 RID: 8001
 		private static bool[] nonDefaultFieldsBuffer;
 
-		// Token: 0x04001F80 RID: 8064
+		// Token: 0x04001F42 RID: 8002
 		public readonly StatField[] fields;
 
-		// Token: 0x04001F81 RID: 8065
+		// Token: 0x04001F43 RID: 8003
 		private UnlockableIndex[] unlockables = Array.Empty<UnlockableIndex>();
 	}
 }

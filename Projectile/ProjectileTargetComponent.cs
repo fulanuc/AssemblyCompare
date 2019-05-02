@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace RoR2.Projectile
 {
-	// Token: 0x0200056E RID: 1390
+	// Token: 0x0200055F RID: 1375
 	public class ProjectileTargetComponent : MonoBehaviour
 	{
-		// Token: 0x040021A7 RID: 8615
+		// Token: 0x04002169 RID: 8553
 		public Transform target;
 	}
 }

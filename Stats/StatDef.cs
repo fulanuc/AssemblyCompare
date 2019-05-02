@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using JetBrains.Annotations;
 using UnityEngine;
 
 namespace RoR2.Stats
 {
-	// Token: 0x02000502 RID: 1282
+	// Token: 0x020004F3 RID: 1267
 	public class StatDef
 	{
-		// Token: 0x06001D27 RID: 7463 RVA: 0x0008E528 File Offset: 0x0008C728
+		// Token: 0x06001CC0 RID: 7360 RVA: 0x0008D7A0 File Offset: 0x0008B9A0
 		[CanBeNull]
 		public static StatDef Find(string statName)
 		{
@@ -19,7 +18,7 @@ namespace RoR2.Stats
 			return result;
 		}
 
-		// Token: 0x06001D28 RID: 7464 RVA: 0x0008E544 File Offset: 0x0008C744
+		// Token: 0x06001CC1 RID: 7361 RVA: 0x0008D7BC File Offset: 0x0008B9BC
 		private StatDef(string name, StatRecordType recordType, StatDataType dataType, double pointValue, StatDef.DisplayValueFormatterDelegate displayValueFormatter)
 		{
 			this.name = name;
@@ -27,10 +26,10 @@ namespace RoR2.Stats
 			this.dataType = dataType;
 			this.pointValue = pointValue;
 			this.displayValueFormatter = displayValueFormatter;
-			this.displayToken = "STATNAME_" + name.ToUpper(CultureInfo.InvariantCulture);
+			this.displayToken = "STATNAME_" + name.ToUpper();
 		}
 
-		// Token: 0x06001D2A RID: 7466 RVA: 0x000156BE File Offset: 0x000138BE
+		// Token: 0x06001CC3 RID: 7363 RVA: 0x0001520F File Offset: 0x0001340F
 		[SystemInitializer(new Type[]
 		{
 			typeof(BodyCatalog),
@@ -49,7 +48,7 @@ namespace RoR2.Stats
 			});
 		}
 
-		// Token: 0x06001D2B RID: 7467 RVA: 0x0008E980 File Offset: 0x0008CB80
+		// Token: 0x06001CC4 RID: 7364 RVA: 0x0008DBF4 File Offset: 0x0008BDF4
 		public static StatDef Register(string name, StatRecordType recordType, StatDataType dataType, double pointValue, StatDef.DisplayValueFormatterDelegate displayValueFormatter = null)
 		{
 			if (displayValueFormatter == null)
@@ -65,13 +64,13 @@ namespace RoR2.Stats
 			return statDef;
 		}
 
-		// Token: 0x06001D2C RID: 7468 RVA: 0x000156E9 File Offset: 0x000138E9
+		// Token: 0x06001CC5 RID: 7365 RVA: 0x0001523A File Offset: 0x0001343A
 		public static string DefaultDisplayValueFormatter(ref StatField statField)
 		{
-			return statField.ToLocalNumeric();
+			return statField.ToString();
 		}
 
-		// Token: 0x06001D2D RID: 7469 RVA: 0x0008E9D8 File Offset: 0x0008CBD8
+		// Token: 0x06001CC6 RID: 7366 RVA: 0x0008DC4C File Offset: 0x0008BE4C
 		public static string TimeMMSSDisplayValueFormatter(ref StatField statField)
 		{
 			StatDataType statDataType = statField.dataType;
@@ -93,7 +92,7 @@ namespace RoR2.Stats
 			return string.Format("{0:00}:{1:00}", num2, num3);
 		}
 
-		// Token: 0x06001D2E RID: 7470 RVA: 0x0008EA38 File Offset: 0x0008CC38
+		// Token: 0x06001CC7 RID: 7367 RVA: 0x0008DCAC File Offset: 0x0008BEAC
 		public static string DistanceMarathonsDisplayValueFormatter(ref StatField statField)
 		{
 			StatDataType statDataType = statField.dataType;
@@ -113,143 +112,143 @@ namespace RoR2.Stats
 			return string.Format(Language.GetString("STAT_VALUE_MARATHONS_FORMAT"), num * 2.3699E-05);
 		}
 
-		// Token: 0x04001EF8 RID: 7928
+		// Token: 0x04001EBA RID: 7866
 		public static readonly List<StatDef> allStatDefs = new List<StatDef>();
 
-		// Token: 0x04001EF9 RID: 7929
+		// Token: 0x04001EBB RID: 7867
 		private static readonly Dictionary<string, StatDef> nameToStatDef = new Dictionary<string, StatDef>();
 
-		// Token: 0x04001EFA RID: 7930
+		// Token: 0x04001EBC RID: 7868
 		public int index;
 
-		// Token: 0x04001EFB RID: 7931
+		// Token: 0x04001EBD RID: 7869
 		public readonly string name;
 
-		// Token: 0x04001EFC RID: 7932
+		// Token: 0x04001EBE RID: 7870
 		public readonly string displayToken;
 
-		// Token: 0x04001EFD RID: 7933
+		// Token: 0x04001EBF RID: 7871
 		public readonly StatRecordType recordType;
 
-		// Token: 0x04001EFE RID: 7934
+		// Token: 0x04001EC0 RID: 7872
 		public readonly StatDataType dataType;
 
-		// Token: 0x04001EFF RID: 7935
+		// Token: 0x04001EC1 RID: 7873
 		public double pointValue;
 
-		// Token: 0x04001F00 RID: 7936
+		// Token: 0x04001EC2 RID: 7874
 		public readonly StatDef.DisplayValueFormatterDelegate displayValueFormatter;
 
-		// Token: 0x04001F01 RID: 7937
+		// Token: 0x04001EC3 RID: 7875
 		public static readonly StatDef totalGamesPlayed = StatDef.Register("totalGamesPlayed", StatRecordType.Sum, StatDataType.ULong, 0.0, null);
 
-		// Token: 0x04001F02 RID: 7938
+		// Token: 0x04001EC4 RID: 7876
 		public static readonly StatDef totalTimeAlive = StatDef.Register("totalTimeAlive", StatRecordType.Sum, StatDataType.Double, 1.0, new StatDef.DisplayValueFormatterDelegate(StatDef.TimeMMSSDisplayValueFormatter));
 
-		// Token: 0x04001F03 RID: 7939
+		// Token: 0x04001EC5 RID: 7877
 		public static readonly StatDef totalKills = StatDef.Register("totalKills", StatRecordType.Sum, StatDataType.ULong, 10.0, null);
 
-		// Token: 0x04001F04 RID: 7940
+		// Token: 0x04001EC6 RID: 7878
 		public static readonly StatDef totalDeaths = StatDef.Register("totalDeaths", StatRecordType.Sum, StatDataType.ULong, 0.0, null);
 
-		// Token: 0x04001F05 RID: 7941
+		// Token: 0x04001EC7 RID: 7879
 		public static readonly StatDef totalDamageDealt = StatDef.Register("totalDamageDealt", StatRecordType.Sum, StatDataType.ULong, 0.01, null);
 
-		// Token: 0x04001F06 RID: 7942
+		// Token: 0x04001EC8 RID: 7880
 		public static readonly StatDef totalDamageTaken = StatDef.Register("totalDamageTaken", StatRecordType.Sum, StatDataType.ULong, 0.0, null);
 
-		// Token: 0x04001F07 RID: 7943
+		// Token: 0x04001EC9 RID: 7881
 		public static readonly StatDef totalHealthHealed = StatDef.Register("totalHealthHealed", StatRecordType.Sum, StatDataType.ULong, 0.01, null);
 
-		// Token: 0x04001F08 RID: 7944
+		// Token: 0x04001ECA RID: 7882
 		public static readonly StatDef highestDamageDealt = StatDef.Register("highestDamageDealt", StatRecordType.Max, StatDataType.ULong, 1.0, null);
 
-		// Token: 0x04001F09 RID: 7945
+		// Token: 0x04001ECB RID: 7883
 		public static readonly StatDef highestLevel = StatDef.Register("highestLevel", StatRecordType.Max, StatDataType.ULong, 100.0, null);
 
-		// Token: 0x04001F0A RID: 7946
+		// Token: 0x04001ECC RID: 7884
 		public static readonly StatDef goldCollected = StatDef.Register("totalGoldCollected", StatRecordType.Sum, StatDataType.ULong, 1.0, null);
 
-		// Token: 0x04001F0B RID: 7947
+		// Token: 0x04001ECD RID: 7885
 		public static readonly StatDef maxGoldCollected = StatDef.Register("maxGoldCollected", StatRecordType.Max, StatDataType.ULong, 0.0, null);
 
-		// Token: 0x04001F0C RID: 7948
+		// Token: 0x04001ECE RID: 7886
 		public static readonly StatDef totalDistanceTraveled = StatDef.Register("totalDistanceTraveled", StatRecordType.Sum, StatDataType.Double, 0.01, new StatDef.DisplayValueFormatterDelegate(StatDef.DistanceMarathonsDisplayValueFormatter));
 
-		// Token: 0x04001F0D RID: 7949
+		// Token: 0x04001ECF RID: 7887
 		public static readonly StatDef totalItemsCollected = StatDef.Register("totalItemsCollected", StatRecordType.Sum, StatDataType.ULong, 110.0, null);
 
-		// Token: 0x04001F0E RID: 7950
+		// Token: 0x04001ED0 RID: 7888
 		public static readonly StatDef highestItemsCollected = StatDef.Register("highestItemsCollected", StatRecordType.Max, StatDataType.ULong, 10.0, null);
 
-		// Token: 0x04001F0F RID: 7951
+		// Token: 0x04001ED1 RID: 7889
 		public static readonly StatDef totalStagesCompleted = StatDef.Register("totalStagesCompleted", StatRecordType.Sum, StatDataType.ULong, 100.0, null);
 
-		// Token: 0x04001F10 RID: 7952
+		// Token: 0x04001ED2 RID: 7890
 		public static readonly StatDef highestStagesCompleted = StatDef.Register("highestStagesCompleted", StatRecordType.Max, StatDataType.ULong, 0.0, null);
 
-		// Token: 0x04001F11 RID: 7953
+		// Token: 0x04001ED3 RID: 7891
 		public static readonly StatDef totalPurchases = StatDef.Register("totalPurchases", StatRecordType.Sum, StatDataType.ULong, 35.0, null);
 
-		// Token: 0x04001F12 RID: 7954
+		// Token: 0x04001ED4 RID: 7892
 		public static readonly StatDef highestPurchases = StatDef.Register("highestPurchases", StatRecordType.Max, StatDataType.ULong, 0.0, null);
 
-		// Token: 0x04001F13 RID: 7955
+		// Token: 0x04001ED5 RID: 7893
 		public static readonly StatDef totalGoldPurchases = StatDef.Register("totalGoldPurchases", StatRecordType.Sum, StatDataType.ULong, 0.0, null);
 
-		// Token: 0x04001F14 RID: 7956
+		// Token: 0x04001ED6 RID: 7894
 		public static readonly StatDef highestGoldPurchases = StatDef.Register("highestGoldPurchases", StatRecordType.Max, StatDataType.ULong, 0.0, null);
 
-		// Token: 0x04001F15 RID: 7957
+		// Token: 0x04001ED7 RID: 7895
 		public static readonly StatDef totalBloodPurchases = StatDef.Register("totalBloodPurchases", StatRecordType.Sum, StatDataType.ULong, 0.0, null);
 
-		// Token: 0x04001F16 RID: 7958
+		// Token: 0x04001ED8 RID: 7896
 		public static readonly StatDef highestBloodPurchases = StatDef.Register("highestBloodPurchases", StatRecordType.Max, StatDataType.ULong, 0.0, null);
 
-		// Token: 0x04001F17 RID: 7959
+		// Token: 0x04001ED9 RID: 7897
 		public static readonly StatDef totalLunarPurchases = StatDef.Register("totalLunarPurchases", StatRecordType.Sum, StatDataType.ULong, 0.0, null);
 
-		// Token: 0x04001F18 RID: 7960
+		// Token: 0x04001EDA RID: 7898
 		public static readonly StatDef highestLunarPurchases = StatDef.Register("highestLunarPurchases", StatRecordType.Max, StatDataType.ULong, 0.0, null);
 
-		// Token: 0x04001F19 RID: 7961
+		// Token: 0x04001EDB RID: 7899
 		public static readonly StatDef totalTier1Purchases = StatDef.Register("totalTier1Purchases", StatRecordType.Sum, StatDataType.ULong, 0.0, null);
 
-		// Token: 0x04001F1A RID: 7962
+		// Token: 0x04001EDC RID: 7900
 		public static readonly StatDef highestTier1Purchases = StatDef.Register("highestTier1Purchases", StatRecordType.Max, StatDataType.ULong, 0.0, null);
 
-		// Token: 0x04001F1B RID: 7963
+		// Token: 0x04001EDD RID: 7901
 		public static readonly StatDef totalTier2Purchases = StatDef.Register("totalTier2Purchases", StatRecordType.Sum, StatDataType.ULong, 0.0, null);
 
-		// Token: 0x04001F1C RID: 7964
+		// Token: 0x04001EDE RID: 7902
 		public static readonly StatDef highestTier2Purchases = StatDef.Register("highestTier2Purchases", StatRecordType.Max, StatDataType.ULong, 0.0, null);
 
-		// Token: 0x04001F1D RID: 7965
+		// Token: 0x04001EDF RID: 7903
 		public static readonly StatDef totalTier3Purchases = StatDef.Register("totalTier3Purchases", StatRecordType.Sum, StatDataType.ULong, 0.0, null);
 
-		// Token: 0x04001F1E RID: 7966
+		// Token: 0x04001EE0 RID: 7904
 		public static readonly StatDef highestTier3Purchases = StatDef.Register("highestTier3Purchases", StatRecordType.Max, StatDataType.ULong, 0.0, null);
 
-		// Token: 0x04001F1F RID: 7967
+		// Token: 0x04001EE1 RID: 7905
 		public static readonly StatDef totalDronesPurchased = StatDef.Register("totalDronesPurchased", StatRecordType.Sum, StatDataType.ULong, 0.0, null);
 
-		// Token: 0x04001F20 RID: 7968
+		// Token: 0x04001EE2 RID: 7906
 		public static readonly StatDef totalGreenSoupsPurchased = StatDef.Register("totalGreenSoupsPurchased", StatRecordType.Sum, StatDataType.ULong, 0.0, null);
 
-		// Token: 0x04001F21 RID: 7969
+		// Token: 0x04001EE3 RID: 7907
 		public static readonly StatDef totalRedSoupsPurchased = StatDef.Register("totalRedSoupsPurchased", StatRecordType.Sum, StatDataType.ULong, 0.0, null);
 
-		// Token: 0x04001F22 RID: 7970
+		// Token: 0x04001EE4 RID: 7908
 		public static readonly StatDef suicideHermitCrabsAchievementProgress = StatDef.Register("suicideHermitCrabsAchievementProgress", StatRecordType.Sum, StatDataType.ULong, 0.0, null);
 
-		// Token: 0x04001F23 RID: 7971
+		// Token: 0x04001EE5 RID: 7909
 		public static readonly StatDef firstTeleporterCompleted = StatDef.Register("firstTeleporterCompleted", StatRecordType.Sum, StatDataType.ULong, 0.0, null);
 
-		// Token: 0x04001F24 RID: 7972
+		// Token: 0x04001EE6 RID: 7910
 		private static string[] bodyNames;
 
-		// Token: 0x02000503 RID: 1283
-		// (Invoke) Token: 0x06001D30 RID: 7472
+		// Token: 0x020004F4 RID: 1268
+		// (Invoke) Token: 0x06001CC9 RID: 7369
 		public delegate string DisplayValueFormatterDelegate(ref StatField statField);
 	}
 }

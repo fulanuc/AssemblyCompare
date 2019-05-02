@@ -6,22 +6,22 @@ using UnityEngine.Networking;
 
 namespace RoR2.Stats
 {
-	// Token: 0x020004FF RID: 1279
+	// Token: 0x020004F0 RID: 1264
 	[RequireComponent(typeof(CharacterMaster))]
 	[RequireComponent(typeof(PlayerCharacterMasterController))]
 	public class PlayerStatsComponent : NetworkBehaviour
 	{
-		// Token: 0x1700029D RID: 669
-		// (get) Token: 0x06001D0C RID: 7436 RVA: 0x00015566 File Offset: 0x00013766
-		// (set) Token: 0x06001D0D RID: 7437 RVA: 0x0001556E File Offset: 0x0001376E
+		// Token: 0x17000290 RID: 656
+		// (get) Token: 0x06001CA5 RID: 7333 RVA: 0x000150B7 File Offset: 0x000132B7
+		// (set) Token: 0x06001CA6 RID: 7334 RVA: 0x000150BF File Offset: 0x000132BF
 		public CharacterMaster characterMaster { get; private set; }
 
-		// Token: 0x1700029E RID: 670
-		// (get) Token: 0x06001D0E RID: 7438 RVA: 0x00015577 File Offset: 0x00013777
-		// (set) Token: 0x06001D0F RID: 7439 RVA: 0x0001557F File Offset: 0x0001377F
+		// Token: 0x17000291 RID: 657
+		// (get) Token: 0x06001CA7 RID: 7335 RVA: 0x000150C8 File Offset: 0x000132C8
+		// (set) Token: 0x06001CA8 RID: 7336 RVA: 0x000150D0 File Offset: 0x000132D0
 		public PlayerCharacterMasterController playerCharacterMasterController { get; private set; }
 
-		// Token: 0x06001D10 RID: 7440 RVA: 0x0008E140 File Offset: 0x0008C340
+		// Token: 0x06001CA9 RID: 7337 RVA: 0x0008D3E4 File Offset: 0x0008B5E4
 		private void Awake()
 		{
 			this.playerCharacterMasterController = base.GetComponent<PlayerCharacterMasterController>();
@@ -35,7 +35,7 @@ namespace RoR2.Stats
 			}
 		}
 
-		// Token: 0x06001D11 RID: 7441 RVA: 0x00015588 File Offset: 0x00013788
+		// Token: 0x06001CAA RID: 7338 RVA: 0x000150D9 File Offset: 0x000132D9
 		private void OnDestroy()
 		{
 			if (NetworkServer.active)
@@ -45,7 +45,7 @@ namespace RoR2.Stats
 			PlayerStatsComponent.instancesList.Remove(this);
 		}
 
-		// Token: 0x06001D12 RID: 7442 RVA: 0x000155A3 File Offset: 0x000137A3
+		// Token: 0x06001CAB RID: 7339 RVA: 0x000150F4 File Offset: 0x000132F4
 		public static StatSheet FindBodyStatSheet(GameObject bodyObject)
 		{
 			if (!bodyObject)
@@ -55,7 +55,7 @@ namespace RoR2.Stats
 			return PlayerStatsComponent.FindBodyStatSheet(bodyObject.GetComponent<CharacterBody>());
 		}
 
-		// Token: 0x06001D13 RID: 7443 RVA: 0x000155BA File Offset: 0x000137BA
+		// Token: 0x06001CAC RID: 7340 RVA: 0x0001510B File Offset: 0x0001330B
 		public static StatSheet FindBodyStatSheet(CharacterBody characterBody)
 		{
 			if (characterBody == null)
@@ -75,7 +75,7 @@ namespace RoR2.Stats
 			return component.currentStats;
 		}
 
-		// Token: 0x06001D14 RID: 7444 RVA: 0x000155DD File Offset: 0x000137DD
+		// Token: 0x06001CAD RID: 7341 RVA: 0x0001512E File Offset: 0x0001332E
 		public static PlayerStatsComponent FindBodyStatsComponent(GameObject bodyObject)
 		{
 			if (!bodyObject)
@@ -85,7 +85,7 @@ namespace RoR2.Stats
 			return PlayerStatsComponent.FindBodyStatsComponent(bodyObject.GetComponent<CharacterBody>());
 		}
 
-		// Token: 0x06001D15 RID: 7445 RVA: 0x000155F4 File Offset: 0x000137F4
+		// Token: 0x06001CAE RID: 7342 RVA: 0x00015145 File Offset: 0x00013345
 		public static PlayerStatsComponent FindBodyStatsComponent(CharacterBody characterBody)
 		{
 			if (characterBody == null)
@@ -100,7 +100,7 @@ namespace RoR2.Stats
 			return master.GetComponent<PlayerStatsComponent>();
 		}
 
-		// Token: 0x06001D16 RID: 7446 RVA: 0x0001560C File Offset: 0x0001380C
+		// Token: 0x06001CAF RID: 7343 RVA: 0x0001515D File Offset: 0x0001335D
 		[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
 		private static void Init()
 		{
@@ -117,16 +117,16 @@ namespace RoR2.Stats
 			};
 		}
 
-		// Token: 0x06001D17 RID: 7447 RVA: 0x00015632 File Offset: 0x00013832
+		// Token: 0x06001CB0 RID: 7344 RVA: 0x00015183 File Offset: 0x00013383
 		private void FixedUpdate()
 		{
 			if (NetworkServer.active)
 			{
-				this.ServerFixedUpdate();
+				this.ServerUpdate();
 			}
 		}
 
-		// Token: 0x06001D18 RID: 7448 RVA: 0x00015641 File Offset: 0x00013841
+		// Token: 0x06001CB1 RID: 7345 RVA: 0x00015192 File Offset: 0x00013392
 		[Server]
 		public void ForceNextTransmit()
 		{
@@ -138,25 +138,18 @@ namespace RoR2.Stats
 			this.serverTransmitTimer = 0f;
 		}
 
-		// Token: 0x06001D19 RID: 7449 RVA: 0x0008E198 File Offset: 0x0008C398
+		// Token: 0x06001CB2 RID: 7346 RVA: 0x0008D43C File Offset: 0x0008B63C
 		[Server]
-		private void ServerFixedUpdate()
+		private void ServerUpdate()
 		{
 			if (!NetworkServer.active)
 			{
-				Debug.LogWarning("[Server] function 'System.Void RoR2.Stats.PlayerStatsComponent::ServerFixedUpdate()' called on client");
+				Debug.LogWarning("[Server] function 'System.Void RoR2.Stats.PlayerStatsComponent::ServerUpdate()' called on client");
 				return;
-			}
-			float num = 0f;
-			float runTime = 0f;
-			if (Run.instance && !Run.instance.isRunStopwatchPaused)
-			{
-				num = Time.fixedDeltaTime;
-				runTime = Run.instance.GetRunStopwatch();
 			}
 			StatManager.CharacterUpdateEvent e = default(StatManager.CharacterUpdateEvent);
 			e.statsComponent = this;
-			e.runTime = runTime;
+			e.runTime = Run.FixedTimeStamp.now.t;
 			GameObject bodyObject = this.characterMaster.GetBodyObject();
 			if (bodyObject != this.cachedBodyObject)
 			{
@@ -178,7 +171,7 @@ namespace RoR2.Stats
 			}
 			if (this.characterMaster.alive)
 			{
-				e.additionalTimeAlive += num;
+				e.additionalTimeAlive += Time.deltaTime;
 			}
 			if (this.cachedCharacterBody)
 			{
@@ -193,7 +186,7 @@ namespace RoR2.Stats
 			}
 		}
 
-		// Token: 0x06001D1A RID: 7450 RVA: 0x0008E32C File Offset: 0x0008C52C
+		// Token: 0x06001CB3 RID: 7347 RVA: 0x0008D5A4 File Offset: 0x0008B7A4
 		[Server]
 		private void SendUpdateToClient()
 		{
@@ -214,7 +207,7 @@ namespace RoR2.Stats
 			}
 		}
 
-		// Token: 0x06001D1B RID: 7451 RVA: 0x0008E3A4 File Offset: 0x0008C5A4
+		// Token: 0x06001CB4 RID: 7348 RVA: 0x0008D61C File Offset: 0x0008B81C
 		[NetworkMessageHandler(client = true, msgType = 58)]
 		private static void HandleStatsUpdate(NetworkMessage netMsg)
 		{
@@ -229,7 +222,7 @@ namespace RoR2.Stats
 			}
 		}
 
-		// Token: 0x06001D1C RID: 7452 RVA: 0x00015663 File Offset: 0x00013863
+		// Token: 0x06001CB5 RID: 7349 RVA: 0x000151B4 File Offset: 0x000133B4
 		[Client]
 		private void InstanceHandleStatsUpdate(NetworkReader reader)
 		{
@@ -245,7 +238,7 @@ namespace RoR2.Stats
 			this.FlushStatsToUserProfile();
 		}
 
-		// Token: 0x06001D1D RID: 7453 RVA: 0x0008E3E0 File Offset: 0x0008C5E0
+		// Token: 0x06001CB6 RID: 7350 RVA: 0x0008D658 File Offset: 0x0008B858
 		[Client]
 		private void FlushStatsToUserProfile()
 		{
@@ -270,7 +263,7 @@ namespace RoR2.Stats
 			userProfile.ApplyDeltaStatSheet(this.clientDeltaStatsBuffer);
 		}
 
-		// Token: 0x06001D1E RID: 7454 RVA: 0x0008E45C File Offset: 0x0008C65C
+		// Token: 0x06001CB7 RID: 7351 RVA: 0x0008D6D4 File Offset: 0x0008B8D4
 		[ConCommand(commandName = "print_stats", flags = ConVarFlags.None, helpText = "Prints all current stats of the sender.")]
 		private static void CCPrintStats(ConCommandArgs args)
 		{
@@ -298,54 +291,54 @@ namespace RoR2.Stats
 			Debug.Log(string.Join("\n", array));
 		}
 
-		// Token: 0x06001D21 RID: 7457 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06001CBA RID: 7354 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x06001D22 RID: 7458 RVA: 0x0004AA24 File Offset: 0x00048C24
+		// Token: 0x06001CBB RID: 7355 RVA: 0x0004A818 File Offset: 0x00048A18
 		public override bool OnSerialize(NetworkWriter writer, bool forceAll)
 		{
 			bool result;
 			return result;
 		}
 
-		// Token: 0x06001D23 RID: 7459 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06001CBC RID: 7356 RVA: 0x000025F6 File Offset: 0x000007F6
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 		}
 
-		// Token: 0x04001EE6 RID: 7910
+		// Token: 0x04001EA8 RID: 7848
 		public static readonly List<PlayerStatsComponent> instancesList = new List<PlayerStatsComponent>();
 
-		// Token: 0x04001EE9 RID: 7913
+		// Token: 0x04001EAB RID: 7851
 		private float serverTransmitTimer;
 
-		// Token: 0x04001EEA RID: 7914
+		// Token: 0x04001EAC RID: 7852
 		private float serverTransmitInterval = 10f;
 
-		// Token: 0x04001EEB RID: 7915
+		// Token: 0x04001EAD RID: 7853
 		private Vector3 previousBodyPosition;
 
-		// Token: 0x04001EEC RID: 7916
+		// Token: 0x04001EAE RID: 7854
 		private GameObject cachedBodyObject;
 
-		// Token: 0x04001EED RID: 7917
+		// Token: 0x04001EAF RID: 7855
 		private CharacterBody cachedCharacterBody;
 
-		// Token: 0x04001EEE RID: 7918
+		// Token: 0x04001EB0 RID: 7856
 		private CharacterMotor cachedBodyCharacterMotor;
 
-		// Token: 0x04001EEF RID: 7919
+		// Token: 0x04001EB1 RID: 7857
 		private Transform cachedBodyTransform;
 
-		// Token: 0x04001EF0 RID: 7920
+		// Token: 0x04001EB2 RID: 7858
 		public StatSheet currentStats;
 
-		// Token: 0x04001EF1 RID: 7921
+		// Token: 0x04001EB3 RID: 7859
 		private StatSheet clientDeltaStatsBuffer;
 
-		// Token: 0x04001EF2 RID: 7922
+		// Token: 0x04001EB4 RID: 7860
 		private StatSheet recordedStats;
 	}
 }

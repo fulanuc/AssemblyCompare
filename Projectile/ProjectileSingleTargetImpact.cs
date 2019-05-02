@@ -4,18 +4,18 @@ using UnityEngine.Networking;
 
 namespace RoR2.Projectile
 {
-	// Token: 0x0200056C RID: 1388
+	// Token: 0x0200055D RID: 1373
 	[RequireComponent(typeof(ProjectileController))]
 	public class ProjectileSingleTargetImpact : MonoBehaviour, IProjectileImpactBehavior
 	{
-		// Token: 0x06001F27 RID: 7975 RVA: 0x00016D2A File Offset: 0x00014F2A
+		// Token: 0x06001EBD RID: 7869 RVA: 0x0001684B File Offset: 0x00014A4B
 		private void Awake()
 		{
 			this.projectileController = base.GetComponent<ProjectileController>();
 			this.projectileDamage = base.GetComponent<ProjectileDamage>();
 		}
 
-		// Token: 0x06001F28 RID: 7976 RVA: 0x000980A4 File Offset: 0x000962A4
+		// Token: 0x06001EBE RID: 7870 RVA: 0x00097388 File Offset: 0x00095588
 		public void OnProjectileImpact(ProjectileImpactInfo impactInfo)
 		{
 			if (!this.alive)
@@ -96,22 +96,22 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x04002193 RID: 8595
+		// Token: 0x04002155 RID: 8533
 		private ProjectileController projectileController;
 
-		// Token: 0x04002194 RID: 8596
+		// Token: 0x04002156 RID: 8534
 		private ProjectileDamage projectileDamage;
 
-		// Token: 0x04002195 RID: 8597
+		// Token: 0x04002157 RID: 8535
 		private bool alive = true;
 
-		// Token: 0x04002196 RID: 8598
+		// Token: 0x04002158 RID: 8536
 		public bool destroyOnWorld;
 
-		// Token: 0x04002197 RID: 8599
+		// Token: 0x04002159 RID: 8537
 		public GameObject impactEffect;
 
-		// Token: 0x04002198 RID: 8600
+		// Token: 0x0400215A RID: 8538
 		public string hitSoundString;
 	}
 }

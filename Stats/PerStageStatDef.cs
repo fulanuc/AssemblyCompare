@@ -4,10 +4,10 @@ using JetBrains.Annotations;
 
 namespace RoR2.Stats
 {
-	// Token: 0x02000508 RID: 1288
+	// Token: 0x020004F9 RID: 1273
 	public class PerStageStatDef
 	{
-		// Token: 0x06001D47 RID: 7495 RVA: 0x0008EF38 File Offset: 0x0008D138
+		// Token: 0x06001CE0 RID: 7392 RVA: 0x0008E1AC File Offset: 0x0008C3AC
 		public static void RegisterStatDefs()
 		{
 			foreach (PerStageStatDef perStageStatDef in PerStageStatDef.instancesList)
@@ -21,7 +21,7 @@ namespace RoR2.Stats
 			}
 		}
 
-		// Token: 0x06001D48 RID: 7496 RVA: 0x00015804 File Offset: 0x00013A04
+		// Token: 0x06001CE1 RID: 7393 RVA: 0x0001535B File Offset: 0x0001355B
 		private PerStageStatDef(string prefix, StatRecordType recordType, StatDataType dataType, StatDef.DisplayValueFormatterDelegate displayValueFormatter)
 		{
 			this.prefix = prefix;
@@ -30,7 +30,7 @@ namespace RoR2.Stats
 			this.displayValueFormatter = (displayValueFormatter ?? new StatDef.DisplayValueFormatterDelegate(StatDef.DefaultDisplayValueFormatter));
 		}
 
-		// Token: 0x06001D49 RID: 7497 RVA: 0x0008F000 File Offset: 0x0008D200
+		// Token: 0x06001CE2 RID: 7394 RVA: 0x0008E274 File Offset: 0x0008C474
 		[NotNull]
 		private static PerStageStatDef Register(string prefix, StatRecordType recordType, StatDataType dataType, StatDef.DisplayValueFormatterDelegate displayValueFormatter = null)
 		{
@@ -39,7 +39,7 @@ namespace RoR2.Stats
 			return perStageStatDef;
 		}
 
-		// Token: 0x06001D4A RID: 7498 RVA: 0x0008F024 File Offset: 0x0008D224
+		// Token: 0x06001CE3 RID: 7395 RVA: 0x0008E298 File Offset: 0x0008C498
 		[CanBeNull]
 		public StatDef FindStatDef(string key)
 		{
@@ -51,28 +51,28 @@ namespace RoR2.Stats
 			return null;
 		}
 
-		// Token: 0x04001F4A RID: 8010
+		// Token: 0x04001F0C RID: 7948
 		private readonly string prefix;
 
-		// Token: 0x04001F4B RID: 8011
+		// Token: 0x04001F0D RID: 7949
 		private readonly StatRecordType recordType;
 
-		// Token: 0x04001F4C RID: 8012
+		// Token: 0x04001F0E RID: 7950
 		private readonly StatDataType dataType;
 
-		// Token: 0x04001F4D RID: 8013
+		// Token: 0x04001F0F RID: 7951
 		private readonly Dictionary<string, StatDef> keyToStatDef = new Dictionary<string, StatDef>();
 
-		// Token: 0x04001F4E RID: 8014
+		// Token: 0x04001F10 RID: 7952
 		private StatDef.DisplayValueFormatterDelegate displayValueFormatter;
 
-		// Token: 0x04001F4F RID: 8015
+		// Token: 0x04001F11 RID: 7953
 		private static readonly List<PerStageStatDef> instancesList = new List<PerStageStatDef>();
 
-		// Token: 0x04001F50 RID: 8016
+		// Token: 0x04001F12 RID: 7954
 		public static readonly PerStageStatDef totalTimesVisited = PerStageStatDef.Register("totalTimesVisited", StatRecordType.Sum, StatDataType.ULong, null);
 
-		// Token: 0x04001F51 RID: 8017
+		// Token: 0x04001F13 RID: 7955
 		public static readonly PerStageStatDef totalTimesCleared = PerStageStatDef.Register("totalTimesCleared", StatRecordType.Sum, StatDataType.ULong, null);
 	}
 }

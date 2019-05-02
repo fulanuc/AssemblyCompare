@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace RoR2.Projectile
 {
-	// Token: 0x02000554 RID: 1364
+	// Token: 0x02000545 RID: 1349
 	public class ProjectileFireEffects : MonoBehaviour
 	{
-		// Token: 0x06001EA3 RID: 7843 RVA: 0x00095D50 File Offset: 0x00093F50
+		// Token: 0x06001E39 RID: 7737 RVA: 0x00095034 File Offset: 0x00093234
 		private void Update()
 		{
 			this.timer += Time.deltaTime;
@@ -26,22 +26,22 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x040020E3 RID: 8419
+		// Token: 0x040020A5 RID: 8357
 		public float duration = 5f;
 
-		// Token: 0x040020E4 RID: 8420
+		// Token: 0x040020A6 RID: 8358
 		public int count = 5;
 
-		// Token: 0x040020E5 RID: 8421
+		// Token: 0x040020A7 RID: 8359
 		public GameObject effectPrefab;
 
-		// Token: 0x040020E6 RID: 8422
+		// Token: 0x040020A8 RID: 8360
 		public Vector3 randomOffset;
 
-		// Token: 0x040020E7 RID: 8423
+		// Token: 0x040020A9 RID: 8361
 		private float timer;
 
-		// Token: 0x040020E8 RID: 8424
+		// Token: 0x040020AA RID: 8362
 		private float nextSpawnTimer;
 	}
 }

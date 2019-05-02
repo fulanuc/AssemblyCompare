@@ -4,11 +4,11 @@ using UnityEngine.Networking;
 
 namespace RoR2.Projectile
 {
-	// Token: 0x0200055B RID: 1371
+	// Token: 0x0200054C RID: 1356
 	[RequireComponent(typeof(ProjectileController))]
 	public class ProjectileImpactExplosion : MonoBehaviour, IProjectileImpactBehavior
 	{
-		// Token: 0x06001EBD RID: 7869 RVA: 0x00016769 File Offset: 0x00014969
+		// Token: 0x06001E53 RID: 7763 RVA: 0x0001628A File Offset: 0x0001448A
 		private void Awake()
 		{
 			this.projectileController = base.GetComponent<ProjectileController>();
@@ -16,7 +16,7 @@ namespace RoR2.Projectile
 			this.lifetime += UnityEngine.Random.Range(0f, this.lifetimeRandomOffset);
 		}
 
-		// Token: 0x06001EBE RID: 7870 RVA: 0x000961BC File Offset: 0x000943BC
+		// Token: 0x06001E54 RID: 7764 RVA: 0x000954A0 File Offset: 0x000936A0
 		public void FixedUpdate()
 		{
 			this.stopwatch += Time.fixedDeltaTime;
@@ -93,7 +93,7 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x06001EBF RID: 7871 RVA: 0x00096524 File Offset: 0x00094724
+		// Token: 0x06001E55 RID: 7765 RVA: 0x00095808 File Offset: 0x00093A08
 		private void FireChild(Vector3 direction)
 		{
 			GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(this.childrenProjectilePrefab, base.transform.position, Util.QuaternionSafeLookRotation(direction));
@@ -116,13 +116,13 @@ namespace RoR2.Projectile
 			NetworkServer.Spawn(gameObject);
 		}
 
-		// Token: 0x06001EC0 RID: 7872 RVA: 0x000167A0 File Offset: 0x000149A0
+		// Token: 0x06001E56 RID: 7766 RVA: 0x000162C1 File Offset: 0x000144C1
 		public void SetExplosionRadius(float newRadius)
 		{
 			this.blastRadius = newRadius;
 		}
 
-		// Token: 0x06001EC1 RID: 7873 RVA: 0x00096604 File Offset: 0x00094804
+		// Token: 0x06001E57 RID: 7767 RVA: 0x000958E8 File Offset: 0x00093AE8
 		public void OnProjectileImpact(ProjectileImpactInfo impactInfo)
 		{
 			if (!this.alive)
@@ -181,116 +181,116 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x06001EC2 RID: 7874 RVA: 0x000167A9 File Offset: 0x000149A9
+		// Token: 0x06001E58 RID: 7768 RVA: 0x000162CA File Offset: 0x000144CA
 		public void SetAlive(bool newAlive)
 		{
 			this.alive = newAlive;
 		}
 
-		// Token: 0x040020FC RID: 8444
+		// Token: 0x040020BE RID: 8382
 		private ProjectileController projectileController;
 
-		// Token: 0x040020FD RID: 8445
+		// Token: 0x040020BF RID: 8383
 		private ProjectileDamage projectileDamage;
 
-		// Token: 0x040020FE RID: 8446
+		// Token: 0x040020C0 RID: 8384
 		private bool alive = true;
 
-		// Token: 0x040020FF RID: 8447
+		// Token: 0x040020C1 RID: 8385
 		private Vector3 impactNormal = Vector3.up;
 
-		// Token: 0x04002100 RID: 8448
+		// Token: 0x040020C2 RID: 8386
 		public GameObject impactEffect;
 
-		// Token: 0x04002101 RID: 8449
+		// Token: 0x040020C3 RID: 8387
 		public string explosionSoundString;
 
-		// Token: 0x04002102 RID: 8450
+		// Token: 0x040020C4 RID: 8388
 		public string lifetimeExpiredSoundString;
 
-		// Token: 0x04002103 RID: 8451
+		// Token: 0x040020C5 RID: 8389
 		public float offsetForLifetimeExpiredSound;
 
-		// Token: 0x04002104 RID: 8452
+		// Token: 0x040020C6 RID: 8390
 		public bool destroyOnEnemy = true;
 
-		// Token: 0x04002105 RID: 8453
+		// Token: 0x040020C7 RID: 8391
 		public bool destroyOnWorld;
 
-		// Token: 0x04002106 RID: 8454
+		// Token: 0x040020C8 RID: 8392
 		public bool timerAfterImpact;
 
-		// Token: 0x04002107 RID: 8455
+		// Token: 0x040020C9 RID: 8393
 		public BlastAttack.FalloffModel falloffModel = BlastAttack.FalloffModel.Linear;
 
-		// Token: 0x04002108 RID: 8456
+		// Token: 0x040020CA RID: 8394
 		public float lifetime;
 
-		// Token: 0x04002109 RID: 8457
+		// Token: 0x040020CB RID: 8395
 		public float lifetimeAfterImpact;
 
-		// Token: 0x0400210A RID: 8458
+		// Token: 0x040020CC RID: 8396
 		public float lifetimeRandomOffset;
 
-		// Token: 0x0400210B RID: 8459
+		// Token: 0x040020CD RID: 8397
 		public float blastRadius;
 
-		// Token: 0x0400210C RID: 8460
+		// Token: 0x040020CE RID: 8398
 		[Tooltip("The percentage of the damage, proc coefficient, and force of the initial projectile. Ranges from 0-1")]
 		public float blastDamageCoefficient;
 
-		// Token: 0x0400210D RID: 8461
+		// Token: 0x040020CF RID: 8399
 		public float blastProcCoefficient = 1f;
 
-		// Token: 0x0400210E RID: 8462
+		// Token: 0x040020D0 RID: 8400
 		public Vector3 bonusBlastForce;
 
-		// Token: 0x0400210F RID: 8463
+		// Token: 0x040020D1 RID: 8401
 		[Tooltip("Does this projectile release children on death?")]
 		public bool fireChildren;
 
-		// Token: 0x04002110 RID: 8464
+		// Token: 0x040020D2 RID: 8402
 		public GameObject childrenProjectilePrefab;
 
-		// Token: 0x04002111 RID: 8465
+		// Token: 0x040020D3 RID: 8403
 		public int childrenCount;
 
-		// Token: 0x04002112 RID: 8466
+		// Token: 0x040020D4 RID: 8404
 		[Tooltip("What percentage of our damage does the children get?")]
 		public float childrenDamageCoefficient;
 
-		// Token: 0x04002113 RID: 8467
+		// Token: 0x040020D5 RID: 8405
 		public Vector3 minAngleOffset;
 
-		// Token: 0x04002114 RID: 8468
+		// Token: 0x040020D6 RID: 8406
 		public Vector3 maxAngleOffset;
 
-		// Token: 0x04002115 RID: 8469
+		// Token: 0x040020D7 RID: 8407
 		public ProjectileImpactExplosion.TransformSpace transformSpace;
 
-		// Token: 0x04002116 RID: 8470
+		// Token: 0x040020D8 RID: 8408
 		public HealthComponent projectileHealthComponent;
 
-		// Token: 0x04002117 RID: 8471
+		// Token: 0x040020D9 RID: 8409
 		private float stopwatch;
 
-		// Token: 0x04002118 RID: 8472
+		// Token: 0x040020DA RID: 8410
 		private float stopwatchAfterImpact;
 
-		// Token: 0x04002119 RID: 8473
+		// Token: 0x040020DB RID: 8411
 		private bool hasImpact;
 
-		// Token: 0x0400211A RID: 8474
+		// Token: 0x040020DC RID: 8412
 		private bool hasPlayedLifetimeExpiredSound;
 
-		// Token: 0x0200055C RID: 1372
+		// Token: 0x0200054D RID: 1357
 		public enum TransformSpace
 		{
-			// Token: 0x0400211C RID: 8476
+			// Token: 0x040020DE RID: 8414
 			World,
-			// Token: 0x0400211D RID: 8477
+			// Token: 0x040020DF RID: 8415
 			Local,
-			// Token: 0x0400211E RID: 8478
+			// Token: 0x040020E0 RID: 8416
 			Normal
 		}
 	}

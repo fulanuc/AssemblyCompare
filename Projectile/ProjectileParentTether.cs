@@ -4,12 +4,12 @@ using UnityEngine.Networking;
 
 namespace RoR2.Projectile
 {
-	// Token: 0x02000569 RID: 1385
-	[RequireComponent(typeof(ProjectileDamage))]
+	// Token: 0x0200055A RID: 1370
 	[RequireComponent(typeof(ProjectileController))]
+	[RequireComponent(typeof(ProjectileDamage))]
 	public class ProjectileParentTether : MonoBehaviour
 	{
-		// Token: 0x06001F12 RID: 7954 RVA: 0x00016C1C File Offset: 0x00014E1C
+		// Token: 0x06001EA8 RID: 7848 RVA: 0x0001673D File Offset: 0x0001493D
 		private void Awake()
 		{
 			this.projectileController = base.GetComponent<ProjectileController>();
@@ -18,7 +18,7 @@ namespace RoR2.Projectile
 			this.UpdateTetherGraphic();
 		}
 
-		// Token: 0x06001F13 RID: 7955 RVA: 0x00097A08 File Offset: 0x00095C08
+		// Token: 0x06001EA9 RID: 7849 RVA: 0x00096CEC File Offset: 0x00094EEC
 		private void UpdateTetherGraphic()
 		{
 			if (this.ShouldIFire())
@@ -39,7 +39,7 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x06001F14 RID: 7956 RVA: 0x00097AF8 File Offset: 0x00095CF8
+		// Token: 0x06001EAA RID: 7850 RVA: 0x00096DDC File Offset: 0x00094FDC
 		private float GetRayDistance()
 		{
 			if (this.projectileController.owner)
@@ -49,7 +49,7 @@ namespace RoR2.Projectile
 			return 0f;
 		}
 
-		// Token: 0x06001F15 RID: 7957 RVA: 0x00097B4C File Offset: 0x00095D4C
+		// Token: 0x06001EAB RID: 7851 RVA: 0x00096E30 File Offset: 0x00095030
 		private Ray GetAimRay()
 		{
 			Ray result = default(Ray);
@@ -58,19 +58,19 @@ namespace RoR2.Projectile
 			return result;
 		}
 
-		// Token: 0x06001F16 RID: 7958 RVA: 0x00016C47 File Offset: 0x00014E47
+		// Token: 0x06001EAC RID: 7852 RVA: 0x00016768 File Offset: 0x00014968
 		private bool ShouldIFire()
 		{
 			return !this.stickOnImpact || this.stickOnImpact.stuck;
 		}
 
-		// Token: 0x06001F17 RID: 7959 RVA: 0x00016C63 File Offset: 0x00014E63
+		// Token: 0x06001EAD RID: 7853 RVA: 0x00016784 File Offset: 0x00014984
 		private void Update()
 		{
 			this.UpdateTetherGraphic();
 		}
 
-		// Token: 0x06001F18 RID: 7960 RVA: 0x00097B9C File Offset: 0x00095D9C
+		// Token: 0x06001EAE RID: 7854 RVA: 0x00096E80 File Offset: 0x00095080
 		private void FixedUpdate()
 		{
 			if (this.ShouldIFire())
@@ -113,52 +113,52 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x0400216E RID: 8558
+		// Token: 0x04002130 RID: 8496
 		private ProjectileController projectileController;
 
-		// Token: 0x0400216F RID: 8559
+		// Token: 0x04002131 RID: 8497
 		private ProjectileDamage projectileDamage;
 
-		// Token: 0x04002170 RID: 8560
+		// Token: 0x04002132 RID: 8498
 		private TeamIndex myTeamIndex;
 
-		// Token: 0x04002171 RID: 8561
+		// Token: 0x04002133 RID: 8499
 		public float attackInterval = 1f;
 
-		// Token: 0x04002172 RID: 8562
+		// Token: 0x04002134 RID: 8500
 		public float maxTetherRange = 20f;
 
-		// Token: 0x04002173 RID: 8563
+		// Token: 0x04002135 RID: 8501
 		public float procCoefficient = 0.1f;
 
-		// Token: 0x04002174 RID: 8564
+		// Token: 0x04002136 RID: 8502
 		public float damageCoefficient = 1f;
 
-		// Token: 0x04002175 RID: 8565
+		// Token: 0x04002137 RID: 8503
 		public float raycastRadius;
 
-		// Token: 0x04002176 RID: 8566
+		// Token: 0x04002138 RID: 8504
 		public float lifetime;
 
-		// Token: 0x04002177 RID: 8567
+		// Token: 0x04002139 RID: 8505
 		public GameObject impactEffect;
 
-		// Token: 0x04002178 RID: 8568
+		// Token: 0x0400213A RID: 8506
 		public GameObject tetherEffectPrefab;
 
-		// Token: 0x04002179 RID: 8569
+		// Token: 0x0400213B RID: 8507
 		public ProjectileStickOnImpact stickOnImpact;
 
-		// Token: 0x0400217A RID: 8570
+		// Token: 0x0400213C RID: 8508
 		private GameObject tetherEffectInstance;
 
-		// Token: 0x0400217B RID: 8571
+		// Token: 0x0400213D RID: 8509
 		private GameObject tetherEffectInstanceEnd;
 
-		// Token: 0x0400217C RID: 8572
+		// Token: 0x0400213E RID: 8510
 		private float attackTimer;
 
-		// Token: 0x0400217D RID: 8573
+		// Token: 0x0400213F RID: 8511
 		private float lifetimeStopwatch;
 	}
 }

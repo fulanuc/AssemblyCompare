@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 namespace RoR2.Stats
 {
-	// Token: 0x02000506 RID: 1286
+	// Token: 0x020004F7 RID: 1271
 	public class PerItemStatDef
 	{
-		// Token: 0x06001D3D RID: 7485 RVA: 0x0008ED04 File Offset: 0x0008CF04
+		// Token: 0x06001CD6 RID: 7382 RVA: 0x0008DF78 File Offset: 0x0008C178
 		public static void RegisterStatDefs()
 		{
 			foreach (PerItemStatDef perItemStatDef in PerItemStatDef.instancesList)
@@ -19,7 +19,7 @@ namespace RoR2.Stats
 			}
 		}
 
-		// Token: 0x06001D3E RID: 7486 RVA: 0x0001575B File Offset: 0x0001395B
+		// Token: 0x06001CD7 RID: 7383 RVA: 0x000152B2 File Offset: 0x000134B2
 		private PerItemStatDef(string prefix, StatRecordType recordType, StatDataType dataType)
 		{
 			this.prefix = prefix;
@@ -27,7 +27,7 @@ namespace RoR2.Stats
 			this.dataType = dataType;
 		}
 
-		// Token: 0x06001D3F RID: 7487 RVA: 0x0008EDD0 File Offset: 0x0008CFD0
+		// Token: 0x06001CD8 RID: 7384 RVA: 0x0008E044 File Offset: 0x0008C244
 		private static PerItemStatDef Register(string prefix, StatRecordType recordType, StatDataType dataType)
 		{
 			PerItemStatDef perItemStatDef = new PerItemStatDef(prefix, recordType, dataType);
@@ -35,31 +35,31 @@ namespace RoR2.Stats
 			return perItemStatDef;
 		}
 
-		// Token: 0x06001D40 RID: 7488 RVA: 0x00015785 File Offset: 0x00013985
+		// Token: 0x06001CD9 RID: 7385 RVA: 0x000152DC File Offset: 0x000134DC
 		public StatDef FindStatDef(ItemIndex key)
 		{
 			return this.keyToStatDef[(int)key];
 		}
 
-		// Token: 0x04001F3B RID: 7995
+		// Token: 0x04001EFD RID: 7933
 		private readonly string prefix;
 
-		// Token: 0x04001F3C RID: 7996
+		// Token: 0x04001EFE RID: 7934
 		private readonly StatRecordType recordType;
 
-		// Token: 0x04001F3D RID: 7997
+		// Token: 0x04001EFF RID: 7935
 		private readonly StatDataType dataType;
 
-		// Token: 0x04001F3E RID: 7998
+		// Token: 0x04001F00 RID: 7936
 		private readonly StatDef[] keyToStatDef = new StatDef[78];
 
-		// Token: 0x04001F3F RID: 7999
+		// Token: 0x04001F01 RID: 7937
 		private static readonly List<PerItemStatDef> instancesList = new List<PerItemStatDef>();
 
-		// Token: 0x04001F40 RID: 8000
+		// Token: 0x04001F02 RID: 7938
 		public static readonly PerItemStatDef totalCollected = PerItemStatDef.Register("totalCollected", StatRecordType.Sum, StatDataType.ULong);
 
-		// Token: 0x04001F41 RID: 8001
+		// Token: 0x04001F03 RID: 7939
 		public static readonly PerItemStatDef highestCollected = PerItemStatDef.Register("highestCollected", StatRecordType.Max, StatDataType.ULong);
 	}
 }

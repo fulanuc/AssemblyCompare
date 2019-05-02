@@ -5,11 +5,11 @@ using UnityEngine.Networking;
 
 namespace RoR2.Projectile
 {
-	// Token: 0x0200054B RID: 1355
+	// Token: 0x0200053C RID: 1340
 	[RequireComponent(typeof(Rigidbody))]
 	public class MissileController : MonoBehaviour
 	{
-		// Token: 0x06001E72 RID: 7794 RVA: 0x00095090 File Offset: 0x00093290
+		// Token: 0x06001E08 RID: 7688 RVA: 0x00094374 File Offset: 0x00092574
 		private void Awake()
 		{
 			if (!NetworkServer.active)
@@ -23,7 +23,7 @@ namespace RoR2.Projectile
 			this.teamFilter = base.GetComponent<TeamFilter>();
 		}
 
-		// Token: 0x06001E73 RID: 7795 RVA: 0x000950DC File Offset: 0x000932DC
+		// Token: 0x06001E09 RID: 7689 RVA: 0x000943C0 File Offset: 0x000925C0
 		private void FixedUpdate()
 		{
 			this.timer += Time.fixedDeltaTime;
@@ -62,7 +62,7 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x06001E74 RID: 7796 RVA: 0x00095260 File Offset: 0x00093460
+		// Token: 0x06001E0A RID: 7690 RVA: 0x00094544 File Offset: 0x00092744
 		private Transform FindTarget()
 		{
 			this.search.searchOrigin = this.transform.position;
@@ -77,49 +77,49 @@ namespace RoR2.Projectile
 			return hurtBox.transform;
 		}
 
-		// Token: 0x0400208E RID: 8334
+		// Token: 0x04002050 RID: 8272
 		private new Transform transform;
 
-		// Token: 0x0400208F RID: 8335
+		// Token: 0x04002051 RID: 8273
 		private Rigidbody rigidbody;
 
-		// Token: 0x04002090 RID: 8336
+		// Token: 0x04002052 RID: 8274
 		private TeamFilter teamFilter;
 
-		// Token: 0x04002091 RID: 8337
+		// Token: 0x04002053 RID: 8275
 		public Transform target;
 
-		// Token: 0x04002092 RID: 8338
+		// Token: 0x04002054 RID: 8276
 		public float maxVelocity;
 
-		// Token: 0x04002093 RID: 8339
+		// Token: 0x04002055 RID: 8277
 		public float rollVelocity;
 
-		// Token: 0x04002094 RID: 8340
+		// Token: 0x04002056 RID: 8278
 		public float acceleration;
 
-		// Token: 0x04002095 RID: 8341
+		// Token: 0x04002057 RID: 8279
 		public float delayTimer;
 
-		// Token: 0x04002096 RID: 8342
+		// Token: 0x04002058 RID: 8280
 		public float giveupTimer = 8f;
 
-		// Token: 0x04002097 RID: 8343
+		// Token: 0x04002059 RID: 8281
 		public float deathTimer = 10f;
 
-		// Token: 0x04002098 RID: 8344
+		// Token: 0x0400205A RID: 8282
 		private float timer;
 
-		// Token: 0x04002099 RID: 8345
+		// Token: 0x0400205B RID: 8283
 		private QuaternionPID torquePID;
 
-		// Token: 0x0400209A RID: 8346
+		// Token: 0x0400205C RID: 8284
 		public float turbulence;
 
-		// Token: 0x0400209B RID: 8347
+		// Token: 0x0400205D RID: 8285
 		public float maxSeekDistance = 40f;
 
-		// Token: 0x0400209C RID: 8348
+		// Token: 0x0400205E RID: 8286
 		private BullseyeSearch search = new BullseyeSearch();
 	}
 }

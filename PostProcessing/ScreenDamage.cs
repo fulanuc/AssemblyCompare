@@ -3,17 +3,17 @@ using UnityEngine;
 
 namespace RoR2.PostProcessing
 {
-	// Token: 0x02000572 RID: 1394
+	// Token: 0x02000563 RID: 1379
 	public class ScreenDamage : MonoBehaviour
 	{
-		// Token: 0x06001F49 RID: 8009 RVA: 0x00016EAF File Offset: 0x000150AF
+		// Token: 0x06001EDF RID: 7903 RVA: 0x000169D0 File Offset: 0x00014BD0
 		private void Awake()
 		{
 			this.cameraRigController = base.GetComponentInParent<CameraRigController>();
 			this.mat = UnityEngine.Object.Instantiate<Material>(this.mat);
 		}
 
-		// Token: 0x06001F4A RID: 8010 RVA: 0x00098984 File Offset: 0x00096B84
+		// Token: 0x06001EE0 RID: 7904 RVA: 0x00097C68 File Offset: 0x00095E68
 		private void OnRenderImage(RenderTexture source, RenderTexture destination)
 		{
 			float num = 0f;
@@ -41,40 +41,40 @@ namespace RoR2.PostProcessing
 			Graphics.Blit(source, destination, this.mat);
 		}
 
-		// Token: 0x040021B2 RID: 8626
+		// Token: 0x04002174 RID: 8564
 		private CameraRigController cameraRigController;
 
-		// Token: 0x040021B3 RID: 8627
+		// Token: 0x04002175 RID: 8565
 		public Material mat;
 
-		// Token: 0x040021B4 RID: 8628
+		// Token: 0x04002176 RID: 8566
 		public float DistortionScale = 1f;
 
-		// Token: 0x040021B5 RID: 8629
+		// Token: 0x04002177 RID: 8567
 		public float DistortionPower = 1f;
 
-		// Token: 0x040021B6 RID: 8630
+		// Token: 0x04002178 RID: 8568
 		public float DesaturationScale = 1f;
 
-		// Token: 0x040021B7 RID: 8631
+		// Token: 0x04002179 RID: 8569
 		public float DesaturationPower = 1f;
 
-		// Token: 0x040021B8 RID: 8632
+		// Token: 0x0400217A RID: 8570
 		public float TintScale = 1f;
 
-		// Token: 0x040021B9 RID: 8633
+		// Token: 0x0400217B RID: 8571
 		public float TintPower = 1f;
 
-		// Token: 0x040021BA RID: 8634
+		// Token: 0x0400217C RID: 8572
 		private float healthPercentage = 1f;
 
-		// Token: 0x040021BB RID: 8635
+		// Token: 0x0400217D RID: 8573
 		private const float hitTintDecayTime = 0.6f;
 
-		// Token: 0x040021BC RID: 8636
+		// Token: 0x0400217E RID: 8574
 		private const float hitTintScale = 1.6f;
 
-		// Token: 0x040021BD RID: 8637
+		// Token: 0x0400217F RID: 8575
 		private const float deathWeight = 2f;
 	}
 }

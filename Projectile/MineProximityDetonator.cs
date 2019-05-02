@@ -5,10 +5,10 @@ using UnityEngine.Networking;
 
 namespace RoR2.Projectile
 {
-	// Token: 0x0200054A RID: 1354
+	// Token: 0x0200053B RID: 1339
 	public class MineProximityDetonator : MonoBehaviour
 	{
-		// Token: 0x06001E70 RID: 7792 RVA: 0x0009502C File Offset: 0x0009322C
+		// Token: 0x06001E06 RID: 7686 RVA: 0x00094310 File Offset: 0x00092510
 		public void OnTriggerEnter(Collider collider)
 		{
 			if (NetworkServer.active)
@@ -35,10 +35,10 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x0400208C RID: 8332
+		// Token: 0x0400204E RID: 8270
 		public TeamFilter myTeamFilter;
 
-		// Token: 0x0400208D RID: 8333
+		// Token: 0x0400204F RID: 8271
 		public UnityEvent triggerEvents;
 	}
 }

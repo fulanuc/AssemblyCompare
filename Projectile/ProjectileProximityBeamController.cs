@@ -7,13 +7,13 @@ using UnityEngine.Networking;
 
 namespace RoR2.Projectile
 {
-	// Token: 0x0200056A RID: 1386
-	[RequireComponent(typeof(ProjectileDamage))]
+	// Token: 0x0200055B RID: 1371
 	[RequireComponent(typeof(ProjectileController))]
+	[RequireComponent(typeof(ProjectileDamage))]
 	public class ProjectileProximityBeamController : MonoBehaviour
 	{
-		// Token: 0x170002B6 RID: 694
-		// (get) Token: 0x06001F1A RID: 7962 RVA: 0x00016C9F File Offset: 0x00014E9F
+		// Token: 0x170002A9 RID: 681
+		// (get) Token: 0x06001EB0 RID: 7856 RVA: 0x000167C0 File Offset: 0x000149C0
 		private TeamIndex myTeamIndex
 		{
 			get
@@ -26,7 +26,7 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x06001F1B RID: 7963 RVA: 0x00097D50 File Offset: 0x00095F50
+		// Token: 0x06001EB1 RID: 7857 RVA: 0x00097034 File Offset: 0x00095234
 		private void Awake()
 		{
 			if (NetworkServer.active)
@@ -42,13 +42,13 @@ namespace RoR2.Projectile
 			base.enabled = false;
 		}
 
-		// Token: 0x06001F1C RID: 7964 RVA: 0x00016CBB File Offset: 0x00014EBB
+		// Token: 0x06001EB2 RID: 7858 RVA: 0x000167DC File Offset: 0x000149DC
 		private void ClearList()
 		{
 			this.previousTargets.Clear();
 		}
 
-		// Token: 0x06001F1D RID: 7965 RVA: 0x00016CC8 File Offset: 0x00014EC8
+		// Token: 0x06001EB3 RID: 7859 RVA: 0x000167E9 File Offset: 0x000149E9
 		private void FixedUpdate()
 		{
 			if (NetworkServer.active)
@@ -59,7 +59,7 @@ namespace RoR2.Projectile
 			base.enabled = false;
 		}
 
-		// Token: 0x06001F1E RID: 7966 RVA: 0x00097DB4 File Offset: 0x00095FB4
+		// Token: 0x06001EB4 RID: 7860 RVA: 0x00097098 File Offset: 0x00095298
 		private void UpdateServer()
 		{
 			this.listClearTimer -= Time.fixedDeltaTime;
@@ -93,7 +93,7 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x06001F1F RID: 7967 RVA: 0x00097EE8 File Offset: 0x000960E8
+		// Token: 0x06001EB5 RID: 7861 RVA: 0x000971CC File Offset: 0x000953CC
 		public HurtBox FindNextTarget(Vector3 position)
 		{
 			this.search.searchOrigin = position;
@@ -106,43 +106,43 @@ namespace RoR2.Projectile
 			return this.search.GetResults().FirstOrDefault((HurtBox hurtBox) => !this.previousTargets.Contains(hurtBox.healthComponent));
 		}
 
-		// Token: 0x0400217E RID: 8574
+		// Token: 0x04002140 RID: 8512
 		private ProjectileController projectileController;
 
-		// Token: 0x0400217F RID: 8575
+		// Token: 0x04002141 RID: 8513
 		private ProjectileDamage projectileDamage;
 
-		// Token: 0x04002180 RID: 8576
+		// Token: 0x04002142 RID: 8514
 		private List<HealthComponent> previousTargets;
 
-		// Token: 0x04002181 RID: 8577
+		// Token: 0x04002143 RID: 8515
 		private TeamFilter teamFilter;
 
-		// Token: 0x04002182 RID: 8578
+		// Token: 0x04002144 RID: 8516
 		public float attackInterval = 1f;
 
-		// Token: 0x04002183 RID: 8579
+		// Token: 0x04002145 RID: 8517
 		public float listClearInterval = 3f;
 
-		// Token: 0x04002184 RID: 8580
+		// Token: 0x04002146 RID: 8518
 		public float attackRange = 20f;
 
-		// Token: 0x04002185 RID: 8581
+		// Token: 0x04002147 RID: 8519
 		public float procCoefficient = 0.1f;
 
-		// Token: 0x04002186 RID: 8582
+		// Token: 0x04002148 RID: 8520
 		public float damageCoefficient = 1f;
 
-		// Token: 0x04002187 RID: 8583
+		// Token: 0x04002149 RID: 8521
 		public LightningOrb.LightningType lightningType = LightningOrb.LightningType.BFG;
 
-		// Token: 0x04002188 RID: 8584
+		// Token: 0x0400214A RID: 8522
 		private float attackTimer;
 
-		// Token: 0x04002189 RID: 8585
+		// Token: 0x0400214B RID: 8523
 		private float listClearTimer;
 
-		// Token: 0x0400218A RID: 8586
+		// Token: 0x0400214C RID: 8524
 		private readonly BullseyeSearch search = new BullseyeSearch();
 	}
 }

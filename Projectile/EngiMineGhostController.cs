@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace RoR2.Projectile
 {
-	// Token: 0x02000545 RID: 1349
+	// Token: 0x02000536 RID: 1334
 	[RequireComponent(typeof(ProjectileGhostController))]
 	public class EngiMineGhostController : MonoBehaviour
 	{
-		// Token: 0x06001E5E RID: 7774 RVA: 0x0009476C File Offset: 0x0009296C
+		// Token: 0x06001DF4 RID: 7668 RVA: 0x00093A50 File Offset: 0x00091C50
 		private EngiMineController LookupMineController()
 		{
 			if (!this.cachedMineController)
@@ -21,14 +21,14 @@ namespace RoR2.Projectile
 			return this.cachedMineController;
 		}
 
-		// Token: 0x06001E5F RID: 7775 RVA: 0x000162D8 File Offset: 0x000144D8
+		// Token: 0x06001DF5 RID: 7669 RVA: 0x00015DF9 File Offset: 0x00013FF9
 		private void Awake()
 		{
 			this.projectileGhostController = base.GetComponent<ProjectileGhostController>();
 			this.stickIndicator.SetActive(false);
 		}
 
-		// Token: 0x06001E60 RID: 7776 RVA: 0x000947AC File Offset: 0x000929AC
+		// Token: 0x06001DF6 RID: 7670 RVA: 0x00093A90 File Offset: 0x00091C90
 		private void FixedUpdate()
 		{
 			bool flag = false;
@@ -44,17 +44,17 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x0400206E RID: 8302
+		// Token: 0x04002030 RID: 8240
 		private ProjectileGhostController projectileGhostController;
 
-		// Token: 0x0400206F RID: 8303
+		// Token: 0x04002031 RID: 8241
 		[Tooltip("Child object which will be enabled if the projectile is armed.")]
 		public GameObject stickIndicator;
 
-		// Token: 0x04002070 RID: 8304
+		// Token: 0x04002032 RID: 8242
 		private EngiMineController cachedMineController;
 
-		// Token: 0x04002071 RID: 8305
+		// Token: 0x04002033 RID: 8243
 		private bool cachedArmed;
 	}
 }

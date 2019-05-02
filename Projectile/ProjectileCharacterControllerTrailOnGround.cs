@@ -3,13 +3,13 @@ using UnityEngine;
 
 namespace RoR2.Projectile
 {
-	// Token: 0x0200054D RID: 1357
+	// Token: 0x0200053E RID: 1342
+	[RequireComponent(typeof(CharacterController))]
 	[RequireComponent(typeof(ProjectileDamage))]
 	[RequireComponent(typeof(ProjectileController))]
-	[RequireComponent(typeof(CharacterController))]
 	public class ProjectileCharacterControllerTrailOnGround : MonoBehaviour
 	{
-		// Token: 0x06001E79 RID: 7801 RVA: 0x000163D7 File Offset: 0x000145D7
+		// Token: 0x06001E0F RID: 7695 RVA: 0x00015EF8 File Offset: 0x000140F8
 		private void Awake()
 		{
 			this.characterController = base.GetComponent<CharacterController>();
@@ -17,7 +17,7 @@ namespace RoR2.Projectile
 			this.projectileDamage = base.GetComponent<ProjectileDamage>();
 		}
 
-		// Token: 0x06001E7A RID: 7802 RVA: 0x00095350 File Offset: 0x00093550
+		// Token: 0x06001E10 RID: 7696 RVA: 0x00094634 File Offset: 0x00092834
 		private void FixedUpdate()
 		{
 			if (this.characterController.isGrounded)
@@ -35,13 +35,13 @@ namespace RoR2.Projectile
 			this.DiscontinueTrail();
 		}
 
-		// Token: 0x06001E7B RID: 7803 RVA: 0x000163FD File Offset: 0x000145FD
+		// Token: 0x06001E11 RID: 7697 RVA: 0x00015F1E File Offset: 0x0001411E
 		private void OnDestroy()
 		{
 			this.DiscontinueTrail();
 		}
 
-		// Token: 0x06001E7C RID: 7804 RVA: 0x00016405 File Offset: 0x00014605
+		// Token: 0x06001E12 RID: 7698 RVA: 0x00015F26 File Offset: 0x00014126
 		private void DiscontinueTrail()
 		{
 			if (this.currentTrailObject)
@@ -51,22 +51,22 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x040020A2 RID: 8354
+		// Token: 0x04002064 RID: 8292
 		public GameObject trailPrefab;
 
-		// Token: 0x040020A3 RID: 8355
+		// Token: 0x04002065 RID: 8293
 		public float damageToTrailDpsFactor = 1f;
 
-		// Token: 0x040020A4 RID: 8356
+		// Token: 0x04002066 RID: 8294
 		private CharacterController characterController;
 
-		// Token: 0x040020A5 RID: 8357
+		// Token: 0x04002067 RID: 8295
 		private ProjectileController projectileController;
 
-		// Token: 0x040020A6 RID: 8358
+		// Token: 0x04002068 RID: 8296
 		private ProjectileDamage projectileDamage;
 
-		// Token: 0x040020A7 RID: 8359
+		// Token: 0x04002069 RID: 8297
 		private GameObject currentTrailObject;
 	}
 }

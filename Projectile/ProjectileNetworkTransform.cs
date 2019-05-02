@@ -4,18 +4,18 @@ using UnityEngine.Networking;
 
 namespace RoR2.Projectile
 {
-	// Token: 0x02000567 RID: 1383
+	// Token: 0x02000558 RID: 1368
 	public class ProjectileNetworkTransform : NetworkBehaviour
 	{
-		// Token: 0x06001EFD RID: 7933 RVA: 0x00016AB0 File Offset: 0x00014CB0
+		// Token: 0x06001E93 RID: 7827 RVA: 0x000165D1 File Offset: 0x000147D1
 		public void SetValuesFromTransform()
 		{
 			this.NetworkserverPosition = this.transform.position;
 			this.NetworkserverRotation = this.transform.rotation;
 		}
 
-		// Token: 0x170002B3 RID: 691
-		// (get) Token: 0x06001EFE RID: 7934 RVA: 0x00016AD4 File Offset: 0x00014CD4
+		// Token: 0x170002A6 RID: 678
+		// (get) Token: 0x06001E94 RID: 7828 RVA: 0x000165F5 File Offset: 0x000147F5
 		private bool isPrediction
 		{
 			get
@@ -24,7 +24,7 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x06001EFF RID: 7935 RVA: 0x00097578 File Offset: 0x00095778
+		// Token: 0x06001E95 RID: 7829 RVA: 0x0009685C File Offset: 0x00094A5C
 		private void Awake()
 		{
 			this.projectileController = base.GetComponent<ProjectileController>();
@@ -34,7 +34,7 @@ namespace RoR2.Projectile
 			this.rb = base.GetComponent<Rigidbody>();
 		}
 
-		// Token: 0x06001F00 RID: 7936 RVA: 0x000975CC File Offset: 0x000957CC
+		// Token: 0x06001E96 RID: 7830 RVA: 0x000968B0 File Offset: 0x00094AB0
 		private void Start()
 		{
 			this.interpolatedPosition.interpDelay = this.GetNetworkSendInterval() * this.interpolationFactor;
@@ -52,27 +52,27 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x06001F01 RID: 7937 RVA: 0x00016AF0 File Offset: 0x00014CF0
+		// Token: 0x06001E97 RID: 7831 RVA: 0x00016611 File Offset: 0x00014811
 		private void OnSyncPosition(Vector3 newPosition)
 		{
 			this.interpolatedPosition.PushValue(newPosition);
 			this.NetworkserverPosition = newPosition;
 		}
 
-		// Token: 0x06001F02 RID: 7938 RVA: 0x00016B05 File Offset: 0x00014D05
+		// Token: 0x06001E98 RID: 7832 RVA: 0x00016626 File Offset: 0x00014826
 		private void OnSyncRotation(Quaternion newRotation)
 		{
 			this.interpolatedRotation.PushValue(newRotation);
 			this.NetworkserverRotation = newRotation;
 		}
 
-		// Token: 0x06001F03 RID: 7939 RVA: 0x00016B1A File Offset: 0x00014D1A
+		// Token: 0x06001E99 RID: 7833 RVA: 0x0001663B File Offset: 0x0001483B
 		public override float GetNetworkSendInterval()
 		{
 			return this.positionTransmitInterval;
 		}
 
-		// Token: 0x06001F04 RID: 7940 RVA: 0x00097664 File Offset: 0x00095864
+		// Token: 0x06001E9A RID: 7834 RVA: 0x00096948 File Offset: 0x00094B48
 		private void FixedUpdate()
 		{
 			if (base.isServer)
@@ -89,7 +89,7 @@ namespace RoR2.Projectile
 			this.ApplyPositionAndRotation(currentValue, currentValue2);
 		}
 
-		// Token: 0x06001F05 RID: 7941 RVA: 0x00016B22 File Offset: 0x00014D22
+		// Token: 0x06001E9B RID: 7835 RVA: 0x00016643 File Offset: 0x00014843
 		private void ApplyPositionAndRotation(Vector3 position, Quaternion rotation)
 		{
 			if (this.rb)
@@ -102,14 +102,14 @@ namespace RoR2.Projectile
 			this.transform.rotation = rotation;
 		}
 
-		// Token: 0x06001F07 RID: 7943 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06001E9D RID: 7837 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x170002B4 RID: 692
-		// (get) Token: 0x06001F08 RID: 7944 RVA: 0x000976F8 File Offset: 0x000958F8
-		// (set) Token: 0x06001F09 RID: 7945 RVA: 0x00016B80 File Offset: 0x00014D80
+		// Token: 0x170002A7 RID: 679
+		// (get) Token: 0x06001E9E RID: 7838 RVA: 0x000969DC File Offset: 0x00094BDC
+		// (set) Token: 0x06001E9F RID: 7839 RVA: 0x000166A1 File Offset: 0x000148A1
 		public Vector3 NetworkserverPosition
 		{
 			get
@@ -129,9 +129,9 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x170002B5 RID: 693
-		// (get) Token: 0x06001F0A RID: 7946 RVA: 0x0009770C File Offset: 0x0009590C
-		// (set) Token: 0x06001F0B RID: 7947 RVA: 0x00016BBF File Offset: 0x00014DBF
+		// Token: 0x170002A8 RID: 680
+		// (get) Token: 0x06001EA0 RID: 7840 RVA: 0x000969F0 File Offset: 0x00094BF0
+		// (set) Token: 0x06001EA1 RID: 7841 RVA: 0x000166E0 File Offset: 0x000148E0
 		public Quaternion NetworkserverRotation
 		{
 			get
@@ -151,7 +151,7 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x06001F0C RID: 7948 RVA: 0x00097720 File Offset: 0x00095920
+		// Token: 0x06001EA2 RID: 7842 RVA: 0x00096A04 File Offset: 0x00094C04
 		public override bool OnSerialize(NetworkWriter writer, bool forceAll)
 		{
 			if (forceAll)
@@ -186,7 +186,7 @@ namespace RoR2.Projectile
 			return flag;
 		}
 
-		// Token: 0x06001F0D RID: 7949 RVA: 0x000977CC File Offset: 0x000959CC
+		// Token: 0x06001EA3 RID: 7843 RVA: 0x00096AB0 File Offset: 0x00094CB0
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 			if (initialState)
@@ -206,35 +206,35 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x0400215C RID: 8540
+		// Token: 0x0400211E RID: 8478
 		private ProjectileController projectileController;
 
-		// Token: 0x0400215D RID: 8541
+		// Token: 0x0400211F RID: 8479
 		private new Transform transform;
 
-		// Token: 0x0400215E RID: 8542
+		// Token: 0x04002120 RID: 8480
 		private Rigidbody rb;
 
-		// Token: 0x0400215F RID: 8543
+		// Token: 0x04002121 RID: 8481
 		[Tooltip("The delay in seconds between position network updates.")]
 		public float positionTransmitInterval = 0.0333333351f;
 
-		// Token: 0x04002160 RID: 8544
+		// Token: 0x04002122 RID: 8482
 		[Tooltip("The number of packets of buffers to have.")]
 		public float interpolationFactor = 1f;
 
-		// Token: 0x04002161 RID: 8545
+		// Token: 0x04002123 RID: 8483
 		[SyncVar(hook = "OnSyncPosition")]
 		private Vector3 serverPosition;
 
-		// Token: 0x04002162 RID: 8546
+		// Token: 0x04002124 RID: 8484
 		[SyncVar(hook = "OnSyncRotation")]
 		private Quaternion serverRotation;
 
-		// Token: 0x04002163 RID: 8547
+		// Token: 0x04002125 RID: 8485
 		private NetworkLerpedVector3 interpolatedPosition;
 
-		// Token: 0x04002164 RID: 8548
+		// Token: 0x04002126 RID: 8486
 		private NetworkLerpedQuaternion interpolatedRotation;
 	}
 }

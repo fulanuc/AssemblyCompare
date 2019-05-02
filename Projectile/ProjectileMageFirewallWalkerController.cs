@@ -4,12 +4,12 @@ using UnityEngine.Networking;
 
 namespace RoR2.Projectile
 {
-	// Token: 0x02000560 RID: 1376
+	// Token: 0x02000551 RID: 1361
 	[RequireComponent(typeof(ProjectileController))]
 	[RequireComponent(typeof(ProjectileDamage))]
 	public class ProjectileMageFirewallWalkerController : MonoBehaviour
 	{
-		// Token: 0x06001ECF RID: 7887 RVA: 0x00096A30 File Offset: 0x00094C30
+		// Token: 0x06001E65 RID: 7781 RVA: 0x00095D14 File Offset: 0x00093F14
 		private void Awake()
 		{
 			this.projectileController = base.GetComponent<ProjectileController>();
@@ -19,7 +19,7 @@ namespace RoR2.Projectile
 			this.moveSign = 1f;
 		}
 
-		// Token: 0x06001ED0 RID: 7888 RVA: 0x00096A84 File Offset: 0x00094C84
+		// Token: 0x06001E66 RID: 7782 RVA: 0x00095D68 File Offset: 0x00093F68
 		private void Start()
 		{
 			if (this.projectileController.owner)
@@ -35,7 +35,7 @@ namespace RoR2.Projectile
 			this.UpdateDirections();
 		}
 
-		// Token: 0x06001ED1 RID: 7889 RVA: 0x00096B14 File Offset: 0x00094D14
+		// Token: 0x06001E67 RID: 7783 RVA: 0x00095DF8 File Offset: 0x00093FF8
 		private void UpdateDirections()
 		{
 			if (!this.curveToCenter)
@@ -53,7 +53,7 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x06001ED2 RID: 7890 RVA: 0x00096BB0 File Offset: 0x00094DB0
+		// Token: 0x06001E68 RID: 7784 RVA: 0x00095E94 File Offset: 0x00094094
 		private void FixedUpdate()
 		{
 			if (this.projectileController.owner)
@@ -75,34 +75,34 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x0400212C RID: 8492
+		// Token: 0x040020EE RID: 8430
 		public float dropInterval = 0.15f;
 
-		// Token: 0x0400212D RID: 8493
+		// Token: 0x040020EF RID: 8431
 		public GameObject firePillarPrefab;
 
-		// Token: 0x0400212E RID: 8494
+		// Token: 0x040020F0 RID: 8432
 		public float pillarAngle = 45f;
 
-		// Token: 0x0400212F RID: 8495
+		// Token: 0x040020F1 RID: 8433
 		public bool curveToCenter = true;
 
-		// Token: 0x04002130 RID: 8496
+		// Token: 0x040020F2 RID: 8434
 		private float moveSign;
 
-		// Token: 0x04002131 RID: 8497
+		// Token: 0x040020F3 RID: 8435
 		private ProjectileController projectileController;
 
-		// Token: 0x04002132 RID: 8498
+		// Token: 0x040020F4 RID: 8436
 		private ProjectileDamage projectileDamage;
 
-		// Token: 0x04002133 RID: 8499
+		// Token: 0x040020F5 RID: 8437
 		private Vector3 lastCenterPosition;
 
-		// Token: 0x04002134 RID: 8500
+		// Token: 0x040020F6 RID: 8438
 		private float timer;
 
-		// Token: 0x04002135 RID: 8501
+		// Token: 0x040020F7 RID: 8439
 		private Vector3 currentPillarVector = Vector3.up;
 	}
 }

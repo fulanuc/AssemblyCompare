@@ -4,13 +4,13 @@ using UnityEngine.Networking;
 
 namespace RoR2.Projectile
 {
-	// Token: 0x02000568 RID: 1384
-	[RequireComponent(typeof(ProjectileDamage))]
+	// Token: 0x02000559 RID: 1369
 	[RequireComponent(typeof(HitBoxGroup))]
 	[RequireComponent(typeof(ProjectileController))]
+	[RequireComponent(typeof(ProjectileDamage))]
 	public class ProjectileOverlapAttack : MonoBehaviour, IProjectileImpactBehavior
 	{
-		// Token: 0x06001F0E RID: 7950 RVA: 0x00097834 File Offset: 0x00095A34
+		// Token: 0x06001EA4 RID: 7844 RVA: 0x00096B18 File Offset: 0x00094D18
 		private void Start()
 		{
 			this.projectileController = base.GetComponent<ProjectileController>();
@@ -31,12 +31,12 @@ namespace RoR2.Projectile
 			this.attack.hitBoxGroup = base.GetComponent<HitBoxGroup>();
 		}
 
-		// Token: 0x06001F0F RID: 7951 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06001EA5 RID: 7845 RVA: 0x000025F6 File Offset: 0x000007F6
 		public void OnProjectileImpact(ProjectileImpactInfo impactInfo)
 		{
 		}
 
-		// Token: 0x06001F10 RID: 7952 RVA: 0x000979A4 File Offset: 0x00095BA4
+		// Token: 0x06001EA6 RID: 7846 RVA: 0x00096C88 File Offset: 0x00094E88
 		public void FixedUpdate()
 		{
 			if (NetworkServer.active)
@@ -54,32 +54,32 @@ namespace RoR2.Projectile
 			}
 		}
 
-		// Token: 0x04002165 RID: 8549
+		// Token: 0x04002127 RID: 8487
 		private ProjectileController projectileController;
 
-		// Token: 0x04002166 RID: 8550
+		// Token: 0x04002128 RID: 8488
 		private ProjectileDamage projectileDamage;
 
-		// Token: 0x04002167 RID: 8551
+		// Token: 0x04002129 RID: 8489
 		public float damageCoefficient;
 
-		// Token: 0x04002168 RID: 8552
+		// Token: 0x0400212A RID: 8490
 		public GameObject impactEffect;
 
-		// Token: 0x04002169 RID: 8553
+		// Token: 0x0400212B RID: 8491
 		public Vector3 forceVector;
 
-		// Token: 0x0400216A RID: 8554
+		// Token: 0x0400212C RID: 8492
 		public float overlapProcCoefficient = 1f;
 
-		// Token: 0x0400216B RID: 8555
+		// Token: 0x0400212D RID: 8493
 		private OverlapAttack attack;
 
-		// Token: 0x0400216C RID: 8556
+		// Token: 0x0400212E RID: 8494
 		[Tooltip("If non-negative, the attack clears its hit memory at the specified interval.")]
 		public float resetInterval = -1f;
 
-		// Token: 0x0400216D RID: 8557
+		// Token: 0x0400212F RID: 8495
 		private float resetTimer;
 	}
 }
