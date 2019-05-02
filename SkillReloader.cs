@@ -5,23 +5,23 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x020003EC RID: 1004
+	// Token: 0x020003E6 RID: 998
 	[RequireComponent(typeof(NetworkIdentity))]
 	public class SkillReloader : MonoBehaviour
 	{
-		// Token: 0x0600160B RID: 5643 RVA: 0x000109A4 File Offset: 0x0000EBA4
+		// Token: 0x060015CE RID: 5582 RVA: 0x0001059B File Offset: 0x0000E79B
 		private void Awake()
 		{
 			this.networkIdentity = base.GetComponent<NetworkIdentity>();
 		}
 
-		// Token: 0x0600160C RID: 5644 RVA: 0x000109B2 File Offset: 0x0000EBB2
+		// Token: 0x060015CF RID: 5583 RVA: 0x000105A9 File Offset: 0x0000E7A9
 		private void Start()
 		{
 			this.timer = 0f;
 		}
 
-		// Token: 0x0600160D RID: 5645 RVA: 0x000752B4 File Offset: 0x000734B4
+		// Token: 0x060015D0 RID: 5584 RVA: 0x00074C7C File Offset: 0x00072E7C
 		private void FixedUpdate()
 		{
 			if (Util.HasEffectiveAuthority(this.networkIdentity))
@@ -42,22 +42,22 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04001942 RID: 6466
+		// Token: 0x04001919 RID: 6425
 		private NetworkIdentity networkIdentity;
 
-		// Token: 0x04001943 RID: 6467
+		// Token: 0x0400191A RID: 6426
 		public GenericSkill skill;
 
-		// Token: 0x04001944 RID: 6468
+		// Token: 0x0400191B RID: 6427
 		public EntityStateMachine stateMachine;
 
-		// Token: 0x04001945 RID: 6469
+		// Token: 0x0400191C RID: 6428
 		public SerializableEntityStateType reloadState;
 
-		// Token: 0x04001946 RID: 6470
+		// Token: 0x0400191D RID: 6429
 		public float reloadDelay = 0.2f;
 
-		// Token: 0x04001947 RID: 6471
+		// Token: 0x0400191E RID: 6430
 		private float timer;
 	}
 }

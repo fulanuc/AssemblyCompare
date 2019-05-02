@@ -7,10 +7,10 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x02000399 RID: 921
+	// Token: 0x02000394 RID: 916
 	public class PreGameRuleVoteController : NetworkBehaviour
 	{
-		// Token: 0x06001375 RID: 4981 RVA: 0x0006C8DC File Offset: 0x0006AADC
+		// Token: 0x06001358 RID: 4952 RVA: 0x0006C6C4 File Offset: 0x0006A8C4
 		public static PreGameRuleVoteController FindForUser(NetworkUser networkUser)
 		{
 			GameObject gameObject = networkUser.gameObject;
@@ -25,11 +25,11 @@ namespace RoR2
 		}
 
 		// Token: 0x1400001C RID: 28
-		// (add) Token: 0x06001376 RID: 4982 RVA: 0x0006C958 File Offset: 0x0006AB58
-		// (remove) Token: 0x06001377 RID: 4983 RVA: 0x0006C98C File Offset: 0x0006AB8C
+		// (add) Token: 0x06001359 RID: 4953 RVA: 0x0006C740 File Offset: 0x0006A940
+		// (remove) Token: 0x0600135A RID: 4954 RVA: 0x0006C774 File Offset: 0x0006A974
 		public static event Action onVotesUpdated;
 
-		// Token: 0x06001378 RID: 4984 RVA: 0x0000EE9C File Offset: 0x0000D09C
+		// Token: 0x0600135B RID: 4955 RVA: 0x0000ECDF File Offset: 0x0000CEDF
 		private void Start()
 		{
 			if (RoR2Application.isInSinglePlayer)
@@ -42,7 +42,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001379 RID: 4985 RVA: 0x0006C9C0 File Offset: 0x0006ABC0
+		// Token: 0x0600135C RID: 4956 RVA: 0x0006C7A8 File Offset: 0x0006A9A8
 		private void Update()
 		{
 			if (NetworkServer.active && !this.networkUserNetworkIdentity)
@@ -62,7 +62,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600137A RID: 4986 RVA: 0x0006CA14 File Offset: 0x0006AC14
+		// Token: 0x0600135D RID: 4957 RVA: 0x0006C7FC File Offset: 0x0006A9FC
 		[Client]
 		private void ClientTransmitVotesToServer()
 		{
@@ -91,7 +91,7 @@ namespace RoR2
 			component.connectionToServer.SendWriter(networkWriter, QosChannelIndex.defaultReliable.intVal);
 		}
 
-		// Token: 0x0600137B RID: 4987 RVA: 0x0006CAB8 File Offset: 0x0006ACB8
+		// Token: 0x0600135E RID: 4958 RVA: 0x0006C8A0 File Offset: 0x0006AAA0
 		[NetworkMessageHandler(msgType = 70, client = false, server = true)]
 		public static void ServerHandleClientVoteUpdate(NetworkMessage netMsg)
 		{
@@ -141,7 +141,7 @@ namespace RoR2
 			component.ReadVotes(netMsg.reader);
 		}
 
-		// Token: 0x0600137C RID: 4988 RVA: 0x0006CBE4 File Offset: 0x0006ADE4
+		// Token: 0x0600135F RID: 4959 RVA: 0x0006C9CC File Offset: 0x0006ABCC
 		public void SetVote(int ruleIndex, int choiceValue)
 		{
 			PreGameRuleVoteController.Vote vote = this.votes[ruleIndex];
@@ -161,7 +161,7 @@ namespace RoR2
 			PreGameRuleVoteController.shouldUpdateGameVotes = true;
 		}
 
-		// Token: 0x0600137D RID: 4989 RVA: 0x0006CC54 File Offset: 0x0006AE54
+		// Token: 0x06001360 RID: 4960 RVA: 0x0006CA3C File Offset: 0x0006AC3C
 		private static void UpdateGameVotes()
 		{
 			int i = 0;
@@ -234,13 +234,13 @@ namespace RoR2
 			action();
 		}
 
-		// Token: 0x0600137E RID: 4990 RVA: 0x0000EEB7 File Offset: 0x0000D0B7
+		// Token: 0x06001361 RID: 4961 RVA: 0x0000ECFA File Offset: 0x0000CEFA
 		private void Awake()
 		{
 			PreGameRuleVoteController.instancesList.Add(this);
 		}
 
-		// Token: 0x0600137F RID: 4991 RVA: 0x0006CE20 File Offset: 0x0006B020
+		// Token: 0x06001362 RID: 4962 RVA: 0x0006CC08 File Offset: 0x0006AE08
 		private void OnDestroy()
 		{
 			int i = 0;
@@ -253,7 +253,7 @@ namespace RoR2
 			PreGameRuleVoteController.instancesList.Remove(this);
 		}
 
-		// Token: 0x06001380 RID: 4992 RVA: 0x0006CE54 File Offset: 0x0006B054
+		// Token: 0x06001363 RID: 4963 RVA: 0x0006CC3C File Offset: 0x0006AE3C
 		public override bool OnSerialize(NetworkWriter writer, bool initialState)
 		{
 			uint num = base.syncVarDirtyBits;
@@ -275,7 +275,7 @@ namespace RoR2
 			return !initialState && num > 0u;
 		}
 
-		// Token: 0x06001381 RID: 4993 RVA: 0x0006CEA4 File Offset: 0x0006B0A4
+		// Token: 0x06001364 RID: 4964 RVA: 0x0006CC8C File Offset: 0x0006AE8C
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 			byte b = reader.ReadByte();
@@ -291,13 +291,13 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001382 RID: 4994 RVA: 0x0000EEC4 File Offset: 0x0000D0C4
+		// Token: 0x06001365 RID: 4965 RVA: 0x0000ED07 File Offset: 0x0000CF07
 		private RuleChoiceDef GetDefaultChoice(RuleDef ruleDef)
 		{
 			return ruleDef.choices[PreGameController.instance.readOnlyRuleBook.GetRuleChoiceIndex(ruleDef)];
 		}
 
-		// Token: 0x06001383 RID: 4995 RVA: 0x0006CEDC File Offset: 0x0006B0DC
+		// Token: 0x06001366 RID: 4966 RVA: 0x0006CCC4 File Offset: 0x0006AEC4
 		private void SetVotesFromRuleBookForSinglePlayer()
 		{
 			for (int i = 0; i < this.votes.Length; i++)
@@ -308,7 +308,7 @@ namespace RoR2
 			base.SetDirtyBit(2u);
 		}
 
-		// Token: 0x06001384 RID: 4996 RVA: 0x0006CF28 File Offset: 0x0006B128
+		// Token: 0x06001367 RID: 4967 RVA: 0x0006CD10 File Offset: 0x0006AF10
 		private void WriteVotes(NetworkWriter writer)
 		{
 			int i = 0;
@@ -331,7 +331,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001385 RID: 4997 RVA: 0x0006CFA8 File Offset: 0x0006B1A8
+		// Token: 0x06001368 RID: 4968 RVA: 0x0006CD90 File Offset: 0x0006AF90
 		private void ReadVotes(NetworkReader reader)
 		{
 			reader.ReadRuleMask(this.ruleMaskBuffer);
@@ -362,13 +362,13 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001386 RID: 4998 RVA: 0x0000EEE1 File Offset: 0x0000D0E1
+		// Token: 0x06001369 RID: 4969 RVA: 0x0000ED24 File Offset: 0x0000CF24
 		public bool IsChoiceVoted(RuleChoiceDef ruleChoiceDef)
 		{
 			return this.votes[ruleChoiceDef.ruleDef.globalIndex].choiceValue == ruleChoiceDef.localIndex;
 		}
 
-		// Token: 0x06001387 RID: 4999 RVA: 0x0000EF06 File Offset: 0x0000D106
+		// Token: 0x0600136A RID: 4970 RVA: 0x0000ED49 File Offset: 0x0000CF49
 		static PreGameRuleVoteController()
 		{
 			PreGameController.onServerRecalculatedModifierAvailability += delegate(PreGameController controller)
@@ -377,47 +377,47 @@ namespace RoR2
 			};
 		}
 
-		// Token: 0x06001389 RID: 5001 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x0600136C RID: 4972 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x0400170D RID: 5901
+		// Token: 0x040016F1 RID: 5873
 		private static readonly List<PreGameRuleVoteController> instancesList = new List<PreGameRuleVoteController>();
 
-		// Token: 0x0400170F RID: 5903
+		// Token: 0x040016F3 RID: 5875
 		private const byte networkUserIdentityDirtyBit = 1;
 
-		// Token: 0x04001710 RID: 5904
+		// Token: 0x040016F4 RID: 5876
 		private const byte votesDirtyBit = 2;
 
-		// Token: 0x04001711 RID: 5905
+		// Token: 0x040016F5 RID: 5877
 		private const byte allDirtyBits = 3;
 
-		// Token: 0x04001712 RID: 5906
+		// Token: 0x040016F6 RID: 5878
 		private PreGameRuleVoteController.Vote[] votes = new PreGameRuleVoteController.Vote[RuleCatalog.ruleCount];
 
-		// Token: 0x04001713 RID: 5907
+		// Token: 0x040016F7 RID: 5879
 		public static int[] votesForEachChoice = new int[RuleCatalog.choiceCount];
 
-		// Token: 0x04001714 RID: 5908
+		// Token: 0x040016F8 RID: 5880
 		private bool clientShouldTransmit;
 
-		// Token: 0x04001715 RID: 5909
+		// Token: 0x040016F9 RID: 5881
 		public NetworkIdentity networkUserNetworkIdentity;
 
-		// Token: 0x04001716 RID: 5910
+		// Token: 0x040016FA RID: 5882
 		private static bool shouldUpdateGameVotes;
 
-		// Token: 0x04001717 RID: 5911
+		// Token: 0x040016FB RID: 5883
 		private readonly RuleMask ruleMaskBuffer = new RuleMask();
 
-		// Token: 0x0200039A RID: 922
+		// Token: 0x02000395 RID: 917
 		[Serializable]
 		private struct Vote
 		{
-			// Token: 0x170001B9 RID: 441
-			// (get) Token: 0x0600138A RID: 5002 RVA: 0x0000EF59 File Offset: 0x0000D159
+			// Token: 0x170001B4 RID: 436
+			// (get) Token: 0x0600136D RID: 4973 RVA: 0x0000ED9C File Offset: 0x0000CF9C
 			public bool hasVoted
 			{
 				get
@@ -426,9 +426,9 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x170001BA RID: 442
-			// (get) Token: 0x0600138B RID: 5003 RVA: 0x0000EF64 File Offset: 0x0000D164
-			// (set) Token: 0x0600138C RID: 5004 RVA: 0x0000EF6E File Offset: 0x0000D16E
+			// Token: 0x170001B5 RID: 437
+			// (get) Token: 0x0600136E RID: 4974 RVA: 0x0000EDA7 File Offset: 0x0000CFA7
+			// (set) Token: 0x0600136F RID: 4975 RVA: 0x0000EDB1 File Offset: 0x0000CFB1
 			public int choiceValue
 			{
 				get
@@ -441,13 +441,13 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x0600138D RID: 5005 RVA: 0x0000EF7A File Offset: 0x0000D17A
+			// Token: 0x06001370 RID: 4976 RVA: 0x0000EDBD File Offset: 0x0000CFBD
 			public static void Serialize(NetworkWriter writer, PreGameRuleVoteController.Vote vote)
 			{
 				writer.Write(vote.internalValue);
 			}
 
-			// Token: 0x0600138E RID: 5006 RVA: 0x0006D03C File Offset: 0x0006B23C
+			// Token: 0x06001371 RID: 4977 RVA: 0x0006CE24 File Offset: 0x0006B024
 			public static PreGameRuleVoteController.Vote Deserialize(NetworkReader reader)
 			{
 				return new PreGameRuleVoteController.Vote
@@ -456,7 +456,7 @@ namespace RoR2
 				};
 			}
 
-			// Token: 0x04001718 RID: 5912
+			// Token: 0x040016FC RID: 5884
 			[SerializeField]
 			private byte internalValue;
 		}

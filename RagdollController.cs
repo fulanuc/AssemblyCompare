@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x020003A7 RID: 935
+	// Token: 0x020003A2 RID: 930
 	public class RagdollController : MonoBehaviour
 	{
-		// Token: 0x060013E3 RID: 5091 RVA: 0x0006E480 File Offset: 0x0006C680
+		// Token: 0x060013C6 RID: 5062 RVA: 0x0006E278 File Offset: 0x0006C478
 		private void Start()
 		{
 			this.animator = base.GetComponent<Animator>();
@@ -27,7 +27,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060013E4 RID: 5092 RVA: 0x0006E4E0 File Offset: 0x0006C6E0
+		// Token: 0x060013C7 RID: 5063 RVA: 0x0006E2D8 File Offset: 0x0006C4D8
 		public void BeginRagdoll(Vector3 force)
 		{
 			if (this.animator)
@@ -52,13 +52,13 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04001770 RID: 6000
+		// Token: 0x04001756 RID: 5974
 		public Transform[] bones;
 
-		// Token: 0x04001771 RID: 6001
+		// Token: 0x04001757 RID: 5975
 		public MonoBehaviour[] componentsToDisableOnRagdoll;
 
-		// Token: 0x04001772 RID: 6002
+		// Token: 0x04001758 RID: 5976
 		private Animator animator;
 	}
 }

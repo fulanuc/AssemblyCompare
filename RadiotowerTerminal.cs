@@ -5,10 +5,10 @@ using UnityEngine.SceneManagement;
 
 namespace RoR2
 {
-	// Token: 0x020003A6 RID: 934
+	// Token: 0x020003A1 RID: 929
 	public class RadiotowerTerminal : NetworkBehaviour
 	{
-		// Token: 0x060013D9 RID: 5081 RVA: 0x0000F28B File Offset: 0x0000D48B
+		// Token: 0x060013BC RID: 5052 RVA: 0x0000F0E7 File Offset: 0x0000D2E7
 		private void SetHasBeenPurchased(bool newHasBeenPurchased)
 		{
 			if (this.hasBeenPurchased != newHasBeenPurchased)
@@ -17,7 +17,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060013DA RID: 5082 RVA: 0x0000F29D File Offset: 0x0000D49D
+		// Token: 0x060013BD RID: 5053 RVA: 0x0000F0F9 File Offset: 0x0000D2F9
 		public void Start()
 		{
 			if (NetworkServer.active)
@@ -27,13 +27,13 @@ namespace RoR2
 			bool active = NetworkClient.active;
 		}
 
-		// Token: 0x060013DB RID: 5083 RVA: 0x0006E2BC File Offset: 0x0006C4BC
+		// Token: 0x060013BE RID: 5054 RVA: 0x0006E0B4 File Offset: 0x0006C2B4
 		private void FindStageLogUnlockable()
 		{
 			this.unlockableName = SceneCatalog.GetUnlockableLogFromSceneName(SceneManager.GetActiveScene().name);
 		}
 
-		// Token: 0x060013DC RID: 5084 RVA: 0x0006E2E4 File Offset: 0x0006C4E4
+		// Token: 0x060013BF RID: 5055 RVA: 0x0006E0DC File Offset: 0x0006C2DC
 		[Server]
 		public void GrantUnlock(Interactor interactor)
 		{
@@ -68,14 +68,14 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060013DE RID: 5086 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x060013C1 RID: 5057 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x170001BE RID: 446
-		// (get) Token: 0x060013DF RID: 5087 RVA: 0x0006E3BC File Offset: 0x0006C5BC
-		// (set) Token: 0x060013E0 RID: 5088 RVA: 0x0000F2B2 File Offset: 0x0000D4B2
+		// Token: 0x170001B9 RID: 441
+		// (get) Token: 0x060013C2 RID: 5058 RVA: 0x0006E1B4 File Offset: 0x0006C3B4
+		// (set) Token: 0x060013C3 RID: 5059 RVA: 0x0000F10E File Offset: 0x0000D30E
 		public bool NetworkhasBeenPurchased
 		{
 			get
@@ -95,7 +95,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060013E1 RID: 5089 RVA: 0x0006E3D0 File Offset: 0x0006C5D0
+		// Token: 0x060013C4 RID: 5060 RVA: 0x0006E1C8 File Offset: 0x0006C3C8
 		public override bool OnSerialize(NetworkWriter writer, bool forceAll)
 		{
 			if (forceAll)
@@ -120,7 +120,7 @@ namespace RoR2
 			return flag;
 		}
 
-		// Token: 0x060013E2 RID: 5090 RVA: 0x0006E43C File Offset: 0x0006C63C
+		// Token: 0x060013C5 RID: 5061 RVA: 0x0006E234 File Offset: 0x0006C434
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 			if (initialState)
@@ -135,17 +135,17 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0400176C RID: 5996
+		// Token: 0x04001752 RID: 5970
 		[SyncVar(hook = "SetHasBeenPurchased")]
 		private bool hasBeenPurchased;
 
-		// Token: 0x0400176D RID: 5997
+		// Token: 0x04001753 RID: 5971
 		private string unlockableName;
 
-		// Token: 0x0400176E RID: 5998
+		// Token: 0x04001754 RID: 5972
 		public string unlockSoundString;
 
-		// Token: 0x0400176F RID: 5999
+		// Token: 0x04001755 RID: 5973
 		public GameObject unlockEffect;
 	}
 }

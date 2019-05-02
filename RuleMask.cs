@@ -4,15 +4,15 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x02000486 RID: 1158
+	// Token: 0x02000479 RID: 1145
 	public class RuleMask : SerializableBitArray
 	{
-		// Token: 0x060019FB RID: 6651 RVA: 0x00013511 File Offset: 0x00011711
+		// Token: 0x06001999 RID: 6553 RVA: 0x00012FE3 File Offset: 0x000111E3
 		public RuleMask() : base(RuleCatalog.ruleCount)
 		{
 		}
 
-		// Token: 0x060019FC RID: 6652 RVA: 0x000849D8 File Offset: 0x00082BD8
+		// Token: 0x0600199A RID: 6554 RVA: 0x00083F6C File Offset: 0x0008216C
 		public void Serialize(NetworkWriter writer)
 		{
 			for (int i = 0; i < this.bytes.Length; i++)
@@ -21,7 +21,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060019FD RID: 6653 RVA: 0x00084A08 File Offset: 0x00082C08
+		// Token: 0x0600199B RID: 6555 RVA: 0x00083F9C File Offset: 0x0008219C
 		public void Deserialize(NetworkReader reader)
 		{
 			for (int i = 0; i < this.bytes.Length; i++)
@@ -30,7 +30,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060019FE RID: 6654 RVA: 0x00084A38 File Offset: 0x00082C38
+		// Token: 0x0600199C RID: 6556 RVA: 0x00083FCC File Offset: 0x000821CC
 		public override bool Equals(object obj)
 		{
 			RuleMask ruleMask = obj as RuleMask;
@@ -47,7 +47,7 @@ namespace RoR2
 			return true;
 		}
 
-		// Token: 0x060019FF RID: 6655 RVA: 0x00084A78 File Offset: 0x00082C78
+		// Token: 0x0600199D RID: 6557 RVA: 0x0008400C File Offset: 0x0008220C
 		public override int GetHashCode()
 		{
 			int num = 0;
@@ -58,7 +58,7 @@ namespace RoR2
 			return num;
 		}
 
-		// Token: 0x06001A00 RID: 6656 RVA: 0x00084AA8 File Offset: 0x00082CA8
+		// Token: 0x0600199E RID: 6558 RVA: 0x0008403C File Offset: 0x0008223C
 		public void Copy([NotNull] RuleMask src)
 		{
 			byte[] bytes = src.bytes;

@@ -4,17 +4,17 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x020003FA RID: 1018
+	// Token: 0x020003F4 RID: 1012
 	[RequireComponent(typeof(BezierCurveLine))]
 	public class TarTetherController : NetworkBehaviour
 	{
-		// Token: 0x0600166D RID: 5741 RVA: 0x00010CEE File Offset: 0x0000EEEE
+		// Token: 0x0600162D RID: 5677 RVA: 0x000108D5 File Offset: 0x0000EAD5
 		private void Awake()
 		{
 			this.bezierCurveLine = base.GetComponent<BezierCurveLine>();
 		}
 
-		// Token: 0x0600166E RID: 5742 RVA: 0x00076A0C File Offset: 0x00074C0C
+		// Token: 0x0600162E RID: 5678 RVA: 0x000763D4 File Offset: 0x000745D4
 		private void DoDamageTick(bool mulch)
 		{
 			if (!this.targetHealthComponent)
@@ -56,7 +56,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600166F RID: 5743 RVA: 0x00076B54 File Offset: 0x00074D54
+		// Token: 0x0600162F RID: 5679 RVA: 0x0007651C File Offset: 0x0007471C
 		private Vector3 GetTargetRootPosition()
 		{
 			if (this.targetRoot)
@@ -71,7 +71,7 @@ namespace RoR2
 			return base.transform.position;
 		}
 
-		// Token: 0x06001670 RID: 5744 RVA: 0x00076BAC File Offset: 0x00074DAC
+		// Token: 0x06001630 RID: 5680 RVA: 0x00076574 File Offset: 0x00074774
 		private void Update()
 		{
 			this.age += Time.deltaTime;
@@ -88,7 +88,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001671 RID: 5745 RVA: 0x00076C40 File Offset: 0x00074E40
+		// Token: 0x06001631 RID: 5681 RVA: 0x00076608 File Offset: 0x00074808
 		private void FixedUpdate()
 		{
 			this.fixedAge += Time.fixedDeltaTime;
@@ -140,14 +140,14 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001673 RID: 5747 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06001633 RID: 5683 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x17000205 RID: 517
-		// (get) Token: 0x06001674 RID: 5748 RVA: 0x00076DC0 File Offset: 0x00074FC0
-		// (set) Token: 0x06001675 RID: 5749 RVA: 0x00010D0F File Offset: 0x0000EF0F
+		// Token: 0x170001FC RID: 508
+		// (get) Token: 0x06001634 RID: 5684 RVA: 0x00076788 File Offset: 0x00074988
+		// (set) Token: 0x06001635 RID: 5685 RVA: 0x000108F6 File Offset: 0x0000EAF6
 		public GameObject NetworktargetRoot
 		{
 			get
@@ -160,9 +160,9 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x17000206 RID: 518
-		// (get) Token: 0x06001676 RID: 5750 RVA: 0x00076DD4 File Offset: 0x00074FD4
-		// (set) Token: 0x06001677 RID: 5751 RVA: 0x00010D29 File Offset: 0x0000EF29
+		// Token: 0x170001FD RID: 509
+		// (get) Token: 0x06001636 RID: 5686 RVA: 0x0007679C File Offset: 0x0007499C
+		// (set) Token: 0x06001637 RID: 5687 RVA: 0x00010910 File Offset: 0x0000EB10
 		public GameObject NetworkownerRoot
 		{
 			get
@@ -175,7 +175,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001678 RID: 5752 RVA: 0x00076DE8 File Offset: 0x00074FE8
+		// Token: 0x06001638 RID: 5688 RVA: 0x000767B0 File Offset: 0x000749B0
 		public override bool OnSerialize(NetworkWriter writer, bool forceAll)
 		{
 			if (forceAll)
@@ -210,7 +210,7 @@ namespace RoR2
 			return flag;
 		}
 
-		// Token: 0x06001679 RID: 5753 RVA: 0x00076E94 File Offset: 0x00075094
+		// Token: 0x06001639 RID: 5689 RVA: 0x0007685C File Offset: 0x00074A5C
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 			if (initialState)
@@ -230,7 +230,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600167A RID: 5754 RVA: 0x00076EFC File Offset: 0x000750FC
+		// Token: 0x0600163A RID: 5690 RVA: 0x000768C4 File Offset: 0x00074AC4
 		public override void PreStartClient()
 		{
 			if (!this.___targetRootNetId.IsEmpty())
@@ -243,73 +243,73 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0400199F RID: 6559
+		// Token: 0x04001976 RID: 6518
 		[SyncVar]
 		public GameObject targetRoot;
 
-		// Token: 0x040019A0 RID: 6560
+		// Token: 0x04001977 RID: 6519
 		[SyncVar]
 		public GameObject ownerRoot;
 
-		// Token: 0x040019A1 RID: 6561
+		// Token: 0x04001978 RID: 6520
 		public float reelSpeed = 12f;
 
-		// Token: 0x040019A2 RID: 6562
+		// Token: 0x04001979 RID: 6521
 		[NonSerialized]
 		public float mulchDistanceSqr;
 
-		// Token: 0x040019A3 RID: 6563
+		// Token: 0x0400197A RID: 6522
 		[NonSerialized]
 		public float breakDistanceSqr;
 
-		// Token: 0x040019A4 RID: 6564
+		// Token: 0x0400197B RID: 6523
 		[NonSerialized]
 		public float mulchDamageScale;
 
-		// Token: 0x040019A5 RID: 6565
+		// Token: 0x0400197C RID: 6524
 		[NonSerialized]
 		public float mulchTickIntervalScale;
 
-		// Token: 0x040019A6 RID: 6566
+		// Token: 0x0400197D RID: 6525
 		[NonSerialized]
 		public float damageCoefficientPerTick;
 
-		// Token: 0x040019A7 RID: 6567
+		// Token: 0x0400197E RID: 6526
 		[NonSerialized]
 		public float tickInterval;
 
-		// Token: 0x040019A8 RID: 6568
+		// Token: 0x0400197F RID: 6527
 		[NonSerialized]
 		public float tickTimer;
 
-		// Token: 0x040019A9 RID: 6569
+		// Token: 0x04001980 RID: 6528
 		public float attachTime;
 
-		// Token: 0x040019AA RID: 6570
+		// Token: 0x04001981 RID: 6529
 		private float fixedAge;
 
-		// Token: 0x040019AB RID: 6571
+		// Token: 0x04001982 RID: 6530
 		private float age;
 
-		// Token: 0x040019AC RID: 6572
+		// Token: 0x04001983 RID: 6531
 		private bool beginSiphon;
 
-		// Token: 0x040019AD RID: 6573
+		// Token: 0x04001984 RID: 6532
 		private BezierCurveLine bezierCurveLine;
 
-		// Token: 0x040019AE RID: 6574
+		// Token: 0x04001985 RID: 6533
 		private HealthComponent targetHealthComponent;
 
-		// Token: 0x040019AF RID: 6575
+		// Token: 0x04001986 RID: 6534
 		private HealthComponent ownerHealthComponent;
 
-		// Token: 0x040019B0 RID: 6576
+		// Token: 0x04001987 RID: 6535
 		private CharacterBody ownerBody;
 
-		// Token: 0x040019B1 RID: 6577
+		// Token: 0x04001988 RID: 6536
 		private NetworkInstanceId ___targetRootNetId;
 
-		// Token: 0x040019B2 RID: 6578
+		// Token: 0x04001989 RID: 6537
 		private NetworkInstanceId ___ownerRootNetId;
 	}
 }

@@ -6,11 +6,11 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x02000488 RID: 1160
+	// Token: 0x0200047B RID: 1147
 	public static class RuleCatalog
 	{
-		// Token: 0x1700026B RID: 619
-		// (get) Token: 0x06001A09 RID: 6665 RVA: 0x00013548 File Offset: 0x00011748
+		// Token: 0x1700025F RID: 607
+		// (get) Token: 0x060019A7 RID: 6567 RVA: 0x0001301A File Offset: 0x0001121A
 		public static int ruleCount
 		{
 			get
@@ -19,8 +19,8 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x1700026C RID: 620
-		// (get) Token: 0x06001A0A RID: 6666 RVA: 0x00013554 File Offset: 0x00011754
+		// Token: 0x17000260 RID: 608
+		// (get) Token: 0x060019A8 RID: 6568 RVA: 0x00013026 File Offset: 0x00011226
 		public static int choiceCount
 		{
 			get
@@ -29,8 +29,8 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x1700026D RID: 621
-		// (get) Token: 0x06001A0B RID: 6667 RVA: 0x00013560 File Offset: 0x00011760
+		// Token: 0x17000261 RID: 609
+		// (get) Token: 0x060019A9 RID: 6569 RVA: 0x00013032 File Offset: 0x00011232
 		public static int categoryCount
 		{
 			get
@@ -39,18 +39,18 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x1700026E RID: 622
-		// (get) Token: 0x06001A0C RID: 6668 RVA: 0x0001356C File Offset: 0x0001176C
-		// (set) Token: 0x06001A0D RID: 6669 RVA: 0x00013573 File Offset: 0x00011773
+		// Token: 0x17000262 RID: 610
+		// (get) Token: 0x060019AA RID: 6570 RVA: 0x0001303E File Offset: 0x0001123E
+		// (set) Token: 0x060019AB RID: 6571 RVA: 0x00013045 File Offset: 0x00011245
 		public static int highestLocalChoiceCount { get; private set; }
 
-		// Token: 0x06001A0E RID: 6670 RVA: 0x0001357B File Offset: 0x0001177B
+		// Token: 0x060019AC RID: 6572 RVA: 0x0001304D File Offset: 0x0001124D
 		public static RuleDef GetRuleDef(int ruleDefIndex)
 		{
 			return RuleCatalog.allRuleDefs[ruleDefIndex];
 		}
 
-		// Token: 0x06001A0F RID: 6671 RVA: 0x00084B1C File Offset: 0x00082D1C
+		// Token: 0x060019AD RID: 6573 RVA: 0x000840B0 File Offset: 0x000822B0
 		public static RuleDef FindRuleDef(string ruleDefGlobalName)
 		{
 			RuleDef result;
@@ -58,7 +58,7 @@ namespace RoR2
 			return result;
 		}
 
-		// Token: 0x06001A10 RID: 6672 RVA: 0x00084B38 File Offset: 0x00082D38
+		// Token: 0x060019AE RID: 6574 RVA: 0x000840CC File Offset: 0x000822CC
 		public static RuleChoiceDef FindChoiceDef(string ruleChoiceDefGlobalName)
 		{
 			RuleChoiceDef result;
@@ -66,43 +66,43 @@ namespace RoR2
 			return result;
 		}
 
-		// Token: 0x06001A11 RID: 6673 RVA: 0x00013588 File Offset: 0x00011788
+		// Token: 0x060019AF RID: 6575 RVA: 0x0001305A File Offset: 0x0001125A
 		public static RuleChoiceDef GetChoiceDef(int ruleChoiceDefIndex)
 		{
 			return RuleCatalog.allChoicesDefs[ruleChoiceDefIndex];
 		}
 
-		// Token: 0x06001A12 RID: 6674 RVA: 0x00013595 File Offset: 0x00011795
+		// Token: 0x060019B0 RID: 6576 RVA: 0x00013067 File Offset: 0x00011267
 		public static RuleCategoryDef GetCategoryDef(int ruleCategoryDefIndex)
 		{
 			return RuleCatalog.allCategoryDefs[ruleCategoryDefIndex];
 		}
 
-		// Token: 0x06001A13 RID: 6675 RVA: 0x000038B4 File Offset: 0x00001AB4
+		// Token: 0x060019B1 RID: 6577 RVA: 0x000038B4 File Offset: 0x00001AB4
 		private static bool HiddenTestTrue()
 		{
 			return true;
 		}
 
-		// Token: 0x06001A14 RID: 6676 RVA: 0x00003696 File Offset: 0x00001896
+		// Token: 0x060019B2 RID: 6578 RVA: 0x00003696 File Offset: 0x00001896
 		private static bool HiddenTestFalse()
 		{
 			return false;
 		}
 
-		// Token: 0x06001A15 RID: 6677 RVA: 0x000135A2 File Offset: 0x000117A2
+		// Token: 0x060019B3 RID: 6579 RVA: 0x00013074 File Offset: 0x00011274
 		private static bool HiddenTestItemsConvar()
 		{
 			return !RuleCatalog.ruleShowItems.value;
 		}
 
-		// Token: 0x06001A16 RID: 6678 RVA: 0x000135B1 File Offset: 0x000117B1
+		// Token: 0x060019B4 RID: 6580 RVA: 0x00013083 File Offset: 0x00011283
 		private static void AddCategory(string displayToken, Color color)
 		{
 			RuleCatalog.AddCategory(displayToken, color, null, new Func<bool>(RuleCatalog.HiddenTestFalse));
 		}
 
-		// Token: 0x06001A17 RID: 6679 RVA: 0x000135C7 File Offset: 0x000117C7
+		// Token: 0x060019B5 RID: 6581 RVA: 0x00013099 File Offset: 0x00011299
 		private static void AddCategory(string displayToken, Color color, string emptyTipToken, Func<bool> hiddenTest)
 		{
 			RuleCatalog.allCategoryDefs.Add(new RuleCategoryDef
@@ -115,7 +115,7 @@ namespace RoR2
 			});
 		}
 
-		// Token: 0x06001A18 RID: 6680 RVA: 0x00084B54 File Offset: 0x00082D54
+		// Token: 0x060019B6 RID: 6582 RVA: 0x000840E8 File Offset: 0x000822E8
 		private static void AddRule(RuleDef ruleDef)
 		{
 			if (RuleCatalog.allCategoryDefs.Count > 0)
@@ -135,7 +135,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001A19 RID: 6681 RVA: 0x00084C3C File Offset: 0x00082E3C
+		// Token: 0x060019B7 RID: 6583 RVA: 0x000841D0 File Offset: 0x000823D0
 		static RuleCatalog()
 		{
 			RuleCatalog.AddCategory("RULE_HEADER_DIFFICULTY", new Color32(28, 99, 150, byte.MaxValue));
@@ -219,7 +219,7 @@ namespace RoR2
 			RuleCatalog.availability.MakeAvailable();
 		}
 
-		// Token: 0x06001A1A RID: 6682 RVA: 0x000850E4 File Offset: 0x000832E4
+		// Token: 0x060019B8 RID: 6584 RVA: 0x00084678 File Offset: 0x00082878
 		[ConCommand(commandName = "rules_dump", flags = ConVarFlags.None, helpText = "Dump information about the rules system.")]
 		private static void CCRulesDump(ConCommandArgs args)
 		{
@@ -242,25 +242,25 @@ namespace RoR2
 			Debug.Log(string.Join("\n", list));
 		}
 
-		// Token: 0x04001D28 RID: 7464
+		// Token: 0x04001CF1 RID: 7409
 		private static readonly List<RuleDef> allRuleDefs = new List<RuleDef>();
 
-		// Token: 0x04001D29 RID: 7465
+		// Token: 0x04001CF2 RID: 7410
 		private static readonly List<RuleChoiceDef> allChoicesDefs = new List<RuleChoiceDef>();
 
-		// Token: 0x04001D2A RID: 7466
+		// Token: 0x04001CF3 RID: 7411
 		public static readonly List<RuleCategoryDef> allCategoryDefs = new List<RuleCategoryDef>();
 
-		// Token: 0x04001D2B RID: 7467
+		// Token: 0x04001CF4 RID: 7412
 		private static readonly Dictionary<string, RuleDef> ruleDefsByGlobalName = new Dictionary<string, RuleDef>();
 
-		// Token: 0x04001D2C RID: 7468
+		// Token: 0x04001CF5 RID: 7413
 		private static readonly Dictionary<string, RuleChoiceDef> ruleChoiceDefsByGlobalName = new Dictionary<string, RuleChoiceDef>();
 
-		// Token: 0x04001D2D RID: 7469
+		// Token: 0x04001CF6 RID: 7414
 		public static ResourceAvailability availability;
 
-		// Token: 0x04001D2F RID: 7471
+		// Token: 0x04001CF8 RID: 7416
 		private static readonly BoolConVar ruleShowItems = new BoolConVar("rule_show_items", ConVarFlags.Cheat, "0", "Whether or not to allow voting on items in the pregame rules.");
 	}
 }

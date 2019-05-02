@@ -8,18 +8,18 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x02000394 RID: 916
+	// Token: 0x0200038F RID: 911
 	[RequireComponent(typeof(NetworkRuleChoiceMask))]
 	[RequireComponent(typeof(NetworkRuleBook))]
 	public class PreGameController : NetworkBehaviour
 	{
-		// Token: 0x170001B2 RID: 434
-		// (get) Token: 0x06001345 RID: 4933 RVA: 0x0000EC35 File Offset: 0x0000CE35
-		// (set) Token: 0x06001346 RID: 4934 RVA: 0x0000EC3C File Offset: 0x0000CE3C
+		// Token: 0x170001AD RID: 429
+		// (get) Token: 0x06001327 RID: 4903 RVA: 0x0000EA7F File Offset: 0x0000CC7F
+		// (set) Token: 0x06001328 RID: 4904 RVA: 0x0000EA86 File Offset: 0x0000CC86
 		public static PreGameController instance { get; private set; }
 
-		// Token: 0x170001B3 RID: 435
-		// (get) Token: 0x06001347 RID: 4935 RVA: 0x0000EC44 File Offset: 0x0000CE44
+		// Token: 0x170001AE RID: 430
+		// (get) Token: 0x06001329 RID: 4905 RVA: 0x0000EA8E File Offset: 0x0000CC8E
 		public RuleChoiceMask resolvedRuleChoiceMask
 		{
 			get
@@ -28,8 +28,8 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x170001B4 RID: 436
-		// (get) Token: 0x06001348 RID: 4936 RVA: 0x0000EC51 File Offset: 0x0000CE51
+		// Token: 0x170001AF RID: 431
+		// (get) Token: 0x0600132A RID: 4906 RVA: 0x0000EA9B File Offset: 0x0000CC9B
 		public RuleBook readOnlyRuleBook
 		{
 			get
@@ -38,7 +38,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001349 RID: 4937 RVA: 0x0006C008 File Offset: 0x0006A208
+		// Token: 0x0600132B RID: 4907 RVA: 0x0006BD9C File Offset: 0x00069F9C
 		private void Awake()
 		{
 			this.networkRuleChoiceMaskComponent = base.GetComponent<NetworkRuleChoiceMask>();
@@ -61,13 +61,13 @@ namespace RoR2
 			NetworkUser.OnPostNetworkUserStart += this.GenerateRuleVoteController;
 		}
 
-		// Token: 0x0600134A RID: 4938 RVA: 0x0000EC5E File Offset: 0x0000CE5E
+		// Token: 0x0600132C RID: 4908 RVA: 0x0000EAA8 File Offset: 0x0000CCA8
 		private void OnDestroy()
 		{
 			NetworkUser.OnPostNetworkUserStart -= this.GenerateRuleVoteController;
 		}
 
-		// Token: 0x0600134B RID: 4939 RVA: 0x0006C0C8 File Offset: 0x0006A2C8
+		// Token: 0x0600132D RID: 4909 RVA: 0x0006BE5C File Offset: 0x0006A05C
 		private void GenerateRuleVoteController(NetworkUser networkUser)
 		{
 			if (NetworkServer.active)
@@ -82,7 +82,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600134C RID: 4940 RVA: 0x0006C118 File Offset: 0x0006A318
+		// Token: 0x0600132E RID: 4910 RVA: 0x0006BEAC File Offset: 0x0006A0AC
 		private void Start()
 		{
 			if (NetworkServer.active)
@@ -99,7 +99,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600134D RID: 4941 RVA: 0x0000EC71 File Offset: 0x0000CE71
+		// Token: 0x0600132F RID: 4911 RVA: 0x0000EABB File Offset: 0x0000CCBB
 		[Server]
 		public void UpdatePersistentRulebook()
 		{
@@ -115,7 +115,7 @@ namespace RoR2
 			PreGameController.persistentRuleBook.Copy(this.readOnlyRuleBook);
 		}
 
-		// Token: 0x0600134E RID: 4942 RVA: 0x0006C18C File Offset: 0x0006A38C
+		// Token: 0x06001330 RID: 4912 RVA: 0x0006BF20 File Offset: 0x0006A120
 		[Server]
 		public void ApplyChoice(int ruleChoiceIndex)
 		{
@@ -139,7 +139,7 @@ namespace RoR2
 			this.UpdatePersistentRulebook();
 		}
 
-		// Token: 0x0600134F RID: 4943 RVA: 0x0006C214 File Offset: 0x0006A414
+		// Token: 0x06001331 RID: 4913 RVA: 0x0006BFA8 File Offset: 0x0006A1A8
 		[Server]
 		public void EnforceValidRuleChoices()
 		{
@@ -190,7 +190,7 @@ namespace RoR2
 			this.UpdatePersistentRulebook();
 		}
 
-		// Token: 0x06001350 RID: 4944 RVA: 0x0006C358 File Offset: 0x0006A558
+		// Token: 0x06001332 RID: 4914 RVA: 0x0006C0EC File Offset: 0x0006A2EC
 		private void TestRuleValues()
 		{
 			RuleBook ruleBook = new RuleBook();
@@ -202,7 +202,7 @@ namespace RoR2
 			base.Invoke("TestRuleValues", 0.5f);
 		}
 
-		// Token: 0x06001351 RID: 4945 RVA: 0x0006C3D0 File Offset: 0x0006A5D0
+		// Token: 0x06001333 RID: 4915 RVA: 0x0006C164 File Offset: 0x0006A364
 		private void OnEnable()
 		{
 			PreGameController.instance = SingletonHelper.Assign<PreGameController>(PreGameController.instance, this);
@@ -221,7 +221,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001352 RID: 4946 RVA: 0x0000ECA9 File Offset: 0x0000CEA9
+		// Token: 0x06001334 RID: 4916 RVA: 0x0000EAF3 File Offset: 0x0000CCF3
 		private void OnDisable()
 		{
 			PreGameController.instance = SingletonHelper.Unassign<PreGameController>(PreGameController.instance, this);
@@ -229,9 +229,9 @@ namespace RoR2
 			NetworkUser.OnPostNetworkUserStart -= this.OnPostNetworkUserStartCallback;
 		}
 
-		// Token: 0x170001B5 RID: 437
-		// (get) Token: 0x06001353 RID: 4947 RVA: 0x0000ECDD File Offset: 0x0000CEDD
-		// (set) Token: 0x06001354 RID: 4948 RVA: 0x0000ECE5 File Offset: 0x0000CEE5
+		// Token: 0x170001B0 RID: 432
+		// (get) Token: 0x06001335 RID: 4917 RVA: 0x0000EB27 File Offset: 0x0000CD27
+		// (set) Token: 0x06001336 RID: 4918 RVA: 0x0000EB2F File Offset: 0x0000CD2F
 		private PreGameController.PregameState pregameState
 		{
 			get
@@ -244,18 +244,18 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001355 RID: 4949 RVA: 0x0000ECEE File Offset: 0x0000CEEE
+		// Token: 0x06001337 RID: 4919 RVA: 0x0000EB38 File Offset: 0x0000CD38
 		public bool IsCharacterSwitchingCurrentlyAllowed()
 		{
 			return this.pregameState == PreGameController.PregameState.Idle;
 		}
 
-		// Token: 0x06001356 RID: 4950 RVA: 0x0000ECF9 File Offset: 0x0000CEF9
+		// Token: 0x06001338 RID: 4920 RVA: 0x0000EB43 File Offset: 0x0000CD43
 		private void Update()
 		{
 			if (this.pregameState == PreGameController.PregameState.Launching)
 			{
-				if (GameNetworkManager.singleton.unpredictedServerFixedTime - this.launchStartTime >= 0.5f && NetworkServer.active)
+				if (GameNetworkManager.singleton.unpredictedServerFixedTime - this.launchStartTime >= 0.5f)
 				{
 					this.StartRun();
 					return;
@@ -267,7 +267,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001357 RID: 4951 RVA: 0x0000ED33 File Offset: 0x0000CF33
+		// Token: 0x06001339 RID: 4921 RVA: 0x0000EB76 File Offset: 0x0000CD76
 		[Server]
 		public void StartLaunch()
 		{
@@ -283,7 +283,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001358 RID: 4952 RVA: 0x0006C460 File Offset: 0x0006A660
+		// Token: 0x0600133A RID: 4922 RVA: 0x0006C1F4 File Offset: 0x0006A3F4
 		[Server]
 		private void StartRun()
 		{
@@ -298,7 +298,7 @@ namespace RoR2
 			run.seed = this.runSeed;
 		}
 
-		// Token: 0x06001359 RID: 4953 RVA: 0x0000ED69 File Offset: 0x0000CF69
+		// Token: 0x0600133B RID: 4923 RVA: 0x0000EBAC File Offset: 0x0000CDAC
 		[ConCommand(commandName = "pregame_start_run", flags = ConVarFlags.SenderMustBeServer, helpText = "Begins a run out of pregame.")]
 		private static void CCPregameStartRun(ConCommandArgs args)
 		{
@@ -308,7 +308,24 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600135A RID: 4954 RVA: 0x0006C4B4 File Offset: 0x0006A6B4
+		// Token: 0x0600133C RID: 4924 RVA: 0x0006C248 File Offset: 0x0006A448
+		[ConCommand(commandName = "pregame_set_seed", flags = (ConVarFlags.ExecuteOnServer | ConVarFlags.Cheat), helpText = "Sets the random seed for the run.")]
+		private static void CCPregameSetSeed(ConCommandArgs args)
+		{
+			args.CheckArgumentCount(1);
+			if (!PreGameController.instance)
+			{
+				throw new ConCommandException("Pregame controller does not currently exist to set the seed for.");
+			}
+			ulong num;
+			if (!TextSerialization.TryParseInvariant(args[0], out num))
+			{
+				throw new ConCommandException("Specified seed is not a parsable uint64.");
+			}
+			PreGameController.instance.runSeed = num;
+		}
+
+		// Token: 0x0600133D RID: 4925 RVA: 0x0006C29C File Offset: 0x0006A49C
 		private static bool AnyUserHasUnlockable([NotNull] UnlockableDef unlockableDef)
 		{
 			ReadOnlyCollection<NetworkUser> readOnlyInstancesList = NetworkUser.readOnlyInstancesList;
@@ -322,7 +339,7 @@ namespace RoR2
 			return false;
 		}
 
-		// Token: 0x0600135B RID: 4955 RVA: 0x0006C4F0 File Offset: 0x0006A6F0
+		// Token: 0x0600133E RID: 4926 RVA: 0x0006C2D8 File Offset: 0x0006A4D8
 		[Server]
 		private void RecalculateModifierAvailability()
 		{
@@ -354,7 +371,7 @@ namespace RoR2
 			action(this);
 		}
 
-		// Token: 0x0600135C RID: 4956 RVA: 0x0006C574 File Offset: 0x0006A774
+		// Token: 0x0600133F RID: 4927 RVA: 0x0006C35C File Offset: 0x0006A55C
 		[Server]
 		private void ResolveChoiceMask()
 		{
@@ -379,7 +396,7 @@ namespace RoR2
 			this.EnforceValidRuleChoices();
 		}
 
-		// Token: 0x0600135D RID: 4957 RVA: 0x0000ED81 File Offset: 0x0000CF81
+		// Token: 0x06001340 RID: 4928 RVA: 0x0000EBC4 File Offset: 0x0000CDC4
 		private void OnNetworkUserUnlockablesUpdatedCallback(NetworkUser networkUser)
 		{
 			if (NetworkServer.active)
@@ -389,11 +406,11 @@ namespace RoR2
 		}
 
 		// Token: 0x1400001B RID: 27
-		// (add) Token: 0x0600135E RID: 4958 RVA: 0x0006C640 File Offset: 0x0006A840
-		// (remove) Token: 0x0600135F RID: 4959 RVA: 0x0006C674 File Offset: 0x0006A874
+		// (add) Token: 0x06001341 RID: 4929 RVA: 0x0006C428 File Offset: 0x0006A628
+		// (remove) Token: 0x06001342 RID: 4930 RVA: 0x0006C45C File Offset: 0x0006A65C
 		public static event Action<PreGameController> onServerRecalculatedModifierAvailability;
 
-		// Token: 0x06001360 RID: 4960 RVA: 0x0000ED90 File Offset: 0x0000CF90
+		// Token: 0x06001343 RID: 4931 RVA: 0x0000EBD3 File Offset: 0x0000CDD3
 		private void OnPostNetworkUserStartCallback(NetworkUser networkUser)
 		{
 			if (NetworkServer.active)
@@ -402,14 +419,14 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001363 RID: 4963 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06001346 RID: 4934 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x170001B6 RID: 438
-		// (get) Token: 0x06001364 RID: 4964 RVA: 0x0006C6A8 File Offset: 0x0006A8A8
-		// (set) Token: 0x06001365 RID: 4965 RVA: 0x0000EDDE File Offset: 0x0000CFDE
+		// Token: 0x170001B1 RID: 433
+		// (get) Token: 0x06001347 RID: 4935 RVA: 0x0006C490 File Offset: 0x0006A690
+		// (set) Token: 0x06001348 RID: 4936 RVA: 0x0000EC21 File Offset: 0x0000CE21
 		public int NetworkgameModeIndex
 		{
 			get
@@ -422,9 +439,9 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x170001B7 RID: 439
-		// (get) Token: 0x06001366 RID: 4966 RVA: 0x0006C6BC File Offset: 0x0006A8BC
-		// (set) Token: 0x06001367 RID: 4967 RVA: 0x0000EDF2 File Offset: 0x0000CFF2
+		// Token: 0x170001B2 RID: 434
+		// (get) Token: 0x06001349 RID: 4937 RVA: 0x0006C4A4 File Offset: 0x0006A6A4
+		// (set) Token: 0x0600134A RID: 4938 RVA: 0x0000EC35 File Offset: 0x0000CE35
 		public int NetworkpregameStateInternal
 		{
 			get
@@ -437,9 +454,9 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x170001B8 RID: 440
-		// (get) Token: 0x06001368 RID: 4968 RVA: 0x0006C6D0 File Offset: 0x0006A8D0
-		// (set) Token: 0x06001369 RID: 4969 RVA: 0x0000EE06 File Offset: 0x0000D006
+		// Token: 0x170001B3 RID: 435
+		// (get) Token: 0x0600134B RID: 4939 RVA: 0x0006C4B8 File Offset: 0x0006A6B8
+		// (set) Token: 0x0600134C RID: 4940 RVA: 0x0000EC49 File Offset: 0x0000CE49
 		public float NetworklaunchStartTime
 		{
 			get
@@ -452,7 +469,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600136A RID: 4970 RVA: 0x0006C6E4 File Offset: 0x0006A8E4
+		// Token: 0x0600134D RID: 4941 RVA: 0x0006C4CC File Offset: 0x0006A6CC
 		public override bool OnSerialize(NetworkWriter writer, bool forceAll)
 		{
 			if (forceAll)
@@ -497,7 +514,7 @@ namespace RoR2
 			return flag;
 		}
 
-		// Token: 0x0600136B RID: 4971 RVA: 0x0006C7D0 File Offset: 0x0006A9D0
+		// Token: 0x0600134E RID: 4942 RVA: 0x0006C5B8 File Offset: 0x0006A7B8
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 			if (initialState)
@@ -522,68 +539,68 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x040016F6 RID: 5878
+		// Token: 0x040016DA RID: 5850
 		private NetworkRuleChoiceMask networkRuleChoiceMaskComponent;
 
-		// Token: 0x040016F7 RID: 5879
+		// Token: 0x040016DB RID: 5851
 		private NetworkRuleBook networkRuleBookComponent;
 
-		// Token: 0x040016F8 RID: 5880
+		// Token: 0x040016DC RID: 5852
 		private readonly RuleChoiceMask serverAvailableChoiceMask = new RuleChoiceMask();
 
-		// Token: 0x040016F9 RID: 5881
+		// Token: 0x040016DD RID: 5853
 		public ulong runSeed;
 
-		// Token: 0x040016FA RID: 5882
+		// Token: 0x040016DE RID: 5854
 		[SyncVar]
 		public int gameModeIndex;
 
-		// Token: 0x040016FB RID: 5883
+		// Token: 0x040016DF RID: 5855
 		private readonly RuleBook ruleBookBuffer = new RuleBook();
 
-		// Token: 0x040016FC RID: 5884
+		// Token: 0x040016E0 RID: 5856
 		private static RuleBook persistentRuleBook;
 
-		// Token: 0x040016FD RID: 5885
+		// Token: 0x040016E1 RID: 5857
 		[SyncVar]
 		private int pregameStateInternal;
 
-		// Token: 0x040016FE RID: 5886
+		// Token: 0x040016E2 RID: 5858
 		private const float launchTransitionDuration = 0f;
 
-		// Token: 0x040016FF RID: 5887
+		// Token: 0x040016E3 RID: 5859
 		private GameObject gameModePrefab;
 
-		// Token: 0x04001700 RID: 5888
+		// Token: 0x040016E4 RID: 5860
 		[SyncVar]
 		private float launchStartTime = float.PositiveInfinity;
 
-		// Token: 0x04001701 RID: 5889
+		// Token: 0x040016E5 RID: 5861
 		private readonly RuleChoiceMask unlockedChoiceMask = new RuleChoiceMask();
 
-		// Token: 0x04001702 RID: 5890
+		// Token: 0x040016E6 RID: 5862
 		private readonly RuleChoiceMask choiceMaskBuffer = new RuleChoiceMask();
 
-		// Token: 0x02000395 RID: 917
+		// Token: 0x02000390 RID: 912
 		private enum PregameState
 		{
-			// Token: 0x04001705 RID: 5893
+			// Token: 0x040016E9 RID: 5865
 			Idle,
-			// Token: 0x04001706 RID: 5894
+			// Token: 0x040016EA RID: 5866
 			Launching,
-			// Token: 0x04001707 RID: 5895
+			// Token: 0x040016EB RID: 5867
 			Launched
 		}
 
-		// Token: 0x02000396 RID: 918
+		// Token: 0x02000391 RID: 913
 		private class GameModeConVar : BaseConVar
 		{
-			// Token: 0x0600136C RID: 4972 RVA: 0x000090CD File Offset: 0x000072CD
+			// Token: 0x0600134F RID: 4943 RVA: 0x000090A8 File Offset: 0x000072A8
 			public GameModeConVar(string name, ConVarFlags flags, string defaultValue, string helpText) : base(name, flags, defaultValue, helpText)
 			{
 			}
 
-			// Token: 0x0600136D RID: 4973 RVA: 0x0000EE1A File Offset: 0x0000D01A
+			// Token: 0x06001350 RID: 4944 RVA: 0x0000EC5D File Offset: 0x0000CE5D
 			static GameModeConVar()
 			{
 				GameModeCatalog.availability.CallWhenAvailable(delegate
@@ -592,7 +609,7 @@ namespace RoR2
 				});
 			}
 
-			// Token: 0x0600136E RID: 4974 RVA: 0x0006C85C File Offset: 0x0006AA5C
+			// Token: 0x06001351 RID: 4945 RVA: 0x0006C644 File Offset: 0x0006A844
 			public override void SetString(string newValue)
 			{
 				GameModeCatalog.availability.CallWhenAvailable(delegate
@@ -610,7 +627,7 @@ namespace RoR2
 				});
 			}
 
-			// Token: 0x0600136F RID: 4975 RVA: 0x0000EE50 File Offset: 0x0000D050
+			// Token: 0x06001352 RID: 4946 RVA: 0x0000EC93 File Offset: 0x0000CE93
 			public override string GetString()
 			{
 				if (!this.runPrefabComponent)
@@ -620,10 +637,10 @@ namespace RoR2
 				return this.runPrefabComponent.gameObject.name;
 			}
 
-			// Token: 0x04001708 RID: 5896
+			// Token: 0x040016EC RID: 5868
 			public static readonly PreGameController.GameModeConVar instance = new PreGameController.GameModeConVar("gamemode", ConVarFlags.None, "", "Sets the specified game mode as the one to use in the next run.");
 
-			// Token: 0x04001709 RID: 5897
+			// Token: 0x040016ED RID: 5869
 			public Run runPrefabComponent;
 		}
 	}

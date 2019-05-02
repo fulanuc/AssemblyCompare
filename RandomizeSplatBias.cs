@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x020003AA RID: 938
+	// Token: 0x020003A5 RID: 933
 	public class RandomizeSplatBias : MonoBehaviour
 	{
-		// Token: 0x060013F0 RID: 5104 RVA: 0x0000F300 File Offset: 0x0000D500
+		// Token: 0x060013D3 RID: 5075 RVA: 0x0000F15C File Offset: 0x0000D35C
 		private void Start()
 		{
 			this.materialsList = new List<Material>();
@@ -16,7 +16,7 @@ namespace RoR2
 			this.Setup();
 		}
 
-		// Token: 0x060013F1 RID: 5105 RVA: 0x0006EA3C File Offset: 0x0006CC3C
+		// Token: 0x060013D4 RID: 5076 RVA: 0x0006E834 File Offset: 0x0006CA34
 		private void Setup()
 		{
 			this.hasSetupOnce = true;
@@ -56,7 +56,7 @@ namespace RoR2
 			componentInChildren.SetPropertyBlock(this._propBlock);
 		}
 
-		// Token: 0x060013F2 RID: 5106 RVA: 0x0006EC30 File Offset: 0x0006CE30
+		// Token: 0x060013D5 RID: 5077 RVA: 0x0006EA28 File Offset: 0x0006CC28
 		private void OnDestroy()
 		{
 			if (this.materialsList != null)
@@ -68,40 +68,40 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04001787 RID: 6023
+		// Token: 0x0400176D RID: 5997
 		public float minRedBias;
 
-		// Token: 0x04001788 RID: 6024
+		// Token: 0x0400176E RID: 5998
 		public float maxRedBias;
 
-		// Token: 0x04001789 RID: 6025
+		// Token: 0x0400176F RID: 5999
 		public float minGreenBias;
 
-		// Token: 0x0400178A RID: 6026
+		// Token: 0x04001770 RID: 6000
 		public float maxGreenBias;
 
-		// Token: 0x0400178B RID: 6027
+		// Token: 0x04001771 RID: 6001
 		public float minBlueBias;
 
-		// Token: 0x0400178C RID: 6028
+		// Token: 0x04001772 RID: 6002
 		public float maxBlueBias;
 
-		// Token: 0x0400178D RID: 6029
+		// Token: 0x04001773 RID: 6003
 		private MaterialPropertyBlock _propBlock;
 
-		// Token: 0x0400178E RID: 6030
+		// Token: 0x04001774 RID: 6004
 		private CharacterModel characterModel;
 
-		// Token: 0x0400178F RID: 6031
+		// Token: 0x04001775 RID: 6005
 		private List<Material> materialsList;
 
-		// Token: 0x04001790 RID: 6032
+		// Token: 0x04001776 RID: 6006
 		private List<Renderer> rendererList;
 
-		// Token: 0x04001791 RID: 6033
+		// Token: 0x04001777 RID: 6007
 		private Shader printShader;
 
-		// Token: 0x04001792 RID: 6034
+		// Token: 0x04001778 RID: 6008
 		private bool hasSetupOnce;
 	}
 }

@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x02000391 RID: 913
+	// Token: 0x0200038C RID: 908
 	public class PortalStatueBehavior : MonoBehaviour
 	{
-		// Token: 0x0600133D RID: 4925 RVA: 0x0006BE84 File Offset: 0x0006A084
+		// Token: 0x0600131F RID: 4895 RVA: 0x0006BC18 File Offset: 0x00069E18
 		public void GrantPortalEntry()
 		{
 			PortalStatueBehavior.PortalType portalType = this.portalType;
@@ -54,17 +54,17 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x040016EB RID: 5867
+		// Token: 0x040016CF RID: 5839
 		public PortalStatueBehavior.PortalType portalType;
 
-		// Token: 0x02000392 RID: 914
+		// Token: 0x0200038D RID: 909
 		public enum PortalType
 		{
-			// Token: 0x040016ED RID: 5869
+			// Token: 0x040016D1 RID: 5841
 			Shop,
-			// Token: 0x040016EE RID: 5870
+			// Token: 0x040016D2 RID: 5842
 			Goldshores,
-			// Token: 0x040016EF RID: 5871
+			// Token: 0x040016D3 RID: 5843
 			Count
 		}
 	}

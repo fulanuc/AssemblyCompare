@@ -5,11 +5,11 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x020004CA RID: 1226
+	// Token: 0x020004BC RID: 1212
 	[AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = false)]
 	public class SystemInitializerAttribute : Attribute
 	{
-		// Token: 0x06001BCB RID: 7115 RVA: 0x00014964 File Offset: 0x00012B64
+		// Token: 0x06001B67 RID: 7015 RVA: 0x00014497 File Offset: 0x00012697
 		public SystemInitializerAttribute(params Type[] dependencies)
 		{
 			if (dependencies != null)
@@ -18,7 +18,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001BCC RID: 7116 RVA: 0x00089394 File Offset: 0x00087594
+		// Token: 0x06001B68 RID: 7016 RVA: 0x0008881C File Offset: 0x00086A1C
 		public static void Execute()
 		{
 			Queue<SystemInitializerAttribute> queue = new Queue<SystemInitializerAttribute>();
@@ -63,13 +63,13 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04001E25 RID: 7717
+		// Token: 0x04001DEB RID: 7659
 		public Type[] dependencies = Array.Empty<Type>();
 
-		// Token: 0x04001E26 RID: 7718
+		// Token: 0x04001DEC RID: 7660
 		private MethodInfo methodInfo;
 
-		// Token: 0x04001E27 RID: 7719
+		// Token: 0x04001DED RID: 7661
 		private Type associatedType;
 	}
 }

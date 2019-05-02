@@ -4,16 +4,16 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x02000410 RID: 1040
+	// Token: 0x0200040A RID: 1034
 	[DisallowMultipleComponent]
 	public class PositionIndicator : MonoBehaviour
 	{
-		// Token: 0x17000226 RID: 550
-		// (get) Token: 0x06001758 RID: 5976 RVA: 0x00011890 File Offset: 0x0000FA90
-		// (set) Token: 0x06001759 RID: 5977 RVA: 0x00011898 File Offset: 0x0000FA98
+		// Token: 0x1700021D RID: 541
+		// (get) Token: 0x06001715 RID: 5909 RVA: 0x00011464 File Offset: 0x0000F664
+		// (set) Token: 0x06001716 RID: 5910 RVA: 0x0001146C File Offset: 0x0000F66C
 		public Vector3 defaultPosition { get; set; }
 
-		// Token: 0x0600175A RID: 5978 RVA: 0x00079AB0 File Offset: 0x00077CB0
+		// Token: 0x06001717 RID: 5911 RVA: 0x000794F0 File Offset: 0x000776F0
 		private void Start()
 		{
 			this.transform = base.transform;
@@ -28,7 +28,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600175B RID: 5979 RVA: 0x00079B10 File Offset: 0x00077D10
+		// Token: 0x06001718 RID: 5912 RVA: 0x00079550 File Offset: 0x00077750
 		private static float CalcHeadOffset(Transform transform)
 		{
 			Collider component = transform.GetComponent<Collider>();
@@ -39,19 +39,19 @@ namespace RoR2
 			return 0f;
 		}
 
-		// Token: 0x0600175C RID: 5980 RVA: 0x000118A1 File Offset: 0x0000FAA1
+		// Token: 0x06001719 RID: 5913 RVA: 0x00011475 File Offset: 0x0000F675
 		private void OnEnable()
 		{
 			PositionIndicator.instancesList.Add(this);
 		}
 
-		// Token: 0x0600175D RID: 5981 RVA: 0x000118AE File Offset: 0x0000FAAE
+		// Token: 0x0600171A RID: 5914 RVA: 0x00011482 File Offset: 0x0000F682
 		private void OnDisable()
 		{
 			PositionIndicator.instancesList.Remove(this);
 		}
 
-		// Token: 0x0600175E RID: 5982 RVA: 0x00079B48 File Offset: 0x00077D48
+		// Token: 0x0600171B RID: 5915 RVA: 0x00079588 File Offset: 0x00077788
 		private void OnValidate()
 		{
 			if (this.insideViewObject && this.insideViewObject.GetComponentInChildren<PositionIndicator>())
@@ -66,13 +66,13 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600175F RID: 5983 RVA: 0x000118BC File Offset: 0x0000FABC
+		// Token: 0x0600171C RID: 5916 RVA: 0x00011490 File Offset: 0x0000F690
 		static PositionIndicator()
 		{
 			UICamera.onUICameraPreCull += PositionIndicator.UpdatePositions;
 		}
 
-		// Token: 0x06001760 RID: 5984 RVA: 0x00079BB8 File Offset: 0x00077DB8
+		// Token: 0x0600171D RID: 5917 RVA: 0x000795F8 File Offset: 0x000777F8
 		private static void UpdatePositions(UICamera uiCamera)
 		{
 			Camera sceneCam = uiCamera.cameraRigController.sceneCam;
@@ -162,39 +162,39 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04001A61 RID: 6753
+		// Token: 0x04001A38 RID: 6712
 		public Transform targetTransform;
 
-		// Token: 0x04001A62 RID: 6754
+		// Token: 0x04001A39 RID: 6713
 		private new Transform transform;
 
-		// Token: 0x04001A63 RID: 6755
+		// Token: 0x04001A3A RID: 6714
 		private static readonly List<PositionIndicator> instancesList = new List<PositionIndicator>();
 
-		// Token: 0x04001A64 RID: 6756
+		// Token: 0x04001A3B RID: 6715
 		[Tooltip("The child object to enable when the target is within the frame.")]
 		public GameObject insideViewObject;
 
-		// Token: 0x04001A65 RID: 6757
+		// Token: 0x04001A3C RID: 6716
 		[Tooltip("The child object to enable when the target is outside the frame.")]
 		public GameObject outsideViewObject;
 
-		// Token: 0x04001A66 RID: 6758
+		// Token: 0x04001A3D RID: 6717
 		[Tooltip("The child object to ALWAYS enable, IF its not my own position indicator.")]
 		public GameObject alwaysVisibleObject;
 
-		// Token: 0x04001A67 RID: 6759
+		// Token: 0x04001A3E RID: 6718
 		[Tooltip("Whether or not outsideViewObject should be rotated to point to the target.")]
 		public bool shouldRotateOutsideViewObject;
 
-		// Token: 0x04001A68 RID: 6760
+		// Token: 0x04001A3F RID: 6719
 		[Tooltip("The offset to apply to the rotation of the outside view object when shouldRotateOutsideViewObject is set.")]
 		public float outsideViewRotationOffset;
 
-		// Token: 0x04001A69 RID: 6761
+		// Token: 0x04001A40 RID: 6720
 		private float yOffset;
 
-		// Token: 0x04001A6A RID: 6762
+		// Token: 0x04001A41 RID: 6721
 		private bool generateDefaultPosition;
 	}
 }

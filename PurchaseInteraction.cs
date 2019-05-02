@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using RoR2.Stats;
 using UnityEngine;
@@ -7,11 +8,11 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x020003A3 RID: 931
+	// Token: 0x0200039E RID: 926
 	[RequireComponent(typeof(Highlight))]
-	public sealed class PurchaseInteraction : NetworkBehaviour, IInteractable, IHologramContentProvider, IDisplayNameProvider
+	public class PurchaseInteraction : NetworkBehaviour, IInteractable, IHologramContentProvider, IDisplayNameProvider
 	{
-		// Token: 0x060013B2 RID: 5042 RVA: 0x0006D7F4 File Offset: 0x0006B9F4
+		// Token: 0x06001395 RID: 5013 RVA: 0x0006D5EC File Offset: 0x0006B7EC
 		private void Awake()
 		{
 			if (this.automaticallyScaleCostWithDifficulty)
@@ -24,7 +25,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060013B3 RID: 5043 RVA: 0x0000F0F3 File Offset: 0x0000D2F3
+		// Token: 0x06001396 RID: 5014 RVA: 0x0000EF29 File Offset: 0x0000D129
 		[Server]
 		public void SetAvailable(bool newAvailable)
 		{
@@ -36,7 +37,7 @@ namespace RoR2
 			this.Networkavailable = newAvailable;
 		}
 
-		// Token: 0x060013B4 RID: 5044 RVA: 0x0000F111 File Offset: 0x0000D311
+		// Token: 0x06001397 RID: 5015 RVA: 0x0000EF47 File Offset: 0x0000D147
 		[Server]
 		public void SetUnavailableTemporarily(float time)
 		{
@@ -49,19 +50,19 @@ namespace RoR2
 			base.Invoke("SetAvailableTrue", time);
 		}
 
-		// Token: 0x060013B5 RID: 5045 RVA: 0x0000F13B File Offset: 0x0000D33B
+		// Token: 0x06001398 RID: 5016 RVA: 0x0000EF71 File Offset: 0x0000D171
 		private void SetAvailableTrue()
 		{
 			this.Networkavailable = true;
 		}
 
-		// Token: 0x060013B6 RID: 5046 RVA: 0x0000F144 File Offset: 0x0000D344
+		// Token: 0x06001399 RID: 5017 RVA: 0x0000EF7A File Offset: 0x0000D17A
 		public string GetDisplayName()
 		{
 			return Language.GetString(this.displayNameToken);
 		}
 
-		// Token: 0x060013B7 RID: 5047 RVA: 0x0006D840 File Offset: 0x0006BA40
+		// Token: 0x0600139A RID: 5018 RVA: 0x0006D638 File Offset: 0x0006B838
 		private string GetCostString()
 		{
 			switch (this.costType)
@@ -85,7 +86,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060013B8 RID: 5048 RVA: 0x0006D944 File Offset: 0x0006BB44
+		// Token: 0x0600139B RID: 5019 RVA: 0x0006D73C File Offset: 0x0006B93C
 		private static bool ActivatorHasUnlockable(Interactor activator, string unlockableName)
 		{
 			NetworkUser networkUser = Util.LookUpBodyNetworkUser(activator.gameObject);
@@ -100,13 +101,13 @@ namespace RoR2
 			return true;
 		}
 
-		// Token: 0x060013B9 RID: 5049 RVA: 0x0000F151 File Offset: 0x0000D351
+		// Token: 0x0600139C RID: 5020 RVA: 0x0000EF87 File Offset: 0x0000D187
 		public string GetContextString(Interactor activator)
 		{
 			return Language.GetString(this.contextToken) + this.GetCostString();
 		}
 
-		// Token: 0x060013BA RID: 5050 RVA: 0x0006D980 File Offset: 0x0006BB80
+		// Token: 0x0600139D RID: 5021 RVA: 0x0006D778 File Offset: 0x0006B978
 		public Interactability GetInteractability(Interactor activator)
 		{
 			if (!string.IsNullOrEmpty(this.requiredUnlockable) && !PurchaseInteraction.ActivatorHasUnlockable(activator, this.requiredUnlockable))
@@ -124,7 +125,7 @@ namespace RoR2
 			return Interactability.Available;
 		}
 
-		// Token: 0x060013BB RID: 5051 RVA: 0x0000F169 File Offset: 0x0000D369
+		// Token: 0x0600139E RID: 5022 RVA: 0x0000EF9F File Offset: 0x0000D19F
 		public static ItemTier CostTypeToItemTier(CostType costType)
 		{
 			switch (costType)
@@ -140,7 +141,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060013BC RID: 5052 RVA: 0x0000F188 File Offset: 0x0000D388
+		// Token: 0x0600139F RID: 5023 RVA: 0x0000EFBE File Offset: 0x0000D1BE
 		public static ColorCatalog.ColorIndex CostTypeToColorIndex(CostType costType)
 		{
 			switch (costType)
@@ -156,7 +157,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060013BD RID: 5053 RVA: 0x0006D9D0 File Offset: 0x0006BBD0
+		// Token: 0x060013A0 RID: 5024 RVA: 0x0006D7C8 File Offset: 0x0006B9C8
 		public bool CanBeAffordedByInteractor(Interactor activator)
 		{
 			switch (this.costType)
@@ -208,11 +209,11 @@ namespace RoR2
 		}
 
 		// Token: 0x1400001D RID: 29
-		// (add) Token: 0x060013BE RID: 5054 RVA: 0x0006DAE8 File Offset: 0x0006BCE8
-		// (remove) Token: 0x060013BF RID: 5055 RVA: 0x0006DB1C File Offset: 0x0006BD1C
+		// (add) Token: 0x060013A1 RID: 5025 RVA: 0x0006D8E0 File Offset: 0x0006BAE0
+		// (remove) Token: 0x060013A2 RID: 5026 RVA: 0x0006D914 File Offset: 0x0006BB14
 		public static event Action<PurchaseInteraction, Interactor> onItemSpentOnPurchase;
 
-		// Token: 0x060013C0 RID: 5056 RVA: 0x0006DB50 File Offset: 0x0006BD50
+		// Token: 0x060013A3 RID: 5027 RVA: 0x0006D948 File Offset: 0x0006BB48
 		public void OnInteractionBegin(Interactor activator)
 		{
 			if (!this.CanBeAffordedByInteractor(activator))
@@ -338,7 +339,7 @@ namespace RoR2
 			this.lastActivator = activator;
 		}
 
-		// Token: 0x060013C1 RID: 5057 RVA: 0x0006DE70 File Offset: 0x0006C070
+		// Token: 0x060013A4 RID: 5028 RVA: 0x0006DC68 File Offset: 0x0006BE68
 		[Server]
 		private static void CreateItemTakenOrb(Vector3 effectOrigin, GameObject targetObject, ItemIndex itemIndex)
 		{
@@ -358,19 +359,19 @@ namespace RoR2
 			EffectManager.instance.SpawnEffect(effectPrefab, effectData, true);
 		}
 
-		// Token: 0x060013C2 RID: 5058 RVA: 0x0000F1A8 File Offset: 0x0000D3A8
+		// Token: 0x060013A5 RID: 5029 RVA: 0x0000EFDE File Offset: 0x0000D1DE
 		public bool ShouldDisplayHologram(GameObject viewer)
 		{
 			return this.available;
 		}
 
-		// Token: 0x060013C3 RID: 5059 RVA: 0x000092D8 File Offset: 0x000074D8
+		// Token: 0x060013A6 RID: 5030 RVA: 0x00009298 File Offset: 0x00007498
 		public GameObject GetHologramContentPrefab()
 		{
 			return Resources.Load<GameObject>("Prefabs/CostHologramContent");
 		}
 
-		// Token: 0x060013C4 RID: 5060 RVA: 0x0006DED4 File Offset: 0x0006C0D4
+		// Token: 0x060013A7 RID: 5031 RVA: 0x0006DCCC File Offset: 0x0006BECC
 		public void UpdateHologramContent(GameObject hologramContentObject)
 		{
 			CostHologramContent component = hologramContentObject.GetComponent<CostHologramContent>();
@@ -381,38 +382,32 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060013C5 RID: 5061 RVA: 0x00003696 File Offset: 0x00001896
+		// Token: 0x060013A8 RID: 5032 RVA: 0x00003696 File Offset: 0x00001896
 		public bool ShouldIgnoreSpherecastForInteractibility(Interactor activator)
 		{
 			return false;
 		}
 
-		// Token: 0x060013C6 RID: 5062 RVA: 0x0000F1A8 File Offset: 0x0000D3A8
-		public bool ShouldShowOnScanner()
-		{
-			return this.available;
-		}
-
-		// Token: 0x060013C7 RID: 5063 RVA: 0x0000F1B0 File Offset: 0x0000D3B0
+		// Token: 0x060013A9 RID: 5033 RVA: 0x0000EFE6 File Offset: 0x0000D1E6
 		private void OnEnable()
 		{
-			InstanceTracker.Add<PurchaseInteraction>(this);
+			PurchaseInteraction.instancesList.Add(this);
 		}
 
-		// Token: 0x060013C8 RID: 5064 RVA: 0x0000F1B8 File Offset: 0x0000D3B8
+		// Token: 0x060013AA RID: 5034 RVA: 0x0000EFF3 File Offset: 0x0000D1F3
 		private void OnDisable()
 		{
-			InstanceTracker.Remove<PurchaseInteraction>(this);
+			PurchaseInteraction.instancesList.Remove(this);
 		}
 
-		// Token: 0x060013CA RID: 5066 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x060013AD RID: 5037 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x170001BB RID: 443
-		// (get) Token: 0x060013CB RID: 5067 RVA: 0x0006DF08 File Offset: 0x0006C108
-		// (set) Token: 0x060013CC RID: 5068 RVA: 0x0000F1DA File Offset: 0x0000D3DA
+		// Token: 0x170001B6 RID: 438
+		// (get) Token: 0x060013AE RID: 5038 RVA: 0x0006DD00 File Offset: 0x0006BF00
+		// (set) Token: 0x060013AF RID: 5039 RVA: 0x0000F036 File Offset: 0x0000D236
 		public bool Networkavailable
 		{
 			get
@@ -425,9 +420,9 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x170001BC RID: 444
-		// (get) Token: 0x060013CD RID: 5069 RVA: 0x0006DF1C File Offset: 0x0006C11C
-		// (set) Token: 0x060013CE RID: 5070 RVA: 0x0000F1EE File Offset: 0x0000D3EE
+		// Token: 0x170001B7 RID: 439
+		// (get) Token: 0x060013B0 RID: 5040 RVA: 0x0006DD14 File Offset: 0x0006BF14
+		// (set) Token: 0x060013B1 RID: 5041 RVA: 0x0000F04A File Offset: 0x0000D24A
 		public int Networkcost
 		{
 			get
@@ -440,9 +435,9 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x170001BD RID: 445
-		// (get) Token: 0x060013CF RID: 5071 RVA: 0x0006DF30 File Offset: 0x0006C130
-		// (set) Token: 0x060013D0 RID: 5072 RVA: 0x0000F202 File Offset: 0x0000D402
+		// Token: 0x170001B8 RID: 440
+		// (get) Token: 0x060013B2 RID: 5042 RVA: 0x0006DD28 File Offset: 0x0006BF28
+		// (set) Token: 0x060013B3 RID: 5043 RVA: 0x0000F05E File Offset: 0x0000D25E
 		public GameObject NetworklockGameObject
 		{
 			get
@@ -455,7 +450,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060013D1 RID: 5073 RVA: 0x0006DF44 File Offset: 0x0006C144
+		// Token: 0x060013B4 RID: 5044 RVA: 0x0006DD3C File Offset: 0x0006BF3C
 		public override bool OnSerialize(NetworkWriter writer, bool forceAll)
 		{
 			if (forceAll)
@@ -500,7 +495,7 @@ namespace RoR2
 			return flag;
 		}
 
-		// Token: 0x060013D2 RID: 5074 RVA: 0x0006E030 File Offset: 0x0006C230
+		// Token: 0x060013B5 RID: 5045 RVA: 0x0006DE28 File Offset: 0x0006C028
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 			if (initialState)
@@ -525,7 +520,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060013D3 RID: 5075 RVA: 0x0000F21C File Offset: 0x0000D41C
+		// Token: 0x060013B6 RID: 5046 RVA: 0x0000F078 File Offset: 0x0000D278
 		public override void PreStartClient()
 		{
 			if (!this.___lockGameObjectNetId.IsEmpty())
@@ -534,51 +529,57 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04001755 RID: 5973
+		// Token: 0x04001739 RID: 5945
+		private static readonly List<PurchaseInteraction> instancesList = new List<PurchaseInteraction>();
+
+		// Token: 0x0400173A RID: 5946
+		public static readonly ReadOnlyCollection<PurchaseInteraction> readOnlyInstancesList = PurchaseInteraction.instancesList.AsReadOnly();
+
+		// Token: 0x0400173B RID: 5947
 		public string displayNameToken;
 
-		// Token: 0x04001756 RID: 5974
+		// Token: 0x0400173C RID: 5948
 		public string contextToken;
 
-		// Token: 0x04001757 RID: 5975
+		// Token: 0x0400173D RID: 5949
 		public CostType costType;
 
-		// Token: 0x04001758 RID: 5976
+		// Token: 0x0400173E RID: 5950
 		[SyncVar]
 		public bool available = true;
 
-		// Token: 0x04001759 RID: 5977
+		// Token: 0x0400173F RID: 5951
 		[SyncVar]
 		public int cost;
 
-		// Token: 0x0400175A RID: 5978
+		// Token: 0x04001740 RID: 5952
 		public bool automaticallyScaleCostWithDifficulty;
 
-		// Token: 0x0400175B RID: 5979
+		// Token: 0x04001741 RID: 5953
 		[Tooltip("The unlockable that a player must have to be able to interact with this terminal.")]
 		public string requiredUnlockable = "";
 
-		// Token: 0x0400175C RID: 5980
+		// Token: 0x04001742 RID: 5954
 		public bool ignoreSpherecastForInteractability;
 
-		// Token: 0x0400175D RID: 5981
+		// Token: 0x04001743 RID: 5955
 		public string[] purchaseStatNames;
 
-		// Token: 0x0400175E RID: 5982
+		// Token: 0x04001744 RID: 5956
 		[HideInInspector]
 		public Interactor lastActivator;
 
-		// Token: 0x0400175F RID: 5983
+		// Token: 0x04001745 RID: 5957
 		[SyncVar]
 		public GameObject lockGameObject;
 
-		// Token: 0x04001760 RID: 5984
+		// Token: 0x04001746 RID: 5958
 		private Xoroshiro128Plus rng;
 
-		// Token: 0x04001762 RID: 5986
+		// Token: 0x04001748 RID: 5960
 		public PurchaseEvent onPurchase;
 
-		// Token: 0x04001763 RID: 5987
+		// Token: 0x04001749 RID: 5961
 		private NetworkInstanceId ___lockGameObjectNetId;
 	}
 }

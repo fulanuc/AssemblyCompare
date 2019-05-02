@@ -6,16 +6,16 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x020003F7 RID: 1015
+	// Token: 0x020003F1 RID: 1009
 	public class SummonMasterBehavior : NetworkBehaviour
 	{
-		// Token: 0x06001647 RID: 5703 RVA: 0x00009162 File Offset: 0x00007362
+		// Token: 0x0600160A RID: 5642 RVA: 0x0000913D File Offset: 0x0000733D
 		public override int GetNetworkChannel()
 		{
 			return QosChannelIndex.defaultReliable.intVal;
 		}
 
-		// Token: 0x06001648 RID: 5704 RVA: 0x00076560 File Offset: 0x00074760
+		// Token: 0x0600160B RID: 5643 RVA: 0x00075F28 File Offset: 0x00074128
 		[Server]
 		public void OpenSummon(Interactor activator)
 		{
@@ -49,24 +49,24 @@ namespace RoR2
 			UnityEngine.Object.Destroy(base.gameObject);
 		}
 
-		// Token: 0x0600164A RID: 5706 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x0600160D RID: 5645 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x0600164B RID: 5707 RVA: 0x0004AA24 File Offset: 0x00048C24
+		// Token: 0x0600160E RID: 5646 RVA: 0x0004A818 File Offset: 0x00048A18
 		public override bool OnSerialize(NetworkWriter writer, bool forceAll)
 		{
 			bool result;
 			return result;
 		}
 
-		// Token: 0x0600164C RID: 5708 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x0600160F RID: 5647 RVA: 0x000025F6 File Offset: 0x000007F6
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 		}
 
-		// Token: 0x04001990 RID: 6544
+		// Token: 0x04001967 RID: 6503
 		[Tooltip("The master to spawn")]
 		public GameObject masterPrefab;
 	}

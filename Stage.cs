@@ -9,20 +9,20 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x020003F1 RID: 1009
+	// Token: 0x020003EB RID: 1003
 	public class Stage : NetworkBehaviour
 	{
-		// Token: 0x170001FC RID: 508
-		// (get) Token: 0x06001621 RID: 5665 RVA: 0x00010AC8 File Offset: 0x0000ECC8
-		// (set) Token: 0x06001622 RID: 5666 RVA: 0x00010ACF File Offset: 0x0000ECCF
+		// Token: 0x170001F3 RID: 499
+		// (get) Token: 0x060015E4 RID: 5604 RVA: 0x000106BF File Offset: 0x0000E8BF
+		// (set) Token: 0x060015E5 RID: 5605 RVA: 0x000106C6 File Offset: 0x0000E8C6
 		public static Stage instance { get; private set; }
 
-		// Token: 0x170001FD RID: 509
-		// (get) Token: 0x06001623 RID: 5667 RVA: 0x00010AD7 File Offset: 0x0000ECD7
-		// (set) Token: 0x06001624 RID: 5668 RVA: 0x00010ADF File Offset: 0x0000ECDF
+		// Token: 0x170001F4 RID: 500
+		// (get) Token: 0x060015E6 RID: 5606 RVA: 0x000106CE File Offset: 0x0000E8CE
+		// (set) Token: 0x060015E7 RID: 5607 RVA: 0x000106D6 File Offset: 0x0000E8D6
 		public SceneDef sceneDef { get; private set; }
 
-		// Token: 0x06001625 RID: 5669 RVA: 0x0007596C File Offset: 0x00073B6C
+		// Token: 0x060015E8 RID: 5608 RVA: 0x00075334 File Offset: 0x00073534
 		private void Start()
 		{
 			this.sceneDef = SceneCatalog.GetSceneDefForCurrentScene();
@@ -58,7 +58,7 @@ namespace RoR2
 								}
 							}
 						}
-						readOnlyInstancesList[i].Respawn(vector, rotation, false);
+						readOnlyInstancesList[i].Respawn(vector, rotation);
 					}
 				}
 				this.BeginServer();
@@ -69,7 +69,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001626 RID: 5670 RVA: 0x00075AFC File Offset: 0x00073CFC
+		// Token: 0x060015E9 RID: 5609 RVA: 0x000754C4 File Offset: 0x000736C4
 		[Client]
 		public void RespawnLocalPlayers()
 		{
@@ -94,19 +94,19 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001627 RID: 5671 RVA: 0x00010AE8 File Offset: 0x0000ECE8
+		// Token: 0x060015EA RID: 5610 RVA: 0x000106DF File Offset: 0x0000E8DF
 		private void OnEnable()
 		{
 			Stage.instance = SingletonHelper.Assign<Stage>(Stage.instance, this);
 		}
 
-		// Token: 0x06001628 RID: 5672 RVA: 0x00010AFA File Offset: 0x0000ECFA
+		// Token: 0x060015EB RID: 5611 RVA: 0x000106F1 File Offset: 0x0000E8F1
 		private void OnDisable()
 		{
 			Stage.instance = SingletonHelper.Unassign<Stage>(Stage.instance, this);
 		}
 
-		// Token: 0x06001629 RID: 5673 RVA: 0x00075B74 File Offset: 0x00073D74
+		// Token: 0x060015EC RID: 5612 RVA: 0x0007553C File Offset: 0x0007373C
 		private Vector3 SampleNodeGraphForSpawnPosition()
 		{
 			Vector3 zero = Vector3.zero;
@@ -123,7 +123,7 @@ namespace RoR2
 			return zero;
 		}
 
-		// Token: 0x0600162A RID: 5674 RVA: 0x00075BEC File Offset: 0x00073DEC
+		// Token: 0x060015ED RID: 5613 RVA: 0x000755B4 File Offset: 0x000737B4
 		[Server]
 		public Transform GetPlayerSpawnTransform()
 		{
@@ -140,7 +140,7 @@ namespace RoR2
 			return null;
 		}
 
-		// Token: 0x0600162B RID: 5675 RVA: 0x00075C30 File Offset: 0x00073E30
+		// Token: 0x060015EE RID: 5614 RVA: 0x000755F8 File Offset: 0x000737F8
 		[Server]
 		public void RespawnCharacter(CharacterMaster characterMaster)
 		{
@@ -161,7 +161,7 @@ namespace RoR2
 				vector = playerSpawnTransform.position;
 				quaternion = playerSpawnTransform.rotation;
 			}
-			characterMaster.Respawn(vector, quaternion, true);
+			characterMaster.Respawn(vector, quaternion);
 			if (characterMaster.GetComponent<PlayerCharacterMasterController>())
 			{
 				this.spawnedAnyPlayer = true;
@@ -172,7 +172,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600162C RID: 5676 RVA: 0x00010B0C File Offset: 0x0000ED0C
+		// Token: 0x060015EF RID: 5615 RVA: 0x00010703 File Offset: 0x0000E903
 		[Server]
 		public void BeginAdvanceStage(string destinationStage)
 		{
@@ -185,12 +185,12 @@ namespace RoR2
 			this.nextStage = destinationStage;
 		}
 
-		// Token: 0x170001FE RID: 510
-		// (get) Token: 0x0600162D RID: 5677 RVA: 0x00010B40 File Offset: 0x0000ED40
-		// (set) Token: 0x0600162E RID: 5678 RVA: 0x00010B48 File Offset: 0x0000ED48
+		// Token: 0x170001F5 RID: 501
+		// (get) Token: 0x060015F0 RID: 5616 RVA: 0x00010737 File Offset: 0x0000E937
+		// (set) Token: 0x060015F1 RID: 5617 RVA: 0x0001073F File Offset: 0x0000E93F
 		public bool completed { get; private set; }
 
-		// Token: 0x0600162F RID: 5679 RVA: 0x00010B51 File Offset: 0x0000ED51
+		// Token: 0x060015F2 RID: 5618 RVA: 0x00010748 File Offset: 0x0000E948
 		[Server]
 		private void BeginServer()
 		{
@@ -207,7 +207,7 @@ namespace RoR2
 			action(this);
 		}
 
-		// Token: 0x06001630 RID: 5680 RVA: 0x00010B78 File Offset: 0x0000ED78
+		// Token: 0x060015F3 RID: 5619 RVA: 0x0001076F File Offset: 0x0000E96F
 		[Server]
 		public void CompleteServer()
 		{
@@ -229,17 +229,17 @@ namespace RoR2
 			action(this);
 		}
 
-		// Token: 0x1400002E RID: 46
-		// (add) Token: 0x06001631 RID: 5681 RVA: 0x00075CBC File Offset: 0x00073EBC
-		// (remove) Token: 0x06001632 RID: 5682 RVA: 0x00075CF0 File Offset: 0x00073EF0
+		// Token: 0x1400002C RID: 44
+		// (add) Token: 0x060015F4 RID: 5620 RVA: 0x00075684 File Offset: 0x00073884
+		// (remove) Token: 0x060015F5 RID: 5621 RVA: 0x000756B8 File Offset: 0x000738B8
 		public static event Action<Stage> onServerStageBegin;
 
-		// Token: 0x1400002F RID: 47
-		// (add) Token: 0x06001633 RID: 5683 RVA: 0x00075D24 File Offset: 0x00073F24
-		// (remove) Token: 0x06001634 RID: 5684 RVA: 0x00075D58 File Offset: 0x00073F58
+		// Token: 0x1400002D RID: 45
+		// (add) Token: 0x060015F6 RID: 5622 RVA: 0x000756EC File Offset: 0x000738EC
+		// (remove) Token: 0x060015F7 RID: 5623 RVA: 0x00075720 File Offset: 0x00073920
 		public static event Action<Stage> onServerStageComplete;
 
-		// Token: 0x06001635 RID: 5685 RVA: 0x00075D8C File Offset: 0x00073F8C
+		// Token: 0x060015F8 RID: 5624 RVA: 0x00075754 File Offset: 0x00073954
 		private void FixedUpdate()
 		{
 			if (NetworkServer.active)
@@ -271,14 +271,14 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001638 RID: 5688 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x060015FB RID: 5627 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x170001FF RID: 511
-		// (get) Token: 0x06001639 RID: 5689 RVA: 0x00075EA4 File Offset: 0x000740A4
-		// (set) Token: 0x0600163A RID: 5690 RVA: 0x00010BCB File Offset: 0x0000EDCB
+		// Token: 0x170001F6 RID: 502
+		// (get) Token: 0x060015FC RID: 5628 RVA: 0x0007586C File Offset: 0x00073A6C
+		// (set) Token: 0x060015FD RID: 5629 RVA: 0x000107C2 File Offset: 0x0000E9C2
 		public float NetworkstartRunTime
 		{
 			get
@@ -291,9 +291,9 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x17000200 RID: 512
-		// (get) Token: 0x0600163B RID: 5691 RVA: 0x00075EB8 File Offset: 0x000740B8
-		// (set) Token: 0x0600163C RID: 5692 RVA: 0x00010BDF File Offset: 0x0000EDDF
+		// Token: 0x170001F7 RID: 503
+		// (get) Token: 0x060015FE RID: 5630 RVA: 0x00075880 File Offset: 0x00073A80
+		// (set) Token: 0x060015FF RID: 5631 RVA: 0x000107D6 File Offset: 0x0000E9D6
 		public float NetworkstageAdvanceTime
 		{
 			get
@@ -306,7 +306,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600163D RID: 5693 RVA: 0x00075ECC File Offset: 0x000740CC
+		// Token: 0x06001600 RID: 5632 RVA: 0x00075894 File Offset: 0x00073A94
 		public override bool OnSerialize(NetworkWriter writer, bool forceAll)
 		{
 			if (forceAll)
@@ -341,7 +341,7 @@ namespace RoR2
 			return flag;
 		}
 
-		// Token: 0x0600163E RID: 5694 RVA: 0x00075F78 File Offset: 0x00074178
+		// Token: 0x06001601 RID: 5633 RVA: 0x00075940 File Offset: 0x00073B40
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 			if (initialState)
@@ -361,34 +361,34 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0400195F RID: 6495
+		// Token: 0x04001936 RID: 6454
 		[SyncVar]
 		public float startRunTime;
 
-		// Token: 0x04001961 RID: 6497
+		// Token: 0x04001938 RID: 6456
 		private Vector3 stageSpawnPosition = Vector3.zero;
 
-		// Token: 0x04001962 RID: 6498
+		// Token: 0x04001939 RID: 6457
 		private bool spawnedAnyPlayer;
 
-		// Token: 0x04001963 RID: 6499
+		// Token: 0x0400193A RID: 6458
 		[NonSerialized]
 		public bool usePod = Run.instance && Run.instance.stageClearCount == 0 && Stage.stage1PodConVar.value;
 
-		// Token: 0x04001964 RID: 6500
+		// Token: 0x0400193B RID: 6459
 		private static BoolConVar stage1PodConVar = new BoolConVar("stage1_pod", ConVarFlags.Cheat, "1", "Whether or not to use the pod when spawning on the first stage.");
 
-		// Token: 0x04001965 RID: 6501
+		// Token: 0x0400193C RID: 6460
 		[SyncVar]
 		public float stageAdvanceTime = float.PositiveInfinity;
 
-		// Token: 0x04001966 RID: 6502
+		// Token: 0x0400193D RID: 6461
 		public const float stageAdvanceTransitionDuration = 0.5f;
 
-		// Token: 0x04001967 RID: 6503
+		// Token: 0x0400193E RID: 6462
 		public const float stageAdvanceTransitionDelay = 0.75f;
 
-		// Token: 0x04001968 RID: 6504
+		// Token: 0x0400193F RID: 6463
 		private string nextStage = "";
 	}
 }

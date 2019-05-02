@@ -3,67 +3,67 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x0200048B RID: 1163
+	// Token: 0x0200047E RID: 1150
 	public class RuleChoiceDef
 	{
-		// Token: 0x04001D37 RID: 7479
+		// Token: 0x04001D00 RID: 7424
 		public RuleDef ruleDef;
 
-		// Token: 0x04001D38 RID: 7480
+		// Token: 0x04001D01 RID: 7425
 		public string spritePath;
 
-		// Token: 0x04001D39 RID: 7481
+		// Token: 0x04001D02 RID: 7426
 		public string materialPath;
 
-		// Token: 0x04001D3A RID: 7482
+		// Token: 0x04001D03 RID: 7427
 		public string tooltipNameToken;
 
-		// Token: 0x04001D3B RID: 7483
+		// Token: 0x04001D04 RID: 7428
 		public Color tooltipNameColor = Color.white;
 
-		// Token: 0x04001D3C RID: 7484
+		// Token: 0x04001D05 RID: 7429
 		public string tooltipBodyToken;
 
-		// Token: 0x04001D3D RID: 7485
+		// Token: 0x04001D06 RID: 7430
 		public Color tooltipBodyColor = Color.white;
 
-		// Token: 0x04001D3E RID: 7486
+		// Token: 0x04001D07 RID: 7431
 		public string localName;
 
-		// Token: 0x04001D3F RID: 7487
+		// Token: 0x04001D08 RID: 7432
 		public string globalName;
 
-		// Token: 0x04001D40 RID: 7488
+		// Token: 0x04001D09 RID: 7433
 		public int localIndex;
 
-		// Token: 0x04001D41 RID: 7489
+		// Token: 0x04001D0A RID: 7434
 		public int globalIndex;
 
-		// Token: 0x04001D42 RID: 7490
+		// Token: 0x04001D0B RID: 7435
 		public string unlockableName;
 
-		// Token: 0x04001D43 RID: 7491
+		// Token: 0x04001D0C RID: 7436
 		public bool availableInSinglePlayer = true;
 
-		// Token: 0x04001D44 RID: 7492
+		// Token: 0x04001D0D RID: 7437
 		public bool availableInMultiPlayer = true;
 
-		// Token: 0x04001D45 RID: 7493
+		// Token: 0x04001D0E RID: 7438
 		public DifficultyIndex difficultyIndex = DifficultyIndex.Invalid;
 
-		// Token: 0x04001D46 RID: 7494
+		// Token: 0x04001D0F RID: 7439
 		public ArtifactIndex artifactIndex = ArtifactIndex.None;
 
-		// Token: 0x04001D47 RID: 7495
+		// Token: 0x04001D10 RID: 7440
 		public ItemIndex itemIndex = ItemIndex.None;
 
-		// Token: 0x04001D48 RID: 7496
+		// Token: 0x04001D11 RID: 7441
 		public EquipmentIndex equipmentIndex = EquipmentIndex.None;
 
-		// Token: 0x04001D49 RID: 7497
+		// Token: 0x04001D12 RID: 7442
 		public object extraData;
 
-		// Token: 0x04001D4A RID: 7498
+		// Token: 0x04001D13 RID: 7443
 		public bool excludeByDefault;
 	}
 }

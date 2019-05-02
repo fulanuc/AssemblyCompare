@@ -6,16 +6,16 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x020003D7 RID: 983
+	// Token: 0x020003D1 RID: 977
 	public class SceneObjectToggleGroup : NetworkBehaviour
 	{
-		// Token: 0x0600156C RID: 5484 RVA: 0x0001039F File Offset: 0x0000E59F
+		// Token: 0x0600153E RID: 5438 RVA: 0x00010118 File Offset: 0x0000E318
 		static SceneObjectToggleGroup()
 		{
 			GameNetworkManager.onServerSceneChangedGlobal += SceneObjectToggleGroup.OnServerSceneChanged;
 		}
 
-		// Token: 0x0600156D RID: 5485 RVA: 0x00072EE4 File Offset: 0x000710E4
+		// Token: 0x0600153F RID: 5439 RVA: 0x00072A78 File Offset: 0x00070C78
 		private static void OnServerSceneChanged(string sceneName)
 		{
 			while (SceneObjectToggleGroup.activationsQueue.Count > 0)
@@ -28,7 +28,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600156E RID: 5486 RVA: 0x00072F1C File Offset: 0x0007111C
+		// Token: 0x06001540 RID: 5440 RVA: 0x00072AB0 File Offset: 0x00070CB0
 		private void Awake()
 		{
 			SceneObjectToggleGroup.activationsQueue.Enqueue(this);
@@ -61,7 +61,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600156F RID: 5487 RVA: 0x000103BC File Offset: 0x0000E5BC
+		// Token: 0x06001541 RID: 5441 RVA: 0x00010135 File Offset: 0x0000E335
 		public override void OnStartClient()
 		{
 			base.OnStartClient();
@@ -71,7 +71,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001570 RID: 5488 RVA: 0x0007304C File Offset: 0x0007124C
+		// Token: 0x06001542 RID: 5442 RVA: 0x00072BE0 File Offset: 0x00070DE0
 		[Server]
 		private void Generate()
 		{
@@ -99,7 +99,7 @@ namespace RoR2
 			base.SetDirtyBit(1u);
 		}
 
-		// Token: 0x06001571 RID: 5489 RVA: 0x00073124 File Offset: 0x00071324
+		// Token: 0x06001543 RID: 5443 RVA: 0x00072CB8 File Offset: 0x00070EB8
 		public override bool OnSerialize(NetworkWriter writer, bool initialState)
 		{
 			uint num = initialState ? 1u : base.syncVarDirtyBits;
@@ -127,7 +127,7 @@ namespace RoR2
 			return !initialState && num > 0u;
 		}
 
-		// Token: 0x06001572 RID: 5490 RVA: 0x000731B4 File Offset: 0x000713B4
+		// Token: 0x06001544 RID: 5444 RVA: 0x00072D48 File Offset: 0x00070F48
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 			if ((reader.ReadByte() & 1) != 0)
@@ -148,7 +148,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001573 RID: 5491 RVA: 0x00073224 File Offset: 0x00071424
+		// Token: 0x06001545 RID: 5445 RVA: 0x00072DB8 File Offset: 0x00070FB8
 		private void ApplyActivations()
 		{
 			for (int i = 0; i < this.allToggleableObjects.Length; i++)
@@ -157,45 +157,45 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001576 RID: 5494 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06001548 RID: 5448 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x04001898 RID: 6296
+		// Token: 0x04001876 RID: 6262
 		public GameObjectToggleGroup[] toggleGroups;
 
-		// Token: 0x04001899 RID: 6297
+		// Token: 0x04001877 RID: 6263
 		private const byte enabledObjectsDirtyBit = 1;
 
-		// Token: 0x0400189A RID: 6298
+		// Token: 0x04001878 RID: 6264
 		private const byte initialStateMask = 1;
 
-		// Token: 0x0400189B RID: 6299
+		// Token: 0x04001879 RID: 6265
 		private static readonly Queue<SceneObjectToggleGroup> activationsQueue = new Queue<SceneObjectToggleGroup>();
 
-		// Token: 0x0400189C RID: 6300
+		// Token: 0x0400187A RID: 6266
 		private GameObject[] allToggleableObjects;
 
-		// Token: 0x0400189D RID: 6301
+		// Token: 0x0400187B RID: 6267
 		private bool[] activations;
 
-		// Token: 0x0400189E RID: 6302
+		// Token: 0x0400187C RID: 6268
 		private SceneObjectToggleGroup.ToggleGroupRange[] internalToggleGroups;
 
-		// Token: 0x020003D8 RID: 984
+		// Token: 0x020003D2 RID: 978
 		private struct ToggleGroupRange
 		{
-			// Token: 0x0400189F RID: 6303
+			// Token: 0x0400187D RID: 6269
 			public int start;
 
-			// Token: 0x040018A0 RID: 6304
+			// Token: 0x0400187E RID: 6270
 			public int count;
 
-			// Token: 0x040018A1 RID: 6305
+			// Token: 0x0400187F RID: 6271
 			public int minEnabled;
 
-			// Token: 0x040018A2 RID: 6306
+			// Token: 0x04001880 RID: 6272
 			public int maxEnabled;
 		}
 	}

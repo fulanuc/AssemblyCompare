@@ -6,12 +6,12 @@ using UnityEngine.UI;
 
 namespace RoR2
 {
-	// Token: 0x02000411 RID: 1041
+	// Token: 0x0200040B RID: 1035
 	[RequireComponent(typeof(RawImage))]
 	public class SocialUserIcon : UIBehaviour
 	{
-		// Token: 0x17000227 RID: 551
-		// (get) Token: 0x06001762 RID: 5986 RVA: 0x000118D9 File Offset: 0x0000FAD9
+		// Token: 0x1700021E RID: 542
+		// (get) Token: 0x0600171F RID: 5919 RVA: 0x000114AD File Offset: 0x0000F6AD
 		private Texture defaultTexture
 		{
 			get
@@ -20,7 +20,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001763 RID: 5987 RVA: 0x00079F08 File Offset: 0x00078108
+		// Token: 0x06001720 RID: 5920 RVA: 0x00079948 File Offset: 0x00077B48
 		protected void BuildTexture(int width, int height)
 		{
 			if (this.generatedTexture && (this.generatedTexture.width != width || this.generatedTexture.height != height))
@@ -34,7 +34,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001764 RID: 5988 RVA: 0x000118E5 File Offset: 0x0000FAE5
+		// Token: 0x06001721 RID: 5921 RVA: 0x000114B9 File Offset: 0x0000F6B9
 		protected override void OnDestroy()
 		{
 			UnityEngine.Object.Destroy(this.generatedTexture);
@@ -42,7 +42,7 @@ namespace RoR2
 			base.OnDestroy();
 		}
 
-		// Token: 0x06001765 RID: 5989 RVA: 0x000118FF File Offset: 0x0000FAFF
+		// Token: 0x06001722 RID: 5922 RVA: 0x000114D3 File Offset: 0x0000F6D3
 		protected override void Awake()
 		{
 			base.Awake();
@@ -50,7 +50,7 @@ namespace RoR2
 			this.rawImageComponent.texture = this.defaultTexture;
 		}
 
-		// Token: 0x06001766 RID: 5990 RVA: 0x00011924 File Offset: 0x0000FB24
+		// Token: 0x06001723 RID: 5923 RVA: 0x000114F8 File Offset: 0x0000F6F8
 		public virtual void Refresh()
 		{
 			if (this.sourceType == SocialUserIcon.SourceType.Steam)
@@ -63,7 +63,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001767 RID: 5991 RVA: 0x00079F78 File Offset: 0x00078178
+		// Token: 0x06001724 RID: 5924 RVA: 0x000799B8 File Offset: 0x00077BB8
 		public virtual void SetFromMaster(CharacterMaster master)
 		{
 			if (master)
@@ -81,7 +81,7 @@ namespace RoR2
 			this.Refresh();
 		}
 
-		// Token: 0x06001768 RID: 5992 RVA: 0x00011953 File Offset: 0x0000FB53
+		// Token: 0x06001725 RID: 5925 RVA: 0x00011527 File Offset: 0x0000F727
 		public void SetFromSteamId(ulong steamId)
 		{
 			if (this.sourceType == SocialUserIcon.SourceType.Steam && steamId == this.userSteamId)
@@ -93,7 +93,7 @@ namespace RoR2
 			this.Refresh();
 		}
 
-		// Token: 0x06001769 RID: 5993 RVA: 0x00079FCC File Offset: 0x000781CC
+		// Token: 0x06001726 RID: 5926 RVA: 0x00079A0C File Offset: 0x00077C0C
 		private void RefreshForSteam()
 		{
 			Client instance = Client.Instance;
@@ -109,7 +109,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600176A RID: 5994 RVA: 0x0007A028 File Offset: 0x00078228
+		// Token: 0x06001727 RID: 5927 RVA: 0x00079A68 File Offset: 0x00077C68
 		private void OnSteamAvatarReceived(Facepunch.Steamworks.Image image)
 		{
 			if (!this)
@@ -141,27 +141,27 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04001A6C RID: 6764
+		// Token: 0x04001A43 RID: 6723
 		private RawImage rawImageComponent;
 
-		// Token: 0x04001A6D RID: 6765
+		// Token: 0x04001A44 RID: 6724
 		protected Texture2D generatedTexture;
 
-		// Token: 0x04001A6E RID: 6766
+		// Token: 0x04001A45 RID: 6725
 		private SocialUserIcon.SourceType sourceType;
 
-		// Token: 0x04001A6F RID: 6767
+		// Token: 0x04001A46 RID: 6726
 		private ulong userSteamId;
 
-		// Token: 0x04001A70 RID: 6768
+		// Token: 0x04001A47 RID: 6727
 		public Friends.AvatarSize avatarSize;
 
-		// Token: 0x02000412 RID: 1042
+		// Token: 0x0200040C RID: 1036
 		private enum SourceType
 		{
-			// Token: 0x04001A72 RID: 6770
+			// Token: 0x04001A49 RID: 6729
 			None,
-			// Token: 0x04001A73 RID: 6771
+			// Token: 0x04001A4A RID: 6730
 			Steam
 		}
 	}

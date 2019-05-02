@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x020003F9 RID: 1017
+	// Token: 0x020003F3 RID: 1011
 	[RequireComponent(typeof(ItemFollower))]
 	public class TalismanAnimator : MonoBehaviour
 	{
-		// Token: 0x0600166A RID: 5738 RVA: 0x00076944 File Offset: 0x00074B44
+		// Token: 0x0600162A RID: 5674 RVA: 0x0007630C File Offset: 0x0007450C
 		private void Start()
 		{
 			this.itemFollower = base.GetComponent<ItemFollower>();
@@ -26,7 +26,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600166B RID: 5739 RVA: 0x000769B0 File Offset: 0x00074BB0
+		// Token: 0x0600162B RID: 5675 RVA: 0x00076378 File Offset: 0x00074578
 		private void FixedUpdate()
 		{
 			if (this.equipmentSlot)
@@ -44,16 +44,16 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0400199B RID: 6555
+		// Token: 0x04001972 RID: 6514
 		private float lastCooldownTimer;
 
-		// Token: 0x0400199C RID: 6556
+		// Token: 0x04001973 RID: 6515
 		private EquipmentSlot equipmentSlot;
 
-		// Token: 0x0400199D RID: 6557
+		// Token: 0x04001974 RID: 6516
 		private ItemFollower itemFollower;
 
-		// Token: 0x0400199E RID: 6558
+		// Token: 0x04001975 RID: 6517
 		private ParticleSystem[] killEffects;
 	}
 }

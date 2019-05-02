@@ -5,11 +5,11 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x020003F0 RID: 1008
+	// Token: 0x020003EA RID: 1002
 	public class SpawnPoint : MonoBehaviour
 	{
-		// Token: 0x170001FB RID: 507
-		// (get) Token: 0x0600161B RID: 5659 RVA: 0x00010A8B File Offset: 0x0000EC8B
+		// Token: 0x170001F2 RID: 498
+		// (get) Token: 0x060015DE RID: 5598 RVA: 0x00010682 File Offset: 0x0000E882
 		public static ReadOnlyCollection<SpawnPoint> readOnlyInstancesList
 		{
 			get
@@ -18,13 +18,13 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600161C RID: 5660 RVA: 0x00010A92 File Offset: 0x0000EC92
+		// Token: 0x060015DF RID: 5599 RVA: 0x00010689 File Offset: 0x0000E889
 		private void OnEnable()
 		{
 			SpawnPoint.instancesList.Add(this);
 		}
 
-		// Token: 0x0600161D RID: 5661 RVA: 0x000758CC File Offset: 0x00073ACC
+		// Token: 0x060015E0 RID: 5600 RVA: 0x00075294 File Offset: 0x00073494
 		public static SpawnPoint ConsumeSpawnPoint()
 		{
 			if (SpawnPoint.instancesList.Count == 0)
@@ -52,19 +52,19 @@ namespace RoR2
 			return spawnPoint;
 		}
 
-		// Token: 0x0600161E RID: 5662 RVA: 0x00010A9F File Offset: 0x0000EC9F
+		// Token: 0x060015E1 RID: 5601 RVA: 0x00010696 File Offset: 0x0000E896
 		private void OnDisable()
 		{
 			SpawnPoint.instancesList.Remove(this);
 		}
 
-		// Token: 0x0400195B RID: 6491
+		// Token: 0x04001932 RID: 6450
 		private static List<SpawnPoint> instancesList = new List<SpawnPoint>();
 
-		// Token: 0x0400195C RID: 6492
+		// Token: 0x04001933 RID: 6451
 		private static ReadOnlyCollection<SpawnPoint> _readOnlyInstancesList = new ReadOnlyCollection<SpawnPoint>(SpawnPoint.instancesList);
 
-		// Token: 0x0400195D RID: 6493
+		// Token: 0x04001934 RID: 6452
 		[Tooltip("Flagged when a player spawns on this position, to stop overlapping spawn positions")]
 		public bool consumed;
 	}

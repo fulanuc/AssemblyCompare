@@ -4,16 +4,23 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x0200039F RID: 927
+	// Token: 0x0200039A RID: 922
 	public class PrintController : MonoBehaviour
 	{
-		// Token: 0x060013A0 RID: 5024 RVA: 0x0000F04C File Offset: 0x0000D24C
+		// Token: 0x06001383 RID: 4995 RVA: 0x0006D08C File Offset: 0x0006B28C
 		private void Awake()
 		{
+			if (!this.hasSetupOnce)
+			{
+				this.materialsList = new List<Material>();
+				this.rendererList = new List<Renderer>();
+				this.printShader = Resources.Load<Shader>("Shaders/ToonLitCustom");
+				this.SetupPrint();
+			}
 			this.UpdatePrint(0f);
 		}
 
-		// Token: 0x060013A1 RID: 5025 RVA: 0x0006D2A4 File Offset: 0x0006B4A4
+		// Token: 0x06001384 RID: 4996 RVA: 0x0006D0D8 File Offset: 0x0006B2D8
 		private void OnDisable()
 		{
 			if (this.hasSetupOnce)
@@ -25,7 +32,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060013A2 RID: 5026 RVA: 0x0006D2E8 File Offset: 0x0006B4E8
+		// Token: 0x06001385 RID: 4997 RVA: 0x0006D11C File Offset: 0x0006B31C
 		private void OnEnable()
 		{
 			if (this.hasSetupOnce)
@@ -38,26 +45,21 @@ namespace RoR2
 			this.age = 0f;
 		}
 
-		// Token: 0x060013A3 RID: 5027 RVA: 0x0000F059 File Offset: 0x0000D259
+		// Token: 0x06001386 RID: 4998 RVA: 0x0000EE8F File Offset: 0x0000D08F
 		private void Update()
 		{
 			this.UpdatePrint(Time.deltaTime);
 		}
 
-		// Token: 0x060013A4 RID: 5028 RVA: 0x0000F066 File Offset: 0x0000D266
+		// Token: 0x06001387 RID: 4999 RVA: 0x0000EE9C File Offset: 0x0000D09C
 		public void SetPaused(bool newPaused)
 		{
 			this.paused = newPaused;
 		}
 
-		// Token: 0x060013A5 RID: 5029 RVA: 0x0006D334 File Offset: 0x0006B534
+		// Token: 0x06001388 RID: 5000 RVA: 0x0006D168 File Offset: 0x0006B368
 		private void UpdatePrint(float deltaTime)
 		{
-			this.SetupPrint();
-			if (this.printCurve == null)
-			{
-				return;
-			}
 			if (!this.paused)
 			{
 				this.age += deltaTime;
@@ -83,16 +85,9 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060013A6 RID: 5030 RVA: 0x0006D470 File Offset: 0x0006B670
+		// Token: 0x06001389 RID: 5001 RVA: 0x0006D294 File Offset: 0x0006B494
 		private void SetupPrint()
 		{
-			if (this.hasSetupOnce)
-			{
-				return;
-			}
-			this.materialsList = new List<Material>();
-			this.rendererList = new List<Renderer>();
-			this.printShader = Resources.Load<Shader>("Shaders/ToonLitCustom");
 			this.hasSetupOnce = true;
 			this.characterModel = base.GetComponent<CharacterModel>();
 			if (this.characterModel)
@@ -122,7 +117,7 @@ namespace RoR2
 			this.age = 0f;
 		}
 
-		// Token: 0x060013A7 RID: 5031 RVA: 0x0006D5A8 File Offset: 0x0006B7A8
+		// Token: 0x0600138A RID: 5002 RVA: 0x0006D3A0 File Offset: 0x0006B5A0
 		private void OnDestroy()
 		{
 			if (this.materialsList != null)
@@ -134,58 +129,58 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0400172E RID: 5934
+		// Token: 0x04001712 RID: 5906
 		public float printTime;
 
-		// Token: 0x0400172F RID: 5935
+		// Token: 0x04001713 RID: 5907
 		public AnimationCurve printCurve;
 
-		// Token: 0x04001730 RID: 5936
+		// Token: 0x04001714 RID: 5908
 		public float startingPrintHeight;
 
-		// Token: 0x04001731 RID: 5937
+		// Token: 0x04001715 RID: 5909
 		public float maxPrintHeight;
 
-		// Token: 0x04001732 RID: 5938
+		// Token: 0x04001716 RID: 5910
 		public float startingPrintBias;
 
-		// Token: 0x04001733 RID: 5939
+		// Token: 0x04001717 RID: 5911
 		public float maxPrintBias;
 
-		// Token: 0x04001734 RID: 5940
+		// Token: 0x04001718 RID: 5912
 		public bool animateFlowmapPower;
 
-		// Token: 0x04001735 RID: 5941
+		// Token: 0x04001719 RID: 5913
 		public float startingFlowmapPower;
 
-		// Token: 0x04001736 RID: 5942
+		// Token: 0x0400171A RID: 5914
 		public float maxFlowmapPower;
 
-		// Token: 0x04001737 RID: 5943
+		// Token: 0x0400171B RID: 5915
 		public bool disableWhenFinished = true;
 
-		// Token: 0x04001738 RID: 5944
+		// Token: 0x0400171C RID: 5916
 		public bool paused;
 
-		// Token: 0x04001739 RID: 5945
+		// Token: 0x0400171D RID: 5917
 		private MaterialPropertyBlock _propBlock;
 
-		// Token: 0x0400173A RID: 5946
+		// Token: 0x0400171E RID: 5918
 		private CharacterModel characterModel;
 
-		// Token: 0x0400173B RID: 5947
+		// Token: 0x0400171F RID: 5919
 		private List<Material> materialsList;
 
-		// Token: 0x0400173C RID: 5948
+		// Token: 0x04001720 RID: 5920
 		private List<Renderer> rendererList;
 
-		// Token: 0x0400173D RID: 5949
+		// Token: 0x04001721 RID: 5921
 		public float age;
 
-		// Token: 0x0400173E RID: 5950
+		// Token: 0x04001722 RID: 5922
 		private Shader printShader;
 
-		// Token: 0x0400173F RID: 5951
+		// Token: 0x04001723 RID: 5923
 		private bool hasSetupOnce;
 	}
 }

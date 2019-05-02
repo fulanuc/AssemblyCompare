@@ -4,12 +4,12 @@ using UnityEngine.Serialization;
 
 namespace RoR2
 {
-	// Token: 0x020003FC RID: 1020
+	// Token: 0x020003F6 RID: 1014
 	public class TeamFilter : NetworkBehaviour
 	{
-		// Token: 0x17000208 RID: 520
-		// (get) Token: 0x0600168D RID: 5773 RVA: 0x00010E54 File Offset: 0x0000F054
-		// (set) Token: 0x0600168E RID: 5774 RVA: 0x00010E5D File Offset: 0x0000F05D
+		// Token: 0x170001FF RID: 511
+		// (get) Token: 0x0600164E RID: 5710 RVA: 0x00010A3B File Offset: 0x0000EC3B
+		// (set) Token: 0x0600164F RID: 5711 RVA: 0x00010A44 File Offset: 0x0000EC44
 		public TeamIndex teamIndex
 		{
 			get
@@ -22,14 +22,14 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001690 RID: 5776 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06001651 RID: 5713 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x17000209 RID: 521
-		// (get) Token: 0x06001691 RID: 5777 RVA: 0x000771D0 File Offset: 0x000753D0
-		// (set) Token: 0x06001692 RID: 5778 RVA: 0x00010E66 File Offset: 0x0000F066
+		// Token: 0x17000200 RID: 512
+		// (get) Token: 0x06001652 RID: 5714 RVA: 0x00076C40 File Offset: 0x00074E40
+		// (set) Token: 0x06001653 RID: 5715 RVA: 0x00010A4D File Offset: 0x0000EC4D
 		public int NetworkteamIndexInternal
 		{
 			get
@@ -42,7 +42,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001693 RID: 5779 RVA: 0x000771E4 File Offset: 0x000753E4
+		// Token: 0x06001654 RID: 5716 RVA: 0x00076C54 File Offset: 0x00074E54
 		public override bool OnSerialize(NetworkWriter writer, bool forceAll)
 		{
 			if (forceAll)
@@ -67,7 +67,7 @@ namespace RoR2
 			return flag;
 		}
 
-		// Token: 0x06001694 RID: 5780 RVA: 0x00077250 File Offset: 0x00075450
+		// Token: 0x06001655 RID: 5717 RVA: 0x00076CC0 File Offset: 0x00074EC0
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 			if (initialState)
@@ -82,9 +82,9 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x040019BA RID: 6586
-		[FormerlySerializedAs("teamIndex")]
+		// Token: 0x04001991 RID: 6545
 		[SyncVar]
+		[FormerlySerializedAs("teamIndex")]
 		private int teamIndexInternal;
 	}
 }

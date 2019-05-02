@@ -2,18 +2,18 @@
 
 namespace RoR2
 {
-	// Token: 0x020004CC RID: 1228
+	// Token: 0x020004BE RID: 1214
 	public enum TeamIndex : sbyte
 	{
-		// Token: 0x04001E2A RID: 7722
+		// Token: 0x04001DF0 RID: 7664
 		None = -1,
-		// Token: 0x04001E2B RID: 7723
+		// Token: 0x04001DF1 RID: 7665
 		Neutral,
-		// Token: 0x04001E2C RID: 7724
+		// Token: 0x04001DF2 RID: 7666
 		Player,
-		// Token: 0x04001E2D RID: 7725
+		// Token: 0x04001DF3 RID: 7667
 		Monster,
-		// Token: 0x04001E2E RID: 7726
+		// Token: 0x04001DF4 RID: 7668
 		Count
 	}
 }

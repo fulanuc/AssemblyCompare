@@ -3,12 +3,12 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x020003D9 RID: 985
+	// Token: 0x020003D3 RID: 979
 	[ExecuteInEditMode]
 	public class SceneWeatherController : MonoBehaviour
 	{
-		// Token: 0x170001F4 RID: 500
-		// (get) Token: 0x06001577 RID: 5495 RVA: 0x000103D1 File Offset: 0x0000E5D1
+		// Token: 0x170001EB RID: 491
+		// (get) Token: 0x06001549 RID: 5449 RVA: 0x0001014A File Offset: 0x0000E34A
 		public static SceneWeatherController instance
 		{
 			get
@@ -17,7 +17,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001578 RID: 5496 RVA: 0x000103D8 File Offset: 0x0000E5D8
+		// Token: 0x0600154A RID: 5450 RVA: 0x00010151 File Offset: 0x0000E351
 		private void OnEnable()
 		{
 			if (!SceneWeatherController._instance)
@@ -26,7 +26,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001579 RID: 5497 RVA: 0x000103EC File Offset: 0x0000E5EC
+		// Token: 0x0600154B RID: 5451 RVA: 0x00010165 File Offset: 0x0000E365
 		private void OnDisable()
 		{
 			if (SceneWeatherController._instance == this)
@@ -35,7 +35,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600157A RID: 5498 RVA: 0x00073288 File Offset: 0x00071488
+		// Token: 0x0600154C RID: 5452 RVA: 0x00072E1C File Offset: 0x0007101C
 		private SceneWeatherController.WeatherParams GetWeatherParams(float t)
 		{
 			return new SceneWeatherController.WeatherParams
@@ -48,7 +48,7 @@ namespace RoR2
 			};
 		}
 
-		// Token: 0x0600157B RID: 5499 RVA: 0x00073350 File Offset: 0x00071550
+		// Token: 0x0600154D RID: 5453 RVA: 0x00072EE4 File Offset: 0x000710E4
 		private void Update()
 		{
 			SceneWeatherController.WeatherParams weatherParams = this.GetWeatherParams(this.weatherLerp);
@@ -70,55 +70,55 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x040018A3 RID: 6307
+		// Token: 0x04001881 RID: 6273
 		private static SceneWeatherController _instance;
 
-		// Token: 0x040018A4 RID: 6308
+		// Token: 0x04001882 RID: 6274
 		public SceneWeatherController.WeatherParams initialWeatherParams;
 
-		// Token: 0x040018A5 RID: 6309
+		// Token: 0x04001883 RID: 6275
 		public SceneWeatherController.WeatherParams finalWeatherParams;
 
-		// Token: 0x040018A6 RID: 6310
+		// Token: 0x04001884 RID: 6276
 		public Light sun;
 
-		// Token: 0x040018A7 RID: 6311
+		// Token: 0x04001885 RID: 6277
 		public Material fogMaterial;
 
-		// Token: 0x040018A8 RID: 6312
+		// Token: 0x04001886 RID: 6278
 		public string rtpcWeather;
 
-		// Token: 0x040018A9 RID: 6313
+		// Token: 0x04001887 RID: 6279
 		public float rtpcMin;
 
-		// Token: 0x040018AA RID: 6314
+		// Token: 0x04001888 RID: 6280
 		public float rtpcMax = 100f;
 
-		// Token: 0x040018AB RID: 6315
+		// Token: 0x04001889 RID: 6281
 		public AnimationCurve weatherLerpOverChargeTime;
 
-		// Token: 0x040018AC RID: 6316
+		// Token: 0x0400188A RID: 6282
 		[Range(0f, 1f)]
 		public float weatherLerp;
 
-		// Token: 0x020003DA RID: 986
+		// Token: 0x020003D4 RID: 980
 		[Serializable]
 		public struct WeatherParams
 		{
-			// Token: 0x040018AD RID: 6317
+			// Token: 0x0400188B RID: 6283
 			[ColorUsage(true, true, 1f, 5f, 1f, 5f)]
 			public Color sunColor;
 
-			// Token: 0x040018AE RID: 6318
+			// Token: 0x0400188C RID: 6284
 			public float sunIntensity;
 
-			// Token: 0x040018AF RID: 6319
+			// Token: 0x0400188D RID: 6285
 			public float fogStart;
 
-			// Token: 0x040018B0 RID: 6320
+			// Token: 0x0400188E RID: 6286
 			public float fogScale;
 
-			// Token: 0x040018B1 RID: 6321
+			// Token: 0x0400188F RID: 6287
 			public float fogIntensity;
 		}
 	}

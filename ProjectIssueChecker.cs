@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using TMPro;
 using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x0200047B RID: 1147
+	// Token: 0x02000470 RID: 1136
 	public class ProjectIssueChecker
 	{
-		// Token: 0x060019C6 RID: 6598 RVA: 0x00013381 File Offset: 0x00011581
+		// Token: 0x06001969 RID: 6505 RVA: 0x00012E67 File Offset: 0x00011067
 		private static IEnumerable<Assembly> GetAssemblies()
 		{
 			List<string> list = new List<string>();
@@ -34,20 +32,13 @@ namespace RoR2
 			yield break;
 		}
 
-		// Token: 0x060019C7 RID: 6599 RVA: 0x00083FC8 File Offset: 0x000821C8
+		// Token: 0x0600196A RID: 6506 RVA: 0x00083620 File Offset: 0x00081820
 		private ProjectIssueChecker()
 		{
 			this.assetCheckMethods = new Dictionary<Type, List<MethodInfo>>();
 			this.allChecks = new List<MethodInfo>();
 			this.enabledChecks = new Dictionary<MethodInfo, bool>();
-			Assembly[] source = new Assembly[]
-			{
-				typeof(RoR2Application).Assembly,
-				typeof(TMP_Text).Assembly
-			};
-			ProjectIssueChecker.<>c__DisplayClass7_0 CS$<>8__locals1;
-			CS$<>8__locals1.types = source.SelectMany((Assembly a) => a.GetTypes()).ToArray<Type>();
-			Type[] types = CS$<>8__locals1.types;
+			Type[] types = typeof(RoR2Application).Assembly.GetTypes();
 			for (int i = 0; i < types.Length; i++)
 			{
 				foreach (MethodInfo methodInfo in types[i].GetMethods(BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic))
@@ -56,8 +47,15 @@ namespace RoR2
 					{
 						if (obj is AssetCheckAttribute)
 						{
+							List<MethodInfo> list = null;
 							Type assetType = ((AssetCheckAttribute)obj).assetType;
-							this.<.ctor>g__AddMethodForTypeDescending|7_1(assetType, methodInfo, ref CS$<>8__locals1);
+							this.assetCheckMethods.TryGetValue(assetType, out list);
+							if (list == null)
+							{
+								list = new List<MethodInfo>();
+								this.assetCheckMethods[assetType] = list;
+							}
+							list.Add(methodInfo);
 							this.allChecks.Add(methodInfo);
 							this.enabledChecks.Add(methodInfo, true);
 						}
@@ -66,7 +64,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060019C8 RID: 6600 RVA: 0x0008413C File Offset: 0x0008233C
+		// Token: 0x0600196B RID: 6507 RVA: 0x0008376C File Offset: 0x0008196C
 		private string GetCurrentAssetFullPath()
 		{
 			GameObject gameObject = null;
@@ -88,7 +86,7 @@ namespace RoR2
 			return string.Format("{0}:{1}({2})", arg, arg2, arg3);
 		}
 
-		// Token: 0x060019C9 RID: 6601 RVA: 0x000841EC File Offset: 0x000823EC
+		// Token: 0x0600196C RID: 6508 RVA: 0x0008381C File Offset: 0x00081A1C
 		public void Log(string message, UnityEngine.Object context = null)
 		{
 			this.log.Add(new ProjectIssueChecker.LogMessage
@@ -100,7 +98,7 @@ namespace RoR2
 			});
 		}
 
-		// Token: 0x060019CA RID: 6602 RVA: 0x00084234 File Offset: 0x00082434
+		// Token: 0x0600196D RID: 6509 RVA: 0x00083864 File Offset: 0x00081A64
 		public void LogError(string message, UnityEngine.Object context = null)
 		{
 			this.log.Add(new ProjectIssueChecker.LogMessage
@@ -112,7 +110,7 @@ namespace RoR2
 			});
 		}
 
-		// Token: 0x060019CB RID: 6603 RVA: 0x0008427C File Offset: 0x0008247C
+		// Token: 0x0600196E RID: 6510 RVA: 0x000838AC File Offset: 0x00081AAC
 		public void LogFormat(UnityEngine.Object context, string format, params object[] args)
 		{
 			this.log.Add(new ProjectIssueChecker.LogMessage
@@ -124,7 +122,7 @@ namespace RoR2
 			});
 		}
 
-		// Token: 0x060019CC RID: 6604 RVA: 0x000842C8 File Offset: 0x000824C8
+		// Token: 0x0600196F RID: 6511 RVA: 0x000838F8 File Offset: 0x00081AF8
 		public void LogErrorFormat(UnityEngine.Object context, string format, params object[] args)
 		{
 			this.log.Add(new ProjectIssueChecker.LogMessage
@@ -136,7 +134,7 @@ namespace RoR2
 			});
 		}
 
-		// Token: 0x060019CD RID: 6605 RVA: 0x00084314 File Offset: 0x00082514
+		// Token: 0x06001970 RID: 6512 RVA: 0x00083944 File Offset: 0x00081B44
 		private void FlushLog()
 		{
 			bool flag = false;
@@ -173,53 +171,53 @@ namespace RoR2
 			this.log.Clear();
 		}
 
-		// Token: 0x04001D01 RID: 7425
+		// Token: 0x04001CCD RID: 7373
 		private Dictionary<Type, List<MethodInfo>> assetCheckMethods;
 
-		// Token: 0x04001D02 RID: 7426
+		// Token: 0x04001CCE RID: 7374
 		private List<MethodInfo> allChecks;
 
-		// Token: 0x04001D03 RID: 7427
+		// Token: 0x04001CCF RID: 7375
 		private Dictionary<MethodInfo, bool> enabledChecks;
 
-		// Token: 0x04001D04 RID: 7428
+		// Token: 0x04001CD0 RID: 7376
 		private bool checkScenes = true;
 
-		// Token: 0x04001D05 RID: 7429
+		// Token: 0x04001CD1 RID: 7377
 		private List<string> scenesToCheck = new List<string>();
 
-		// Token: 0x04001D06 RID: 7430
+		// Token: 0x04001CD2 RID: 7378
 		private string currentAssetPath = "";
 
-		// Token: 0x04001D07 RID: 7431
+		// Token: 0x04001CD3 RID: 7379
 		private readonly Stack<UnityEngine.Object> assetStack = new Stack<UnityEngine.Object>();
 
-		// Token: 0x04001D08 RID: 7432
+		// Token: 0x04001CD4 RID: 7380
 		private UnityEngine.Object currentAsset;
 
-		// Token: 0x04001D09 RID: 7433
+		// Token: 0x04001CD5 RID: 7381
 		private List<ProjectIssueChecker.LogMessage> log = new List<ProjectIssueChecker.LogMessage>();
 
-		// Token: 0x04001D0A RID: 7434
+		// Token: 0x04001CD6 RID: 7382
 		private string currentSceneName = "";
 
-		// Token: 0x0200047C RID: 1148
-		// (Invoke) Token: 0x060019D1 RID: 6609
+		// Token: 0x02000471 RID: 1137
+		// (Invoke) Token: 0x06001972 RID: 6514
 		private delegate void ObjectCheckDelegate(ProjectIssueChecker issueChecker, UnityEngine.Object obj);
 
-		// Token: 0x0200047D RID: 1149
+		// Token: 0x02000472 RID: 1138
 		private struct LogMessage
 		{
-			// Token: 0x04001D0B RID: 7435
+			// Token: 0x04001CD7 RID: 7383
 			public bool error;
 
-			// Token: 0x04001D0C RID: 7436
+			// Token: 0x04001CD8 RID: 7384
 			public string message;
 
-			// Token: 0x04001D0D RID: 7437
+			// Token: 0x04001CD9 RID: 7385
 			public UnityEngine.Object context;
 
-			// Token: 0x04001D0E RID: 7438
+			// Token: 0x04001CDA RID: 7386
 			public string assetPath;
 		}
 	}

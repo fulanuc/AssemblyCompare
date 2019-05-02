@@ -3,18 +3,18 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x020003AD RID: 941
+	// Token: 0x020003A8 RID: 936
 	[RequireComponent(typeof(Rigidbody))]
 	[RequireComponent(typeof(Collider))]
 	public class RigidbodyStickOnImpact : MonoBehaviour
 	{
-		// Token: 0x060013FE RID: 5118 RVA: 0x0000F372 File Offset: 0x0000D572
+		// Token: 0x060013E1 RID: 5089 RVA: 0x0000F1CE File Offset: 0x0000D3CE
 		private void Start()
 		{
 			this.rb = base.GetComponent<Rigidbody>();
 		}
 
-		// Token: 0x060013FF RID: 5119 RVA: 0x0006F188 File Offset: 0x0006D388
+		// Token: 0x060013E2 RID: 5090 RVA: 0x0006EF80 File Offset: 0x0006D180
 		private void Update()
 		{
 			if (this.stuck)
@@ -24,7 +24,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001400 RID: 5120 RVA: 0x0006F1E4 File Offset: 0x0006D3E4
+		// Token: 0x060013E3 RID: 5091 RVA: 0x0006EFDC File Offset: 0x0006D1DC
 		private void OnCollisionEnter(Collision collision)
 		{
 			if (this.stuck || this.rb.isKinematic)
@@ -53,34 +53,34 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x040017AE RID: 6062
+		// Token: 0x04001794 RID: 6036
 		private Rigidbody rb;
 
-		// Token: 0x040017AF RID: 6063
+		// Token: 0x04001795 RID: 6037
 		public string stickSoundString;
 
-		// Token: 0x040017B0 RID: 6064
+		// Token: 0x04001796 RID: 6038
 		public GameObject stickEffectPrefab;
 
-		// Token: 0x040017B1 RID: 6065
+		// Token: 0x04001797 RID: 6039
 		public float minimumRelativeVelocityMagnitude;
 
-		// Token: 0x040017B2 RID: 6066
+		// Token: 0x04001798 RID: 6040
 		public AnimationCurve embedDistanceCurve;
 
-		// Token: 0x040017B3 RID: 6067
+		// Token: 0x04001799 RID: 6041
 		private bool stuck;
 
-		// Token: 0x040017B4 RID: 6068
+		// Token: 0x0400179A RID: 6042
 		private float stopwatchSinceStuck;
 
-		// Token: 0x040017B5 RID: 6069
+		// Token: 0x0400179B RID: 6043
 		private Vector3 contactNormal;
 
-		// Token: 0x040017B6 RID: 6070
+		// Token: 0x0400179C RID: 6044
 		private Vector3 contactPosition;
 
-		// Token: 0x040017B7 RID: 6071
+		// Token: 0x0400179D RID: 6045
 		private Vector3 transformPositionWhenContacted;
 	}
 }

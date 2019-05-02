@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x020003F2 RID: 1010
+	// Token: 0x020003EC RID: 1004
 	public class StageSkinVariantController : MonoBehaviour
 	{
-		// Token: 0x0600163F RID: 5695 RVA: 0x00075FE0 File Offset: 0x000741E0
+		// Token: 0x06001602 RID: 5634 RVA: 0x000759A8 File Offset: 0x00073BA8
 		private void Awake()
 		{
 			if (SceneInfo.instance)
@@ -36,23 +36,23 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0400196C RID: 6508
+		// Token: 0x04001943 RID: 6467
 		public StageSkinVariantController.StageSkinVariant[] stageSkinVariants;
 
-		// Token: 0x0400196D RID: 6509
+		// Token: 0x04001944 RID: 6468
 		public CharacterModel characterModel;
 
-		// Token: 0x020003F3 RID: 1011
+		// Token: 0x020003ED RID: 1005
 		[Serializable]
 		public struct StageSkinVariant
 		{
-			// Token: 0x0400196E RID: 6510
+			// Token: 0x04001945 RID: 6469
 			public string stageNameToken;
 
-			// Token: 0x0400196F RID: 6511
+			// Token: 0x04001946 RID: 6470
 			public CharacterModel.RendererInfo[] replacementRenderInfos;
 
-			// Token: 0x04001970 RID: 6512
+			// Token: 0x04001947 RID: 6471
 			public GameObject[] childObjects;
 		}
 	}

@@ -8,7 +8,6 @@ using System.Threading;
 using Facepunch.Steamworks;
 using Rewired;
 using RoR2.ConVar;
-using RoR2.Networking;
 using SteamAPIValidator;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -19,36 +18,28 @@ using Zio.FileSystems;
 
 namespace RoR2
 {
-	// Token: 0x020003B5 RID: 949
+	// Token: 0x020003B0 RID: 944
 	public class RoR2Application : MonoBehaviour
 	{
-		// Token: 0x170001C4 RID: 452
-		// (get) Token: 0x06001427 RID: 5159 RVA: 0x0000F4F9 File Offset: 0x0000D6F9
-		// (set) Token: 0x06001428 RID: 5160 RVA: 0x0000F501 File Offset: 0x0000D701
+		// Token: 0x170001BF RID: 447
+		// (get) Token: 0x0600140A RID: 5130 RVA: 0x0000F355 File Offset: 0x0000D555
+		// (set) Token: 0x0600140B RID: 5131 RVA: 0x0000F35D File Offset: 0x0000D55D
 		public Client steamworksClient { get; private set; }
 
-		// Token: 0x06001429 RID: 5161 RVA: 0x0000F50A File Offset: 0x0000D70A
+		// Token: 0x0600140C RID: 5132 RVA: 0x0000F366 File Offset: 0x0000D566
 		public static string GetBuildId()
 		{
-			if (RoR2Application.isModded)
-			{
-				return "MOD";
-			}
 			return RoR2Application.steamBuildId;
 		}
 
-		// Token: 0x170001C5 RID: 453
-		// (get) Token: 0x0600142A RID: 5162 RVA: 0x0000F51E File Offset: 0x0000D71E
-		// (set) Token: 0x0600142B RID: 5163 RVA: 0x0000F525 File Offset: 0x0000D725
+		// Token: 0x170001C0 RID: 448
+		// (get) Token: 0x0600140D RID: 5133 RVA: 0x0000F36D File Offset: 0x0000D56D
+		// (set) Token: 0x0600140E RID: 5134 RVA: 0x0000F374 File Offset: 0x0000D574
 		public static RoR2Application instance { get; private set; }
 
-		// Token: 0x0600142C RID: 5164 RVA: 0x0006FDA4 File Offset: 0x0006DFA4
+		// Token: 0x0600140F RID: 5135 RVA: 0x0006FB9C File Offset: 0x0006DD9C
 		private void Awake()
 		{
-			if (RoR2Application.maxPlayers != 4)
-			{
-				RoR2Application.isModded = true;
-			}
 			this.stopwatch.Start();
 			UnityEngine.Object.DontDestroyOnLoad(base.gameObject);
 			if (RoR2Application.instance)
@@ -64,7 +55,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600142D RID: 5165 RVA: 0x0000F52D File Offset: 0x0000D72D
+		// Token: 0x06001410 RID: 5136 RVA: 0x0000F37C File Offset: 0x0000D57C
 		private void Start()
 		{
 			if (RoR2Application.instance == this && RoR2Application.onStart != null)
@@ -74,15 +65,15 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600142E RID: 5166
+		// Token: 0x06001411 RID: 5137
 		[DllImport("ntdll.dll", SetLastError = true)]
 		private static extern int NtSetTimerResolution(int desiredResolution, bool setResolution, out int currentResolution);
 
-		// Token: 0x0600142F RID: 5167
+		// Token: 0x06001412 RID: 5138
 		[DllImport("ntdll.dll", SetLastError = true)]
 		private static extern int NtQueryTimerResolution(out int minimumResolution, out int maximumResolution, out int currentResolution);
 
-		// Token: 0x06001430 RID: 5168 RVA: 0x0006FE08 File Offset: 0x0006E008
+		// Token: 0x06001413 RID: 5139 RVA: 0x0006FBF4 File Offset: 0x0006DDF4
 		private void Update()
 		{
 			if (RoR2Application.waitMsConVar.value >= 0)
@@ -109,26 +100,26 @@ namespace RoR2
 		}
 
 		// Token: 0x1400001E RID: 30
-		// (add) Token: 0x06001431 RID: 5169 RVA: 0x0006FEB0 File Offset: 0x0006E0B0
-		// (remove) Token: 0x06001432 RID: 5170 RVA: 0x0006FEE4 File Offset: 0x0006E0E4
+		// (add) Token: 0x06001414 RID: 5140 RVA: 0x0006FC9C File Offset: 0x0006DE9C
+		// (remove) Token: 0x06001415 RID: 5141 RVA: 0x0006FCD0 File Offset: 0x0006DED0
 		public static event Action onUpdate;
 
 		// Token: 0x1400001F RID: 31
-		// (add) Token: 0x06001433 RID: 5171 RVA: 0x0006FF18 File Offset: 0x0006E118
-		// (remove) Token: 0x06001434 RID: 5172 RVA: 0x0006FF4C File Offset: 0x0006E14C
+		// (add) Token: 0x06001416 RID: 5142 RVA: 0x0006FD04 File Offset: 0x0006DF04
+		// (remove) Token: 0x06001417 RID: 5143 RVA: 0x0006FD38 File Offset: 0x0006DF38
 		public static event Action onFixedUpdate;
 
 		// Token: 0x14000020 RID: 32
-		// (add) Token: 0x06001435 RID: 5173 RVA: 0x0006FF80 File Offset: 0x0006E180
-		// (remove) Token: 0x06001436 RID: 5174 RVA: 0x0006FFB4 File Offset: 0x0006E1B4
+		// (add) Token: 0x06001418 RID: 5144 RVA: 0x0006FD6C File Offset: 0x0006DF6C
+		// (remove) Token: 0x06001419 RID: 5145 RVA: 0x0006FDA0 File Offset: 0x0006DFA0
 		public static event Action onLateUpdate;
 
 		// Token: 0x14000021 RID: 33
-		// (add) Token: 0x06001437 RID: 5175 RVA: 0x0006FFE8 File Offset: 0x0006E1E8
-		// (remove) Token: 0x06001438 RID: 5176 RVA: 0x0007001C File Offset: 0x0006E21C
+		// (add) Token: 0x0600141A RID: 5146 RVA: 0x0006FDD4 File Offset: 0x0006DFD4
+		// (remove) Token: 0x0600141B RID: 5147 RVA: 0x0006FE08 File Offset: 0x0006E008
 		public static event Action onNextUpdate;
 
-		// Token: 0x06001439 RID: 5177 RVA: 0x0000F553 File Offset: 0x0000D753
+		// Token: 0x0600141C RID: 5148 RVA: 0x0000F3A2 File Offset: 0x0000D5A2
 		private void FixedUpdate()
 		{
 			Action action = RoR2Application.onFixedUpdate;
@@ -139,7 +130,7 @@ namespace RoR2
 			RoR2Application.fixedTimeTimers.Update(Time.fixedDeltaTime);
 		}
 
-		// Token: 0x0600143A RID: 5178 RVA: 0x0000F574 File Offset: 0x0000D774
+		// Token: 0x0600141D RID: 5149 RVA: 0x0000F3C3 File Offset: 0x0000D5C3
 		private void LateUpdate()
 		{
 			Action action = RoR2Application.onLateUpdate;
@@ -150,12 +141,7 @@ namespace RoR2
 			action();
 		}
 
-		// Token: 0x170001C6 RID: 454
-		// (get) Token: 0x0600143B RID: 5179 RVA: 0x0000F585 File Offset: 0x0000D785
-		// (set) Token: 0x0600143C RID: 5180 RVA: 0x0000F58C File Offset: 0x0000D78C
-		public static FileSystem fileSystem { get; private set; }
-
-		// Token: 0x0600143D RID: 5181 RVA: 0x00070050 File Offset: 0x0006E250
+		// Token: 0x0600141E RID: 5150 RVA: 0x0006FE3C File Offset: 0x0006E03C
 		private void OnLoad()
 		{
 			RoR2Application.UnitySystemConsoleRedirector.Redirect();
@@ -261,14 +247,14 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600143E RID: 5182 RVA: 0x00070314 File Offset: 0x0006E514
+		// Token: 0x0600141F RID: 5151 RVA: 0x00070100 File Offset: 0x0006E300
 		private void ShutdownSteamworks()
 		{
 			if (this.steamworksClient != null)
 			{
-				if (GameNetworkManager.singleton)
+				if (Console.instance)
 				{
-					GameNetworkManager.singleton.ForceCloseAllConnections();
+					Console.instance.SubmitCmd(null, "disconnect", false);
 				}
 				Debug.Log("Shutting down Steamworks...");
 				this.steamworksClient.Lobby.Leave();
@@ -283,13 +269,13 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600143F RID: 5183 RVA: 0x0000F594 File Offset: 0x0000D794
+		// Token: 0x06001420 RID: 5152 RVA: 0x0000F3D4 File Offset: 0x0000D5D4
 		private void OnDestroy()
 		{
 			this.ShutdownSteamworks();
 		}
 
-		// Token: 0x06001440 RID: 5184 RVA: 0x0000F59C File Offset: 0x0000D79C
+		// Token: 0x06001421 RID: 5153 RVA: 0x0000F3DC File Offset: 0x0000D5DC
 		private void OnApplicationQuit()
 		{
 			UserProfile.HandleShutDown();
@@ -301,8 +287,8 @@ namespace RoR2
 			bool isEditor = Application.isEditor;
 		}
 
-		// Token: 0x170001C7 RID: 455
-		// (get) Token: 0x06001441 RID: 5185 RVA: 0x0000F5C5 File Offset: 0x0000D7C5
+		// Token: 0x170001C1 RID: 449
+		// (get) Token: 0x06001422 RID: 5154 RVA: 0x0000F405 File Offset: 0x0000D605
 		public static bool isInSinglePlayer
 		{
 			get
@@ -311,7 +297,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001442 RID: 5186 RVA: 0x00070394 File Offset: 0x0006E594
+		// Token: 0x06001423 RID: 5155 RVA: 0x00070184 File Offset: 0x0006E384
 		private static void AssignJoystickToAvailablePlayer(Controller controller)
 		{
 			IList<Player> players = ReInput.players.Players;
@@ -326,13 +312,13 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001443 RID: 5187 RVA: 0x0000F5DD File Offset: 0x0000D7DD
+		// Token: 0x06001424 RID: 5156 RVA: 0x0000F41D File Offset: 0x0000D61D
 		private static void AssignNewController(ControllerStatusChangedEventArgs args)
 		{
 			RoR2Application.AssignNewController(ReInput.controllers.GetController(args.controllerType, args.controllerId));
 		}
 
-		// Token: 0x06001444 RID: 5188 RVA: 0x0000F5FA File Offset: 0x0000D7FA
+		// Token: 0x06001425 RID: 5157 RVA: 0x0000F43A File Offset: 0x0000D63A
 		private static void AssignNewController(Controller controller)
 		{
 			ReInput.players.GetPlayer("PlayerMain").controllers.AddController(controller, false);
@@ -342,12 +328,12 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x170001C8 RID: 456
-		// (get) Token: 0x06001445 RID: 5189 RVA: 0x0000F626 File Offset: 0x0000D826
-		// (set) Token: 0x06001446 RID: 5190 RVA: 0x0000F62D File Offset: 0x0000D82D
+		// Token: 0x170001C2 RID: 450
+		// (get) Token: 0x06001426 RID: 5158 RVA: 0x0000F466 File Offset: 0x0000D666
+		// (set) Token: 0x06001427 RID: 5159 RVA: 0x0000F46D File Offset: 0x0000D66D
 		public static bool sessionCheatsEnabled { get; private set; }
 
-		// Token: 0x06001447 RID: 5191 RVA: 0x0007040C File Offset: 0x0006E60C
+		// Token: 0x06001428 RID: 5160 RVA: 0x000701FC File Offset: 0x0006E3FC
 		[ConCommand(commandName = "pause", flags = ConVarFlags.None, helpText = "Toggles game pause state.")]
 		private static void CCTogglePause(ConCommandArgs args)
 		{
@@ -357,33 +343,33 @@ namespace RoR2
 				RoR2Application.instance.pauseScreenInstance = null;
 				return;
 			}
-			if (NetworkManager.singleton.isNetworkActive)
+			if (Run.instance)
 			{
-				RoR2Application.instance.pauseScreenInstance = UnityEngine.Object.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/UI/PauseScreen"), RoR2Application.instance.transform);
+				RoR2Application.instance.pauseScreenInstance = UnityEngine.Object.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/UI/PauseScreen"));
 			}
 		}
 
-		// Token: 0x06001448 RID: 5192 RVA: 0x0000F635 File Offset: 0x0000D835
+		// Token: 0x06001429 RID: 5161 RVA: 0x0000F475 File Offset: 0x0000D675
 		[ConCommand(commandName = "quit", flags = ConVarFlags.None, helpText = "Close the application.")]
 		private static void CCQuit(ConCommandArgs args)
 		{
 			Application.Quit();
 		}
 
-		// Token: 0x06001449 RID: 5193 RVA: 0x0000F63C File Offset: 0x0000D83C
+		// Token: 0x0600142A RID: 5162 RVA: 0x0000F47C File Offset: 0x0000D67C
 		public static void IncrementActiveWriteCount()
 		{
 			Interlocked.Increment(ref RoR2Application.activeWriteCount);
 			RoR2Application.saveIconAlpha = 2f;
 		}
 
-		// Token: 0x0600144A RID: 5194 RVA: 0x0000F655 File Offset: 0x0000D855
+		// Token: 0x0600142B RID: 5163 RVA: 0x0000F495 File Offset: 0x0000D695
 		public static void DecrementActiveWriteCount()
 		{
 			Interlocked.Decrement(ref RoR2Application.activeWriteCount);
 		}
 
-		// Token: 0x0600144B RID: 5195 RVA: 0x0000F662 File Offset: 0x0000D862
+		// Token: 0x0600142C RID: 5164 RVA: 0x0000F4A2 File Offset: 0x0000D6A2
 		[RuntimeInitializeOnLoadMethod]
 		private static void InitSaveIcon()
 		{
@@ -399,134 +385,131 @@ namespace RoR2
 			};
 		}
 
-		// Token: 0x040017DA RID: 6106
-		[HideInInspector]
+		// Token: 0x040017C0 RID: 6080
 		[SerializeField]
+		[HideInInspector]
 		private bool loaded;
 
-		// Token: 0x040017DB RID: 6107
-		public static readonly string messageForModders = "We don't officially support modding at this time but if you're going to mod the game please change this value to true if you're modding the game. This will disable some things like Prismatic Trials and put players into a separate matchmaking queue from vanilla users to protect their game experience.";
-
-		// Token: 0x040017DC RID: 6108
-		public static bool isModded = false;
-
-		// Token: 0x040017DD RID: 6109
+		// Token: 0x040017C1 RID: 6081
 		public GameObject networkManagerPrefab;
 
-		// Token: 0x040017DE RID: 6110
+		// Token: 0x040017C2 RID: 6082
 		public GameObject wwiseGlobalPrefab;
 
-		// Token: 0x040017DF RID: 6111
+		// Token: 0x040017C3 RID: 6083
 		public GameObject audioManagerPrefab;
 
-		// Token: 0x040017E0 RID: 6112
+		// Token: 0x040017C4 RID: 6084
 		public EntityStateManager stateManager;
 
-		// Token: 0x040017E1 RID: 6113
+		// Token: 0x040017C5 RID: 6085
 		public PostProcessVolume postProcessSettingsController;
 
-		// Token: 0x040017E2 RID: 6114
+		// Token: 0x040017C6 RID: 6086
 		public Canvas mainCanvas;
 
-		// Token: 0x040017E3 RID: 6115
+		// Token: 0x040017C7 RID: 6087
 		public Stopwatch stopwatch = new Stopwatch();
 
-		// Token: 0x040017E4 RID: 6116
+		// Token: 0x040017C8 RID: 6088
 		public const string gameName = "Risk of Rain 2";
 
-		// Token: 0x040017E5 RID: 6117
+		// Token: 0x040017C9 RID: 6089
 		private const uint ror2AppId = 632360u;
 
-		// Token: 0x040017E6 RID: 6118
+		// Token: 0x040017CA RID: 6090
 		public const uint appId = 632360u;
 
-		// Token: 0x040017E8 RID: 6120
+		// Token: 0x040017CC RID: 6092
 		public Auth.Ticket steamworksAuthTicket;
 
-		// Token: 0x040017E9 RID: 6121
+		// Token: 0x040017CD RID: 6093
 		public ResourceAvailability steamworksAvailability;
 
-		// Token: 0x040017EA RID: 6122
+		// Token: 0x040017CE RID: 6094
 		private static string steamBuildId = "STEAM_UNINITIALIZED";
 
-		// Token: 0x040017EB RID: 6123
-		public static readonly int hardMaxPlayers = 16;
+		// Token: 0x040017CF RID: 6095
+		public const int hardMaxPlayers = 16;
 
-		// Token: 0x040017EC RID: 6124
-		public static readonly int maxPlayers = 4;
+		// Token: 0x040017D0 RID: 6096
+		public const int maxPlayers = 4;
 
-		// Token: 0x040017ED RID: 6125
-		public static readonly int maxLocalPlayers = 4;
+		// Token: 0x040017D1 RID: 6097
+		public const int maxLocalPlayers = 4;
 
-		// Token: 0x040017EE RID: 6126
+		// Token: 0x040017D2 RID: 6098
 		private GameObject wwiseGlobalInstance;
 
-		// Token: 0x040017F0 RID: 6128
+		// Token: 0x040017D4 RID: 6100
 		private static IntConVar waitMsConVar = new IntConVar("wait_ms", ConVarFlags.None, "-1", "How many milliseconds to sleep between each frame. -1 for no sleeping between frames.");
 
-		// Token: 0x040017F1 RID: 6129
+		// Token: 0x040017D5 RID: 6101
 		private GameObject pauseScreenInstance;
 
-		// Token: 0x040017F2 RID: 6130
+		// Token: 0x040017D6 RID: 6102
 		public static readonly TimerQueue timeTimers = new TimerQueue();
 
-		// Token: 0x040017F3 RID: 6131
+		// Token: 0x040017D7 RID: 6103
 		public static readonly TimerQueue fixedTimeTimers = new TimerQueue();
 
-		// Token: 0x040017F4 RID: 6132
+		// Token: 0x040017D8 RID: 6104
 		public static readonly TimerQueue unscaledTimeTimers = new TimerQueue();
 
-		// Token: 0x040017FA RID: 6138
+		// Token: 0x040017DD RID: 6109
+		private static FileSystem fileSystem;
+
+		// Token: 0x040017DE RID: 6110
 		public static FileSystem cloudStorage;
 
-		// Token: 0x040017FB RID: 6139
+		// Token: 0x040017DF RID: 6111
 		public static Action onLoad;
 
-		// Token: 0x040017FC RID: 6140
+		// Token: 0x040017E0 RID: 6112
 		public static Action onStart;
 
-		// Token: 0x040017FD RID: 6141
+		// Token: 0x040017E1 RID: 6113
 		private const bool isRewiredFixedYet = true;
 
-		// Token: 0x040017FF RID: 6143
+		// Token: 0x040017E3 RID: 6115
 		public static RoR2Application.CheatsConVar cvCheats = new RoR2Application.CheatsConVar("cheats", ConVarFlags.ExecuteOnServer, "0", "Enable cheats. Achievements, unlock progression, and stat tracking will be disabled until the application is restarted.");
 
-		// Token: 0x04001800 RID: 6144
+		// Token: 0x040017E4 RID: 6116
 		private static float oldTimeScale = 1f;
 
-		// Token: 0x04001801 RID: 6145
+		// Token: 0x040017E5 RID: 6117
 		public static Action onPauseStartGlobal;
 
-		// Token: 0x04001802 RID: 6146
+		// Token: 0x040017E6 RID: 6118
 		public static Action onPauseEndGlobal;
 
-		// Token: 0x04001803 RID: 6147
+		// Token: 0x040017E7 RID: 6119
 		private static RoR2Application.TimeScaleConVar cvTimeScale = new RoR2Application.TimeScaleConVar("timescale", ConVarFlags.ExecuteOnServer | ConVarFlags.Cheat | ConVarFlags.Engine, null, "The timescale of the game.");
 
-		// Token: 0x04001804 RID: 6148
+		// Token: 0x040017E8 RID: 6120
 		private static RoR2Application.TimeStepConVar cvTimeStep = new RoR2Application.TimeStepConVar("timestep", ConVarFlags.ExecuteOnServer | ConVarFlags.Cheat | ConVarFlags.Engine, null, "The timestep of the game.");
 
-		// Token: 0x04001805 RID: 6149
-		public static readonly Xoroshiro128Plus rng = new Xoroshiro128Plus((ulong)DateTime.UtcNow.Ticks);
+		// Token: 0x040017E9 RID: 6121
+		public static readonly Xoroshiro128Plus rng = new Xoroshiro128Plus((ulong)DateTime.Now.Ticks);
 
-		// Token: 0x04001806 RID: 6150
+		// Token: 0x040017EA RID: 6122
 		public static BoolConVar enableDamageNumbers = new BoolConVar("enable_damage_numbers", ConVarFlags.None, "1", "Whether or not damage and healing numbers spawn.");
 
-		// Token: 0x04001807 RID: 6151
+		// Token: 0x040017EB RID: 6123
 		private static int activeWriteCount;
 
-		// Token: 0x04001808 RID: 6152
+		// Token: 0x040017EC RID: 6124
 		private static volatile float saveIconAlpha = 0f;
 
-		// Token: 0x020003B6 RID: 950
+		// Token: 0x020003B1 RID: 945
 		private class TimerResolutionConVar : BaseConVar
 		{
-			// Token: 0x0600144E RID: 5198 RVA: 0x000090CD File Offset: 0x000072CD
+			// Token: 0x0600142F RID: 5167 RVA: 0x000090A8 File Offset: 0x000072A8
 			private TimerResolutionConVar(string name, ConVarFlags flags, string defaultValue, string helpText) : base(name, flags, defaultValue, helpText)
 			{
 			}
 
-			// Token: 0x0600144F RID: 5199 RVA: 0x00070578 File Offset: 0x0006E778
+			// Token: 0x06001430 RID: 5168 RVA: 0x0007033C File Offset: 0x0006E53C
 			public override void SetString(string newValue)
 			{
 				int desiredResolution;
@@ -542,7 +525,7 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x06001450 RID: 5200 RVA: 0x000705BC File Offset: 0x0006E7BC
+			// Token: 0x06001431 RID: 5169 RVA: 0x00070380 File Offset: 0x0006E580
 			public override string GetString()
 			{
 				int num;
@@ -552,21 +535,21 @@ namespace RoR2
 				return TextSerialization.ToStringInvariant(value);
 			}
 
-			// Token: 0x04001809 RID: 6153
+			// Token: 0x040017ED RID: 6125
 			private static RoR2Application.TimerResolutionConVar instance = new RoR2Application.TimerResolutionConVar("timer_resolution", ConVarFlags.Engine, null, "The Windows timer resolution.");
 		}
 
-		// Token: 0x020003B7 RID: 951
+		// Token: 0x020003B2 RID: 946
 		public class CheatsConVar : BaseConVar
 		{
-			// Token: 0x06001452 RID: 5202 RVA: 0x000090CD File Offset: 0x000072CD
+			// Token: 0x06001433 RID: 5171 RVA: 0x000090A8 File Offset: 0x000072A8
 			public CheatsConVar(string name, ConVarFlags flags, string defaultValue, string helpText) : base(name, flags, defaultValue, helpText)
 			{
 			}
 
-			// Token: 0x170001C9 RID: 457
-			// (get) Token: 0x06001453 RID: 5203 RVA: 0x0000F6C9 File Offset: 0x0000D8C9
-			// (set) Token: 0x06001454 RID: 5204 RVA: 0x0000F6D1 File Offset: 0x0000D8D1
+			// Token: 0x170001C3 RID: 451
+			// (get) Token: 0x06001434 RID: 5172 RVA: 0x0000F509 File Offset: 0x0000D709
+			// (set) Token: 0x06001435 RID: 5173 RVA: 0x0000F511 File Offset: 0x0000D711
 			public bool boolValue
 			{
 				get
@@ -582,7 +565,7 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x06001455 RID: 5205 RVA: 0x000705DC File Offset: 0x0006E7DC
+			// Token: 0x06001436 RID: 5174 RVA: 0x000703A0 File Offset: 0x0006E5A0
 			public override void SetString(string newValue)
 			{
 				int num;
@@ -592,7 +575,7 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x06001456 RID: 5206 RVA: 0x0000F6E1 File Offset: 0x0000D8E1
+			// Token: 0x06001437 RID: 5175 RVA: 0x0000F521 File Offset: 0x0000D721
 			public override string GetString()
 			{
 				if (!this.boolValue)
@@ -602,19 +585,19 @@ namespace RoR2
 				return "1";
 			}
 
-			// Token: 0x0400180A RID: 6154
+			// Token: 0x040017EE RID: 6126
 			private bool _boolValue;
 		}
 
-		// Token: 0x020003B8 RID: 952
+		// Token: 0x020003B3 RID: 947
 		private class TimeScaleConVar : BaseConVar
 		{
-			// Token: 0x06001457 RID: 5207 RVA: 0x000090CD File Offset: 0x000072CD
+			// Token: 0x06001438 RID: 5176 RVA: 0x000090A8 File Offset: 0x000072A8
 			public TimeScaleConVar(string name, ConVarFlags flags, string defaultValue, string helpText) : base(name, flags, defaultValue, helpText)
 			{
 			}
 
-			// Token: 0x06001458 RID: 5208 RVA: 0x00070600 File Offset: 0x0006E800
+			// Token: 0x06001439 RID: 5177 RVA: 0x000703C4 File Offset: 0x0006E5C4
 			public override void SetString(string newValue)
 			{
 				float timeScale;
@@ -624,22 +607,22 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x06001459 RID: 5209 RVA: 0x0000F6F6 File Offset: 0x0000D8F6
+			// Token: 0x0600143A RID: 5178 RVA: 0x0000F536 File Offset: 0x0000D736
 			public override string GetString()
 			{
 				return TextSerialization.ToStringInvariant(Time.timeScale);
 			}
 		}
 
-		// Token: 0x020003B9 RID: 953
+		// Token: 0x020003B4 RID: 948
 		private class TimeStepConVar : BaseConVar
 		{
-			// Token: 0x0600145A RID: 5210 RVA: 0x000090CD File Offset: 0x000072CD
+			// Token: 0x0600143B RID: 5179 RVA: 0x000090A8 File Offset: 0x000072A8
 			public TimeStepConVar(string name, ConVarFlags flags, string defaultValue, string helpText) : base(name, flags, defaultValue, helpText)
 			{
 			}
 
-			// Token: 0x0600145B RID: 5211 RVA: 0x00070620 File Offset: 0x0006E820
+			// Token: 0x0600143C RID: 5180 RVA: 0x000703E4 File Offset: 0x0006E5E4
 			public override void SetString(string newValue)
 			{
 				float fixedDeltaTime;
@@ -649,22 +632,22 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x0600145C RID: 5212 RVA: 0x0000F702 File Offset: 0x0000D902
+			// Token: 0x0600143D RID: 5181 RVA: 0x0000F542 File Offset: 0x0000D742
 			public override string GetString()
 			{
 				return TextSerialization.ToStringInvariant(Time.fixedDeltaTime);
 			}
 		}
 
-		// Token: 0x020003BA RID: 954
+		// Token: 0x020003B5 RID: 949
 		private class SyncPhysicsConVar : BaseConVar
 		{
-			// Token: 0x0600145D RID: 5213 RVA: 0x000090CD File Offset: 0x000072CD
+			// Token: 0x0600143E RID: 5182 RVA: 0x000090A8 File Offset: 0x000072A8
 			private SyncPhysicsConVar(string name, ConVarFlags flags, string defaultValue, string helpText) : base(name, flags, defaultValue, helpText)
 			{
 			}
 
-			// Token: 0x0600145E RID: 5214 RVA: 0x00070640 File Offset: 0x0006E840
+			// Token: 0x0600143F RID: 5183 RVA: 0x00070404 File Offset: 0x0006E604
 			public override void SetString(string newValue)
 			{
 				int num;
@@ -678,7 +661,7 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x0600145F RID: 5215 RVA: 0x0000F70E File Offset: 0x0000D90E
+			// Token: 0x06001440 RID: 5184 RVA: 0x0000F54E File Offset: 0x0000D74E
 			public override string GetString()
 			{
 				if (!Physics.autoSyncTransforms)
@@ -688,19 +671,19 @@ namespace RoR2
 				return "1";
 			}
 
-			// Token: 0x0400180B RID: 6155
+			// Token: 0x040017EF RID: 6127
 			public static RoR2Application.SyncPhysicsConVar instance = new RoR2Application.SyncPhysicsConVar("sync_physics", ConVarFlags.None, "0", "Enable/disables Physics 'autosyncing' between moves.");
 		}
 
-		// Token: 0x020003BB RID: 955
+		// Token: 0x020003B6 RID: 950
 		private class AutoSimulatePhysicsConVar : BaseConVar
 		{
-			// Token: 0x06001461 RID: 5217 RVA: 0x000090CD File Offset: 0x000072CD
+			// Token: 0x06001442 RID: 5186 RVA: 0x000090A8 File Offset: 0x000072A8
 			private AutoSimulatePhysicsConVar(string name, ConVarFlags flags, string defaultValue, string helpText) : base(name, flags, defaultValue, helpText)
 			{
 			}
 
-			// Token: 0x06001462 RID: 5218 RVA: 0x0007066C File Offset: 0x0006E86C
+			// Token: 0x06001443 RID: 5187 RVA: 0x00070430 File Offset: 0x0006E630
 			public override void SetString(string newValue)
 			{
 				int num;
@@ -714,7 +697,7 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x06001463 RID: 5219 RVA: 0x0000F73E File Offset: 0x0000D93E
+			// Token: 0x06001444 RID: 5188 RVA: 0x0000F57E File Offset: 0x0000D77E
 			public override string GetString()
 			{
 				if (!Physics.autoSimulation)
@@ -724,54 +707,54 @@ namespace RoR2
 				return "1";
 			}
 
-			// Token: 0x0400180C RID: 6156
+			// Token: 0x040017F0 RID: 6128
 			public static RoR2Application.AutoSimulatePhysicsConVar instance = new RoR2Application.AutoSimulatePhysicsConVar("auto_simulate_physics", ConVarFlags.None, "1", "Enable/disables Physics autosimulate.");
 		}
 
-		// Token: 0x020003BC RID: 956
+		// Token: 0x020003B7 RID: 951
 		private static class UnitySystemConsoleRedirector
 		{
-			// Token: 0x06001465 RID: 5221 RVA: 0x0000F76E File Offset: 0x0000D96E
+			// Token: 0x06001446 RID: 5190 RVA: 0x0000F5AE File Offset: 0x0000D7AE
 			public static void Redirect()
 			{
 				Console.SetOut(new RoR2Application.UnitySystemConsoleRedirector.OutWriter());
 				Console.SetError(new RoR2Application.UnitySystemConsoleRedirector.ErrorWriter());
 			}
 
-			// Token: 0x020003BD RID: 957
+			// Token: 0x020003B8 RID: 952
 			private class OutWriter : RoR2Application.UnitySystemConsoleRedirector.UnityTextWriter
 			{
-				// Token: 0x06001466 RID: 5222 RVA: 0x0000F784 File Offset: 0x0000D984
+				// Token: 0x06001447 RID: 5191 RVA: 0x0000F5C4 File Offset: 0x0000D7C4
 				public override void WriteBufferToUnity(string str)
 				{
 					Debug.Log(str);
 				}
 			}
 
-			// Token: 0x020003BE RID: 958
+			// Token: 0x020003B9 RID: 953
 			private class ErrorWriter : RoR2Application.UnitySystemConsoleRedirector.UnityTextWriter
 			{
-				// Token: 0x06001468 RID: 5224 RVA: 0x0000F794 File Offset: 0x0000D994
+				// Token: 0x06001449 RID: 5193 RVA: 0x0000F5D4 File Offset: 0x0000D7D4
 				public override void WriteBufferToUnity(string str)
 				{
 					Debug.LogError(str);
 				}
 			}
 
-			// Token: 0x020003BF RID: 959
+			// Token: 0x020003BA RID: 954
 			private abstract class UnityTextWriter : TextWriter
 			{
-				// Token: 0x0600146A RID: 5226 RVA: 0x0000F79C File Offset: 0x0000D99C
+				// Token: 0x0600144B RID: 5195 RVA: 0x0000F5DC File Offset: 0x0000D7DC
 				public override void Flush()
 				{
 					this.WriteBufferToUnity(this.buffer.ToString());
 					this.buffer.Length = 0;
 				}
 
-				// Token: 0x0600146B RID: 5227
+				// Token: 0x0600144C RID: 5196
 				public abstract void WriteBufferToUnity(string str);
 
-				// Token: 0x0600146C RID: 5228 RVA: 0x00070698 File Offset: 0x0006E898
+				// Token: 0x0600144D RID: 5197 RVA: 0x0007045C File Offset: 0x0006E65C
 				public override void Write(string value)
 				{
 					this.buffer.Append(value);
@@ -785,7 +768,7 @@ namespace RoR2
 					}
 				}
 
-				// Token: 0x0600146D RID: 5229 RVA: 0x0000F7BB File Offset: 0x0000D9BB
+				// Token: 0x0600144E RID: 5198 RVA: 0x0000F5FB File Offset: 0x0000D7FB
 				public override void Write(char value)
 				{
 					this.buffer.Append(value);
@@ -795,14 +778,14 @@ namespace RoR2
 					}
 				}
 
-				// Token: 0x0600146E RID: 5230 RVA: 0x0000F7D5 File Offset: 0x0000D9D5
+				// Token: 0x0600144F RID: 5199 RVA: 0x0000F615 File Offset: 0x0000D815
 				public override void Write(char[] value, int index, int count)
 				{
 					this.Write(new string(value, index, count));
 				}
 
-				// Token: 0x170001CA RID: 458
-				// (get) Token: 0x0600146F RID: 5231 RVA: 0x0000F7E5 File Offset: 0x0000D9E5
+				// Token: 0x170001C4 RID: 452
+				// (get) Token: 0x06001450 RID: 5200 RVA: 0x0000F625 File Offset: 0x0000D825
 				public override Encoding Encoding
 				{
 					get
@@ -811,7 +794,7 @@ namespace RoR2
 					}
 				}
 
-				// Token: 0x0400180D RID: 6157
+				// Token: 0x040017F1 RID: 6129
 				private StringBuilder buffer = new StringBuilder();
 			}
 		}

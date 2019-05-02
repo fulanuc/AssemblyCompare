@@ -6,17 +6,17 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x020003CF RID: 975
+	// Token: 0x020003C9 RID: 969
 	[RequireComponent(typeof(DirectorCore))]
 	public class SceneDirector : MonoBehaviour
 	{
-		// Token: 0x06001544 RID: 5444 RVA: 0x00010200 File Offset: 0x0000E400
+		// Token: 0x0600151D RID: 5405 RVA: 0x0000FF90 File Offset: 0x0000E190
 		private void Awake()
 		{
 			this.directorCore = base.GetComponent<DirectorCore>();
 		}
 
-		// Token: 0x06001545 RID: 5445 RVA: 0x000722C4 File Offset: 0x000704C4
+		// Token: 0x0600151E RID: 5406 RVA: 0x00071F64 File Offset: 0x00070164
 		private void Start()
 		{
 			if (NetworkServer.active)
@@ -33,22 +33,11 @@ namespace RoR2
 					});
 					this.monsterCredit = (int)((float)component.sceneDirectorMonsterCredits * Run.instance.difficultyCoefficient);
 				}
-				Action<SceneDirector> action = SceneDirector.onPrePopulateSceneServer;
-				if (action != null)
-				{
-					action(this);
-				}
 				this.PopulateScene();
-				Action<SceneDirector> action2 = SceneDirector.onPostPopulateSceneServer;
-				if (action2 == null)
-				{
-					return;
-				}
-				action2(this);
 			}
 		}
 
-		// Token: 0x06001546 RID: 5446 RVA: 0x00072390 File Offset: 0x00070590
+		// Token: 0x0600151F RID: 5407 RVA: 0x00072010 File Offset: 0x00070210
 		private void PlaceTeleporter()
 		{
 			if (!this.teleporterInstance && this.teleporterSpawnCard)
@@ -61,14 +50,14 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001547 RID: 5447 RVA: 0x000723F4 File Offset: 0x000705F4
+		// Token: 0x06001520 RID: 5408 RVA: 0x00072074 File Offset: 0x00070274
 		private static bool IsNodeSuitableForPod(NodeGraph nodeGraph, NodeGraph.NodeIndex nodeIndex)
 		{
 			NodeFlags nodeFlags;
 			return nodeGraph.GetNodeFlags(nodeIndex, out nodeFlags) && (nodeFlags & NodeFlags.NoCeiling) != NodeFlags.None;
 		}
 
-		// Token: 0x06001548 RID: 5448 RVA: 0x00072414 File Offset: 0x00070614
+		// Token: 0x06001521 RID: 5409 RVA: 0x00072094 File Offset: 0x00070294
 		private void PlacePlayerSpawnsViaNodegraph()
 		{
 			bool usePod = Stage.instance.usePod;
@@ -122,14 +111,14 @@ namespace RoR2
 						}
 					}
 				}
-				if (collectedSteps.Count >= RoR2Application.maxPlayers)
+				if (collectedSteps.Count >= 4)
 				{
 					break;
 				}
 			}
 			List<NodeGraphSpider.StepInfo> collectedSteps2 = nodeGraphSpider.collectedSteps;
 			Util.ShuffleList<NodeGraphSpider.StepInfo>(collectedSteps2, Run.instance.stageRng);
-			int num = Math.Min(nodeGraphSpider.collectedSteps.Count, RoR2Application.maxPlayers);
+			int num = Math.Min(nodeGraphSpider.collectedSteps.Count, 4);
 			for (int l = 0; l < num; l++)
 			{
 				NodeGraph.NodeIndex node = collectedSteps2[l].node;
@@ -153,7 +142,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001549 RID: 5449 RVA: 0x000726C0 File Offset: 0x000708C0
+		// Token: 0x06001522 RID: 5410 RVA: 0x00072338 File Offset: 0x00070538
 		private void RemoveAllExistingSpawnPoints()
 		{
 			List<SpawnPoint> list = new List<SpawnPoint>(SpawnPoint.readOnlyInstancesList);
@@ -163,7 +152,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600154A RID: 5450 RVA: 0x000726FC File Offset: 0x000708FC
+		// Token: 0x06001523 RID: 5411 RVA: 0x00072374 File Offset: 0x00070574
 		private void CullExistingSpawnPoints()
 		{
 			List<SpawnPoint> list = new List<SpawnPoint>(SpawnPoint.readOnlyInstancesList);
@@ -174,7 +163,7 @@ namespace RoR2
 				Debug.Log("reorder list");
 				for (int i = list.Count; i >= 0; i--)
 				{
-					if (i < list.Count - RoR2Application.maxPlayers)
+					if (i < list.Count - 4)
 					{
 						UnityEngine.Object.Destroy(list[i].gameObject);
 					}
@@ -182,12 +171,12 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600154B RID: 5451 RVA: 0x0007278C File Offset: 0x0007098C
+		// Token: 0x06001524 RID: 5412 RVA: 0x00072400 File Offset: 0x00070600
 		private void PopulateScene()
 		{
 			ClassicStageInfo component = SceneInfo.instance.GetComponent<ClassicStageInfo>();
 			this.PlaceTeleporter();
-			if (SpawnPoint.readOnlyInstancesList.Count == 0 || (Stage.instance && !Stage.instance.usePod))
+			if (SpawnPoint.readOnlyInstancesList.Count == 0 || Run.instance.stageClearCount > 0)
 			{
 				this.RemoveAllExistingSpawnPoints();
 				this.PlacePlayerSpawnsViaNodegraph();
@@ -316,7 +305,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600154C RID: 5452 RVA: 0x00072B10 File Offset: 0x00070D10
+		// Token: 0x06001525 RID: 5413 RVA: 0x00072778 File Offset: 0x00070978
 		private DirectorCard SelectCard(WeightedSelection<DirectorCard> deck, int maxCost)
 		{
 			SceneDirector.cardSelector.Clear();
@@ -338,47 +327,37 @@ namespace RoR2
 			return SceneDirector.cardSelector.Evaluate(this.rng.nextNormalizedFloat);
 		}
 
-		// Token: 0x1400002A RID: 42
-		// (add) Token: 0x0600154D RID: 5453 RVA: 0x00072B80 File Offset: 0x00070D80
-		// (remove) Token: 0x0600154E RID: 5454 RVA: 0x00072BB4 File Offset: 0x00070DB4
-		public static event Action<SceneDirector> onPrePopulateSceneServer;
-
-		// Token: 0x1400002B RID: 43
-		// (add) Token: 0x0600154F RID: 5455 RVA: 0x00072BE8 File Offset: 0x00070DE8
-		// (remove) Token: 0x06001550 RID: 5456 RVA: 0x00072C1C File Offset: 0x00070E1C
-		public static event Action<SceneDirector> onPostPopulateSceneServer;
-
-		// Token: 0x04001872 RID: 6258
+		// Token: 0x04001853 RID: 6227
 		private DirectorCore directorCore;
 
-		// Token: 0x04001873 RID: 6259
+		// Token: 0x04001854 RID: 6228
 		public SpawnCard teleporterSpawnCard;
 
-		// Token: 0x04001874 RID: 6260
+		// Token: 0x04001855 RID: 6229
 		public float expRewardCoefficient;
 
-		// Token: 0x04001875 RID: 6261
+		// Token: 0x04001856 RID: 6230
 		private int interactableCredit;
 
-		// Token: 0x04001876 RID: 6262
+		// Token: 0x04001857 RID: 6231
 		private int monsterCredit;
 
-		// Token: 0x04001877 RID: 6263
+		// Token: 0x04001858 RID: 6232
 		public GameObject teleporterInstance;
 
-		// Token: 0x04001878 RID: 6264
+		// Token: 0x04001859 RID: 6233
 		private Xoroshiro128Plus rng;
 
-		// Token: 0x04001879 RID: 6265
+		// Token: 0x0400185A RID: 6234
 		private static readonly WeightedSelection<DirectorCard> cardSelector = new WeightedSelection<DirectorCard>(8);
 
-		// Token: 0x020003D0 RID: 976
+		// Token: 0x020003CA RID: 970
 		private struct NodeDistanceSqrPair
 		{
-			// Token: 0x0400187C RID: 6268
+			// Token: 0x0400185B RID: 6235
 			public NodeGraph.NodeIndex nodeIndex;
 
-			// Token: 0x0400187D RID: 6269
+			// Token: 0x0400185C RID: 6236
 			public float distanceSqr;
 		}
 	}

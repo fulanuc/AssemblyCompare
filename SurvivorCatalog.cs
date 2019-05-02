@@ -5,11 +5,11 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x020004C6 RID: 1222
+	// Token: 0x020004B9 RID: 1209
 	public static class SurvivorCatalog
 	{
-		// Token: 0x17000291 RID: 657
-		// (get) Token: 0x06001BBE RID: 7102 RVA: 0x0001490E File Offset: 0x00012B0E
+		// Token: 0x17000285 RID: 645
+		// (get) Token: 0x06001B5B RID: 7003 RVA: 0x000143FC File Offset: 0x000125FC
 		public static IEnumerable<SurvivorDef> allSurvivorDefs
 		{
 			get
@@ -18,14 +18,14 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001BBF RID: 7103 RVA: 0x00014915 File Offset: 0x00012B15
+		// Token: 0x06001B5C RID: 7004 RVA: 0x00014403 File Offset: 0x00012603
 		private static void RegisterSurvivor(SurvivorIndex survivorIndex, SurvivorDef survivorDef)
 		{
 			survivorDef.survivorIndex = survivorIndex;
 			SurvivorCatalog.survivorDefs[(int)survivorIndex] = survivorDef;
 		}
 
-		// Token: 0x06001BC0 RID: 7104 RVA: 0x00014926 File Offset: 0x00012B26
+		// Token: 0x06001B5D RID: 7005 RVA: 0x00014414 File Offset: 0x00012614
 		public static SurvivorDef GetSurvivorDef(SurvivorIndex survivorIndex)
 		{
 			if (survivorIndex < SurvivorIndex.Commando || survivorIndex > SurvivorIndex.Count)
@@ -35,7 +35,7 @@ namespace RoR2
 			return SurvivorCatalog.survivorDefs[(int)survivorIndex];
 		}
 
-		// Token: 0x06001BC1 RID: 7105 RVA: 0x00088F78 File Offset: 0x00087178
+		// Token: 0x06001B5E RID: 7006 RVA: 0x00088404 File Offset: 0x00086604
 		public static SurvivorDef FindSurvivorDefFromBody(GameObject characterBodyPrefab)
 		{
 			for (int i = 0; i < SurvivorCatalog.survivorDefs.Length; i++)
@@ -50,7 +50,7 @@ namespace RoR2
 			return null;
 		}
 
-		// Token: 0x06001BC2 RID: 7106 RVA: 0x00088FB8 File Offset: 0x000871B8
+		// Token: 0x06001B5F RID: 7007 RVA: 0x00088444 File Offset: 0x00086644
 		public static Texture GetSurvivorPortrait(SurvivorIndex survivorIndex)
 		{
 			SurvivorDef survivorDef = SurvivorCatalog.GetSurvivorDef(survivorIndex);
@@ -65,7 +65,7 @@ namespace RoR2
 			return null;
 		}
 
-		// Token: 0x06001BC3 RID: 7107 RVA: 0x00088FF8 File Offset: 0x000871F8
+		// Token: 0x06001B60 RID: 7008 RVA: 0x00088484 File Offset: 0x00086684
 		[SystemInitializer(new Type[]
 		{
 			typeof(BodyCatalog)
@@ -120,6 +120,14 @@ namespace RoR2
 				primaryColor = new Color(0.423529416f, 0.819607854f, 0.917647064f),
 				unlockableName = "Characters.Mercenary"
 			});
+			SurvivorCatalog.RegisterSurvivor(SurvivorIndex.Bandit, new SurvivorDef
+			{
+				bodyPrefab = BodyCatalog.FindBodyPrefab("BanditBody"),
+				displayPrefab = Resources.Load<GameObject>("Prefabs/CharacterDisplays/BanditDisplay"),
+				descriptionToken = "BANDIT_DESCRIPTION",
+				primaryColor = new Color(0.423529416f, 0.819607854f, 0.917647064f),
+				unlockableName = "Characters.Mercenary"
+			});
 			for (SurvivorIndex survivorIndex = SurvivorIndex.Commando; survivorIndex < SurvivorIndex.Count; survivorIndex++)
 			{
 				if (SurvivorCatalog.survivorDefs[(int)survivorIndex] == null)
@@ -138,25 +146,25 @@ namespace RoR2
 			{
 				while (enumerator.MoveNext())
 				{
-					SurvivorCatalog.<>c__DisplayClass10_0 CS$<>8__locals1 = new SurvivorCatalog.<>c__DisplayClass10_0();
-					CS$<>8__locals1.survivorDef = enumerator.Current;
-					ViewablesCatalog.Node survivorEntryNode = new ViewablesCatalog.Node(CS$<>8__locals1.survivorDef.survivorIndex.ToString(), false, node);
-					survivorEntryNode.shouldShowUnviewed = ((UserProfile userProfile) => !userProfile.HasViewedViewable(survivorEntryNode.fullName) && userProfile.HasSurvivorUnlocked(CS$<>8__locals1.survivorDef.survivorIndex) && !string.IsNullOrEmpty(CS$<>8__locals1.survivorDef.unlockableName));
+					SurvivorDef survivor = new SurvivorDef();
+					survivor = enumerator.Current;
+					ViewablesCatalog.Node survivorEntryNode = new ViewablesCatalog.Node(survivor.survivorIndex.ToString(), false, node);
+					survivorEntryNode.shouldShowUnviewed = ((UserProfile userProfile) => !userProfile.HasViewedViewable(survivorEntryNode.fullName) && userProfile.HasSurvivorUnlocked(survivor.survivorIndex) && !string.IsNullOrEmpty(survivor.unlockableName));
 				}
 			}
 			ViewablesCatalog.AddNodeToRoot(node);
 		}
 
-		// Token: 0x04001E1C RID: 7708
+		// Token: 0x04001DE3 RID: 7651
 		public static int survivorMaxCount = 10;
 
-		// Token: 0x04001E1D RID: 7709
+		// Token: 0x04001DE4 RID: 7652
 		private static SurvivorDef[] survivorDefs;
 
-		// Token: 0x04001E1E RID: 7710
+		// Token: 0x04001DE5 RID: 7653
 		private static SurvivorDef[] _allSurvivorDefs;
 
-		// Token: 0x04001E1F RID: 7711
+		// Token: 0x04001DE6 RID: 7654
 		public static SurvivorIndex[] idealSurvivorOrder = new SurvivorIndex[]
 		{
 			SurvivorIndex.Commando,
@@ -164,7 +172,8 @@ namespace RoR2
 			SurvivorIndex.Huntress,
 			SurvivorIndex.Engineer,
 			SurvivorIndex.Mage,
-			SurvivorIndex.Merc
+			SurvivorIndex.Merc,
+			SurvivorIndex.Bandit
 		};
 	}
 }

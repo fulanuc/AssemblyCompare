@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x020003C2 RID: 962
+	// Token: 0x020003BD RID: 957
 	public class RTPCController : MonoBehaviour
 	{
-		// Token: 0x06001478 RID: 5240 RVA: 0x00070730 File Offset: 0x0006E930
+		// Token: 0x06001459 RID: 5209 RVA: 0x000704F4 File Offset: 0x0006E6F4
 		private void Start()
 		{
 			if (this.akSoundString.Length > 0)
@@ -17,7 +17,7 @@ namespace RoR2
 			AkSoundEngine.SetRTPCValue(this.rtpcString, this.rtpcValue, base.gameObject);
 		}
 
-		// Token: 0x06001479 RID: 5241 RVA: 0x0000F872 File Offset: 0x0000DA72
+		// Token: 0x0600145A RID: 5210 RVA: 0x0000F6B2 File Offset: 0x0000D8B2
 		private void FixedUpdate()
 		{
 			if (this.useCurveInstead)
@@ -27,22 +27,22 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04001813 RID: 6163
+		// Token: 0x040017F7 RID: 6135
 		public string akSoundString;
 
-		// Token: 0x04001814 RID: 6164
+		// Token: 0x040017F8 RID: 6136
 		public string rtpcString;
 
-		// Token: 0x04001815 RID: 6165
+		// Token: 0x040017F9 RID: 6137
 		public float rtpcValue;
 
-		// Token: 0x04001816 RID: 6166
+		// Token: 0x040017FA RID: 6138
 		public bool useCurveInstead;
 
-		// Token: 0x04001817 RID: 6167
+		// Token: 0x040017FB RID: 6139
 		public AnimationCurve rtpcValueCurve;
 
-		// Token: 0x04001818 RID: 6168
+		// Token: 0x040017FC RID: 6140
 		private float fixedAge;
 	}
 }

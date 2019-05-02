@@ -11,12 +11,12 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x0200048D RID: 1165
+	// Token: 0x02000480 RID: 1152
 	public class RunReport
 	{
-		// Token: 0x17000270 RID: 624
-		// (get) Token: 0x06001A2B RID: 6699 RVA: 0x00013693 File Offset: 0x00011893
-		// (set) Token: 0x06001A2C RID: 6700 RVA: 0x000136B5 File Offset: 0x000118B5
+		// Token: 0x17000264 RID: 612
+		// (get) Token: 0x060019C9 RID: 6601 RVA: 0x00013165 File Offset: 0x00011365
+		// (set) Token: 0x060019CA RID: 6602 RVA: 0x00013187 File Offset: 0x00011387
 		private string gameModeName
 		{
 			get
@@ -30,8 +30,8 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x17000271 RID: 625
-		// (get) Token: 0x06001A2D RID: 6701 RVA: 0x000136C3 File Offset: 0x000118C3
+		// Token: 0x17000265 RID: 613
+		// (get) Token: 0x060019CB RID: 6603 RVA: 0x00013195 File Offset: 0x00011395
 		public int playerInfoCount
 		{
 			get
@@ -40,28 +40,27 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001A2E RID: 6702 RVA: 0x000136CD File Offset: 0x000118CD
+		// Token: 0x060019CC RID: 6604 RVA: 0x0001319F File Offset: 0x0001139F
 		[NotNull]
 		public RunReport.PlayerInfo GetPlayerInfo(int i)
 		{
 			return this.playerInfos[i];
 		}
 
-		// Token: 0x06001A2F RID: 6703 RVA: 0x000136D7 File Offset: 0x000118D7
+		// Token: 0x060019CD RID: 6605 RVA: 0x000131A9 File Offset: 0x000113A9
 		[CanBeNull]
 		public RunReport.PlayerInfo GetPlayerInfoSafe(int i)
 		{
 			return HGArrayUtilities.GetSafe<RunReport.PlayerInfo>(this.playerInfos, i);
 		}
 
-		// Token: 0x06001A30 RID: 6704 RVA: 0x0008554C File Offset: 0x0008374C
+		// Token: 0x060019CE RID: 6606 RVA: 0x00084AE0 File Offset: 0x00082CE0
 		public static RunReport Generate([NotNull] Run run, GameResultType resultType)
 		{
 			RunReport runReport = new RunReport();
 			runReport.gameModeIndex = GameModeCatalog.FindGameModeIndex(run.gameObject.name);
 			runReport.seed = run.seed;
 			runReport.snapshotTime = Run.FixedTimeStamp.now;
-			runReport.runStopwatchValue = run.GetRunStopwatch();
 			runReport.gameResultType = resultType;
 			runReport.ruleBook.Copy(run.ruleBook);
 			runReport.playerInfos = new RunReport.PlayerInfo[PlayerCharacterMasterController.instances.Count];
@@ -73,7 +72,7 @@ namespace RoR2
 			return runReport;
 		}
 
-		// Token: 0x06001A31 RID: 6705 RVA: 0x000855F8 File Offset: 0x000837F8
+		// Token: 0x060019CF RID: 6607 RVA: 0x00084B80 File Offset: 0x00082D80
 		private void ResolveLocalInformation()
 		{
 			RunReport.PlayerInfo[] array = this.playerInfos;
@@ -83,14 +82,13 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001A32 RID: 6706 RVA: 0x00085624 File Offset: 0x00083824
+		// Token: 0x060019D0 RID: 6608 RVA: 0x00084BAC File Offset: 0x00082DAC
 		public void Write(NetworkWriter writer)
 		{
 			writer.Write((byte)this.gameResultType);
 			writer.WritePackedUInt32((uint)this.gameModeIndex);
 			writer.Write(this.seed);
 			writer.Write(this.snapshotTime);
-			writer.Write(this.runStopwatchValue);
 			writer.Write(this.ruleBook);
 			writer.Write((byte)this.playerInfos.Length);
 			for (int i = 0; i < this.playerInfos.Length; i++)
@@ -99,14 +97,13 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001A33 RID: 6707 RVA: 0x000856AC File Offset: 0x000838AC
+		// Token: 0x060019D1 RID: 6609 RVA: 0x00084C28 File Offset: 0x00082E28
 		public void Read(NetworkReader reader)
 		{
 			this.gameResultType = (GameResultType)reader.ReadByte();
 			this.gameModeIndex = (int)reader.ReadPackedUInt32();
 			this.seed = reader.ReadUInt64();
 			this.snapshotTime = reader.ReadFixedTimeStamp();
-			this.runStopwatchValue = reader.ReadSingle();
 			reader.ReadRuleBook(this.ruleBook);
 			int newSize = (int)reader.ReadByte();
 			Array.Resize<RunReport.PlayerInfo>(ref this.playerInfos, newSize);
@@ -139,7 +136,7 @@ namespace RoR2
 			});
 		}
 
-		// Token: 0x06001A34 RID: 6708 RVA: 0x00085778 File Offset: 0x00083978
+		// Token: 0x060019D2 RID: 6610 RVA: 0x00084CE8 File Offset: 0x00082EE8
 		public static void ToXml(XElement element, RunReport runReport)
 		{
 			element.RemoveAll();
@@ -148,12 +145,11 @@ namespace RoR2
 			element.Add(HGXml.ToXml<GameResultType>("gameResultType", runReport.gameResultType));
 			element.Add(HGXml.ToXml<ulong>("seed", runReport.seed));
 			element.Add(HGXml.ToXml<Run.FixedTimeStamp>("snapshotTime", runReport.snapshotTime));
-			element.Add(HGXml.ToXml<float>("runStopwatchValue", runReport.runStopwatchValue));
 			element.Add(HGXml.ToXml<RuleBook>("ruleBook", runReport.ruleBook));
 			element.Add(HGXml.ToXml<RunReport.PlayerInfo[]>("playerInfos", runReport.playerInfos));
 		}
 
-		// Token: 0x06001A35 RID: 6709 RVA: 0x0008583C File Offset: 0x00083A3C
+		// Token: 0x060019D3 RID: 6611 RVA: 0x00084D94 File Offset: 0x00082F94
 		public static bool FromXml(XElement element, ref RunReport runReport)
 		{
 			string text = "NO_VERSION";
@@ -193,25 +189,20 @@ namespace RoR2
 			{
 				xelement5.Deserialize(ref runReport.snapshotTime);
 			}
-			XElement xelement6 = element.Element("runStopwatchValue");
+			XElement xelement6 = element.Element("ruleBook");
 			if (xelement6 != null)
 			{
-				xelement6.Deserialize(ref runReport.runStopwatchValue);
+				xelement6.Deserialize(ref runReport.ruleBook);
 			}
-			XElement xelement7 = element.Element("ruleBook");
+			XElement xelement7 = element.Element("playerInfos");
 			if (xelement7 != null)
 			{
-				xelement7.Deserialize(ref runReport.ruleBook);
-			}
-			XElement xelement8 = element.Element("playerInfos");
-			if (xelement8 != null)
-			{
-				xelement8.Deserialize(ref runReport.playerInfos);
+				xelement7.Deserialize(ref runReport.playerInfos);
 			}
 			return true;
 		}
 
-		// Token: 0x06001A36 RID: 6710 RVA: 0x0008599C File Offset: 0x00083B9C
+		// Token: 0x060019D4 RID: 6612 RVA: 0x00084ED0 File Offset: 0x000830D0
 		[RuntimeInitializeOnLoadMethod]
 		private static void Init()
 		{
@@ -221,14 +212,14 @@ namespace RoR2
 			HGXml.Register<RunReport.PlayerInfo[]>(new HGXml.Serializer<RunReport.PlayerInfo[]>(RunReport.PlayerInfo.ArrayToXml), new HGXml.Deserializer<RunReport.PlayerInfo[]>(RunReport.PlayerInfo.ArrayFromXml));
 		}
 
-		// Token: 0x06001A37 RID: 6711 RVA: 0x000136E5 File Offset: 0x000118E5
+		// Token: 0x060019D5 RID: 6613 RVA: 0x000131B7 File Offset: 0x000113B7
 		[NotNull]
 		private static string FileNameToPath([NotNull] string fileName)
 		{
 			return string.Format(CultureInfo.InvariantCulture, "{0}{1}.xml", RunReport.runReportsFolder, fileName);
 		}
 
-		// Token: 0x06001A38 RID: 6712 RVA: 0x00085A14 File Offset: 0x00083C14
+		// Token: 0x060019D6 RID: 6614 RVA: 0x00084F48 File Offset: 0x00083148
 		[CanBeNull]
 		public static RunReport Load([NotNull] string fileName)
 		{
@@ -265,7 +256,7 @@ namespace RoR2
 			return result;
 		}
 
-		// Token: 0x06001A39 RID: 6713 RVA: 0x00085AAC File Offset: 0x00083CAC
+		// Token: 0x060019D7 RID: 6615 RVA: 0x00084FE0 File Offset: 0x000831E0
 		public static bool Save([NotNull] RunReport runReport, [NotNull] string fileName)
 		{
 			string text = RunReport.FileNameToPath(fileName);
@@ -293,7 +284,7 @@ namespace RoR2
 			return result;
 		}
 
-		// Token: 0x06001A3A RID: 6714 RVA: 0x00085B2C File Offset: 0x00083D2C
+		// Token: 0x060019D8 RID: 6616 RVA: 0x00085060 File Offset: 0x00083260
 		public static void TestSerialization(RunReport runReport)
 		{
 			NetworkWriter networkWriter = new NetworkWriter();
@@ -302,38 +293,35 @@ namespace RoR2
 			new RunReport().Read(reader);
 		}
 
-		// Token: 0x04001D52 RID: 7506
+		// Token: 0x04001D1B RID: 7451
 		private const string currentXmlVersion = "2";
 
-		// Token: 0x04001D53 RID: 7507
+		// Token: 0x04001D1C RID: 7452
 		private int gameModeIndex = -1;
 
-		// Token: 0x04001D54 RID: 7508
+		// Token: 0x04001D1D RID: 7453
 		public GameResultType gameResultType;
 
-		// Token: 0x04001D55 RID: 7509
+		// Token: 0x04001D1E RID: 7454
 		public ulong seed;
 
-		// Token: 0x04001D56 RID: 7510
+		// Token: 0x04001D1F RID: 7455
 		public Run.FixedTimeStamp snapshotTime;
 
-		// Token: 0x04001D57 RID: 7511
-		public float runStopwatchValue;
-
-		// Token: 0x04001D58 RID: 7512
+		// Token: 0x04001D20 RID: 7456
 		public RuleBook ruleBook = new RuleBook();
 
-		// Token: 0x04001D59 RID: 7513
+		// Token: 0x04001D21 RID: 7457
 		private RunReport.PlayerInfo[] playerInfos = Array.Empty<RunReport.PlayerInfo>();
 
-		// Token: 0x04001D5A RID: 7514
+		// Token: 0x04001D22 RID: 7458
 		private static string runReportsFolder;
 
-		// Token: 0x0200048E RID: 1166
+		// Token: 0x02000481 RID: 1153
 		public class PlayerInfo
 		{
-			// Token: 0x17000272 RID: 626
-			// (get) Token: 0x06001A3C RID: 6716 RVA: 0x00013721 File Offset: 0x00011921
+			// Token: 0x17000266 RID: 614
+			// (get) Token: 0x060019DA RID: 6618 RVA: 0x000131F3 File Offset: 0x000113F3
 			[CanBeNull]
 			public LocalUser localUser
 			{
@@ -347,8 +335,8 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x17000273 RID: 627
-			// (get) Token: 0x06001A3D RID: 6717 RVA: 0x0001373D File Offset: 0x0001193D
+			// Token: 0x17000267 RID: 615
+			// (get) Token: 0x060019DB RID: 6619 RVA: 0x0001320F File Offset: 0x0001140F
 			public bool isLocalPlayer
 			{
 				get
@@ -357,9 +345,9 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x17000274 RID: 628
-			// (get) Token: 0x06001A3E RID: 6718 RVA: 0x0001374B File Offset: 0x0001194B
-			// (set) Token: 0x06001A3F RID: 6719 RVA: 0x00013772 File Offset: 0x00011972
+			// Token: 0x17000268 RID: 616
+			// (get) Token: 0x060019DC RID: 6620 RVA: 0x0001321D File Offset: 0x0001141D
+			// (set) Token: 0x060019DD RID: 6621 RVA: 0x00013244 File Offset: 0x00011444
 			public string bodyName
 			{
 				get
@@ -373,9 +361,9 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x17000275 RID: 629
-			// (get) Token: 0x06001A40 RID: 6720 RVA: 0x00013780 File Offset: 0x00011980
-			// (set) Token: 0x06001A41 RID: 6721 RVA: 0x000137A7 File Offset: 0x000119A7
+			// Token: 0x17000269 RID: 617
+			// (get) Token: 0x060019DE RID: 6622 RVA: 0x00013252 File Offset: 0x00011452
+			// (set) Token: 0x060019DF RID: 6623 RVA: 0x00013279 File Offset: 0x00011479
 			public string killerBodyName
 			{
 				get
@@ -389,7 +377,7 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x06001A42 RID: 6722 RVA: 0x00085B60 File Offset: 0x00083D60
+			// Token: 0x060019E0 RID: 6624 RVA: 0x00085094 File Offset: 0x00083294
 			public void Write(NetworkWriter writer)
 			{
 				writer.WriteBodyIndex(this.bodyIndex);
@@ -409,7 +397,7 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x06001A43 RID: 6723 RVA: 0x00085C1C File Offset: 0x00083E1C
+			// Token: 0x060019E1 RID: 6625 RVA: 0x00085150 File Offset: 0x00083350
 			public void Read(NetworkReader reader)
 			{
 				this.bodyIndex = reader.ReadBodyIndex();
@@ -435,7 +423,7 @@ namespace RoR2
 				this.ResolveLocalInformation();
 			}
 
-			// Token: 0x06001A44 RID: 6724 RVA: 0x00085CF4 File Offset: 0x00083EF4
+			// Token: 0x060019E2 RID: 6626 RVA: 0x00085228 File Offset: 0x00083428
 			public void ResolveLocalInformation()
 			{
 				this.name = Util.GetBestMasterName(this.master);
@@ -458,7 +446,7 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x06001A45 RID: 6725 RVA: 0x00085DA8 File Offset: 0x00083FA8
+			// Token: 0x060019E3 RID: 6627 RVA: 0x000852DC File Offset: 0x000834DC
 			public static RunReport.PlayerInfo Generate(PlayerCharacterMasterController playerCharacterMasterController)
 			{
 				CharacterMaster characterMaster = playerCharacterMasterController.master;
@@ -485,7 +473,7 @@ namespace RoR2
 				return playerInfo;
 			}
 
-			// Token: 0x06001A46 RID: 6726 RVA: 0x00085E80 File Offset: 0x00084080
+			// Token: 0x060019E4 RID: 6628 RVA: 0x000853B4 File Offset: 0x000835B4
 			public static void ToXml(XElement element, RunReport.PlayerInfo playerInfo)
 			{
 				element.RemoveAll();
@@ -500,7 +488,7 @@ namespace RoR2
 				element.Add(HGXml.ToXml<string>("userProfileFileName", playerInfo.userProfileFileName));
 			}
 
-			// Token: 0x06001A47 RID: 6727 RVA: 0x00085F64 File Offset: 0x00084164
+			// Token: 0x060019E5 RID: 6629 RVA: 0x00085498 File Offset: 0x00083698
 			public static bool FromXml(XElement element, ref RunReport.PlayerInfo playerInfo)
 			{
 				playerInfo = new RunReport.PlayerInfo();
@@ -556,7 +544,7 @@ namespace RoR2
 				return true;
 			}
 
-			// Token: 0x06001A48 RID: 6728 RVA: 0x000860CC File Offset: 0x000842CC
+			// Token: 0x060019E6 RID: 6630 RVA: 0x00085600 File Offset: 0x00083800
 			public static void ArrayToXml(XElement element, RunReport.PlayerInfo[] playerInfos)
 			{
 				element.RemoveAll();
@@ -566,7 +554,7 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x06001A49 RID: 6729 RVA: 0x00086100 File Offset: 0x00084300
+			// Token: 0x060019E7 RID: 6631 RVA: 0x00085634 File Offset: 0x00083834
 			public static bool ArrayFromXml(XElement element, ref RunReport.PlayerInfo[] playerInfos)
 			{
 				playerInfos = (from e in element.Elements()
@@ -580,42 +568,42 @@ namespace RoR2
 				return true;
 			}
 
-			// Token: 0x04001D5B RID: 7515
+			// Token: 0x04001D23 RID: 7459
 			[CanBeNull]
 			public NetworkUser networkUser;
 
-			// Token: 0x04001D5C RID: 7516
+			// Token: 0x04001D24 RID: 7460
 			[CanBeNull]
 			public CharacterMaster master;
 
-			// Token: 0x04001D5D RID: 7517
+			// Token: 0x04001D25 RID: 7461
 			public int localPlayerIndex = -1;
 
-			// Token: 0x04001D5E RID: 7518
+			// Token: 0x04001D26 RID: 7462
 			public string name = string.Empty;
 
-			// Token: 0x04001D5F RID: 7519
+			// Token: 0x04001D27 RID: 7463
 			public int bodyIndex = -1;
 
-			// Token: 0x04001D60 RID: 7520
+			// Token: 0x04001D28 RID: 7464
 			public int killerBodyIndex = -1;
 
-			// Token: 0x04001D61 RID: 7521
+			// Token: 0x04001D29 RID: 7465
 			public StatSheet statSheet = StatSheet.New();
 
-			// Token: 0x04001D62 RID: 7522
+			// Token: 0x04001D2A RID: 7466
 			public ItemIndex[] itemAcquisitionOrder = Array.Empty<ItemIndex>();
 
-			// Token: 0x04001D63 RID: 7523
+			// Token: 0x04001D2B RID: 7467
 			public int[] itemStacks = new int[78];
 
-			// Token: 0x04001D64 RID: 7524
+			// Token: 0x04001D2C RID: 7468
 			public EquipmentIndex[] equipment = Array.Empty<EquipmentIndex>();
 
-			// Token: 0x04001D65 RID: 7525
+			// Token: 0x04001D2D RID: 7469
 			public string userProfileFileName = string.Empty;
 
-			// Token: 0x04001D66 RID: 7526
+			// Token: 0x04001D2E RID: 7470
 			private static readonly HGXml.SerializationRules<int[]> itemStacksRules = new HGXml.SerializationRules<int[]>
 			{
 				serializer = delegate(XElement element, int[] value)
@@ -643,7 +631,7 @@ namespace RoR2
 				}
 			};
 
-			// Token: 0x04001D67 RID: 7527
+			// Token: 0x04001D2F RID: 7471
 			private static readonly HGXml.SerializationRules<EquipmentIndex[]> equipmentRules = new HGXml.SerializationRules<EquipmentIndex[]>
 			{
 				serializer = delegate(XElement element, EquipmentIndex[] value)

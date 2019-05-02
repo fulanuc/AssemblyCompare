@@ -5,17 +5,17 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x020003E8 RID: 1000
+	// Token: 0x020003E2 RID: 994
 	[RequireComponent(typeof(PurchaseInteraction))]
 	public class ShrineRestackBehavior : NetworkBehaviour
 	{
-		// Token: 0x060015F6 RID: 5622 RVA: 0x00009162 File Offset: 0x00007362
+		// Token: 0x060015B9 RID: 5561 RVA: 0x0000913D File Offset: 0x0000733D
 		public override int GetNetworkChannel()
 		{
 			return QosChannelIndex.defaultReliable.intVal;
 		}
 
-		// Token: 0x060015F7 RID: 5623 RVA: 0x000108CD File Offset: 0x0000EACD
+		// Token: 0x060015BA RID: 5562 RVA: 0x000104C4 File Offset: 0x0000E6C4
 		private void Start()
 		{
 			this.purchaseInteraction = base.GetComponent<PurchaseInteraction>();
@@ -25,7 +25,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060015F8 RID: 5624 RVA: 0x00074D88 File Offset: 0x00072F88
+		// Token: 0x060015BB RID: 5563 RVA: 0x00074750 File Offset: 0x00072950
 		public void FixedUpdate()
 		{
 			if (this.waitingForRefresh)
@@ -40,7 +40,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060015F9 RID: 5625 RVA: 0x00074DFC File Offset: 0x00072FFC
+		// Token: 0x060015BC RID: 5564 RVA: 0x000747C4 File Offset: 0x000729C4
 		[Server]
 		public void AddShrineStack(Interactor interactor)
 		{
@@ -79,48 +79,48 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060015FB RID: 5627 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x060015BE RID: 5566 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x060015FC RID: 5628 RVA: 0x0004AA24 File Offset: 0x00048C24
+		// Token: 0x060015BF RID: 5567 RVA: 0x0004A818 File Offset: 0x00048A18
 		public override bool OnSerialize(NetworkWriter writer, bool forceAll)
 		{
 			bool result;
 			return result;
 		}
 
-		// Token: 0x060015FD RID: 5629 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x060015C0 RID: 5568 RVA: 0x000025F6 File Offset: 0x000007F6
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 		}
 
-		// Token: 0x04001923 RID: 6435
+		// Token: 0x040018FA RID: 6394
 		public int maxPurchaseCount;
 
-		// Token: 0x04001924 RID: 6436
+		// Token: 0x040018FB RID: 6395
 		public float costMultiplierPerPurchase;
 
-		// Token: 0x04001925 RID: 6437
+		// Token: 0x040018FC RID: 6396
 		public Transform symbolTransform;
 
-		// Token: 0x04001926 RID: 6438
+		// Token: 0x040018FD RID: 6397
 		private PurchaseInteraction purchaseInteraction;
 
-		// Token: 0x04001927 RID: 6439
+		// Token: 0x040018FE RID: 6398
 		private int purchaseCount;
 
-		// Token: 0x04001928 RID: 6440
+		// Token: 0x040018FF RID: 6399
 		private float refreshTimer;
 
-		// Token: 0x04001929 RID: 6441
+		// Token: 0x04001900 RID: 6400
 		private const float refreshDuration = 2f;
 
-		// Token: 0x0400192A RID: 6442
+		// Token: 0x04001901 RID: 6401
 		private bool waitingForRefresh;
 
-		// Token: 0x0400192B RID: 6443
+		// Token: 0x04001902 RID: 6402
 		private Xoroshiro128Plus rng;
 	}
 }

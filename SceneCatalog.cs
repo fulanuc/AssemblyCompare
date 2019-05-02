@@ -7,11 +7,11 @@ using UnityEngine.SceneManagement;
 
 namespace RoR2
 {
-	// Token: 0x02000492 RID: 1170
+	// Token: 0x02000485 RID: 1157
 	public static class SceneCatalog
 	{
-		// Token: 0x17000276 RID: 630
-		// (get) Token: 0x06001A5C RID: 6748 RVA: 0x00013890 File Offset: 0x00011A90
+		// Token: 0x1700026A RID: 618
+		// (get) Token: 0x060019FA RID: 6650 RVA: 0x00013362 File Offset: 0x00011562
 		public static int sceneDefCount
 		{
 			get
@@ -20,8 +20,8 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x17000277 RID: 631
-		// (get) Token: 0x06001A5D RID: 6749 RVA: 0x00013899 File Offset: 0x00011A99
+		// Token: 0x1700026B RID: 619
+		// (get) Token: 0x060019FB RID: 6651 RVA: 0x0001336B File Offset: 0x0001156B
 		public static IEnumerable<SceneDef> allSceneDefs
 		{
 			get
@@ -30,20 +30,20 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001A5E RID: 6750 RVA: 0x000138A0 File Offset: 0x00011AA0
+		// Token: 0x060019FC RID: 6652 RVA: 0x00013372 File Offset: 0x00011572
 		[NotNull]
 		public static SceneDef GetSceneDef(int sceneIndex)
 		{
 			return SceneCatalog.indexToSceneDef[sceneIndex];
 		}
 
-		// Token: 0x17000278 RID: 632
-		// (get) Token: 0x06001A5F RID: 6751 RVA: 0x000138A9 File Offset: 0x00011AA9
-		// (set) Token: 0x06001A60 RID: 6752 RVA: 0x000138B0 File Offset: 0x00011AB0
+		// Token: 0x1700026C RID: 620
+		// (get) Token: 0x060019FD RID: 6653 RVA: 0x0001337B File Offset: 0x0001157B
+		// (set) Token: 0x060019FE RID: 6654 RVA: 0x00013382 File Offset: 0x00011582
 		[NotNull]
 		public static SceneDef mostRecentSceneDef { get; private set; }
 
-		// Token: 0x06001A61 RID: 6753 RVA: 0x000863A0 File Offset: 0x000845A0
+		// Token: 0x060019FF RID: 6655 RVA: 0x000858D4 File Offset: 0x00083AD4
 		[SystemInitializer(new Type[]
 		{
 
@@ -54,15 +54,9 @@ namespace RoR2
 			SceneManager.activeSceneChanged += delegate(Scene oldScene, Scene newScene)
 			{
 				SceneCatalog.currentSceneDef = SceneCatalog.GetSceneDefFromSceneName(newScene.name);
-				if (SceneCatalog.currentSceneDef != null)
+				if (SceneCatalog.currentSceneDef)
 				{
 					SceneCatalog.mostRecentSceneDef = SceneCatalog.currentSceneDef;
-					Action<SceneDef> action = SceneCatalog.onMostRecentSceneDefChanged;
-					if (action == null)
-					{
-						return;
-					}
-					action(SceneCatalog.mostRecentSceneDef);
 				}
 			};
 			SceneCatalog.currentSceneDef = SceneCatalog.GetSceneDefFromSceneName(SceneManager.GetActiveScene().name);
@@ -70,21 +64,21 @@ namespace RoR2
 			SceneCatalog.availability.MakeAvailable();
 		}
 
-		// Token: 0x06001A62 RID: 6754 RVA: 0x000138B8 File Offset: 0x00011AB8
+		// Token: 0x06001A00 RID: 6656 RVA: 0x0001338A File Offset: 0x0001158A
 		[NotNull]
 		public static string GetUnlockableLogFromSceneName([NotNull] string name)
 		{
 			return string.Format(CultureInfo.InvariantCulture, "Logs.Stages.{0}", name);
 		}
 
-		// Token: 0x06001A63 RID: 6755 RVA: 0x000138CA File Offset: 0x00011ACA
+		// Token: 0x06001A01 RID: 6657 RVA: 0x0001339C File Offset: 0x0001159C
 		[CanBeNull]
 		public static SceneDef GetSceneDefForCurrentScene()
 		{
 			return SceneCatalog.GetSceneDefFromScene(SceneManager.GetActiveScene());
 		}
 
-		// Token: 0x06001A64 RID: 6756 RVA: 0x0008640C File Offset: 0x0008460C
+		// Token: 0x06001A02 RID: 6658 RVA: 0x00085940 File Offset: 0x00083B40
 		[CanBeNull]
 		public static SceneDef GetSceneDefFromSceneName([NotNull] string name)
 		{
@@ -98,28 +92,23 @@ namespace RoR2
 			return null;
 		}
 
-		// Token: 0x06001A65 RID: 6757 RVA: 0x000138D6 File Offset: 0x00011AD6
+		// Token: 0x06001A03 RID: 6659 RVA: 0x000133A8 File Offset: 0x000115A8
 		[CanBeNull]
 		public static SceneDef GetSceneDefFromScene(Scene scene)
 		{
 			return SceneCatalog.GetSceneDefFromSceneName(scene.name);
 		}
 
-		// Token: 0x1400003D RID: 61
-		// (add) Token: 0x06001A66 RID: 6758 RVA: 0x00086448 File Offset: 0x00084648
-		// (remove) Token: 0x06001A67 RID: 6759 RVA: 0x0008647C File Offset: 0x0008467C
-		public static event Action<SceneDef> onMostRecentSceneDefChanged;
-
-		// Token: 0x04001D70 RID: 7536
+		// Token: 0x04001D38 RID: 7480
 		private static SceneDef[] indexToSceneDef;
 
-		// Token: 0x04001D71 RID: 7537
+		// Token: 0x04001D39 RID: 7481
 		private static string currentSceneName = string.Empty;
 
-		// Token: 0x04001D72 RID: 7538
+		// Token: 0x04001D3A RID: 7482
 		private static SceneDef currentSceneDef;
 
-		// Token: 0x04001D74 RID: 7540
+		// Token: 0x04001D3C RID: 7484
 		public static ResourceAvailability availability;
 	}
 }

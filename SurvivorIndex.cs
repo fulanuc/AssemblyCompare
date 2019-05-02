@@ -2,26 +2,26 @@
 
 namespace RoR2
 {
-	// Token: 0x020004C4 RID: 1220
+	// Token: 0x020004B7 RID: 1207
 	public enum SurvivorIndex
 	{
-		// Token: 0x04001E0D RID: 7693
+		// Token: 0x04001DD4 RID: 7636
 		None = -1,
-		// Token: 0x04001E0E RID: 7694
+		// Token: 0x04001DD5 RID: 7637
 		Commando,
-		// Token: 0x04001E0F RID: 7695
+		// Token: 0x04001DD6 RID: 7638
 		Engineer,
-		// Token: 0x04001E10 RID: 7696
+		// Token: 0x04001DD7 RID: 7639
 		Huntress,
-		// Token: 0x04001E11 RID: 7697
+		// Token: 0x04001DD8 RID: 7640
 		Bandit,
-		// Token: 0x04001E12 RID: 7698
+		// Token: 0x04001DD9 RID: 7641
 		Mage,
-		// Token: 0x04001E13 RID: 7699
+		// Token: 0x04001DDA RID: 7642
 		Merc,
-		// Token: 0x04001E14 RID: 7700
+		// Token: 0x04001DDB RID: 7643
 		Toolbot,
-		// Token: 0x04001E15 RID: 7701
+		// Token: 0x04001DDC RID: 7644
 		Count
 	}
 }

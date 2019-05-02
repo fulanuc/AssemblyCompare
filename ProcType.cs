@@ -2,38 +2,38 @@
 
 namespace RoR2
 {
-	// Token: 0x02000476 RID: 1142
+	// Token: 0x0200046B RID: 1131
 	public enum ProcType
 	{
-		// Token: 0x04001CF0 RID: 7408
+		// Token: 0x04001CBC RID: 7356
 		Behemoth,
-		// Token: 0x04001CF1 RID: 7409
+		// Token: 0x04001CBD RID: 7357
 		Missile,
-		// Token: 0x04001CF2 RID: 7410
+		// Token: 0x04001CBE RID: 7358
 		AACannon,
-		// Token: 0x04001CF3 RID: 7411
+		// Token: 0x04001CBF RID: 7359
 		ChainLightning,
-		// Token: 0x04001CF4 RID: 7412
+		// Token: 0x04001CC0 RID: 7360
 		PlasmaCore,
-		// Token: 0x04001CF5 RID: 7413
+		// Token: 0x04001CC1 RID: 7361
 		BleedOnHit,
-		// Token: 0x04001CF6 RID: 7414
+		// Token: 0x04001CC2 RID: 7362
 		HealOnHit,
-		// Token: 0x04001CF7 RID: 7415
+		// Token: 0x04001CC3 RID: 7363
 		BounceNearby,
-		// Token: 0x04001CF8 RID: 7416
+		// Token: 0x04001CC4 RID: 7364
 		HealOnCrit,
-		// Token: 0x04001CF9 RID: 7417
+		// Token: 0x04001CC5 RID: 7365
 		CritHeal,
-		// Token: 0x04001CFA RID: 7418
+		// Token: 0x04001CC6 RID: 7366
 		HealNova,
-		// Token: 0x04001CFB RID: 7419
+		// Token: 0x04001CC7 RID: 7367
 		LunarPotionActivation,
-		// Token: 0x04001CFC RID: 7420
+		// Token: 0x04001CC8 RID: 7368
 		Rings,
-		// Token: 0x04001CFD RID: 7421
+		// Token: 0x04001CC9 RID: 7369
 		RepeatHeal,
-		// Token: 0x04001CFE RID: 7422
+		// Token: 0x04001CCA RID: 7370
 		Count
 	}
 }

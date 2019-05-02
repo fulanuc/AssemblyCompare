@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x020004C5 RID: 1221
+	// Token: 0x020004B8 RID: 1208
 	public class SurvivorDef
 	{
-		// Token: 0x17000290 RID: 656
-		// (get) Token: 0x06001BBC RID: 7100 RVA: 0x00088F40 File Offset: 0x00087140
+		// Token: 0x17000284 RID: 644
+		// (get) Token: 0x06001B59 RID: 7001 RVA: 0x000883CC File Offset: 0x000865CC
 		public string displayNameToken
 		{
 			get
@@ -24,22 +24,22 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04001E16 RID: 7702
+		// Token: 0x04001DDD RID: 7645
 		public GameObject bodyPrefab;
 
-		// Token: 0x04001E17 RID: 7703
+		// Token: 0x04001DDE RID: 7646
 		public GameObject displayPrefab = Resources.Load<GameObject>("Prefabs/NullModel");
 
-		// Token: 0x04001E18 RID: 7704
+		// Token: 0x04001DDF RID: 7647
 		public SurvivorIndex survivorIndex;
 
-		// Token: 0x04001E19 RID: 7705
+		// Token: 0x04001DE0 RID: 7648
 		public string unlockableName = "";
 
-		// Token: 0x04001E1A RID: 7706
+		// Token: 0x04001DE1 RID: 7649
 		public string descriptionToken;
 
-		// Token: 0x04001E1B RID: 7707
+		// Token: 0x04001DE2 RID: 7650
 		public Color primaryColor;
 	}
 }

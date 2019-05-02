@@ -5,23 +5,23 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x020003E4 RID: 996
+	// Token: 0x020003DE RID: 990
 	[RequireComponent(typeof(PurchaseInteraction))]
 	public class ShrineBossBehavior : NetworkBehaviour
 	{
-		// Token: 0x060015CD RID: 5581 RVA: 0x00009162 File Offset: 0x00007362
+		// Token: 0x06001590 RID: 5520 RVA: 0x0000913D File Offset: 0x0000733D
 		public override int GetNetworkChannel()
 		{
 			return QosChannelIndex.defaultReliable.intVal;
 		}
 
-		// Token: 0x060015CE RID: 5582 RVA: 0x00010844 File Offset: 0x0000EA44
+		// Token: 0x06001591 RID: 5521 RVA: 0x0001043B File Offset: 0x0000E63B
 		private void Start()
 		{
 			this.purchaseInteraction = base.GetComponent<PurchaseInteraction>();
 		}
 
-		// Token: 0x060015CF RID: 5583 RVA: 0x00074344 File Offset: 0x00072544
+		// Token: 0x06001592 RID: 5522 RVA: 0x00073D0C File Offset: 0x00071F0C
 		public void FixedUpdate()
 		{
 			if (this.waitingForRefresh)
@@ -36,7 +36,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060015D0 RID: 5584 RVA: 0x000743B8 File Offset: 0x000725B8
+		// Token: 0x06001593 RID: 5523 RVA: 0x00073D80 File Offset: 0x00071F80
 		[Server]
 		public void AddShrineStack(Interactor interactor)
 		{
@@ -74,45 +74,45 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060015D2 RID: 5586 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06001595 RID: 5525 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x060015D3 RID: 5587 RVA: 0x0004AA24 File Offset: 0x00048C24
+		// Token: 0x06001596 RID: 5526 RVA: 0x0004A818 File Offset: 0x00048A18
 		public override bool OnSerialize(NetworkWriter writer, bool forceAll)
 		{
 			bool result;
 			return result;
 		}
 
-		// Token: 0x060015D4 RID: 5588 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06001597 RID: 5527 RVA: 0x000025F6 File Offset: 0x000007F6
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 		}
 
-		// Token: 0x040018ED RID: 6381
+		// Token: 0x040018C4 RID: 6340
 		public int maxPurchaseCount;
 
-		// Token: 0x040018EE RID: 6382
+		// Token: 0x040018C5 RID: 6341
 		public float costMultiplierPerPurchase;
 
-		// Token: 0x040018EF RID: 6383
+		// Token: 0x040018C6 RID: 6342
 		public Transform symbolTransform;
 
-		// Token: 0x040018F0 RID: 6384
+		// Token: 0x040018C7 RID: 6343
 		private PurchaseInteraction purchaseInteraction;
 
-		// Token: 0x040018F1 RID: 6385
+		// Token: 0x040018C8 RID: 6344
 		private int purchaseCount;
 
-		// Token: 0x040018F2 RID: 6386
+		// Token: 0x040018C9 RID: 6345
 		private float refreshTimer;
 
-		// Token: 0x040018F3 RID: 6387
+		// Token: 0x040018CA RID: 6346
 		private const float refreshDuration = 2f;
 
-		// Token: 0x040018F4 RID: 6388
+		// Token: 0x040018CB RID: 6347
 		private bool waitingForRefresh;
 	}
 }

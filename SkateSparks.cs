@@ -3,17 +3,17 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x020003E9 RID: 1001
+	// Token: 0x020003E3 RID: 995
 	[RequireComponent(typeof(Animator))]
 	internal class SkateSparks : MonoBehaviour
 	{
-		// Token: 0x060015FE RID: 5630 RVA: 0x000108FC File Offset: 0x0000EAFC
+		// Token: 0x060015C1 RID: 5569 RVA: 0x000104F3 File Offset: 0x0000E6F3
 		private void Awake()
 		{
 			this.animator = base.GetComponent<Animator>();
 		}
 
-		// Token: 0x060015FF RID: 5631 RVA: 0x00074F1C File Offset: 0x0007311C
+		// Token: 0x060015C2 RID: 5570 RVA: 0x000748E4 File Offset: 0x00072AE4
 		private void FixedUpdate()
 		{
 			float @float = this.animator.GetFloat(SkateSparks.forwardSpeedParam);
@@ -48,37 +48,37 @@ namespace RoR2
 			this.previousIsGrounded = @bool;
 		}
 
-		// Token: 0x0400192C RID: 6444
+		// Token: 0x04001903 RID: 6403
 		public float sparkFactor = 1f;
 
-		// Token: 0x0400192D RID: 6445
+		// Token: 0x04001904 RID: 6404
 		public ParticleSystem leftParticleSystem;
 
-		// Token: 0x0400192E RID: 6446
+		// Token: 0x04001905 RID: 6405
 		public ParticleSystem rightParticleSystem;
 
-		// Token: 0x0400192F RID: 6447
+		// Token: 0x04001906 RID: 6406
 		private Animator animator;
 
-		// Token: 0x04001930 RID: 6448
+		// Token: 0x04001907 RID: 6407
 		private static readonly int forwardSpeedParam = Animator.StringToHash("forwardSpeed");
 
-		// Token: 0x04001931 RID: 6449
+		// Token: 0x04001908 RID: 6408
 		private static readonly int rightSpeedParam = Animator.StringToHash("rightSpeed");
 
-		// Token: 0x04001932 RID: 6450
+		// Token: 0x04001909 RID: 6409
 		private static readonly int isGroundedParam = Animator.StringToHash("isGrounded");
 
-		// Token: 0x04001933 RID: 6451
+		// Token: 0x0400190A RID: 6410
 		private float previousForwardSpeed;
 
-		// Token: 0x04001934 RID: 6452
+		// Token: 0x0400190B RID: 6411
 		private float previousRightSpeed;
 
-		// Token: 0x04001935 RID: 6453
+		// Token: 0x0400190C RID: 6412
 		private bool previousIsGrounded = true;
 
-		// Token: 0x04001936 RID: 6454
+		// Token: 0x0400190D RID: 6413
 		private float sparkAccumulator;
 	}
 }

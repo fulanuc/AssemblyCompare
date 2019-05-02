@@ -5,19 +5,19 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x020003E6 RID: 998
+	// Token: 0x020003E0 RID: 992
 	[RequireComponent(typeof(CombatDirector))]
 	[RequireComponent(typeof(PurchaseInteraction))]
 	public class ShrineCombatBehavior : NetworkBehaviour
 	{
-		// Token: 0x060015DF RID: 5599 RVA: 0x00009162 File Offset: 0x00007362
+		// Token: 0x060015A2 RID: 5538 RVA: 0x0000913D File Offset: 0x0000733D
 		public override int GetNetworkChannel()
 		{
 			return QosChannelIndex.defaultReliable.intVal;
 		}
 
-		// Token: 0x170001F9 RID: 505
-		// (get) Token: 0x060015E0 RID: 5600 RVA: 0x00010883 File Offset: 0x0000EA83
+		// Token: 0x170001F0 RID: 496
+		// (get) Token: 0x060015A3 RID: 5539 RVA: 0x0001047A File Offset: 0x0000E67A
 		private float monsterCredit
 		{
 			get
@@ -26,7 +26,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060015E1 RID: 5601 RVA: 0x00074800 File Offset: 0x00072A00
+		// Token: 0x060015A4 RID: 5540 RVA: 0x000741C8 File Offset: 0x000723C8
 		private void Start()
 		{
 			this.cachedDifficultyCoefficient = Run.instance.difficultyCoefficient;
@@ -39,7 +39,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060015E2 RID: 5602 RVA: 0x0007485C File Offset: 0x00072A5C
+		// Token: 0x060015A5 RID: 5541 RVA: 0x00074224 File Offset: 0x00072424
 		private void InitCombatShrineValues()
 		{
 			WeightedSelection<DirectorCard> monsterSelection = ClassicStageInfo.instance.monsterSelection;
@@ -64,7 +64,7 @@ namespace RoR2
 			this.chosenDirectorCard = weightedSelection.Evaluate(this.rng.nextNormalizedFloat);
 		}
 
-		// Token: 0x060015E3 RID: 5603 RVA: 0x0007492C File Offset: 0x00072B2C
+		// Token: 0x060015A6 RID: 5542 RVA: 0x000742F4 File Offset: 0x000724F4
 		public void FixedUpdate()
 		{
 			if (this.waitingForRefresh)
@@ -78,7 +78,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060015E4 RID: 5604 RVA: 0x00074984 File Offset: 0x00072B84
+		// Token: 0x060015A7 RID: 5543 RVA: 0x0007434C File Offset: 0x0007254C
 		[Server]
 		public void AddShrineStack(Interactor interactor)
 		{
@@ -127,66 +127,66 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060015E6 RID: 5606 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x060015A9 RID: 5545 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x060015E7 RID: 5607 RVA: 0x0004AA24 File Offset: 0x00048C24
+		// Token: 0x060015AA RID: 5546 RVA: 0x0004A818 File Offset: 0x00048A18
 		public override bool OnSerialize(NetworkWriter writer, bool forceAll)
 		{
 			bool result;
 			return result;
 		}
 
-		// Token: 0x060015E8 RID: 5608 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x060015AB RID: 5547 RVA: 0x000025F6 File Offset: 0x000007F6
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 		}
 
-		// Token: 0x04001906 RID: 6406
+		// Token: 0x040018DD RID: 6365
 		public Color shrineEffectColor;
 
-		// Token: 0x04001907 RID: 6407
+		// Token: 0x040018DE RID: 6366
 		public int maxPurchaseCount;
 
-		// Token: 0x04001908 RID: 6408
+		// Token: 0x040018DF RID: 6367
 		public int baseMonsterCredit;
 
-		// Token: 0x04001909 RID: 6409
+		// Token: 0x040018E0 RID: 6368
 		public float monsterCreditCoefficientPerPurchase;
 
-		// Token: 0x0400190A RID: 6410
+		// Token: 0x040018E1 RID: 6369
 		public Transform symbolTransform;
 
-		// Token: 0x0400190B RID: 6411
+		// Token: 0x040018E2 RID: 6370
 		public GameObject spawnPositionEffectPrefab;
 
-		// Token: 0x0400190C RID: 6412
+		// Token: 0x040018E3 RID: 6371
 		private CombatDirector combatDirector;
 
-		// Token: 0x0400190D RID: 6413
+		// Token: 0x040018E4 RID: 6372
 		private PurchaseInteraction purchaseInteraction;
 
-		// Token: 0x0400190E RID: 6414
+		// Token: 0x040018E5 RID: 6373
 		private int purchaseCount;
 
-		// Token: 0x0400190F RID: 6415
+		// Token: 0x040018E6 RID: 6374
 		private float refreshTimer;
 
-		// Token: 0x04001910 RID: 6416
+		// Token: 0x040018E7 RID: 6375
 		private const float refreshDuration = 2f;
 
-		// Token: 0x04001911 RID: 6417
+		// Token: 0x040018E8 RID: 6376
 		private bool waitingForRefresh;
 
-		// Token: 0x04001912 RID: 6418
+		// Token: 0x040018E9 RID: 6377
 		private Xoroshiro128Plus rng;
 
-		// Token: 0x04001913 RID: 6419
+		// Token: 0x040018EA RID: 6378
 		private DirectorCard chosenDirectorCard;
 
-		// Token: 0x04001914 RID: 6420
+		// Token: 0x040018EB RID: 6379
 		private float cachedDifficultyCoefficient;
 	}
 }

@@ -5,28 +5,28 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x020003E7 RID: 999
+	// Token: 0x020003E1 RID: 993
 	[RequireComponent(typeof(PurchaseInteraction))]
 	public class ShrineHealingBehavior : NetworkBehaviour
 	{
-		// Token: 0x060015E9 RID: 5609 RVA: 0x00009162 File Offset: 0x00007362
+		// Token: 0x060015AC RID: 5548 RVA: 0x0000913D File Offset: 0x0000733D
 		public override int GetNetworkChannel()
 		{
 			return QosChannelIndex.defaultReliable.intVal;
 		}
 
-		// Token: 0x170001FA RID: 506
-		// (get) Token: 0x060015EA RID: 5610 RVA: 0x000108AE File Offset: 0x0000EAAE
-		// (set) Token: 0x060015EB RID: 5611 RVA: 0x000108B6 File Offset: 0x0000EAB6
+		// Token: 0x170001F1 RID: 497
+		// (get) Token: 0x060015AD RID: 5549 RVA: 0x000104A5 File Offset: 0x0000E6A5
+		// (set) Token: 0x060015AE RID: 5550 RVA: 0x000104AD File Offset: 0x0000E6AD
 		public int purchaseCount { get; private set; }
 
-		// Token: 0x060015EC RID: 5612 RVA: 0x000108BF File Offset: 0x0000EABF
+		// Token: 0x060015AF RID: 5551 RVA: 0x000104B6 File Offset: 0x0000E6B6
 		private void Awake()
 		{
 			this.purchaseInteraction = base.GetComponent<PurchaseInteraction>();
 		}
 
-		// Token: 0x060015ED RID: 5613 RVA: 0x00074AF4 File Offset: 0x00072CF4
+		// Token: 0x060015B0 RID: 5552 RVA: 0x000744BC File Offset: 0x000726BC
 		public void FixedUpdate()
 		{
 			if (this.waitingForRefresh)
@@ -41,7 +41,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060015EE RID: 5614 RVA: 0x00074B68 File Offset: 0x00072D68
+		// Token: 0x060015B1 RID: 5553 RVA: 0x00074530 File Offset: 0x00072730
 		[Server]
 		private void SetWardEnabled(bool enableWard)
 		{
@@ -66,7 +66,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060015EF RID: 5615 RVA: 0x00074C0C File Offset: 0x00072E0C
+		// Token: 0x060015B2 RID: 5554 RVA: 0x000745D4 File Offset: 0x000727D4
 		[Server]
 		public void AddShrineStack(Interactor activator)
 		{
@@ -106,62 +106,62 @@ namespace RoR2
 			action(this, activator);
 		}
 
-		// Token: 0x1400002D RID: 45
-		// (add) Token: 0x060015F0 RID: 5616 RVA: 0x00074D20 File Offset: 0x00072F20
-		// (remove) Token: 0x060015F1 RID: 5617 RVA: 0x00074D54 File Offset: 0x00072F54
+		// Token: 0x1400002B RID: 43
+		// (add) Token: 0x060015B3 RID: 5555 RVA: 0x000746E8 File Offset: 0x000728E8
+		// (remove) Token: 0x060015B4 RID: 5556 RVA: 0x0007471C File Offset: 0x0007291C
 		public static event Action<ShrineHealingBehavior, Interactor> onActivated;
 
-		// Token: 0x060015F3 RID: 5619 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x060015B6 RID: 5558 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x060015F4 RID: 5620 RVA: 0x0004AA24 File Offset: 0x00048C24
+		// Token: 0x060015B7 RID: 5559 RVA: 0x0004A818 File Offset: 0x00048A18
 		public override bool OnSerialize(NetworkWriter writer, bool forceAll)
 		{
 			bool result;
 			return result;
 		}
 
-		// Token: 0x060015F5 RID: 5621 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x060015B8 RID: 5560 RVA: 0x000025F6 File Offset: 0x000007F6
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 		}
 
-		// Token: 0x04001915 RID: 6421
+		// Token: 0x040018EC RID: 6380
 		public GameObject wardPrefab;
 
-		// Token: 0x04001916 RID: 6422
+		// Token: 0x040018ED RID: 6381
 		private GameObject wardInstance;
 
-		// Token: 0x04001917 RID: 6423
+		// Token: 0x040018EE RID: 6382
 		public float baseRadius;
 
-		// Token: 0x04001918 RID: 6424
+		// Token: 0x040018EF RID: 6383
 		public float radiusBonusPerPurchase;
 
-		// Token: 0x04001919 RID: 6425
+		// Token: 0x040018F0 RID: 6384
 		public int maxPurchaseCount;
 
-		// Token: 0x0400191A RID: 6426
+		// Token: 0x040018F1 RID: 6385
 		public float costMultiplierPerPurchase;
 
-		// Token: 0x0400191B RID: 6427
+		// Token: 0x040018F2 RID: 6386
 		public Transform symbolTransform;
 
-		// Token: 0x0400191C RID: 6428
+		// Token: 0x040018F3 RID: 6387
 		private PurchaseInteraction purchaseInteraction;
 
-		// Token: 0x0400191E RID: 6430
+		// Token: 0x040018F5 RID: 6389
 		private float refreshTimer;
 
-		// Token: 0x0400191F RID: 6431
+		// Token: 0x040018F6 RID: 6390
 		private const float refreshDuration = 2f;
 
-		// Token: 0x04001920 RID: 6432
+		// Token: 0x040018F7 RID: 6391
 		private bool waitingForRefresh;
 
-		// Token: 0x04001921 RID: 6433
+		// Token: 0x040018F8 RID: 6392
 		private HealingWard healingWard;
 	}
 }

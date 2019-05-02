@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x020003A8 RID: 936
+	// Token: 0x020003A3 RID: 931
 	[RequireComponent(typeof(CharacterBody))]
 	public class RailMotor : MonoBehaviour
 	{
-		// Token: 0x060013E6 RID: 5094 RVA: 0x0006E598 File Offset: 0x0006C798
+		// Token: 0x060013C9 RID: 5065 RVA: 0x0006E390 File Offset: 0x0006C590
 		private void Start()
 		{
 			this.characterDirection = base.GetComponent<CharacterDirection>();
@@ -27,7 +27,7 @@ namespace RoR2
 			this.useRootMotion = this.characterBody.rootMotionInMainState;
 		}
 
-		// Token: 0x060013E7 RID: 5095 RVA: 0x0006E658 File Offset: 0x0006C858
+		// Token: 0x060013CA RID: 5066 RVA: 0x0006E450 File Offset: 0x0006C650
 		private void UpdateNodeAndLinkInfo()
 		{
 			this.nodeA = this.railGraph.GetLinkStartNode(this.currentLink);
@@ -38,7 +38,7 @@ namespace RoR2
 			this.linkLength = this.linkVector.magnitude;
 		}
 
-		// Token: 0x060013E8 RID: 5096 RVA: 0x0006E6EC File Offset: 0x0006C8EC
+		// Token: 0x060013CB RID: 5067 RVA: 0x0006E4E4 File Offset: 0x0006C6E4
 		private void FixedUpdate()
 		{
 			this.UpdateNodeAndLinkInfo();
@@ -106,7 +106,7 @@ namespace RoR2
 			base.transform.position = Vector3.Lerp(this.nodeAPosition, this.nodeBPosition, this.linkLerp);
 		}
 
-		// Token: 0x060013E9 RID: 5097 RVA: 0x0006E8D4 File Offset: 0x0006CAD4
+		// Token: 0x060013CC RID: 5068 RVA: 0x0006E6CC File Offset: 0x0006C8CC
 		private void TravelLink()
 		{
 			this.projectedMoveVector = Vector3.Project(this.inputMoveVector, this.linkVector);
@@ -137,7 +137,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060013EA RID: 5098 RVA: 0x0006E9E8 File Offset: 0x0006CBE8
+		// Token: 0x060013CD RID: 5069 RVA: 0x0006E7E0 File Offset: 0x0006C9E0
 		private void OnDrawGizmosSelected()
 		{
 			Gizmos.color = Color.green;
@@ -147,58 +147,58 @@ namespace RoR2
 			Gizmos.DrawLine(this.nodeAPosition, this.nodeBPosition);
 		}
 
-		// Token: 0x04001773 RID: 6003
+		// Token: 0x04001759 RID: 5977
 		public Vector3 inputMoveVector;
 
-		// Token: 0x04001774 RID: 6004
+		// Token: 0x0400175A RID: 5978
 		public Vector3 rootMotion;
 
-		// Token: 0x04001775 RID: 6005
+		// Token: 0x0400175B RID: 5979
 		private Animator modelAnimator;
 
-		// Token: 0x04001776 RID: 6006
+		// Token: 0x0400175C RID: 5980
 		private InputBankTest inputBank;
 
-		// Token: 0x04001777 RID: 6007
+		// Token: 0x0400175D RID: 5981
 		private NodeGraph railGraph;
 
-		// Token: 0x04001778 RID: 6008
+		// Token: 0x0400175E RID: 5982
 		private NodeGraph.NodeIndex nodeA;
 
-		// Token: 0x04001779 RID: 6009
+		// Token: 0x0400175F RID: 5983
 		private NodeGraph.NodeIndex nodeB;
 
-		// Token: 0x0400177A RID: 6010
+		// Token: 0x04001760 RID: 5984
 		private NodeGraph.LinkIndex currentLink;
 
-		// Token: 0x0400177B RID: 6011
+		// Token: 0x04001761 RID: 5985
 		private CharacterBody characterBody;
 
-		// Token: 0x0400177C RID: 6012
+		// Token: 0x04001762 RID: 5986
 		private CharacterDirection characterDirection;
 
-		// Token: 0x0400177D RID: 6013
+		// Token: 0x04001763 RID: 5987
 		private float linkLerp;
 
-		// Token: 0x0400177E RID: 6014
+		// Token: 0x04001764 RID: 5988
 		private Vector3 projectedMoveVector;
 
-		// Token: 0x0400177F RID: 6015
+		// Token: 0x04001765 RID: 5989
 		private Vector3 nodeAPosition;
 
-		// Token: 0x04001780 RID: 6016
+		// Token: 0x04001766 RID: 5990
 		private Vector3 nodeBPosition;
 
-		// Token: 0x04001781 RID: 6017
+		// Token: 0x04001767 RID: 5991
 		private Vector3 linkVector;
 
-		// Token: 0x04001782 RID: 6018
+		// Token: 0x04001768 RID: 5992
 		private float linkLength;
 
-		// Token: 0x04001783 RID: 6019
+		// Token: 0x04001769 RID: 5993
 		private float currentMoveSpeed;
 
-		// Token: 0x04001784 RID: 6020
+		// Token: 0x0400176A RID: 5994
 		private bool useRootMotion;
 	}
 }

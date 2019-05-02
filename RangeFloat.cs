@@ -2,14 +2,14 @@
 
 namespace RoR2
 {
-	// Token: 0x02000481 RID: 1153
+	// Token: 0x02000474 RID: 1140
 	[Serializable]
 	public struct RangeFloat
 	{
-		// Token: 0x04001D18 RID: 7448
+		// Token: 0x04001CE1 RID: 7393
 		public float min;
 
-		// Token: 0x04001D19 RID: 7449
+		// Token: 0x04001CE2 RID: 7394
 		public float max;
 	}
 }

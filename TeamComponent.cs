@@ -7,13 +7,13 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x020003FB RID: 1019
+	// Token: 0x020003F5 RID: 1013
 	[DisallowMultipleComponent]
 	public class TeamComponent : NetworkBehaviour, ILifeBehavior
 	{
-		// Token: 0x17000207 RID: 519
-		// (get) Token: 0x0600167C RID: 5756 RVA: 0x00010D6B File Offset: 0x0000EF6B
-		// (set) Token: 0x0600167B RID: 5755 RVA: 0x00010D43 File Offset: 0x0000EF43
+		// Token: 0x170001FE RID: 510
+		// (get) Token: 0x0600163C RID: 5692 RVA: 0x00010952 File Offset: 0x0000EB52
+		// (set) Token: 0x0600163B RID: 5691 RVA: 0x0001092A File Offset: 0x0000EB2A
 		public TeamIndex teamIndex
 		{
 			get
@@ -35,20 +35,20 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600167D RID: 5757 RVA: 0x00010D73 File Offset: 0x0000EF73
+		// Token: 0x0600163D RID: 5693 RVA: 0x0001095A File Offset: 0x0000EB5A
 		private static bool TeamIsValid(TeamIndex teamIndex)
 		{
 			return teamIndex >= TeamIndex.Neutral && teamIndex < TeamIndex.Count;
 		}
 
-		// Token: 0x0600167E RID: 5758 RVA: 0x00010D7F File Offset: 0x0000EF7F
+		// Token: 0x0600163E RID: 5694 RVA: 0x00010966 File Offset: 0x0000EB66
 		private void OnChangeTeam(TeamIndex newTeamIndex)
 		{
 			this.OnLeaveTeam(this.oldTeamIndex);
 			this.OnJoinTeam(newTeamIndex);
 		}
 
-		// Token: 0x0600167F RID: 5759 RVA: 0x00010D94 File Offset: 0x0000EF94
+		// Token: 0x0600163F RID: 5695 RVA: 0x0001097B File Offset: 0x0000EB7B
 		private void OnLeaveTeam(TeamIndex oldTeamIndex)
 		{
 			if (TeamComponent.TeamIsValid(oldTeamIndex))
@@ -57,7 +57,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001680 RID: 5760 RVA: 0x00076F50 File Offset: 0x00075150
+		// Token: 0x06001640 RID: 5696 RVA: 0x00076918 File Offset: 0x00074B18
 		private void OnJoinTeam(TeamIndex newTeamIndex)
 		{
 			if (TeamComponent.TeamIsValid(newTeamIndex))
@@ -78,7 +78,7 @@ namespace RoR2
 			this.oldTeamIndex = newTeamIndex;
 		}
 
-		// Token: 0x06001681 RID: 5761 RVA: 0x00076FB0 File Offset: 0x000751B0
+		// Token: 0x06001641 RID: 5697 RVA: 0x00076978 File Offset: 0x00074B78
 		private void SetupIndicator()
 		{
 			if (this.indicator)
@@ -146,7 +146,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001682 RID: 5762 RVA: 0x00077138 File Offset: 0x00075338
+		// Token: 0x06001642 RID: 5698 RVA: 0x00076B00 File Offset: 0x00074D00
 		static TeamComponent()
 		{
 			TeamComponent.teamsList = new List<TeamComponent>[3];
@@ -158,7 +158,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001683 RID: 5763 RVA: 0x00010DAC File Offset: 0x0000EFAC
+		// Token: 0x06001643 RID: 5699 RVA: 0x00010993 File Offset: 0x0000EB93
 		private void Awake()
 		{
 			ModelLocator component = base.GetComponent<ModelLocator>();
@@ -175,7 +175,7 @@ namespace RoR2
 			this.hurtBoxGroup = hurtBoxGroup;
 		}
 
-		// Token: 0x06001684 RID: 5764 RVA: 0x00010DD2 File Offset: 0x0000EFD2
+		// Token: 0x06001644 RID: 5700 RVA: 0x000109B9 File Offset: 0x0000EBB9
 		public void Start()
 		{
 			this.SetupIndicator();
@@ -185,32 +185,32 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001685 RID: 5765 RVA: 0x00010DF4 File Offset: 0x0000EFF4
+		// Token: 0x06001645 RID: 5701 RVA: 0x000109DB File Offset: 0x0000EBDB
 		private void OnDestroy()
 		{
 			this.teamIndex = TeamIndex.None;
 		}
 
-		// Token: 0x06001686 RID: 5766 RVA: 0x0000A0C2 File Offset: 0x000082C2
+		// Token: 0x06001646 RID: 5702 RVA: 0x0000A05D File Offset: 0x0000825D
 		public void OnDeathStart()
 		{
 			base.enabled = false;
 		}
 
-		// Token: 0x06001687 RID: 5767 RVA: 0x00010DFD File Offset: 0x0000EFFD
+		// Token: 0x06001647 RID: 5703 RVA: 0x000109E4 File Offset: 0x0000EBE4
 		public override bool OnSerialize(NetworkWriter writer, bool initialState)
 		{
 			writer.Write(this.teamIndex);
 			return initialState || base.syncVarDirtyBits > 0u;
 		}
 
-		// Token: 0x06001688 RID: 5768 RVA: 0x00010E19 File Offset: 0x0000F019
+		// Token: 0x06001648 RID: 5704 RVA: 0x00010A00 File Offset: 0x0000EC00
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 			this.teamIndex = reader.ReadTeamIndex();
 		}
 
-		// Token: 0x06001689 RID: 5769 RVA: 0x00010E27 File Offset: 0x0000F027
+		// Token: 0x06001649 RID: 5705 RVA: 0x00010A0E File Offset: 0x0000EC0E
 		public static ReadOnlyCollection<TeamComponent> GetTeamMembers(TeamIndex teamIndex)
 		{
 			if (!TeamComponent.TeamIsValid(teamIndex))
@@ -220,7 +220,7 @@ namespace RoR2
 			return TeamComponent.readonlyTeamsList[(int)teamIndex];
 		}
 
-		// Token: 0x0600168A RID: 5770 RVA: 0x000771A4 File Offset: 0x000753A4
+		// Token: 0x0600164A RID: 5706 RVA: 0x00076B6C File Offset: 0x00074D6C
 		public static TeamIndex GetObjectTeam(GameObject gameObject)
 		{
 			if (gameObject)
@@ -234,31 +234,58 @@ namespace RoR2
 			return TeamIndex.Neutral;
 		}
 
-		// Token: 0x0600168C RID: 5772 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x0600164B RID: 5707 RVA: 0x00076B98 File Offset: 0x00074D98
+		[ConCommand(commandName = "kill_team", flags = (ConVarFlags.ExecuteOnServer | ConVarFlags.Cheat), helpText = "Kills all characters on the named team.")]
+		private static void CCKillTeam(ConCommandArgs args)
+		{
+			if (args.Count == 0)
+			{
+				return;
+			}
+			try
+			{
+				foreach (TeamComponent teamComponent in new List<TeamComponent>(TeamComponent.GetTeamMembers((TeamIndex)Enum.Parse(typeof(TeamIndex), args[0], true))))
+				{
+					if (teamComponent)
+					{
+						HealthComponent component = teamComponent.GetComponent<HealthComponent>();
+						if (component)
+						{
+							component.Suicide(null);
+						}
+					}
+				}
+			}
+			catch (ArgumentException)
+			{
+			}
+		}
+
+		// Token: 0x0600164D RID: 5709 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x040019B3 RID: 6579
+		// Token: 0x0400198A RID: 6538
 		[SerializeField]
 		private TeamIndex _teamIndex = TeamIndex.None;
 
-		// Token: 0x040019B4 RID: 6580
+		// Token: 0x0400198B RID: 6539
 		private TeamIndex oldTeamIndex = TeamIndex.None;
 
-		// Token: 0x040019B5 RID: 6581
+		// Token: 0x0400198C RID: 6540
 		private GameObject indicator;
 
-		// Token: 0x040019B6 RID: 6582
+		// Token: 0x0400198D RID: 6541
 		private static List<TeamComponent>[] teamsList;
 
-		// Token: 0x040019B7 RID: 6583
+		// Token: 0x0400198E RID: 6542
 		private static ReadOnlyCollection<TeamComponent>[] readonlyTeamsList;
 
-		// Token: 0x040019B8 RID: 6584
+		// Token: 0x0400198F RID: 6543
 		private HurtBoxGroup hurtBoxGroup;
 
-		// Token: 0x040019B9 RID: 6585
+		// Token: 0x04001990 RID: 6544
 		private static ReadOnlyCollection<TeamComponent> emptyTeamMembers = new List<TeamComponent>().AsReadOnly();
 	}
 }

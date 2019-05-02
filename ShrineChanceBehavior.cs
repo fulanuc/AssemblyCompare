@@ -4,22 +4,22 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x020003E5 RID: 997
+	// Token: 0x020003DF RID: 991
 	[RequireComponent(typeof(PurchaseInteraction))]
 	public class ShrineChanceBehavior : NetworkBehaviour
 	{
-		// Token: 0x1400002C RID: 44
-		// (add) Token: 0x060015D5 RID: 5589 RVA: 0x000744CC File Offset: 0x000726CC
-		// (remove) Token: 0x060015D6 RID: 5590 RVA: 0x00074500 File Offset: 0x00072700
+		// Token: 0x1400002A RID: 42
+		// (add) Token: 0x06001598 RID: 5528 RVA: 0x00073E94 File Offset: 0x00072094
+		// (remove) Token: 0x06001599 RID: 5529 RVA: 0x00073EC8 File Offset: 0x000720C8
 		public static event Action<bool, Interactor> onShrineChancePurchaseGlobal;
 
-		// Token: 0x060015D7 RID: 5591 RVA: 0x00010852 File Offset: 0x0000EA52
+		// Token: 0x0600159A RID: 5530 RVA: 0x00010449 File Offset: 0x0000E649
 		private void Awake()
 		{
 			this.purchaseInteraction = base.GetComponent<PurchaseInteraction>();
 		}
 
-		// Token: 0x060015D8 RID: 5592 RVA: 0x00010860 File Offset: 0x0000EA60
+		// Token: 0x0600159B RID: 5531 RVA: 0x00010457 File Offset: 0x0000E657
 		public void Start()
 		{
 			if (NetworkServer.active)
@@ -28,7 +28,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060015D9 RID: 5593 RVA: 0x00074534 File Offset: 0x00072734
+		// Token: 0x0600159C RID: 5532 RVA: 0x00073EFC File Offset: 0x000720FC
 		public void FixedUpdate()
 		{
 			if (this.waitingForRefresh)
@@ -43,7 +43,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060015DA RID: 5594 RVA: 0x000745A8 File Offset: 0x000727A8
+		// Token: 0x0600159D RID: 5533 RVA: 0x00073F70 File Offset: 0x00072170
 		[Server]
 		public void AddShrineStack(Interactor activator)
 		{
@@ -103,69 +103,69 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060015DC RID: 5596 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x0600159F RID: 5535 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x060015DD RID: 5597 RVA: 0x0004AA24 File Offset: 0x00048C24
+		// Token: 0x060015A0 RID: 5536 RVA: 0x0004A818 File Offset: 0x00048A18
 		public override bool OnSerialize(NetworkWriter writer, bool forceAll)
 		{
 			bool result;
 			return result;
 		}
 
-		// Token: 0x060015DE RID: 5598 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x060015A1 RID: 5537 RVA: 0x000025F6 File Offset: 0x000007F6
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 		}
 
-		// Token: 0x040018F5 RID: 6389
+		// Token: 0x040018CC RID: 6348
 		public int maxPurchaseCount;
 
-		// Token: 0x040018F6 RID: 6390
+		// Token: 0x040018CD RID: 6349
 		public float costMultiplierPerPurchase;
 
-		// Token: 0x040018F7 RID: 6391
+		// Token: 0x040018CE RID: 6350
 		public float failureWeight;
 
-		// Token: 0x040018F8 RID: 6392
+		// Token: 0x040018CF RID: 6351
 		public float equipmentWeight;
 
-		// Token: 0x040018F9 RID: 6393
+		// Token: 0x040018D0 RID: 6352
 		public float tier1Weight;
 
-		// Token: 0x040018FA RID: 6394
+		// Token: 0x040018D1 RID: 6353
 		public float tier2Weight;
 
-		// Token: 0x040018FB RID: 6395
+		// Token: 0x040018D2 RID: 6354
 		public float tier3Weight;
 
-		// Token: 0x040018FC RID: 6396
+		// Token: 0x040018D3 RID: 6355
 		public Transform symbolTransform;
 
-		// Token: 0x040018FD RID: 6397
+		// Token: 0x040018D4 RID: 6356
 		public Transform dropletOrigin;
 
-		// Token: 0x040018FE RID: 6398
+		// Token: 0x040018D5 RID: 6357
 		public Color shrineColor;
 
-		// Token: 0x040018FF RID: 6399
+		// Token: 0x040018D6 RID: 6358
 		private PurchaseInteraction purchaseInteraction;
 
-		// Token: 0x04001900 RID: 6400
+		// Token: 0x040018D7 RID: 6359
 		private int successfulPurchaseCount;
 
-		// Token: 0x04001901 RID: 6401
+		// Token: 0x040018D8 RID: 6360
 		private float refreshTimer;
 
-		// Token: 0x04001902 RID: 6402
+		// Token: 0x040018D9 RID: 6361
 		private const float refreshDuration = 2f;
 
-		// Token: 0x04001903 RID: 6403
+		// Token: 0x040018DA RID: 6362
 		private bool waitingForRefresh;
 
-		// Token: 0x04001905 RID: 6405
+		// Token: 0x040018DC RID: 6364
 		private Xoroshiro128Plus rng;
 	}
 }

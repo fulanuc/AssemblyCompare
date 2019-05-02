@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x020003AE RID: 942
+	// Token: 0x020003A9 RID: 937
 	public class RoachController : MonoBehaviour
 	{
-		// Token: 0x06001402 RID: 5122 RVA: 0x0006F2E0 File Offset: 0x0006D4E0
+		// Token: 0x060013E5 RID: 5093 RVA: 0x0006F0D8 File Offset: 0x0006D2D8
 		private void Awake()
 		{
 			this.roachTransforms = new Transform[this.roaches.Length];
@@ -17,7 +17,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001403 RID: 5123 RVA: 0x0006F368 File Offset: 0x0006D568
+		// Token: 0x060013E6 RID: 5094 RVA: 0x0006F160 File Offset: 0x0006D360
 		private void OnDestroy()
 		{
 			for (int i = 0; i < this.roachTransforms.Length; i++)
@@ -29,7 +29,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001404 RID: 5124 RVA: 0x0006F3AC File Offset: 0x0006D5AC
+		// Token: 0x060013E7 RID: 5095 RVA: 0x0006F1A4 File Offset: 0x0006D3A4
 		public void BakeRoaches2()
 		{
 			List<RoachController.Roach> list = new List<RoachController.Roach>();
@@ -65,13 +65,13 @@ namespace RoR2
 			this.roaches = list.ToArray();
 		}
 
-		// Token: 0x06001405 RID: 5125 RVA: 0x0000F380 File Offset: 0x0000D580
+		// Token: 0x060013E8 RID: 5096 RVA: 0x0000F1DC File Offset: 0x0000D3DC
 		public void BakeRoaches()
 		{
 			this.BakeRoaches2();
 		}
 
-		// Token: 0x06001406 RID: 5126 RVA: 0x0006F56C File Offset: 0x0006D76C
+		// Token: 0x060013E9 RID: 5097 RVA: 0x0006F364 File Offset: 0x0006D564
 		private void ClearRoachPathEditors()
 		{
 			for (int i = base.transform.childCount - 1; i > 0; i--)
@@ -80,7 +80,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001407 RID: 5127 RVA: 0x0006F5A8 File Offset: 0x0006D7A8
+		// Token: 0x060013EA RID: 5098 RVA: 0x0006F3A0 File Offset: 0x0006D5A0
 		public void DebakeRoaches()
 		{
 			this.ClearRoachPathEditors();
@@ -98,7 +98,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001408 RID: 5128 RVA: 0x0000F388 File Offset: 0x0000D588
+		// Token: 0x060013EB RID: 5099 RVA: 0x0000F1E4 File Offset: 0x0000D3E4
 		public RoachController.RoachPathEditorComponent AddPathEditorObject()
 		{
 			GameObject gameObject = new GameObject("Roach Path (Temporary)");
@@ -109,7 +109,7 @@ namespace RoR2
 			return roachPathEditorComponent;
 		}
 
-		// Token: 0x06001409 RID: 5129 RVA: 0x0006F62C File Offset: 0x0006D82C
+		// Token: 0x060013EC RID: 5100 RVA: 0x0006F424 File Offset: 0x0006D624
 		private void UpdateRoach(int i)
 		{
 			RoachController.KeyFrame[] keyFrames = this.roaches[i].keyFrames;
@@ -127,13 +127,13 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600140A RID: 5130 RVA: 0x0000F3BA File Offset: 0x0000D5BA
+		// Token: 0x060013ED RID: 5101 RVA: 0x0000F216 File Offset: 0x0000D416
 		private void SetRoachPosition(int i, Vector3 position, Quaternion rotation)
 		{
 			this.roachTransforms[i].SetPositionAndRotation(position, rotation);
 		}
 
-		// Token: 0x0600140B RID: 5131 RVA: 0x0006F6E4 File Offset: 0x0006D8E4
+		// Token: 0x060013EE RID: 5102 RVA: 0x0006F4DC File Offset: 0x0006D6DC
 		private void Update()
 		{
 			for (int i = 0; i < this.roaches.Length; i++)
@@ -142,7 +142,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600140C RID: 5132 RVA: 0x0000F3CB File Offset: 0x0000D5CB
+		// Token: 0x060013EF RID: 5103 RVA: 0x0000F227 File Offset: 0x0000D427
 		private void Scatter()
 		{
 			if (this.scattered)
@@ -154,7 +154,7 @@ namespace RoR2
 			this.scatterStartTime = Run.TimeStamp.now;
 		}
 
-		// Token: 0x0600140D RID: 5133 RVA: 0x0000F3F9 File Offset: 0x0000D5F9
+		// Token: 0x060013F0 RID: 5104 RVA: 0x0000F255 File Offset: 0x0000D455
 		private void OnTriggerEnter(Collider other)
 		{
 			CharacterBody component = other.GetComponent<CharacterBody>();
@@ -164,7 +164,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600140E RID: 5134 RVA: 0x0006F70C File Offset: 0x0006D90C
+		// Token: 0x060013F1 RID: 5105 RVA: 0x0006F504 File Offset: 0x0006D704
 		private void OnDrawGizmos()
 		{
 			Gizmos.color = Color.yellow;
@@ -172,78 +172,78 @@ namespace RoR2
 			Gizmos.DrawFrustum(Vector3.zero, this.placementSpreadMax * 0.5f, this.placementMaxDistance, 0f, 1f);
 		}
 
-		// Token: 0x040017B8 RID: 6072
+		// Token: 0x0400179E RID: 6046
 		public RoachParams roachParams;
 
-		// Token: 0x040017B9 RID: 6073
+		// Token: 0x0400179F RID: 6047
 		public int roachCount;
 
-		// Token: 0x040017BA RID: 6074
+		// Token: 0x040017A0 RID: 6048
 		public float placementSpreadMin = 1f;
 
-		// Token: 0x040017BB RID: 6075
+		// Token: 0x040017A1 RID: 6049
 		public float placementSpreadMax = 25f;
 
-		// Token: 0x040017BC RID: 6076
+		// Token: 0x040017A2 RID: 6050
 		public float placementMaxDistance = 10f;
 
-		// Token: 0x040017BD RID: 6077
+		// Token: 0x040017A3 RID: 6051
 		public RoachController.Roach[] roaches;
 
-		// Token: 0x040017BE RID: 6078
+		// Token: 0x040017A4 RID: 6052
 		private Transform[] roachTransforms;
 
-		// Token: 0x040017BF RID: 6079
+		// Token: 0x040017A5 RID: 6053
 		private bool scattered;
 
-		// Token: 0x040017C0 RID: 6080
+		// Token: 0x040017A6 RID: 6054
 		private Run.TimeStamp scatterStartTime = Run.TimeStamp.positiveInfinity;
 
-		// Token: 0x040017C1 RID: 6081
+		// Token: 0x040017A7 RID: 6055
 		private const string roachScatterSoundString = "Play_env_roach_scatter";
 
-		// Token: 0x020003AF RID: 943
+		// Token: 0x020003AA RID: 938
 		[Serializable]
 		public struct KeyFrame
 		{
-			// Token: 0x040017C2 RID: 6082
+			// Token: 0x040017A8 RID: 6056
 			public float time;
 
-			// Token: 0x040017C3 RID: 6083
+			// Token: 0x040017A9 RID: 6057
 			public Vector3 position;
 
-			// Token: 0x040017C4 RID: 6084
+			// Token: 0x040017AA RID: 6058
 			public Quaternion rotation;
 		}
 
-		// Token: 0x020003B0 RID: 944
+		// Token: 0x020003AB RID: 939
 		[Serializable]
 		public struct Roach
 		{
-			// Token: 0x040017C5 RID: 6085
+			// Token: 0x040017AB RID: 6059
 			public RoachController.KeyFrame[] keyFrames;
 		}
 
-		// Token: 0x020003B1 RID: 945
+		// Token: 0x020003AC RID: 940
 		private class SimulatedRoach : IDisposable
 		{
-			// Token: 0x170001BF RID: 447
-			// (get) Token: 0x06001410 RID: 5136 RVA: 0x0000F449 File Offset: 0x0000D649
-			// (set) Token: 0x06001411 RID: 5137 RVA: 0x0000F451 File Offset: 0x0000D651
+			// Token: 0x170001BA RID: 442
+			// (get) Token: 0x060013F3 RID: 5107 RVA: 0x0000F2A5 File Offset: 0x0000D4A5
+			// (set) Token: 0x060013F4 RID: 5108 RVA: 0x0000F2AD File Offset: 0x0000D4AD
 			public Transform transform { get; private set; }
 
-			// Token: 0x170001C0 RID: 448
-			// (get) Token: 0x06001412 RID: 5138 RVA: 0x0000F45A File Offset: 0x0000D65A
-			// (set) Token: 0x06001413 RID: 5139 RVA: 0x0000F462 File Offset: 0x0000D662
+			// Token: 0x170001BB RID: 443
+			// (get) Token: 0x060013F5 RID: 5109 RVA: 0x0000F2B6 File Offset: 0x0000D4B6
+			// (set) Token: 0x060013F6 RID: 5110 RVA: 0x0000F2BE File Offset: 0x0000D4BE
 			public float age { get; private set; }
 
-			// Token: 0x170001C1 RID: 449
-			// (get) Token: 0x06001414 RID: 5140 RVA: 0x0000F46B File Offset: 0x0000D66B
-			// (set) Token: 0x06001415 RID: 5141 RVA: 0x0000F473 File Offset: 0x0000D673
+			// Token: 0x170001BC RID: 444
+			// (get) Token: 0x060013F7 RID: 5111 RVA: 0x0000F2C7 File Offset: 0x0000D4C7
+			// (set) Token: 0x060013F8 RID: 5112 RVA: 0x0000F2CF File Offset: 0x0000D4CF
 			public bool finished { get; private set; }
 
-			// Token: 0x170001C2 RID: 450
-			// (get) Token: 0x06001416 RID: 5142 RVA: 0x0000F47C File Offset: 0x0000D67C
+			// Token: 0x170001BD RID: 445
+			// (get) Token: 0x060013F9 RID: 5113 RVA: 0x0000F2D8 File Offset: 0x0000D4D8
 			private bool onGround
 			{
 				get
@@ -252,7 +252,7 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x06001417 RID: 5143 RVA: 0x0006F770 File Offset: 0x0006D970
+			// Token: 0x060013FA RID: 5114 RVA: 0x0006F568 File Offset: 0x0006D768
 			public SimulatedRoach(Vector3 position, Vector3 groundNormal, Vector3 initialFleeNormal, RoachParams roachParams)
 			{
 				this.roachParams = roachParams;
@@ -269,7 +269,7 @@ namespace RoR2
 				this.simulationDuration = this.age + UnityEngine.Random.Range(roachParams.minSimulationDuration, roachParams.maxSimulationDuration);
 			}
 
-			// Token: 0x06001418 RID: 5144 RVA: 0x0006F84C File Offset: 0x0006DA4C
+			// Token: 0x060013FB RID: 5115 RVA: 0x0006F644 File Offset: 0x0006D844
 			private void SetUpVector(Vector3 desiredUp)
 			{
 				Vector3 right = this.transform.right;
@@ -277,7 +277,7 @@ namespace RoR2
 				this.transform.Rotate(right, Vector3.SignedAngle(up, desiredUp, right), Space.World);
 			}
 
-			// Token: 0x06001419 RID: 5145 RVA: 0x0006F888 File Offset: 0x0006DA88
+			// Token: 0x060013FC RID: 5116 RVA: 0x0006F680 File Offset: 0x0006D880
 			public void Simulate(float deltaTime)
 			{
 				this.age += deltaTime;
@@ -310,7 +310,7 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x0600141A RID: 5146 RVA: 0x0006FA04 File Offset: 0x0006DC04
+			// Token: 0x060013FD RID: 5117 RVA: 0x0006F7FC File Offset: 0x0006D9FC
 			private void OnBump()
 			{
 				this.TurnDesiredMovement(UnityEngine.Random.Range(-90f, 90f));
@@ -321,20 +321,20 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x0600141B RID: 5147 RVA: 0x0006FA54 File Offset: 0x0006DC54
+			// Token: 0x060013FE RID: 5118 RVA: 0x0006F84C File Offset: 0x0006DA4C
 			private void TurnDesiredMovement(float degrees)
 			{
 				Quaternion rotation = Quaternion.AngleAxis(degrees, this.transform.up);
 				this.desiredMovement = rotation * this.desiredMovement;
 			}
 
-			// Token: 0x0600141C RID: 5148 RVA: 0x0000F48E File Offset: 0x0000D68E
+			// Token: 0x060013FF RID: 5119 RVA: 0x0000F2EA File Offset: 0x0000D4EA
 			private void TurnBody(float degrees)
 			{
 				this.transform.Rotate(Vector3.up, degrees, Space.Self);
 			}
 
-			// Token: 0x0600141D RID: 5149 RVA: 0x0006FA88 File Offset: 0x0006DC88
+			// Token: 0x06001400 RID: 5120 RVA: 0x0006F880 File Offset: 0x0006DA80
 			private void StepAir(Vector3 movement)
 			{
 				RoachController.SimulatedRoach.RaycastResult raycastResult = RoachController.SimulatedRoach.SimpleRaycast(new Ray(this.transform.position, movement), movement.magnitude);
@@ -347,7 +347,7 @@ namespace RoR2
 				this.transform.position = raycastResult.point;
 			}
 
-			// Token: 0x0600141E RID: 5150 RVA: 0x0006FB04 File Offset: 0x0006DD04
+			// Token: 0x06001401 RID: 5121 RVA: 0x0006F8FC File Offset: 0x0006DAFC
 			private void StepGround(float distance)
 			{
 				this.groundNormal = Vector3.zero;
@@ -391,7 +391,7 @@ namespace RoR2
 				this.transform.position = vector2;
 			}
 
-			// Token: 0x0600141F RID: 5151 RVA: 0x0006FC74 File Offset: 0x0006DE74
+			// Token: 0x06001402 RID: 5122 RVA: 0x0006FA6C File Offset: 0x0006DC6C
 			private static RoachController.SimulatedRoach.RaycastResult SimpleRaycast(Ray ray, float maxDistance)
 			{
 				RaycastHit raycastHit;
@@ -405,68 +405,68 @@ namespace RoR2
 				};
 			}
 
-			// Token: 0x06001420 RID: 5152 RVA: 0x0000F4A2 File Offset: 0x0000D6A2
+			// Token: 0x06001403 RID: 5123 RVA: 0x0000F2FE File Offset: 0x0000D4FE
 			public void Dispose()
 			{
 				UnityEngine.Object.DestroyImmediate(this.transform.gameObject);
 				this.transform = null;
 			}
 
-			// Token: 0x040017C6 RID: 6086
+			// Token: 0x040017AC RID: 6060
 			private Vector3 initialFleeNormal;
 
-			// Token: 0x040017C7 RID: 6087
+			// Token: 0x040017AD RID: 6061
 			private Vector3 desiredMovement;
 
-			// Token: 0x040017C8 RID: 6088
+			// Token: 0x040017AE RID: 6062
 			private RoachParams roachParams;
 
-			// Token: 0x040017CC RID: 6092
+			// Token: 0x040017B2 RID: 6066
 			private float reorientTimer;
 
-			// Token: 0x040017CD RID: 6093
+			// Token: 0x040017B3 RID: 6067
 			private float backupTimer;
 
-			// Token: 0x040017CE RID: 6094
+			// Token: 0x040017B4 RID: 6068
 			private Vector3 velocity = Vector3.zero;
 
-			// Token: 0x040017CF RID: 6095
+			// Token: 0x040017B5 RID: 6069
 			private float currentSpeed;
 
-			// Token: 0x040017D0 RID: 6096
+			// Token: 0x040017B6 RID: 6070
 			private float desiredSpeed;
 
-			// Token: 0x040017D1 RID: 6097
+			// Token: 0x040017B7 RID: 6071
 			private float turnVelocity;
 
-			// Token: 0x040017D2 RID: 6098
+			// Token: 0x040017B8 RID: 6072
 			private Vector3 groundNormal;
 
-			// Token: 0x040017D3 RID: 6099
+			// Token: 0x040017B9 RID: 6073
 			private float simulationDuration;
 
-			// Token: 0x020003B2 RID: 946
+			// Token: 0x020003AD RID: 941
 			private struct RaycastResult
 			{
-				// Token: 0x040017D4 RID: 6100
+				// Token: 0x040017BA RID: 6074
 				public bool didHit;
 
-				// Token: 0x040017D5 RID: 6101
+				// Token: 0x040017BB RID: 6075
 				public Vector3 point;
 
-				// Token: 0x040017D6 RID: 6102
+				// Token: 0x040017BC RID: 6076
 				public Vector3 normal;
 
-				// Token: 0x040017D7 RID: 6103
+				// Token: 0x040017BD RID: 6077
 				public float distance;
 			}
 		}
 
-		// Token: 0x020003B3 RID: 947
+		// Token: 0x020003AE RID: 942
 		public class RoachPathEditorComponent : MonoBehaviour
 		{
-			// Token: 0x170001C3 RID: 451
-			// (get) Token: 0x06001421 RID: 5153 RVA: 0x0000F4BB File Offset: 0x0000D6BB
+			// Token: 0x170001BE RID: 446
+			// (get) Token: 0x06001404 RID: 5124 RVA: 0x0000F317 File Offset: 0x0000D517
 			public int nodeCount
 			{
 				get
@@ -475,7 +475,7 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x06001422 RID: 5154 RVA: 0x0000F4C8 File Offset: 0x0000D6C8
+			// Token: 0x06001405 RID: 5125 RVA: 0x0000F324 File Offset: 0x0000D524
 			public RoachController.RoachNodeEditorComponent AddNode()
 			{
 				GameObject gameObject = new GameObject("Roach Path Node (Temporary)");
@@ -486,7 +486,7 @@ namespace RoR2
 				return roachNodeEditorComponent;
 			}
 
-			// Token: 0x06001423 RID: 5155 RVA: 0x0006FCF8 File Offset: 0x0006DEF8
+			// Token: 0x06001406 RID: 5126 RVA: 0x0006FAF0 File Offset: 0x0006DCF0
 			private void OnDrawGizmosSelected()
 			{
 				Gizmos.color = Color.white;
@@ -500,14 +500,14 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x040017D8 RID: 6104
+			// Token: 0x040017BE RID: 6078
 			public RoachController roachController;
 		}
 
-		// Token: 0x020003B4 RID: 948
+		// Token: 0x020003AF RID: 943
 		public class RoachNodeEditorComponent : MonoBehaviour
 		{
-			// Token: 0x06001425 RID: 5157 RVA: 0x0006FD58 File Offset: 0x0006DF58
+			// Token: 0x06001408 RID: 5128 RVA: 0x0006FB50 File Offset: 0x0006DD50
 			public void FacePosition(Vector3 position)
 			{
 				Vector3 position2 = base.transform.position;
@@ -517,7 +517,7 @@ namespace RoR2
 				base.transform.up = up;
 			}
 
-			// Token: 0x040017D9 RID: 6105
+			// Token: 0x040017BF RID: 6079
 			public RoachController.RoachPathEditorComponent path;
 		}
 	}

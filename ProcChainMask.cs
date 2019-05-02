@@ -3,53 +3,53 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x02000477 RID: 1143
+	// Token: 0x0200046C RID: 1132
 	[Serializable]
 	public struct ProcChainMask : IEquatable<ProcChainMask>
 	{
-		// Token: 0x060019BC RID: 6588 RVA: 0x000132E9 File Offset: 0x000114E9
+		// Token: 0x0600195F RID: 6495 RVA: 0x00012DCF File Offset: 0x00010FCF
 		public void AddProc(ProcType procType)
 		{
 			this.mask |= (ushort)(1 << (int)procType);
 		}
 
-		// Token: 0x060019BD RID: 6589 RVA: 0x00013300 File Offset: 0x00011500
+		// Token: 0x06001960 RID: 6496 RVA: 0x00012DE6 File Offset: 0x00010FE6
 		public void RemoveProc(ProcType procType)
 		{
 			this.mask &= (ushort)(~(ushort)(1 << (int)procType));
 		}
 
-		// Token: 0x060019BE RID: 6590 RVA: 0x00013318 File Offset: 0x00011518
+		// Token: 0x06001961 RID: 6497 RVA: 0x00012DFE File Offset: 0x00010FFE
 		public bool HasProc(ProcType procType)
 		{
 			return ((int)this.mask & 1 << (int)procType) != 0;
 		}
 
-		// Token: 0x060019BF RID: 6591 RVA: 0x000038B4 File Offset: 0x00001AB4
+		// Token: 0x06001962 RID: 6498 RVA: 0x000038B4 File Offset: 0x00001AB4
 		private static bool StaticCheck()
 		{
 			return true;
 		}
 
-		// Token: 0x060019C0 RID: 6592 RVA: 0x0001332A File Offset: 0x0001152A
+		// Token: 0x06001963 RID: 6499 RVA: 0x00012E10 File Offset: 0x00011010
 		public bool Equals(ProcChainMask other)
 		{
 			return this.mask == other.mask;
 		}
 
-		// Token: 0x060019C1 RID: 6593 RVA: 0x0001333A File Offset: 0x0001153A
+		// Token: 0x06001964 RID: 6500 RVA: 0x00012E20 File Offset: 0x00011020
 		public override bool Equals(object obj)
 		{
 			return obj != null && obj is ProcChainMask && this.Equals((ProcChainMask)obj);
 		}
 
-		// Token: 0x060019C2 RID: 6594 RVA: 0x00013357 File Offset: 0x00011557
+		// Token: 0x06001965 RID: 6501 RVA: 0x00012E3D File Offset: 0x0001103D
 		public override int GetHashCode()
 		{
 			return this.mask.GetHashCode();
 		}
 
-		// Token: 0x04001CFF RID: 7423
+		// Token: 0x04001CCB RID: 7371
 		[SerializeField]
 		public ushort mask;
 	}

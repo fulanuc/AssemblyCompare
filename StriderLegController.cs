@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x020003F4 RID: 1012
+	// Token: 0x020003EE RID: 1006
 	public class StriderLegController : MonoBehaviour
 	{
-		// Token: 0x06001641 RID: 5697 RVA: 0x0007609C File Offset: 0x0007429C
+		// Token: 0x06001604 RID: 5636 RVA: 0x00075A64 File Offset: 0x00073C64
 		public Vector3 GetCenterOfStance()
 		{
 			Vector3 a = Vector3.zero;
@@ -17,7 +17,7 @@ namespace RoR2
 			return a / (float)this.feet.Length;
 		}
 
-		// Token: 0x06001642 RID: 5698 RVA: 0x000760F0 File Offset: 0x000742F0
+		// Token: 0x06001605 RID: 5637 RVA: 0x00075AB8 File Offset: 0x00073CB8
 		private void Awake()
 		{
 			for (int i = 0; i < this.feet.Length; i++)
@@ -28,7 +28,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001643 RID: 5699 RVA: 0x0007616C File Offset: 0x0007436C
+		// Token: 0x06001606 RID: 5638 RVA: 0x00075B34 File Offset: 0x00073D34
 		private void Update()
 		{
 			int num = 0;
@@ -99,13 +99,13 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001644 RID: 5700 RVA: 0x0000CEF0 File Offset: 0x0000B0F0
+		// Token: 0x06001607 RID: 5639 RVA: 0x0000CE07 File Offset: 0x0000B007
 		public Vector3 GetArcPosition(Vector3 start, Vector3 end, float arcHeight, float t)
 		{
 			return Vector3.Lerp(start, end, Mathf.Sin(t * 3.14159274f * 0.5f)) + new Vector3(0f, Mathf.Sin(t * 3.14159274f) * arcHeight, 0f);
 		}
 
-		// Token: 0x06001645 RID: 5701 RVA: 0x000764FC File Offset: 0x000746FC
+		// Token: 0x06001608 RID: 5640 RVA: 0x00075EC4 File Offset: 0x000740C4
 		public void OnDrawGizmos()
 		{
 			for (int i = 0; i < this.feet.Length; i++)
@@ -115,108 +115,108 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04001971 RID: 6513
+		// Token: 0x04001948 RID: 6472
 		[Header("Foot Settings")]
 		public Transform centerOfGravity;
 
-		// Token: 0x04001972 RID: 6514
+		// Token: 0x04001949 RID: 6473
 		public StriderLegController.FootInfo[] feet;
 
-		// Token: 0x04001973 RID: 6515
+		// Token: 0x0400194A RID: 6474
 		public Vector3 footRaycastDirection;
 
-		// Token: 0x04001974 RID: 6516
+		// Token: 0x0400194B RID: 6475
 		public float raycastVerticalOffset;
 
-		// Token: 0x04001975 RID: 6517
+		// Token: 0x0400194C RID: 6476
 		public float maxRaycastDistance;
 
-		// Token: 0x04001976 RID: 6518
+		// Token: 0x0400194D RID: 6477
 		public float footDampTime;
 
-		// Token: 0x04001977 RID: 6519
+		// Token: 0x0400194E RID: 6478
 		public float stabilityRadius;
 
-		// Token: 0x04001978 RID: 6520
+		// Token: 0x0400194F RID: 6479
 		public float replantDuration;
 
-		// Token: 0x04001979 RID: 6521
+		// Token: 0x04001950 RID: 6480
 		public float replantHeight;
 
-		// Token: 0x0400197A RID: 6522
+		// Token: 0x04001951 RID: 6481
 		public float overstepDistance;
 
-		// Token: 0x0400197B RID: 6523
+		// Token: 0x04001952 RID: 6482
 		public AnimationCurve lerpCurve;
 
-		// Token: 0x0400197C RID: 6524
+		// Token: 0x04001953 RID: 6483
 		public string footPlantString;
 
-		// Token: 0x0400197D RID: 6525
+		// Token: 0x04001954 RID: 6484
 		public string footMoveString;
 
-		// Token: 0x0400197E RID: 6526
+		// Token: 0x04001955 RID: 6485
 		public float footRaycastFrequency = 0.2f;
 
-		// Token: 0x0400197F RID: 6527
+		// Token: 0x04001956 RID: 6486
 		[Header("Root Settings")]
 		public Transform rootTransform;
 
-		// Token: 0x04001980 RID: 6528
+		// Token: 0x04001957 RID: 6487
 		public float rootSpringConstant;
 
-		// Token: 0x04001981 RID: 6529
+		// Token: 0x04001958 RID: 6488
 		public float rootDampingConstant;
 
-		// Token: 0x04001982 RID: 6530
+		// Token: 0x04001959 RID: 6489
 		public float rootOffsetHeight;
 
-		// Token: 0x04001983 RID: 6531
+		// Token: 0x0400195A RID: 6490
 		public float rootSmoothDamp;
 
-		// Token: 0x04001984 RID: 6532
+		// Token: 0x0400195B RID: 6491
 		private float rootVelocity;
 
-		// Token: 0x04001985 RID: 6533
+		// Token: 0x0400195C RID: 6492
 		private float footRaycastTimer;
 
-		// Token: 0x020003F5 RID: 1013
+		// Token: 0x020003EF RID: 1007
 		[Serializable]
 		public struct FootInfo
 		{
-			// Token: 0x04001986 RID: 6534
+			// Token: 0x0400195D RID: 6493
 			public Transform transform;
 
-			// Token: 0x04001987 RID: 6535
+			// Token: 0x0400195E RID: 6494
 			public Transform referenceTransform;
 
-			// Token: 0x04001988 RID: 6536
+			// Token: 0x0400195F RID: 6495
 			[HideInInspector]
 			public Vector3 velocity;
 
-			// Token: 0x04001989 RID: 6537
+			// Token: 0x04001960 RID: 6496
 			[HideInInspector]
 			public StriderLegController.FootState footState;
 
-			// Token: 0x0400198A RID: 6538
+			// Token: 0x04001961 RID: 6497
 			[HideInInspector]
 			public Vector3 plantPosition;
 
-			// Token: 0x0400198B RID: 6539
+			// Token: 0x04001962 RID: 6498
 			[HideInInspector]
 			public Vector3 trailingTargetPosition;
 
-			// Token: 0x0400198C RID: 6540
+			// Token: 0x04001963 RID: 6499
 			[HideInInspector]
 			public float stopwatch;
 		}
 
-		// Token: 0x020003F6 RID: 1014
+		// Token: 0x020003F0 RID: 1008
 		public enum FootState
 		{
-			// Token: 0x0400198E RID: 6542
+			// Token: 0x04001965 RID: 6501
 			Planted,
-			// Token: 0x0400198F RID: 6543
+			// Token: 0x04001966 RID: 6502
 			Replanting
 		}
 	}

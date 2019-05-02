@@ -5,11 +5,11 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x020003E2 RID: 994
+	// Token: 0x020003DC RID: 988
 	public class ShopTerminalBehavior : NetworkBehaviour
 	{
-		// Token: 0x170001F5 RID: 501
-		// (get) Token: 0x060015B1 RID: 5553 RVA: 0x000106D5 File Offset: 0x0000E8D5
+		// Token: 0x170001EC RID: 492
+		// (get) Token: 0x06001574 RID: 5492 RVA: 0x000102CC File Offset: 0x0000E4CC
 		public bool pickupIndexIsHidden
 		{
 			get
@@ -18,7 +18,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060015B2 RID: 5554 RVA: 0x00073D54 File Offset: 0x00071F54
+		// Token: 0x06001575 RID: 5493 RVA: 0x0007371C File Offset: 0x0007191C
 		private void SetHasBeenPurchased(bool newHasBeenPurchased)
 		{
 			if (this.hasBeenPurchased != newHasBeenPurchased)
@@ -32,19 +32,19 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060015B3 RID: 5555 RVA: 0x000106DD File Offset: 0x0000E8DD
+		// Token: 0x06001576 RID: 5494 RVA: 0x000102D4 File Offset: 0x0000E4D4
 		private void OnSyncHidden(bool newHidden)
 		{
 			this.SetPickupIndex(this.pickupIndex, newHidden);
 		}
 
-		// Token: 0x060015B4 RID: 5556 RVA: 0x000106EC File Offset: 0x0000E8EC
+		// Token: 0x06001577 RID: 5495 RVA: 0x000102E3 File Offset: 0x0000E4E3
 		private void OnSyncPickupIndex(PickupIndex newPickupIndex)
 		{
 			this.SetPickupIndex(newPickupIndex, this.hidden);
 		}
 
-		// Token: 0x060015B5 RID: 5557 RVA: 0x00073DA4 File Offset: 0x00071FA4
+		// Token: 0x06001578 RID: 5496 RVA: 0x0007376C File Offset: 0x0007196C
 		public void Start()
 		{
 			if (NetworkServer.active && this.selfGeneratePickup)
@@ -73,7 +73,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060015B6 RID: 5558 RVA: 0x000106FB File Offset: 0x0000E8FB
+		// Token: 0x06001579 RID: 5497 RVA: 0x000102F2 File Offset: 0x0000E4F2
 		public void SetPickupIndex(PickupIndex newPickupIndex, bool newHidden = false)
 		{
 			if (this.pickupIndex != newPickupIndex || this.hidden != newHidden)
@@ -84,7 +84,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060015B7 RID: 5559 RVA: 0x00073EC8 File Offset: 0x000720C8
+		// Token: 0x0600157A RID: 5498 RVA: 0x00073890 File Offset: 0x00071A90
 		private void UpdatePickupDisplayAndAnimations()
 		{
 			if (this.pickupDisplay)
@@ -102,13 +102,13 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060015B8 RID: 5560 RVA: 0x00010728 File Offset: 0x0000E928
+		// Token: 0x0600157B RID: 5499 RVA: 0x0001031F File Offset: 0x0000E51F
 		public PickupIndex CurrentPickupIndex()
 		{
 			return this.pickupIndex;
 		}
 
-		// Token: 0x060015B9 RID: 5561 RVA: 0x00010730 File Offset: 0x0000E930
+		// Token: 0x0600157C RID: 5500 RVA: 0x00010327 File Offset: 0x0000E527
 		[Server]
 		public void SetNoPickup()
 		{
@@ -120,7 +120,7 @@ namespace RoR2
 			this.SetPickupIndex(PickupIndex.none, false);
 		}
 
-		// Token: 0x060015BA RID: 5562 RVA: 0x00073F5C File Offset: 0x0007215C
+		// Token: 0x0600157D RID: 5501 RVA: 0x00073924 File Offset: 0x00071B24
 		[Server]
 		public void DropPickup()
 		{
@@ -133,14 +133,14 @@ namespace RoR2
 			PickupDropletController.CreatePickupDroplet(this.pickupIndex, (this.dropTransform ? this.dropTransform : base.transform).position, base.transform.TransformVector(this.dropVelocity));
 		}
 
-		// Token: 0x060015BC RID: 5564 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x0600157F RID: 5503 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x170001F6 RID: 502
-		// (get) Token: 0x060015BD RID: 5565 RVA: 0x00073FC4 File Offset: 0x000721C4
-		// (set) Token: 0x060015BE RID: 5566 RVA: 0x00010766 File Offset: 0x0000E966
+		// Token: 0x170001ED RID: 493
+		// (get) Token: 0x06001580 RID: 5504 RVA: 0x0007398C File Offset: 0x00071B8C
+		// (set) Token: 0x06001581 RID: 5505 RVA: 0x0001035D File Offset: 0x0000E55D
 		public PickupIndex NetworkpickupIndex
 		{
 			get
@@ -160,9 +160,9 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x170001F7 RID: 503
-		// (get) Token: 0x060015BF RID: 5567 RVA: 0x00073FD8 File Offset: 0x000721D8
-		// (set) Token: 0x060015C0 RID: 5568 RVA: 0x000107A5 File Offset: 0x0000E9A5
+		// Token: 0x170001EE RID: 494
+		// (get) Token: 0x06001582 RID: 5506 RVA: 0x000739A0 File Offset: 0x00071BA0
+		// (set) Token: 0x06001583 RID: 5507 RVA: 0x0001039C File Offset: 0x0000E59C
 		public bool Networkhidden
 		{
 			get
@@ -182,9 +182,9 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x170001F8 RID: 504
-		// (get) Token: 0x060015C1 RID: 5569 RVA: 0x00073FEC File Offset: 0x000721EC
-		// (set) Token: 0x060015C2 RID: 5570 RVA: 0x000107E4 File Offset: 0x0000E9E4
+		// Token: 0x170001EF RID: 495
+		// (get) Token: 0x06001584 RID: 5508 RVA: 0x000739B4 File Offset: 0x00071BB4
+		// (set) Token: 0x06001585 RID: 5509 RVA: 0x000103DB File Offset: 0x0000E5DB
 		public bool NetworkhasBeenPurchased
 		{
 			get
@@ -204,7 +204,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060015C3 RID: 5571 RVA: 0x00074000 File Offset: 0x00072200
+		// Token: 0x06001586 RID: 5510 RVA: 0x000739C8 File Offset: 0x00071BC8
 		public override bool OnSerialize(NetworkWriter writer, bool forceAll)
 		{
 			if (forceAll)
@@ -249,7 +249,7 @@ namespace RoR2
 			return flag;
 		}
 
-		// Token: 0x060015C4 RID: 5572 RVA: 0x000740EC File Offset: 0x000722EC
+		// Token: 0x06001587 RID: 5511 RVA: 0x00073AB4 File Offset: 0x00071CB4
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 			if (initialState)
@@ -274,39 +274,39 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x040018DB RID: 6363
+		// Token: 0x040018B2 RID: 6322
 		[SyncVar(hook = "OnSyncPickupIndex")]
 		private PickupIndex pickupIndex = PickupIndex.none;
 
-		// Token: 0x040018DC RID: 6364
+		// Token: 0x040018B3 RID: 6323
 		[SyncVar(hook = "OnSyncHidden")]
 		private bool hidden;
 
-		// Token: 0x040018DD RID: 6365
+		// Token: 0x040018B4 RID: 6324
 		[SyncVar(hook = "SetHasBeenPurchased")]
 		private bool hasBeenPurchased;
 
-		// Token: 0x040018DE RID: 6366
+		// Token: 0x040018B5 RID: 6325
 		[Tooltip("The PickupDisplay component that should show which item this shop terminal is offering.")]
 		public PickupDisplay pickupDisplay;
 
-		// Token: 0x040018DF RID: 6367
+		// Token: 0x040018B6 RID: 6326
 		[Tooltip("The position from which the drop will be emitted")]
 		public Transform dropTransform;
 
-		// Token: 0x040018E0 RID: 6368
+		// Token: 0x040018B7 RID: 6327
 		[Tooltip("Whether or not the shop terminal shouldd drive itself")]
 		public bool selfGeneratePickup;
 
-		// Token: 0x040018E1 RID: 6369
+		// Token: 0x040018B8 RID: 6328
 		[Tooltip("The tier of items to drop - only works if the pickup generates itself")]
 		public ItemTier itemTier;
 
-		// Token: 0x040018E2 RID: 6370
+		// Token: 0x040018B9 RID: 6329
 		[Tooltip("The velocity with which the drop will be emitted. Rotates with this object.")]
 		public Vector3 dropVelocity;
 
-		// Token: 0x040018E3 RID: 6371
+		// Token: 0x040018BA RID: 6330
 		public Animator animator;
 	}
 }

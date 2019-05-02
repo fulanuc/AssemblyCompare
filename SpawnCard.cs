@@ -9,7 +9,7 @@ namespace RoR2
 	[CreateAssetMenu(menuName = "SpawnCards")]
 	public class SpawnCard : ScriptableObject
 	{
-		// Token: 0x06000ABD RID: 2749 RVA: 0x0004917C File Offset: 0x0004737C
+		// Token: 0x06000AB9 RID: 2745 RVA: 0x00048EC0 File Offset: 0x000470C0
 		public virtual GameObject DoSpawn(Vector3 position, Quaternion rotation)
 		{
 			GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(this.prefab, position, rotation);
@@ -20,27 +20,27 @@ namespace RoR2
 			return gameObject;
 		}
 
-		// Token: 0x04000E4D RID: 3661
+		// Token: 0x04000E48 RID: 3656
 		public GameObject prefab;
 
-		// Token: 0x04000E4E RID: 3662
+		// Token: 0x04000E49 RID: 3657
 		public bool sendOverNetwork;
 
-		// Token: 0x04000E4F RID: 3663
+		// Token: 0x04000E4A RID: 3658
 		public HullClassification hullSize;
 
-		// Token: 0x04000E50 RID: 3664
+		// Token: 0x04000E4B RID: 3659
 		public MapNodeGroup.GraphType nodeGraphType;
 
-		// Token: 0x04000E51 RID: 3665
+		// Token: 0x04000E4C RID: 3660
 		[EnumMask(typeof(NodeFlags))]
 		public NodeFlags requiredFlags;
 
-		// Token: 0x04000E52 RID: 3666
+		// Token: 0x04000E4D RID: 3661
 		[EnumMask(typeof(NodeFlags))]
 		public NodeFlags forbiddenFlags;
 
-		// Token: 0x04000E53 RID: 3667
+		// Token: 0x04000E4E RID: 3662
 		public bool occupyPosition;
 	}
 }

@@ -6,18 +6,18 @@ using UnityEngine.Serialization;
 
 namespace RoR2
 {
-	// Token: 0x020003EA RID: 1002
+	// Token: 0x020003E4 RID: 996
 	[RequireComponent(typeof(NetworkIdentity))]
 	public class SkillLocator : MonoBehaviour
 	{
-		// Token: 0x06001602 RID: 5634 RVA: 0x00010953 File Offset: 0x0000EB53
+		// Token: 0x060015C5 RID: 5573 RVA: 0x0001054A File Offset: 0x0000E74A
 		private void Awake()
 		{
 			this.networkIdentity = base.GetComponent<NetworkIdentity>();
 			this.allSkills = base.GetComponents<GenericSkill>();
 		}
 
-		// Token: 0x06001603 RID: 5635 RVA: 0x0007503C File Offset: 0x0007323C
+		// Token: 0x060015C6 RID: 5574 RVA: 0x00074A04 File Offset: 0x00072C04
 		public GenericSkill FindSkill(string skillName)
 		{
 			for (int i = 0; i < this.allSkills.Length; i++)
@@ -30,7 +30,7 @@ namespace RoR2
 			return null;
 		}
 
-		// Token: 0x06001604 RID: 5636 RVA: 0x0001096D File Offset: 0x0000EB6D
+		// Token: 0x060015C7 RID: 5575 RVA: 0x00010564 File Offset: 0x0000E764
 		public GenericSkill GetSkill(SkillSlot skillSlot)
 		{
 			switch (skillSlot)
@@ -48,7 +48,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001605 RID: 5637 RVA: 0x0007507C File Offset: 0x0007327C
+		// Token: 0x060015C8 RID: 5576 RVA: 0x00074A44 File Offset: 0x00072C44
 		public SkillSlot FindSkillSlot(GenericSkill skillComponent)
 		{
 			if (!skillComponent)
@@ -74,7 +74,7 @@ namespace RoR2
 			return SkillSlot.None;
 		}
 
-		// Token: 0x06001606 RID: 5638 RVA: 0x000750D4 File Offset: 0x000732D4
+		// Token: 0x060015C9 RID: 5577 RVA: 0x00074A9C File Offset: 0x00072C9C
 		public void ResetSkills()
 		{
 			if (NetworkServer.active && this.networkIdentity.clientAuthorityOwner != null)
@@ -91,7 +91,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001607 RID: 5639 RVA: 0x00075154 File Offset: 0x00073354
+		// Token: 0x060015CA RID: 5578 RVA: 0x00074B1C File Offset: 0x00072D1C
 		public void ApplyAmmoPack()
 		{
 			if (NetworkServer.active && !this.networkIdentity.hasAuthority)
@@ -131,7 +131,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001608 RID: 5640 RVA: 0x00075234 File Offset: 0x00073434
+		// Token: 0x060015CB RID: 5579 RVA: 0x00074BFC File Offset: 0x00072DFC
 		[NetworkMessageHandler(msgType = 56, client = true)]
 		private static void HandleResetSkills(NetworkMessage netMsg)
 		{
@@ -146,7 +146,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001609 RID: 5641 RVA: 0x00075274 File Offset: 0x00073474
+		// Token: 0x060015CC RID: 5580 RVA: 0x00074C3C File Offset: 0x00072E3C
 		[NetworkMessageHandler(msgType = 63, client = true)]
 		private static void HandleAmmoPackPickup(NetworkMessage netMsg)
 		{
@@ -161,45 +161,45 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04001937 RID: 6455
+		// Token: 0x0400190E RID: 6414
 		[FormerlySerializedAs("skill1")]
 		public GenericSkill primary;
 
-		// Token: 0x04001938 RID: 6456
+		// Token: 0x0400190F RID: 6415
 		[FormerlySerializedAs("skill2")]
 		public GenericSkill secondary;
 
-		// Token: 0x04001939 RID: 6457
+		// Token: 0x04001910 RID: 6416
 		[FormerlySerializedAs("skill3")]
 		public GenericSkill utility;
 
-		// Token: 0x0400193A RID: 6458
+		// Token: 0x04001911 RID: 6417
 		[FormerlySerializedAs("skill4")]
 		public GenericSkill special;
 
-		// Token: 0x0400193B RID: 6459
+		// Token: 0x04001912 RID: 6418
 		public SkillLocator.PassiveSkill passiveSkill;
 
-		// Token: 0x0400193C RID: 6460
+		// Token: 0x04001913 RID: 6419
 		private NetworkIdentity networkIdentity;
 
-		// Token: 0x0400193D RID: 6461
+		// Token: 0x04001914 RID: 6420
 		private GenericSkill[] allSkills;
 
-		// Token: 0x020003EB RID: 1003
+		// Token: 0x020003E5 RID: 997
 		[Serializable]
 		public struct PassiveSkill
 		{
-			// Token: 0x0400193E RID: 6462
+			// Token: 0x04001915 RID: 6421
 			public bool enabled;
 
-			// Token: 0x0400193F RID: 6463
+			// Token: 0x04001916 RID: 6422
 			public string skillNameToken;
 
-			// Token: 0x04001940 RID: 6464
+			// Token: 0x04001917 RID: 6423
 			public string skillDescriptionToken;
 
-			// Token: 0x04001941 RID: 6465
+			// Token: 0x04001918 RID: 6424
 			public Sprite icon;
 		}
 	}
