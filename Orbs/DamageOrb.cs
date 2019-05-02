@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace RoR2.Orbs
 {
-	// Token: 0x0200051C RID: 1308
+	// Token: 0x0200050D RID: 1293
 	public class DamageOrb : Orb
 	{
-		// Token: 0x06001DB1 RID: 7601 RVA: 0x00090884 File Offset: 0x0008EA84
+		// Token: 0x06001D49 RID: 7497 RVA: 0x0008FAAC File Offset: 0x0008DCAC
 		public override void Begin()
 		{
 			GameObject effectPrefab = null;
@@ -26,7 +26,7 @@ namespace RoR2.Orbs
 			EffectManager.instance.SpawnEffect(effectPrefab, effectData, true);
 		}
 
-		// Token: 0x06001DB2 RID: 7602 RVA: 0x00090908 File Offset: 0x0008EB08
+		// Token: 0x06001D4A RID: 7498 RVA: 0x0008FB30 File Offset: 0x0008DD30
 		public override void OnArrival()
 		{
 			if (this.target)
@@ -61,40 +61,40 @@ namespace RoR2.Orbs
 			}
 		}
 
-		// Token: 0x04001F99 RID: 8089
+		// Token: 0x04001F5B RID: 8027
 		private float speed = 60f;
 
-		// Token: 0x04001F9A RID: 8090
+		// Token: 0x04001F5C RID: 8028
 		public float damageValue;
 
-		// Token: 0x04001F9B RID: 8091
+		// Token: 0x04001F5D RID: 8029
 		public GameObject attacker;
 
-		// Token: 0x04001F9C RID: 8092
+		// Token: 0x04001F5E RID: 8030
 		public TeamIndex teamIndex;
 
-		// Token: 0x04001F9D RID: 8093
+		// Token: 0x04001F5F RID: 8031
 		public bool isCrit;
 
-		// Token: 0x04001F9E RID: 8094
+		// Token: 0x04001F60 RID: 8032
 		public ProcChainMask procChainMask;
 
-		// Token: 0x04001F9F RID: 8095
+		// Token: 0x04001F61 RID: 8033
 		public float procCoefficient = 0.2f;
 
-		// Token: 0x04001FA0 RID: 8096
+		// Token: 0x04001F62 RID: 8034
 		public DamageColorIndex damageColorIndex;
 
-		// Token: 0x04001FA1 RID: 8097
+		// Token: 0x04001F63 RID: 8035
 		public DamageOrb.DamageOrbType damageOrbType;
 
-		// Token: 0x04001FA2 RID: 8098
+		// Token: 0x04001F64 RID: 8036
 		private DamageType orbDamageType;
 
-		// Token: 0x0200051D RID: 1309
+		// Token: 0x0200050E RID: 1294
 		public enum DamageOrbType
 		{
-			// Token: 0x04001FA4 RID: 8100
+			// Token: 0x04001F66 RID: 8038
 			ClayGooOrb
 		}
 	}

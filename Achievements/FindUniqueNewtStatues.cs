@@ -3,11 +3,11 @@ using RoR2.Stats;
 
 namespace RoR2.Achievements
 {
-	// Token: 0x020006AC RID: 1708
+	// Token: 0x0200069A RID: 1690
 	[RegisterAchievement("FindUniqueNewtStatues", "Items.Talisman", null, null)]
 	public class FindUniqueNewtStatues : BaseAchievement
 	{
-		// Token: 0x0600263E RID: 9790 RVA: 0x0001BEF6 File Offset: 0x0001A0F6
+		// Token: 0x060025A7 RID: 9639 RVA: 0x0001B7BB File Offset: 0x000199BB
 		public override void OnInstall()
 		{
 			base.OnInstall();
@@ -15,26 +15,26 @@ namespace RoR2.Achievements
 			UserProfile.onUnlockableGranted += this.OnUnlockCheck;
 		}
 
-		// Token: 0x0600263F RID: 9791 RVA: 0x0001BF15 File Offset: 0x0001A115
+		// Token: 0x060025A8 RID: 9640 RVA: 0x0001B7DA File Offset: 0x000199DA
 		public override void OnUninstall()
 		{
 			UserProfile.onUnlockableGranted -= this.OnUnlockCheck;
 			base.OnUninstall();
 		}
 
-		// Token: 0x06002640 RID: 9792 RVA: 0x0001BF2E File Offset: 0x0001A12E
+		// Token: 0x060025A9 RID: 9641 RVA: 0x0001B7F3 File Offset: 0x000199F3
 		public override float ProgressForAchievement()
 		{
 			return (float)this.UniqueNewtStatueCount() / 8f;
 		}
 
-		// Token: 0x06002641 RID: 9793 RVA: 0x0001BF3D File Offset: 0x0001A13D
+		// Token: 0x060025AA RID: 9642 RVA: 0x0001B802 File Offset: 0x00019A02
 		private static bool IsUnlockableNewtStatue(UnlockableDef unlockableDef)
 		{
 			return unlockableDef.name.StartsWith("NewtStatue.");
 		}
 
-		// Token: 0x06002642 RID: 9794 RVA: 0x000B1DC0 File Offset: 0x000AFFC0
+		// Token: 0x060025AB RID: 9643 RVA: 0x000B06C8 File Offset: 0x000AE8C8
 		private int UniqueNewtStatueCount()
 		{
 			StatSheet statSheet = this.userProfile.statSheet;
@@ -52,7 +52,7 @@ namespace RoR2.Achievements
 			return num;
 		}
 
-		// Token: 0x06002643 RID: 9795 RVA: 0x0001BF4F File Offset: 0x0001A14F
+		// Token: 0x060025AC RID: 9644 RVA: 0x0001B814 File Offset: 0x00019A14
 		private void Check()
 		{
 			if (this.UniqueNewtStatueCount() >= 8)
@@ -61,7 +61,7 @@ namespace RoR2.Achievements
 			}
 		}
 
-		// Token: 0x06002644 RID: 9796 RVA: 0x000B1E04 File Offset: 0x000B0004
+		// Token: 0x060025AD RID: 9645 RVA: 0x000B070C File Offset: 0x000AE90C
 		private void OnUnlockCheck(UserProfile userProfile, string unlockableToken)
 		{
 			UnlockableDef unlockableDef = UnlockableCatalog.GetUnlockableDef(unlockableToken);
@@ -75,7 +75,7 @@ namespace RoR2.Achievements
 			}
 		}
 
-		// Token: 0x040028A4 RID: 10404
+		// Token: 0x04002848 RID: 10312
 		private const int requirement = 8;
 	}
 }

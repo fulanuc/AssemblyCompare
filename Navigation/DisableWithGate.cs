@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace RoR2.Navigation
 {
-	// Token: 0x0200052C RID: 1324
+	// Token: 0x0200051D RID: 1309
 	public class DisableWithGate : MonoBehaviour
 	{
-		// Token: 0x06001DEE RID: 7662 RVA: 0x00015F36 File Offset: 0x00014136
+		// Token: 0x06001D86 RID: 7558 RVA: 0x00015A6D File Offset: 0x00013C6D
 		private void Awake()
 		{
 			if (SceneInfo.instance && SceneInfo.instance.groundNodes.IsGateOpen(this.gateToMatch) == this.invert)
@@ -15,10 +15,10 @@ namespace RoR2.Navigation
 			}
 		}
 
-		// Token: 0x04001FFD RID: 8189
+		// Token: 0x04001FBF RID: 8127
 		public string gateToMatch;
 
-		// Token: 0x04001FFE RID: 8190
+		// Token: 0x04001FC0 RID: 8128
 		public bool invert;
 	}
 }

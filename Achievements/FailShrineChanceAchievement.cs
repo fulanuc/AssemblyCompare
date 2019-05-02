@@ -2,27 +2,27 @@
 
 namespace RoR2.Achievements
 {
-	// Token: 0x020006A7 RID: 1703
+	// Token: 0x02000695 RID: 1685
 	[RegisterAchievement("FailShrineChance", "Items.Hoof", null, typeof(FailShrineChanceAchievement.FailShrineChanceServerAchievement))]
 	public class FailShrineChanceAchievement : BaseAchievement
 	{
-		// Token: 0x0600262B RID: 9771 RVA: 0x0001BA4F File Offset: 0x00019C4F
+		// Token: 0x06002594 RID: 9620 RVA: 0x0001B314 File Offset: 0x00019514
 		public override void OnInstall()
 		{
 			base.OnInstall();
 			base.SetServerTracked(true);
 		}
 
-		// Token: 0x0600262C RID: 9772 RVA: 0x0001BA5E File Offset: 0x00019C5E
+		// Token: 0x06002595 RID: 9621 RVA: 0x0001B323 File Offset: 0x00019523
 		public override void OnUninstall()
 		{
 			base.OnUninstall();
 		}
 
-		// Token: 0x020006A8 RID: 1704
+		// Token: 0x02000696 RID: 1686
 		private class FailShrineChanceServerAchievement : BaseServerAchievement
 		{
-			// Token: 0x0600262E RID: 9774 RVA: 0x0001BE11 File Offset: 0x0001A011
+			// Token: 0x06002597 RID: 9623 RVA: 0x0001B6D6 File Offset: 0x000198D6
 			public override void OnInstall()
 			{
 				base.OnInstall();
@@ -30,7 +30,7 @@ namespace RoR2.Achievements
 				Run.onRunStartGlobal += this.OnRunStartGlobal;
 			}
 
-			// Token: 0x0600262F RID: 9775 RVA: 0x0001BE3B File Offset: 0x0001A03B
+			// Token: 0x06002598 RID: 9624 RVA: 0x0001B700 File Offset: 0x00019900
 			public override void OnUninstall()
 			{
 				base.OnInstall();
@@ -38,13 +38,13 @@ namespace RoR2.Achievements
 				Run.onRunStartGlobal -= this.OnRunStartGlobal;
 			}
 
-			// Token: 0x06002630 RID: 9776 RVA: 0x0001BE65 File Offset: 0x0001A065
+			// Token: 0x06002599 RID: 9625 RVA: 0x0001B72A File Offset: 0x0001992A
 			private void OnRunStartGlobal(Run run)
 			{
 				this.failedInARow = 0;
 			}
 
-			// Token: 0x06002631 RID: 9777 RVA: 0x000B1D64 File Offset: 0x000AFF64
+			// Token: 0x0600259A RID: 9626 RVA: 0x000B066C File Offset: 0x000AE86C
 			private void OnShrineChancePurchase(bool failed, Interactor interactor)
 			{
 				CharacterBody currentBody = this.serverAchievementTracker.networkUser.GetCurrentBody();
@@ -66,10 +66,10 @@ namespace RoR2.Achievements
 				}
 			}
 
-			// Token: 0x040028A2 RID: 10402
+			// Token: 0x04002846 RID: 10310
 			private int failedInARow;
 
-			// Token: 0x040028A3 RID: 10403
+			// Token: 0x04002847 RID: 10311
 			private const int requirement = 3;
 		}
 	}

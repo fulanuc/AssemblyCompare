@@ -4,11 +4,11 @@ using UnityEngine.Serialization;
 
 namespace RoR2.CharacterAI
 {
-	// Token: 0x020005A5 RID: 1445
+	// Token: 0x02000592 RID: 1426
 	public class AISkillDriver : MonoBehaviour
 	{
-		// Token: 0x170002DE RID: 734
-		// (get) Token: 0x060020B4 RID: 8372 RVA: 0x00017DFB File Offset: 0x00015FFB
+		// Token: 0x170002CB RID: 715
+		// (get) Token: 0x06002023 RID: 8227 RVA: 0x000176CC File Offset: 0x000158CC
 		public float minDistanceSqr
 		{
 			get
@@ -17,8 +17,8 @@ namespace RoR2.CharacterAI
 			}
 		}
 
-		// Token: 0x170002DF RID: 735
-		// (get) Token: 0x060020B5 RID: 8373 RVA: 0x00017E0A File Offset: 0x0001600A
+		// Token: 0x170002CC RID: 716
+		// (get) Token: 0x06002024 RID: 8228 RVA: 0x000176DB File Offset: 0x000158DB
 		public float maxDistanceSqr
 		{
 			get
@@ -27,125 +27,125 @@ namespace RoR2.CharacterAI
 			}
 		}
 
-		// Token: 0x040022A5 RID: 8869
+		// Token: 0x0400224D RID: 8781
 		[Tooltip("The name of this skill driver for reference purposes.")]
 		public string customName;
 
-		// Token: 0x040022A6 RID: 8870
+		// Token: 0x0400224E RID: 8782
 		[Tooltip("The slot of the associated skill. Set to None to allow this behavior to run regardless of skill availability.")]
 		public SkillSlot skillSlot;
 
-		// Token: 0x040022A7 RID: 8871
+		// Token: 0x0400224F RID: 8783
 		[Tooltip("If set, this cannot be the dominant driver while the skill is on cooldown or out of stock.")]
 		public bool requireSkillReady;
 
-		// Token: 0x040022A8 RID: 8872
+		// Token: 0x04002250 RID: 8784
 		[Tooltip("The type of object targeted for movement.")]
 		[FormerlySerializedAs("targetType")]
 		public AISkillDriver.TargetType moveTargetType;
 
-		// Token: 0x040022A9 RID: 8873
+		// Token: 0x04002251 RID: 8785
 		[Tooltip("The minimum health fraction required of the user for this behavior.")]
 		public float minUserHealthFraction = float.NegativeInfinity;
 
-		// Token: 0x040022AA RID: 8874
+		// Token: 0x04002252 RID: 8786
 		[Tooltip("The maximum health fraction required of the user for this behavior.")]
 		public float maxUserHealthFraction = float.PositiveInfinity;
 
-		// Token: 0x040022AB RID: 8875
+		// Token: 0x04002253 RID: 8787
 		[Tooltip("The minimum health fraction required of the target for this behavior.")]
 		public float minTargetHealthFraction = float.NegativeInfinity;
 
-		// Token: 0x040022AC RID: 8876
+		// Token: 0x04002254 RID: 8788
 		[Tooltip("The maximum health fraction required of the target for this behavior.")]
 		public float maxTargetHealthFraction = float.PositiveInfinity;
 
-		// Token: 0x040022AD RID: 8877
+		// Token: 0x04002255 RID: 8789
 		[Tooltip("The minimum distance from the target required for this behavior.")]
 		public float minDistance;
 
-		// Token: 0x040022AE RID: 8878
+		// Token: 0x04002256 RID: 8790
 		[Tooltip("The maximum distance from the target required for this behavior.")]
 		public float maxDistance = float.PositiveInfinity;
 
-		// Token: 0x040022AF RID: 8879
+		// Token: 0x04002257 RID: 8791
 		public bool selectionRequiresTargetLoS;
 
-		// Token: 0x040022B0 RID: 8880
+		// Token: 0x04002258 RID: 8792
 		[Tooltip("If set, this skill will not be activated unless there is LoS to the target.")]
 		public bool activationRequiresTargetLoS;
 
-		// Token: 0x040022B1 RID: 8881
+		// Token: 0x04002259 RID: 8793
 		[Tooltip("If set, this skill will not be activated unless the aim vector is pointing close to the target.")]
 		public bool activationRequiresAimConfirmation;
 
-		// Token: 0x040022B2 RID: 8882
+		// Token: 0x0400225A RID: 8794
 		[Tooltip("The movement type to use while this is the dominant skill driver.")]
 		public AISkillDriver.MovementType movementType = AISkillDriver.MovementType.ChaseMoveTarget;
 
-		// Token: 0x040022B3 RID: 8883
+		// Token: 0x0400225B RID: 8795
 		public float moveInputScale = 1f;
 
-		// Token: 0x040022B4 RID: 8884
+		// Token: 0x0400225C RID: 8796
 		[Tooltip("Where to look while this is the dominant skill driver")]
 		public AISkillDriver.AimType aimType = AISkillDriver.AimType.AtMoveTarget;
 
-		// Token: 0x040022B5 RID: 8885
+		// Token: 0x0400225D RID: 8797
 		[Tooltip("If set, the nodegraph will not be used to direct the local navigator while this is the dominant skill driver. Direction toward the target will be used instead.")]
 		public bool ignoreNodeGraph;
 
-		// Token: 0x040022B6 RID: 8886
+		// Token: 0x0400225E RID: 8798
 		[Tooltip("If non-negative, this value will be used for the driver evaluation timer while this is the dominant skill driver.")]
 		public float driverUpdateTimerOverride = -1f;
 
-		// Token: 0x040022B7 RID: 8887
+		// Token: 0x0400225F RID: 8799
 		[Tooltip("If set and this is the dominant skill driver, the current enemy will be reset at the time of the next evaluation.")]
 		public bool resetCurrentEnemyOnNextDriverSelection;
 
-		// Token: 0x040022B8 RID: 8888
+		// Token: 0x04002260 RID: 8800
 		[Tooltip("If true, this skill driver cannot be chosen twice in a row.")]
 		public bool noRepeat;
 
-		// Token: 0x040022B9 RID: 8889
+		// Token: 0x04002261 RID: 8801
 		[Tooltip("If true, the AI will attempt to sprint while this is the dominant skill driver.")]
 		public bool shouldSprint;
 
-		// Token: 0x020005A6 RID: 1446
+		// Token: 0x02000593 RID: 1427
 		public enum TargetType
 		{
-			// Token: 0x040022BB RID: 8891
+			// Token: 0x04002263 RID: 8803
 			CurrentEnemy,
-			// Token: 0x040022BC RID: 8892
+			// Token: 0x04002264 RID: 8804
 			NearestFriendlyInSkillRange,
-			// Token: 0x040022BD RID: 8893
+			// Token: 0x04002265 RID: 8805
 			CurrentLeader
 		}
 
-		// Token: 0x020005A7 RID: 1447
+		// Token: 0x02000594 RID: 1428
 		public enum AimType
 		{
-			// Token: 0x040022BF RID: 8895
+			// Token: 0x04002267 RID: 8807
 			None,
-			// Token: 0x040022C0 RID: 8896
+			// Token: 0x04002268 RID: 8808
 			AtMoveTarget,
-			// Token: 0x040022C1 RID: 8897
+			// Token: 0x04002269 RID: 8809
 			AtCurrentEnemy,
-			// Token: 0x040022C2 RID: 8898
+			// Token: 0x0400226A RID: 8810
 			AtCurrentLeader,
-			// Token: 0x040022C3 RID: 8899
+			// Token: 0x0400226B RID: 8811
 			MoveDirection
 		}
 
-		// Token: 0x020005A8 RID: 1448
+		// Token: 0x02000595 RID: 1429
 		public enum MovementType
 		{
-			// Token: 0x040022C5 RID: 8901
+			// Token: 0x0400226D RID: 8813
 			Stop,
-			// Token: 0x040022C6 RID: 8902
+			// Token: 0x0400226E RID: 8814
 			ChaseMoveTarget,
-			// Token: 0x040022C7 RID: 8903
+			// Token: 0x0400226F RID: 8815
 			StrafeMovetarget,
-			// Token: 0x040022C8 RID: 8904
+			// Token: 0x04002270 RID: 8816
 			FleeMoveTarget
 		}
 	}

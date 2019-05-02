@@ -2,36 +2,36 @@
 
 namespace RoR2.Navigation
 {
-	// Token: 0x02000536 RID: 1334
+	// Token: 0x02000527 RID: 1319
 	public class PathTask
 	{
-		// Token: 0x06001E17 RID: 7703 RVA: 0x00016064 File Offset: 0x00014264
+		// Token: 0x06001DAF RID: 7599 RVA: 0x00015B9B File Offset: 0x00013D9B
 		public PathTask(Path path)
 		{
 			this.path = path;
 		}
 
-		// Token: 0x06001E18 RID: 7704 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06001DB0 RID: 7600 RVA: 0x000025F6 File Offset: 0x000007F6
 		public void Wait()
 		{
 		}
 
-		// Token: 0x170002A8 RID: 680
-		// (get) Token: 0x06001E19 RID: 7705 RVA: 0x00016073 File Offset: 0x00014273
-		// (set) Token: 0x06001E1A RID: 7706 RVA: 0x0001607B File Offset: 0x0001427B
+		// Token: 0x1700029B RID: 667
+		// (get) Token: 0x06001DB1 RID: 7601 RVA: 0x00015BAA File Offset: 0x00013DAA
+		// (set) Token: 0x06001DB2 RID: 7602 RVA: 0x00015BB2 File Offset: 0x00013DB2
 		public Path path { get; private set; }
 
-		// Token: 0x04002026 RID: 8230
+		// Token: 0x04001FE8 RID: 8168
 		public PathTask.TaskStatus status;
 
-		// Token: 0x02000537 RID: 1335
+		// Token: 0x02000528 RID: 1320
 		public enum TaskStatus
 		{
-			// Token: 0x04002029 RID: 8233
+			// Token: 0x04001FEB RID: 8171
 			NotStarted,
-			// Token: 0x0400202A RID: 8234
+			// Token: 0x04001FEC RID: 8172
 			Running,
-			// Token: 0x0400202B RID: 8235
+			// Token: 0x04001FED RID: 8173
 			Complete
 		}
 	}

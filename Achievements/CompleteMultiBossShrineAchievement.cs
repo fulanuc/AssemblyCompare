@@ -2,41 +2,41 @@
 
 namespace RoR2.Achievements
 {
-	// Token: 0x0200069A RID: 1690
+	// Token: 0x02000688 RID: 1672
 	[RegisterAchievement("CompleteMultiBossShrine", "Items.Lightning", null, typeof(CompleteMultiBossShrineAchievement.CompleteMultiBossShrineServerAchievement))]
 	public class CompleteMultiBossShrineAchievement : BaseAchievement
 	{
-		// Token: 0x060025EC RID: 9708 RVA: 0x0001BA4F File Offset: 0x00019C4F
+		// Token: 0x06002555 RID: 9557 RVA: 0x0001B314 File Offset: 0x00019514
 		public override void OnInstall()
 		{
 			base.OnInstall();
 			base.SetServerTracked(true);
 		}
 
-		// Token: 0x060025ED RID: 9709 RVA: 0x0001BA5E File Offset: 0x00019C5E
+		// Token: 0x06002556 RID: 9558 RVA: 0x0001B323 File Offset: 0x00019523
 		public override void OnUninstall()
 		{
 			base.OnUninstall();
 		}
 
-		// Token: 0x0200069B RID: 1691
+		// Token: 0x02000689 RID: 1673
 		private class CompleteMultiBossShrineServerAchievement : BaseServerAchievement
 		{
-			// Token: 0x060025EF RID: 9711 RVA: 0x0001BA66 File Offset: 0x00019C66
+			// Token: 0x06002558 RID: 9560 RVA: 0x0001B32B File Offset: 0x0001952B
 			public override void OnInstall()
 			{
 				base.OnInstall();
 				BossGroup.onBossGroupDefeatedServer += this.OnBossGroupDefeatedServer;
 			}
 
-			// Token: 0x060025F0 RID: 9712 RVA: 0x0001BA7F File Offset: 0x00019C7F
+			// Token: 0x06002559 RID: 9561 RVA: 0x0001B344 File Offset: 0x00019544
 			public override void OnUninstall()
 			{
 				BossGroup.onBossGroupDefeatedServer -= this.OnBossGroupDefeatedServer;
 				base.OnUninstall();
 			}
 
-			// Token: 0x060025F1 RID: 9713 RVA: 0x000B1A6C File Offset: 0x000AFC6C
+			// Token: 0x0600255A RID: 9562 RVA: 0x000B037C File Offset: 0x000AE57C
 			private void OnBossGroupDefeatedServer(BossGroup bossGroup)
 			{
 				CharacterBody currentBody = base.GetCurrentBody();
@@ -46,13 +46,13 @@ namespace RoR2.Achievements
 				}
 			}
 
-			// Token: 0x060025F2 RID: 9714 RVA: 0x0001BA98 File Offset: 0x00019C98
+			// Token: 0x0600255B RID: 9563 RVA: 0x0001B35D File Offset: 0x0001955D
 			private bool CheckTeleporter(BossGroup bossGroup, TeleporterInteraction teleporterInteraction)
 			{
 				return teleporterInteraction.bossDirector.bossGroup == bossGroup && teleporterInteraction.shrineBonusStacks >= 2;
 			}
 
-			// Token: 0x0400289B RID: 10395
+			// Token: 0x0400283F RID: 10303
 			private const int requirement = 2;
 		}
 	}

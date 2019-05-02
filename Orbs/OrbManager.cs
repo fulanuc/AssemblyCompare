@@ -4,15 +4,15 @@ using UnityEngine;
 
 namespace RoR2.Orbs
 {
-	// Token: 0x0200052A RID: 1322
+	// Token: 0x0200051B RID: 1307
 	public class OrbManager : MonoBehaviour
 	{
-		// Token: 0x170002A6 RID: 678
-		// (get) Token: 0x06001DE4 RID: 7652 RVA: 0x00015EB5 File Offset: 0x000140B5
-		// (set) Token: 0x06001DE5 RID: 7653 RVA: 0x00015EBC File Offset: 0x000140BC
+		// Token: 0x17000299 RID: 665
+		// (get) Token: 0x06001D7C RID: 7548 RVA: 0x000159EC File Offset: 0x00013BEC
+		// (set) Token: 0x06001D7D RID: 7549 RVA: 0x000159F3 File Offset: 0x00013BF3
 		public static OrbManager instance { get; private set; }
 
-		// Token: 0x06001DE6 RID: 7654 RVA: 0x00015EC4 File Offset: 0x000140C4
+		// Token: 0x06001D7E RID: 7550 RVA: 0x000159FB File Offset: 0x00013BFB
 		private void OnEnable()
 		{
 			if (!OrbManager.instance)
@@ -26,7 +26,7 @@ namespace RoR2.Orbs
 			});
 		}
 
-		// Token: 0x06001DE7 RID: 7655 RVA: 0x00015EF8 File Offset: 0x000140F8
+		// Token: 0x06001D7F RID: 7551 RVA: 0x00015A2F File Offset: 0x00013C2F
 		private void OnDisable()
 		{
 			if (OrbManager.instance == this)
@@ -35,7 +35,7 @@ namespace RoR2.Orbs
 			}
 		}
 
-		// Token: 0x06001DE8 RID: 7656 RVA: 0x000916FC File Offset: 0x0008F8FC
+		// Token: 0x06001D80 RID: 7552 RVA: 0x00090988 File Offset: 0x0008EB88
 		private void FixedUpdate()
 		{
 			this.time += Time.fixedDeltaTime;
@@ -67,11 +67,11 @@ namespace RoR2.Orbs
 			}
 		}
 
-		// Token: 0x06001DE9 RID: 7657 RVA: 0x000917D8 File Offset: 0x0008F9D8
+		// Token: 0x06001D81 RID: 7553 RVA: 0x00090A64 File Offset: 0x0008EC64
 		public void AddOrb(Orb orb)
 		{
 			orb.Begin();
-			orb.arrivalTime = this.time + orb.duration;
+			orb.arrivalTime = this.time;
 			this.travelingOrbs.Add(orb);
 			IOrbFixedUpdateBehavior orbFixedUpdateBehavior = orb as IOrbFixedUpdateBehavior;
 			if (orbFixedUpdateBehavior != null)
@@ -84,16 +84,16 @@ namespace RoR2.Orbs
 			}
 		}
 
-		// Token: 0x04001FF7 RID: 8183
+		// Token: 0x04001FB9 RID: 8121
 		private float time;
 
-		// Token: 0x04001FF8 RID: 8184
+		// Token: 0x04001FBA RID: 8122
 		private List<Orb> travelingOrbs = new List<Orb>();
 
-		// Token: 0x04001FF9 RID: 8185
+		// Token: 0x04001FBB RID: 8123
 		private float nextOrbArrival = float.PositiveInfinity;
 
-		// Token: 0x04001FFA RID: 8186
+		// Token: 0x04001FBC RID: 8124
 		private List<IOrbFixedUpdateBehavior> orbsWithFixedUpdateBehavior = new List<IOrbFixedUpdateBehavior>();
 	}
 }

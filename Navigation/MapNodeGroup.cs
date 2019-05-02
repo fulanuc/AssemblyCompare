@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace RoR2.Navigation
 {
-	// Token: 0x02000532 RID: 1330
+	// Token: 0x02000523 RID: 1315
 	public class MapNodeGroup : MonoBehaviour
 	{
-		// Token: 0x06001E0D RID: 7693 RVA: 0x00092614 File Offset: 0x00090814
+		// Token: 0x06001DA5 RID: 7589 RVA: 0x00091898 File Offset: 0x0008FA98
 		public void Clear()
 		{
 			for (int i = base.transform.childCount - 1; i >= 0; i--)
@@ -17,7 +17,7 @@ namespace RoR2.Navigation
 			}
 		}
 
-		// Token: 0x06001E0E RID: 7694 RVA: 0x0001601C File Offset: 0x0001421C
+		// Token: 0x06001DA6 RID: 7590 RVA: 0x00015B53 File Offset: 0x00013D53
 		public void AddNode(Vector3 position)
 		{
 			GameObject gameObject = new GameObject();
@@ -27,7 +27,7 @@ namespace RoR2.Navigation
 			gameObject.name = "MapNode";
 		}
 
-		// Token: 0x06001E0F RID: 7695 RVA: 0x00092650 File Offset: 0x00090850
+		// Token: 0x06001DA7 RID: 7591 RVA: 0x000918D4 File Offset: 0x0008FAD4
 		public List<MapNode> GetNodes()
 		{
 			List<MapNode> list = new List<MapNode>();
@@ -42,7 +42,7 @@ namespace RoR2.Navigation
 			return list;
 		}
 
-		// Token: 0x06001E10 RID: 7696 RVA: 0x000926A0 File Offset: 0x000908A0
+		// Token: 0x06001DA8 RID: 7592 RVA: 0x00091924 File Offset: 0x0008FB24
 		public void UpdateNoCeilingMasks()
 		{
 			int num = 0;
@@ -61,7 +61,7 @@ namespace RoR2.Navigation
 			});
 		}
 
-		// Token: 0x06001E11 RID: 7697 RVA: 0x00092734 File Offset: 0x00090934
+		// Token: 0x06001DA9 RID: 7593 RVA: 0x000919B8 File Offset: 0x0008FBB8
 		public void UpdateTeleporterMasks()
 		{
 			int num = 0;
@@ -80,7 +80,7 @@ namespace RoR2.Navigation
 			});
 		}
 
-		// Token: 0x06001E12 RID: 7698 RVA: 0x000927C8 File Offset: 0x000909C8
+		// Token: 0x06001DAA RID: 7594 RVA: 0x00091A4C File Offset: 0x0008FC4C
 		public void Bake(NodeGraph nodeGraph)
 		{
 			List<MapNode> nodes = this.GetNodes();
@@ -104,29 +104,29 @@ namespace RoR2.Navigation
 			nodeGraph.SetNodes(readOnlyCollection, list.AsReadOnly());
 		}
 
-		// Token: 0x04002011 RID: 8209
+		// Token: 0x04001FD3 RID: 8147
 		public NodeGraph nodeGraph;
 
-		// Token: 0x04002012 RID: 8210
+		// Token: 0x04001FD4 RID: 8148
 		public Transform testPointA;
 
-		// Token: 0x04002013 RID: 8211
+		// Token: 0x04001FD5 RID: 8149
 		public Transform testPointB;
 
-		// Token: 0x04002014 RID: 8212
+		// Token: 0x04001FD6 RID: 8150
 		public HullClassification debugHullDef;
 
-		// Token: 0x04002015 RID: 8213
+		// Token: 0x04001FD7 RID: 8151
 		public MapNodeGroup.GraphType graphType;
 
-		// Token: 0x02000533 RID: 1331
+		// Token: 0x02000524 RID: 1316
 		public enum GraphType
 		{
-			// Token: 0x04002017 RID: 8215
+			// Token: 0x04001FD9 RID: 8153
 			Ground,
-			// Token: 0x04002018 RID: 8216
+			// Token: 0x04001FDA RID: 8154
 			Air,
-			// Token: 0x04002019 RID: 8217
+			// Token: 0x04001FDB RID: 8155
 			Rail
 		}
 	}

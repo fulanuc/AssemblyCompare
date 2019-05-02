@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace RoR2.Orbs
 {
-	// Token: 0x0200052B RID: 1323
+	// Token: 0x0200051C RID: 1308
 	public class TitanRechargeOrb : Orb
 	{
-		// Token: 0x06001DEB RID: 7659 RVA: 0x0009183C File Offset: 0x0008FA3C
+		// Token: 0x06001D83 RID: 7555 RVA: 0x00090AC0 File Offset: 0x0008ECC0
 		public override void Begin()
 		{
 			base.duration = 1f;
@@ -19,15 +19,15 @@ namespace RoR2.Orbs
 			EffectManager.instance.SpawnEffect(Resources.Load<GameObject>("Prefabs/Effects/OrbEffects/HealthOrbEffect"), effectData, true);
 		}
 
-		// Token: 0x06001DEC RID: 7660 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06001D84 RID: 7556 RVA: 0x000025F6 File Offset: 0x000007F6
 		public override void OnArrival()
 		{
 		}
 
-		// Token: 0x04001FFB RID: 8187
+		// Token: 0x04001FBD RID: 8125
 		public int targetRockInt;
 
-		// Token: 0x04001FFC RID: 8188
+		// Token: 0x04001FBE RID: 8126
 		public TitanRockController titanRockController;
 	}
 }

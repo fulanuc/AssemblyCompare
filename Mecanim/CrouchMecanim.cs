@@ -3,16 +3,16 @@ using UnityEngine;
 
 namespace RoR2.Mecanim
 {
-	// Token: 0x02000574 RID: 1396
+	// Token: 0x02000565 RID: 1381
 	public class CrouchMecanim : MonoBehaviour
 	{
-		// Token: 0x06001F4F RID: 8015 RVA: 0x00016ED6 File Offset: 0x000150D6
+		// Token: 0x06001EE5 RID: 7909 RVA: 0x000169F7 File Offset: 0x00014BF7
 		private void Awake()
 		{
 			this.crouchLayer = this.animator.GetLayerIndex("Crouch, Additive");
 		}
 
-		// Token: 0x06001F50 RID: 8016 RVA: 0x00098BB0 File Offset: 0x00096DB0
+		// Token: 0x06001EE6 RID: 7910 RVA: 0x00097E94 File Offset: 0x00096094
 		private void FixedUpdate()
 		{
 			this.crouchStopwatch -= Time.fixedDeltaTime;
@@ -37,13 +37,13 @@ namespace RoR2.Mecanim
 			}
 		}
 
-		// Token: 0x06001F51 RID: 8017 RVA: 0x00016EEE File Offset: 0x000150EE
+		// Token: 0x06001EE7 RID: 7911 RVA: 0x00016A0F File Offset: 0x00014C0F
 		private void Update()
 		{
 			this.animator.SetFloat("crouchCycleOffset", this.crouchCycle, this.smoothdamp, Time.deltaTime);
 		}
 
-		// Token: 0x06001F52 RID: 8018 RVA: 0x00098CEC File Offset: 0x00096EEC
+		// Token: 0x06001EE8 RID: 7912 RVA: 0x00097FD0 File Offset: 0x000961D0
 		private void OnDrawGizmos()
 		{
 			Gizmos.color = Color.yellow;
@@ -52,31 +52,31 @@ namespace RoR2.Mecanim
 			Gizmos.DrawLine(base.transform.position, base.transform.position + -base.transform.up * this.initialVerticalOffset);
 		}
 
-		// Token: 0x040021BF RID: 8639
+		// Token: 0x04002181 RID: 8577
 		public float duckHeight;
 
-		// Token: 0x040021C0 RID: 8640
+		// Token: 0x04002182 RID: 8578
 		public Animator animator;
 
-		// Token: 0x040021C1 RID: 8641
+		// Token: 0x04002183 RID: 8579
 		public float smoothdamp;
 
-		// Token: 0x040021C2 RID: 8642
+		// Token: 0x04002184 RID: 8580
 		public float initialVerticalOffset;
 
-		// Token: 0x040021C3 RID: 8643
+		// Token: 0x04002185 RID: 8581
 		public Transform crouchOriginOverride;
 
-		// Token: 0x040021C4 RID: 8644
+		// Token: 0x04002186 RID: 8582
 		private int crouchLayer;
 
-		// Token: 0x040021C5 RID: 8645
+		// Token: 0x04002187 RID: 8583
 		private float crouchCycle;
 
-		// Token: 0x040021C6 RID: 8646
+		// Token: 0x04002188 RID: 8584
 		private const float crouchRaycastFrequency = 2f;
 
-		// Token: 0x040021C7 RID: 8647
+		// Token: 0x04002189 RID: 8585
 		private float crouchStopwatch;
 	}
 }

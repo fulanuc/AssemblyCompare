@@ -5,16 +5,16 @@ using UnityEngine.Networking;
 
 namespace RoR2.Achievements
 {
-	// Token: 0x020006C9 RID: 1737
+	// Token: 0x020006B7 RID: 1719
 	[RequireComponent(typeof(NetworkUser))]
 	public class ServerAchievementTracker : NetworkBehaviour
 	{
-		// Token: 0x1700033A RID: 826
-		// (get) Token: 0x060026BA RID: 9914 RVA: 0x0001C65A File Offset: 0x0001A85A
-		// (set) Token: 0x060026BB RID: 9915 RVA: 0x0001C662 File Offset: 0x0001A862
+		// Token: 0x17000328 RID: 808
+		// (get) Token: 0x06002623 RID: 9763 RVA: 0x0001BF1F File Offset: 0x0001A11F
+		// (set) Token: 0x06002624 RID: 9764 RVA: 0x0001BF27 File Offset: 0x0001A127
 		public NetworkUser networkUser { get; private set; }
 
-		// Token: 0x060026BC RID: 9916 RVA: 0x000B237C File Offset: 0x000B057C
+		// Token: 0x06002625 RID: 9765 RVA: 0x000B0C7C File Offset: 0x000AEE7C
 		private void Awake()
 		{
 			this.networkUser = base.GetComponent<NetworkUser>();
@@ -29,7 +29,7 @@ namespace RoR2.Achievements
 			}
 		}
 
-		// Token: 0x060026BD RID: 9917 RVA: 0x0001C66B File Offset: 0x0001A86B
+		// Token: 0x06002626 RID: 9766 RVA: 0x0001BF30 File Offset: 0x0001A130
 		private void Start()
 		{
 			if (this.networkUser.localUser != null)
@@ -43,7 +43,7 @@ namespace RoR2.Achievements
 			}
 		}
 
-		// Token: 0x060026BE RID: 9918 RVA: 0x000B23DC File Offset: 0x000B05DC
+		// Token: 0x06002627 RID: 9767 RVA: 0x000B0CDC File Offset: 0x000AEEDC
 		private void OnDestroy()
 		{
 			if (this.achievementTrackers != null)
@@ -59,7 +59,7 @@ namespace RoR2.Achievements
 			}
 		}
 
-		// Token: 0x060026BF RID: 9919 RVA: 0x000B241C File Offset: 0x000B061C
+		// Token: 0x06002628 RID: 9768 RVA: 0x000B0D1C File Offset: 0x000AEF1C
 		[Client]
 		public void SendAchievementTrackerRequestsMaskToServer(bool[] serverAchievementsToTrackMask)
 		{
@@ -77,7 +77,7 @@ namespace RoR2.Achievements
 			this.CallCmdSetAchievementTrackerRequests(this.maskBuffer);
 		}
 
-		// Token: 0x060026C0 RID: 9920 RVA: 0x000B247C File Offset: 0x000B067C
+		// Token: 0x06002629 RID: 9769 RVA: 0x000B0D7C File Offset: 0x000AEF7C
 		[Command]
 		private void CmdSetAchievementTrackerRequests(byte[] packedServerAchievementsToTrackMask)
 		{
@@ -97,7 +97,7 @@ namespace RoR2.Achievements
 			}
 		}
 
-		// Token: 0x060026C1 RID: 9921 RVA: 0x000B24D4 File Offset: 0x000B06D4
+		// Token: 0x0600262A RID: 9770 RVA: 0x000B0DD4 File Offset: 0x000AEFD4
 		private void SetAchievementTracked(ServerAchievementIndex serverAchievementIndex, bool shouldTrack)
 		{
 			BaseServerAchievement baseServerAchievement = this.achievementTrackers[serverAchievementIndex.intValue];
@@ -117,7 +117,7 @@ namespace RoR2.Achievements
 			this.achievementTrackers[serverAchievementIndex.intValue] = null;
 		}
 
-		// Token: 0x060026C2 RID: 9922 RVA: 0x000B2534 File Offset: 0x000B0734
+		// Token: 0x0600262B RID: 9771 RVA: 0x000B0E34 File Offset: 0x000AF034
 		[ClientRpc]
 		public void RpcGrantAchievement(ServerAchievementIndex serverAchievementIndex)
 		{
@@ -133,12 +133,12 @@ namespace RoR2.Achievements
 			}
 		}
 
-		// Token: 0x060026C4 RID: 9924 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x0600262D RID: 9773 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x060026C5 RID: 9925 RVA: 0x0001C694 File Offset: 0x0001A894
+		// Token: 0x0600262E RID: 9774 RVA: 0x0001BF59 File Offset: 0x0001A159
 		protected static void InvokeCmdCmdSetAchievementTrackerRequests(NetworkBehaviour obj, NetworkReader reader)
 		{
 			if (!NetworkServer.active)
@@ -149,7 +149,7 @@ namespace RoR2.Achievements
 			((ServerAchievementTracker)obj).CmdSetAchievementTrackerRequests(reader.ReadBytesAndSize());
 		}
 
-		// Token: 0x060026C6 RID: 9926 RVA: 0x000B2564 File Offset: 0x000B0764
+		// Token: 0x0600262F RID: 9775 RVA: 0x000B0E64 File Offset: 0x000AF064
 		public void CallCmdSetAchievementTrackerRequests(byte[] packedServerAchievementsToTrackMask)
 		{
 			if (!NetworkClient.active)
@@ -171,7 +171,7 @@ namespace RoR2.Achievements
 			base.SendCommandInternal(networkWriter, 0, "CmdSetAchievementTrackerRequests");
 		}
 
-		// Token: 0x060026C7 RID: 9927 RVA: 0x0001C6BD File Offset: 0x0001A8BD
+		// Token: 0x06002630 RID: 9776 RVA: 0x0001BF82 File Offset: 0x0001A182
 		protected static void InvokeRpcRpcGrantAchievement(NetworkBehaviour obj, NetworkReader reader)
 		{
 			if (!NetworkClient.active)
@@ -182,7 +182,7 @@ namespace RoR2.Achievements
 			((ServerAchievementTracker)obj).RpcGrantAchievement(GeneratedNetworkCode._ReadServerAchievementIndex_None(reader));
 		}
 
-		// Token: 0x060026C8 RID: 9928 RVA: 0x000B25F0 File Offset: 0x000B07F0
+		// Token: 0x06002631 RID: 9777 RVA: 0x000B0EF0 File Offset: 0x000AF0F0
 		public void CallRpcGrantAchievement(ServerAchievementIndex serverAchievementIndex)
 		{
 			if (!NetworkServer.active)
@@ -199,7 +199,7 @@ namespace RoR2.Achievements
 			this.SendRPCInternal(networkWriter, 0, "RpcGrantAchievement");
 		}
 
-		// Token: 0x060026C9 RID: 9929 RVA: 0x000B2664 File Offset: 0x000B0864
+		// Token: 0x06002632 RID: 9778 RVA: 0x000B0F64 File Offset: 0x000AF164
 		static ServerAchievementTracker()
 		{
 			NetworkBehaviour.RegisterCommandDelegate(typeof(ServerAchievementTracker), ServerAchievementTracker.kCmdCmdSetAchievementTrackerRequests, new NetworkBehaviour.CmdDelegate(ServerAchievementTracker.InvokeCmdCmdSetAchievementTrackerRequests));
@@ -208,31 +208,31 @@ namespace RoR2.Achievements
 			NetworkCRC.RegisterBehaviour("ServerAchievementTracker", 0);
 		}
 
-		// Token: 0x060026CA RID: 9930 RVA: 0x0004AA24 File Offset: 0x00048C24
+		// Token: 0x06002633 RID: 9779 RVA: 0x0004A818 File Offset: 0x00048A18
 		public override bool OnSerialize(NetworkWriter writer, bool forceAll)
 		{
 			bool result;
 			return result;
 		}
 
-		// Token: 0x060026CB RID: 9931 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06002634 RID: 9780 RVA: 0x000025F6 File Offset: 0x000007F6
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 		}
 
-		// Token: 0x040028B6 RID: 10422
+		// Token: 0x0400285A RID: 10330
 		private BaseServerAchievement[] achievementTrackers;
 
-		// Token: 0x040028B7 RID: 10423
+		// Token: 0x0400285B RID: 10331
 		private SerializableBitArray maskBitArrayConverter;
 
-		// Token: 0x040028B8 RID: 10424
+		// Token: 0x0400285C RID: 10332
 		private byte[] maskBuffer;
 
-		// Token: 0x040028B9 RID: 10425
+		// Token: 0x0400285D RID: 10333
 		private static int kCmdCmdSetAchievementTrackerRequests = 387052099;
 
-		// Token: 0x040028BA RID: 10426
+		// Token: 0x0400285E RID: 10334
 		private static int kRpcRpcGrantAchievement;
 	}
 }

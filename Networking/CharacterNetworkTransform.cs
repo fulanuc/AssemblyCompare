@@ -7,11 +7,11 @@ using UnityEngine.Networking;
 
 namespace RoR2.Networking
 {
-	// Token: 0x0200057D RID: 1405
+	// Token: 0x0200056E RID: 1390
 	public class CharacterNetworkTransform : NetworkBehaviour
 	{
-		// Token: 0x170002BD RID: 701
-		// (get) Token: 0x06001F6B RID: 8043 RVA: 0x00017005 File Offset: 0x00015205
+		// Token: 0x170002B0 RID: 688
+		// (get) Token: 0x06001F01 RID: 7937 RVA: 0x00016B26 File Offset: 0x00014D26
 		public static ReadOnlyCollection<CharacterNetworkTransform> readOnlyInstancesList
 		{
 			get
@@ -20,32 +20,32 @@ namespace RoR2.Networking
 			}
 		}
 
-		// Token: 0x170002BE RID: 702
-		// (get) Token: 0x06001F6D RID: 8045 RVA: 0x00017015 File Offset: 0x00015215
-		// (set) Token: 0x06001F6C RID: 8044 RVA: 0x0001700C File Offset: 0x0001520C
+		// Token: 0x170002B1 RID: 689
+		// (get) Token: 0x06001F03 RID: 7939 RVA: 0x00016B36 File Offset: 0x00014D36
+		// (set) Token: 0x06001F02 RID: 7938 RVA: 0x00016B2D File Offset: 0x00014D2D
 		public new Transform transform { get; private set; }
 
-		// Token: 0x170002BF RID: 703
-		// (get) Token: 0x06001F6F RID: 8047 RVA: 0x00017026 File Offset: 0x00015226
-		// (set) Token: 0x06001F6E RID: 8046 RVA: 0x0001701D File Offset: 0x0001521D
+		// Token: 0x170002B2 RID: 690
+		// (get) Token: 0x06001F05 RID: 7941 RVA: 0x00016B47 File Offset: 0x00014D47
+		// (set) Token: 0x06001F04 RID: 7940 RVA: 0x00016B3E File Offset: 0x00014D3E
 		public InputBankTest inputBank { get; private set; }
 
-		// Token: 0x170002C0 RID: 704
-		// (get) Token: 0x06001F71 RID: 8049 RVA: 0x00017037 File Offset: 0x00015237
-		// (set) Token: 0x06001F70 RID: 8048 RVA: 0x0001702E File Offset: 0x0001522E
+		// Token: 0x170002B3 RID: 691
+		// (get) Token: 0x06001F07 RID: 7943 RVA: 0x00016B58 File Offset: 0x00014D58
+		// (set) Token: 0x06001F06 RID: 7942 RVA: 0x00016B4F File Offset: 0x00014D4F
 		public CharacterMotor characterMotor { get; set; }
 
-		// Token: 0x170002C1 RID: 705
-		// (get) Token: 0x06001F73 RID: 8051 RVA: 0x00017048 File Offset: 0x00015248
-		// (set) Token: 0x06001F72 RID: 8050 RVA: 0x0001703F File Offset: 0x0001523F
+		// Token: 0x170002B4 RID: 692
+		// (get) Token: 0x06001F09 RID: 7945 RVA: 0x00016B69 File Offset: 0x00014D69
+		// (set) Token: 0x06001F08 RID: 7944 RVA: 0x00016B60 File Offset: 0x00014D60
 		public CharacterDirection characterDirection { get; private set; }
 
-		// Token: 0x170002C2 RID: 706
-		// (get) Token: 0x06001F75 RID: 8053 RVA: 0x00017059 File Offset: 0x00015259
-		// (set) Token: 0x06001F74 RID: 8052 RVA: 0x00017050 File Offset: 0x00015250
+		// Token: 0x170002B5 RID: 693
+		// (get) Token: 0x06001F0B RID: 7947 RVA: 0x00016B7A File Offset: 0x00014D7A
+		// (set) Token: 0x06001F0A RID: 7946 RVA: 0x00016B71 File Offset: 0x00014D71
 		private Rigidbody rigidbody { get; set; }
 
-		// Token: 0x06001F76 RID: 8054 RVA: 0x0009923C File Offset: 0x0009743C
+		// Token: 0x06001F0C RID: 7948 RVA: 0x00098520 File Offset: 0x00096720
 		private CharacterNetworkTransform.Snapshot CalcCurrentSnapshot(float time, float interpolationDelay)
 		{
 			float num = time - interpolationDelay;
@@ -63,7 +63,7 @@ namespace RoR2.Networking
 			return CharacterNetworkTransform.Snapshot.Interpolate(this.snapshots[num2], this.snapshots[num2 + 1], num);
 		}
 
-		// Token: 0x06001F77 RID: 8055 RVA: 0x000992EC File Offset: 0x000974EC
+		// Token: 0x06001F0D RID: 7949 RVA: 0x000985D0 File Offset: 0x000967D0
 		private CharacterNetworkTransform.Snapshot BuildSnapshot()
 		{
 			return new CharacterNetworkTransform.Snapshot
@@ -77,7 +77,7 @@ namespace RoR2.Networking
 			};
 		}
 
-		// Token: 0x06001F78 RID: 8056 RVA: 0x000993D4 File Offset: 0x000975D4
+		// Token: 0x06001F0E RID: 7950 RVA: 0x000986B8 File Offset: 0x000968B8
 		public void PushSnapshot(CharacterNetworkTransform.Snapshot newSnapshot)
 		{
 			if (this.debugSnapshotReceived)
@@ -108,7 +108,7 @@ namespace RoR2.Networking
 			}
 		}
 
-		// Token: 0x06001F79 RID: 8057 RVA: 0x00099554 File Offset: 0x00097754
+		// Token: 0x06001F0F RID: 7951 RVA: 0x00098838 File Offset: 0x00096A38
 		private void Awake()
 		{
 			this.transform = base.transform;
@@ -122,8 +122,8 @@ namespace RoR2.Networking
 			}
 		}
 
-		// Token: 0x170002C3 RID: 707
-		// (get) Token: 0x06001F7A RID: 8058 RVA: 0x00017061 File Offset: 0x00015261
+		// Token: 0x170002B6 RID: 694
+		// (get) Token: 0x06001F10 RID: 7952 RVA: 0x00016B82 File Offset: 0x00014D82
 		public float interpolationDelay
 		{
 			get
@@ -132,19 +132,19 @@ namespace RoR2.Networking
 			}
 		}
 
-		// Token: 0x170002C4 RID: 708
-		// (get) Token: 0x06001F7C RID: 8060 RVA: 0x00017079 File Offset: 0x00015279
-		// (set) Token: 0x06001F7B RID: 8059 RVA: 0x00017070 File Offset: 0x00015270
+		// Token: 0x170002B7 RID: 695
+		// (get) Token: 0x06001F12 RID: 7954 RVA: 0x00016B9A File Offset: 0x00014D9A
+		// (set) Token: 0x06001F11 RID: 7953 RVA: 0x00016B91 File Offset: 0x00014D91
 		public bool hasEffectiveAuthority { get; private set; }
 
-		// Token: 0x06001F7D RID: 8061 RVA: 0x00017081 File Offset: 0x00015281
+		// Token: 0x06001F13 RID: 7955 RVA: 0x00016BA2 File Offset: 0x00014DA2
 		private void Start()
 		{
 			this.newestNetSnapshot = this.BuildSnapshot();
 			this.UpdateAuthority();
 		}
 
-		// Token: 0x06001F7E RID: 8062 RVA: 0x00017095 File Offset: 0x00015295
+		// Token: 0x06001F14 RID: 7956 RVA: 0x00016BB6 File Offset: 0x00014DB6
 		private void OnEnable()
 		{
 			bool flag = CharacterNetworkTransform.instancesList.Contains(this);
@@ -155,7 +155,7 @@ namespace RoR2.Networking
 			}
 		}
 
-		// Token: 0x06001F7F RID: 8063 RVA: 0x000170B9 File Offset: 0x000152B9
+		// Token: 0x06001F15 RID: 7957 RVA: 0x00016BDA File Offset: 0x00014DDA
 		private void OnDisable()
 		{
 			CharacterNetworkTransform.instancesList.Remove(this);
@@ -165,7 +165,7 @@ namespace RoR2.Networking
 			}
 		}
 
-		// Token: 0x06001F80 RID: 8064 RVA: 0x000170DE File Offset: 0x000152DE
+		// Token: 0x06001F16 RID: 7958 RVA: 0x00016BFF File Offset: 0x00014DFF
 		private void UpdateAuthority()
 		{
 			this.hasEffectiveAuthority = Util.HasEffectiveAuthority(base.gameObject);
@@ -175,19 +175,19 @@ namespace RoR2.Networking
 			}
 		}
 
-		// Token: 0x06001F81 RID: 8065 RVA: 0x0001711A File Offset: 0x0001531A
+		// Token: 0x06001F17 RID: 7959 RVA: 0x00016C3B File Offset: 0x00014E3B
 		public override void OnStartAuthority()
 		{
 			this.UpdateAuthority();
 		}
 
-		// Token: 0x06001F82 RID: 8066 RVA: 0x0001711A File Offset: 0x0001531A
+		// Token: 0x06001F18 RID: 7960 RVA: 0x00016C3B File Offset: 0x00014E3B
 		public override void OnStopAuthority()
 		{
 			this.UpdateAuthority();
 		}
 
-		// Token: 0x06001F83 RID: 8067 RVA: 0x000995BC File Offset: 0x000977BC
+		// Token: 0x06001F19 RID: 7961 RVA: 0x000988A0 File Offset: 0x00096AA0
 		private void FixedUpdate()
 		{
 			if (this.hasEffectiveAuthority)
@@ -234,60 +234,60 @@ namespace RoR2.Networking
 			this.rigidbody.MoveRotation(snapshot.rotation);
 		}
 
-		// Token: 0x06001F86 RID: 8070 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06001F1C RID: 7964 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x06001F87 RID: 8071 RVA: 0x0004AA24 File Offset: 0x00048C24
+		// Token: 0x06001F1D RID: 7965 RVA: 0x0004A818 File Offset: 0x00048A18
 		public override bool OnSerialize(NetworkWriter writer, bool forceAll)
 		{
 			bool result;
 			return result;
 		}
 
-		// Token: 0x06001F88 RID: 8072 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06001F1E RID: 7966 RVA: 0x000025F6 File Offset: 0x000007F6
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 		}
 
-		// Token: 0x040021E3 RID: 8675
+		// Token: 0x040021A5 RID: 8613
 		private static List<CharacterNetworkTransform> instancesList = new List<CharacterNetworkTransform>();
 
-		// Token: 0x040021E4 RID: 8676
+		// Token: 0x040021A6 RID: 8614
 		private static ReadOnlyCollection<CharacterNetworkTransform> _readOnlyInstancesList = new ReadOnlyCollection<CharacterNetworkTransform>(CharacterNetworkTransform.instancesList);
 
-		// Token: 0x040021EA RID: 8682
+		// Token: 0x040021AC RID: 8620
 		[Tooltip("The delay in seconds between position network updates.")]
 		public float positionTransmitInterval = 0.1f;
 
-		// Token: 0x040021EB RID: 8683
+		// Token: 0x040021AD RID: 8621
 		[HideInInspector]
 		public float lastPositionTransmitTime = float.NegativeInfinity;
 
-		// Token: 0x040021EC RID: 8684
+		// Token: 0x040021AE RID: 8622
 		[Tooltip("The number of packets of buffers to have.")]
 		public float interpolationFactor = 2f;
 
-		// Token: 0x040021ED RID: 8685
+		// Token: 0x040021AF RID: 8623
 		public CharacterNetworkTransform.Snapshot newestNetSnapshot;
 
-		// Token: 0x040021EE RID: 8686
+		// Token: 0x040021B0 RID: 8624
 		private List<CharacterNetworkTransform.Snapshot> snapshots = new List<CharacterNetworkTransform.Snapshot>();
 
-		// Token: 0x040021EF RID: 8687
+		// Token: 0x040021B1 RID: 8625
 		public bool debugDuplicatePositions;
 
-		// Token: 0x040021F0 RID: 8688
+		// Token: 0x040021B2 RID: 8626
 		public bool debugSnapshotReceived;
 
-		// Token: 0x040021F1 RID: 8689
+		// Token: 0x040021B3 RID: 8627
 		private bool rigidbodyStartedKinematic = true;
 
-		// Token: 0x0200057E RID: 1406
+		// Token: 0x0200056F RID: 1391
 		public struct Snapshot
 		{
-			// Token: 0x06001F89 RID: 8073 RVA: 0x000996F0 File Offset: 0x000978F0
+			// Token: 0x06001F1F RID: 7967 RVA: 0x000989D4 File Offset: 0x00096BD4
 			public static CharacterNetworkTransform.Snapshot Lerp(CharacterNetworkTransform.Snapshot a, CharacterNetworkTransform.Snapshot b, float t)
 			{
 				return new CharacterNetworkTransform.Snapshot
@@ -300,7 +300,7 @@ namespace RoR2.Networking
 				};
 			}
 
-			// Token: 0x06001F8A RID: 8074 RVA: 0x00099788 File Offset: 0x00097988
+			// Token: 0x06001F20 RID: 7968 RVA: 0x00098A6C File Offset: 0x00096C6C
 			public static CharacterNetworkTransform.Snapshot Interpolate(CharacterNetworkTransform.Snapshot a, CharacterNetworkTransform.Snapshot b, float serverTime)
 			{
 				float num = (serverTime - a.serverTime) / (b.serverTime - a.serverTime);
@@ -315,25 +315,25 @@ namespace RoR2.Networking
 				};
 			}
 
-			// Token: 0x040021F3 RID: 8691
+			// Token: 0x040021B5 RID: 8629
 			public float serverTime;
 
-			// Token: 0x040021F4 RID: 8692
+			// Token: 0x040021B6 RID: 8630
 			public Vector3 position;
 
-			// Token: 0x040021F5 RID: 8693
+			// Token: 0x040021B7 RID: 8631
 			public Vector3 moveVector;
 
-			// Token: 0x040021F6 RID: 8694
+			// Token: 0x040021B8 RID: 8632
 			public Vector3 aimDirection;
 
-			// Token: 0x040021F7 RID: 8695
+			// Token: 0x040021B9 RID: 8633
 			public Quaternion rotation;
 
-			// Token: 0x040021F8 RID: 8696
+			// Token: 0x040021BA RID: 8634
 			public bool isGrounded;
 
-			// Token: 0x040021F9 RID: 8697
+			// Token: 0x040021BB RID: 8635
 			public const int maxNetworkSize = 57;
 		}
 	}

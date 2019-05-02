@@ -3,11 +3,11 @@ using RoR2.Stats;
 
 namespace RoR2.Achievements
 {
-	// Token: 0x020006B9 RID: 1721
+	// Token: 0x020006A7 RID: 1703
 	[RegisterAchievement("LogCollector", "Items.Scanner", null, null)]
 	public class LogCollectorAchievement : BaseAchievement
 	{
-		// Token: 0x06002672 RID: 9842 RVA: 0x0001C1F1 File Offset: 0x0001A3F1
+		// Token: 0x060025DB RID: 9691 RVA: 0x0001BAB6 File Offset: 0x00019CB6
 		public override void OnInstall()
 		{
 			base.OnInstall();
@@ -15,26 +15,26 @@ namespace RoR2.Achievements
 			UserProfile.onUnlockableGranted += this.OnUnlockCheck;
 		}
 
-		// Token: 0x06002673 RID: 9843 RVA: 0x0001C210 File Offset: 0x0001A410
+		// Token: 0x060025DC RID: 9692 RVA: 0x0001BAD5 File Offset: 0x00019CD5
 		public override void OnUninstall()
 		{
 			UserProfile.onUnlockableGranted -= this.OnUnlockCheck;
 			base.OnUninstall();
 		}
 
-		// Token: 0x06002674 RID: 9844 RVA: 0x0001C229 File Offset: 0x0001A429
+		// Token: 0x060025DD RID: 9693 RVA: 0x0001BAEE File Offset: 0x00019CEE
 		public override float ProgressForAchievement()
 		{
 			return (float)this.MonsterLogCount() / 10f;
 		}
 
-		// Token: 0x06002675 RID: 9845 RVA: 0x0001C238 File Offset: 0x0001A438
+		// Token: 0x060025DE RID: 9694 RVA: 0x0001BAFD File Offset: 0x00019CFD
 		private static bool IsUnlockableMonsterLog(UnlockableDef unlockableDef)
 		{
 			return unlockableDef.name.StartsWith("Logs.");
 		}
 
-		// Token: 0x06002676 RID: 9846 RVA: 0x000B1FCC File Offset: 0x000B01CC
+		// Token: 0x060025DF RID: 9695 RVA: 0x000B08D4 File Offset: 0x000AEAD4
 		private int MonsterLogCount()
 		{
 			StatSheet statSheet = this.userProfile.statSheet;
@@ -52,7 +52,7 @@ namespace RoR2.Achievements
 			return num;
 		}
 
-		// Token: 0x06002677 RID: 9847 RVA: 0x0001C24A File Offset: 0x0001A44A
+		// Token: 0x060025E0 RID: 9696 RVA: 0x0001BB0F File Offset: 0x00019D0F
 		private void Check()
 		{
 			if (this.MonsterLogCount() >= 10)
@@ -61,7 +61,7 @@ namespace RoR2.Achievements
 			}
 		}
 
-		// Token: 0x06002678 RID: 9848 RVA: 0x000B2010 File Offset: 0x000B0210
+		// Token: 0x060025E1 RID: 9697 RVA: 0x000B0918 File Offset: 0x000AEB18
 		private void OnUnlockCheck(UserProfile userProfile, string unlockableToken)
 		{
 			UnlockableDef unlockableDef = UnlockableCatalog.GetUnlockableDef(unlockableToken);
@@ -75,7 +75,7 @@ namespace RoR2.Achievements
 			}
 		}
 
-		// Token: 0x040028A9 RID: 10409
+		// Token: 0x0400284D RID: 10317
 		private const int requirement = 10;
 	}
 }

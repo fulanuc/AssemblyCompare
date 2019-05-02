@@ -2,23 +2,23 @@
 
 namespace RoR2.Achievements
 {
-	// Token: 0x02000694 RID: 1684
+	// Token: 0x02000682 RID: 1666
 	public abstract class BaseAchievement
 	{
-		// Token: 0x060025C8 RID: 9672 RVA: 0x0001B819 File Offset: 0x00019A19
+		// Token: 0x06002531 RID: 9521 RVA: 0x0001B0DE File Offset: 0x000192DE
 		public virtual void OnInstall()
 		{
 			this.localUser = this.owner.localUser;
 			this.userProfile = this.owner.userProfile;
 		}
 
-		// Token: 0x060025C9 RID: 9673 RVA: 0x0001B83D File Offset: 0x00019A3D
+		// Token: 0x06002532 RID: 9522 RVA: 0x0001B102 File Offset: 0x00019302
 		public virtual float ProgressForAchievement()
 		{
 			return 0f;
 		}
 
-		// Token: 0x060025CA RID: 9674 RVA: 0x0001B844 File Offset: 0x00019A44
+		// Token: 0x06002533 RID: 9523 RVA: 0x0001B109 File Offset: 0x00019309
 		public virtual void OnUninstall()
 		{
 			if (this.achievementDef.serverTrackerType != null)
@@ -30,7 +30,7 @@ namespace RoR2.Achievements
 			this.userProfile = null;
 		}
 
-		// Token: 0x060025CB RID: 9675 RVA: 0x0001B875 File Offset: 0x00019A75
+		// Token: 0x06002534 RID: 9524 RVA: 0x0001B13A File Offset: 0x0001933A
 		public void Grant()
 		{
 			if (this.shouldGrant)
@@ -41,7 +41,7 @@ namespace RoR2.Achievements
 			this.owner.dirtyGrantsCount++;
 		}
 
-		// Token: 0x060025CC RID: 9676 RVA: 0x000B17C0 File Offset: 0x000AF9C0
+		// Token: 0x06002535 RID: 9525 RVA: 0x000B00D0 File Offset: 0x000AE2D0
 		public virtual void OnGranted()
 		{
 			if (!string.IsNullOrEmpty(this.achievementDef.unlockableRewardIdentifier))
@@ -55,25 +55,25 @@ namespace RoR2.Achievements
 			}
 		}
 
-		// Token: 0x060025CD RID: 9677 RVA: 0x0001B89A File Offset: 0x00019A9A
+		// Token: 0x06002536 RID: 9526 RVA: 0x0001B15F File Offset: 0x0001935F
 		public void SetServerTracked(bool shouldTrack)
 		{
 			this.owner.SetServerAchievementTracked(this.achievementDef.serverIndex, shouldTrack);
 		}
 
-		// Token: 0x0400288B RID: 10379
+		// Token: 0x0400282F RID: 10287
 		public UserAchievementManager owner;
 
-		// Token: 0x0400288C RID: 10380
+		// Token: 0x04002830 RID: 10288
 		protected LocalUser localUser;
 
-		// Token: 0x0400288D RID: 10381
+		// Token: 0x04002831 RID: 10289
 		protected UserProfile userProfile;
 
-		// Token: 0x0400288E RID: 10382
+		// Token: 0x04002832 RID: 10290
 		public bool shouldGrant;
 
-		// Token: 0x0400288F RID: 10383
+		// Token: 0x04002833 RID: 10291
 		public AchievementDef achievementDef;
 	}
 }

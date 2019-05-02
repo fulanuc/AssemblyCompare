@@ -2,11 +2,11 @@
 
 namespace RoR2.Achievements
 {
-	// Token: 0x0200069F RID: 1695
+	// Token: 0x0200068D RID: 1677
 	[RegisterAchievement("CompleteTeleporterWithoutInjury", "Items.SecondarySkillMagazine", null, null)]
 	public class CompleteTeleporterWithoutInjuryAchievement : BaseAchievement
 	{
-		// Token: 0x06002600 RID: 9728 RVA: 0x0001BB43 File Offset: 0x00019D43
+		// Token: 0x06002569 RID: 9577 RVA: 0x0001B408 File Offset: 0x00019608
 		public override void OnInstall()
 		{
 			base.OnInstall();
@@ -15,7 +15,7 @@ namespace RoR2.Achievements
 			GlobalEventManager.onClientDamageNotified += this.OnClientDamageNotified;
 		}
 
-		// Token: 0x06002601 RID: 9729 RVA: 0x0001BB7E File Offset: 0x00019D7E
+		// Token: 0x0600256A RID: 9578 RVA: 0x0001B443 File Offset: 0x00019643
 		public override void OnUninstall()
 		{
 			TeleporterInteraction.onTeleporterBeginChargingGlobal -= this.OnTeleporterBeginCharging;
@@ -24,19 +24,19 @@ namespace RoR2.Achievements
 			base.OnUninstall();
 		}
 
-		// Token: 0x06002602 RID: 9730 RVA: 0x0001BBB9 File Offset: 0x00019DB9
+		// Token: 0x0600256B RID: 9579 RVA: 0x0001B47E File Offset: 0x0001967E
 		private void OnTeleporterBeginCharging(TeleporterInteraction teleporterInteraction)
 		{
 			this.hasBeenHit = false;
 		}
 
-		// Token: 0x06002603 RID: 9731 RVA: 0x0001BBC2 File Offset: 0x00019DC2
+		// Token: 0x0600256C RID: 9580 RVA: 0x0001B487 File Offset: 0x00019687
 		private void OnTeleporterCharged(TeleporterInteraction teleporterInteraction)
 		{
 			this.Check();
 		}
 
-		// Token: 0x06002604 RID: 9732 RVA: 0x0001BBCA File Offset: 0x00019DCA
+		// Token: 0x0600256D RID: 9581 RVA: 0x0001B48F File Offset: 0x0001968F
 		private void OnClientDamageNotified(DamageDealtMessage damageDealtMessage)
 		{
 			if (!this.hasBeenHit && damageDealtMessage.victim && damageDealtMessage.victim == this.localUser.cachedBodyObject)
@@ -45,7 +45,7 @@ namespace RoR2.Achievements
 			}
 		}
 
-		// Token: 0x06002605 RID: 9733 RVA: 0x000B1B18 File Offset: 0x000AFD18
+		// Token: 0x0600256E RID: 9582 RVA: 0x000B0428 File Offset: 0x000AE628
 		private void Check()
 		{
 			if (this.localUser.cachedBody && this.localUser.cachedBody.healthComponent && this.localUser.cachedBody.healthComponent.alive && !this.hasBeenHit)
@@ -54,7 +54,7 @@ namespace RoR2.Achievements
 			}
 		}
 
-		// Token: 0x0400289C RID: 10396
+		// Token: 0x04002840 RID: 10304
 		private bool hasBeenHit;
 	}
 }

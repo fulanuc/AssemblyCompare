@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace RoR2.GameBehaviors
 {
-	// Token: 0x0200057B RID: 1403
+	// Token: 0x0200056C RID: 1388
 	[RequireComponent(typeof(EffectComponent))]
 	internal class ImpactEffect : MonoBehaviour
 	{
-		// Token: 0x06001F63 RID: 8035 RVA: 0x00098EB0 File Offset: 0x000970B0
+		// Token: 0x06001EF9 RID: 7929 RVA: 0x00098194 File Offset: 0x00096394
 		private void Start()
 		{
 			EffectComponent component = base.GetComponent<EffectComponent>();
@@ -19,7 +19,7 @@ namespace RoR2.GameBehaviors
 			}
 		}
 
-		// Token: 0x040021D8 RID: 8664
+		// Token: 0x0400219A RID: 8602
 		public ParticleSystem[] particleSystems;
 	}
 }

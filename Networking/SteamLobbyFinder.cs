@@ -8,11 +8,11 @@ using UnityEngine.Networking;
 
 namespace RoR2.Networking
 {
-	// Token: 0x02000597 RID: 1431
+	// Token: 0x02000584 RID: 1412
 	public class SteamLobbyFinder : MonoBehaviour
 	{
-		// Token: 0x170002D8 RID: 728
-		// (get) Token: 0x0600206D RID: 8301 RVA: 0x00013D37 File Offset: 0x00011F37
+		// Token: 0x170002C5 RID: 709
+		// (get) Token: 0x06001FDC RID: 8156 RVA: 0x00013821 File Offset: 0x00011A21
 		private static Client steamClient
 		{
 			get
@@ -21,7 +21,7 @@ namespace RoR2.Networking
 			}
 		}
 
-		// Token: 0x0600206E RID: 8302 RVA: 0x00017A03 File Offset: 0x00015C03
+		// Token: 0x06001FDD RID: 8157 RVA: 0x000172F3 File Offset: 0x000154F3
 		[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
 		private static void OnStartup()
 		{
@@ -31,32 +31,32 @@ namespace RoR2.Networking
 			};
 		}
 
-		// Token: 0x0600206F RID: 8303 RVA: 0x00017A29 File Offset: 0x00015C29
+		// Token: 0x06001FDE RID: 8158 RVA: 0x00017319 File Offset: 0x00015519
 		private void Awake()
 		{
 			this.stateMachine = base.gameObject.AddComponent<EntityStateMachine>();
 			this.stateMachine.initialStateType = new SerializableEntityStateType(typeof(SteamLobbyFinder.LobbyStateStart));
 		}
 
-		// Token: 0x06002070 RID: 8304 RVA: 0x00017A56 File Offset: 0x00015C56
+		// Token: 0x06001FDF RID: 8159 RVA: 0x00017346 File Offset: 0x00015546
 		private void OnDestroy()
 		{
 			UnityEngine.Object.Destroy(this.stateMachine);
 		}
 
-		// Token: 0x06002071 RID: 8305 RVA: 0x00017A63 File Offset: 0x00015C63
+		// Token: 0x06001FE0 RID: 8160 RVA: 0x00017353 File Offset: 0x00015553
 		private void OnEnable()
 		{
 			SteamworksLobbyManager.onLobbiesUpdated += this.OnLobbiesUpdated;
 		}
 
-		// Token: 0x06002072 RID: 8306 RVA: 0x00017A76 File Offset: 0x00015C76
+		// Token: 0x06001FE1 RID: 8161 RVA: 0x00017366 File Offset: 0x00015566
 		private void OnDisable()
 		{
 			SteamworksLobbyManager.onLobbiesUpdated -= this.OnLobbiesUpdated;
 		}
 
-		// Token: 0x06002073 RID: 8307 RVA: 0x0009CCC8 File Offset: 0x0009AEC8
+		// Token: 0x06001FE2 RID: 8162 RVA: 0x0009B7C0 File Offset: 0x000999C0
 		private void Update()
 		{
 			if (SteamLobbyFinder.steamClient.Lobby.IsValid && !SteamworksLobbyManager.ownsLobby)
@@ -71,7 +71,7 @@ namespace RoR2.Networking
 			this.age += Time.unscaledDeltaTime;
 		}
 
-		// Token: 0x06002074 RID: 8308 RVA: 0x0009CD44 File Offset: 0x0009AF44
+		// Token: 0x06001FE3 RID: 8163 RVA: 0x0009B83C File Offset: 0x00099A3C
 		private static void RequestLobbyListRefresh()
 		{
 			if (SteamLobbyFinder.awaitingLobbyRefresh)
@@ -80,15 +80,14 @@ namespace RoR2.Networking
 			}
 			SteamLobbyFinder.awaitingLobbyRefresh = true;
 			LobbyList.Filter filter = new LobbyList.Filter();
-			filter.StringFilters["appid"] = TextSerialization.ToStringInvariant(SteamLobbyFinder.steamClient.AppId);
+			filter.StringFilters["appid"] = TextSerialization.ToStringInvariant(SteamLobbyFinder.steamClient.AppId).ToString();
 			filter.StringFilters["build_id"] = RoR2Application.GetBuildId();
 			filter.StringFilters["qp"] = "1";
-			filter.StringFilters["total_max_players"] = TextSerialization.ToStringInvariant(RoR2Application.maxPlayers);
 			LobbyList.Filter filter2 = filter;
 			SteamLobbyFinder.steamClient.LobbyList.Refresh(filter2);
 		}
 
-		// Token: 0x06002075 RID: 8309 RVA: 0x00017A89 File Offset: 0x00015C89
+		// Token: 0x06001FE4 RID: 8164 RVA: 0x00017379 File Offset: 0x00015579
 		private void OnLobbiesUpdated()
 		{
 			SteamLobbyFinder.LobbyStateBase lobbyStateBase = this.stateMachine.state as SteamLobbyFinder.LobbyStateBase;
@@ -99,13 +98,13 @@ namespace RoR2.Networking
 			lobbyStateBase.OnLobbiesUpdated();
 		}
 
-		// Token: 0x06002076 RID: 8310 RVA: 0x00017AA5 File Offset: 0x00015CA5
+		// Token: 0x06001FE5 RID: 8165 RVA: 0x00017395 File Offset: 0x00015595
 		private static bool CanJoinLobby(int currentLobbySize, LobbyList.Lobby lobby)
 		{
 			return currentLobbySize + SteamLobbyFinder.GetRealLobbyPlayerCount(lobby) < lobby.MemberLimit;
 		}
 
-		// Token: 0x06002077 RID: 8311 RVA: 0x0009CDD8 File Offset: 0x0009AFD8
+		// Token: 0x06001FE6 RID: 8166 RVA: 0x0009B8BC File Offset: 0x00099ABC
 		private static int GetRealLobbyPlayerCount(LobbyList.Lobby lobby)
 		{
 			string data = lobby.GetData("player_count");
@@ -117,15 +116,15 @@ namespace RoR2.Networking
 			return SteamLobbyFinder.steamClient.Lobby.MaxMembers;
 		}
 
-		// Token: 0x06002078 RID: 8312 RVA: 0x00017AB7 File Offset: 0x00015CB7
+		// Token: 0x06001FE7 RID: 8167 RVA: 0x000173A7 File Offset: 0x000155A7
 		private static int GetCurrentLobbyRealPlayerCount()
 		{
 			return SteamworksLobbyManager.newestLobbyData.totalPlayerCount;
 		}
 
-		// Token: 0x170002D9 RID: 729
-		// (get) Token: 0x06002079 RID: 8313 RVA: 0x00017AC3 File Offset: 0x00015CC3
-		// (set) Token: 0x0600207A RID: 8314 RVA: 0x00017ACA File Offset: 0x00015CCA
+		// Token: 0x170002C6 RID: 710
+		// (get) Token: 0x06001FE8 RID: 8168 RVA: 0x000173B3 File Offset: 0x000155B3
+		// (set) Token: 0x06001FE9 RID: 8169 RVA: 0x000173BA File Offset: 0x000155BA
 		public static bool userRequestedQuickplayQueue
 		{
 			get
@@ -142,9 +141,9 @@ namespace RoR2.Networking
 			}
 		}
 
-		// Token: 0x170002DA RID: 730
-		// (get) Token: 0x0600207B RID: 8315 RVA: 0x00017AEE File Offset: 0x00015CEE
-		// (set) Token: 0x0600207C RID: 8316 RVA: 0x00017AF5 File Offset: 0x00015CF5
+		// Token: 0x170002C7 RID: 711
+		// (get) Token: 0x06001FEA RID: 8170 RVA: 0x000173DE File Offset: 0x000155DE
+		// (set) Token: 0x06001FEB RID: 8171 RVA: 0x000173E5 File Offset: 0x000155E5
 		private static bool lobbyIsInQuickplayQueue
 		{
 			get
@@ -161,7 +160,7 @@ namespace RoR2.Networking
 			}
 		}
 
-		// Token: 0x0600207D RID: 8317 RVA: 0x00017B19 File Offset: 0x00015D19
+		// Token: 0x06001FEC RID: 8172 RVA: 0x00017409 File Offset: 0x00015609
 		[ConCommand(commandName = "steam_quickplay_start")]
 		private static void CCSteamQuickplayStart(ConCommandArgs args)
 		{
@@ -170,7 +169,7 @@ namespace RoR2.Networking
 			SteamworksLobbyManager.SetLobbyQuickPlayQueuedIfOwner(true);
 		}
 
-		// Token: 0x0600207E RID: 8318 RVA: 0x00017B2C File Offset: 0x00015D2C
+		// Token: 0x06001FED RID: 8173 RVA: 0x0001741C File Offset: 0x0001561C
 		[ConCommand(commandName = "steam_quickplay_stop")]
 		private static void CCSteamQuickplayStop(ConCommandArgs args)
 		{
@@ -179,7 +178,7 @@ namespace RoR2.Networking
 			SteamworksLobbyManager.CreateLobby();
 		}
 
-		// Token: 0x0600207F RID: 8319 RVA: 0x0009CE10 File Offset: 0x0009B010
+		// Token: 0x06001FEE RID: 8174 RVA: 0x0009B8F4 File Offset: 0x00099AF4
 		static SteamLobbyFinder()
 		{
 			SteamworksLobbyManager.onLobbyDataUpdated += SteamLobbyFinder.OnLobbyDataUpdated;
@@ -201,13 +200,13 @@ namespace RoR2.Networking
 			};
 		}
 
-		// Token: 0x06002080 RID: 8320 RVA: 0x00017B3E File Offset: 0x00015D3E
+		// Token: 0x06001FEF RID: 8175 RVA: 0x0001742E File Offset: 0x0001562E
 		private static void OnLobbyDataUpdated()
 		{
 			SteamLobbyFinder.lobbyIsInQuickplayQueue = SteamworksLobbyManager.newestLobbyData.quickplayQueued;
 		}
 
-		// Token: 0x06002081 RID: 8321 RVA: 0x0009CE70 File Offset: 0x0009B070
+		// Token: 0x06001FF0 RID: 8176 RVA: 0x0009B954 File Offset: 0x00099B54
 		public static string GetResolvedStateString()
 		{
 			if (!SteamLobbyFinder.steamClient.Lobby.IsValid)
@@ -250,7 +249,7 @@ namespace RoR2.Networking
 					}
 					else
 					{
-						DateTime d = Util.UnixTimeStampToDateTimeUtc(SteamLobbyFinder.steamClient.Utils.GetServerRealTime());
+						DateTime d = Util.UnixTimeStampToDateTime(SteamLobbyFinder.steamClient.Utils.GetServerRealTime());
 						DateTime? quickplayCutoffTime = SteamworksLobbyManager.newestLobbyData.quickplayCutoffTime;
 						if (quickplayCutoffTime == null)
 						{
@@ -282,9 +281,9 @@ namespace RoR2.Networking
 			return Language.GetStringFormatted(token, args);
 		}
 
-		// Token: 0x170002DB RID: 731
-		// (get) Token: 0x06002082 RID: 8322 RVA: 0x00017B4F File Offset: 0x00015D4F
-		// (set) Token: 0x06002083 RID: 8323 RVA: 0x0009D078 File Offset: 0x0009B278
+		// Token: 0x170002C8 RID: 712
+		// (get) Token: 0x06001FF1 RID: 8177 RVA: 0x0001743F File Offset: 0x0001563F
+		// (set) Token: 0x06001FF2 RID: 8178 RVA: 0x0009BB5C File Offset: 0x00099D5C
 		public static bool running
 		{
 			get
@@ -310,43 +309,43 @@ namespace RoR2.Networking
 			}
 		}
 
-		// Token: 0x0400226F RID: 8815
+		// Token: 0x04002218 RID: 8728
 		private float age;
 
-		// Token: 0x04002270 RID: 8816
+		// Token: 0x04002219 RID: 8729
 		public float joinOnlyDuration = 5f;
 
-		// Token: 0x04002271 RID: 8817
+		// Token: 0x0400221A RID: 8730
 		public float waitForFullDuration = 20f;
 
-		// Token: 0x04002272 RID: 8818
+		// Token: 0x0400221B RID: 8731
 		public float startDelayDuration = 1f;
 
-		// Token: 0x04002273 RID: 8819
+		// Token: 0x0400221C RID: 8732
 		public float refreshInterval = 2f;
 
-		// Token: 0x04002274 RID: 8820
+		// Token: 0x0400221D RID: 8733
 		private float refreshTimer;
 
-		// Token: 0x04002275 RID: 8821
+		// Token: 0x0400221E RID: 8734
 		private EntityStateMachine stateMachine;
 
-		// Token: 0x04002276 RID: 8822
+		// Token: 0x0400221F RID: 8735
 		private static bool awaitingLobbyRefresh;
 
-		// Token: 0x04002277 RID: 8823
+		// Token: 0x04002220 RID: 8736
 		private static SteamLobbyFinder instance;
 
-		// Token: 0x04002278 RID: 8824
+		// Token: 0x04002221 RID: 8737
 		private static bool _userRequestedQuickplayQueue;
 
-		// Token: 0x04002279 RID: 8825
+		// Token: 0x04002222 RID: 8738
 		private static bool _lobbyIsInQuickplayQueue;
 
-		// Token: 0x02000598 RID: 1432
+		// Token: 0x02000585 RID: 1413
 		private class LobbyStateBase : BaseState
 		{
-			// Token: 0x06002085 RID: 8325 RVA: 0x00017B8F File Offset: 0x00015D8F
+			// Token: 0x06001FF4 RID: 8180 RVA: 0x0001747F File Offset: 0x0001567F
 			public override void OnEnter()
 			{
 				base.OnEnter();
@@ -355,7 +354,7 @@ namespace RoR2.Networking
 				SteamworksLobbyManager.onLobbyOwnershipLost += this.OnLobbyOwnershipLost;
 			}
 
-			// Token: 0x06002086 RID: 8326 RVA: 0x00017BC5 File Offset: 0x00015DC5
+			// Token: 0x06001FF5 RID: 8181 RVA: 0x000174B5 File Offset: 0x000156B5
 			public override void OnExit()
 			{
 				SteamworksLobbyManager.onLobbyOwnershipGained -= this.OnLobbyOwnershipGained;
@@ -363,31 +362,31 @@ namespace RoR2.Networking
 				base.OnExit();
 			}
 
-			// Token: 0x06002087 RID: 8327 RVA: 0x000025DA File Offset: 0x000007DA
+			// Token: 0x06001FF6 RID: 8182 RVA: 0x000025F6 File Offset: 0x000007F6
 			public virtual void OnLobbiesUpdated()
 			{
 			}
 
-			// Token: 0x06002088 RID: 8328 RVA: 0x00017BEF File Offset: 0x00015DEF
+			// Token: 0x06001FF7 RID: 8183 RVA: 0x000174DF File Offset: 0x000156DF
 			private void OnLobbyOwnershipGained()
 			{
 				this.outer.SetNextState(new SteamLobbyFinder.LobbyStateStart());
 			}
 
-			// Token: 0x06002089 RID: 8329 RVA: 0x00017C01 File Offset: 0x00015E01
+			// Token: 0x06001FF8 RID: 8184 RVA: 0x000174F1 File Offset: 0x000156F1
 			private void OnLobbyOwnershipLost()
 			{
 				this.outer.SetNextState(new SteamLobbyFinder.LobbyStateNonLeader());
 			}
 
-			// Token: 0x0400227A RID: 8826
+			// Token: 0x04002223 RID: 8739
 			protected SteamLobbyFinder lobbyFinder;
 		}
 
-		// Token: 0x02000599 RID: 1433
+		// Token: 0x02000586 RID: 1414
 		private class LobbyStateNonLeader : SteamLobbyFinder.LobbyStateBase
 		{
-			// Token: 0x0600208B RID: 8331 RVA: 0x00017C13 File Offset: 0x00015E13
+			// Token: 0x06001FFA RID: 8186 RVA: 0x00017503 File Offset: 0x00015703
 			public override void Update()
 			{
 				base.Update();
@@ -403,10 +402,10 @@ namespace RoR2.Networking
 			}
 		}
 
-		// Token: 0x0200059A RID: 1434
+		// Token: 0x02000587 RID: 1415
 		private class LobbyStateStart : SteamLobbyFinder.LobbyStateBase
 		{
-			// Token: 0x0600208D RID: 8333 RVA: 0x00017C52 File Offset: 0x00015E52
+			// Token: 0x06001FFC RID: 8188 RVA: 0x00017542 File Offset: 0x00015742
 			public override void Update()
 			{
 				base.Update();
@@ -417,17 +416,17 @@ namespace RoR2.Networking
 			}
 		}
 
-		// Token: 0x0200059B RID: 1435
+		// Token: 0x02000588 RID: 1416
 		private class LobbyStateSingleSearch : SteamLobbyFinder.LobbyStateBase
 		{
-			// Token: 0x0600208F RID: 8335 RVA: 0x0009D0E0 File Offset: 0x0009B2E0
+			// Token: 0x06001FFE RID: 8190 RVA: 0x0009BBC4 File Offset: 0x00099DC4
 			public override void OnEnter()
 			{
 				base.OnEnter();
 				SteamworksLobbyManager.SetLobbyQuickPlayCutoffTimeIfOwner(null);
 			}
 
-			// Token: 0x06002090 RID: 8336 RVA: 0x0009D104 File Offset: 0x0009B304
+			// Token: 0x06001FFF RID: 8191 RVA: 0x0009BBE8 File Offset: 0x00099DE8
 			public override void Update()
 			{
 				base.Update();
@@ -451,7 +450,7 @@ namespace RoR2.Networking
 				}
 			}
 
-			// Token: 0x06002091 RID: 8337 RVA: 0x0009D1B4 File Offset: 0x0009B3B4
+			// Token: 0x06002000 RID: 8192 RVA: 0x0009BC98 File Offset: 0x00099E98
 			public override void OnLobbiesUpdated()
 			{
 				base.OnLobbiesUpdated();
@@ -485,25 +484,25 @@ namespace RoR2.Networking
 			}
 		}
 
-		// Token: 0x0200059C RID: 1436
+		// Token: 0x02000589 RID: 1417
 		private class LobbyStateMultiSearch : SteamLobbyFinder.LobbyStateBase
 		{
-			// Token: 0x06002093 RID: 8339 RVA: 0x0009D2C0 File Offset: 0x0009B4C0
+			// Token: 0x06002002 RID: 8194 RVA: 0x0009BDA4 File Offset: 0x00099FA4
 			public override void OnEnter()
 			{
 				base.OnEnter();
 				SteamLobbyFinder.steamClient.Lobby.LobbyType = Lobby.Type.Public;
-				SteamworksLobbyManager.SetLobbyQuickPlayCutoffTimeIfOwner(new uint?((uint)(Util.UnixTimeStampToDateTimeUtc(SteamLobbyFinder.steamClient.Utils.GetServerRealTime()) + TimeSpan.FromSeconds((double)this.lobbyFinder.waitForFullDuration) - Util.dateZero).TotalSeconds));
+				SteamworksLobbyManager.SetLobbyQuickPlayCutoffTimeIfOwner(new uint?((uint)(Util.UnixTimeStampToDateTime(SteamLobbyFinder.steamClient.Utils.GetServerRealTime()) + TimeSpan.FromSeconds((double)this.lobbyFinder.waitForFullDuration) - Util.dateZero).TotalSeconds));
 			}
 
-			// Token: 0x06002094 RID: 8340 RVA: 0x0009D32C File Offset: 0x0009B52C
+			// Token: 0x06002003 RID: 8195 RVA: 0x0009BE10 File Offset: 0x0009A010
 			public override void OnExit()
 			{
 				SteamworksLobbyManager.SetLobbyQuickPlayCutoffTimeIfOwner(null);
 				base.OnExit();
 			}
 
-			// Token: 0x06002095 RID: 8341 RVA: 0x0009D350 File Offset: 0x0009B550
+			// Token: 0x06002004 RID: 8196 RVA: 0x0009BE34 File Offset: 0x0009A034
 			public override void Update()
 			{
 				base.Update();
@@ -519,10 +518,10 @@ namespace RoR2.Networking
 			}
 		}
 
-		// Token: 0x0200059D RID: 1437
+		// Token: 0x0200058A RID: 1418
 		private class LobbyStateBeginGame : SteamLobbyFinder.LobbyStateBase
 		{
-			// Token: 0x06002097 RID: 8343 RVA: 0x0009D3A0 File Offset: 0x0009B5A0
+			// Token: 0x06002006 RID: 8198 RVA: 0x0009BE84 File Offset: 0x0009A084
 			public override void OnEnter()
 			{
 				base.OnEnter();

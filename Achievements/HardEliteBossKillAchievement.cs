@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace RoR2.Achievements
 {
-	// Token: 0x020006AF RID: 1711
+	// Token: 0x0200069D RID: 1693
 	[RegisterAchievement("HardEliteBossKill", "Items.KillEliteFrenzy", null, typeof(HardEliteBossKillAchievement.EliteBossKillServerAchievement))]
 	internal class HardEliteBossKillAchievement : BaseAchievement
 	{
-		// Token: 0x0600264D RID: 9805 RVA: 0x0001BF92 File Offset: 0x0001A192
+		// Token: 0x060025B6 RID: 9654 RVA: 0x0001B857 File Offset: 0x00019A57
 		public override void OnInstall()
 		{
 			base.OnInstall();
@@ -16,7 +16,7 @@ namespace RoR2.Achievements
 			Run.onRunStartGlobal += this.OnRunStart;
 		}
 
-		// Token: 0x0600264E RID: 9806 RVA: 0x0001BFBC File Offset: 0x0001A1BC
+		// Token: 0x060025B7 RID: 9655 RVA: 0x0001B881 File Offset: 0x00019A81
 		public override void OnUninstall()
 		{
 			NetworkUser.OnPostNetworkUserStart -= this.OnPostNetworkUserStart;
@@ -24,28 +24,28 @@ namespace RoR2.Achievements
 			base.OnUninstall();
 		}
 
-		// Token: 0x0600264F RID: 9807 RVA: 0x0001BFE6 File Offset: 0x0001A1E6
+		// Token: 0x060025B8 RID: 9656 RVA: 0x0001B8AB File Offset: 0x00019AAB
 		private void UpdateTracking()
 		{
 			base.SetServerTracked(Run.instance && Run.instance.selectedDifficulty >= DifficultyIndex.Hard);
 		}
 
-		// Token: 0x06002650 RID: 9808 RVA: 0x0001C00D File Offset: 0x0001A20D
+		// Token: 0x060025B9 RID: 9657 RVA: 0x0001B8D2 File Offset: 0x00019AD2
 		private void OnPostNetworkUserStart(NetworkUser networkUser)
 		{
 			this.UpdateTracking();
 		}
 
-		// Token: 0x06002651 RID: 9809 RVA: 0x0001C00D File Offset: 0x0001A20D
+		// Token: 0x060025BA RID: 9658 RVA: 0x0001B8D2 File Offset: 0x00019AD2
 		private void OnRunStart(Run run)
 		{
 			this.UpdateTracking();
 		}
 
-		// Token: 0x020006B0 RID: 1712
+		// Token: 0x0200069E RID: 1694
 		private class EliteBossKillServerAchievement : BaseServerAchievement
 		{
-			// Token: 0x06002653 RID: 9811 RVA: 0x0001C015 File Offset: 0x0001A215
+			// Token: 0x060025BC RID: 9660 RVA: 0x0001B8DA File Offset: 0x00019ADA
 			public override void OnInstall()
 			{
 				base.OnInstall();
@@ -56,7 +56,7 @@ namespace RoR2.Achievements
 				}
 			}
 
-			// Token: 0x06002654 RID: 9812 RVA: 0x0001C046 File Offset: 0x0001A246
+			// Token: 0x060025BD RID: 9661 RVA: 0x0001B90B File Offset: 0x00019B0B
 			public override void OnUninstall()
 			{
 				if (HardEliteBossKillAchievement.EliteBossKillServerAchievement.instancesList.Count == 1)
@@ -67,7 +67,7 @@ namespace RoR2.Achievements
 				base.OnUninstall();
 			}
 
-			// Token: 0x06002655 RID: 9813 RVA: 0x000B1E70 File Offset: 0x000B0070
+			// Token: 0x060025BE RID: 9662 RVA: 0x000B0778 File Offset: 0x000AE978
 			private static void OnCharacterDeath(DamageReport damageReport)
 			{
 				if (!damageReport.victim)
@@ -97,7 +97,7 @@ namespace RoR2.Achievements
 				}
 			}
 
-			// Token: 0x040028A5 RID: 10405
+			// Token: 0x04002849 RID: 10313
 			private static readonly List<HardEliteBossKillAchievement.EliteBossKillServerAchievement> instancesList = new List<HardEliteBossKillAchievement.EliteBossKillServerAchievement>();
 		}
 	}

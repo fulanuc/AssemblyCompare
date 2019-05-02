@@ -3,11 +3,11 @@ using RoR2.Stats;
 
 namespace RoR2.Achievements
 {
-	// Token: 0x020006B8 RID: 1720
+	// Token: 0x020006A6 RID: 1702
 	[RegisterAchievement("KillTotalEnemies", "Items.Infusion", null, null)]
 	public class KillTotalEnemiesAchievement : BaseAchievement
 	{
-		// Token: 0x0600266D RID: 9837 RVA: 0x0001C169 File Offset: 0x0001A369
+		// Token: 0x060025D6 RID: 9686 RVA: 0x0001BA2E File Offset: 0x00019C2E
 		public override void OnInstall()
 		{
 			base.OnInstall();
@@ -15,20 +15,20 @@ namespace RoR2.Achievements
 			this.Check();
 		}
 
-		// Token: 0x0600266E RID: 9838 RVA: 0x0001C18E File Offset: 0x0001A38E
+		// Token: 0x060025D7 RID: 9687 RVA: 0x0001BA53 File Offset: 0x00019C53
 		public override void OnUninstall()
 		{
 			this.userProfile.onStatsReceived -= this.Check;
 			base.OnUninstall();
 		}
 
-		// Token: 0x0600266F RID: 9839 RVA: 0x0001C1AD File Offset: 0x0001A3AD
+		// Token: 0x060025D8 RID: 9688 RVA: 0x0001BA72 File Offset: 0x00019C72
 		public override float ProgressForAchievement()
 		{
 			return this.userProfile.statSheet.GetStatValueULong(StatDef.totalKills) / 3000f;
 		}
 
-		// Token: 0x06002670 RID: 9840 RVA: 0x0001C1CC File Offset: 0x0001A3CC
+		// Token: 0x060025D9 RID: 9689 RVA: 0x0001BA91 File Offset: 0x00019C91
 		private void Check()
 		{
 			if (this.userProfile.statSheet.GetStatValueULong(StatDef.totalKills) >= 3000UL)
@@ -37,7 +37,7 @@ namespace RoR2.Achievements
 			}
 		}
 
-		// Token: 0x040028A8 RID: 10408
+		// Token: 0x0400284C RID: 10316
 		private const int requirement = 3000;
 	}
 }

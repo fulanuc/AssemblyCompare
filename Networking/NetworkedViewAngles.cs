@@ -4,21 +4,21 @@ using UnityEngine.Networking;
 
 namespace RoR2.Networking
 {
-	// Token: 0x02000595 RID: 1429
+	// Token: 0x02000582 RID: 1410
 	public class NetworkedViewAngles : NetworkBehaviour
 	{
-		// Token: 0x170002D7 RID: 727
-		// (get) Token: 0x0600205D RID: 8285 RVA: 0x0001791A File Offset: 0x00015B1A
-		// (set) Token: 0x0600205E RID: 8286 RVA: 0x00017922 File Offset: 0x00015B22
+		// Token: 0x170002C4 RID: 708
+		// (get) Token: 0x06001FCC RID: 8140 RVA: 0x0001720A File Offset: 0x0001540A
+		// (set) Token: 0x06001FCD RID: 8141 RVA: 0x00017212 File Offset: 0x00015412
 		public bool hasEffectiveAuthority { get; private set; }
 
-		// Token: 0x0600205F RID: 8287 RVA: 0x0001792B File Offset: 0x00015B2B
+		// Token: 0x06001FCE RID: 8142 RVA: 0x0001721B File Offset: 0x0001541B
 		private void Awake()
 		{
 			this.networkIdentity = base.GetComponent<NetworkIdentity>();
 		}
 
-		// Token: 0x06002060 RID: 8288 RVA: 0x0009CA40 File Offset: 0x0009AC40
+		// Token: 0x06001FCF RID: 8143 RVA: 0x0009B538 File Offset: 0x00099738
 		private void Update()
 		{
 			this.hasEffectiveAuthority = Util.HasEffectiveAuthority(this.networkIdentity);
@@ -30,19 +30,19 @@ namespace RoR2.Networking
 			this.viewAngles = PitchYawPair.SmoothDamp(this.viewAngles, this.networkDesiredViewAngles, ref this.velocity, this.GetNetworkSendInterval() * this.bufferMultiplier, this.maxSmoothVelocity);
 		}
 
-		// Token: 0x06002061 RID: 8289 RVA: 0x00017939 File Offset: 0x00015B39
+		// Token: 0x06001FD0 RID: 8144 RVA: 0x00017229 File Offset: 0x00015429
 		public override float GetNetworkSendInterval()
 		{
 			return this.sendRate;
 		}
 
-		// Token: 0x06002062 RID: 8290 RVA: 0x00017941 File Offset: 0x00015B41
+		// Token: 0x06001FD1 RID: 8145 RVA: 0x00017231 File Offset: 0x00015431
 		public override int GetNetworkChannel()
 		{
 			return QosChannelIndex.viewAngles.intVal;
 		}
 
-		// Token: 0x06002063 RID: 8291 RVA: 0x0009CAA4 File Offset: 0x0009ACA4
+		// Token: 0x06001FD2 RID: 8146 RVA: 0x0009B59C File Offset: 0x0009979C
 		private void FixedUpdate()
 		{
 			if (NetworkServer.active)
@@ -65,21 +65,21 @@ namespace RoR2.Networking
 			}
 		}
 
-		// Token: 0x06002064 RID: 8292 RVA: 0x0001794D File Offset: 0x00015B4D
+		// Token: 0x06001FD3 RID: 8147 RVA: 0x0001723D File Offset: 0x0001543D
 		[Command(channel = 5)]
 		public void CmdUpdateViewAngles(float pitch, float yaw)
 		{
 			this.networkDesiredViewAngles = new PitchYawPair(pitch, yaw);
 		}
 
-		// Token: 0x06002065 RID: 8293 RVA: 0x0001795C File Offset: 0x00015B5C
+		// Token: 0x06001FD4 RID: 8148 RVA: 0x0001724C File Offset: 0x0001544C
 		public override bool OnSerialize(NetworkWriter writer, bool initialState)
 		{
 			writer.Write(this.networkDesiredViewAngles);
 			return !initialState;
 		}
 
-		// Token: 0x06002066 RID: 8294 RVA: 0x0009CB34 File Offset: 0x0009AD34
+		// Token: 0x06001FD5 RID: 8149 RVA: 0x0009B62C File Offset: 0x0009982C
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 			PitchYawPair pitchYawPair = reader.ReadPitchYawPair();
@@ -95,12 +95,12 @@ namespace RoR2.Networking
 			}
 		}
 
-		// Token: 0x06002068 RID: 8296 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06001FD7 RID: 8151 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x06002069 RID: 8297 RVA: 0x00017997 File Offset: 0x00015B97
+		// Token: 0x06001FD8 RID: 8152 RVA: 0x00017287 File Offset: 0x00015487
 		protected static void InvokeCmdCmdUpdateViewAngles(NetworkBehaviour obj, NetworkReader reader)
 		{
 			if (!NetworkServer.active)
@@ -111,7 +111,7 @@ namespace RoR2.Networking
 			((NetworkedViewAngles)obj).CmdUpdateViewAngles(reader.ReadSingle(), reader.ReadSingle());
 		}
 
-		// Token: 0x0600206A RID: 8298 RVA: 0x0009CB70 File Offset: 0x0009AD70
+		// Token: 0x06001FD9 RID: 8153 RVA: 0x0009B668 File Offset: 0x00099868
 		public void CallCmdUpdateViewAngles(float pitch, float yaw)
 		{
 			if (!NetworkClient.active)
@@ -134,38 +134,38 @@ namespace RoR2.Networking
 			base.SendCommandInternal(networkWriter, 5, "CmdUpdateViewAngles");
 		}
 
-		// Token: 0x0600206B RID: 8299 RVA: 0x000179C8 File Offset: 0x00015BC8
+		// Token: 0x06001FDA RID: 8154 RVA: 0x000172B8 File Offset: 0x000154B8
 		static NetworkedViewAngles()
 		{
 			NetworkBehaviour.RegisterCommandDelegate(typeof(NetworkedViewAngles), NetworkedViewAngles.kCmdCmdUpdateViewAngles, new NetworkBehaviour.CmdDelegate(NetworkedViewAngles.InvokeCmdCmdUpdateViewAngles));
 			NetworkCRC.RegisterBehaviour("NetworkedViewAngles", 0);
 		}
 
-		// Token: 0x0400225B RID: 8795
+		// Token: 0x04002204 RID: 8708
 		public PitchYawPair viewAngles;
 
-		// Token: 0x0400225C RID: 8796
+		// Token: 0x04002205 RID: 8709
 		private PitchYawPair networkDesiredViewAngles;
 
-		// Token: 0x0400225D RID: 8797
+		// Token: 0x04002206 RID: 8710
 		private PitchYawPair velocity;
 
-		// Token: 0x0400225E RID: 8798
+		// Token: 0x04002207 RID: 8711
 		private NetworkIdentity networkIdentity;
 
-		// Token: 0x04002260 RID: 8800
+		// Token: 0x04002209 RID: 8713
 		public float sendRate = 0.05f;
 
-		// Token: 0x04002261 RID: 8801
+		// Token: 0x0400220A RID: 8714
 		public float bufferMultiplier = 3f;
 
-		// Token: 0x04002262 RID: 8802
+		// Token: 0x0400220B RID: 8715
 		public float maxSmoothVelocity = 1440f;
 
-		// Token: 0x04002263 RID: 8803
+		// Token: 0x0400220C RID: 8716
 		private float sendTimer;
 
-		// Token: 0x04002264 RID: 8804
+		// Token: 0x0400220D RID: 8717
 		private static int kCmdCmdUpdateViewAngles = -1684781536;
 	}
 }

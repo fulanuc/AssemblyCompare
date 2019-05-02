@@ -2,27 +2,27 @@
 
 namespace RoR2.Achievements
 {
-	// Token: 0x020006C0 RID: 1728
+	// Token: 0x020006AE RID: 1710
 	[RegisterAchievement("RepeatedlyDuplicateItems", "Items.Firework", null, typeof(RepeatedlyDuplicateItemsAchievement.RepeatedlyDuplicateItemsServerAchievement))]
 	public class RepeatedlyDuplicateItemsAchievement : BaseAchievement
 	{
-		// Token: 0x06002690 RID: 9872 RVA: 0x0001BA4F File Offset: 0x00019C4F
+		// Token: 0x060025F9 RID: 9721 RVA: 0x0001B314 File Offset: 0x00019514
 		public override void OnInstall()
 		{
 			base.OnInstall();
 			base.SetServerTracked(true);
 		}
 
-		// Token: 0x06002691 RID: 9873 RVA: 0x0001BA5E File Offset: 0x00019C5E
+		// Token: 0x060025FA RID: 9722 RVA: 0x0001B323 File Offset: 0x00019523
 		public override void OnUninstall()
 		{
 			base.OnUninstall();
 		}
 
-		// Token: 0x020006C1 RID: 1729
+		// Token: 0x020006AF RID: 1711
 		private class RepeatedlyDuplicateItemsServerAchievement : BaseServerAchievement
 		{
-			// Token: 0x06002693 RID: 9875 RVA: 0x0001C336 File Offset: 0x0001A536
+			// Token: 0x060025FC RID: 9724 RVA: 0x0001BBFB File Offset: 0x00019DFB
 			public override void OnInstall()
 			{
 				base.OnInstall();
@@ -30,7 +30,7 @@ namespace RoR2.Achievements
 				Run.onRunStartGlobal += this.OnRunStartGlobal;
 			}
 
-			// Token: 0x06002694 RID: 9876 RVA: 0x0001C360 File Offset: 0x0001A560
+			// Token: 0x060025FD RID: 9725 RVA: 0x0001BC25 File Offset: 0x00019E25
 			public override void OnUninstall()
 			{
 				base.OnInstall();
@@ -38,13 +38,13 @@ namespace RoR2.Achievements
 				Run.onRunStartGlobal -= this.OnRunStartGlobal;
 			}
 
-			// Token: 0x06002695 RID: 9877 RVA: 0x0001C38A File Offset: 0x0001A58A
+			// Token: 0x060025FE RID: 9726 RVA: 0x0001BC4F File Offset: 0x00019E4F
 			private void OnRunStartGlobal(Run run)
 			{
 				this.progress = 0;
 			}
 
-			// Token: 0x06002696 RID: 9878 RVA: 0x000B2198 File Offset: 0x000B0398
+			// Token: 0x060025FF RID: 9727 RVA: 0x000B0A98 File Offset: 0x000AEC98
 			private void OnItemSpentOnPurchase(PurchaseInteraction purchaseInteraction, Interactor interactor)
 			{
 				CharacterBody currentBody = this.serverAchievementTracker.networkUser.GetCurrentBody();
@@ -68,13 +68,13 @@ namespace RoR2.Achievements
 				}
 			}
 
-			// Token: 0x040028AD RID: 10413
+			// Token: 0x04002851 RID: 10321
 			private const int requirement = 7;
 
-			// Token: 0x040028AE RID: 10414
+			// Token: 0x04002852 RID: 10322
 			private ItemIndex trackingItemIndex = ItemIndex.None;
 
-			// Token: 0x040028AF RID: 10415
+			// Token: 0x04002853 RID: 10323
 			private int progress;
 		}
 	}

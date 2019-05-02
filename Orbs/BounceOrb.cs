@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace RoR2.Orbs
 {
-	// Token: 0x0200051B RID: 1307
+	// Token: 0x0200050C RID: 1292
 	public class BounceOrb : Orb
 	{
-		// Token: 0x06001DAC RID: 7596 RVA: 0x00090670 File Offset: 0x0008E870
+		// Token: 0x06001D44 RID: 7492 RVA: 0x0008F898 File Offset: 0x0008DA98
 		public override void Begin()
 		{
 			base.duration = base.distanceToTarget / 70f;
@@ -22,7 +22,7 @@ namespace RoR2.Orbs
 			EffectManager.instance.SpawnEffect(Resources.Load<GameObject>("Prefabs/Effects/OrbEffects/BounceOrbEffect"), effectData, true);
 		}
 
-		// Token: 0x06001DAD RID: 7597 RVA: 0x000906DC File Offset: 0x0008E8DC
+		// Token: 0x06001D45 RID: 7493 RVA: 0x0008F904 File Offset: 0x0008DB04
 		public override void OnArrival()
 		{
 			if (this.target)
@@ -47,7 +47,7 @@ namespace RoR2.Orbs
 			}
 		}
 
-		// Token: 0x06001DAE RID: 7598 RVA: 0x000907D4 File Offset: 0x0008E9D4
+		// Token: 0x06001D46 RID: 7494 RVA: 0x0008F9FC File Offset: 0x0008DBFC
 		public HurtBox PickNextTarget(Vector3 position, float range)
 		{
 			BullseyeSearch bullseyeSearch = new BullseyeSearch();
@@ -70,34 +70,34 @@ namespace RoR2.Orbs
 			return hurtBox;
 		}
 
-		// Token: 0x04001F8F RID: 8079
+		// Token: 0x04001F51 RID: 8017
 		private const float speed = 70f;
 
-		// Token: 0x04001F90 RID: 8080
+		// Token: 0x04001F52 RID: 8018
 		public float damageValue;
 
-		// Token: 0x04001F91 RID: 8081
+		// Token: 0x04001F53 RID: 8019
 		public GameObject attacker;
 
-		// Token: 0x04001F92 RID: 8082
+		// Token: 0x04001F54 RID: 8020
 		public TeamIndex teamIndex;
 
-		// Token: 0x04001F93 RID: 8083
+		// Token: 0x04001F55 RID: 8021
 		public List<HealthComponent> bouncedObjects;
 
-		// Token: 0x04001F94 RID: 8084
+		// Token: 0x04001F56 RID: 8022
 		public bool isCrit;
 
-		// Token: 0x04001F95 RID: 8085
+		// Token: 0x04001F57 RID: 8023
 		public float scale;
 
-		// Token: 0x04001F96 RID: 8086
+		// Token: 0x04001F58 RID: 8024
 		public ProcChainMask procChainMask;
 
-		// Token: 0x04001F97 RID: 8087
+		// Token: 0x04001F59 RID: 8025
 		public float procCoefficient = 0.2f;
 
-		// Token: 0x04001F98 RID: 8088
+		// Token: 0x04001F5A RID: 8026
 		public DamageColorIndex damageColorIndex;
 	}
 }

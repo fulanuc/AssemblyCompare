@@ -6,16 +6,16 @@ using UnityEngine.Networking;
 
 namespace RoR2.Networking
 {
-	// Token: 0x0200057F RID: 1407
+	// Token: 0x02000570 RID: 1392
 	public class CharacterNetworkTransformManager : MonoBehaviour
 	{
-		// Token: 0x06001F8B RID: 8075 RVA: 0x00017178 File Offset: 0x00015378
+		// Token: 0x06001F21 RID: 7969 RVA: 0x00016C99 File Offset: 0x00014E99
 		private void Awake()
 		{
 			CharacterNetworkTransformManager.instance = this;
 		}
 
-		// Token: 0x06001F8C RID: 8076 RVA: 0x00017180 File Offset: 0x00015380
+		// Token: 0x06001F22 RID: 7970 RVA: 0x00016CA1 File Offset: 0x00014EA1
 		[NetworkMessageHandler(msgType = 51, client = true, server = true)]
 		private static void HandleTransformUpdates(NetworkMessage netMsg)
 		{
@@ -25,7 +25,7 @@ namespace RoR2.Networking
 			}
 		}
 
-		// Token: 0x06001F8D RID: 8077 RVA: 0x00099840 File Offset: 0x00097A40
+		// Token: 0x06001F23 RID: 7971 RVA: 0x00098B24 File Offset: 0x00096D24
 		private void HandleTransformUpdatesInternal(NetworkMessage netMsg)
 		{
 			uint num = (uint)netMsg.reader.ReadByte();
@@ -68,7 +68,7 @@ namespace RoR2.Networking
 			}
 		}
 
-		// Token: 0x06001F8E RID: 8078 RVA: 0x000999A0 File Offset: 0x00097BA0
+		// Token: 0x06001F24 RID: 7972 RVA: 0x00098C84 File Offset: 0x00096E84
 		private void ProcessQueue()
 		{
 			if (this.snapshotQueue.Count == 0)
@@ -103,7 +103,7 @@ namespace RoR2.Networking
 			}
 		}
 
-		// Token: 0x06001F8F RID: 8079 RVA: 0x00099AF8 File Offset: 0x00097CF8
+		// Token: 0x06001F25 RID: 7973 RVA: 0x00098DDC File Offset: 0x00096FDC
 		private void FixedUpdate()
 		{
 			if (!NetworkManager.singleton)
@@ -131,22 +131,22 @@ namespace RoR2.Networking
 			}
 		}
 
-		// Token: 0x040021FA RID: 8698
+		// Token: 0x040021BC RID: 8636
 		private static CharacterNetworkTransformManager instance;
 
-		// Token: 0x040021FB RID: 8699
+		// Token: 0x040021BD RID: 8637
 		private CharacterNetworkTransformManager.CharacterUpdateMessage currentInMessage = new CharacterNetworkTransformManager.CharacterUpdateMessage();
 
-		// Token: 0x040021FC RID: 8700
+		// Token: 0x040021BE RID: 8638
 		private CharacterNetworkTransformManager.CharacterUpdateMessage currentOutMessage = new CharacterNetworkTransformManager.CharacterUpdateMessage();
 
-		// Token: 0x040021FD RID: 8701
+		// Token: 0x040021BF RID: 8639
 		private readonly Queue<CharacterNetworkTransformManager.NetSnapshot> snapshotQueue = new Queue<CharacterNetworkTransformManager.NetSnapshot>();
 
-		// Token: 0x02000580 RID: 1408
+		// Token: 0x02000571 RID: 1393
 		private class CharacterUpdateMessage : MessageBase
 		{
-			// Token: 0x06001F92 RID: 8082 RVA: 0x00099B9C File Offset: 0x00097D9C
+			// Token: 0x06001F28 RID: 7976 RVA: 0x00098E80 File Offset: 0x00097080
 			public override void Serialize(NetworkWriter writer)
 			{
 				writer.Write(this.gameObject);
@@ -158,7 +158,7 @@ namespace RoR2.Networking
 				writer.Write(this.isGrounded);
 			}
 
-			// Token: 0x06001F93 RID: 8083 RVA: 0x00099C00 File Offset: 0x00097E00
+			// Token: 0x06001F29 RID: 7977 RVA: 0x00098EE4 File Offset: 0x000970E4
 			public override void Deserialize(NetworkReader reader)
 			{
 				this.gameObject = reader.ReadGameObject();
@@ -170,41 +170,41 @@ namespace RoR2.Networking
 				this.isGrounded = reader.ReadBoolean();
 			}
 
-			// Token: 0x040021FE RID: 8702
+			// Token: 0x040021C0 RID: 8640
 			public GameObject gameObject;
 
-			// Token: 0x040021FF RID: 8703
+			// Token: 0x040021C1 RID: 8641
 			public Vector3 newPosition;
 
-			// Token: 0x04002200 RID: 8704
+			// Token: 0x040021C2 RID: 8642
 			public Vector3 aimDirection;
 
-			// Token: 0x04002201 RID: 8705
+			// Token: 0x040021C3 RID: 8643
 			public Vector3 moveVector;
 
-			// Token: 0x04002202 RID: 8706
+			// Token: 0x040021C4 RID: 8644
 			public Quaternion rotation;
 
-			// Token: 0x04002203 RID: 8707
+			// Token: 0x040021C5 RID: 8645
 			public float timestamp;
 
-			// Token: 0x04002204 RID: 8708
+			// Token: 0x040021C6 RID: 8646
 			public bool isGrounded;
 
-			// Token: 0x04002205 RID: 8709
+			// Token: 0x040021C7 RID: 8647
 			public const int maxNetworkSize = 61;
 		}
 
-		// Token: 0x02000581 RID: 1409
+		// Token: 0x02000572 RID: 1394
 		public struct NetSnapshot
 		{
-			// Token: 0x04002206 RID: 8710
+			// Token: 0x040021C8 RID: 8648
 			public GameObject gameObject;
 
-			// Token: 0x04002207 RID: 8711
+			// Token: 0x040021C9 RID: 8649
 			public CharacterNetworkTransform.Snapshot snapshot;
 
-			// Token: 0x04002208 RID: 8712
+			// Token: 0x040021CA RID: 8650
 			public const int maxNetworkSize = 61;
 		}
 	}

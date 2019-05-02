@@ -1,18 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
-using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Networking;
 
 namespace RoR2.Networking
 {
-	// Token: 0x020005A2 RID: 1442
-	[MeansImplicitUse]
+	// Token: 0x0200058F RID: 1423
 	[AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = false)]
 	public class NetworkMessageHandlerAttribute : Attribute
 	{
-		// Token: 0x060020AB RID: 8363 RVA: 0x0009D5C8 File Offset: 0x0009B7C8
+		// Token: 0x0600201A RID: 8218 RVA: 0x0009C09C File Offset: 0x0009A29C
 		[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
 		private static void CollectHandlers()
 		{
@@ -74,7 +72,7 @@ namespace RoR2.Networking
 			}
 		}
 
-		// Token: 0x060020AC RID: 8364 RVA: 0x0009D774 File Offset: 0x0009B974
+		// Token: 0x0600201B RID: 8219 RVA: 0x0009C248 File Offset: 0x0009A448
 		public static void RegisterServerMessages()
 		{
 			foreach (NetworkMessageHandlerAttribute networkMessageHandlerAttribute in NetworkMessageHandlerAttribute.serverMessageHandlers)
@@ -83,7 +81,7 @@ namespace RoR2.Networking
 			}
 		}
 
-		// Token: 0x060020AD RID: 8365 RVA: 0x0009D7D0 File Offset: 0x0009B9D0
+		// Token: 0x0600201C RID: 8220 RVA: 0x0009C2A4 File Offset: 0x0009A4A4
 		public static void RegisterClientMessages(NetworkClient client)
 		{
 			foreach (NetworkMessageHandlerAttribute networkMessageHandlerAttribute in NetworkMessageHandlerAttribute.clientMessageHandlers)
@@ -92,22 +90,22 @@ namespace RoR2.Networking
 			}
 		}
 
-		// Token: 0x04002283 RID: 8835
+		// Token: 0x0400222B RID: 8747
 		public short msgType;
 
-		// Token: 0x04002284 RID: 8836
+		// Token: 0x0400222C RID: 8748
 		public bool server;
 
-		// Token: 0x04002285 RID: 8837
+		// Token: 0x0400222D RID: 8749
 		public bool client;
 
-		// Token: 0x04002286 RID: 8838
+		// Token: 0x0400222E RID: 8750
 		private NetworkMessageDelegate messageHandler;
 
-		// Token: 0x04002287 RID: 8839
+		// Token: 0x0400222F RID: 8751
 		private static List<NetworkMessageHandlerAttribute> clientMessageHandlers = new List<NetworkMessageHandlerAttribute>();
 
-		// Token: 0x04002288 RID: 8840
+		// Token: 0x04002230 RID: 8752
 		private static List<NetworkMessageHandlerAttribute> serverMessageHandlers = new List<NetworkMessageHandlerAttribute>();
 	}
 }

@@ -2,11 +2,11 @@
 
 namespace RoR2.Achievements
 {
-	// Token: 0x02000696 RID: 1686
+	// Token: 0x02000684 RID: 1668
 	[RegisterAchievement("CarryLunarItems", "Items.Meteor", null, null)]
 	public class CarryLunarItemsAchievement : BaseAchievement
 	{
-		// Token: 0x060025D6 RID: 9686 RVA: 0x0001B8E5 File Offset: 0x00019AE5
+		// Token: 0x0600253F RID: 9535 RVA: 0x0001B1AA File Offset: 0x000193AA
 		public override void OnInstall()
 		{
 			base.OnInstall();
@@ -14,7 +14,7 @@ namespace RoR2.Achievements
 			this.SetMasterController(this.localUser.cachedMasterController);
 		}
 
-		// Token: 0x060025D7 RID: 9687 RVA: 0x0001B915 File Offset: 0x00019B15
+		// Token: 0x06002540 RID: 9536 RVA: 0x0001B1DA File Offset: 0x000193DA
 		public override void OnUninstall()
 		{
 			this.SetMasterController(null);
@@ -22,7 +22,7 @@ namespace RoR2.Achievements
 			base.OnUninstall();
 		}
 
-		// Token: 0x060025D8 RID: 9688 RVA: 0x000B1870 File Offset: 0x000AFA70
+		// Token: 0x06002541 RID: 9537 RVA: 0x000B0180 File Offset: 0x000AE380
 		private void SetMasterController(PlayerCharacterMasterController newMasterController)
 		{
 			if (this.currentMasterController == newMasterController)
@@ -52,7 +52,7 @@ namespace RoR2.Achievements
 			}
 		}
 
-		// Token: 0x060025D9 RID: 9689 RVA: 0x000B18F0 File Offset: 0x000AFAF0
+		// Token: 0x06002542 RID: 9538 RVA: 0x000B0200 File Offset: 0x000AE400
 		private void OnInventoryChanged()
 		{
 			if (this.currentInventory)
@@ -70,19 +70,19 @@ namespace RoR2.Achievements
 			}
 		}
 
-		// Token: 0x060025DA RID: 9690 RVA: 0x0001B93B File Offset: 0x00019B3B
+		// Token: 0x06002543 RID: 9539 RVA: 0x0001B200 File Offset: 0x00019400
 		private void OnMasterChanged()
 		{
 			this.SetMasterController(this.localUser.cachedMasterController);
 		}
 
-		// Token: 0x04002892 RID: 10386
+		// Token: 0x04002836 RID: 10294
 		public const int requirement = 5;
 
-		// Token: 0x04002893 RID: 10387
+		// Token: 0x04002837 RID: 10295
 		private PlayerCharacterMasterController currentMasterController;
 
-		// Token: 0x04002894 RID: 10388
+		// Token: 0x04002838 RID: 10296
 		private Inventory currentInventory;
 	}
 }

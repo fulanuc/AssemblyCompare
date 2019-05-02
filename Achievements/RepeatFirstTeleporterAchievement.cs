@@ -3,11 +3,11 @@ using RoR2.Stats;
 
 namespace RoR2.Achievements
 {
-	// Token: 0x020006C2 RID: 1730
+	// Token: 0x020006B0 RID: 1712
 	[RegisterAchievement("RepeatFirstTeleporter", "Characters.Toolbot", null, typeof(RepeatFirstTeleporterAchievement.RepeatFirstTeleporterServerAchievement))]
 	public class RepeatFirstTeleporterAchievement : BaseAchievement
 	{
-		// Token: 0x06002698 RID: 9880 RVA: 0x0001C3A2 File Offset: 0x0001A5A2
+		// Token: 0x06002601 RID: 9729 RVA: 0x0001BC67 File Offset: 0x00019E67
 		public override void OnInstall()
 		{
 			base.OnInstall();
@@ -15,14 +15,14 @@ namespace RoR2.Achievements
 			base.SetServerTracked(true);
 		}
 
-		// Token: 0x06002699 RID: 9881 RVA: 0x0001C3C8 File Offset: 0x0001A5C8
+		// Token: 0x06002602 RID: 9730 RVA: 0x0001BC8D File Offset: 0x00019E8D
 		public override void OnUninstall()
 		{
 			this.userProfile.onStatsReceived -= this.Check;
 			base.OnUninstall();
 		}
 
-		// Token: 0x0600269A RID: 9882 RVA: 0x0001C3E7 File Offset: 0x0001A5E7
+		// Token: 0x06002603 RID: 9731 RVA: 0x0001BCAC File Offset: 0x00019EAC
 		private void Check()
 		{
 			if (this.userProfile.statSheet.GetStatValueULong(StatDef.firstTeleporterCompleted) >= 5UL)
@@ -31,33 +31,33 @@ namespace RoR2.Achievements
 			}
 		}
 
-		// Token: 0x0600269B RID: 9883 RVA: 0x0001C408 File Offset: 0x0001A608
+		// Token: 0x06002604 RID: 9732 RVA: 0x0001BCCD File Offset: 0x00019ECD
 		public override float ProgressForAchievement()
 		{
 			return this.userProfile.statSheet.GetStatValueULong(StatDef.firstTeleporterCompleted) / 5f;
 		}
 
-		// Token: 0x040028B0 RID: 10416
+		// Token: 0x04002854 RID: 10324
 		private const int requirement = 5;
 
-		// Token: 0x020006C3 RID: 1731
+		// Token: 0x020006B1 RID: 1713
 		private class RepeatFirstTeleporterServerAchievement : BaseServerAchievement
 		{
-			// Token: 0x0600269D RID: 9885 RVA: 0x0001C428 File Offset: 0x0001A628
+			// Token: 0x06002606 RID: 9734 RVA: 0x0001BCED File Offset: 0x00019EED
 			public override void OnInstall()
 			{
 				base.OnInstall();
 				TeleporterInteraction.onTeleporterChargedGlobal += this.OnTeleporterCharged;
 			}
 
-			// Token: 0x0600269E RID: 9886 RVA: 0x0001C441 File Offset: 0x0001A641
+			// Token: 0x06002607 RID: 9735 RVA: 0x0001BD06 File Offset: 0x00019F06
 			public override void OnUninstall()
 			{
 				TeleporterInteraction.onTeleporterChargedGlobal -= this.OnTeleporterCharged;
 				base.OnUninstall();
 			}
 
-			// Token: 0x0600269F RID: 9887 RVA: 0x000B2238 File Offset: 0x000B0438
+			// Token: 0x06002608 RID: 9736 RVA: 0x000B0B38 File Offset: 0x000AED38
 			private void OnTeleporterCharged(TeleporterInteraction teleporterInteraction)
 			{
 				SceneCatalog.GetSceneDefForCurrentScene();

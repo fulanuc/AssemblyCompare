@@ -2,20 +2,20 @@
 
 namespace RoR2.ConVar
 {
-	// Token: 0x02000691 RID: 1681
+	// Token: 0x0200067F RID: 1663
 	public class FloatConVar : BaseConVar
 	{
-		// Token: 0x17000337 RID: 823
-		// (get) Token: 0x060025BA RID: 9658 RVA: 0x0001B766 File Offset: 0x00019966
-		// (set) Token: 0x060025BB RID: 9659 RVA: 0x0001B76E File Offset: 0x0001996E
+		// Token: 0x17000325 RID: 805
+		// (get) Token: 0x06002523 RID: 9507 RVA: 0x0001B033 File Offset: 0x00019233
+		// (set) Token: 0x06002524 RID: 9508 RVA: 0x0001B03B File Offset: 0x0001923B
 		public float value { get; protected set; }
 
-		// Token: 0x060025BC RID: 9660 RVA: 0x000090CD File Offset: 0x000072CD
+		// Token: 0x06002525 RID: 9509 RVA: 0x000090A8 File Offset: 0x000072A8
 		public FloatConVar(string name, ConVarFlags flags, string defaultValue, string helpText) : base(name, flags, defaultValue, helpText)
 		{
 		}
 
-		// Token: 0x060025BD RID: 9661 RVA: 0x000B1790 File Offset: 0x000AF990
+		// Token: 0x06002526 RID: 9510 RVA: 0x000B00A0 File Offset: 0x000AE2A0
 		public override void SetString(string newValue)
 		{
 			float num;
@@ -25,7 +25,7 @@ namespace RoR2.ConVar
 			}
 		}
 
-		// Token: 0x060025BE RID: 9662 RVA: 0x0001B777 File Offset: 0x00019977
+		// Token: 0x06002527 RID: 9511 RVA: 0x0001B044 File Offset: 0x00019244
 		public override string GetString()
 		{
 			return TextSerialization.ToStringInvariant(this.value);

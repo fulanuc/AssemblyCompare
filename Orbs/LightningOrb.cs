@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace RoR2.Orbs
 {
-	// Token: 0x02000523 RID: 1315
+	// Token: 0x02000514 RID: 1300
 	public class LightningOrb : Orb
 	{
-		// Token: 0x06001DC1 RID: 7617 RVA: 0x00090DB0 File Offset: 0x0008EFB0
+		// Token: 0x06001D59 RID: 7513 RVA: 0x0009003C File Offset: 0x0008E23C
 		public override void Begin()
 		{
 			base.duration = 0.1f;
@@ -43,7 +43,7 @@ namespace RoR2.Orbs
 			EffectManager.instance.SpawnEffect(Resources.Load<GameObject>(path), effectData, true);
 		}
 
-		// Token: 0x06001DC2 RID: 7618 RVA: 0x00090E74 File Offset: 0x0008F074
+		// Token: 0x06001D5A RID: 7514 RVA: 0x00090100 File Offset: 0x0008E300
 		public override void OnArrival()
 		{
 			if (this.target)
@@ -101,7 +101,7 @@ namespace RoR2.Orbs
 			}
 		}
 
-		// Token: 0x06001DC3 RID: 7619 RVA: 0x00091088 File Offset: 0x0008F288
+		// Token: 0x06001D5B RID: 7515 RVA: 0x00090314 File Offset: 0x0008E514
 		public HurtBox PickNextTarget(Vector3 position)
 		{
 			if (this.search == null)
@@ -126,65 +126,65 @@ namespace RoR2.Orbs
 			return hurtBox;
 		}
 
-		// Token: 0x04001FB6 RID: 8118
+		// Token: 0x04001F78 RID: 8056
 		public float speed = 100f;
 
-		// Token: 0x04001FB7 RID: 8119
+		// Token: 0x04001F79 RID: 8057
 		public float damageValue;
 
-		// Token: 0x04001FB8 RID: 8120
+		// Token: 0x04001F7A RID: 8058
 		public GameObject attacker;
 
-		// Token: 0x04001FB9 RID: 8121
+		// Token: 0x04001F7B RID: 8059
 		public int bouncesRemaining;
 
-		// Token: 0x04001FBA RID: 8122
+		// Token: 0x04001F7C RID: 8060
 		public List<HealthComponent> bouncedObjects;
 
-		// Token: 0x04001FBB RID: 8123
+		// Token: 0x04001F7D RID: 8061
 		public TeamIndex teamIndex;
 
-		// Token: 0x04001FBC RID: 8124
+		// Token: 0x04001F7E RID: 8062
 		public bool isCrit;
 
-		// Token: 0x04001FBD RID: 8125
+		// Token: 0x04001F7F RID: 8063
 		public ProcChainMask procChainMask;
 
-		// Token: 0x04001FBE RID: 8126
+		// Token: 0x04001F80 RID: 8064
 		public float procCoefficient = 1f;
 
-		// Token: 0x04001FBF RID: 8127
+		// Token: 0x04001F81 RID: 8065
 		public DamageColorIndex damageColorIndex;
 
-		// Token: 0x04001FC0 RID: 8128
+		// Token: 0x04001F82 RID: 8066
 		public float range = 20f;
 
-		// Token: 0x04001FC1 RID: 8129
+		// Token: 0x04001F83 RID: 8067
 		public float damageCoefficientPerBounce = 1f;
 
-		// Token: 0x04001FC2 RID: 8130
+		// Token: 0x04001F84 RID: 8068
 		private bool canBounceOnSameTarget;
 
-		// Token: 0x04001FC3 RID: 8131
+		// Token: 0x04001F85 RID: 8069
 		public LightningOrb.LightningType lightningType;
 
-		// Token: 0x04001FC4 RID: 8132
+		// Token: 0x04001F86 RID: 8070
 		private BullseyeSearch search;
 
-		// Token: 0x02000524 RID: 1316
+		// Token: 0x02000515 RID: 1301
 		public enum LightningType
 		{
-			// Token: 0x04001FC6 RID: 8134
+			// Token: 0x04001F88 RID: 8072
 			Ukulele,
-			// Token: 0x04001FC7 RID: 8135
+			// Token: 0x04001F89 RID: 8073
 			Tesla,
-			// Token: 0x04001FC8 RID: 8136
+			// Token: 0x04001F8A RID: 8074
 			BFG,
-			// Token: 0x04001FC9 RID: 8137
+			// Token: 0x04001F8B RID: 8075
 			PaladinBarrier,
-			// Token: 0x04001FCA RID: 8138
+			// Token: 0x04001F8C RID: 8076
 			HuntressGlaive,
-			// Token: 0x04001FCB RID: 8139
+			// Token: 0x04001F8D RID: 8077
 			Count
 		}
 	}

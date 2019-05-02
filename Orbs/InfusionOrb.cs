@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace RoR2.Orbs
 {
-	// Token: 0x02000520 RID: 1312
+	// Token: 0x02000511 RID: 1297
 	public class InfusionOrb : Orb
 	{
-		// Token: 0x06001DBB RID: 7611 RVA: 0x00090CB4 File Offset: 0x0008EEB4
+		// Token: 0x06001D53 RID: 7507 RVA: 0x0008FEDC File Offset: 0x0008E0DC
 		public override void Begin()
 		{
 			base.duration = base.distanceToTarget / 30f;
@@ -25,22 +25,28 @@ namespace RoR2.Orbs
 			}
 		}
 
-		// Token: 0x06001DBC RID: 7612 RVA: 0x00015C19 File Offset: 0x00013E19
+		// Token: 0x06001D54 RID: 7508 RVA: 0x0008FF6C File Offset: 0x0008E16C
 		public override void OnArrival()
 		{
 			if (this.targetInventory)
 			{
 				this.targetInventory.AddInfusionBonus((uint)this.maxHpValue);
+				HurtBox component = this.target.GetComponent<HurtBox>();
+				HealthComponent healthComponent = (component != null) ? component.healthComponent : null;
+				if (healthComponent)
+				{
+					healthComponent.Heal((float)this.maxHpValue, default(ProcChainMask), true);
+				}
 			}
 		}
 
-		// Token: 0x04001FB1 RID: 8113
+		// Token: 0x04001F73 RID: 8051
 		private const float speed = 30f;
 
-		// Token: 0x04001FB2 RID: 8114
+		// Token: 0x04001F74 RID: 8052
 		public int maxHpValue;
 
-		// Token: 0x04001FB3 RID: 8115
+		// Token: 0x04001F75 RID: 8053
 		private Inventory targetInventory;
 	}
 }

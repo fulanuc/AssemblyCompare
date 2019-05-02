@@ -2,41 +2,41 @@
 
 namespace RoR2.Achievements
 {
-	// Token: 0x020006A2 RID: 1698
+	// Token: 0x02000690 RID: 1680
 	[RegisterAchievement("CompleteUnknownEnding", "Characters.Mercenary", null, typeof(CompleteUnknownEndingAchievement.CompleteUnknownEndingServerAchievement))]
 	public class CompleteUnknownEndingAchievement : BaseAchievement
 	{
-		// Token: 0x06002611 RID: 9745 RVA: 0x0001BA4F File Offset: 0x00019C4F
+		// Token: 0x0600257A RID: 9594 RVA: 0x0001B314 File Offset: 0x00019514
 		public override void OnInstall()
 		{
 			base.OnInstall();
 			base.SetServerTracked(true);
 		}
 
-		// Token: 0x06002612 RID: 9746 RVA: 0x0001BA5E File Offset: 0x00019C5E
+		// Token: 0x0600257B RID: 9595 RVA: 0x0001B323 File Offset: 0x00019523
 		public override void OnUninstall()
 		{
 			base.OnUninstall();
 		}
 
-		// Token: 0x020006A3 RID: 1699
+		// Token: 0x02000691 RID: 1681
 		private class CompleteUnknownEndingServerAchievement : BaseServerAchievement
 		{
-			// Token: 0x06002614 RID: 9748 RVA: 0x0001BC74 File Offset: 0x00019E74
+			// Token: 0x0600257D RID: 9597 RVA: 0x0001B539 File Offset: 0x00019739
 			public override void OnInstall()
 			{
 				base.OnInstall();
 				Run.OnServerGameOver += this.OnServerGameOver;
 			}
 
-			// Token: 0x06002615 RID: 9749 RVA: 0x0001BC8D File Offset: 0x00019E8D
+			// Token: 0x0600257E RID: 9598 RVA: 0x0001B552 File Offset: 0x00019752
 			public override void OnUninstall()
 			{
 				base.OnInstall();
 				Run.OnServerGameOver -= this.OnServerGameOver;
 			}
 
-			// Token: 0x06002616 RID: 9750 RVA: 0x0001BCA6 File Offset: 0x00019EA6
+			// Token: 0x0600257F RID: 9599 RVA: 0x0001B56B File Offset: 0x0001976B
 			private void OnServerGameOver(Run run, GameResultType result)
 			{
 				if (result == GameResultType.Unknown)

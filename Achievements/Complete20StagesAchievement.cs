@@ -3,18 +3,18 @@ using RoR2.Stats;
 
 namespace RoR2.Achievements
 {
-	// Token: 0x02000698 RID: 1688
+	// Token: 0x02000686 RID: 1670
 	[RegisterAchievement("Complete20Stages", "Items.Clover", null, null)]
 	public class Complete20StagesAchievement : BaseAchievement
 	{
-		// Token: 0x060025E1 RID: 9697 RVA: 0x0001B988 File Offset: 0x00019B88
+		// Token: 0x0600254A RID: 9546 RVA: 0x0001B24D File Offset: 0x0001944D
 		public override void OnInstall()
 		{
 			base.OnInstall();
 			Run.onRunStartGlobal += this.OnRunStart;
 		}
 
-		// Token: 0x060025E2 RID: 9698 RVA: 0x0001B9A1 File Offset: 0x00019BA1
+		// Token: 0x0600254B RID: 9547 RVA: 0x0001B266 File Offset: 0x00019466
 		public override void OnUninstall()
 		{
 			Run.onRunStartGlobal -= this.OnRunStart;
@@ -22,13 +22,13 @@ namespace RoR2.Achievements
 			base.OnUninstall();
 		}
 
-		// Token: 0x060025E3 RID: 9699 RVA: 0x0001B9C1 File Offset: 0x00019BC1
+		// Token: 0x0600254C RID: 9548 RVA: 0x0001B286 File Offset: 0x00019486
 		private void OnRunStart(Run run)
 		{
 			this.SetListeningForStats(true);
 		}
 
-		// Token: 0x060025E4 RID: 9700 RVA: 0x000B19B4 File Offset: 0x000AFBB4
+		// Token: 0x0600254D RID: 9549 RVA: 0x000B02C4 File Offset: 0x000AE4C4
 		private void SetListeningForStats(bool shouldListen)
 		{
 			if (this.listeningForStats == shouldListen)
@@ -46,7 +46,7 @@ namespace RoR2.Achievements
 			this.subscribedProfile = null;
 		}
 
-		// Token: 0x060025E5 RID: 9701 RVA: 0x000B1A24 File Offset: 0x000AFC24
+		// Token: 0x0600254E RID: 9550 RVA: 0x000B0334 File Offset: 0x000AE534
 		private void OnStatsReceived()
 		{
 			PlayerStatsComponent playerStatsComponent = this.playerStatsComponentGetter.Get(this.localUser.cachedMasterObject);
@@ -56,16 +56,16 @@ namespace RoR2.Achievements
 			}
 		}
 
-		// Token: 0x04002896 RID: 10390
+		// Token: 0x0400283A RID: 10298
 		private const int requirement = 20;
 
-		// Token: 0x04002897 RID: 10391
+		// Token: 0x0400283B RID: 10299
 		private bool listeningForStats;
 
-		// Token: 0x04002898 RID: 10392
+		// Token: 0x0400283C RID: 10300
 		private UserProfile subscribedProfile;
 
-		// Token: 0x04002899 RID: 10393
+		// Token: 0x0400283D RID: 10301
 		private MemoizedGetComponent<PlayerStatsComponent> playerStatsComponentGetter;
 	}
 }

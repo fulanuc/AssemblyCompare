@@ -2,31 +2,31 @@
 
 namespace RoR2.Achievements
 {
-	// Token: 0x02000697 RID: 1687
+	// Token: 0x02000685 RID: 1669
 	[RegisterAchievement("ChargeTeleporterWhileNearDeath", "Items.WarCryOnMultiKill", null, null)]
 	public class ChargeTeleporterWhileNearDeathAchievement : BaseAchievement
 	{
-		// Token: 0x060025DC RID: 9692 RVA: 0x0001B94E File Offset: 0x00019B4E
+		// Token: 0x06002545 RID: 9541 RVA: 0x0001B213 File Offset: 0x00019413
 		public override void OnInstall()
 		{
 			base.OnInstall();
 			TeleporterInteraction.onTeleporterChargedGlobal += this.OnTeleporterCharged;
 		}
 
-		// Token: 0x060025DD RID: 9693 RVA: 0x0001B967 File Offset: 0x00019B67
+		// Token: 0x06002546 RID: 9542 RVA: 0x0001B22C File Offset: 0x0001942C
 		public override void OnUninstall()
 		{
 			TeleporterInteraction.onTeleporterChargedGlobal -= this.OnTeleporterCharged;
 			base.OnUninstall();
 		}
 
-		// Token: 0x060025DE RID: 9694 RVA: 0x0001B980 File Offset: 0x00019B80
+		// Token: 0x06002547 RID: 9543 RVA: 0x0001B245 File Offset: 0x00019445
 		private void OnTeleporterCharged(TeleporterInteraction teleporterInteraction)
 		{
 			this.Check();
 		}
 
-		// Token: 0x060025DF RID: 9695 RVA: 0x000B1944 File Offset: 0x000AFB44
+		// Token: 0x06002548 RID: 9544 RVA: 0x000B0254 File Offset: 0x000AE454
 		private void Check()
 		{
 			if (this.localUser.cachedBody && this.localUser.cachedBody.healthComponent && this.localUser.cachedBody.healthComponent.alive && this.localUser.cachedBody.healthComponent.combinedHealthFraction <= 0.1f)
@@ -35,7 +35,7 @@ namespace RoR2.Achievements
 			}
 		}
 
-		// Token: 0x04002895 RID: 10389
+		// Token: 0x04002839 RID: 10297
 		private const float requirement = 0.1f;
 	}
 }

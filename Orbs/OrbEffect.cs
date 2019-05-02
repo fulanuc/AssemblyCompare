@@ -4,11 +4,11 @@ using UnityEngine.Events;
 
 namespace RoR2.Orbs
 {
-	// Token: 0x02000529 RID: 1321
+	// Token: 0x0200051A RID: 1306
 	[RequireComponent(typeof(EffectComponent))]
 	public class OrbEffect : MonoBehaviour
 	{
-		// Token: 0x06001DDA RID: 7642 RVA: 0x0009131C File Offset: 0x0008F51C
+		// Token: 0x06001D72 RID: 7538 RVA: 0x000905A8 File Offset: 0x0008E7A8
 		private void Start()
 		{
 			EffectComponent component = base.GetComponent<EffectComponent>();
@@ -49,13 +49,13 @@ namespace RoR2.Orbs
 			this.UpdateOrb(0f);
 		}
 
-		// Token: 0x06001DDB RID: 7643 RVA: 0x00015DA3 File Offset: 0x00013FA3
+		// Token: 0x06001D73 RID: 7539 RVA: 0x000158DA File Offset: 0x00013ADA
 		private void Update()
 		{
 			this.UpdateOrb(Time.deltaTime);
 		}
 
-		// Token: 0x06001DDC RID: 7644 RVA: 0x00091548 File Offset: 0x0008F748
+		// Token: 0x06001D74 RID: 7540 RVA: 0x000907D4 File Offset: 0x0008E9D4
 		private void UpdateOrb(float deltaTime)
 		{
 			if (this.targetTransform)
@@ -93,7 +93,7 @@ namespace RoR2.Orbs
 			this.age += deltaTime;
 		}
 
-		// Token: 0x06001DDD RID: 7645 RVA: 0x0009169C File Offset: 0x0008F89C
+		// Token: 0x06001D75 RID: 7541 RVA: 0x00090928 File Offset: 0x0008EB28
 		private void UpdateBezier()
 		{
 			if (this.bezierCurveLine)
@@ -105,13 +105,13 @@ namespace RoR2.Orbs
 			}
 		}
 
-		// Token: 0x06001DDE RID: 7646 RVA: 0x00015DB0 File Offset: 0x00013FB0
+		// Token: 0x06001D76 RID: 7542 RVA: 0x000158E7 File Offset: 0x00013AE7
 		public void InstantiatePrefab(GameObject prefab)
 		{
 			UnityEngine.Object.Instantiate<GameObject>(prefab, base.transform.position, base.transform.rotation);
 		}
 
-		// Token: 0x06001DDF RID: 7647 RVA: 0x00015DCF File Offset: 0x00013FCF
+		// Token: 0x06001D77 RID: 7543 RVA: 0x00015906 File Offset: 0x00013B06
 		public void InstantiateEffect(GameObject prefab)
 		{
 			EffectManager.instance.SpawnEffect(prefab, new EffectData
@@ -120,7 +120,7 @@ namespace RoR2.Orbs
 			}, false);
 		}
 
-		// Token: 0x06001DE0 RID: 7648 RVA: 0x00015DF3 File Offset: 0x00013FF3
+		// Token: 0x06001D78 RID: 7544 RVA: 0x0001592A File Offset: 0x00013B2A
 		public void InstantiateEffectCopyRotation(GameObject prefab)
 		{
 			EffectManager.instance.SpawnEffect(prefab, new EffectData
@@ -130,7 +130,7 @@ namespace RoR2.Orbs
 			}, false);
 		}
 
-		// Token: 0x06001DE1 RID: 7649 RVA: 0x00015E28 File Offset: 0x00014028
+		// Token: 0x06001D79 RID: 7545 RVA: 0x0001595F File Offset: 0x00013B5F
 		public void InstantiateEffectOppositeFacing(GameObject prefab)
 		{
 			EffectManager.instance.SpawnEffect(prefab, new EffectData
@@ -140,81 +140,81 @@ namespace RoR2.Orbs
 			}, false);
 		}
 
-		// Token: 0x06001DE2 RID: 7650 RVA: 0x00015E67 File Offset: 0x00014067
+		// Token: 0x06001D7A RID: 7546 RVA: 0x0001599E File Offset: 0x00013B9E
 		public void InstantiatePrefabOppositeFacing(GameObject prefab)
 		{
 			UnityEngine.Object.Instantiate<GameObject>(prefab, base.transform.position, Util.QuaternionSafeLookRotation(-base.transform.forward));
 		}
 
-		// Token: 0x04001FE0 RID: 8160
+		// Token: 0x04001FA2 RID: 8098
 		private Transform targetTransform;
 
-		// Token: 0x04001FE1 RID: 8161
+		// Token: 0x04001FA3 RID: 8099
 		private float duration;
 
-		// Token: 0x04001FE2 RID: 8162
+		// Token: 0x04001FA4 RID: 8100
 		private Vector3 startPosition;
 
-		// Token: 0x04001FE3 RID: 8163
+		// Token: 0x04001FA5 RID: 8101
 		private Vector3 previousPosition;
 
-		// Token: 0x04001FE4 RID: 8164
+		// Token: 0x04001FA6 RID: 8102
 		private Vector3 lastKnownTargetPosition;
 
-		// Token: 0x04001FE5 RID: 8165
+		// Token: 0x04001FA7 RID: 8103
 		private float age;
 
-		// Token: 0x04001FE6 RID: 8166
+		// Token: 0x04001FA8 RID: 8104
 		[Header("Curve Parameters")]
 		public Vector3 startVelocity1;
 
-		// Token: 0x04001FE7 RID: 8167
+		// Token: 0x04001FA9 RID: 8105
 		public Vector3 startVelocity2;
 
-		// Token: 0x04001FE8 RID: 8168
+		// Token: 0x04001FAA RID: 8106
 		public Vector3 endVelocity1;
 
-		// Token: 0x04001FE9 RID: 8169
+		// Token: 0x04001FAB RID: 8107
 		public Vector3 endVelocity2;
 
-		// Token: 0x04001FEA RID: 8170
+		// Token: 0x04001FAC RID: 8108
 		private Vector3 startVelocity;
 
-		// Token: 0x04001FEB RID: 8171
+		// Token: 0x04001FAD RID: 8109
 		private Vector3 endVelocity;
 
-		// Token: 0x04001FEC RID: 8172
+		// Token: 0x04001FAE RID: 8110
 		public AnimationCurve movementCurve;
 
-		// Token: 0x04001FED RID: 8173
+		// Token: 0x04001FAF RID: 8111
 		public BezierCurveLine bezierCurveLine;
 
-		// Token: 0x04001FEE RID: 8174
+		// Token: 0x04001FB0 RID: 8112
 		public bool faceMovement = true;
 
-		// Token: 0x04001FEF RID: 8175
-		[Header("Start Effect")]
+		// Token: 0x04001FB1 RID: 8113
 		[Tooltip("An effect prefab to spawn on Start")]
+		[Header("Start Effect")]
 		public GameObject startEffect;
 
-		// Token: 0x04001FF0 RID: 8176
+		// Token: 0x04001FB2 RID: 8114
 		public float startEffectScale = 1f;
 
-		// Token: 0x04001FF1 RID: 8177
+		// Token: 0x04001FB3 RID: 8115
 		public bool startEffectCopiesRotation;
 
-		// Token: 0x04001FF2 RID: 8178
-		[Tooltip("An effect prefab to spawn on end")]
+		// Token: 0x04001FB4 RID: 8116
 		[Header("End Effect")]
+		[Tooltip("An effect prefab to spawn on end")]
 		public GameObject endEffect;
 
-		// Token: 0x04001FF3 RID: 8179
+		// Token: 0x04001FB5 RID: 8117
 		public float endEffectScale = 1f;
 
-		// Token: 0x04001FF4 RID: 8180
+		// Token: 0x04001FB6 RID: 8118
 		public bool endEffectCopiesRotation;
 
-		// Token: 0x04001FF5 RID: 8181
+		// Token: 0x04001FB7 RID: 8119
 		[Header("Arrival Behavior")]
 		public UnityEvent onArrival;
 	}

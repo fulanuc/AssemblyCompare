@@ -3,17 +3,10 @@ using System.Globalization;
 
 namespace RoR2.Networking
 {
-	// Token: 0x02000584 RID: 1412
-	public struct AddressPortPair : IEquatable<AddressPortPair>
+	// Token: 0x02000575 RID: 1397
+	public struct AddressPortPair
 	{
-		// Token: 0x06001F9D RID: 8093 RVA: 0x00017224 File Offset: 0x00015424
-		public AddressPortPair(string address, ushort port)
-		{
-			this.address = address;
-			this.port = port;
-		}
-
-		// Token: 0x06001F9E RID: 8094 RVA: 0x00099CB8 File Offset: 0x00097EB8
+		// Token: 0x06001F33 RID: 7987 RVA: 0x00098F9C File Offset: 0x0009719C
 		public static bool TryParse(string str, out AddressPortPair addressPortPair)
 		{
 			if (!string.IsNullOrEmpty(str))
@@ -38,8 +31,8 @@ namespace RoR2.Networking
 			return false;
 		}
 
-		// Token: 0x170002C5 RID: 709
-		// (get) Token: 0x06001F9F RID: 8095 RVA: 0x00017234 File Offset: 0x00015434
+		// Token: 0x170002B8 RID: 696
+		// (get) Token: 0x06001F34 RID: 7988 RVA: 0x00016D45 File Offset: 0x00014F45
 		public bool isValid
 		{
 			get
@@ -48,43 +41,16 @@ namespace RoR2.Networking
 			}
 		}
 
-		// Token: 0x06001FA0 RID: 8096 RVA: 0x00017244 File Offset: 0x00015444
+		// Token: 0x06001F35 RID: 7989 RVA: 0x00016D55 File Offset: 0x00014F55
 		public override string ToString()
 		{
 			return string.Format(CultureInfo.InvariantCulture, "{0}:{1}", this.address, this.port);
 		}
 
-		// Token: 0x06001FA1 RID: 8097 RVA: 0x00017266 File Offset: 0x00015466
-		public bool Equals(AddressPortPair other)
-		{
-			return string.Equals(this.address, other.address) && this.port == other.port;
-		}
-
-		// Token: 0x06001FA2 RID: 8098 RVA: 0x00099D3C File Offset: 0x00097F3C
-		public override bool Equals(object obj)
-		{
-			if (obj == null)
-			{
-				return false;
-			}
-			if (obj is AddressPortPair)
-			{
-				AddressPortPair other = (AddressPortPair)obj;
-				return this.Equals(other);
-			}
-			return false;
-		}
-
-		// Token: 0x06001FA3 RID: 8099 RVA: 0x0001728B File Offset: 0x0001548B
-		public override int GetHashCode()
-		{
-			return ((this.address != null) ? this.address.GetHashCode() : 0) * 397 ^ this.port.GetHashCode();
-		}
-
-		// Token: 0x0400220B RID: 8715
+		// Token: 0x040021CD RID: 8653
 		public string address;
 
-		// Token: 0x0400220C RID: 8716
+		// Token: 0x040021CE RID: 8654
 		public ushort port;
 	}
 }

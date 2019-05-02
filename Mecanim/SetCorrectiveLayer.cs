@@ -3,16 +3,16 @@ using UnityEngine;
 
 namespace RoR2.Mecanim
 {
-	// Token: 0x02000578 RID: 1400
+	// Token: 0x02000569 RID: 1385
 	public class SetCorrectiveLayer : StateMachineBehaviour
 	{
-		// Token: 0x06001F5B RID: 8027 RVA: 0x00016F59 File Offset: 0x00015159
+		// Token: 0x06001EF1 RID: 7921 RVA: 0x00016A7A File Offset: 0x00014C7A
 		public override void OnStateMachineEnter(Animator animator, int stateMachinePathHash)
 		{
 			base.OnStateMachineEnter(animator, stateMachinePathHash);
 		}
 
-		// Token: 0x06001F5C RID: 8028 RVA: 0x00098DF0 File Offset: 0x00096FF0
+		// Token: 0x06001EF2 RID: 7922 RVA: 0x000980D4 File Offset: 0x000962D4
 		public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
 		{
 			int layerIndex2 = animator.GetLayerIndex(this.referenceOverrideLayerName);
@@ -22,13 +22,13 @@ namespace RoR2.Mecanim
 			base.OnStateUpdate(animator, stateInfo, layerIndex);
 		}
 
-		// Token: 0x040021CF RID: 8655
+		// Token: 0x04002191 RID: 8593
 		public string referenceOverrideLayerName;
 
-		// Token: 0x040021D0 RID: 8656
+		// Token: 0x04002192 RID: 8594
 		public float maxWeight = 1f;
 
-		// Token: 0x040021D1 RID: 8657
+		// Token: 0x04002193 RID: 8595
 		private float smoothVelocity;
 	}
 }

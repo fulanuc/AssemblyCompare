@@ -3,22 +3,22 @@ using UnityEngine;
 
 namespace RoR2.Navigation
 {
-	// Token: 0x0200052D RID: 1325
+	// Token: 0x0200051E RID: 1310
 	public class GateStateSetter : MonoBehaviour
 	{
-		// Token: 0x06001DF0 RID: 7664 RVA: 0x00015F6D File Offset: 0x0001416D
+		// Token: 0x06001D88 RID: 7560 RVA: 0x00015AA4 File Offset: 0x00013CA4
 		private void OnEnable()
 		{
 			this.UpdateGates(true);
 		}
 
-		// Token: 0x06001DF1 RID: 7665 RVA: 0x00015F76 File Offset: 0x00014176
+		// Token: 0x06001D89 RID: 7561 RVA: 0x00015AAD File Offset: 0x00013CAD
 		private void OnDisable()
 		{
 			this.UpdateGates(false);
 		}
 
-		// Token: 0x06001DF2 RID: 7666 RVA: 0x00091894 File Offset: 0x0008FA94
+		// Token: 0x06001D8A RID: 7562 RVA: 0x00090B18 File Offset: 0x0008ED18
 		private void UpdateGates(bool enabledState)
 		{
 			if (!SceneInfo.instance)
@@ -35,10 +35,10 @@ namespace RoR2.Navigation
 			}
 		}
 
-		// Token: 0x04001FFF RID: 8191
+		// Token: 0x04001FC1 RID: 8129
 		public string gateToEnableWhenEnabled;
 
-		// Token: 0x04002000 RID: 8192
+		// Token: 0x04001FC2 RID: 8130
 		public string gateToDisableWhenEnabled;
 	}
 }

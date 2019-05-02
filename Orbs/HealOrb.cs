@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace RoR2.Orbs
 {
-	// Token: 0x0200051F RID: 1311
+	// Token: 0x02000510 RID: 1296
 	public class HealOrb : Orb
 	{
-		// Token: 0x06001DB8 RID: 7608 RVA: 0x00090BE8 File Offset: 0x0008EDE8
+		// Token: 0x06001D50 RID: 7504 RVA: 0x0008FE10 File Offset: 0x0008E010
 		public override void Begin()
 		{
 			float scale = this.scaleOrb ? (this.healValue / 10f) : 1f;
@@ -21,7 +21,7 @@ namespace RoR2.Orbs
 			EffectManager.instance.SpawnEffect(Resources.Load<GameObject>("Prefabs/Effects/OrbEffects/HealthOrbEffect"), effectData, true);
 		}
 
-		// Token: 0x06001DB9 RID: 7609 RVA: 0x00090C6C File Offset: 0x0008EE6C
+		// Token: 0x06001D51 RID: 7505 RVA: 0x0008FE94 File Offset: 0x0008E094
 		public override void OnArrival()
 		{
 			if (this.target)
@@ -34,13 +34,13 @@ namespace RoR2.Orbs
 			}
 		}
 
-		// Token: 0x04001FAE RID: 8110
+		// Token: 0x04001F70 RID: 8048
 		private const float speed = 20f;
 
-		// Token: 0x04001FAF RID: 8111
+		// Token: 0x04001F71 RID: 8049
 		public float healValue;
 
-		// Token: 0x04001FB0 RID: 8112
+		// Token: 0x04001F72 RID: 8050
 		public bool scaleOrb = true;
 	}
 }

@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace RoR2.Orbs
 {
-	// Token: 0x02000525 RID: 1317
+	// Token: 0x02000516 RID: 1302
 	public class LightningStrikeOrb : Orb, IOrbFixedUpdateBehavior
 	{
-		// Token: 0x06001DC6 RID: 7622 RVA: 0x00015C83 File Offset: 0x00013E83
+		// Token: 0x06001D5E RID: 7518 RVA: 0x000157BA File Offset: 0x000139BA
 		public override void Begin()
 		{
 			base.duration = 0.5f;
@@ -16,7 +16,7 @@ namespace RoR2.Orbs
 			}
 		}
 
-		// Token: 0x06001DC7 RID: 7623 RVA: 0x0009115C File Offset: 0x0008F35C
+		// Token: 0x06001D5F RID: 7519 RVA: 0x000903E8 File Offset: 0x0008E5E8
 		public override void OnArrival()
 		{
 			EffectManager.instance.SpawnEffect(Resources.Load<GameObject>("Prefabs/Effects/ImpactEffects/LightningStrikeImpact"), new EffectData
@@ -46,7 +46,7 @@ namespace RoR2.Orbs
 			}
 		}
 
-		// Token: 0x06001DC8 RID: 7624 RVA: 0x00015CB3 File Offset: 0x00013EB3
+		// Token: 0x06001D60 RID: 7520 RVA: 0x000157EA File Offset: 0x000139EA
 		public void FixedUpdate()
 		{
 			if (this.target)
@@ -55,34 +55,34 @@ namespace RoR2.Orbs
 			}
 		}
 
-		// Token: 0x04001FCC RID: 8140
+		// Token: 0x04001F8E RID: 8078
 		private const float speed = 30f;
 
-		// Token: 0x04001FCD RID: 8141
+		// Token: 0x04001F8F RID: 8079
 		public float damageValue;
 
-		// Token: 0x04001FCE RID: 8142
+		// Token: 0x04001F90 RID: 8080
 		public GameObject attacker;
 
-		// Token: 0x04001FCF RID: 8143
+		// Token: 0x04001F91 RID: 8081
 		public TeamIndex teamIndex;
 
-		// Token: 0x04001FD0 RID: 8144
+		// Token: 0x04001F92 RID: 8082
 		public bool isCrit;
 
-		// Token: 0x04001FD1 RID: 8145
+		// Token: 0x04001F93 RID: 8083
 		public float scale;
 
-		// Token: 0x04001FD2 RID: 8146
+		// Token: 0x04001F94 RID: 8084
 		public ProcChainMask procChainMask;
 
-		// Token: 0x04001FD3 RID: 8147
+		// Token: 0x04001F95 RID: 8085
 		public float procCoefficient = 0.2f;
 
-		// Token: 0x04001FD4 RID: 8148
+		// Token: 0x04001F96 RID: 8086
 		public DamageColorIndex damageColorIndex;
 
-		// Token: 0x04001FD5 RID: 8149
+		// Token: 0x04001F97 RID: 8087
 		private Vector3 lastKnownTargetPosition;
 	}
 }

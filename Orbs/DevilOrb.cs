@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace RoR2.Orbs
 {
-	// Token: 0x0200051E RID: 1310
+	// Token: 0x0200050F RID: 1295
 	public class DevilOrb : Orb
 	{
-		// Token: 0x06001DB4 RID: 7604 RVA: 0x00090A24 File Offset: 0x0008EC24
+		// Token: 0x06001D4C RID: 7500 RVA: 0x0008FC4C File Offset: 0x0008DE4C
 		public override void Begin()
 		{
 			base.duration = base.distanceToTarget / 30f;
@@ -22,7 +22,7 @@ namespace RoR2.Orbs
 			EffectManager.instance.SpawnEffect(Resources.Load<GameObject>("Prefabs/Effects/OrbEffects/DevilOrbEffect"), effectData, true);
 		}
 
-		// Token: 0x06001DB5 RID: 7605 RVA: 0x00090A90 File Offset: 0x0008EC90
+		// Token: 0x06001D4D RID: 7501 RVA: 0x0008FCB8 File Offset: 0x0008DEB8
 		public override void OnArrival()
 		{
 			if (this.target)
@@ -47,7 +47,7 @@ namespace RoR2.Orbs
 			}
 		}
 
-		// Token: 0x06001DB6 RID: 7606 RVA: 0x00090B64 File Offset: 0x0008ED64
+		// Token: 0x06001D4E RID: 7502 RVA: 0x0008FD8C File Offset: 0x0008DF8C
 		public HurtBox PickNextTarget(Vector3 position, float range)
 		{
 			BullseyeSearch bullseyeSearch = new BullseyeSearch();
@@ -67,31 +67,31 @@ namespace RoR2.Orbs
 			return list[UnityEngine.Random.Range(0, list.Count)];
 		}
 
-		// Token: 0x04001FA5 RID: 8101
+		// Token: 0x04001F67 RID: 8039
 		private const float speed = 30f;
 
-		// Token: 0x04001FA6 RID: 8102
+		// Token: 0x04001F68 RID: 8040
 		public float damageValue;
 
-		// Token: 0x04001FA7 RID: 8103
+		// Token: 0x04001F69 RID: 8041
 		public GameObject attacker;
 
-		// Token: 0x04001FA8 RID: 8104
+		// Token: 0x04001F6A RID: 8042
 		public TeamIndex teamIndex;
 
-		// Token: 0x04001FA9 RID: 8105
+		// Token: 0x04001F6B RID: 8043
 		public bool isCrit;
 
-		// Token: 0x04001FAA RID: 8106
+		// Token: 0x04001F6C RID: 8044
 		public float scale;
 
-		// Token: 0x04001FAB RID: 8107
+		// Token: 0x04001F6D RID: 8045
 		public ProcChainMask procChainMask;
 
-		// Token: 0x04001FAC RID: 8108
+		// Token: 0x04001F6E RID: 8046
 		public float procCoefficient = 0.2f;
 
-		// Token: 0x04001FAD RID: 8109
+		// Token: 0x04001F6F RID: 8047
 		public DamageColorIndex damageColorIndex;
 	}
 }

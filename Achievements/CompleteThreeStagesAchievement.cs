@@ -3,40 +3,36 @@ using RoR2.Stats;
 
 namespace RoR2.Achievements
 {
-	// Token: 0x020006A0 RID: 1696
+	// Token: 0x0200068E RID: 1678
 	[RegisterAchievement("CompleteThreeStages", "Characters.Huntress", null, null)]
 	public class CompleteThreeStagesAchievement : BaseAchievement
 	{
-		// Token: 0x06002607 RID: 9735 RVA: 0x0001BC00 File Offset: 0x00019E00
+		// Token: 0x06002570 RID: 9584 RVA: 0x0001B4C5 File Offset: 0x000196C5
 		public override void OnInstall()
 		{
 			base.OnInstall();
-			TeleporterInteraction.onTeleporterChargedGlobal += this.OnTeleporterCharged;
+			TeleporterInteraction.onTeleporterFinishGlobal += this.OnTeleporterFinish;
 		}
 
-		// Token: 0x06002608 RID: 9736 RVA: 0x0001BC19 File Offset: 0x00019E19
+		// Token: 0x06002571 RID: 9585 RVA: 0x0001B4DE File Offset: 0x000196DE
 		public override void OnUninstall()
 		{
-			TeleporterInteraction.onTeleporterChargedGlobal -= this.OnTeleporterCharged;
+			TeleporterInteraction.onTeleporterFinishGlobal -= this.OnTeleporterFinish;
 			base.OnUninstall();
 		}
 
-		// Token: 0x06002609 RID: 9737 RVA: 0x0001BC32 File Offset: 0x00019E32
-		private void OnTeleporterCharged(TeleporterInteraction teleporterInteraction)
+		// Token: 0x06002572 RID: 9586 RVA: 0x0001B4F7 File Offset: 0x000196F7
+		private void OnTeleporterFinish(TeleporterInteraction teleporterInteraction)
 		{
 			this.Check();
 		}
 
-		// Token: 0x0600260A RID: 9738 RVA: 0x000B1B74 File Offset: 0x000AFD74
+		// Token: 0x06002573 RID: 9587 RVA: 0x000B0484 File Offset: 0x000AE684
 		private void Check()
 		{
 			if (Run.instance && Run.instance.GetType() == typeof(Run))
 			{
 				SceneDef sceneDefForCurrentScene = SceneCatalog.GetSceneDefForCurrentScene();
-				if (sceneDefForCurrentScene == null)
-				{
-					return;
-				}
 				if (this.localUser.currentNetworkUser.masterPlayerStatsComponent.currentStats.GetStatValueULong(StatDef.totalDeaths) == 0UL && sceneDefForCurrentScene.stageOrder == 3)
 				{
 					base.Grant();
@@ -44,7 +40,7 @@ namespace RoR2.Achievements
 			}
 		}
 
-		// Token: 0x0400289D RID: 10397
+		// Token: 0x04002841 RID: 10305
 		private const int requirement = 3;
 	}
 }
