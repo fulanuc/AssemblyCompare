@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x02000415 RID: 1045
+	// Token: 0x0200040F RID: 1039
 	public class UnlockableGranter : MonoBehaviour
 	{
-		// Token: 0x06001784 RID: 6020 RVA: 0x0007A274 File Offset: 0x00078474
+		// Token: 0x06001741 RID: 5953 RVA: 0x00079CB4 File Offset: 0x00077EB4
 		public void GrantUnlockable(Interactor interactor)
 		{
 			CharacterBody component = interactor.GetComponent<CharacterBody>();
@@ -16,7 +16,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04001A7B RID: 6779
+		// Token: 0x04001A52 RID: 6738
 		public string unlockableString;
 	}
 }

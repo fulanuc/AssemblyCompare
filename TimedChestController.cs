@@ -7,16 +7,16 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x02000407 RID: 1031
-	public sealed class TimedChestController : NetworkBehaviour, IInteractable
+	// Token: 0x02000401 RID: 1025
+	public class TimedChestController : NetworkBehaviour, IInteractable
 	{
-		// Token: 0x0600171B RID: 5915 RVA: 0x0001165C File Offset: 0x0000F85C
+		// Token: 0x060016DB RID: 5851 RVA: 0x00011237 File Offset: 0x0000F437
 		public string GetContextString(Interactor activator)
 		{
 			return Language.GetString(this.contextString);
 		}
 
-		// Token: 0x0600171C RID: 5916 RVA: 0x00011669 File Offset: 0x0000F869
+		// Token: 0x060016DC RID: 5852 RVA: 0x00011244 File Offset: 0x0000F444
 		public Interactability GetInteractability(Interactor activator)
 		{
 			if (this.purchased)
@@ -30,35 +30,30 @@ namespace RoR2
 			return Interactability.ConditionsNotMet;
 		}
 
-		// Token: 0x0600171D RID: 5917 RVA: 0x00011680 File Offset: 0x0000F880
+		// Token: 0x060016DD RID: 5853 RVA: 0x0001125B File Offset: 0x0000F45B
 		public void OnInteractionBegin(Interactor activator)
 		{
 			base.GetComponent<EntityStateMachine>().SetNextState(new Opening());
 		}
 
-		// Token: 0x0600171E RID: 5918 RVA: 0x00003696 File Offset: 0x00001896
+		// Token: 0x060016DE RID: 5854 RVA: 0x00003696 File Offset: 0x00001896
 		public bool ShouldIgnoreSpherecastForInteractibility(Interactor activator)
 		{
 			return false;
 		}
 
-		// Token: 0x17000220 RID: 544
-		// (get) Token: 0x0600171F RID: 5919 RVA: 0x00078C60 File Offset: 0x00076E60
+		// Token: 0x17000217 RID: 535
+		// (get) Token: 0x060016DF RID: 5855 RVA: 0x0001126D File Offset: 0x0000F46D
 		private int remainingTime
 		{
 			get
 			{
-				float num = 0f;
-				if (Run.instance)
-				{
-					num = Run.instance.GetRunStopwatch();
-				}
-				return (int)(this.lockTime - num);
+				return (int)(this.lockTime - Run.instance.time);
 			}
 		}
 
-		// Token: 0x17000221 RID: 545
-		// (get) Token: 0x06001720 RID: 5920 RVA: 0x00011692 File Offset: 0x0000F892
+		// Token: 0x17000218 RID: 536
+		// (get) Token: 0x060016E0 RID: 5856 RVA: 0x00011281 File Offset: 0x0000F481
 		private bool locked
 		{
 			get
@@ -67,7 +62,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001721 RID: 5921 RVA: 0x00078C94 File Offset: 0x00076E94
+		// Token: 0x060016E1 RID: 5857 RVA: 0x000786D4 File Offset: 0x000768D4
 		public void FixedUpdate()
 		{
 			if (NetworkClient.active)
@@ -114,66 +109,48 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001722 RID: 5922 RVA: 0x000116A0 File Offset: 0x0000F8A0
-		private void OnEnable()
-		{
-			InstanceTracker.Add<TimedChestController>(this);
-		}
-
-		// Token: 0x06001723 RID: 5923 RVA: 0x000116A8 File Offset: 0x0000F8A8
-		private void OnDisable()
-		{
-			InstanceTracker.Remove<TimedChestController>(this);
-		}
-
-		// Token: 0x06001724 RID: 5924 RVA: 0x000116B0 File Offset: 0x0000F8B0
-		public bool ShouldShowOnScanner()
-		{
-			return !this.purchased;
-		}
-
-		// Token: 0x06001727 RID: 5927 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x060016E4 RID: 5860 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x06001728 RID: 5928 RVA: 0x0004AA24 File Offset: 0x00048C24
+		// Token: 0x060016E5 RID: 5861 RVA: 0x0004A818 File Offset: 0x00048A18
 		public override bool OnSerialize(NetworkWriter writer, bool forceAll)
 		{
 			bool result;
 			return result;
 		}
 
-		// Token: 0x06001729 RID: 5929 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x060016E6 RID: 5862 RVA: 0x000025F6 File Offset: 0x000007F6
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 		}
 
-		// Token: 0x04001A1A RID: 6682
+		// Token: 0x040019F1 RID: 6641
 		public float lockTime = 600f;
 
-		// Token: 0x04001A1B RID: 6683
+		// Token: 0x040019F2 RID: 6642
 		public TextMeshPro displayTimer;
 
-		// Token: 0x04001A1C RID: 6684
+		// Token: 0x040019F3 RID: 6643
 		public ObjectScaleCurve displayScaleCurve;
 
-		// Token: 0x04001A1D RID: 6685
+		// Token: 0x040019F4 RID: 6644
 		public string contextString;
 
-		// Token: 0x04001A1E RID: 6686
+		// Token: 0x040019F5 RID: 6645
 		public Color displayIsAvailableColor;
 
-		// Token: 0x04001A1F RID: 6687
+		// Token: 0x040019F6 RID: 6646
 		public Color displayIsLockedColor;
 
-		// Token: 0x04001A20 RID: 6688
+		// Token: 0x040019F7 RID: 6647
 		public bool purchased;
 
-		// Token: 0x04001A21 RID: 6689
+		// Token: 0x040019F8 RID: 6648
 		private const int minTime = -599;
 
-		// Token: 0x04001A22 RID: 6690
+		// Token: 0x040019F9 RID: 6649
 		private static readonly StringBuilder sharedStringBuilder = new StringBuilder();
 	}
 }

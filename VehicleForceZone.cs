@@ -3,17 +3,17 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x02000418 RID: 1048
+	// Token: 0x02000412 RID: 1042
 	[RequireComponent(typeof(Collider))]
 	public class VehicleForceZone : MonoBehaviour
 	{
-		// Token: 0x0600178E RID: 6030 RVA: 0x00011AB0 File Offset: 0x0000FCB0
+		// Token: 0x0600174B RID: 5963 RVA: 0x00011684 File Offset: 0x0000F884
 		private void Start()
 		{
 			this.collider = base.GetComponent<Collider>();
 		}
 
-		// Token: 0x0600178F RID: 6031 RVA: 0x0007A3B8 File Offset: 0x000785B8
+		// Token: 0x0600174C RID: 5964 RVA: 0x00079DF8 File Offset: 0x00077FF8
 		public void OnTriggerEnter(Collider other)
 		{
 			CharacterMotor component = other.GetComponent<CharacterMotor>();
@@ -42,7 +42,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001790 RID: 6032 RVA: 0x0007A4E0 File Offset: 0x000786E0
+		// Token: 0x0600174D RID: 5965 RVA: 0x00079F20 File Offset: 0x00078120
 		public void OnCollisionEnter(Collision collision)
 		{
 			Debug.LogFormat("Hit {0}", new object[]
@@ -77,18 +77,18 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001791 RID: 6033 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x0600174E RID: 5966 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void Update()
 		{
 		}
 
-		// Token: 0x04001A82 RID: 6786
+		// Token: 0x04001A59 RID: 6745
 		public Rigidbody vehicleRigidbody;
 
-		// Token: 0x04001A83 RID: 6787
+		// Token: 0x04001A5A RID: 6746
 		public float impactMultiplier;
 
-		// Token: 0x04001A84 RID: 6788
+		// Token: 0x04001A5B RID: 6747
 		private Collider collider;
 	}
 }

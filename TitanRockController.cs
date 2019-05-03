@@ -5,10 +5,10 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x02000409 RID: 1033
+	// Token: 0x02000403 RID: 1027
 	public class TitanRockController : NetworkBehaviour
 	{
-		// Token: 0x0600172C RID: 5932 RVA: 0x000116DA File Offset: 0x0000F8DA
+		// Token: 0x060016E9 RID: 5865 RVA: 0x000112AE File Offset: 0x0000F4AE
 		private void Start()
 		{
 			if (!NetworkServer.active)
@@ -19,7 +19,7 @@ namespace RoR2
 			this.fireTimer = this.startDelay;
 		}
 
-		// Token: 0x0600172D RID: 5933 RVA: 0x00078E2C File Offset: 0x0007702C
+		// Token: 0x060016EA RID: 5866 RVA: 0x0007886C File Offset: 0x00076A6C
 		public void SetOwner(GameObject newOwner)
 		{
 			this.ownerInputBank = null;
@@ -59,7 +59,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600172E RID: 5934 RVA: 0x00078F5C File Offset: 0x0007715C
+		// Token: 0x060016EB RID: 5867 RVA: 0x0007899C File Offset: 0x00076B9C
 		public void FixedUpdate()
 		{
 			if (this.targetTransform)
@@ -92,7 +92,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600172F RID: 5935 RVA: 0x000790A4 File Offset: 0x000772A4
+		// Token: 0x060016EC RID: 5868 RVA: 0x00078AE4 File Offset: 0x00076CE4
 		[Server]
 		private void FixedUpdateServer()
 		{
@@ -109,7 +109,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001730 RID: 5936 RVA: 0x00079100 File Offset: 0x00077300
+		// Token: 0x060016ED RID: 5869 RVA: 0x00078B40 File Offset: 0x00076D40
 		[Server]
 		private void Fire()
 		{
@@ -132,14 +132,14 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001733 RID: 5939 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x060016F0 RID: 5872 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x17000222 RID: 546
-		// (get) Token: 0x06001734 RID: 5940 RVA: 0x0007920C File Offset: 0x0007740C
-		// (set) Token: 0x06001735 RID: 5941 RVA: 0x00079220 File Offset: 0x00077420
+		// Token: 0x17000219 RID: 537
+		// (get) Token: 0x060016F1 RID: 5873 RVA: 0x00078C4C File Offset: 0x00076E4C
+		// (set) Token: 0x060016F2 RID: 5874 RVA: 0x00078C60 File Offset: 0x00076E60
 		public GameObject Networkowner
 		{
 			get
@@ -159,7 +159,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001736 RID: 5942 RVA: 0x00079270 File Offset: 0x00077470
+		// Token: 0x060016F3 RID: 5875 RVA: 0x00078CB0 File Offset: 0x00076EB0
 		public override bool OnSerialize(NetworkWriter writer, bool forceAll)
 		{
 			if (forceAll)
@@ -184,7 +184,7 @@ namespace RoR2
 			return flag;
 		}
 
-		// Token: 0x06001737 RID: 5943 RVA: 0x000792DC File Offset: 0x000774DC
+		// Token: 0x060016F4 RID: 5876 RVA: 0x00078D1C File Offset: 0x00076F1C
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 			if (initialState)
@@ -199,7 +199,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001738 RID: 5944 RVA: 0x00011735 File Offset: 0x0000F935
+		// Token: 0x060016F5 RID: 5877 RVA: 0x00011309 File Offset: 0x0000F509
 		public override void PreStartClient()
 		{
 			if (!this.___ownerNetId.IsEmpty())
@@ -208,59 +208,59 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04001A25 RID: 6693
+		// Token: 0x040019FC RID: 6652
 		[Tooltip("The child transform from which projectiles will be fired.")]
 		public Transform fireTransform;
 
-		// Token: 0x04001A26 RID: 6694
+		// Token: 0x040019FD RID: 6653
 		[Tooltip("How long it takes to start firing.")]
 		public float startDelay = 4f;
 
-		// Token: 0x04001A27 RID: 6695
+		// Token: 0x040019FE RID: 6654
 		[Tooltip("Firing interval.")]
 		public float fireInterval = 1f;
 
-		// Token: 0x04001A28 RID: 6696
+		// Token: 0x040019FF RID: 6655
 		[Tooltip("The prefab to fire as a projectile.")]
 		public GameObject projectilePrefab;
 
-		// Token: 0x04001A29 RID: 6697
+		// Token: 0x04001A00 RID: 6656
 		[Tooltip("The damage coefficient to multiply by the owner's damage stat for the projectile's final damage value.")]
 		public float damageCoefficient;
 
-		// Token: 0x04001A2A RID: 6698
+		// Token: 0x04001A01 RID: 6657
 		[Tooltip("The force of the projectile's damage.")]
 		public float damageForce;
 
-		// Token: 0x04001A2B RID: 6699
+		// Token: 0x04001A02 RID: 6658
 		[SyncVar(hook = "SetOwner")]
 		private GameObject owner;
 
-		// Token: 0x04001A2C RID: 6700
+		// Token: 0x04001A03 RID: 6659
 		private Transform targetTransform;
 
-		// Token: 0x04001A2D RID: 6701
+		// Token: 0x04001A04 RID: 6660
 		private Vector3 velocity;
 
-		// Token: 0x04001A2E RID: 6702
+		// Token: 0x04001A05 RID: 6661
 		private static readonly Vector3 targetLocalPosition = new Vector3(0f, 12f, -3f);
 
-		// Token: 0x04001A2F RID: 6703
+		// Token: 0x04001A06 RID: 6662
 		private float fireTimer;
 
-		// Token: 0x04001A30 RID: 6704
+		// Token: 0x04001A07 RID: 6663
 		private InputBankTest ownerInputBank;
 
-		// Token: 0x04001A31 RID: 6705
+		// Token: 0x04001A08 RID: 6664
 		private CharacterBody ownerCharacterBody;
 
-		// Token: 0x04001A32 RID: 6706
+		// Token: 0x04001A09 RID: 6665
 		private bool isCrit;
 
-		// Token: 0x04001A33 RID: 6707
+		// Token: 0x04001A0A RID: 6666
 		private bool foundOwner;
 
-		// Token: 0x04001A34 RID: 6708
+		// Token: 0x04001A0B RID: 6667
 		private NetworkInstanceId ___ownerNetId;
 	}
 }

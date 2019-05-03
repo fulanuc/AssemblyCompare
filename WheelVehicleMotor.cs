@@ -3,16 +3,16 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x02000429 RID: 1065
+	// Token: 0x02000423 RID: 1059
 	public class WheelVehicleMotor : MonoBehaviour
 	{
-		// Token: 0x060017EE RID: 6126 RVA: 0x00011F74 File Offset: 0x00010174
+		// Token: 0x060017AA RID: 6058 RVA: 0x00011B42 File Offset: 0x0000FD42
 		private void Start()
 		{
 			this.inputBank = base.GetComponent<InputBankTest>();
 		}
 
-		// Token: 0x060017EF RID: 6127 RVA: 0x0007B6C0 File Offset: 0x000798C0
+		// Token: 0x060017AB RID: 6059 RVA: 0x0007B100 File Offset: 0x00079300
 		private void UpdateWheelParameter(WheelCollider wheel)
 		{
 			wheel.mass = this.wheelMass;
@@ -44,7 +44,7 @@ namespace RoR2
 			};
 		}
 
-		// Token: 0x060017F0 RID: 6128 RVA: 0x0007B80C File Offset: 0x00079A0C
+		// Token: 0x060017AC RID: 6060 RVA: 0x0007B24C File Offset: 0x0007944C
 		private void UpdateAllWheelParameters()
 		{
 			foreach (WheelCollider wheel in this.driveWheels)
@@ -57,7 +57,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060017F1 RID: 6129 RVA: 0x0007B85C File Offset: 0x00079A5C
+		// Token: 0x060017AD RID: 6061 RVA: 0x0007B29C File Offset: 0x0007949C
 		private void FixedUpdate()
 		{
 			this.UpdateAllWheelParameters();
@@ -82,77 +82,77 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04001AD9 RID: 6873
+		// Token: 0x04001AB0 RID: 6832
 		[HideInInspector]
 		public Vector3 moveVector;
 
-		// Token: 0x04001ADA RID: 6874
+		// Token: 0x04001AB1 RID: 6833
 		public WheelCollider[] driveWheels;
 
-		// Token: 0x04001ADB RID: 6875
+		// Token: 0x04001AB2 RID: 6834
 		public WheelCollider[] steerWheels;
 
-		// Token: 0x04001ADC RID: 6876
+		// Token: 0x04001AB3 RID: 6835
 		public float motorTorque;
 
-		// Token: 0x04001ADD RID: 6877
+		// Token: 0x04001AB4 RID: 6836
 		public float maxSteerAngle;
 
-		// Token: 0x04001ADE RID: 6878
+		// Token: 0x04001AB5 RID: 6837
 		public float wheelMass = 20f;
 
-		// Token: 0x04001ADF RID: 6879
+		// Token: 0x04001AB6 RID: 6838
 		public float wheelRadius = 0.5f;
 
-		// Token: 0x04001AE0 RID: 6880
+		// Token: 0x04001AB7 RID: 6839
 		public float wheelWellDistance = 2.7f;
 
-		// Token: 0x04001AE1 RID: 6881
+		// Token: 0x04001AB8 RID: 6840
 		public float wheelSuspensionDistance = 0.3f;
 
-		// Token: 0x04001AE2 RID: 6882
+		// Token: 0x04001AB9 RID: 6841
 		public float wheelForceAppPointDistance;
 
-		// Token: 0x04001AE3 RID: 6883
+		// Token: 0x04001ABA RID: 6842
 		public float wheelSuspensionSpringSpring = 35000f;
 
-		// Token: 0x04001AE4 RID: 6884
+		// Token: 0x04001ABB RID: 6843
 		public float wheelSuspensionSpringDamper = 4500f;
 
-		// Token: 0x04001AE5 RID: 6885
+		// Token: 0x04001ABC RID: 6844
 		public float wheelSuspensionSpringTargetPosition = 0.5f;
 
-		// Token: 0x04001AE6 RID: 6886
+		// Token: 0x04001ABD RID: 6845
 		public float forwardFrictionExtremumSlip = 0.4f;
 
-		// Token: 0x04001AE7 RID: 6887
+		// Token: 0x04001ABE RID: 6846
 		public float forwardFrictionValue = 1f;
 
-		// Token: 0x04001AE8 RID: 6888
+		// Token: 0x04001ABF RID: 6847
 		public float forwardFrictionAsymptoticSlip = 0.8f;
 
-		// Token: 0x04001AE9 RID: 6889
+		// Token: 0x04001AC0 RID: 6848
 		public float forwardFrictionAsymptoticValue = 0.5f;
 
-		// Token: 0x04001AEA RID: 6890
+		// Token: 0x04001AC1 RID: 6849
 		public float forwardFrictionStiffness = 1f;
 
-		// Token: 0x04001AEB RID: 6891
+		// Token: 0x04001AC2 RID: 6850
 		public float sidewaysFrictionExtremumSlip = 0.2f;
 
-		// Token: 0x04001AEC RID: 6892
+		// Token: 0x04001AC3 RID: 6851
 		public float sidewaysFrictionValue = 1f;
 
-		// Token: 0x04001AED RID: 6893
+		// Token: 0x04001AC4 RID: 6852
 		public float sidewaysFrictionAsymptoticSlip = 0.5f;
 
-		// Token: 0x04001AEE RID: 6894
+		// Token: 0x04001AC5 RID: 6853
 		public float sidewaysFrictionAsymptoticValue = 0.75f;
 
-		// Token: 0x04001AEF RID: 6895
+		// Token: 0x04001AC6 RID: 6854
 		public float sidewaysFrictionStiffness = 1f;
 
-		// Token: 0x04001AF0 RID: 6896
+		// Token: 0x04001AC7 RID: 6855
 		private InputBankTest inputBank;
 	}
 }

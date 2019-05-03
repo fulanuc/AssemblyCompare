@@ -7,10 +7,10 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x020003FD RID: 1021
+	// Token: 0x020003F7 RID: 1015
 	public class TeamManager : NetworkBehaviour
 	{
-		// Token: 0x06001695 RID: 5781 RVA: 0x00077294 File Offset: 0x00075494
+		// Token: 0x06001656 RID: 5718 RVA: 0x00076D04 File Offset: 0x00074F04
 		static TeamManager()
 		{
 			List<ulong> list = new List<ulong>();
@@ -32,19 +32,19 @@ namespace RoR2
 			TeamManager.hardExpCap = TeamManager.levelToExperienceTable[TeamManager.levelToExperienceTable.Length - 1];
 		}
 
-		// Token: 0x06001696 RID: 5782 RVA: 0x00010E7A File Offset: 0x0000F07A
+		// Token: 0x06001657 RID: 5719 RVA: 0x00010A61 File Offset: 0x0000EC61
 		private static double InitialCalcLevel(double experience, double experienceForFirstLevelUp = 20.0, double growthRate = 1.55)
 		{
 			return Math.Max(Math.Log(1.0 - experience / experienceForFirstLevelUp * (1.0 - growthRate), growthRate) + 1.0, 1.0);
 		}
 
-		// Token: 0x06001697 RID: 5783 RVA: 0x00010EB3 File Offset: 0x0000F0B3
+		// Token: 0x06001658 RID: 5720 RVA: 0x00010A9A File Offset: 0x0000EC9A
 		private static double InitialCalcExperience(double level, double experienceForFirstLevelUp = 20.0, double growthRate = 1.55)
 		{
 			return Math.Max(experienceForFirstLevelUp * ((1.0 - Math.Pow(growthRate, level - 1.0)) / (1.0 - growthRate)), 0.0);
 		}
 
-		// Token: 0x06001698 RID: 5784 RVA: 0x00077330 File Offset: 0x00075530
+		// Token: 0x06001659 RID: 5721 RVA: 0x00076DA0 File Offset: 0x00074FA0
 		private static uint FindLevelForExperience(ulong experience)
 		{
 			uint num = 1u;
@@ -59,7 +59,7 @@ namespace RoR2
 			return TeamManager.naturalLevelCap;
 		}
 
-		// Token: 0x06001699 RID: 5785 RVA: 0x00010EEC File Offset: 0x0000F0EC
+		// Token: 0x0600165A RID: 5722 RVA: 0x00010AD3 File Offset: 0x0000ECD3
 		private static ulong GetExperienceForLevel(uint level)
 		{
 			if (level > TeamManager.naturalLevelCap)
@@ -69,12 +69,12 @@ namespace RoR2
 			return TeamManager.levelToExperienceTable[(int)level];
 		}
 
-		// Token: 0x1700020A RID: 522
-		// (get) Token: 0x0600169B RID: 5787 RVA: 0x00010F0C File Offset: 0x0000F10C
-		// (set) Token: 0x0600169A RID: 5786 RVA: 0x00010F04 File Offset: 0x0000F104
+		// Token: 0x17000201 RID: 513
+		// (get) Token: 0x0600165C RID: 5724 RVA: 0x00010AF3 File Offset: 0x0000ECF3
+		// (set) Token: 0x0600165B RID: 5723 RVA: 0x00010AEB File Offset: 0x0000ECEB
 		public static TeamManager instance { get; private set; }
 
-		// Token: 0x0600169C RID: 5788 RVA: 0x00010F13 File Offset: 0x0000F113
+		// Token: 0x0600165D RID: 5725 RVA: 0x00010AFA File Offset: 0x0000ECFA
 		private void OnEnable()
 		{
 			if (TeamManager.instance)
@@ -88,7 +88,7 @@ namespace RoR2
 			TeamManager.instance = this;
 		}
 
-		// Token: 0x0600169D RID: 5789 RVA: 0x00010F4B File Offset: 0x0000F14B
+		// Token: 0x0600165E RID: 5726 RVA: 0x00010B32 File Offset: 0x0000ED32
 		private void OnDisable()
 		{
 			if (TeamManager.instance == this)
@@ -97,7 +97,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600169E RID: 5790 RVA: 0x00077364 File Offset: 0x00075564
+		// Token: 0x0600165F RID: 5727 RVA: 0x00076DD4 File Offset: 0x00074FD4
 		private void Start()
 		{
 			if (NetworkServer.active)
@@ -109,13 +109,13 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600169F RID: 5791 RVA: 0x00009162 File Offset: 0x00007362
+		// Token: 0x06001660 RID: 5728 RVA: 0x0000913D File Offset: 0x0000733D
 		public override int GetNetworkChannel()
 		{
 			return QosChannelIndex.defaultReliable.intVal;
 		}
 
-		// Token: 0x060016A0 RID: 5792 RVA: 0x00077390 File Offset: 0x00075590
+		// Token: 0x06001661 RID: 5729 RVA: 0x00076E00 File Offset: 0x00075000
 		[Server]
 		public void GiveTeamMoney(TeamIndex teamIndex, uint money)
 		{
@@ -144,7 +144,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060016A1 RID: 5793 RVA: 0x0007742C File Offset: 0x0007562C
+		// Token: 0x06001662 RID: 5730 RVA: 0x00076E9C File Offset: 0x0007509C
 		[Server]
 		public void GiveTeamExperience(TeamIndex teamIndex, ulong experience)
 		{
@@ -162,7 +162,7 @@ namespace RoR2
 			this.SetTeamExperience(teamIndex, num2);
 		}
 
-		// Token: 0x060016A2 RID: 5794 RVA: 0x0007746C File Offset: 0x0007566C
+		// Token: 0x06001663 RID: 5731 RVA: 0x00076EDC File Offset: 0x000750DC
 		private void SetTeamExperience(TeamIndex teamIndex, ulong newExperience)
 		{
 			if (newExperience > TeamManager.hardExpCap)
@@ -197,7 +197,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060016A3 RID: 5795 RVA: 0x00077520 File Offset: 0x00075720
+		// Token: 0x06001664 RID: 5732 RVA: 0x00076F90 File Offset: 0x00075190
 		public override bool OnSerialize(NetworkWriter writer, bool initialState)
 		{
 			uint num = initialState ? 7u : base.syncVarDirtyBits;
@@ -216,7 +216,7 @@ namespace RoR2
 			return true;
 		}
 
-		// Token: 0x060016A4 RID: 5796 RVA: 0x0007756C File Offset: 0x0007576C
+		// Token: 0x06001665 RID: 5733 RVA: 0x00076FDC File Offset: 0x000751DC
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 			uint num = reader.ReadPackedUInt32();
@@ -230,7 +230,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060016A5 RID: 5797 RVA: 0x00010F60 File Offset: 0x0000F160
+		// Token: 0x06001666 RID: 5734 RVA: 0x00010B47 File Offset: 0x0000ED47
 		public ulong GetTeamExperience(TeamIndex teamIndex)
 		{
 			if (teamIndex < TeamIndex.Neutral || teamIndex >= TeamIndex.Count)
@@ -240,7 +240,7 @@ namespace RoR2
 			return this.teamExperience[(int)teamIndex];
 		}
 
-		// Token: 0x060016A6 RID: 5798 RVA: 0x00010F75 File Offset: 0x0000F175
+		// Token: 0x06001667 RID: 5735 RVA: 0x00010B5C File Offset: 0x0000ED5C
 		public ulong GetTeamCurrentLevelExperience(TeamIndex teamIndex)
 		{
 			if (teamIndex < TeamIndex.Neutral || teamIndex >= TeamIndex.Count)
@@ -250,7 +250,7 @@ namespace RoR2
 			return this.teamCurrentLevelExperience[(int)teamIndex];
 		}
 
-		// Token: 0x060016A7 RID: 5799 RVA: 0x00010F8A File Offset: 0x0000F18A
+		// Token: 0x06001668 RID: 5736 RVA: 0x00010B71 File Offset: 0x0000ED71
 		public ulong GetTeamNextLevelExperience(TeamIndex teamIndex)
 		{
 			if (teamIndex < TeamIndex.Neutral || teamIndex >= TeamIndex.Count)
@@ -260,7 +260,7 @@ namespace RoR2
 			return this.teamNextLevelExperience[(int)teamIndex];
 		}
 
-		// Token: 0x060016A8 RID: 5800 RVA: 0x00010F9F File Offset: 0x0000F19F
+		// Token: 0x06001669 RID: 5737 RVA: 0x00010B86 File Offset: 0x0000ED86
 		public uint GetTeamLevel(TeamIndex teamIndex)
 		{
 			if (teamIndex < TeamIndex.Neutral || teamIndex >= TeamIndex.Count)
@@ -270,7 +270,7 @@ namespace RoR2
 			return this.teamLevels[(int)teamIndex];
 		}
 
-		// Token: 0x060016A9 RID: 5801 RVA: 0x00010FB3 File Offset: 0x0000F1B3
+		// Token: 0x0600166A RID: 5738 RVA: 0x00010B9A File Offset: 0x0000ED9A
 		public void SetTeamLevel(TeamIndex teamIndex, uint newLevel)
 		{
 			if (teamIndex < TeamIndex.Neutral || teamIndex >= TeamIndex.Count)
@@ -284,7 +284,7 @@ namespace RoR2
 			this.SetTeamExperience(teamIndex, TeamManager.GetExperienceForLevel(newLevel));
 		}
 
-		// Token: 0x060016AA RID: 5802 RVA: 0x00010FD6 File Offset: 0x0000F1D6
+		// Token: 0x0600166B RID: 5739 RVA: 0x00010BBD File Offset: 0x0000EDBD
 		public static GameObject GetTeamLevelUpEffect(TeamIndex teamIndex)
 		{
 			switch (teamIndex)
@@ -300,39 +300,39 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060016AB RID: 5803 RVA: 0x00011005 File Offset: 0x0000F205
+		// Token: 0x0600166C RID: 5740 RVA: 0x00010BEC File Offset: 0x0000EDEC
 		public static bool IsTeamEnemy(TeamIndex teamA, TeamIndex teamB)
 		{
 			return teamA != teamB;
 		}
 
-		// Token: 0x060016AD RID: 5805 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x0600166E RID: 5742 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x040019BB RID: 6587
+		// Token: 0x04001992 RID: 6546
 		public static readonly uint naturalLevelCap;
 
-		// Token: 0x040019BC RID: 6588
+		// Token: 0x04001993 RID: 6547
 		private static readonly ulong[] levelToExperienceTable;
 
-		// Token: 0x040019BD RID: 6589
+		// Token: 0x04001994 RID: 6548
 		public static readonly ulong hardExpCap;
 
-		// Token: 0x040019BF RID: 6591
+		// Token: 0x04001996 RID: 6550
 		private ulong[] teamExperience = new ulong[3];
 
-		// Token: 0x040019C0 RID: 6592
+		// Token: 0x04001997 RID: 6551
 		private uint[] teamLevels = new uint[3];
 
-		// Token: 0x040019C1 RID: 6593
+		// Token: 0x04001998 RID: 6552
 		private ulong[] teamCurrentLevelExperience = new ulong[3];
 
-		// Token: 0x040019C2 RID: 6594
+		// Token: 0x04001999 RID: 6553
 		private ulong[] teamNextLevelExperience = new ulong[3];
 
-		// Token: 0x040019C3 RID: 6595
+		// Token: 0x0400199A RID: 6554
 		private const uint teamExperienceDirtyBitsMask = 7u;
 	}
 }

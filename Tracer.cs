@@ -4,11 +4,11 @@ using UnityEngine.Events;
 
 namespace RoR2
 {
-	// Token: 0x0200040A RID: 1034
+	// Token: 0x02000404 RID: 1028
 	[RequireComponent(typeof(EffectComponent))]
 	public class Tracer : MonoBehaviour
 	{
-		// Token: 0x06001739 RID: 5945 RVA: 0x00079320 File Offset: 0x00077520
+		// Token: 0x060016F6 RID: 5878 RVA: 0x00078D60 File Offset: 0x00076F60
 		private void Start()
 		{
 			EffectComponent component = base.GetComponent<EffectComponent>();
@@ -43,7 +43,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600173A RID: 5946 RVA: 0x00079480 File Offset: 0x00077680
+		// Token: 0x060016F7 RID: 5879 RVA: 0x00078EC0 File Offset: 0x000770C0
 		private void Update()
 		{
 			if (this.distanceTraveled > this.totalDistance)
@@ -64,7 +64,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600173B RID: 5947 RVA: 0x00079554 File Offset: 0x00077754
+		// Token: 0x060016F8 RID: 5880 RVA: 0x00078F94 File Offset: 0x00077194
 		public static GameObject CreateTracer(GameObject tracerPrefab, Vector3 startPosition, Vector3 endPosition)
 		{
 			GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(tracerPrefab, endPosition, (startPosition != endPosition) ? Util.QuaternionSafeLookRotation(endPosition - startPosition) : Quaternion.identity);
@@ -88,51 +88,51 @@ namespace RoR2
 			return gameObject;
 		}
 
-		// Token: 0x04001A35 RID: 6709
+		// Token: 0x04001A0C RID: 6668
 		[Tooltip("A child transform which will be placed at the start of the tracer path upon creation.")]
 		public Transform startTransform;
 
-		// Token: 0x04001A36 RID: 6710
+		// Token: 0x04001A0D RID: 6669
 		[Tooltip("Child object to scale to the length of this tracer and burst particles on based on that length. Optional.")]
 		public GameObject beamObject;
 
-		// Token: 0x04001A37 RID: 6711
+		// Token: 0x04001A0E RID: 6670
 		[Tooltip("The number of particles to emit per meter of length if using a beam object.")]
 		public float beamDensity = 10f;
 
-		// Token: 0x04001A38 RID: 6712
+		// Token: 0x04001A0F RID: 6671
 		[Tooltip("The travel speed of this tracer.")]
 		public float speed = 1f;
 
-		// Token: 0x04001A39 RID: 6713
+		// Token: 0x04001A10 RID: 6672
 		[Tooltip("Child transform which will be moved to the head of the tracer.")]
 		public Transform headTransform;
 
-		// Token: 0x04001A3A RID: 6714
+		// Token: 0x04001A11 RID: 6673
 		[Tooltip("Child transform which will be moved to the tail of the tracer.")]
 		public Transform tailTransform;
 
-		// Token: 0x04001A3B RID: 6715
+		// Token: 0x04001A12 RID: 6674
 		[Tooltip("The maximum distance between head and tail transforms.")]
 		public float length = 1f;
 
-		// Token: 0x04001A3C RID: 6716
+		// Token: 0x04001A13 RID: 6675
 		[Tooltip("The event that runs when the tail reaches the destination.")]
 		public UnityEvent onTailReachedDestination;
 
-		// Token: 0x04001A3D RID: 6717
+		// Token: 0x04001A14 RID: 6676
 		private Vector3 startPos;
 
-		// Token: 0x04001A3E RID: 6718
+		// Token: 0x04001A15 RID: 6677
 		private Vector3 endPos;
 
-		// Token: 0x04001A3F RID: 6719
+		// Token: 0x04001A16 RID: 6678
 		private float distanceTraveled;
 
-		// Token: 0x04001A40 RID: 6720
+		// Token: 0x04001A17 RID: 6679
 		private float totalDistance;
 
-		// Token: 0x04001A41 RID: 6721
+		// Token: 0x04001A18 RID: 6680
 		private Vector3 normal;
 	}
 }

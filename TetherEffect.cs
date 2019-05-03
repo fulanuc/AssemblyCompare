@@ -3,17 +3,17 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x02000406 RID: 1030
+	// Token: 0x02000400 RID: 1024
 	[RequireComponent(typeof(BezierCurveLine))]
 	public class TetherEffect : MonoBehaviour
 	{
-		// Token: 0x06001718 RID: 5912 RVA: 0x0001164E File Offset: 0x0000F84E
+		// Token: 0x060016D8 RID: 5848 RVA: 0x00011229 File Offset: 0x0000F429
 		private void Start()
 		{
 			this.bezierCurveLine = base.GetComponent<BezierCurveLine>();
 		}
 
-		// Token: 0x06001719 RID: 5913 RVA: 0x00078BD4 File Offset: 0x00076DD4
+		// Token: 0x060016D9 RID: 5849 RVA: 0x00078648 File Offset: 0x00076848
 		private void Update()
 		{
 			bool flag = true;
@@ -37,16 +37,16 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04001A16 RID: 6678
+		// Token: 0x040019ED RID: 6637
 		public float tetherMaxDistance;
 
-		// Token: 0x04001A17 RID: 6679
+		// Token: 0x040019EE RID: 6638
 		public Transform tetherEndTransform;
 
-		// Token: 0x04001A18 RID: 6680
+		// Token: 0x040019EF RID: 6639
 		public AnimateShaderAlpha fadeOut;
 
-		// Token: 0x04001A19 RID: 6681
+		// Token: 0x040019F0 RID: 6640
 		private BezierCurveLine bezierCurveLine;
 	}
 }

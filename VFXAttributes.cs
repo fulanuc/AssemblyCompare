@@ -5,11 +5,11 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x0200041B RID: 1051
+	// Token: 0x02000415 RID: 1045
 	public class VFXAttributes : MonoBehaviour
 	{
-		// Token: 0x1700022A RID: 554
-		// (get) Token: 0x06001795 RID: 6037 RVA: 0x00011ADC File Offset: 0x0000FCDC
+		// Token: 0x17000221 RID: 545
+		// (get) Token: 0x06001752 RID: 5970 RVA: 0x000116B0 File Offset: 0x0000F8B0
 		public static ReadOnlyCollection<VFXAttributes> readonlyVFXList
 		{
 			get
@@ -18,7 +18,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001796 RID: 6038 RVA: 0x0007A738 File Offset: 0x00078938
+		// Token: 0x06001753 RID: 5971 RVA: 0x0007A178 File Offset: 0x00078378
 		public int GetIntensityScore()
 		{
 			switch (this.vfxIntensity)
@@ -34,60 +34,60 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001797 RID: 6039 RVA: 0x00011AE3 File Offset: 0x0000FCE3
+		// Token: 0x06001754 RID: 5972 RVA: 0x000116B7 File Offset: 0x0000F8B7
 		public void OnEnable()
 		{
 			VFXAttributes.vfxList.Add(this);
 			VFXBudget.totalCost += this.GetIntensityScore();
 		}
 
-		// Token: 0x06001798 RID: 6040 RVA: 0x00011B01 File Offset: 0x0000FD01
+		// Token: 0x06001755 RID: 5973 RVA: 0x000116D5 File Offset: 0x0000F8D5
 		public void OnDisable()
 		{
 			VFXAttributes.vfxList.Remove(this);
 			VFXBudget.totalCost -= this.GetIntensityScore();
 		}
 
-		// Token: 0x04001A91 RID: 6801
+		// Token: 0x04001A68 RID: 6760
 		private static List<VFXAttributes> vfxList = new List<VFXAttributes>();
 
-		// Token: 0x04001A92 RID: 6802
+		// Token: 0x04001A69 RID: 6761
 		private static ReadOnlyCollection<VFXAttributes> _readonlyVFXList = new ReadOnlyCollection<VFXAttributes>(VFXAttributes.vfxList);
 
-		// Token: 0x04001A93 RID: 6803
+		// Token: 0x04001A6A RID: 6762
 		[Tooltip("Controls whether or not a VFX appears at all - consider if you would notice if this entire VFX never appeared. Also means it has a networking consequence.")]
 		public VFXAttributes.VFXPriority vfxPriority;
 
-		// Token: 0x04001A94 RID: 6804
+		// Token: 0x04001A6B RID: 6763
 		[Tooltip("Define how expensive a particle system is IF it appears.")]
 		public VFXAttributes.VFXIntensity vfxIntensity;
 
-		// Token: 0x04001A95 RID: 6805
+		// Token: 0x04001A6C RID: 6764
 		public Light[] optionalLights;
 
-		// Token: 0x04001A96 RID: 6806
+		// Token: 0x04001A6D RID: 6765
 		[Tooltip("Particle systems that may be deactivated without impacting gameplay.")]
 		public ParticleSystem[] secondaryParticleSystem;
 
-		// Token: 0x0200041C RID: 1052
+		// Token: 0x02000416 RID: 1046
 		public enum VFXPriority
 		{
-			// Token: 0x04001A98 RID: 6808
+			// Token: 0x04001A6F RID: 6767
 			Low,
-			// Token: 0x04001A99 RID: 6809
+			// Token: 0x04001A70 RID: 6768
 			Medium,
-			// Token: 0x04001A9A RID: 6810
+			// Token: 0x04001A71 RID: 6769
 			Always
 		}
 
-		// Token: 0x0200041D RID: 1053
+		// Token: 0x02000417 RID: 1047
 		public enum VFXIntensity
 		{
-			// Token: 0x04001A9C RID: 6812
+			// Token: 0x04001A73 RID: 6771
 			Low,
-			// Token: 0x04001A9D RID: 6813
+			// Token: 0x04001A74 RID: 6772
 			Medium,
-			// Token: 0x04001A9E RID: 6814
+			// Token: 0x04001A75 RID: 6773
 			High
 		}
 	}

@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x02000408 RID: 1032
+	// Token: 0x02000402 RID: 1026
 	public class TimerHologramContent : MonoBehaviour
 	{
-		// Token: 0x0600172A RID: 5930 RVA: 0x00078DD0 File Offset: 0x00076FD0
+		// Token: 0x060016E7 RID: 5863 RVA: 0x00078810 File Offset: 0x00076A10
 		private void FixedUpdate()
 		{
 			if (this.targetTextMesh)
@@ -18,10 +18,10 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04001A23 RID: 6691
+		// Token: 0x040019FA RID: 6650
 		public float displayValue;
 
-		// Token: 0x04001A24 RID: 6692
+		// Token: 0x040019FB RID: 6651
 		public TextMeshPro targetTextMesh;
 	}
 }

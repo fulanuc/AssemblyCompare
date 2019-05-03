@@ -4,10 +4,10 @@ using System.Linq;
 
 namespace RoR2
 {
-	// Token: 0x020004D7 RID: 1239
+	// Token: 0x020004C9 RID: 1225
 	public static class UnlockableCatalog
 	{
-		// Token: 0x06001BFF RID: 7167 RVA: 0x00014C1B File Offset: 0x00012E1B
+		// Token: 0x06001B9B RID: 7067 RVA: 0x0001474E File Offset: 0x0001294E
 		private static void RegisterUnlockable(string name, UnlockableDef unlockableDef)
 		{
 			unlockableDef.name = name;
@@ -15,7 +15,7 @@ namespace RoR2
 			UnlockableCatalog.nameToDefTable.Add(name, unlockableDef);
 		}
 
-		// Token: 0x06001C00 RID: 7168 RVA: 0x0008992C File Offset: 0x00087B2C
+		// Token: 0x06001B9C RID: 7068 RVA: 0x00088DB4 File Offset: 0x00086FB4
 		public static UnlockableDef GetUnlockableDef(string name)
 		{
 			UnlockableDef result;
@@ -23,14 +23,14 @@ namespace RoR2
 			return result;
 		}
 
-		// Token: 0x06001C01 RID: 7169 RVA: 0x00014C45 File Offset: 0x00012E45
+		// Token: 0x06001B9D RID: 7069 RVA: 0x00014778 File Offset: 0x00012978
 		public static UnlockableDef GetUnlockableDef(UnlockableIndex index)
 		{
 			return UnlockableCatalog.indexToDefTable[index.value];
 		}
 
-		// Token: 0x17000294 RID: 660
-		// (get) Token: 0x06001C02 RID: 7170 RVA: 0x00014C54 File Offset: 0x00012E54
+		// Token: 0x17000288 RID: 648
+		// (get) Token: 0x06001B9E RID: 7070 RVA: 0x00014787 File Offset: 0x00012987
 		public static int unlockableCount
 		{
 			get
@@ -39,7 +39,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001C03 RID: 7171 RVA: 0x00089948 File Offset: 0x00087B48
+		// Token: 0x06001B9F RID: 7071 RVA: 0x00088DD0 File Offset: 0x00086FD0
 		[SystemInitializer(new Type[]
 		{
 			typeof(SurvivorCatalog)
@@ -463,7 +463,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001C04 RID: 7172 RVA: 0x0008A45C File Offset: 0x0008865C
+		// Token: 0x06001BA0 RID: 7072 RVA: 0x000898E4 File Offset: 0x00087AE4
 		public static int GetUnlockableSortScore(string unlockableName)
 		{
 			int result = 0;
@@ -471,7 +471,7 @@ namespace RoR2
 			return result;
 		}
 
-		// Token: 0x06001C05 RID: 7173 RVA: 0x0008A47C File Offset: 0x0008867C
+		// Token: 0x06001BA1 RID: 7073 RVA: 0x00089904 File Offset: 0x00087B04
 		private static int GuessUnlockableSortScore(string unlockableName)
 		{
 			int num = 0;
@@ -511,16 +511,82 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04001E4D RID: 7757
+		// Token: 0x06001BA2 RID: 7074 RVA: 0x000899F0 File Offset: 0x00087BF0
+		[ConCommand(commandName = "unlockable_grant", flags = ConVarFlags.Cheat, helpText = "Grants the named unlockable, or \"all\" for all unlockables.")]
+		private static void CCUnlockableGrant(ConCommandArgs args)
+		{
+			args.CheckArgumentCount(1);
+			LocalUser localUser = LocalUserManager.FindLocalUser(0);
+			if (localUser == null)
+			{
+				throw new ConCommandException("No local user.");
+			}
+			string text = args[0];
+			UnlockableDef[] array = Array.Empty<UnlockableDef>();
+			if (string.CompareOrdinal(text, "all") == 0)
+			{
+				array = UnlockableCatalog.indexToDefTable;
+			}
+			else
+			{
+				UnlockableDef unlockableDef = UnlockableCatalog.GetUnlockableDef(text);
+				if (unlockableDef != null)
+				{
+					array = new UnlockableDef[]
+					{
+						unlockableDef
+					};
+				}
+			}
+			foreach (UnlockableDef unlockableDef2 in array)
+			{
+				localUser.userProfile.GrantUnlockable(unlockableDef2);
+			}
+		}
+
+		// Token: 0x06001BA3 RID: 7075 RVA: 0x00089A80 File Offset: 0x00087C80
+		[ConCommand(commandName = "unlockable_revoke", flags = ConVarFlags.Cheat, helpText = "Revokes the named unlockable, or \"all\" for all unlockables.")]
+		private static void CCUnlockableRevoke(ConCommandArgs args)
+		{
+			args.CheckArgumentCount(1);
+			LocalUser localUser = LocalUserManager.FindLocalUser(0);
+			if (localUser == null)
+			{
+				throw new ConCommandException("No local user.");
+			}
+			string text = args[0];
+			UnlockableDef[] array = Array.Empty<UnlockableDef>();
+			if (string.CompareOrdinal(text, "all") == 0)
+			{
+				array = UnlockableCatalog.indexToDefTable;
+			}
+			else
+			{
+				UnlockableDef unlockableDef = UnlockableCatalog.GetUnlockableDef(text);
+				if (unlockableDef != null)
+				{
+					array = new UnlockableDef[]
+					{
+						unlockableDef
+					};
+				}
+			}
+			foreach (UnlockableDef unlockableDef2 in array)
+			{
+				localUser.userProfile.RevokeUnlockable(unlockableDef2);
+			}
+		}
+
+		// Token: 0x04001E13 RID: 7699
 		private static readonly Dictionary<string, UnlockableDef> nameToDefTable = new Dictionary<string, UnlockableDef>();
 
-		// Token: 0x04001E4E RID: 7758
+		// Token: 0x04001E14 RID: 7700
 		private static UnlockableDef[] indexToDefTable;
 
-		// Token: 0x04001E4F RID: 7759
+		// Token: 0x04001E15 RID: 7701
 		public static ResourceAvailability availability;
 
-		// Token: 0x04001E50 RID: 7760
+		// Token: 0x04001E16 RID: 7702
 		private static readonly Dictionary<string, int> sortScores = new Dictionary<string, int>();
 	}
 }

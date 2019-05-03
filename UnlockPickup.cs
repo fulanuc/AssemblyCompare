@@ -4,16 +4,16 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x02000416 RID: 1046
+	// Token: 0x02000410 RID: 1040
 	public class UnlockPickup : MonoBehaviour
 	{
-		// Token: 0x06001786 RID: 6022 RVA: 0x00011A6F File Offset: 0x0000FC6F
+		// Token: 0x06001743 RID: 5955 RVA: 0x00011643 File Offset: 0x0000F843
 		private void FixedUpdate()
 		{
 			this.stopWatch += Time.fixedDeltaTime;
 		}
 
-		// Token: 0x06001787 RID: 6023 RVA: 0x0007A2A4 File Offset: 0x000784A4
+		// Token: 0x06001744 RID: 5956 RVA: 0x00079CE4 File Offset: 0x00077EE4
 		private void GrantPickup(GameObject activator)
 		{
 			if (Run.instance)
@@ -39,13 +39,13 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001788 RID: 6024 RVA: 0x0000C07C File Offset: 0x0000A27C
+		// Token: 0x06001745 RID: 5957 RVA: 0x0000BFA2 File Offset: 0x0000A1A2
 		private static bool BodyHasPickupPermission(CharacterBody body)
 		{
 			return (body.masterObject ? body.masterObject.GetComponent<PlayerCharacterMasterController>() : null) && body.inventory;
 		}
 
-		// Token: 0x06001789 RID: 6025 RVA: 0x0007A34C File Offset: 0x0007854C
+		// Token: 0x06001746 RID: 5958 RVA: 0x00079D8C File Offset: 0x00077F8C
 		private void OnTriggerStay(Collider other)
 		{
 			if (NetworkServer.active && this.stopWatch >= this.waitDuration && !this.consumed)
@@ -62,22 +62,22 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x04001A7C RID: 6780
+		// Token: 0x04001A53 RID: 6739
 		public static string itemPickupSoundString = "Play_UI_item_pickup";
 
-		// Token: 0x04001A7D RID: 6781
+		// Token: 0x04001A54 RID: 6740
 		private bool consumed;
 
-		// Token: 0x04001A7E RID: 6782
+		// Token: 0x04001A55 RID: 6741
 		private float stopWatch;
 
-		// Token: 0x04001A7F RID: 6783
+		// Token: 0x04001A56 RID: 6742
 		public float waitDuration = 0.5f;
 
-		// Token: 0x04001A80 RID: 6784
+		// Token: 0x04001A57 RID: 6743
 		public string displayNameToken;
 
-		// Token: 0x04001A81 RID: 6785
+		// Token: 0x04001A58 RID: 6744
 		public string unlockableName;
 	}
 }

@@ -5,17 +5,17 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x020004CE RID: 1230
+	// Token: 0x020004C0 RID: 1216
 	public static class TeleportHelper
 	{
-		// Token: 0x06001BD2 RID: 7122 RVA: 0x00089540 File Offset: 0x00087740
+		// Token: 0x06001B6E RID: 7022 RVA: 0x000889C8 File Offset: 0x00086BC8
 		public static void TeleportGameObject(GameObject gameObject, Vector3 newPosition)
 		{
 			bool hasEffectiveAuthority = Util.HasEffectiveAuthority(gameObject);
 			TeleportHelper.TeleportGameObject(gameObject, newPosition, newPosition - gameObject.transform.position, hasEffectiveAuthority);
 		}
 
-		// Token: 0x06001BD3 RID: 7123 RVA: 0x00089570 File Offset: 0x00087770
+		// Token: 0x06001B6F RID: 7023 RVA: 0x000889F8 File Offset: 0x00086BF8
 		private static void TeleportGameObject(GameObject gameObject, Vector3 newPosition, Vector3 delta, bool hasEffectiveAuthority)
 		{
 			TeleportHelper.OnTeleport(gameObject, newPosition, delta);
@@ -37,7 +37,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001BD4 RID: 7124 RVA: 0x000895E4 File Offset: 0x000877E4
+		// Token: 0x06001B70 RID: 7024 RVA: 0x00088A6C File Offset: 0x00086C6C
 		private static void OnTeleport(GameObject gameObject, Vector3 newPosition, Vector3 delta)
 		{
 			CharacterMotor component = gameObject.GetComponent<CharacterMotor>();
@@ -57,14 +57,14 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001BD5 RID: 7125 RVA: 0x00089650 File Offset: 0x00087850
+		// Token: 0x06001B71 RID: 7025 RVA: 0x00088AD8 File Offset: 0x00086CD8
 		public static void TeleportBody(CharacterBody body, Vector3 targetFootPosition)
 		{
 			Vector3 b = body.footPosition - body.transform.position;
 			TeleportHelper.TeleportGameObject(body.gameObject, targetFootPosition - b);
 		}
 
-		// Token: 0x06001BD6 RID: 7126 RVA: 0x00089688 File Offset: 0x00087888
+		// Token: 0x06001B72 RID: 7026 RVA: 0x00088B10 File Offset: 0x00086D10
 		[NetworkMessageHandler(client = true, server = true, msgType = 68)]
 		private static void HandleTeleport(NetworkMessage netMsg)
 		{
@@ -85,13 +85,13 @@ namespace RoR2
 			TeleportHelper.TeleportGameObject(TeleportHelper.messageBuffer.gameObject, TeleportHelper.messageBuffer.newPosition, TeleportHelper.messageBuffer.delta, flag);
 		}
 
-		// Token: 0x04001E33 RID: 7731
+		// Token: 0x04001DF9 RID: 7673
 		private static readonly TeleportHelper.TeleportMessage messageBuffer = new TeleportHelper.TeleportMessage();
 
-		// Token: 0x020004CF RID: 1231
+		// Token: 0x020004C1 RID: 1217
 		private class TeleportMessage : MessageBase
 		{
-			// Token: 0x06001BD9 RID: 7129 RVA: 0x000149ED File Offset: 0x00012BED
+			// Token: 0x06001B75 RID: 7029 RVA: 0x00014520 File Offset: 0x00012720
 			public override void Serialize(NetworkWriter writer)
 			{
 				writer.Write(this.gameObject);
@@ -99,7 +99,7 @@ namespace RoR2
 				writer.Write(this.delta);
 			}
 
-			// Token: 0x06001BDA RID: 7130 RVA: 0x00014A13 File Offset: 0x00012C13
+			// Token: 0x06001B76 RID: 7030 RVA: 0x00014546 File Offset: 0x00012746
 			public override void Deserialize(NetworkReader reader)
 			{
 				this.gameObject = reader.ReadGameObject();
@@ -107,13 +107,13 @@ namespace RoR2
 				this.delta = reader.ReadVector3();
 			}
 
-			// Token: 0x04001E34 RID: 7732
+			// Token: 0x04001DFA RID: 7674
 			public GameObject gameObject;
 
-			// Token: 0x04001E35 RID: 7733
+			// Token: 0x04001DFB RID: 7675
 			public Vector3 newPosition;
 
-			// Token: 0x04001E36 RID: 7734
+			// Token: 0x04001DFC RID: 7676
 			public Vector3 delta;
 		}
 	}

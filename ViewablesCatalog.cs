@@ -6,10 +6,10 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x020004F4 RID: 1268
+	// Token: 0x020004E5 RID: 1253
 	public static class ViewablesCatalog
 	{
-		// Token: 0x06001CE5 RID: 7397 RVA: 0x0008DA44 File Offset: 0x0008BC44
+		// Token: 0x06001C7E RID: 7294 RVA: 0x0008CCE8 File Offset: 0x0008AEE8
 		public static void AddNodeToRoot(ViewablesCatalog.Node node)
 		{
 			node.SetParent(ViewablesCatalog.rootNode);
@@ -29,7 +29,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001CE6 RID: 7398 RVA: 0x0008DAD4 File Offset: 0x0008BCD4
+		// Token: 0x06001C7F RID: 7295 RVA: 0x0008CD78 File Offset: 0x0008AF78
 		public static ViewablesCatalog.Node FindNode(string fullName)
 		{
 			ViewablesCatalog.Node result;
@@ -40,7 +40,7 @@ namespace RoR2
 			return null;
 		}
 
-		// Token: 0x06001CE7 RID: 7399 RVA: 0x0008DAF4 File Offset: 0x0008BCF4
+		// Token: 0x06001C80 RID: 7296 RVA: 0x0008CD98 File Offset: 0x0008AF98
 		[ConCommand(commandName = "viewables_list", flags = ConVarFlags.None, helpText = "Displays the full names of all viewables.")]
 		private static void CCViewablesList(ConCommandArgs args)
 		{
@@ -48,22 +48,22 @@ namespace RoR2
 			select node.fullName).ToArray<string>()));
 		}
 
-		// Token: 0x04001EB7 RID: 7863
+		// Token: 0x04001E79 RID: 7801
 		private static readonly ViewablesCatalog.Node rootNode = new ViewablesCatalog.Node("", true, null);
 
-		// Token: 0x04001EB8 RID: 7864
+		// Token: 0x04001E7A RID: 7802
 		private static readonly Dictionary<string, ViewablesCatalog.Node> fullNameToNodeMap = new Dictionary<string, ViewablesCatalog.Node>();
 
-		// Token: 0x020004F5 RID: 1269
+		// Token: 0x020004E6 RID: 1254
 		public class Node
 		{
-			// Token: 0x17000298 RID: 664
-			// (get) Token: 0x06001CE9 RID: 7401 RVA: 0x000153C4 File Offset: 0x000135C4
-			// (set) Token: 0x06001CEA RID: 7402 RVA: 0x000153CC File Offset: 0x000135CC
+			// Token: 0x1700028B RID: 651
+			// (get) Token: 0x06001C82 RID: 7298 RVA: 0x00014F15 File Offset: 0x00013115
+			// (set) Token: 0x06001C83 RID: 7299 RVA: 0x00014F1D File Offset: 0x0001311D
 			public ViewablesCatalog.Node parent { get; private set; }
 
-			// Token: 0x17000299 RID: 665
-			// (get) Token: 0x06001CEB RID: 7403 RVA: 0x000153D5 File Offset: 0x000135D5
+			// Token: 0x1700028C RID: 652
+			// (get) Token: 0x06001C84 RID: 7300 RVA: 0x00014F26 File Offset: 0x00013126
 			public string fullName
 			{
 				get
@@ -76,7 +76,7 @@ namespace RoR2
 				}
 			}
 
-			// Token: 0x06001CEC RID: 7404 RVA: 0x0008DB44 File Offset: 0x0008BD44
+			// Token: 0x06001C85 RID: 7301 RVA: 0x0008CDE8 File Offset: 0x0008AFE8
 			public Node(string name, bool isFolder, ViewablesCatalog.Node parent = null)
 			{
 				this.name = name;
@@ -86,7 +86,7 @@ namespace RoR2
 				this.SetParent(parent);
 			}
 
-			// Token: 0x06001CED RID: 7405 RVA: 0x0008DBA4 File Offset: 0x0008BDA4
+			// Token: 0x06001C86 RID: 7302 RVA: 0x0008CE48 File Offset: 0x0008B048
 			public void SetParent(ViewablesCatalog.Node newParent)
 			{
 				if (this.parent == newParent)
@@ -107,7 +107,7 @@ namespace RoR2
 				this.fullNameDirty = true;
 			}
 
-			// Token: 0x06001CEE RID: 7406 RVA: 0x0008DBF8 File Offset: 0x0008BDF8
+			// Token: 0x06001C87 RID: 7303 RVA: 0x0008CE9C File Offset: 0x0008B09C
 			private void GenerateFullName()
 			{
 				string text = this.name;
@@ -123,7 +123,7 @@ namespace RoR2
 				this.fullNameDirty = false;
 			}
 
-			// Token: 0x06001CEF RID: 7407 RVA: 0x0008DC48 File Offset: 0x0008BE48
+			// Token: 0x06001C88 RID: 7304 RVA: 0x0008CEEC File Offset: 0x0008B0EC
 			public bool DefaultShouldShowUnviewedTest(UserProfile userProfile)
 			{
 				if (!this.isFolder && userProfile.HasViewedViewable(this.fullName))
@@ -143,7 +143,7 @@ namespace RoR2
 				return false;
 			}
 
-			// Token: 0x06001CF0 RID: 7408 RVA: 0x000153EB File Offset: 0x000135EB
+			// Token: 0x06001C89 RID: 7305 RVA: 0x00014F3C File Offset: 0x0001313C
 			public IEnumerable<ViewablesCatalog.Node> Descendants()
 			{
 				yield return this;
@@ -160,25 +160,25 @@ namespace RoR2
 				yield break;
 			}
 
-			// Token: 0x04001EB9 RID: 7865
+			// Token: 0x04001E7B RID: 7803
 			public readonly string name;
 
-			// Token: 0x04001EBA RID: 7866
+			// Token: 0x04001E7C RID: 7804
 			public readonly bool isFolder;
 
-			// Token: 0x04001EBC RID: 7868
+			// Token: 0x04001E7E RID: 7806
 			private readonly List<ViewablesCatalog.Node> _children = new List<ViewablesCatalog.Node>();
 
-			// Token: 0x04001EBD RID: 7869
+			// Token: 0x04001E7F RID: 7807
 			public ReadOnlyCollection<ViewablesCatalog.Node> children;
 
-			// Token: 0x04001EBE RID: 7870
+			// Token: 0x04001E80 RID: 7808
 			private string _fullName;
 
-			// Token: 0x04001EBF RID: 7871
+			// Token: 0x04001E81 RID: 7809
 			private bool fullNameDirty = true;
 
-			// Token: 0x04001EC0 RID: 7872
+			// Token: 0x04001E82 RID: 7810
 			public Func<UserProfile, bool> shouldShowUnviewed;
 		}
 	}

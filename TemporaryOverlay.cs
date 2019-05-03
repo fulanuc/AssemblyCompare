@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x02000402 RID: 1026
+	// Token: 0x020003FC RID: 1020
 	public class TemporaryOverlay : MonoBehaviour
 	{
-		// Token: 0x06001709 RID: 5897 RVA: 0x00011530 File Offset: 0x0000F730
+		// Token: 0x060016C9 RID: 5833 RVA: 0x0001110B File Offset: 0x0000F30B
 		private void Start()
 		{
 			this.SetupMaterial();
@@ -16,7 +16,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600170A RID: 5898 RVA: 0x00011551 File Offset: 0x0000F751
+		// Token: 0x060016CA RID: 5834 RVA: 0x0001112C File Offset: 0x0000F32C
 		private void SetupMaterial()
 		{
 			if (!this.materialInstance)
@@ -25,7 +25,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600170B RID: 5899 RVA: 0x00011571 File Offset: 0x0000F771
+		// Token: 0x060016CB RID: 5835 RVA: 0x0001114C File Offset: 0x0000F34C
 		public void AddToCharacerModel(CharacterModel characterModel)
 		{
 			this.SetupMaterial();
@@ -37,7 +37,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600170C RID: 5900 RVA: 0x0001159B File Offset: 0x0000F79B
+		// Token: 0x060016CC RID: 5836 RVA: 0x00011176 File Offset: 0x0000F376
 		public void RemoveFromCharacterModel()
 		{
 			if (this.assignedCharacterModel)
@@ -48,7 +48,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600170D RID: 5901 RVA: 0x000115CA File Offset: 0x0000F7CA
+		// Token: 0x060016CD RID: 5837 RVA: 0x000111A5 File Offset: 0x0000F3A5
 		private void OnDestroy()
 		{
 			this.RemoveFromCharacterModel();
@@ -58,7 +58,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x0600170E RID: 5902 RVA: 0x00078990 File Offset: 0x00076B90
+		// Token: 0x060016CE RID: 5838 RVA: 0x00078404 File Offset: 0x00076604
 		private void Update()
 		{
 			if (this.animateShaderAlpha)
@@ -94,44 +94,44 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x040019FC RID: 6652
+		// Token: 0x040019D3 RID: 6611
 		public Material originalMaterial;
 
-		// Token: 0x040019FD RID: 6653
+		// Token: 0x040019D4 RID: 6612
 		[HideInInspector]
 		public Material materialInstance;
 
-		// Token: 0x040019FE RID: 6654
+		// Token: 0x040019D5 RID: 6613
 		private bool isAssigned;
 
-		// Token: 0x040019FF RID: 6655
+		// Token: 0x040019D6 RID: 6614
 		private CharacterModel assignedCharacterModel;
 
-		// Token: 0x04001A00 RID: 6656
+		// Token: 0x040019D7 RID: 6615
 		public CharacterModel inspectorCharacterModel;
 
-		// Token: 0x04001A01 RID: 6657
+		// Token: 0x040019D8 RID: 6616
 		public bool animateShaderAlpha;
 
-		// Token: 0x04001A02 RID: 6658
+		// Token: 0x040019D9 RID: 6617
 		public AnimationCurve alphaCurve;
 
-		// Token: 0x04001A03 RID: 6659
+		// Token: 0x040019DA RID: 6618
 		public float duration;
 
-		// Token: 0x04001A04 RID: 6660
+		// Token: 0x040019DB RID: 6619
 		public bool destroyComponentOnEnd;
 
-		// Token: 0x04001A05 RID: 6661
+		// Token: 0x040019DC RID: 6620
 		public bool destroyObjectOnEnd;
 
-		// Token: 0x04001A06 RID: 6662
+		// Token: 0x040019DD RID: 6621
 		public GameObject destroyEffectPrefab;
 
-		// Token: 0x04001A07 RID: 6663
+		// Token: 0x040019DE RID: 6622
 		public string destroyEffectChildString;
 
-		// Token: 0x04001A08 RID: 6664
+		// Token: 0x040019DF RID: 6623
 		private float stopwatch;
 	}
 }

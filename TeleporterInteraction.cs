@@ -8,13 +8,13 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x020003FE RID: 1022
+	// Token: 0x020003F8 RID: 1016
 	[RequireComponent(typeof(SceneExitController))]
-	public sealed class TeleporterInteraction : NetworkBehaviour, IInteractable, IHologramContentProvider
+	public class TeleporterInteraction : NetworkBehaviour, IInteractable, IHologramContentProvider
 	{
-		// Token: 0x1700020B RID: 523
-		// (get) Token: 0x060016AE RID: 5806 RVA: 0x00011046 File Offset: 0x0000F246
-		// (set) Token: 0x060016AF RID: 5807 RVA: 0x0001104E File Offset: 0x0000F24E
+		// Token: 0x17000202 RID: 514
+		// (get) Token: 0x0600166F RID: 5743 RVA: 0x00010C2D File Offset: 0x0000EE2D
+		// (set) Token: 0x06001670 RID: 5744 RVA: 0x00010C35 File Offset: 0x0000EE35
 		private TeleporterInteraction.ActivationState activationState
 		{
 			get
@@ -27,8 +27,8 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x1700020C RID: 524
-		// (get) Token: 0x060016B0 RID: 5808 RVA: 0x00011057 File Offset: 0x0000F257
+		// Token: 0x17000203 RID: 515
+		// (get) Token: 0x06001671 RID: 5745 RVA: 0x00010C3E File Offset: 0x0000EE3E
 		public bool isIdle
 		{
 			get
@@ -37,8 +37,8 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x1700020D RID: 525
-		// (get) Token: 0x060016B1 RID: 5809 RVA: 0x00011062 File Offset: 0x0000F262
+		// Token: 0x17000204 RID: 516
+		// (get) Token: 0x06001672 RID: 5746 RVA: 0x00010C49 File Offset: 0x0000EE49
 		public bool isIdleToCharging
 		{
 			get
@@ -47,8 +47,8 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x1700020E RID: 526
-		// (get) Token: 0x060016B2 RID: 5810 RVA: 0x0001106D File Offset: 0x0000F26D
+		// Token: 0x17000205 RID: 517
+		// (get) Token: 0x06001673 RID: 5747 RVA: 0x00010C54 File Offset: 0x0000EE54
 		public bool isInFinalSequence
 		{
 			get
@@ -57,8 +57,8 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x1700020F RID: 527
-		// (get) Token: 0x060016B3 RID: 5811 RVA: 0x00011078 File Offset: 0x0000F278
+		// Token: 0x17000206 RID: 518
+		// (get) Token: 0x06001674 RID: 5748 RVA: 0x00010C5F File Offset: 0x0000EE5F
 		public bool isCharging
 		{
 			get
@@ -67,8 +67,8 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x17000210 RID: 528
-		// (get) Token: 0x060016B4 RID: 5812 RVA: 0x00011083 File Offset: 0x0000F283
+		// Token: 0x17000207 RID: 519
+		// (get) Token: 0x06001675 RID: 5749 RVA: 0x00010C6A File Offset: 0x0000EE6A
 		public bool isCharged
 		{
 			get
@@ -77,8 +77,8 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x17000211 RID: 529
-		// (get) Token: 0x060016B5 RID: 5813 RVA: 0x00011091 File Offset: 0x0000F291
+		// Token: 0x17000208 RID: 520
+		// (get) Token: 0x06001676 RID: 5750 RVA: 0x00010C78 File Offset: 0x0000EE78
 		public float chargeFraction
 		{
 			get
@@ -87,14 +87,14 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x17000212 RID: 530
-		// (get) Token: 0x060016B6 RID: 5814 RVA: 0x000110A1 File Offset: 0x0000F2A1
-		// (set) Token: 0x060016B7 RID: 5815 RVA: 0x000110A8 File Offset: 0x0000F2A8
+		// Token: 0x17000209 RID: 521
+		// (get) Token: 0x06001677 RID: 5751 RVA: 0x00010C88 File Offset: 0x0000EE88
+		// (set) Token: 0x06001678 RID: 5752 RVA: 0x00010C8F File Offset: 0x0000EE8F
 		public static TeleporterInteraction instance { get; private set; }
 
-		// Token: 0x17000213 RID: 531
-		// (get) Token: 0x060016B8 RID: 5816 RVA: 0x000110B0 File Offset: 0x0000F2B0
-		// (set) Token: 0x060016B9 RID: 5817 RVA: 0x000110B8 File Offset: 0x0000F2B8
+		// Token: 0x1700020A RID: 522
+		// (get) Token: 0x06001679 RID: 5753 RVA: 0x00010C97 File Offset: 0x0000EE97
+		// (set) Token: 0x0600167A RID: 5754 RVA: 0x00010C9F File Offset: 0x0000EE9F
 		public bool shouldAttemptToSpawnShopPortal
 		{
 			get
@@ -118,9 +118,9 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x17000214 RID: 532
-		// (get) Token: 0x060016BA RID: 5818 RVA: 0x000110EF File Offset: 0x0000F2EF
-		// (set) Token: 0x060016BB RID: 5819 RVA: 0x000110F7 File Offset: 0x0000F2F7
+		// Token: 0x1700020B RID: 523
+		// (get) Token: 0x0600167B RID: 5755 RVA: 0x00010CD6 File Offset: 0x0000EED6
+		// (set) Token: 0x0600167C RID: 5756 RVA: 0x00010CDE File Offset: 0x0000EEDE
 		public bool shouldAttemptToSpawnGoldshoresPortal
 		{
 			get
@@ -144,9 +144,9 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x17000215 RID: 533
-		// (get) Token: 0x060016BC RID: 5820 RVA: 0x0001112E File Offset: 0x0000F32E
-		// (set) Token: 0x060016BD RID: 5821 RVA: 0x00011136 File Offset: 0x0000F336
+		// Token: 0x1700020C RID: 524
+		// (get) Token: 0x0600167D RID: 5757 RVA: 0x00010D15 File Offset: 0x0000EF15
+		// (set) Token: 0x0600167E RID: 5758 RVA: 0x00010D1D File Offset: 0x0000EF1D
 		public bool shouldAttemptToSpawnMSPortal
 		{
 			get
@@ -170,7 +170,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060016BE RID: 5822 RVA: 0x0001116D File Offset: 0x0000F36D
+		// Token: 0x0600167F RID: 5759 RVA: 0x00010D54 File Offset: 0x0000EF54
 		private void OnSyncShouldAttemptToSpawnShopPortal(bool newValue)
 		{
 			this.Network_shouldAttemptToSpawnShopPortal = newValue;
@@ -180,7 +180,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060016BF RID: 5823 RVA: 0x0001119E File Offset: 0x0000F39E
+		// Token: 0x06001680 RID: 5760 RVA: 0x00010D85 File Offset: 0x0000EF85
 		private void OnSyncShouldAttemptToSpawnGoldshoresPortal(bool newValue)
 		{
 			this.Network_shouldAttemptToSpawnGoldshoresPortal = newValue;
@@ -190,7 +190,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060016C0 RID: 5824 RVA: 0x000111CF File Offset: 0x0000F3CF
+		// Token: 0x06001681 RID: 5761 RVA: 0x00010DB6 File Offset: 0x0000EFB6
 		private void OnSyncShouldAttemptToSpawnMSPortal(bool newValue)
 		{
 			this.Network_shouldAttemptToSpawnMSPortal = newValue;
@@ -200,7 +200,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060016C1 RID: 5825 RVA: 0x000775A8 File Offset: 0x000757A8
+		// Token: 0x06001682 RID: 5762 RVA: 0x00077018 File Offset: 0x00075218
 		private void Awake()
 		{
 			this.remainingChargeTimer = this.chargeDuration;
@@ -209,21 +209,19 @@ namespace RoR2
 			this.bossShrineIndicator = this.childLocator.FindChild("BossShrineSymbol").gameObject;
 		}
 
-		// Token: 0x060016C2 RID: 5826 RVA: 0x00011200 File Offset: 0x0000F400
+		// Token: 0x06001683 RID: 5763 RVA: 0x00010DE7 File Offset: 0x0000EFE7
 		private void OnEnable()
 		{
 			TeleporterInteraction.instance = SingletonHelper.Assign<TeleporterInteraction>(TeleporterInteraction.instance, this);
-			InstanceTracker.Add<TeleporterInteraction>(this);
 		}
 
-		// Token: 0x060016C3 RID: 5827 RVA: 0x00011218 File Offset: 0x0000F418
+		// Token: 0x06001684 RID: 5764 RVA: 0x00010DF9 File Offset: 0x0000EFF9
 		private void OnDisable()
 		{
-			InstanceTracker.Remove<TeleporterInteraction>(this);
 			TeleporterInteraction.instance = SingletonHelper.Unassign<TeleporterInteraction>(TeleporterInteraction.instance, this);
 		}
 
-		// Token: 0x060016C4 RID: 5828 RVA: 0x00077600 File Offset: 0x00075800
+		// Token: 0x06001685 RID: 5765 RVA: 0x00077070 File Offset: 0x00075270
 		private void Start()
 		{
 			if (this.clearRadiusIndicator)
@@ -255,7 +253,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060016C5 RID: 5829 RVA: 0x00011230 File Offset: 0x0000F430
+		// Token: 0x06001686 RID: 5766 RVA: 0x00010E0B File Offset: 0x0000F00B
 		public string GetContextString(Interactor activator)
 		{
 			if (this.activationState == TeleporterInteraction.ActivationState.Idle)
@@ -269,7 +267,7 @@ namespace RoR2
 			return null;
 		}
 
-		// Token: 0x060016C6 RID: 5830 RVA: 0x0001125C File Offset: 0x0000F45C
+		// Token: 0x06001687 RID: 5767 RVA: 0x00010E37 File Offset: 0x0000F037
 		public Interactability GetInteractability(Interactor activator)
 		{
 			if (this.locked)
@@ -298,7 +296,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060016C7 RID: 5831 RVA: 0x000776F0 File Offset: 0x000758F0
+		// Token: 0x06001688 RID: 5768 RVA: 0x00077160 File Offset: 0x00075360
 		public void OnInteractionBegin(Interactor activator)
 		{
 			if (this.activationState == TeleporterInteraction.ActivationState.Idle)
@@ -326,13 +324,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060016C8 RID: 5832 RVA: 0x000038B4 File Offset: 0x00001AB4
-		public bool ShouldShowOnScanner()
-		{
-			return true;
-		}
-
-		// Token: 0x060016C9 RID: 5833 RVA: 0x00011293 File Offset: 0x0000F493
+		// Token: 0x06001689 RID: 5769 RVA: 0x00010E6E File Offset: 0x0000F06E
 		[ClientRpc]
 		private void RpcClientOnActivated(GameObject activatorObject)
 		{
@@ -342,13 +334,13 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060016CA RID: 5834 RVA: 0x000112AD File Offset: 0x0000F4AD
+		// Token: 0x0600168A RID: 5770 RVA: 0x00010E88 File Offset: 0x0000F088
 		private void UpdateMonstersClear()
 		{
 			this.monstersCleared = (BossGroup.GetTotalBossCount() == 0);
 		}
 
-		// Token: 0x060016CB RID: 5835 RVA: 0x00077774 File Offset: 0x00075974
+		// Token: 0x0600168B RID: 5771 RVA: 0x000771E4 File Offset: 0x000753E4
 		private int GetPlayerCountInRadius()
 		{
 			int num = 0;
@@ -365,19 +357,19 @@ namespace RoR2
 			return num;
 		}
 
-		// Token: 0x060016CC RID: 5836 RVA: 0x0000DA33 File Offset: 0x0000BC33
+		// Token: 0x0600168C RID: 5772 RVA: 0x0000D94A File Offset: 0x0000BB4A
 		private int GetMonsterCount()
 		{
 			return TeamComponent.GetTeamMembers(TeamIndex.Monster).Count;
 		}
 
-		// Token: 0x060016CD RID: 5837 RVA: 0x000112BD File Offset: 0x0000F4BD
+		// Token: 0x0600168D RID: 5773 RVA: 0x00010E98 File Offset: 0x0000F098
 		private float DiminishingReturns(int i)
 		{
 			return (1f - Mathf.Pow(0.5f, (float)i)) * 2f;
 		}
 
-		// Token: 0x060016CE RID: 5838 RVA: 0x000112D7 File Offset: 0x0000F4D7
+		// Token: 0x0600168E RID: 5774 RVA: 0x00010EB2 File Offset: 0x0000F0B2
 		[Server]
 		public void AddShrineStack()
 		{
@@ -393,22 +385,22 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060016CF RID: 5839 RVA: 0x000777FC File Offset: 0x000759FC
+		// Token: 0x0600168F RID: 5775 RVA: 0x0007726C File Offset: 0x0007546C
 		public bool IsInChargingRange(GameObject gameObject)
 		{
 			return (gameObject.transform.position - base.transform.position).sqrMagnitude <= this.clearRadius * this.clearRadius;
 		}
 
-		// Token: 0x060016D0 RID: 5840 RVA: 0x0001130C File Offset: 0x0000F50C
+		// Token: 0x06001690 RID: 5776 RVA: 0x00010EE7 File Offset: 0x0000F0E7
 		public bool IsInChargingRange(CharacterBody characterBody)
 		{
 			return this.IsInChargingRange(characterBody.gameObject);
 		}
 
-		// Token: 0x060016D1 RID: 5841 RVA: 0x00077840 File Offset: 0x00075A40
+		// Token: 0x06001691 RID: 5777 RVA: 0x000772B0 File Offset: 0x000754B0
 		public void FixedUpdate()
 		{
-			this.bossShrineIndicator.SetActive(this.showBossIndicator);
+			this.bossShrineIndicator.SetActive(this.activationState == TeleporterInteraction.ActivationState.Idle || this.showBossIndicator);
 			if (this.previousActivationState != this.activationState)
 			{
 				this.OnStateChanged(this.previousActivationState, this.activationState);
@@ -417,7 +409,7 @@ namespace RoR2
 			this.StateFixedUpdate();
 		}
 
-		// Token: 0x060016D2 RID: 5842 RVA: 0x00077898 File Offset: 0x00075A98
+		// Token: 0x06001692 RID: 5778 RVA: 0x0007730C File Offset: 0x0007550C
 		private void StateFixedUpdate()
 		{
 			switch (this.activationState)
@@ -489,7 +481,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060016D3 RID: 5843 RVA: 0x00077AF4 File Offset: 0x00075CF4
+		// Token: 0x06001693 RID: 5779 RVA: 0x00077568 File Offset: 0x00075768
 		private void OnStateChanged(TeleporterInteraction.ActivationState oldActivationState, TeleporterInteraction.ActivationState newActivationState)
 		{
 			switch (newActivationState)
@@ -571,22 +563,22 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x14000030 RID: 48
-		// (add) Token: 0x060016D4 RID: 5844 RVA: 0x00077D30 File Offset: 0x00075F30
-		// (remove) Token: 0x060016D5 RID: 5845 RVA: 0x00077D64 File Offset: 0x00075F64
+		// Token: 0x1400002E RID: 46
+		// (add) Token: 0x06001694 RID: 5780 RVA: 0x000777A4 File Offset: 0x000759A4
+		// (remove) Token: 0x06001695 RID: 5781 RVA: 0x000777D8 File Offset: 0x000759D8
 		public static event Action<TeleporterInteraction> onTeleporterBeginChargingGlobal;
 
-		// Token: 0x14000031 RID: 49
-		// (add) Token: 0x060016D6 RID: 5846 RVA: 0x00077D98 File Offset: 0x00075F98
-		// (remove) Token: 0x060016D7 RID: 5847 RVA: 0x00077DCC File Offset: 0x00075FCC
+		// Token: 0x1400002F RID: 47
+		// (add) Token: 0x06001696 RID: 5782 RVA: 0x0007780C File Offset: 0x00075A0C
+		// (remove) Token: 0x06001697 RID: 5783 RVA: 0x00077840 File Offset: 0x00075A40
 		public static event Action<TeleporterInteraction> onTeleporterChargedGlobal;
 
-		// Token: 0x14000032 RID: 50
-		// (add) Token: 0x060016D8 RID: 5848 RVA: 0x00077E00 File Offset: 0x00076000
-		// (remove) Token: 0x060016D9 RID: 5849 RVA: 0x00077E34 File Offset: 0x00076034
+		// Token: 0x14000030 RID: 48
+		// (add) Token: 0x06001698 RID: 5784 RVA: 0x00077874 File Offset: 0x00075A74
+		// (remove) Token: 0x06001699 RID: 5785 RVA: 0x000778A8 File Offset: 0x00075AA8
 		public static event Action<TeleporterInteraction> onTeleporterFinishGlobal;
 
-		// Token: 0x060016DA RID: 5850 RVA: 0x00077E68 File Offset: 0x00076068
+		// Token: 0x0600169A RID: 5786 RVA: 0x000778DC File Offset: 0x00075ADC
 		[Server]
 		private void OnChargingFinished()
 		{
@@ -609,7 +601,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060016DB RID: 5851 RVA: 0x00077EB4 File Offset: 0x000760B4
+		// Token: 0x0600169B RID: 5787 RVA: 0x00077928 File Offset: 0x00075B28
 		[Server]
 		private void AttemptToSpawnShopPortal()
 		{
@@ -637,7 +629,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060016DC RID: 5852 RVA: 0x00077F70 File Offset: 0x00076170
+		// Token: 0x0600169C RID: 5788 RVA: 0x000779E4 File Offset: 0x00075BE4
 		[Server]
 		private void AttemptToSpawnGoldshoresPortal()
 		{
@@ -662,7 +654,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060016DD RID: 5853 RVA: 0x00078004 File Offset: 0x00076204
+		// Token: 0x0600169D RID: 5789 RVA: 0x00077A78 File Offset: 0x00075C78
 		[Server]
 		private void AttemptToSpawnMSPortal()
 		{
@@ -687,19 +679,19 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060016DE RID: 5854 RVA: 0x00011078 File Offset: 0x0000F278
+		// Token: 0x0600169E RID: 5790 RVA: 0x00010C5F File Offset: 0x0000EE5F
 		public bool ShouldDisplayHologram(GameObject viewer)
 		{
 			return this.activationState == TeleporterInteraction.ActivationState.Charging;
 		}
 
-		// Token: 0x060016DF RID: 5855 RVA: 0x0001131A File Offset: 0x0000F51A
+		// Token: 0x0600169F RID: 5791 RVA: 0x00010EF5 File Offset: 0x0000F0F5
 		public GameObject GetHologramContentPrefab()
 		{
 			return Resources.Load<GameObject>("Prefabs/TimerHologramContent");
 		}
 
-		// Token: 0x060016E0 RID: 5856 RVA: 0x00078098 File Offset: 0x00076298
+		// Token: 0x060016A0 RID: 5792 RVA: 0x00077B0C File Offset: 0x00075D0C
 		public void UpdateHologramContent(GameObject hologramContentObject)
 		{
 			TimerHologramContent component = hologramContentObject.GetComponent<TimerHologramContent>();
@@ -709,7 +701,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060016E1 RID: 5857 RVA: 0x00011326 File Offset: 0x0000F526
+		// Token: 0x060016A1 RID: 5793 RVA: 0x00010F01 File Offset: 0x0000F101
 		private IEnumerator ChestLockCoroutine()
 		{
 			List<GameObject> lockInstances = new List<GameObject>();
@@ -746,20 +738,20 @@ namespace RoR2
 			yield break;
 		}
 
-		// Token: 0x060016E2 RID: 5858 RVA: 0x00003696 File Offset: 0x00001896
+		// Token: 0x060016A2 RID: 5794 RVA: 0x00003696 File Offset: 0x00001896
 		public bool ShouldIgnoreSpherecastForInteractibility(Interactor activator)
 		{
 			return false;
 		}
 
-		// Token: 0x060016E4 RID: 5860 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x060016A4 RID: 5796 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x17000216 RID: 534
-		// (get) Token: 0x060016E5 RID: 5861 RVA: 0x000780C0 File Offset: 0x000762C0
-		// (set) Token: 0x060016E6 RID: 5862 RVA: 0x0001135E File Offset: 0x0000F55E
+		// Token: 0x1700020D RID: 525
+		// (get) Token: 0x060016A5 RID: 5797 RVA: 0x00077B34 File Offset: 0x00075D34
+		// (set) Token: 0x060016A6 RID: 5798 RVA: 0x00010F39 File Offset: 0x0000F139
 		public uint NetworkactivationStateInternal
 		{
 			get
@@ -772,9 +764,9 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x17000217 RID: 535
-		// (get) Token: 0x060016E7 RID: 5863 RVA: 0x000780D4 File Offset: 0x000762D4
-		// (set) Token: 0x060016E8 RID: 5864 RVA: 0x00011372 File Offset: 0x0000F572
+		// Token: 0x1700020E RID: 526
+		// (get) Token: 0x060016A7 RID: 5799 RVA: 0x00077B48 File Offset: 0x00075D48
+		// (set) Token: 0x060016A8 RID: 5800 RVA: 0x00010F4D File Offset: 0x0000F14D
 		public bool Networklocked
 		{
 			get
@@ -787,9 +779,9 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x17000218 RID: 536
-		// (get) Token: 0x060016E9 RID: 5865 RVA: 0x000780E8 File Offset: 0x000762E8
-		// (set) Token: 0x060016EA RID: 5866 RVA: 0x00011386 File Offset: 0x0000F586
+		// Token: 0x1700020F RID: 527
+		// (get) Token: 0x060016A9 RID: 5801 RVA: 0x00077B5C File Offset: 0x00075D5C
+		// (set) Token: 0x060016AA RID: 5802 RVA: 0x00010F61 File Offset: 0x0000F161
 		public uint NetworkchargePercent
 		{
 			get
@@ -802,9 +794,9 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x17000219 RID: 537
-		// (get) Token: 0x060016EB RID: 5867 RVA: 0x000780FC File Offset: 0x000762FC
-		// (set) Token: 0x060016EC RID: 5868 RVA: 0x0001139A File Offset: 0x0000F59A
+		// Token: 0x17000210 RID: 528
+		// (get) Token: 0x060016AB RID: 5803 RVA: 0x00077B70 File Offset: 0x00075D70
+		// (set) Token: 0x060016AC RID: 5804 RVA: 0x00010F75 File Offset: 0x0000F175
 		public bool Network_shouldAttemptToSpawnShopPortal
 		{
 			get
@@ -824,9 +816,9 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x1700021A RID: 538
-		// (get) Token: 0x060016ED RID: 5869 RVA: 0x00078110 File Offset: 0x00076310
-		// (set) Token: 0x060016EE RID: 5870 RVA: 0x000113D9 File Offset: 0x0000F5D9
+		// Token: 0x17000211 RID: 529
+		// (get) Token: 0x060016AD RID: 5805 RVA: 0x00077B84 File Offset: 0x00075D84
+		// (set) Token: 0x060016AE RID: 5806 RVA: 0x00010FB4 File Offset: 0x0000F1B4
 		public bool Network_shouldAttemptToSpawnGoldshoresPortal
 		{
 			get
@@ -846,9 +838,9 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x1700021B RID: 539
-		// (get) Token: 0x060016EF RID: 5871 RVA: 0x00078124 File Offset: 0x00076324
-		// (set) Token: 0x060016F0 RID: 5872 RVA: 0x00011418 File Offset: 0x0000F618
+		// Token: 0x17000212 RID: 530
+		// (get) Token: 0x060016AF RID: 5807 RVA: 0x00077B98 File Offset: 0x00075D98
+		// (set) Token: 0x060016B0 RID: 5808 RVA: 0x00010FF3 File Offset: 0x0000F1F3
 		public bool Network_shouldAttemptToSpawnMSPortal
 		{
 			get
@@ -868,9 +860,9 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x1700021C RID: 540
-		// (get) Token: 0x060016F1 RID: 5873 RVA: 0x00078138 File Offset: 0x00076338
-		// (set) Token: 0x060016F2 RID: 5874 RVA: 0x00011457 File Offset: 0x0000F657
+		// Token: 0x17000213 RID: 531
+		// (get) Token: 0x060016B1 RID: 5809 RVA: 0x00077BAC File Offset: 0x00075DAC
+		// (set) Token: 0x060016B2 RID: 5810 RVA: 0x00011032 File Offset: 0x0000F232
 		public bool NetworkshowBossIndicator
 		{
 			get
@@ -883,7 +875,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060016F3 RID: 5875 RVA: 0x0001146B File Offset: 0x0000F66B
+		// Token: 0x060016B3 RID: 5811 RVA: 0x00011046 File Offset: 0x0000F246
 		protected static void InvokeRpcRpcClientOnActivated(NetworkBehaviour obj, NetworkReader reader)
 		{
 			if (!NetworkClient.active)
@@ -894,7 +886,7 @@ namespace RoR2
 			((TeleporterInteraction)obj).RpcClientOnActivated(reader.ReadGameObject());
 		}
 
-		// Token: 0x060016F4 RID: 5876 RVA: 0x0007814C File Offset: 0x0007634C
+		// Token: 0x060016B4 RID: 5812 RVA: 0x00077BC0 File Offset: 0x00075DC0
 		public void CallRpcClientOnActivated(GameObject activatorObject)
 		{
 			if (!NetworkServer.active)
@@ -911,14 +903,14 @@ namespace RoR2
 			this.SendRPCInternal(networkWriter, 0, "RpcClientOnActivated");
 		}
 
-		// Token: 0x060016F5 RID: 5877 RVA: 0x00011494 File Offset: 0x0000F694
+		// Token: 0x060016B5 RID: 5813 RVA: 0x0001106F File Offset: 0x0000F26F
 		static TeleporterInteraction()
 		{
 			NetworkBehaviour.RegisterRpcDelegate(typeof(TeleporterInteraction), TeleporterInteraction.kRpcRpcClientOnActivated, new NetworkBehaviour.CmdDelegate(TeleporterInteraction.InvokeRpcRpcClientOnActivated));
 			NetworkCRC.RegisterBehaviour("TeleporterInteraction", 0);
 		}
 
-		// Token: 0x060016F6 RID: 5878 RVA: 0x000781C0 File Offset: 0x000763C0
+		// Token: 0x060016B6 RID: 5814 RVA: 0x00077C34 File Offset: 0x00075E34
 		public override bool OnSerialize(NetworkWriter writer, bool forceAll)
 		{
 			if (forceAll)
@@ -1003,7 +995,7 @@ namespace RoR2
 			return flag;
 		}
 
-		// Token: 0x060016F7 RID: 5879 RVA: 0x000783A8 File Offset: 0x000765A8
+		// Token: 0x060016B7 RID: 5815 RVA: 0x00077E1C File Offset: 0x0007601C
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 			if (initialState)
@@ -1048,126 +1040,126 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x040019C4 RID: 6596
+		// Token: 0x0400199B RID: 6555
 		[SyncVar]
 		private uint activationStateInternal;
 
-		// Token: 0x040019C5 RID: 6597
+		// Token: 0x0400199C RID: 6556
 		private TeleporterInteraction.ActivationState previousActivationState;
 
-		// Token: 0x040019C6 RID: 6598
+		// Token: 0x0400199D RID: 6557
 		[SyncVar]
 		public bool locked;
 
-		// Token: 0x040019C7 RID: 6599
+		// Token: 0x0400199E RID: 6558
 		public AudioSource musicSource;
 
-		// Token: 0x040019C8 RID: 6600
+		// Token: 0x0400199F RID: 6559
 		[Tooltip("How long it takes for this teleporter to finish activating.")]
 		public float chargeDuration = 90f;
 
-		// Token: 0x040019C9 RID: 6601
+		// Token: 0x040019A0 RID: 6560
 		[Tooltip("The radius within which no monsters must exist for the teleporter event to conclude. Changing at runtime will not currently update the indicator scale.")]
 		public float clearRadius = 40f;
 
-		// Token: 0x040019CA RID: 6602
+		// Token: 0x040019A1 RID: 6561
 		[Tooltip("An object which will be used to represent the clear radius.")]
 		public GameObject clearRadiusIndicator;
 
-		// Token: 0x040019CB RID: 6603
+		// Token: 0x040019A2 RID: 6562
 		[HideInInspector]
 		public float remainingChargeTimer;
 
-		// Token: 0x040019CC RID: 6604
+		// Token: 0x040019A3 RID: 6563
 		public int shrineBonusStacks;
 
-		// Token: 0x040019CD RID: 6605
+		// Token: 0x040019A4 RID: 6564
 		[SyncVar]
 		private uint chargePercent;
 
-		// Token: 0x040019CE RID: 6606
+		// Token: 0x040019A5 RID: 6565
 		private float idleToChargingStopwatch;
 
-		// Token: 0x040019CF RID: 6607
+		// Token: 0x040019A6 RID: 6566
 		private float monsterCheckTimer;
 
-		// Token: 0x040019D0 RID: 6608
+		// Token: 0x040019A7 RID: 6567
 		private GameObject teleporterPositionIndicator;
 
-		// Token: 0x040019D1 RID: 6609
+		// Token: 0x040019A8 RID: 6568
 		public string beginContextString;
 
-		// Token: 0x040019D2 RID: 6610
+		// Token: 0x040019A9 RID: 6569
 		public string exitContextString;
 
-		// Token: 0x040019D3 RID: 6611
+		// Token: 0x040019AA RID: 6570
 		private ChildLocator childLocator;
 
-		// Token: 0x040019D4 RID: 6612
+		// Token: 0x040019AB RID: 6571
 		public CombatDirector bonusDirector;
 
-		// Token: 0x040019D5 RID: 6613
+		// Token: 0x040019AC RID: 6572
 		public CombatDirector bossDirector;
 
-		// Token: 0x040019D7 RID: 6615
+		// Token: 0x040019AE RID: 6574
 		private GameObject bossShrineIndicator;
 
-		// Token: 0x040019D8 RID: 6616
+		// Token: 0x040019AF RID: 6575
 		[SyncVar(hook = "OnSyncShouldAttemptToSpawnShopPortal")]
 		private bool _shouldAttemptToSpawnShopPortal;
 
-		// Token: 0x040019D9 RID: 6617
+		// Token: 0x040019B0 RID: 6576
 		[SyncVar(hook = "OnSyncShouldAttemptToSpawnGoldshoresPortal")]
 		private bool _shouldAttemptToSpawnGoldshoresPortal;
 
-		// Token: 0x040019DA RID: 6618
+		// Token: 0x040019B1 RID: 6577
 		[SyncVar(hook = "OnSyncShouldAttemptToSpawnMSPortal")]
 		private bool _shouldAttemptToSpawnMSPortal;
 
-		// Token: 0x040019DB RID: 6619
+		// Token: 0x040019B2 RID: 6578
 		private Xoroshiro128Plus rng;
 
-		// Token: 0x040019DC RID: 6620
+		// Token: 0x040019B3 RID: 6579
 		private bool monstersCleared;
 
-		// Token: 0x040019DD RID: 6621
+		// Token: 0x040019B4 RID: 6580
 		[SyncVar]
 		private bool showBossIndicator;
 
-		// Token: 0x040019E1 RID: 6625
+		// Token: 0x040019B8 RID: 6584
 		public SpawnCard shopPortalSpawnCard;
 
-		// Token: 0x040019E2 RID: 6626
+		// Token: 0x040019B9 RID: 6585
 		public SpawnCard goldshoresPortalSpawnCard;
 
-		// Token: 0x040019E3 RID: 6627
+		// Token: 0x040019BA RID: 6586
 		public SpawnCard msPortalSpawnCard;
 
-		// Token: 0x040019E4 RID: 6628
+		// Token: 0x040019BB RID: 6587
 		public float baseShopSpawnChance = 0.25f;
 
-		// Token: 0x040019E5 RID: 6629
+		// Token: 0x040019BC RID: 6588
 		[Tooltip("The networked object which will be instantiated to lock purchasables.")]
 		public GameObject lockPrefab;
 
-		// Token: 0x040019E6 RID: 6630
+		// Token: 0x040019BD RID: 6589
 		private Coroutine chestLockCoroutine;
 
-		// Token: 0x040019E7 RID: 6631
+		// Token: 0x040019BE RID: 6590
 		private static int kRpcRpcClientOnActivated = 1157394167;
 
-		// Token: 0x020003FF RID: 1023
+		// Token: 0x020003F9 RID: 1017
 		private enum ActivationState
 		{
-			// Token: 0x040019E9 RID: 6633
+			// Token: 0x040019C0 RID: 6592
 			Idle,
-			// Token: 0x040019EA RID: 6634
+			// Token: 0x040019C1 RID: 6593
 			IdleToCharging,
-			// Token: 0x040019EB RID: 6635
+			// Token: 0x040019C2 RID: 6594
 			Charging,
-			// Token: 0x040019EC RID: 6636
+			// Token: 0x040019C3 RID: 6595
 			Charged,
-			// Token: 0x040019ED RID: 6637
+			// Token: 0x040019C4 RID: 6596
 			Finished
 		}
 	}

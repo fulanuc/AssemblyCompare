@@ -4,10 +4,10 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x02000401 RID: 1025
+	// Token: 0x020003FB RID: 1019
 	public class TeleportOutController : NetworkBehaviour
 	{
-		// Token: 0x060016FE RID: 5886 RVA: 0x000786D4 File Offset: 0x000768D4
+		// Token: 0x060016BE RID: 5822 RVA: 0x00078148 File Offset: 0x00076348
 		public static void AddTPOutEffect(CharacterModel characterModel, float beginAlpha, float endAlpha, float duration)
 		{
 			if (characterModel)
@@ -22,7 +22,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060016FF RID: 5887 RVA: 0x00078738 File Offset: 0x00076938
+		// Token: 0x060016BF RID: 5823 RVA: 0x000781AC File Offset: 0x000763AC
 		public override void OnStartClient()
 		{
 			base.OnStartClient();
@@ -64,7 +64,7 @@ namespace RoR2
 			Util.PlaySound(TeleportOutController.tpOutSoundString, base.gameObject);
 		}
 
-		// Token: 0x06001700 RID: 5888 RVA: 0x00078840 File Offset: 0x00076A40
+		// Token: 0x060016C0 RID: 5824 RVA: 0x000782B4 File Offset: 0x000764B4
 		public void FixedUpdate()
 		{
 			if (NetworkServer.active)
@@ -85,14 +85,14 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001703 RID: 5891 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x060016C3 RID: 5827 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x1700021F RID: 543
-		// (get) Token: 0x06001704 RID: 5892 RVA: 0x000788CC File Offset: 0x00076ACC
-		// (set) Token: 0x06001705 RID: 5893 RVA: 0x000114F2 File Offset: 0x0000F6F2
+		// Token: 0x17000216 RID: 534
+		// (get) Token: 0x060016C4 RID: 5828 RVA: 0x00078340 File Offset: 0x00076540
+		// (set) Token: 0x060016C5 RID: 5829 RVA: 0x000110CD File Offset: 0x0000F2CD
 		public GameObject Networktarget
 		{
 			get
@@ -105,7 +105,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001706 RID: 5894 RVA: 0x000788E0 File Offset: 0x00076AE0
+		// Token: 0x060016C6 RID: 5830 RVA: 0x00078354 File Offset: 0x00076554
 		public override bool OnSerialize(NetworkWriter writer, bool forceAll)
 		{
 			if (forceAll)
@@ -130,7 +130,7 @@ namespace RoR2
 			return flag;
 		}
 
-		// Token: 0x06001707 RID: 5895 RVA: 0x0007894C File Offset: 0x00076B4C
+		// Token: 0x060016C7 RID: 5831 RVA: 0x000783C0 File Offset: 0x000765C0
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 			if (initialState)
@@ -145,7 +145,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x06001708 RID: 5896 RVA: 0x0001150C File Offset: 0x0000F70C
+		// Token: 0x060016C8 RID: 5832 RVA: 0x000110E7 File Offset: 0x0000F2E7
 		public override void PreStartClient()
 		{
 			if (!this.___targetNetId.IsEmpty())
@@ -154,24 +154,24 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x040019F6 RID: 6646
+		// Token: 0x040019CD RID: 6605
 		[SyncVar]
 		[NonSerialized]
 		public GameObject target;
 
-		// Token: 0x040019F7 RID: 6647
+		// Token: 0x040019CE RID: 6606
 		public ParticleSystem bodyGlowParticles;
 
-		// Token: 0x040019F8 RID: 6648
+		// Token: 0x040019CF RID: 6607
 		public static string tpOutSoundString = "Play_UI_teleport_off_map";
 
-		// Token: 0x040019F9 RID: 6649
+		// Token: 0x040019D0 RID: 6608
 		private float age;
 
-		// Token: 0x040019FA RID: 6650
+		// Token: 0x040019D1 RID: 6609
 		private const float warmupDuration = 2f;
 
-		// Token: 0x040019FB RID: 6651
+		// Token: 0x040019D2 RID: 6610
 		private NetworkInstanceId ___targetNetId;
 	}
 }

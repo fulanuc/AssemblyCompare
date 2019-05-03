@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace RoR2
 {
-	// Token: 0x020004F9 RID: 1273
+	// Token: 0x020004EA RID: 1258
 	public class WireMeshBuilder : IDisposable
 	{
-		// Token: 0x06001CFE RID: 7422 RVA: 0x0008DE70 File Offset: 0x0008C070
+		// Token: 0x06001C97 RID: 7319 RVA: 0x0008D114 File Offset: 0x0008B314
 		private int GetVertexIndex(WireMeshBuilder.LineVertex vertex)
 		{
 			int num;
@@ -23,7 +23,7 @@ namespace RoR2
 			return num;
 		}
 
-		// Token: 0x06001CFF RID: 7423 RVA: 0x0008DED0 File Offset: 0x0008C0D0
+		// Token: 0x06001C98 RID: 7320 RVA: 0x0008D174 File Offset: 0x0008B374
 		public void AddLine(Vector3 p1, Color c1, Vector3 p2, Color c2)
 		{
 			WireMeshBuilder.LineVertex vertex = new WireMeshBuilder.LineVertex
@@ -42,7 +42,7 @@ namespace RoR2
 			this.indices.Add(vertexIndex2);
 		}
 
-		// Token: 0x06001D00 RID: 7424 RVA: 0x00015470 File Offset: 0x00013670
+		// Token: 0x06001C99 RID: 7321 RVA: 0x00014FC1 File Offset: 0x000131C1
 		public Mesh GenerateMesh()
 		{
 			Mesh mesh = new Mesh();
@@ -52,7 +52,7 @@ namespace RoR2
 			return mesh;
 		}
 
-		// Token: 0x06001D01 RID: 7425 RVA: 0x000154A2 File Offset: 0x000136A2
+		// Token: 0x06001C9A RID: 7322 RVA: 0x00014FF3 File Offset: 0x000131F3
 		public void Dispose()
 		{
 			this.uniqueVertexToIndex = null;
@@ -61,28 +61,28 @@ namespace RoR2
 			this.colors = null;
 		}
 
-		// Token: 0x04001ECE RID: 7886
+		// Token: 0x04001E90 RID: 7824
 		private int uniqueVertexCount;
 
-		// Token: 0x04001ECF RID: 7887
+		// Token: 0x04001E91 RID: 7825
 		private Dictionary<WireMeshBuilder.LineVertex, int> uniqueVertexToIndex = new Dictionary<WireMeshBuilder.LineVertex, int>();
 
-		// Token: 0x04001ED0 RID: 7888
+		// Token: 0x04001E92 RID: 7826
 		private List<int> indices = new List<int>();
 
-		// Token: 0x04001ED1 RID: 7889
+		// Token: 0x04001E93 RID: 7827
 		private List<Vector3> positions = new List<Vector3>();
 
-		// Token: 0x04001ED2 RID: 7890
+		// Token: 0x04001E94 RID: 7828
 		private List<Color> colors = new List<Color>();
 
-		// Token: 0x020004FA RID: 1274
+		// Token: 0x020004EB RID: 1259
 		private struct LineVertex
 		{
-			// Token: 0x04001ED3 RID: 7891
+			// Token: 0x04001E95 RID: 7829
 			public Vector3 position;
 
-			// Token: 0x04001ED4 RID: 7892
+			// Token: 0x04001E96 RID: 7830
 			public Color color;
 		}
 	}

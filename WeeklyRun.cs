@@ -7,32 +7,32 @@ using UnityEngine.Networking;
 
 namespace RoR2
 {
-	// Token: 0x02000427 RID: 1063
+	// Token: 0x02000421 RID: 1057
 	public class WeeklyRun : Run
 	{
-		// Token: 0x060017CD RID: 6093 RVA: 0x0007B07C File Offset: 0x0007927C
+		// Token: 0x0600178A RID: 6026 RVA: 0x0007AABC File Offset: 0x00078CBC
 		public static uint GetCurrentSeedCycle()
 		{
 			return (uint)((WeeklyRun.now - WeeklyRun.startDate).Days / 3);
 		}
 
-		// Token: 0x060017CE RID: 6094 RVA: 0x0007B0A4 File Offset: 0x000792A4
+		// Token: 0x0600178B RID: 6027 RVA: 0x0007AAE4 File Offset: 0x00078CE4
 		public static DateTime GetSeedCycleStartDateTime(uint seedCycle)
 		{
 			return WeeklyRun.startDate.AddDays(seedCycle * 3u);
 		}
 
-		// Token: 0x1700022E RID: 558
-		// (get) Token: 0x060017CF RID: 6095 RVA: 0x00011DAB File Offset: 0x0000FFAB
+		// Token: 0x17000225 RID: 549
+		// (get) Token: 0x0600178C RID: 6028 RVA: 0x0001197F File Offset: 0x0000FB7F
 		public static DateTime now
 		{
 			get
 			{
-				return Util.UnixTimeStampToDateTimeUtc(Client.Instance.Utils.GetServerRealTime());
+				return Util.UnixTimeStampToDateTime(Client.Instance.Utils.GetServerRealTime());
 			}
 		}
 
-		// Token: 0x060017D0 RID: 6096 RVA: 0x00011DC1 File Offset: 0x0000FFC1
+		// Token: 0x0600178D RID: 6029 RVA: 0x00011995 File Offset: 0x0000FB95
 		protected new void Start()
 		{
 			base.Start();
@@ -43,7 +43,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060017D1 RID: 6097 RVA: 0x0007B0C4 File Offset: 0x000792C4
+		// Token: 0x0600178E RID: 6030 RVA: 0x0007AB04 File Offset: 0x00078D04
 		protected override void OnFixedUpdate()
 		{
 			base.OnFixedUpdate();
@@ -81,18 +81,18 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060017D2 RID: 6098 RVA: 0x00011DF1 File Offset: 0x0000FFF1
+		// Token: 0x0600178F RID: 6031 RVA: 0x000119C5 File Offset: 0x0000FBC5
 		protected override void OverrideSeed()
 		{
 			this.seed = (ulong)WeeklyRun.GetCurrentSeedCycle();
 		}
 
-		// Token: 0x060017D3 RID: 6099 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x06001790 RID: 6032 RVA: 0x000025F6 File Offset: 0x000007F6
 		public override void HandlePlayerFirstEntryAnimation(CharacterBody body, Vector3 spawnPosition, Quaternion spawnRotation)
 		{
 		}
 
-		// Token: 0x060017D4 RID: 6100 RVA: 0x00011DFF File Offset: 0x0000FFFF
+		// Token: 0x06001791 RID: 6033 RVA: 0x000119D3 File Offset: 0x0000FBD3
 		public override void AdvanceStage(string nextSceneName)
 		{
 			if (this.stageClearCount == 1 && SceneInfo.instance.countsAsStage)
@@ -103,14 +103,14 @@ namespace RoR2
 			base.AdvanceStage(nextSceneName);
 		}
 
-		// Token: 0x060017D5 RID: 6101 RVA: 0x00011E25 File Offset: 0x00010025
+		// Token: 0x06001792 RID: 6034 RVA: 0x000119F9 File Offset: 0x0000FBF9
 		public override void OnClientGameOver(RunReport runReport)
 		{
 			base.OnClientGameOver(runReport);
 			this.ClientSubmitLeaderboardScore(runReport);
 		}
 
-		// Token: 0x060017D6 RID: 6102 RVA: 0x0007B190 File Offset: 0x00079390
+		// Token: 0x06001793 RID: 6035 RVA: 0x0007ABD0 File Offset: 0x00078DD0
 		public override void OnServerBossAdded(BossGroup bossGroup, CharacterMaster characterMaster)
 		{
 			base.OnServerBossAdded(bossGroup, characterMaster);
@@ -125,7 +125,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060017D7 RID: 6103 RVA: 0x00011E35 File Offset: 0x00010035
+		// Token: 0x06001794 RID: 6036 RVA: 0x00011A09 File Offset: 0x0000FC09
 		public override void OnServerBossKilled(bool bossGroupDefeated)
 		{
 			base.OnServerBossKilled(bossGroupDefeated);
@@ -135,14 +135,14 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060017D8 RID: 6104 RVA: 0x00011E5B File Offset: 0x0001005B
+		// Token: 0x06001795 RID: 6037 RVA: 0x00011A2F File Offset: 0x0000FC2F
 		public override GameObject GetTeleportEffectPrefab(GameObject objectToTeleport)
 		{
 			return Resources.Load<GameObject>("Prefabs/Effects/TeleportOutCrystalBoom");
 		}
 
-		// Token: 0x1700022F RID: 559
-		// (get) Token: 0x060017D9 RID: 6105 RVA: 0x00011E67 File Offset: 0x00010067
+		// Token: 0x17000226 RID: 550
+		// (get) Token: 0x06001796 RID: 6038 RVA: 0x00011A3B File Offset: 0x0000FC3B
 		public uint crystalsKilled
 		{
 			get
@@ -151,7 +151,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060017DA RID: 6106 RVA: 0x0007B1FC File Offset: 0x000793FC
+		// Token: 0x06001797 RID: 6039 RVA: 0x0007AC3C File Offset: 0x00078E3C
 		public override void OnServerTeleporterPlaced(SceneDirector sceneDirector, GameObject teleporter)
 		{
 			base.OnServerTeleporterPlaced(sceneDirector, teleporter);
@@ -186,7 +186,7 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060017DB RID: 6107 RVA: 0x0007B2E4 File Offset: 0x000794E4
+		// Token: 0x06001798 RID: 6040 RVA: 0x0007AD24 File Offset: 0x00078F24
 		public override void OnPlayerSpawnPointsPlaced(SceneDirector sceneDirector)
 		{
 			if (this.stageClearCount == 0)
@@ -211,13 +211,13 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060017DC RID: 6108 RVA: 0x00011E7E File Offset: 0x0001007E
+		// Token: 0x06001799 RID: 6041 RVA: 0x00011A52 File Offset: 0x0000FC52
 		public static string GetLeaderboardName(int playerCount, uint seedCycle)
 		{
 			return string.Format(CultureInfo.InvariantCulture, "weekly{0}p{1}", playerCount, seedCycle);
 		}
 
-		// Token: 0x060017DD RID: 6109 RVA: 0x0007B3B8 File Offset: 0x000795B8
+		// Token: 0x0600179A RID: 6042 RVA: 0x0007ADF8 File Offset: 0x00078FF8
 		protected void ClientSubmitLeaderboardScore(RunReport runReport)
 		{
 			if (runReport.gameResultType != GameResultType.Won)
@@ -269,11 +269,11 @@ namespace RoR2
 			Leaderboard leaderboard = Client.Instance.GetLeaderboard(name, Client.LeaderboardSortMethod.Ascending, Client.LeaderboardDisplayType.TimeMilliSeconds);
 			leaderboard.OnBoardInformation = delegate()
 			{
-				leaderboard.AddScore(true, (int)Math.Ceiling((double)runReport.runStopwatchValue * 1000.0), subScores);
+				leaderboard.AddScore(true, (int)Math.Ceiling((double)runReport.snapshotTime.t * 1000.0), subScores);
 			};
 		}
 
-		// Token: 0x060017DE RID: 6110 RVA: 0x0007B4CC File Offset: 0x000796CC
+		// Token: 0x0600179B RID: 6043 RVA: 0x0007AF0C File Offset: 0x0007910C
 		public override void OverrideRuleChoices(RuleChoiceMask mustInclude, RuleChoiceMask mustExclude)
 		{
 			base.OverrideRuleChoices(mustInclude, mustExclude);
@@ -310,44 +310,38 @@ namespace RoR2
 			}
 		}
 
-		// Token: 0x060017DF RID: 6111 RVA: 0x000038B4 File Offset: 0x00001AB4
+		// Token: 0x0600179C RID: 6044 RVA: 0x000038B4 File Offset: 0x00001AB4
 		public override bool IsUnlockableUnlocked(string unlockableName)
 		{
 			return true;
 		}
 
-		// Token: 0x060017E0 RID: 6112 RVA: 0x00003696 File Offset: 0x00001896
+		// Token: 0x0600179D RID: 6045 RVA: 0x00003696 File Offset: 0x00001896
 		public override bool CanUnlockableBeGrantedThisRun(string unlockableName)
 		{
 			return false;
 		}
 
-		// Token: 0x060017E1 RID: 6113 RVA: 0x000038B4 File Offset: 0x00001AB4
+		// Token: 0x0600179E RID: 6046 RVA: 0x000038B4 File Offset: 0x00001AB4
 		public override bool DoesEveryoneHaveThisUnlockableUnlocked(string unlockableName)
 		{
 			return true;
 		}
 
-		// Token: 0x060017E2 RID: 6114 RVA: 0x00011E9B File Offset: 0x0001009B
+		// Token: 0x0600179F RID: 6047 RVA: 0x00011A6F File Offset: 0x0000FC6F
 		protected override void HandlePostRunDestination()
 		{
-			Console.instance.SubmitCmd(null, "transition_command \"disconnect\";", false);
+			Console.instance.SubmitCmd(null, "transition_command \"disconnect; set_scene crystalworld;\";", false);
 		}
 
-		// Token: 0x060017E3 RID: 6115 RVA: 0x00011EAE File Offset: 0x000100AE
-		protected override bool ShouldUpdateRunStopwatch()
-		{
-			return base.livingPlayerCount > 0;
-		}
-
-		// Token: 0x060017E7 RID: 6119 RVA: 0x000025DA File Offset: 0x000007DA
+		// Token: 0x060017A3 RID: 6051 RVA: 0x000025F6 File Offset: 0x000007F6
 		private void UNetVersion()
 		{
 		}
 
-		// Token: 0x17000230 RID: 560
-		// (get) Token: 0x060017E8 RID: 6120 RVA: 0x0007B5E8 File Offset: 0x000797E8
-		// (set) Token: 0x060017E9 RID: 6121 RVA: 0x00011F2F File Offset: 0x0001012F
+		// Token: 0x17000227 RID: 551
+		// (get) Token: 0x060017A4 RID: 6052 RVA: 0x0007B028 File Offset: 0x00079228
+		// (set) Token: 0x060017A5 RID: 6053 RVA: 0x00011AF8 File Offset: 0x0000FCF8
 		public uint NetworkserverSeedCycle
 		{
 			get
@@ -356,11 +350,11 @@ namespace RoR2
 			}
 			set
 			{
-				base.SetSyncVar<uint>(value, ref this.serverSeedCycle, 128u);
+				base.SetSyncVar<uint>(value, ref this.serverSeedCycle, 64u);
 			}
 		}
 
-		// Token: 0x060017EA RID: 6122 RVA: 0x0007B5FC File Offset: 0x000797FC
+		// Token: 0x060017A6 RID: 6054 RVA: 0x0007B03C File Offset: 0x0007923C
 		public override bool OnSerialize(NetworkWriter writer, bool forceAll)
 		{
 			bool flag = base.OnSerialize(writer, forceAll);
@@ -370,7 +364,7 @@ namespace RoR2
 				return true;
 			}
 			bool flag2 = false;
-			if ((base.syncVarDirtyBits & 128u) != 0u)
+			if ((base.syncVarDirtyBits & 64u) != 0u)
 			{
 				if (!flag2)
 				{
@@ -386,7 +380,7 @@ namespace RoR2
 			return flag2 || flag;
 		}
 
-		// Token: 0x060017EB RID: 6123 RVA: 0x0007B674 File Offset: 0x00079874
+		// Token: 0x060017A7 RID: 6055 RVA: 0x0007B0B4 File Offset: 0x000792B4
 		public override void OnDeserialize(NetworkReader reader, bool initialState)
 		{
 			base.OnDeserialize(reader, initialState);
@@ -396,57 +390,57 @@ namespace RoR2
 				return;
 			}
 			int num = (int)reader.ReadPackedUInt32();
-			if ((num & 128) != 0)
+			if ((num & 64) != 0)
 			{
 				this.serverSeedCycle = reader.ReadPackedUInt32();
 			}
 		}
 
-		// Token: 0x04001AC8 RID: 6856
+		// Token: 0x04001A9F RID: 6815
 		private Xoroshiro128Plus bossAffixRng;
 
-		// Token: 0x04001AC9 RID: 6857
+		// Token: 0x04001AA0 RID: 6816
 		public static readonly DateTime startDate = new DateTime(2018, 8, 27, 0, 0, 0, 0, DateTimeKind.Utc);
 
-		// Token: 0x04001ACA RID: 6858
+		// Token: 0x04001AA1 RID: 6817
 		public const int cycleLength = 3;
 
-		// Token: 0x04001ACB RID: 6859
+		// Token: 0x04001AA2 RID: 6818
 		private string leaderboardName;
 
-		// Token: 0x04001ACC RID: 6860
+		// Token: 0x04001AA3 RID: 6819
 		[SyncVar]
 		private uint serverSeedCycle;
 
-		// Token: 0x04001ACD RID: 6861
+		// Token: 0x04001AA4 RID: 6820
 		private static readonly EquipmentIndex[] affixes = new EquipmentIndex[]
 		{
 			EquipmentIndex.AffixBlue,
 			EquipmentIndex.AffixRed
 		};
 
-		// Token: 0x04001ACE RID: 6862
+		// Token: 0x04001AA5 RID: 6821
 		public SpawnCard crystalSpawnCard;
 
-		// Token: 0x04001ACF RID: 6863
+		// Token: 0x04001AA6 RID: 6822
 		public uint crystalCount = 3u;
 
-		// Token: 0x04001AD0 RID: 6864
+		// Token: 0x04001AA7 RID: 6823
 		public uint crystalRewardValue = 50u;
 
-		// Token: 0x04001AD1 RID: 6865
+		// Token: 0x04001AA8 RID: 6824
 		public uint crystalsRequiredToKill = 3u;
 
-		// Token: 0x04001AD2 RID: 6866
+		// Token: 0x04001AA9 RID: 6825
 		private List<OnDestroyCallback> crystalActiveList = new List<OnDestroyCallback>();
 
-		// Token: 0x04001AD3 RID: 6867
+		// Token: 0x04001AAA RID: 6826
 		public SpawnCard equipmentBarrelSpawnCard;
 
-		// Token: 0x04001AD4 RID: 6868
+		// Token: 0x04001AAB RID: 6827
 		public uint equipmentBarrelCount = 3u;
 
-		// Token: 0x04001AD5 RID: 6869
+		// Token: 0x04001AAC RID: 6828
 		public float equipmentBarrelRadius = 10f;
 	}
 }
